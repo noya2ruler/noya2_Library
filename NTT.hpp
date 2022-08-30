@@ -2,7 +2,7 @@
 
 template<long long m>
 struct NTT{
-    using mint = modint<m>;
+    using mint = static_modint<m>;
     NTT(){init();};
     static void FFT(vector<mint> &a){
         int n = a.size();
@@ -33,9 +33,9 @@ struct NTT{
         return a;
     }
   private:
-    static modint<m> g;
+    static static_modint<m> g;
     static int limit;
-    static vector<modint<m>>root, inv_root;
+    static vector<static_modint<m>>root, inv_root;
     static constexpr mint primitive_root(const long long &mo){
         if (mo == 2)         return mint(1);
         if (mo == 167772161) return mint(3);
@@ -97,8 +97,8 @@ struct NTT{
 template<long long m>
 int NTT<m>::limit=0;
 template<long long m>
-vector<modint<m>>NTT<m>::root=vector<modint<m>>();
+vector<static_modint<m>>NTT<m>::root=vector<static_modint<m>>();
 template<long long m>
-vector<modint<m>>NTT<m>::inv_root=vector<modint<m>>();
+vector<static_modint<m>>NTT<m>::inv_root=vector<static_modint<m>>();
 template<long long m>
-modint<m>NTT<m>::g=modint<m>();
+static_modint<m>NTT<m>::g=static_modint<m>();
