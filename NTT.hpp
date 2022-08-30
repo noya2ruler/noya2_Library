@@ -1,5 +1,4 @@
 #pragma once
-#include "../kyopro/modint.hpp"
 
 template<long long m>
 struct NTT{
