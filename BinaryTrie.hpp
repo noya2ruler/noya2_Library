@@ -1,5 +1,7 @@
 #pragma once
 
+#include<array>
+
 namespace noya2{
 
 template<typename T, int MAX_LOG> // T = int/ll, 0 <= x < 2 ^ MAX_LOG
