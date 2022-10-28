@@ -10,11 +10,11 @@
 > 頂点 $0,1,\dots,n-1$ からなる $n$ 頂点の木 $T$ が与えられます。
 > 有向グラフ $G=(\mathbb{V},\mathbb{E})$ は以下を満たします。
 > - $\mathbb{V}=\lbrace 0,1,\dots, n-1 \rbrace$ である。
-> - $\mathbb{E}\subset \mathbb{V}\times \mathbb{V}$ である。辺 $(a,b)$ は頂点 $a$ から頂点 $b$ への**有向辺**。$T$ において頂点 $a,b$ の間に辺が張られているとき, またそのときに限り $(a,b),(b,a)\in \mathbb{E}$ である。
+> - $\mathbb{E}\subset \mathbb{V}\times \mathbb{V}$ である。辺 $(a,b)$ は頂点 $a$ から頂点 $b$ への**有向辺**。 $T$ において頂点 $a,b$ の間に辺が張られているとき, またそのときに限り $(a,b),(b,a)\in \mathbb{E}$ である。
 > 
 > また、各有向辺には整数値の番号が割り当てられていて、 $\mathrm{idx}:\mathbb{E}\to \mathbb{Z}$ によって定められます。ここで $\mathbb{E}_\mathrm{idx}=\lbrace \mathrm{idx}(e)\ |\ e\in \mathbb{E} \rbrace$ としておきます。
 > 
-> **可換**モノイド $(E,\oplus : E\times E\to E,e\in E)$ と集合 $V$ および $\mathrm{put\_ edge}:V\times \mathbb{E}_\mathrm{idx}\to E,\ \mathrm{put\_ vertex}:E\times \mathbb{V}\to V$ が与えられます。次の擬似コードに従って計算される値 <code>dfs(0,0), dfs(1,1),...,dfs(n-1,n-1)</code> を求めてください。ただし、頂点 $r$ を根と見たときの頂点 $v$ の子の頂点の集合を $\mathrm{child}(r,v)$ とします。
+> **可換**モノイド $(E,\oplus : E\times E\to E,e\in E)$ と集合 $V$ および $\mathrm{put \_ edge}:V\times \mathbb{E}_\mathrm{idx}\to E,\ \mathrm{put \_ vertex}:E\times \mathbb{V}\to V$ が与えられます。次の擬似コードに従って計算される値 <code>dfs(0,0), dfs(1,1),...,dfs(n-1,n-1)</code> を求めてください。ただし、頂点 $r$ を根と見たときの頂点 $v$ の子の頂点の集合を $\mathrm{child}(r,v)$ とします。
 >```
 >V dfs(vertex r, vertex v){
 >    E prod = e();
@@ -152,8 +152,8 @@ int main(){
 $$f(u,v)=\bigoplus_{c\in \mathrm{child}(u,v)}f(v,c)$$
 のような遷移式では考慮されない「辺の重み」を取り入れるため、補助的な関数 $g(u,v)$ を定義しています。 $g(u,v)$ は $(u,v)$ に対応する部分木に辺 $(u,v)$ を付加するが頂点 $u$ はまだ付加しないみたいな（雰囲気で感じ取ってください）部分木もどきに対する答えっぽいもの（雰囲気で感じ取ってください）です。要点は次のとおりです。
 
-- 部分木に辺を付加すると、部分木もどきになる。( $\mathrm{put\_ edge}$ )
-- 部分木もどきをマージして頂点を付加すると、部分木になる。( $\mathrm{put\_ vertex}$ )
-- $\displaystyle f(u,v)=\mathrm{put\_ vertex}\left(\bigoplus_{c\in \mathrm{child}(u,v)} \mathrm{put\_ edge}(f(v,c),\mathrm{idx}(v,c)) ,\ v\right)$
+- 部分木に辺を付加すると、部分木もどきになる。( $\mathrm{put \_ edge}$ )
+- 部分木もどきをマージして頂点を付加すると、部分木になる。( $\mathrm{put \_ vertex}$ )
+- $\displaystyle f(u,v)=\mathrm{put \_ vertex}\left(\bigoplus_{c\in \mathrm{child}(u,v)} \mathrm{put \_ edge}(f(v,c),\mathrm{idx}(v,c)) ,\ v\right)$
 
 ライブラリ内で辺に重み <code>E e</code> 、頂点に重み <code>V v</code> を持つような設計もあり得ると思ったのですが、できるだけライブラリの外側で問題依存パートを扱いたいのと、 <code>put_vertex</code> には単位元のようなものを要求しないため初期値の設定に困ったので、頂点・辺番号を引数に渡す関数を要求するライブラリの設計にしました。
