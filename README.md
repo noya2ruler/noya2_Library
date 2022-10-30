@@ -1,17 +1,21 @@
 # Noya2-Library
 
-## Formal Power Series
+## これはなに
 
-### Numeric Theorem Transform
+[noya2](https://twitter.com/noya2ruler) が管理する競プロ用ライブラリです。ほぼ全てのライブラリは C++ で書かれています。verify-helper を使いこなせていないです。ライブラリの依存関係を追うのが難しいので、あまり依存させないようにしています（え？）。
 
-#### NTT.hpp
+## ライブラリ管理の方針
 
-modint を include して使う. 四則演算に加え <code>modint::mod()</code>, <code>modint::inv()</code> が必要.
+- (ライブラリ名) のフォルダ
+  - ライブラリ (library_name.hpp)
+  - ドキュメント (document.md)
+  - 解説 (editorial.md)
+- ABC-Ex とかの upsolve で出てきた高度典型を扱いたい
+- あまり難しくないのは今のところ扱わない予定
+- ライブラリ整備がんばる！(2022/10/31/2:35)
 
-#### <code>void NTT\<m\>::FFT(vector\<mint\> &a)</code> 
-<p> <code>a</code> の中身が $\bmod m$ 上で高速フーリエ変換される. </p>
+## ライブラリ整備の方針
 
-<p><a href = "https://trap.jp/post/1386/" target = "blank"> tatyamさんの記事 </a> でFFTを理解した.</p>
-<p><a href = "https://mtsaka.github.io/library/Math/convolution/ntt.hpp" target = "blank"> MtSaka's Library </a> を大きく参考にした.</p>
-
-え〜、全然きれいにまとまる気がしないです。
+- ドキュメントを書く（ACLに準拠）
+- 難しいアルゴリズムや日本語解説記事が少ないアルゴリズムについては解説も書く
+- なるべく抽象化
