@@ -21,7 +21,7 @@ Dinic 法は最大流を求めるアルゴリズムのひとつです。
 > $s-t$ フロー $f$ の流量 (value) $|f|$ の最大値を求めてください。
 > - $s-t$ フロー $f:E\to \mathbb{R}$
 >   - $\forall e\in E, 0\le f(e)\le u(e)$
->   - $\displaystyle\forall v\in V\setminus \lbrace s,t \rbrace , \sum_{e=(v,*)}f(e) - \sum_{e=(*,v)} f(e) = 0$
-> - 流量 $\displaystyle |f|=\sum_{e=(s,*)}f(e) - \sum_{e=(*,s)} f(e)$
+>   - $\displaystyle\forall v\in V\setminus \lbrace s,t \rbrace , \sum_{e=(v,\ast)}f(e) - \sum_{e=(\ast,v)} f(e) = 0$
+> - 流量 $\displaystyle |f|=\sum_{e=(s,\ast)}f(e) - \sum_{e=(\ast,s)} f(e)$
 
 重要な概念のひとつに **残余グラフ** というものがあります。
