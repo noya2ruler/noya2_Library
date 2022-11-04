@@ -18,7 +18,7 @@ https://misawa.github.io/others/flow/dinic_time_complexity.html
 
 ## Dinic 法の概要
 
-1. 暫定解のフロー $f$ を $f=\bm{0}$ で初期化する ( $\forall e\in E, f(e)=0$ )。
+1. 暫定解のフロー $f$ を $f=\boldsymbol{0}$ で初期化する ( $\forall e\in E, f(e)=0$ )。
 2. 次の dual-primal step を $G_f$ の増加路が存在しなくなるまで繰り返す。
    
    dual-primal step
