@@ -18,6 +18,8 @@ https://misawa.github.io/others/flow/dinic_time_complexity.html
 
 ## Dinic 法の概要
 
+### アルゴリズム
+
 1. 暫定解のフロー $f$ を $f=\boldsymbol{0}$ で初期化する ( $\forall e\in E, f(e)=0$ )。
 2. 次の dual-primal step を $G_f$ の増加路が存在しなくなるまで繰り返す。
    
@@ -37,6 +39,29 @@ https://misawa.github.io/others/flow/dinic_time_complexity.html
    - 流れたフローを $f$ に反映する。
    - 特に $G_f$ の容量が更新される。
        
-        
+### 各用語の説明
+
+#### フローをベクトルとも見ることについて
+フロー $f:E\to \mathbb{R}$ は写像ですが、扱うグラフは有限グラフなので $E$ の要素を適当に順序づけることができ、 $e_1,e_2,\dots ,e_{|E|}$ とすれば $\boldsymbol{f}=(f_1,f_2,\dots ,f_{|E|})$ であって $f_i=f(e_i)$ です。本文ではボールド表記をせず、 $f$ とかいたときに辺番号または辺を引数にとってその辺の流量を返すものします。
+
+#### パス
+パスは頂点列です。
+
+$L$ を非負整数とします。長さ $L+1$ の列 $(v_0,v_1,\dots ,v_L)$ が
+$G=(V,E)$ 上の $s-t$ パスであるとは、以下を満たすとき、またそのときに限ります。
+- $v_0=s,\ v_{L+1}=t$
+- $\forall i\in \lbrace 0,1,\dots, L-1 \rbrace , (v_i,v_{i+1})\in E$
+
+特にそのパスの長さ (経路長) は $L$ です。
+
+#### 最短経路DAG
+$s-t$ 最短経路DAG $H_0$ は $s-t$ 最短距離を $L$ として、$s-t$ パスであって経路長が $L$ であるものを全て集めてできるグラフです。
+
+#### フローを流せるだけ流す
+$s-t$ パスを構成する辺の容量の最小値を $\delta$ として、$s$ から $t$ へ流量　$\delta$ のフローを流します。つまり、暫定解のフロー $f$ に対して次を行います。
+- $s-t$ パスを $(s=v_0,v_1,\dots ,v_L=t)$ とする。
+- $\displaystyle\delta = \min_{i=0,1,\dots, L} u_f(v_i,v_{i+1})$ とする。
+- $i= 0,1,\dots, L-1$ に対して $f(v_i,v_{i+1})\gets f(v_i,v_{i+1})+\delta$ という更新を行う。
+
 
 
