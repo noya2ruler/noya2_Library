@@ -1,14 +1,40 @@
 # 競プロのお勉強で得た知見たち
 
+## 書き方のルール
+
+適当なまとめ文と**参考資料**を書く。できれば詳細の説明もつける。
+
 ## データ構造
+
+### Sparse Table
+
+参考 : [いかたこのたこつぼさんの記事](https://ikatakos.com/pot/programming_algorithm/data_structure/sparse_table)
+
+`op` が冪等性をもつような半群 `(S,op)` が乗る。（単位元を仮定しないためモノイドまでは仮定しない）
+
+> 長さ $n$ の `S` の列 $A$ が与えられる。以下のクエリを処理せよ。
+> 
+> - `l r` : $\prod_{i=l}^{r} A_i$ を求めよ。
+
+構築 $\Theta (n\log n)$ 、クエリあたり $\Theta (1)$ で処理する。ただし `op` の計算量は $\Theta (1)$ 。
+
+Disjoint Sparse Table というものもあるらしく、こちらは冪等性を仮定しなくてもよい。
 
 ## アルゴリズム
 
+### Cartesian Tree
+
+参考 : [RMQクエリ処理のスライド](https://www.slideshare.net/hcpc_hokudai/rmq-47663507)
+
+ $<\mathrm{O}(n),\mathrm{O}(1)>$ RMQで必要になるやつ
+
 ### 葉から順に頂点を削除していくタイプの走査をBFSの逆順でするやつ
 
-根から
-
 ## 典型
+
+### $\pm d_i$ できるとき、結局 $\pm\gcd d_i$ できるやつ
+
+出典 : [ARC152-C Pivot](https://atcoder.jp/contests/arc152/tasks/arc152_c)
 
 ### 最大値の最大値(最小値の最小値)
 
