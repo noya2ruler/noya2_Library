@@ -32,6 +32,12 @@ Disjoint Sparse Table というものもあるらしく、こちらは冪等性�
 
 ## 典型
 
+### 六角グリッド上の距離が3次元チェビシェフ距離になるやつ
+
+六角グリッド上の2点 $(x_1,y_1),(x_2,y_2)$ の距離は $\max (|x_1-x_2|,|y_1-y_2|,|(x_1-y_1)-(x_2-y_2)|)$ で与えられる。つまり、座標変換 $(x,y)\mapsto (x,y,x-y)$ を施して三次元空間上のチェビシェフ距離を考えれば良い。
+
+出典： [ABC280-G Do Use Hexagon Grid 2](https://atcoder.jp/contests/abc280/tasks/abc280_g)
+
 ### $\pm d_i$ できるとき、結局 $\pm\gcd d_i$ できるやつ
 
 出典 : [ARC152-C Pivot](https://atcoder.jp/contests/arc152/tasks/arc152_c)
