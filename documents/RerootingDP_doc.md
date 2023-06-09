@@ -179,3 +179,5 @@ $$
 - $\displaystyle f(u,v)=\mathrm{put \_ vertex}\left(\bigoplus_{c\in \mathrm{child}(u,v)} \mathrm{put \_ edge}(f(v,c),\mathrm{idx}(v,c)) ,\ v\right)$
 
 ライブラリ内で辺に重み <code>E e</code> 、頂点に重み <code>V v</code> を持つような設計もあり得ると思ったのですが、できるだけライブラリの外側で問題依存パートを扱いたいのと、 <code>put_vertex</code> には単位元のようなものを要求しないため初期値の設定に困ったので、頂点・辺番号を引数に渡す関数を要求するライブラリの設計にしました。
+
+(追記) 全方位木DPが扱える根付き木は全域木だけではなく、$3n-2$ 個ある全ての根付き部分木である。その全ての部分木に対応するDPの結果を返す `get` を実装した。
