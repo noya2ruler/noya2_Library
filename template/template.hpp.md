@@ -5,13 +5,16 @@ data:
   - icon: ':warning:'
     path: misc/QMC.hpp
     title: misc/QMC.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: tree/RerootingDP.hpp
     title: Rerooting DP
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Rerooting_DP.test.cpp
+    title: test/tree/Rerooting_DP.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/template.hpp\"\n\n#include<bits/stdc++.h>\n\n#define\
@@ -43,8 +46,9 @@ data:
   - misc/QMC.hpp
   - tree/RerootingDP.hpp
   timestamp: '2023-06-10 15:19:37+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/tree/Rerooting_DP.test.cpp
 documentation_of: template/template.hpp
 layout: document
 redirect_from:

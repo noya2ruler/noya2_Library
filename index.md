@@ -13,14 +13,19 @@ data:
       title: potentialized_dsu/potentialized_dsu.hpp
   - name: template
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
   - name: tree
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: tree/RerootingDP.hpp
       title: Rerooting DP
-  verificationCategories: []
+  verificationCategories:
+  - name: test/tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Rerooting_DP.test.cpp
+      title: test/tree/Rerooting_DP.test.cpp
 layout: toppage
 ---
