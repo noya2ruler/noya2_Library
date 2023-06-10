@@ -4,8 +4,7 @@
 
 namespace noya2 {
 
-template <class E, class V, E (*merge)(E, E), E (*e)(), E (*put_edge)(V, int),
-          V (*put_vertex)(E, int)>
+template <class E, class V, E (*merge)(E, E), E (*e)(), E (*put_edge)(V, int), V (*put_vertex)(E, int)>
 struct RerootingDP {
     struct edge {
         int to, idx, xdi;
@@ -77,13 +76,10 @@ struct RerootingDP {
         vector<E> lui(siz + 1), rui(siz + 1);
         lui[0] = e(), rui[siz] = e();
         for (int i = 0; i < siz; i++) lui[i + 1] = merge(lui[i], outs[v][i]);
-        for (int i = siz - 1; i >= 0; i--)
-            rui[i] = merge(outs[v][i], rui[i + 1]);
+        for (int i = siz - 1; i >= 0; i--) rui[i] = merge(outs[v][i], rui[i + 1]);
         for (int i = 0; i < siz; i++) {
-            reverse_dp[es[v][i].to] = put_vertex(
-                merge(merge(lui[i], rui[i + 1]), reverse_edge[v]), v);
-            reverse_edge[es[v][i].to] =
-                put_edge(reverse_dp[es[v][i].to], es[v][i].xdi);
+            reverse_dp[es[v][i].to] = put_vertex(merge(merge(lui[i], rui[i + 1]), reverse_edge[v]), v);
+            reverse_edge[es[v][i].to] = put_edge(reverse_dp[es[v][i].to], es[v][i].xdi);
             bfs(es[v][i].to);
         }
         answers[v] = put_vertex(merge(lui[siz], reverse_edge[v]), v);
