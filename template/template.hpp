@@ -14,11 +14,7 @@ using namespace std;
 
 namespace noya2{
 
-/*
-
-~ (. _________ . /)
-
-*/
+/*　~ (. _________ . /)　*/
 
 }
 
