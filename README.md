@@ -1,6 +1,6 @@
 # Noya2-Library
 
- [![Actions Status](https://github.com/noya2ruler/Library/workflows/verify/badge.svg)](https://github.com/noya2ruler/Library/actions)
+[![Actions Status](https://github.com/noya2ruler/Library/workflows/verify/badge.svg)](https://github.com/noya2ruler/Library/actions)
 
 ## 進捗の様子
 
