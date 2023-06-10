@@ -30,10 +30,10 @@ data:
     \ &is, vector<T> &v){\n    for (auto &e : v) is >> e;\n    return is;\n}\n\nvoid\
     \ fast_io(){\n    cin.tie(0); ios::sync_with_stdio(0); cout << fixed << setprecision(15);\n\
     }\n\n#line 4 \"tree/RerootingDP.hpp\"\n\nnamespace noya2 {\n\ntemplate <class\
-    \ E, class V, E (*merge)(E, E), E (*e)(), E (*put_edge)(V, int),\n          V\
-    \ (*put_vertex)(E, int)>\nstruct RerootingDP {\n    struct edge {\n        int\
-    \ to, idx, xdi;\n    };\n    RerootingDP(int _n = 0) : n(_n) {\n        es.resize(n);\n\
-    \    }\n    void add_edge(int u, int v, int idx1, int idx2) {\n        es[u].push_back({v,\
+    \ E, class V, E (*merge)(E, E), E (*e)(), E (*put_edge)(V, int), V (*put_vertex)(E,\
+    \ int)>\nstruct RerootingDP {\n    struct edge {\n        int to, idx, xdi;\n\
+    \    };\n    RerootingDP(int _n = 0) : n(_n) {\n        es.resize(n);\n    }\n\
+    \    void add_edge(int u, int v, int idx1, int idx2) {\n        es[u].push_back({v,\
     \ idx1, idx2});\n        es[v].push_back({u, idx2, idx1});\n    }\n    vector<V>\
     \ build(int v = 0) {\n        root = v;\n        outs.resize(n);\n        subdp.resize(n);\n\
     \        in.resize(n), up.resize(n);\n        int tnow = 0;\n        dfs(root,\
@@ -57,25 +57,24 @@ data:
     \ v);\n        up[v] = t;\n    }\n    void bfs(int v) {\n        int siz = outs[v].size();\n\
     \        vector<E> lui(siz + 1), rui(siz + 1);\n        lui[0] = e(), rui[siz]\
     \ = e();\n        for (int i = 0; i < siz; i++) lui[i + 1] = merge(lui[i], outs[v][i]);\n\
-    \        for (int i = siz - 1; i >= 0; i--)\n            rui[i] = merge(outs[v][i],\
-    \ rui[i + 1]);\n        for (int i = 0; i < siz; i++) {\n            reverse_dp[es[v][i].to]\
-    \ = put_vertex(\n                merge(merge(lui[i], rui[i + 1]), reverse_edge[v]),\
-    \ v);\n            reverse_edge[es[v][i].to] =\n                put_edge(reverse_dp[es[v][i].to],\
-    \ es[v][i].xdi);\n            bfs(es[v][i].to);\n        }\n        answers[v]\
-    \ = put_vertex(merge(lui[siz], reverse_edge[v]), v);\n    }\n};\n\n}  // namespace\
-    \ noya2\n#line 4 \"test/tree/Rerooting_DP.test.cpp\"\n\n#line 6 \"test/tree/Rerooting_DP.test.cpp\"\
-    \n\n\nusing P = pair<int, int>;\nP merge(P a, P b) {\n    return P(max(max(a.first,\
-    \ b.first), a.second + b.second),\n             max(a.second, b.second));\n}\n\
-    P e() {\n    return P(0, 0);\n}\nP pute(P v, int id) {\n    return P(max(v.first,\
-    \ v.second + 1), v.second + 1);\n}\nP putv(P e, int id) {\n    return e;\n}\n\n\
-    int main() {\n    int n;\n    cin >> n;\n    RerootingDP<P, P, merge, e, pute,\
-    \ putv> g(n);\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n    \
-    \    cin >> u >> v;\n        u--, v--;\n        g.add_edge(u, v, i, i);\n    }\n\
-    \    g.build();\n    g.reroot();\n    int ans = n;\n    for (int u = 0; u < n;\
-    \ u++) {\n        for (auto [v, idx, dxi] : g[u]) {\n            int x = g.get(u,\
-    \ v).first;\n            int y = g.get(v, u).first;\n            ans = min(ans,\
-    \ max({x, y, (x + 1) / 2 + (y + 1) / 2 + 1}));\n        }\n    }\n    cout <<\
-    \ ans << endl;\n}\n"
+    \        for (int i = siz - 1; i >= 0; i--) rui[i] = merge(outs[v][i], rui[i +\
+    \ 1]);\n        for (int i = 0; i < siz; i++) {\n            reverse_dp[es[v][i].to]\
+    \ = put_vertex(merge(merge(lui[i], rui[i + 1]), reverse_edge[v]), v);\n      \
+    \      reverse_edge[es[v][i].to] = put_edge(reverse_dp[es[v][i].to], es[v][i].xdi);\n\
+    \            bfs(es[v][i].to);\n        }\n        answers[v] = put_vertex(merge(lui[siz],\
+    \ reverse_edge[v]), v);\n    }\n};\n\n}  // namespace noya2\n#line 4 \"test/tree/Rerooting_DP.test.cpp\"\
+    \n\n#line 6 \"test/tree/Rerooting_DP.test.cpp\"\n\n\nusing P = pair<int, int>;\n\
+    P merge(P a, P b) {\n    return P(max(max(a.first, b.first), a.second + b.second),\n\
+    \             max(a.second, b.second));\n}\nP e() {\n    return P(0, 0);\n}\n\
+    P pute(P v, int id) {\n    return P(max(v.first, v.second + 1), v.second + 1);\n\
+    }\nP putv(P e, int id) {\n    return e;\n}\n\nint main() {\n    int n;\n    cin\
+    \ >> n;\n    RerootingDP<P, P, merge, e, pute, putv> g(n);\n    for (int i = 0;\
+    \ i < n - 1; i++) {\n        int u, v;\n        cin >> u >> v;\n        u--, v--;\n\
+    \        g.add_edge(u, v, i, i);\n    }\n    g.build();\n    g.reroot();\n   \
+    \ int ans = n;\n    for (int u = 0; u < n; u++) {\n        for (auto [v, idx,\
+    \ dxi] : g[u]) {\n            int x = g.get(u, v).first;\n            int y =\
+    \ g.get(v, u).first;\n            ans = min(ans, max({x, y, (x + 1) / 2 + (y +\
+    \ 1) / 2 + 1}));\n        }\n    }\n    cout << ans << endl;\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/1976\"\n\n#include \"\
     ../../tree/RerootingDP.hpp\"\n\n#include \"../../template/template.hpp\"\n\n\n\
     using P = pair<int, int>;\nP merge(P a, P b) {\n    return P(max(max(a.first,\
@@ -96,7 +95,7 @@ data:
   isVerificationFile: true
   path: test/tree/Rerooting_DP.test.cpp
   requiredBy: []
-  timestamp: '2023-06-10 23:04:14+09:00'
+  timestamp: '2023-06-11 02:29:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Rerooting_DP.test.cpp
