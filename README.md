@@ -1,5 +1,7 @@
 # Noya2-Library
 
+ [![Actions Status](https://github.com/noya2ruler/Library/workflows/verify/badge.svg)](https://github.com/noya2ruler/Library/actions)
+
 ## 進捗の様子
 
 > - dinic 法の解説を書いている。計算量解析は理解したはず。実装はまだ。(2022/11/07)
