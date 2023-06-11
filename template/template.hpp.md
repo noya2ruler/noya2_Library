@@ -11,10 +11,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/RerootingDP.hpp
     title: Rerooting DP
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: tree/Tree_core.hpp
     title: tree/Tree_core.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Jump_on_Tree.test.cpp
+    title: test/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Rerooting_DP.test.cpp
     title: test/tree/Rerooting_DP.test.cpp
@@ -56,6 +59,7 @@ data:
   timestamp: '2023-06-10 15:19:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Rerooting_DP.test.cpp
 documentation_of: template/template.hpp
 layout: document

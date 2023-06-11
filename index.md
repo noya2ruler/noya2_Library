@@ -26,12 +26,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/RerootingDP.hpp
       title: Rerooting DP
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
   verificationCategories:
   - name: test/tree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Jump_on_Tree.test.cpp
+      title: test/tree/Jump_on_Tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Rerooting_DP.test.cpp
       title: test/tree/Rerooting_DP.test.cpp

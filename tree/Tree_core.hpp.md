@@ -5,10 +5,13 @@ data:
     path: template/template.hpp
     title: template/template.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Jump_on_Tree.test.cpp
+    title: test/tree/Jump_on_Tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/Tree_core.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -135,8 +138,9 @@ data:
   path: tree/Tree_core.hpp
   requiredBy: []
   timestamp: '2023-06-11 22:38:08+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/tree/Jump_on_Tree.test.cpp
 documentation_of: tree/Tree_core.hpp
 layout: document
 redirect_from:
