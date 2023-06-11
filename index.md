@@ -26,6 +26,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/RerootingDP.hpp
       title: Rerooting DP
+    - icon: ':warning:'
+      path: tree/Tree_core.hpp
+      title: tree/Tree_core.hpp
   verificationCategories:
   - name: test/tree
     pages:

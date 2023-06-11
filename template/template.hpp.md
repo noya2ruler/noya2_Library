@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/RerootingDP.hpp
     title: Rerooting DP
+  - icon: ':warning:'
+    path: tree/Tree_core.hpp
+    title: tree/Tree_core.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/tree/Rerooting_DP.test.cpp
@@ -47,6 +50,7 @@ data:
   path: template/template.hpp
   requiredBy:
   - misc/QMC.hpp
+  - tree/Tree_core.hpp
   - tree/RerootingDP.hpp
   - data_structure/sparce_table.hpp
   timestamp: '2023-06-10 15:19:37+09:00'
