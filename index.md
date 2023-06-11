@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/sparce_table.hpp
       title: data_structure/sparce_table.hpp
   - name: misc
@@ -30,6 +30,11 @@ data:
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
   verificationCategories:
+  - name: test/data_structure
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Static_RMQ.test.cpp
+      title: test/data_structure/Static_RMQ.test.cpp
   - name: test/tree
     pages:
     - icon: ':heavy_check_mark:'

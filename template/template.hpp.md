@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/sparce_table.hpp
     title: data_structure/sparce_table.hpp
   - icon: ':warning:'
@@ -15,6 +15,9 @@ data:
     path: tree/Tree_core.hpp
     title: tree/Tree_core.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Static_RMQ.test.cpp
+    title: test/data_structure/Static_RMQ.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
@@ -61,6 +64,7 @@ data:
   verifiedWith:
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Rerooting_DP.test.cpp
+  - test/data_structure/Static_RMQ.test.cpp
 documentation_of: template/template.hpp
 layout: document
 redirect_from:
