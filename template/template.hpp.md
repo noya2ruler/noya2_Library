@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: data_structure/sparce_table.hpp
+    title: data_structure/sparce_table.hpp
+  - icon: ':warning:'
     path: misc/QMC.hpp
     title: misc/QMC.hpp
   - icon: ':heavy_check_mark:'
@@ -45,6 +48,7 @@ data:
   requiredBy:
   - misc/QMC.hpp
   - tree/RerootingDP.hpp
+  - data_structure/sparce_table.hpp
   timestamp: '2023-06-10 15:19:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

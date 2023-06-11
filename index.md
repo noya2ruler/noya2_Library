@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: data_structure
+    pages:
+    - icon: ':warning:'
+      path: data_structure/sparce_table.hpp
+      title: data_structure/sparce_table.hpp
   - name: misc
     pages:
     - icon: ':warning:'
