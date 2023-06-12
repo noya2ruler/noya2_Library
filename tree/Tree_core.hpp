@@ -32,7 +32,7 @@ struct naiveTree { // undirected unweighted tree
 };
 
 
-struct usefulTree { // rooted tree
+struct usefulTree { // rooted unweighted tree
     usefulTree (int _n = 0, int _root = 0) : n(_n), root(_root) {
         es.resize(n);
     }
