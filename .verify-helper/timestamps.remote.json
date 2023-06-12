@@ -1,5 +1,6 @@
 {
 "test/data_structure/Static_RMQ.test.cpp": "2023-06-12 11:44:50 +0900",
-"test/tree/Jump_on_Tree.test.cpp": "2023-06-12 11:45:37 +0900",
-"test/tree/Rerooting_DP.test.cpp": "2023-06-12 11:44:50 +0900"
+"test/tree/Jump_on_Tree.test.cpp": "2023-06-12 11:48:17 +0900",
+"test/tree/Rerooting_DP.test.cpp": "2023-06-12 11:44:50 +0900",
+"test/tree/Tree_Diameter.test.cpp": "2023-06-12 12:07:39 +0900"
 }
