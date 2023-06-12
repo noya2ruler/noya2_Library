@@ -29,36 +29,37 @@ data:
     \    a = b;\n    return true;\n}\n\ntemplate<class T>istream &operator>>(istream\
     \ &is, vector<T> &v){\n    for (auto &e : v) is >> e;\n    return is;\n}\n\nvoid\
     \ fast_io(){\n    cin.tie(0); ios::sync_with_stdio(0); cout << fixed << setprecision(15);\n\
-    }\n\n#line 4 \"tree/RerootingDP.hpp\"\n\nnamespace noya2 {\n\ntemplate <class\
-    \ E, class V, E (*merge)(E, E), E (*e)(), E (*put_edge)(V, int), V (*put_vertex)(E,\
-    \ int)>\nstruct RerootingDP {\n    struct edge {\n        int to, idx, xdi;\n\
-    \    };\n    RerootingDP(int _n = 0) : n(_n) {\n        es.resize(n);\n    }\n\
-    \    void add_edge(int u, int v, int idx1, int idx2) {\n        es[u].push_back({v,\
-    \ idx1, idx2});\n        es[v].push_back({u, idx2, idx1});\n    }\n    vector<V>\
-    \ build(int v = 0) {\n        root = v;\n        outs.resize(n);\n        subdp.resize(n);\n\
-    \        in.resize(n), up.resize(n);\n        int tnow = 0;\n        dfs(root,\
-    \ -1, tnow);\n        return subdp;\n    }\n    vector<V> reroot() {\n       \
-    \ reverse_edge.resize(n);\n        reverse_edge[root] = e();\n        reverse_dp.resize(n);\n\
-    \        answers.resize(n);\n        bfs(root);\n        return answers;\n   \
-    \ }\n    V get(int r, int v) {\n        if (r == v) return answers[r];\n     \
-    \   if (!(in[v] < in[r] && up[r] <= up[v])) return subdp[v];\n        int le =\
-    \ 0, ri = outs[v].size();\n        while (ri - le > 1) {\n            int md =\
-    \ (le + ri) / 2;\n            if (in[es[v][md].to] <= in[r])\n               \
-    \ le = md;\n            else\n                ri = md;\n        }\n        return\
-    \ reverse_dp[es[v][le].to];\n    }\n    const vector<edge> &operator[](int idx)\
-    \ const {\n        return es[idx];\n    }\n\n  private:\n    int n, root;\n  \
-    \  vector<vector<edge>> es;\n    vector<vector<E>> outs;\n    vector<E> reverse_edge;\n\
-    \    vector<V> subdp, reverse_dp, answers;\n    vector<int> in, up;\n    void\
-    \ dfs(int v, int p, int &t) {\n        E val = e();\n        in[v] = t++;\n  \
-    \      for (auto &u : es[v]) {\n            if (u.to == p && u.to != es[v].back().to)\
-    \ swap(u, es[v].back());\n            if (u.to == p) continue;\n            dfs(u.to,\
-    \ v, t);\n            E nval = put_edge(subdp[u.to], u.idx);\n            outs[v].emplace_back(nval);\n\
-    \            val = merge(val, nval);\n        }\n        subdp[v] = put_vertex(val,\
-    \ v);\n        up[v] = t;\n    }\n    void bfs(int v) {\n        int siz = outs[v].size();\n\
-    \        vector<E> lui(siz + 1), rui(siz + 1);\n        lui[0] = e(), rui[siz]\
-    \ = e();\n        for (int i = 0; i < siz; i++) lui[i + 1] = merge(lui[i], outs[v][i]);\n\
-    \        for (int i = siz - 1; i >= 0; i--) rui[i] = merge(outs[v][i], rui[i +\
-    \ 1]);\n        for (int i = 0; i < siz; i++) {\n            reverse_dp[es[v][i].to]\
+    }\n\nconst int iinf = 1'000'000'007;\nconst ll linf = 2e18;\n#line 4 \"tree/RerootingDP.hpp\"\
+    \n\nnamespace noya2 {\n\ntemplate <class E, class V, E (*merge)(E, E), E (*e)(),\
+    \ E (*put_edge)(V, int), V (*put_vertex)(E, int)>\nstruct RerootingDP {\n    struct\
+    \ edge {\n        int to, idx, xdi;\n    };\n    RerootingDP(int _n = 0) : n(_n)\
+    \ {\n        es.resize(n);\n    }\n    void add_edge(int u, int v, int idx1, int\
+    \ idx2) {\n        es[u].push_back({v, idx1, idx2});\n        es[v].push_back({u,\
+    \ idx2, idx1});\n    }\n    vector<V> build(int v = 0) {\n        root = v;\n\
+    \        outs.resize(n);\n        subdp.resize(n);\n        in.resize(n), up.resize(n);\n\
+    \        int tnow = 0;\n        dfs(root, -1, tnow);\n        return subdp;\n\
+    \    }\n    vector<V> reroot() {\n        reverse_edge.resize(n);\n        reverse_edge[root]\
+    \ = e();\n        reverse_dp.resize(n);\n        answers.resize(n);\n        bfs(root);\n\
+    \        return answers;\n    }\n    V get(int r, int v) {\n        if (r == v)\
+    \ return answers[r];\n        if (!(in[v] < in[r] && up[r] <= up[v])) return subdp[v];\n\
+    \        int le = 0, ri = outs[v].size();\n        while (ri - le > 1) {\n   \
+    \         int md = (le + ri) / 2;\n            if (in[es[v][md].to] <= in[r])\n\
+    \                le = md;\n            else\n                ri = md;\n      \
+    \  }\n        return reverse_dp[es[v][le].to];\n    }\n    const vector<edge>\
+    \ &operator[](int idx) const {\n        return es[idx];\n    }\n\n  private:\n\
+    \    int n, root;\n    vector<vector<edge>> es;\n    vector<vector<E>> outs;\n\
+    \    vector<E> reverse_edge;\n    vector<V> subdp, reverse_dp, answers;\n    vector<int>\
+    \ in, up;\n    void dfs(int v, int p, int &t) {\n        E val = e();\n      \
+    \  in[v] = t++;\n        for (auto &u : es[v]) {\n            if (u.to == p &&\
+    \ u.to != es[v].back().to) swap(u, es[v].back());\n            if (u.to == p)\
+    \ continue;\n            dfs(u.to, v, t);\n            E nval = put_edge(subdp[u.to],\
+    \ u.idx);\n            outs[v].emplace_back(nval);\n            val = merge(val,\
+    \ nval);\n        }\n        subdp[v] = put_vertex(val, v);\n        up[v] = t;\n\
+    \    }\n    void bfs(int v) {\n        int siz = outs[v].size();\n        vector<E>\
+    \ lui(siz + 1), rui(siz + 1);\n        lui[0] = e(), rui[siz] = e();\n       \
+    \ for (int i = 0; i < siz; i++) lui[i + 1] = merge(lui[i], outs[v][i]);\n    \
+    \    for (int i = siz - 1; i >= 0; i--) rui[i] = merge(outs[v][i], rui[i + 1]);\n\
+    \        for (int i = 0; i < siz; i++) {\n            reverse_dp[es[v][i].to]\
     \ = put_vertex(merge(merge(lui[i], rui[i + 1]), reverse_edge[v]), v);\n      \
     \      reverse_edge[es[v][i].to] = put_edge(reverse_dp[es[v][i].to], es[v][i].xdi);\n\
     \            bfs(es[v][i].to);\n        }\n        answers[v] = put_vertex(merge(lui[siz],\
@@ -95,7 +96,7 @@ data:
   isVerificationFile: true
   path: test/tree/Rerooting_DP.test.cpp
   requiredBy: []
-  timestamp: '2023-06-11 02:29:14+09:00'
+  timestamp: '2023-06-12 11:44:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Rerooting_DP.test.cpp

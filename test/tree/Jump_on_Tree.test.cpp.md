@@ -28,14 +28,15 @@ data:
     \ chmax(T &a, const T &b) {\n    if (a >= b) return false;\n    a = b;\n    return\
     \ true;\n}\n\ntemplate<class T>istream &operator>>(istream &is, vector<T> &v){\n\
     \    for (auto &e : v) is >> e;\n    return is;\n}\n\nvoid fast_io(){\n    cin.tie(0);\
-    \ ios::sync_with_stdio(0); cout << fixed << setprecision(15);\n}\n\n#line 4 \"\
-    test/tree/Jump_on_Tree.test.cpp\"\n\n#line 2 \"tree/Tree_core.hpp\"\n\n#line 4\
-    \ \"tree/Tree_core.hpp\"\n\nnamespace noya2{\n\nstruct naiveTree { // undirected\
-    \ unweighted tree\n    naiveTree (int _n = 0) : n(_n){\n        es0.resize(_n);\n\
-    \        es1.resize(_n);\n    }\n    void add_edge(int u, int v, int id = -1){\n\
-    \        es0[u].emplace_back(v);\n        es0[v].emplace_back(u);\n        es1[u].emplace_back(v,id);\n\
-    \        es1[v].emplace_back(u,id);\n    }\n    void input(int _indexed = 1){\n\
-    \        rep(i,n-1){\n            int u, v; cin >> u >> v;\n            u -= _indexed;\n\
+    \ ios::sync_with_stdio(0); cout << fixed << setprecision(15);\n}\n\nconst int\
+    \ iinf = 1'000'000'007;\nconst ll linf = 2e18;\n#line 4 \"test/tree/Jump_on_Tree.test.cpp\"\
+    \n\n#line 2 \"tree/Tree_core.hpp\"\n\n#line 4 \"tree/Tree_core.hpp\"\n\nnamespace\
+    \ noya2{\n\nstruct naiveTree { // undirected unweighted tree\n    naiveTree (int\
+    \ _n = 0) : n(_n){\n        es0.resize(_n);\n        es1.resize(_n);\n    }\n\
+    \    void add_edge(int u, int v, int id = -1){\n        es0[u].emplace_back(v);\n\
+    \        es0[v].emplace_back(u);\n        es1[u].emplace_back(v,id);\n       \
+    \ es1[v].emplace_back(u,id);\n    }\n    void input(int _indexed = 1){\n     \
+    \   rep(i,n-1){\n            int u, v; cin >> u >> v;\n            u -= _indexed;\n\
     \            v -= _indexed;\n            add_edge(u,v);\n        }\n    }\n  \
     \  const vector<int>& operator[](int idx) const { return es0[idx]; }\n    const\
     \ vector<pair<int,int>>& operator()(int idx) const {return es1[idx]; }\n  private:\n\
@@ -68,24 +69,32 @@ data:
     \        }\n        while (nt != l){\n            nt = par[0][nt];\n         \
     \   pt.emplace_back(nt);\n        }\n        for (int i = pt.size()-2; i >= 0;\
     \ i--) pf.emplace_back(pt[i]);\n        return pf;\n    }\n    int dist(int u,\
-    \ int v){ return dep[u] + dep[v] - 2 * dep[lca(u,v)];}\n    void build(){\n  \
-    \      par.clear();\n        dep.clear();\n        sub.clear();\n        p2size\
-    \ = 1;\n        int _ni = 1; // _ni = 2^(p2size - 1), n-1 <= 2^(p2size - 1) must\
-    \ be holded\n        while (_ni < n-1) p2size++, _ni <<= 1;\n        par.resize(p2size,vector<int>(n,-1));\n\
-    \        dep.resize(n,-1);\n        sub.resize(n,-1);\n        queue<int> que;\n\
-    \        que.push(root);\n        dep[root] = 0;\n        while (!que.empty()){\n\
-    \            int p = que.front(); que.pop();\n            for (int to : es[p]){\n\
-    \                if (dep[to] == -1){\n                    par[0][to] = p;\n  \
-    \                  dep[to] = dep[p] + 1;\n                    que.push(to);\n\
-    \                }\n            }\n        }\n        for (int i = 1; i < p2size;\
-    \ i++){\n            for (int v = 0; v < n; v++){\n                if (par[i-1][v]\
-    \ == -1) continue;\n                par[i][v] = par[i-1][par[i-1][v]];\n     \
-    \       }\n        }\n    }\n  private:\n    int n, root;\n    vector<vector<int>>\
-    \ es;\n    int p2size;\n    vector<vector<int>> par;\n    vector<int> dep, sub;\n\
-    };\n\n} // namespace noya2\n#line 6 \"test/tree/Jump_on_Tree.test.cpp\"\n\nint\
-    \ main(){\n    int n, q; cin >> n >> q;\n    usefulTree g(n);\n    g.input(0);\n\
-    \    g.build();\n    while (q--){\n        int u, v, d; cin >> u >> v >> d;\n\
-    \        cout << g.jump(u,v,d) << '\\n';\n    }\n}\n"
+    \ int v){ return dep[u] + dep[v] - 2 * dep[lca(u,v)]; }\n    pair<int,pair<int,int>>\
+    \ diameter(){\n        int ma1 = -1, p1 = -1;\n        rep(i,n) if (chmax(ma1,dep[i]))\
+    \ p1 = i;\n        queue<int> que;\n        que.push(p1);\n        vector<int>\
+    \ dist_from_p1(n,iinf);\n        dist_from_p1[p1] = 0;\n        int ma2 = 0, p2\
+    \ = p1;\n        while (!que.empty()){\n            int p = que.front(); que.pop();\n\
+    \            for (int q : es[p]){\n                if (chmin(dist_from_p1[q],dist_from_p1[p]+1)){\n\
+    \                    que.push(q);\n                    if (chmax(ma2,dist_from_p1[q]))\
+    \ p2 = q;\n                }\n            }\n        }\n        return make_pair(ma2,make_pair(p1,p2));\n\
+    \    }\n    void build(){\n        par.clear();\n        dep.clear();\n      \
+    \  sub.clear();\n        p2size = 1;\n        int _ni = 1; // _ni = 2^(p2size\
+    \ - 1), n-1 <= 2^(p2size - 1) must be holded\n        while (_ni < n-1) p2size++,\
+    \ _ni <<= 1;\n        par.resize(p2size,vector<int>(n,-1));\n        dep.resize(n,-1);\n\
+    \        sub.resize(n,-1);\n        queue<int> que;\n        que.push(root);\n\
+    \        dep[root] = 0;\n        while (!que.empty()){\n            int p = que.front();\
+    \ que.pop();\n            for (int to : es[p]){\n                if (dep[to] ==\
+    \ -1){\n                    par[0][to] = p;\n                    dep[to] = dep[p]\
+    \ + 1;\n                    que.push(to);\n                }\n            }\n\
+    \        }\n        for (int i = 1; i < p2size; i++){\n            for (int v\
+    \ = 0; v < n; v++){\n                if (par[i-1][v] == -1) continue;\n      \
+    \          par[i][v] = par[i-1][par[i-1][v]];\n            }\n        }\n    }\n\
+    \  private:\n    int n, root;\n    vector<vector<int>> es;\n    int p2size;\n\
+    \    vector<vector<int>> par;\n    vector<int> dep, sub;\n};\n\n} // namespace\
+    \ noya2\n#line 6 \"test/tree/Jump_on_Tree.test.cpp\"\n\nint main(){\n    int n,\
+    \ q; cin >> n >> q;\n    usefulTree g(n);\n    g.input(0);\n    g.build();\n \
+    \   while (q--){\n        int u, v, d; cin >> u >> v >> d;\n        cout << g.jump(u,v,d)\
+    \ << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n\n#include\"\
     ../../template/template.hpp\"\n\n#include\"../../tree/Tree_core.hpp\"\n\nint main(){\n\
     \    int n, q; cin >> n >> q;\n    usefulTree g(n);\n    g.input(0);\n    g.build();\n\
@@ -97,7 +106,7 @@ data:
   isVerificationFile: true
   path: test/tree/Jump_on_Tree.test.cpp
   requiredBy: []
-  timestamp: '2023-06-11 22:51:12+09:00'
+  timestamp: '2023-06-12 11:45:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Jump_on_Tree.test.cpp

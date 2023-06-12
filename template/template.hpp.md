@@ -39,7 +39,8 @@ data:
     \ chmax(T &a, const T &b) {\n    if (a >= b) return false;\n    a = b;\n    return\
     \ true;\n}\n\ntemplate<class T>istream &operator>>(istream &is, vector<T> &v){\n\
     \    for (auto &e : v) is >> e;\n    return is;\n}\n\nvoid fast_io(){\n    cin.tie(0);\
-    \ ios::sync_with_stdio(0); cout << fixed << setprecision(15);\n}\n\n"
+    \ ios::sync_with_stdio(0); cout << fixed << setprecision(15);\n}\n\nconst int\
+    \ iinf = 1'000'000'007;\nconst ll linf = 2e18;\n"
   code: "#pragma once\n\n#include<bits/stdc++.h>\n\n#define rep(i,n) for (int i =\
     \ 0; i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1); i >= 0; i--)\n\
     #define all(v) v.begin(),v.end()\n\nusing ll = long long;\nusing ld = long double;\n\
@@ -50,7 +51,8 @@ data:
     \ T &b) {\n    if (a >= b) return false;\n    a = b;\n    return true;\n}\n\n\
     template<class T>istream &operator>>(istream &is, vector<T> &v){\n    for (auto\
     \ &e : v) is >> e;\n    return is;\n}\n\nvoid fast_io(){\n    cin.tie(0); ios::sync_with_stdio(0);\
-    \ cout << fixed << setprecision(15);\n}\n\n"
+    \ cout << fixed << setprecision(15);\n}\n\nconst int iinf = 1'000'000'007;\nconst\
+    \ ll linf = 2e18;"
   dependsOn: []
   isVerificationFile: false
   path: template/template.hpp
@@ -59,7 +61,7 @@ data:
   - tree/Tree_core.hpp
   - tree/RerootingDP.hpp
   - data_structure/sparce_table.hpp
-  timestamp: '2023-06-10 15:19:37+09:00'
+  timestamp: '2023-06-12 11:44:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Jump_on_Tree.test.cpp

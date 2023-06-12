@@ -29,8 +29,9 @@ data:
     \   if (a >= b) return false;\n    a = b;\n    return true;\n}\n\ntemplate<class\
     \ T>istream &operator>>(istream &is, vector<T> &v){\n    for (auto &e : v) is\
     \ >> e;\n    return is;\n}\n\nvoid fast_io(){\n    cin.tie(0); ios::sync_with_stdio(0);\
-    \ cout << fixed << setprecision(15);\n}\n\n#line 4 \"test/data_structure/Static_RMQ.test.cpp\"\
-    \n\n#line 2 \"data_structure/sparce_table.hpp\"\n\n#line 4 \"data_structure/sparce_table.hpp\"\
+    \ cout << fixed << setprecision(15);\n}\n\nconst int iinf = 1'000'000'007;\nconst\
+    \ ll linf = 2e18;\n#line 4 \"test/data_structure/Static_RMQ.test.cpp\"\n\n#line\
+    \ 2 \"data_structure/sparce_table.hpp\"\n\n#line 4 \"data_structure/sparce_table.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<class S, S (*op)(S, S)>\nstruct SparseTable{\n\
     \    vector<vector<S>> table;\n    SparseTable (const vector<S> &vec){\n     \
     \   int n = vec.size(), n2 = 0;\n        while ((1<<n2) < n) n2++;\n        table.resize(n2+1);\n\
@@ -63,7 +64,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Static_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-06-12 00:32:57+09:00'
+  timestamp: '2023-06-12 11:44:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Static_RMQ.test.cpp
