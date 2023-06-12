@@ -14,10 +14,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/jump_on_tree
+    PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
     links:
-    - https://judge.yosupo.jp/problem/jump_on_tree
-  bundledCode: "#line 1 \"test/tree/Jump_on_Tree.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\
+    - https://judge.yosupo.jp/problem/tree_diameter
+  bundledCode: "#line 1 \"test/tree/Tree_Diameter.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\
     \n\n#line 2 \"template/template.hpp\"\n\n#include<bits/stdc++.h>\n\n#define rep(i,n)\
     \ for (int i = 0; i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1);\
     \ i >= 0; i--)\n#define all(v) v.begin(),v.end()\n\nusing ll = long long;\nusing\
@@ -29,7 +29,7 @@ data:
     \ true;\n}\n\ntemplate<class T>istream &operator>>(istream &is, vector<T> &v){\n\
     \    for (auto &e : v) is >> e;\n    return is;\n}\n\nvoid fast_io(){\n    cin.tie(0);\
     \ ios::sync_with_stdio(0); cout << fixed << setprecision(15);\n}\n\nconst int\
-    \ iinf = 1'000'000'007;\nconst ll linf = 2e18;\n#line 4 \"test/tree/Jump_on_Tree.test.cpp\"\
+    \ iinf = 1'000'000'007;\nconst ll linf = 2e18;\n#line 4 \"test/tree/Tree_Diameter.test.cpp\"\
     \n\n#line 2 \"tree/Tree_core.hpp\"\n\n#line 4 \"tree/Tree_core.hpp\"\n\nnamespace\
     \ noya2{\n\nstruct naiveTree { // undirected unweighted tree\n    naiveTree (int\
     \ _n = 0) : n(_n){\n        es0.resize(_n);\n        es1.resize(_n);\n    }\n\
@@ -91,28 +91,54 @@ data:
     \          par[i][v] = par[i-1][par[i-1][v]];\n            }\n        }\n    }\n\
     \  private:\n    int n, root;\n    vector<vector<int>> es;\n    int p2size;\n\
     \    vector<vector<int>> par;\n    vector<int> dep, sub;\n};\n\n} // namespace\
-    \ noya2\n#line 6 \"test/tree/Jump_on_Tree.test.cpp\"\n\nint main(){\n    int n,\
-    \ q; cin >> n >> q;\n    usefulTree g(n);\n    g.input(0);\n    g.build();\n \
-    \   while (q--){\n        int u, v, d; cin >> u >> v >> d;\n        cout << g.jump(u,v,d)\
-    \ << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n\n#include\"\
+    \ noya2\n#line 6 \"test/tree/Tree_Diameter.test.cpp\"\n\nint main(){\n    int\
+    \ n; cin >> n;\n    vector<ll> w(n-1);\n    naiveTree g(n);\n    rep(i,n-1){\n\
+    \        int u, v; cin >> u >> v >> w[i];\n        g.add_edge(u,v,i);\n    }\n\
+    \    vector<ll> dist(n,linf);\n    dist[0] = 0;\n    queue<int> que;\n    que.push(0);\n\
+    \    ll ma1 = 0, p1 = 0;\n    while (!que.empty()){\n        int p = que.front();\
+    \ que.pop();\n        for (auto &[q, id] : g(p)){\n            if (chmin(dist[q],dist[p]+w[id])){\n\
+    \                que.push(q);\n                if (chmax(ma1,dist[q])) p1 = q;\n\
+    \            }\n        }\n    }\n    dist.assign(n,linf);\n    dist[p1] = 0;\n\
+    \    que.push(p1);\n    ll ma2 = 0, p2 = p1;\n    while (!que.empty()){\n    \
+    \    int p = que.front(); que.pop();\n        for (auto &[q, id] : g(p)){\n  \
+    \          if (chmin(dist[q],dist[p]+w[id])){\n                que.push(q);\n\
+    \                if (chmax(ma2,dist[q])) p2 = q;\n            }\n        }\n \
+    \   }\n    int p = p2;\n    vector<int> vs = {p};\n    while (p != p1){\n    \
+    \    for (auto &q : g[p]){\n            if (dist[p] > dist[q]){\n            \
+    \    p = q;\n                break;\n            }\n        }\n        vs.emplace_back(p);\n\
+    \    }\n    cout << ma2 << \" \" << vs.size() << endl;\n    rep(i,vs.size()) cout\
+    \ << vs[i] << \" \\n\"[i+1 == vs.size()];\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include\"\
     ../../template/template.hpp\"\n\n#include\"../../tree/Tree_core.hpp\"\n\nint main(){\n\
-    \    int n, q; cin >> n >> q;\n    usefulTree g(n);\n    g.input(0);\n    g.build();\n\
-    \    while (q--){\n        int u, v, d; cin >> u >> v >> d;\n        cout << g.jump(u,v,d)\
-    \ << '\\n';\n    }\n}"
+    \    int n; cin >> n;\n    vector<ll> w(n-1);\n    naiveTree g(n);\n    rep(i,n-1){\n\
+    \        int u, v; cin >> u >> v >> w[i];\n        g.add_edge(u,v,i);\n    }\n\
+    \    vector<ll> dist(n,linf);\n    dist[0] = 0;\n    queue<int> que;\n    que.push(0);\n\
+    \    ll ma1 = 0, p1 = 0;\n    while (!que.empty()){\n        int p = que.front();\
+    \ que.pop();\n        for (auto &[q, id] : g(p)){\n            if (chmin(dist[q],dist[p]+w[id])){\n\
+    \                que.push(q);\n                if (chmax(ma1,dist[q])) p1 = q;\n\
+    \            }\n        }\n    }\n    dist.assign(n,linf);\n    dist[p1] = 0;\n\
+    \    que.push(p1);\n    ll ma2 = 0, p2 = p1;\n    while (!que.empty()){\n    \
+    \    int p = que.front(); que.pop();\n        for (auto &[q, id] : g(p)){\n  \
+    \          if (chmin(dist[q],dist[p]+w[id])){\n                que.push(q);\n\
+    \                if (chmax(ma2,dist[q])) p2 = q;\n            }\n        }\n \
+    \   }\n    int p = p2;\n    vector<int> vs = {p};\n    while (p != p1){\n    \
+    \    for (auto &q : g[p]){\n            if (dist[p] > dist[q]){\n            \
+    \    p = q;\n                break;\n            }\n        }\n        vs.emplace_back(p);\n\
+    \    }\n    cout << ma2 << \" \" << vs.size() << endl;\n    rep(i,vs.size()) cout\
+    \ << vs[i] << \" \\n\"[i+1 == vs.size()];\n}"
   dependsOn:
   - template/template.hpp
   - tree/Tree_core.hpp
   isVerificationFile: true
-  path: test/tree/Jump_on_Tree.test.cpp
+  path: test/tree/Tree_Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-06-12 11:48:17+09:00'
+  timestamp: '2023-06-12 12:07:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/tree/Jump_on_Tree.test.cpp
+documentation_of: test/tree/Tree_Diameter.test.cpp
 layout: document
 redirect_from:
-- /verify/test/tree/Jump_on_Tree.test.cpp
-- /verify/test/tree/Jump_on_Tree.test.cpp.html
-title: test/tree/Jump_on_Tree.test.cpp
+- /verify/test/tree/Tree_Diameter.test.cpp
+- /verify/test/tree/Tree_Diameter.test.cpp.html
+title: test/tree/Tree_Diameter.test.cpp
 ---

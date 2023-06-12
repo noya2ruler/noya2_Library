@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Tree_Diameter.test.cpp
+    title: test/tree/Tree_Diameter.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -37,42 +40,42 @@ data:
     \ idx) const { return es0[idx]; }\n    const vector<pair<int,int>>& operator()(int\
     \ idx) const {return es1[idx]; }\n  private:\n    int n;\n    vector<vector<int>>\
     \ es0;\n    vector<vector<pair<int,int>>> es1;\n};\n\n\nstruct usefulTree { //\
-    \ rooted tree\n    usefulTree (int _n = 0, int _root = 0) : n(_n), root(_root)\
-    \ {\n        es.resize(n);\n    }\n    void add_edge(int u, int v){\n        es[u].emplace_back(v);\n\
-    \        es[v].emplace_back(u);\n    }\n    void input(int _indexed = 1){\n  \
-    \      rep(i,n-1){\n            int u, v; cin >> u >> v;\n            u -= _indexed;\n\
-    \            v -= _indexed;\n            add_edge(u,v);\n        }\n    }\n  \
-    \  const vector<int>& operator[](int idx) const { return es[idx]; }\n    int parent(int\
-    \ v){ return par[0][v]; }\n    int subtree_size(int v){\n        if (sub[v] !=\
-    \ -1) return sub[v];\n        sub[v] = 1;\n        for (int child : es[v]){\n\
-    \            if (child != par[0][v]) sub[v] += subtree_size(child);\n        }\n\
-    \        return sub[v];\n    }\n    int depth(int v){ return dep[v]; }\n    int\
-    \ lca(int u, int v){\n        if (dep[u] > dep[v]) swap(u,v);\n        for (int\
-    \ i = 0; i < p2size; i++) if ((dep[v] - dep[u]) >> i & 1) v = par[i][v];\n   \
-    \     if (u == v) return u;\n        for (int i = p2size-1; i >= 0; i--){\n  \
-    \          if (par[i][u] != par[i][v]){\n                u = par[i][u];\n    \
-    \            v = par[i][v];\n            }\n        }\n        return par[0][u];\n\
-    \    }\n    int jump_to_root(int from, int d){\n        for (int i = 0; i < p2size;\
-    \ i++){\n            if ((d >> i & 1) == 1 && from != -1) from = par[i][from];\n\
-    \        }\n        return from;\n    }\n    int jump(int from, int to, int d){\n\
-    \        int l = lca(from,to);\n        if (d <= dep[from] - dep[l]){\n      \
-    \      return jump_to_root(from,d);\n        }\n        d -= dep[from] - dep[l];\n\
-    \        if (d <= dep[to] - dep[l]){\n            return jump_to_root(to,dep[to]-dep[l]-d);\n\
-    \        }\n        return -1;\n    }\n    vector<int> path(int from, int to){\n\
-    \        int l = lca(from,to);\n        int nf = from, nt = to;\n        vector<int>\
-    \ pf = {from}, pt = {to};\n        while (nf != l){\n            nf = par[0][nf];\n\
-    \            pf.emplace_back(nf);\n        }\n        while (nt != l){\n     \
-    \       nt = par[0][nt];\n            pt.emplace_back(nt);\n        }\n      \
-    \  for (int i = pt.size()-2; i >= 0; i--) pf.emplace_back(pt[i]);\n        return\
-    \ pf;\n    }\n    int dist(int u, int v){ return dep[u] + dep[v] - 2 * dep[lca(u,v)];\
-    \ }\n    pair<int,pair<int,int>> diameter(){\n        int ma1 = -1, p1 = -1;\n\
-    \        rep(i,n) if (chmax(ma1,dep[i])) p1 = i;\n        queue<int> que;\n  \
-    \      que.push(p1);\n        vector<int> dist_from_p1(n,iinf);\n        dist_from_p1[p1]\
-    \ = 0;\n        int ma2 = 0, p2 = p1;\n        while (!que.empty()){\n       \
-    \     int p = que.front(); que.pop();\n            for (int q : es[p]){\n    \
-    \            if (chmin(dist_from_p1[q],dist_from_p1[p]+1)){\n                \
-    \    que.push(q);\n                    if (chmax(ma2,dist_from_p1[q])) p2 = q;\n\
-    \                }\n            }\n        }\n        return make_pair(ma2,make_pair(p1,p2));\n\
+    \ rooted unweighted tree\n    usefulTree (int _n = 0, int _root = 0) : n(_n),\
+    \ root(_root) {\n        es.resize(n);\n    }\n    void add_edge(int u, int v){\n\
+    \        es[u].emplace_back(v);\n        es[v].emplace_back(u);\n    }\n    void\
+    \ input(int _indexed = 1){\n        rep(i,n-1){\n            int u, v; cin >>\
+    \ u >> v;\n            u -= _indexed;\n            v -= _indexed;\n          \
+    \  add_edge(u,v);\n        }\n    }\n    const vector<int>& operator[](int idx)\
+    \ const { return es[idx]; }\n    int parent(int v){ return par[0][v]; }\n    int\
+    \ subtree_size(int v){\n        if (sub[v] != -1) return sub[v];\n        sub[v]\
+    \ = 1;\n        for (int child : es[v]){\n            if (child != par[0][v])\
+    \ sub[v] += subtree_size(child);\n        }\n        return sub[v];\n    }\n \
+    \   int depth(int v){ return dep[v]; }\n    int lca(int u, int v){\n        if\
+    \ (dep[u] > dep[v]) swap(u,v);\n        for (int i = 0; i < p2size; i++) if ((dep[v]\
+    \ - dep[u]) >> i & 1) v = par[i][v];\n        if (u == v) return u;\n        for\
+    \ (int i = p2size-1; i >= 0; i--){\n            if (par[i][u] != par[i][v]){\n\
+    \                u = par[i][u];\n                v = par[i][v];\n            }\n\
+    \        }\n        return par[0][u];\n    }\n    int jump_to_root(int from, int\
+    \ d){\n        for (int i = 0; i < p2size; i++){\n            if ((d >> i & 1)\
+    \ == 1 && from != -1) from = par[i][from];\n        }\n        return from;\n\
+    \    }\n    int jump(int from, int to, int d){\n        int l = lca(from,to);\n\
+    \        if (d <= dep[from] - dep[l]){\n            return jump_to_root(from,d);\n\
+    \        }\n        d -= dep[from] - dep[l];\n        if (d <= dep[to] - dep[l]){\n\
+    \            return jump_to_root(to,dep[to]-dep[l]-d);\n        }\n        return\
+    \ -1;\n    }\n    vector<int> path(int from, int to){\n        int l = lca(from,to);\n\
+    \        int nf = from, nt = to;\n        vector<int> pf = {from}, pt = {to};\n\
+    \        while (nf != l){\n            nf = par[0][nf];\n            pf.emplace_back(nf);\n\
+    \        }\n        while (nt != l){\n            nt = par[0][nt];\n         \
+    \   pt.emplace_back(nt);\n        }\n        for (int i = pt.size()-2; i >= 0;\
+    \ i--) pf.emplace_back(pt[i]);\n        return pf;\n    }\n    int dist(int u,\
+    \ int v){ return dep[u] + dep[v] - 2 * dep[lca(u,v)]; }\n    pair<int,pair<int,int>>\
+    \ diameter(){\n        int ma1 = -1, p1 = -1;\n        rep(i,n) if (chmax(ma1,dep[i]))\
+    \ p1 = i;\n        queue<int> que;\n        que.push(p1);\n        vector<int>\
+    \ dist_from_p1(n,iinf);\n        dist_from_p1[p1] = 0;\n        int ma2 = 0, p2\
+    \ = p1;\n        while (!que.empty()){\n            int p = que.front(); que.pop();\n\
+    \            for (int q : es[p]){\n                if (chmin(dist_from_p1[q],dist_from_p1[p]+1)){\n\
+    \                    que.push(q);\n                    if (chmax(ma2,dist_from_p1[q]))\
+    \ p2 = q;\n                }\n            }\n        }\n        return make_pair(ma2,make_pair(p1,p2));\n\
     \    }\n    void build(){\n        par.clear();\n        dep.clear();\n      \
     \  sub.clear();\n        p2size = 1;\n        int _ni = 1; // _ni = 2^(p2size\
     \ - 1), n-1 <= 2^(p2size - 1) must be holded\n        while (_ni < n-1) p2size++,\
@@ -99,42 +102,42 @@ data:
     \ idx) const { return es0[idx]; }\n    const vector<pair<int,int>>& operator()(int\
     \ idx) const {return es1[idx]; }\n  private:\n    int n;\n    vector<vector<int>>\
     \ es0;\n    vector<vector<pair<int,int>>> es1;\n};\n\n\nstruct usefulTree { //\
-    \ rooted tree\n    usefulTree (int _n = 0, int _root = 0) : n(_n), root(_root)\
-    \ {\n        es.resize(n);\n    }\n    void add_edge(int u, int v){\n        es[u].emplace_back(v);\n\
-    \        es[v].emplace_back(u);\n    }\n    void input(int _indexed = 1){\n  \
-    \      rep(i,n-1){\n            int u, v; cin >> u >> v;\n            u -= _indexed;\n\
-    \            v -= _indexed;\n            add_edge(u,v);\n        }\n    }\n  \
-    \  const vector<int>& operator[](int idx) const { return es[idx]; }\n    int parent(int\
-    \ v){ return par[0][v]; }\n    int subtree_size(int v){\n        if (sub[v] !=\
-    \ -1) return sub[v];\n        sub[v] = 1;\n        for (int child : es[v]){\n\
-    \            if (child != par[0][v]) sub[v] += subtree_size(child);\n        }\n\
-    \        return sub[v];\n    }\n    int depth(int v){ return dep[v]; }\n    int\
-    \ lca(int u, int v){\n        if (dep[u] > dep[v]) swap(u,v);\n        for (int\
-    \ i = 0; i < p2size; i++) if ((dep[v] - dep[u]) >> i & 1) v = par[i][v];\n   \
-    \     if (u == v) return u;\n        for (int i = p2size-1; i >= 0; i--){\n  \
-    \          if (par[i][u] != par[i][v]){\n                u = par[i][u];\n    \
-    \            v = par[i][v];\n            }\n        }\n        return par[0][u];\n\
-    \    }\n    int jump_to_root(int from, int d){\n        for (int i = 0; i < p2size;\
-    \ i++){\n            if ((d >> i & 1) == 1 && from != -1) from = par[i][from];\n\
-    \        }\n        return from;\n    }\n    int jump(int from, int to, int d){\n\
-    \        int l = lca(from,to);\n        if (d <= dep[from] - dep[l]){\n      \
-    \      return jump_to_root(from,d);\n        }\n        d -= dep[from] - dep[l];\n\
-    \        if (d <= dep[to] - dep[l]){\n            return jump_to_root(to,dep[to]-dep[l]-d);\n\
-    \        }\n        return -1;\n    }\n    vector<int> path(int from, int to){\n\
-    \        int l = lca(from,to);\n        int nf = from, nt = to;\n        vector<int>\
-    \ pf = {from}, pt = {to};\n        while (nf != l){\n            nf = par[0][nf];\n\
-    \            pf.emplace_back(nf);\n        }\n        while (nt != l){\n     \
-    \       nt = par[0][nt];\n            pt.emplace_back(nt);\n        }\n      \
-    \  for (int i = pt.size()-2; i >= 0; i--) pf.emplace_back(pt[i]);\n        return\
-    \ pf;\n    }\n    int dist(int u, int v){ return dep[u] + dep[v] - 2 * dep[lca(u,v)];\
-    \ }\n    pair<int,pair<int,int>> diameter(){\n        int ma1 = -1, p1 = -1;\n\
-    \        rep(i,n) if (chmax(ma1,dep[i])) p1 = i;\n        queue<int> que;\n  \
-    \      que.push(p1);\n        vector<int> dist_from_p1(n,iinf);\n        dist_from_p1[p1]\
-    \ = 0;\n        int ma2 = 0, p2 = p1;\n        while (!que.empty()){\n       \
-    \     int p = que.front(); que.pop();\n            for (int q : es[p]){\n    \
-    \            if (chmin(dist_from_p1[q],dist_from_p1[p]+1)){\n                \
-    \    que.push(q);\n                    if (chmax(ma2,dist_from_p1[q])) p2 = q;\n\
-    \                }\n            }\n        }\n        return make_pair(ma2,make_pair(p1,p2));\n\
+    \ rooted unweighted tree\n    usefulTree (int _n = 0, int _root = 0) : n(_n),\
+    \ root(_root) {\n        es.resize(n);\n    }\n    void add_edge(int u, int v){\n\
+    \        es[u].emplace_back(v);\n        es[v].emplace_back(u);\n    }\n    void\
+    \ input(int _indexed = 1){\n        rep(i,n-1){\n            int u, v; cin >>\
+    \ u >> v;\n            u -= _indexed;\n            v -= _indexed;\n          \
+    \  add_edge(u,v);\n        }\n    }\n    const vector<int>& operator[](int idx)\
+    \ const { return es[idx]; }\n    int parent(int v){ return par[0][v]; }\n    int\
+    \ subtree_size(int v){\n        if (sub[v] != -1) return sub[v];\n        sub[v]\
+    \ = 1;\n        for (int child : es[v]){\n            if (child != par[0][v])\
+    \ sub[v] += subtree_size(child);\n        }\n        return sub[v];\n    }\n \
+    \   int depth(int v){ return dep[v]; }\n    int lca(int u, int v){\n        if\
+    \ (dep[u] > dep[v]) swap(u,v);\n        for (int i = 0; i < p2size; i++) if ((dep[v]\
+    \ - dep[u]) >> i & 1) v = par[i][v];\n        if (u == v) return u;\n        for\
+    \ (int i = p2size-1; i >= 0; i--){\n            if (par[i][u] != par[i][v]){\n\
+    \                u = par[i][u];\n                v = par[i][v];\n            }\n\
+    \        }\n        return par[0][u];\n    }\n    int jump_to_root(int from, int\
+    \ d){\n        for (int i = 0; i < p2size; i++){\n            if ((d >> i & 1)\
+    \ == 1 && from != -1) from = par[i][from];\n        }\n        return from;\n\
+    \    }\n    int jump(int from, int to, int d){\n        int l = lca(from,to);\n\
+    \        if (d <= dep[from] - dep[l]){\n            return jump_to_root(from,d);\n\
+    \        }\n        d -= dep[from] - dep[l];\n        if (d <= dep[to] - dep[l]){\n\
+    \            return jump_to_root(to,dep[to]-dep[l]-d);\n        }\n        return\
+    \ -1;\n    }\n    vector<int> path(int from, int to){\n        int l = lca(from,to);\n\
+    \        int nf = from, nt = to;\n        vector<int> pf = {from}, pt = {to};\n\
+    \        while (nf != l){\n            nf = par[0][nf];\n            pf.emplace_back(nf);\n\
+    \        }\n        while (nt != l){\n            nt = par[0][nt];\n         \
+    \   pt.emplace_back(nt);\n        }\n        for (int i = pt.size()-2; i >= 0;\
+    \ i--) pf.emplace_back(pt[i]);\n        return pf;\n    }\n    int dist(int u,\
+    \ int v){ return dep[u] + dep[v] - 2 * dep[lca(u,v)]; }\n    pair<int,pair<int,int>>\
+    \ diameter(){\n        int ma1 = -1, p1 = -1;\n        rep(i,n) if (chmax(ma1,dep[i]))\
+    \ p1 = i;\n        queue<int> que;\n        que.push(p1);\n        vector<int>\
+    \ dist_from_p1(n,iinf);\n        dist_from_p1[p1] = 0;\n        int ma2 = 0, p2\
+    \ = p1;\n        while (!que.empty()){\n            int p = que.front(); que.pop();\n\
+    \            for (int q : es[p]){\n                if (chmin(dist_from_p1[q],dist_from_p1[p]+1)){\n\
+    \                    que.push(q);\n                    if (chmax(ma2,dist_from_p1[q]))\
+    \ p2 = q;\n                }\n            }\n        }\n        return make_pair(ma2,make_pair(p1,p2));\n\
     \    }\n    void build(){\n        par.clear();\n        dep.clear();\n      \
     \  sub.clear();\n        p2size = 1;\n        int _ni = 1; // _ni = 2^(p2size\
     \ - 1), n-1 <= 2^(p2size - 1) must be holded\n        while (_ni < n-1) p2size++,\
@@ -155,10 +158,11 @@ data:
   isVerificationFile: false
   path: tree/Tree_core.hpp
   requiredBy: []
-  timestamp: '2023-06-12 11:45:37+09:00'
+  timestamp: '2023-06-12 11:48:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/Tree_Diameter.test.cpp
 documentation_of: tree/Tree_core.hpp
 layout: document
 redirect_from:

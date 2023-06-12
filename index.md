@@ -43,5 +43,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Rerooting_DP.test.cpp
       title: test/tree/Rerooting_DP.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Tree_Diameter.test.cpp
+      title: test/tree/Tree_Diameter.test.cpp
 layout: toppage
 ---

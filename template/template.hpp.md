@@ -24,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Rerooting_DP.test.cpp
     title: test/tree/Rerooting_DP.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Tree_Diameter.test.cpp
+    title: test/tree/Tree_Diameter.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -65,6 +68,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/Tree_Diameter.test.cpp
   - test/tree/Rerooting_DP.test.cpp
   - test/data_structure/Static_RMQ.test.cpp
 documentation_of: template/template.hpp
