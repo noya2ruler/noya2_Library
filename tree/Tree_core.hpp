@@ -103,7 +103,26 @@ struct usefulTree { // rooted tree
         for (int i = pt.size()-2; i >= 0; i--) pf.emplace_back(pt[i]);
         return pf;
     }
-    int dist(int u, int v){ return dep[u] + dep[v] - 2 * dep[lca(u,v)];}
+    int dist(int u, int v){ return dep[u] + dep[v] - 2 * dep[lca(u,v)]; }
+    pair<int,pair<int,int>> diameter(){
+        int ma1 = -1, p1 = -1;
+        rep(i,n) if (chmax(ma1,dep[i])) p1 = i;
+        queue<int> que;
+        que.push(p1);
+        vector<int> dist_from_p1(n,iinf);
+        dist_from_p1[p1] = 0;
+        int ma2 = 0, p2 = p1;
+        while (!que.empty()){
+            int p = que.front(); que.pop();
+            for (int q : es[p]){
+                if (chmin(dist_from_p1[q],dist_from_p1[p]+1)){
+                    que.push(q);
+                    if (chmax(ma2,dist_from_p1[q])) p2 = q;
+                }
+            }
+        }
+        return make_pair(ma2,make_pair(p1,p2));
+    }
     void build(){
         par.clear();
         dep.clear();
