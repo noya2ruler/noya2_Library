@@ -40,3 +40,5 @@ void fast_io(){
     cin.tie(0); ios::sync_with_stdio(0); cout << fixed << setprecision(15);
 }
 
+const int iinf = 1'000'000'007;
+const ll linf = 2e18;
