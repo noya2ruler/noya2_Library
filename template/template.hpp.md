@@ -16,6 +16,9 @@ data:
     title: tree/Tree_core.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Point_Set_Range_Composite.test.cpp
+    title: test/data_structure/Point_Set_Range_Composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_RMQ.test.cpp
     title: test/data_structure/Static_RMQ.test.cpp
   - icon: ':heavy_check_mark:'
@@ -70,6 +73,7 @@ data:
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Rerooting_DP.test.cpp
+  - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/Static_RMQ.test.cpp
 documentation_of: template/template.hpp
 layout: document

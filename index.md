@@ -4,6 +4,9 @@ data:
   - name: data_structure
     pages:
     - icon: ':heavy_check_mark:'
+      path: data_structure/segment_tree.hpp
+      title: data_structure/segment_tree.hpp
+    - icon: ':heavy_check_mark:'
       path: data_structure/sparce_table.hpp
       title: data_structure/sparce_table.hpp
   - name: misc
@@ -29,9 +32,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
+  - name: utility
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: utility/modint.hpp
+      title: utility/modint.hpp
   verificationCategories:
   - name: test/data_structure
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Point_Set_Range_Composite.test.cpp
+      title: test/data_structure/Point_Set_Range_Composite.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Static_RMQ.test.cpp
       title: test/data_structure/Static_RMQ.test.cpp
