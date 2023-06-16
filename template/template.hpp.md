@@ -64,17 +64,17 @@ data:
   path: template/template.hpp
   requiredBy:
   - misc/QMC.hpp
-  - tree/Tree_core.hpp
-  - tree/RerootingDP.hpp
   - data_structure/sparce_table.hpp
+  - tree/RerootingDP.hpp
+  - tree/Tree_core.hpp
   timestamp: '2023-06-12 11:44:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/data_structure/Static_RMQ.test.cpp
+  - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Rerooting_DP.test.cpp
-  - test/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/data_structure/Static_RMQ.test.cpp
 documentation_of: template/template.hpp
 layout: document
 redirect_from:
