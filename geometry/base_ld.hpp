@@ -46,9 +46,5 @@ vec rot(const vec &a, ld rad) {
     return a * vec(cosl(rad), sinl(rad));
 }
 
-bool comp_for_argument_sort(const vec &lhs, const vec &rhs) {
-    // if (abs(arg(lhs)-arg(rhs)) < eps) return false; // need ?
-    return arg(lhs) < arg(rhs);
-}
 
 }  // namespace lib
