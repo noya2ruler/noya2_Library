@@ -9,6 +9,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/sparce_table.hpp
       title: data_structure/sparce_table.hpp
+  - name: geometry
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: geometry/base_ld.hpp
+      title: geometry/base_ld.hpp
+    - icon: ':heavy_check_mark:'
+      path: geometry/partition_by_circle.hpp
+      title: geometry/partition_by_circle.hpp
   - name: misc
     pages:
     - icon: ':warning:'
@@ -46,6 +54,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Static_RMQ.test.cpp
       title: test/data_structure/Static_RMQ.test.cpp
+  - name: test/geometry
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/geometry/aoj1198.test.cpp
+      title: test/geometry/aoj1198.test.cpp
   - name: test/tree
     pages:
     - icon: ':heavy_check_mark:'

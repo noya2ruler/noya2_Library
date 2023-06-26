@@ -5,6 +5,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/sparce_table.hpp
     title: data_structure/sparce_table.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/base_ld.hpp
+    title: geometry/base_ld.hpp
+  - icon: ':heavy_check_mark:'
+    path: geometry/partition_by_circle.hpp
+    title: geometry/partition_by_circle.hpp
   - icon: ':warning:'
     path: misc/QMC.hpp
     title: misc/QMC.hpp
@@ -21,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_RMQ.test.cpp
     title: test/data_structure/Static_RMQ.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/geometry/aoj1198.test.cpp
+    title: test/geometry/aoj1198.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
@@ -63,18 +72,21 @@ data:
   isVerificationFile: false
   path: template/template.hpp
   requiredBy:
-  - misc/QMC.hpp
+  - geometry/partition_by_circle.hpp
+  - geometry/base_ld.hpp
   - data_structure/sparce_table.hpp
-  - tree/RerootingDP.hpp
+  - misc/QMC.hpp
   - tree/Tree_core.hpp
+  - tree/RerootingDP.hpp
   timestamp: '2023-06-12 11:44:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/geometry/aoj1198.test.cpp
   - test/data_structure/Static_RMQ.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/tree/Rerooting_DP.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Tree_Diameter.test.cpp
-  - test/tree/Rerooting_DP.test.cpp
 documentation_of: template/template.hpp
 layout: document
 redirect_from:
