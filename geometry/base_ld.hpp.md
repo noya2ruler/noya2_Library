@@ -41,9 +41,7 @@ data:
     \ - a, c - a)) < 0) return -2;\n        if (sgn(dot(a - b, c - b)) < 0) return\
     \ 2;\n    }\n    return cross_sgn;\n}\n\nvec rot90(const vec &a) {\n    return\
     \ {-a.imag(), a.real()};\n}\n\nvec rot(const vec &a, ld rad) {\n    return a *\
-    \ vec(cosl(rad), sinl(rad));\n}\n\nbool comp_for_argument_sort(const vec &lhs,\
-    \ const vec &rhs) {\n    // if (abs(arg(lhs)-arg(rhs)) < eps) return false; //\
-    \ need ?\n    return arg(lhs) < arg(rhs);\n}\n\n}  // namespace lib\n"
+    \ vec(cosl(rad), sinl(rad));\n}\n\n\n}  // namespace lib\n"
   code: "#pragma once\n\n#include \"../template/template.hpp\"\n\nnamespace noya2\
     \ {\n\nusing vec = complex<ld>;\n\nconst ld PI = acos(-1);\n\nvoid ldout(int len\
     \ = 20) {\n    cout << fixed << setprecision(len);\n}\n\nint sgn(ld a, const ld\
@@ -56,16 +54,14 @@ data:
     \ - a, c - a)) < 0) return -2;\n        if (sgn(dot(a - b, c - b)) < 0) return\
     \ 2;\n    }\n    return cross_sgn;\n}\n\nvec rot90(const vec &a) {\n    return\
     \ {-a.imag(), a.real()};\n}\n\nvec rot(const vec &a, ld rad) {\n    return a *\
-    \ vec(cosl(rad), sinl(rad));\n}\n\nbool comp_for_argument_sort(const vec &lhs,\
-    \ const vec &rhs) {\n    // if (abs(arg(lhs)-arg(rhs)) < eps) return false; //\
-    \ need ?\n    return arg(lhs) < arg(rhs);\n}\n\n}  // namespace lib\n"
+    \ vec(cosl(rad), sinl(rad));\n}\n\n\n}  // namespace lib\n"
   dependsOn:
   - template/template.hpp
   isVerificationFile: false
   path: geometry/base_ld.hpp
   requiredBy:
   - geometry/partition_by_circle.hpp
-  timestamp: '2023-06-27 02:15:49+09:00'
+  timestamp: '2023-06-27 02:17:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/aoj1198.test.cpp

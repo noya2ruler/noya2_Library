@@ -41,9 +41,7 @@ data:
     \ == 0) {\n        if (sgn(dot(b - a, c - a)) < 0) return -2;\n        if (sgn(dot(a\
     \ - b, c - b)) < 0) return 2;\n    }\n    return cross_sgn;\n}\n\nvec rot90(const\
     \ vec &a) {\n    return {-a.imag(), a.real()};\n}\n\nvec rot(const vec &a, ld\
-    \ rad) {\n    return a * vec(cosl(rad), sinl(rad));\n}\n\nbool comp_for_argument_sort(const\
-    \ vec &lhs, const vec &rhs) {\n    // if (abs(arg(lhs)-arg(rhs)) < eps) return\
-    \ false; // need ?\n    return arg(lhs) < arg(rhs);\n}\n\n}  // namespace lib\n\
+    \ rad) {\n    return a * vec(cosl(rad), sinl(rad));\n}\n\n\n}  // namespace lib\n\
     #line 5 \"geometry/partition_by_circle.hpp\"\n\nnamespace noya2{\n\nstruct dsu\
     \ {\n    dsu(int n = 0) : _n(n), pos(n, -1) {}\n\n    int merge(int a, int b)\
     \ {\n        int x = leader(a), y = leader(b);\n        if (x == y) return x;\n\
@@ -231,7 +229,7 @@ data:
   isVerificationFile: false
   path: geometry/partition_by_circle.hpp
   requiredBy: []
-  timestamp: '2023-06-27 02:15:54+09:00'
+  timestamp: '2023-06-27 02:17:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/aoj1198.test.cpp
