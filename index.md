@@ -3,6 +3,9 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
+    - icon: ':warning:'
+      path: data_structure/dsu.hpp
+      title: data_structure/dsu.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp

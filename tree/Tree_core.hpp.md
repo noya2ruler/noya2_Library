@@ -161,8 +161,8 @@ data:
   timestamp: '2023-06-12 11:48:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Tree_Diameter.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
 documentation_of: tree/Tree_core.hpp
 layout: document
 redirect_from:
