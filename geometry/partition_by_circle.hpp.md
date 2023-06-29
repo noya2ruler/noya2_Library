@@ -1,20 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: data_structure/dsu.hpp
+    title: data_structure/dsu.hpp
+  - icon: ':x:'
     path: geometry/base_ld.hpp
     title: geometry/base_ld.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/partition_by_circle.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -42,14 +45,30 @@ data:
     \ - b, c - b)) < 0) return 2;\n    }\n    return cross_sgn;\n}\n\nvec rot90(const\
     \ vec &a) {\n    return {-a.imag(), a.real()};\n}\n\nvec rot(const vec &a, ld\
     \ rad) {\n    return a * vec(cosl(rad), sinl(rad));\n}\n\n\n}  // namespace lib\n\
-    #line 5 \"geometry/partition_by_circle.hpp\"\n\nnamespace noya2{\n\nstruct dsu\
-    \ {\n    dsu(int n = 0) : _n(n), pos(n, -1) {}\n\n    int merge(int a, int b)\
-    \ {\n        int x = leader(a), y = leader(b);\n        if (x == y) return x;\n\
-    \        if (-pos[x] < -pos[y]) swap(x, y);\n        pos[x] += pos[y];\n     \
-    \   pos[y] = x;\n        return x;\n    }\n\n    bool same(int a, int b) {\n \
-    \       return leader(a) == leader(b);\n    }\n\n    int leader(int a) {\n   \
-    \     if (pos[a] < 0) return a;\n        return pos[a] = leader(pos[a]);\n   \
-    \ }\n  private:\n    int _n;\n    vector<int> pos;\n};\n\nusing vec = complex<ld>;\n\
+    #line 2 \"data_structure/dsu.hpp\"\n\n#line 4 \"data_structure/dsu.hpp\"\n\nnamespace\
+    \ noya2{\n\nstruct dsu {\n  public:\n    dsu() : _n(0) {}\n    dsu(int n) : _n(n),\
+    \ parent_or_size(n, -1) {}\n\n    int merge(int a, int b) {\n        assert(0\
+    \ <= a && a < _n);\n        assert(0 <= b && b < _n);\n        int x = leader(a),\
+    \ y = leader(b);\n        if (x == y) return x;\n        if (-parent_or_size[x]\
+    \ < -parent_or_size[y]) std::swap(x, y);\n        parent_or_size[x] += parent_or_size[y];\n\
+    \        parent_or_size[y] = x;\n        return x;\n    }\n\n    bool same(int\
+    \ a, int b) {\n        assert(0 <= a && a < _n);\n        assert(0 <= b && b <\
+    \ _n);\n        return leader(a) == leader(b);\n    }\n\n    int leader(int a)\
+    \ {\n        assert(0 <= a && a < _n);\n        if (parent_or_size[a] < 0) return\
+    \ a;\n        return parent_or_size[a] = leader(parent_or_size[a]);\n    }\n\n\
+    \    int size(int a) {\n        assert(0 <= a && a < _n);\n        return -parent_or_size[leader(a)];\n\
+    \    }\n\n    std::vector<std::vector<int>> groups() {\n        std::vector<int>\
+    \ leader_buf(_n), group_size(_n);\n        for (int i = 0; i < _n; i++) {\n  \
+    \          leader_buf[i] = leader(i);\n            group_size[leader_buf[i]]++;\n\
+    \        }\n        std::vector<std::vector<int>> result(_n);\n        for (int\
+    \ i = 0; i < _n; i++) {\n            result[i].reserve(group_size[i]);\n     \
+    \   }\n        for (int i = 0; i < _n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
+    \        }\n        result.erase(\n            std::remove_if(result.begin(),\
+    \ result.end(),\n                           [&](const std::vector<int>& v) { return\
+    \ v.empty(); }),\n            result.end());\n        return result;\n    }\n\n\
+    \  private:\n    int _n;\n    // root node: -1 * component size\n    // otherwise:\
+    \ parent\n    std::vector<int> parent_or_size;\n};\n\n} // namespace noya2\n#line\
+    \ 6 \"geometry/partition_by_circle.hpp\"\n\nnamespace noya2{\n\nusing vec = complex<ld>;\n\
     \nstruct circle {\n    vec c;\n    ld r;\n};\n\n// c1 != c2\nvector<ld> cross_point_x(const\
     \ circle &c1, const circle &c2){\n    assert(sgn(abs(c1.r - c2.r)) != 0 || sgn(abs(c1.c\
     \ - c2.c)) != 0);\n    ld d = abs(c1.c - c2.c);\n    // \u5186\u304C\u96E2\u308C\
@@ -133,27 +152,20 @@ data:
     \ - 1;\n        return mp[d.leader(lower_idx[xid] + yid)];\n    }\n};\n\n} //namespace\
     \ noya2\n"
   code: "#pragma once\n\n#include\"../template/template.hpp\"\n#include\"base_ld.hpp\"\
-    \n\nnamespace noya2{\n\nstruct dsu {\n    dsu(int n = 0) : _n(n), pos(n, -1) {}\n\
-    \n    int merge(int a, int b) {\n        int x = leader(a), y = leader(b);\n \
-    \       if (x == y) return x;\n        if (-pos[x] < -pos[y]) swap(x, y);\n  \
-    \      pos[x] += pos[y];\n        pos[y] = x;\n        return x;\n    }\n\n  \
-    \  bool same(int a, int b) {\n        return leader(a) == leader(b);\n    }\n\n\
-    \    int leader(int a) {\n        if (pos[a] < 0) return a;\n        return pos[a]\
-    \ = leader(pos[a]);\n    }\n  private:\n    int _n;\n    vector<int> pos;\n};\n\
-    \nusing vec = complex<ld>;\n\nstruct circle {\n    vec c;\n    ld r;\n};\n\n//\
-    \ c1 != c2\nvector<ld> cross_point_x(const circle &c1, const circle &c2){\n  \
-    \  assert(sgn(abs(c1.r - c2.r)) != 0 || sgn(abs(c1.c - c2.c)) != 0);\n    ld d\
-    \ = abs(c1.c - c2.c);\n    // \u5186\u304C\u96E2\u308C\u3059\u304E\u3066\u3044\
-    \u308B\n    if (sgn(d - c1.r - c2.r) > 0) return {};\n    // \u5186\u304C\u8FD1\
-    \u3059\u304E\u308B\n    if (sgn(abs(c1.r - c2.r) - d) > 0) return {};\n    //\
-    \ \u5916\u63A5\u3057\u3066\u3044\u308B\n    if (sgn(d - c1.r - c2.r) == 0){\n\
-    \        return {(c1.r*c2.c.real() + c2.r*c1.c.real()) / (c1.r + c2.r)};\n   \
-    \ }\n    // \u5185\u63A5\u3057\u3066\u3044\u308B\n    if (sgn(abs(c1.r - c2.r)\
-    \ - d) == 0){\n        return {(c1.r * c2.c.real() - c2.r * c1.c.real()) / (c1.r\
-    \ - c2.r)};\n    }\n    // 2 \u70B9\u3092\u5171\u6709\u3059\u308B\n    ld e =\
-    \ (d * d + c1.r * c1.r - c2.r * c2.r) / (2 * d);\n    vec p = c1.c + (c2.c - c1.c)\
-    \ * e / d;\n    vec v((c1.c - c2.c).imag(),(c2.c - c1.c).real());\n    v *= sqrtl(max(c1.r\
-    \ * c1.r - e * e, ld(0))) / abs(v);\n    return {(p+v).real(),(p-v).real()};\n\
+    \n#include\"../data_structure/dsu.hpp\"\n\nnamespace noya2{\n\nusing vec = complex<ld>;\n\
+    \nstruct circle {\n    vec c;\n    ld r;\n};\n\n// c1 != c2\nvector<ld> cross_point_x(const\
+    \ circle &c1, const circle &c2){\n    assert(sgn(abs(c1.r - c2.r)) != 0 || sgn(abs(c1.c\
+    \ - c2.c)) != 0);\n    ld d = abs(c1.c - c2.c);\n    // \u5186\u304C\u96E2\u308C\
+    \u3059\u304E\u3066\u3044\u308B\n    if (sgn(d - c1.r - c2.r) > 0) return {};\n\
+    \    // \u5186\u304C\u8FD1\u3059\u304E\u308B\n    if (sgn(abs(c1.r - c2.r) - d)\
+    \ > 0) return {};\n    // \u5916\u63A5\u3057\u3066\u3044\u308B\n    if (sgn(d\
+    \ - c1.r - c2.r) == 0){\n        return {(c1.r*c2.c.real() + c2.r*c1.c.real())\
+    \ / (c1.r + c2.r)};\n    }\n    // \u5185\u63A5\u3057\u3066\u3044\u308B\n    if\
+    \ (sgn(abs(c1.r - c2.r) - d) == 0){\n        return {(c1.r * c2.c.real() - c2.r\
+    \ * c1.c.real()) / (c1.r - c2.r)};\n    }\n    // 2 \u70B9\u3092\u5171\u6709\u3059\
+    \u308B\n    ld e = (d * d + c1.r * c1.r - c2.r * c2.r) / (2 * d);\n    vec p =\
+    \ c1.c + (c2.c - c1.c) * e / d;\n    vec v((c1.c - c2.c).imag(),(c2.c - c1.c).real());\n\
+    \    v *= sqrtl(max(c1.r * c1.r - e * e, ld(0))) / abs(v);\n    return {(p+v).real(),(p-v).real()};\n\
     }\n\nvector<ld> cross_point_y(const circle &c, const ld &x){\n    int cond = sgn(abs(c.c.real()\
     \ - x) - c.r); \n    if (cond > 0) return {};\n    if (cond == 0) return {c.c.imag()};\n\
     \    ld ydiff = sqrtl(max(c.r*c.r - (x - c.c.real()) * (x - c.c.real()),ld(0)));\n\
@@ -226,11 +238,12 @@ data:
   dependsOn:
   - template/template.hpp
   - geometry/base_ld.hpp
+  - data_structure/dsu.hpp
   isVerificationFile: false
   path: geometry/partition_by_circle.hpp
   requiredBy: []
-  timestamp: '2023-06-27 02:17:49+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-06-29 17:25:53+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/geometry/aoj1198.test.cpp
 documentation_of: geometry/partition_by_circle.hpp

@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: data_structure/dsu.hpp
     title: data_structure/dsu.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/sparce_table.hpp
     title: data_structure/sparce_table.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/base_ld.hpp
     title: geometry/base_ld.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/partition_by_circle.hpp
     title: geometry/partition_by_circle.hpp
   - icon: ':warning:'
@@ -30,7 +30,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_RMQ.test.cpp
     title: test/data_structure/Static_RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
   - icon: ':heavy_check_mark:'
@@ -42,9 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/template.hpp\"\n\n#include<bits/stdc++.h>\n\n#define\
@@ -83,7 +83,7 @@ data:
   - data_structure/dsu.hpp
   - data_structure/sparce_table.hpp
   timestamp: '2023-06-12 11:44:50+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/geometry/aoj1198.test.cpp
   - test/tree/Tree_Diameter.test.cpp
