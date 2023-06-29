@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/partition_by_circle.hpp
     title: geometry/partition_by_circle.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/dsu.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -80,7 +80,7 @@ data:
   requiredBy:
   - geometry/partition_by_circle.hpp
   timestamp: '2023-06-29 17:25:13+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/aoj1198.test.cpp
 documentation_of: data_structure/dsu.hpp

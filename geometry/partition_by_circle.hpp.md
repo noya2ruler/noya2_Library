@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/dsu.hpp
     title: data_structure/dsu.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/base_ld.hpp
     title: geometry/base_ld.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/partition_by_circle.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -116,20 +116,21 @@ data:
     \        }\n        }\n        sort(all(ys),[&](ylr lhs, ylr rhs){\n         \
     \   return get<0>(lhs) < get<0>(rhs);\n        });\n        return ys;\n    }\n\
     \    dsu d;\n    vector<ld> xs;\n    vector<int> lower_idx;\n    map<int,int>\
-    \ mp;\n    vector<vector<int>> build_graph(){\n        // \u5927\u304D\u306A\u5186\
-    \u3067\u5168\u4F53\u3092\u56F2\u3063\u3066\u3057\u307E\u3046\n        a.push_back({vec(0,0),coordinate_width()*2});\n\
-    \        // x \u5EA7\u6A19\u306E\u5217\u6319\n        xs = x_coordinates();\n\
-    \        // \u5404 x \u306B\u3064\u3044\u3066 y \u5EA7\u6A19\u306E\u5217\u6319\
-    \n        vector<vector<ylr>> yss; yss.reserve(xs.size());\n        for (auto\
-    \ &x : xs) yss.push_back(y_coordinates(x));\n        // x \u3067\u5207\u3063\u3066\
-    \u9818\u57DF\u3092\u8210\u3081\u308B\n        int idx = 0;\n        vector<pair<int,int>>\
-    \ es, merge;\n        vector<int> cur;\n        for (int itr = 0; itr < (int)(xs.size())-1;\
-    \ itr++){\n            lower_idx.emplace_back(idx);\n            vector<int> lid,\
-    \ rid;\n            for (int l = 0; l < (int)(yss[itr].size()); l++){\n      \
-    \          for (int t = 0; t < get<2>(yss[itr][l]); t++){\n                  \
-    \  lid.emplace_back(l);\n                }\n            }\n            for (int\
-    \ r = 0; r < (int)(yss[itr+1].size()); r++){\n                for (int t = 0;\
-    \ t < get<1>(yss[itr+1][r]); t++){\n                    rid.emplace_back(r);\n\
+    \ mp;\n    vector<vector<int>> build_graph(ld max_width = 0){\n        // \u5927\
+    \u304D\u306A\u5186\u3067\u5168\u4F53\u3092\u56F2\u3063\u3066\u3057\u307E\u3046\
+    \n        if (sgn(max_width) == 0) max_width = coordinate_width()*2;\n       \
+    \ a.push_back({vec(0,0),max_width});\n        // x \u5EA7\u6A19\u306E\u5217\u6319\
+    \n        xs = x_coordinates();\n        // \u5404 x \u306B\u3064\u3044\u3066\
+    \ y \u5EA7\u6A19\u306E\u5217\u6319\n        vector<vector<ylr>> yss; yss.reserve(xs.size());\n\
+    \        for (auto &x : xs) yss.push_back(y_coordinates(x));\n        // x \u3067\
+    \u5207\u3063\u3066\u9818\u57DF\u3092\u8210\u3081\u308B\n        int idx = 0;\n\
+    \        vector<pair<int,int>> es, merge;\n        vector<int> cur;\n        for\
+    \ (int itr = 0; itr < (int)(xs.size())-1; itr++){\n            lower_idx.emplace_back(idx);\n\
+    \            vector<int> lid, rid;\n            for (int l = 0; l < (int)(yss[itr].size());\
+    \ l++){\n                for (int t = 0; t < get<2>(yss[itr][l]); t++){\n    \
+    \                lid.emplace_back(l);\n                }\n            }\n    \
+    \        for (int r = 0; r < (int)(yss[itr+1].size()); r++){\n               \
+    \ for (int t = 0; t < get<1>(yss[itr+1][r]); t++){\n                    rid.emplace_back(r);\n\
     \                }\n            }\n            assert(lid.size() == rid.size());\n\
     \            int pre = 0;\n            vector<int> nxt;\n            for (int\
     \ i = 0; i < (int)(lid.size())-1; i++){\n                for (int t = 0; t < rid[i+1]-rid[i];\
@@ -200,20 +201,21 @@ data:
     \        }\n        }\n        sort(all(ys),[&](ylr lhs, ylr rhs){\n         \
     \   return get<0>(lhs) < get<0>(rhs);\n        });\n        return ys;\n    }\n\
     \    dsu d;\n    vector<ld> xs;\n    vector<int> lower_idx;\n    map<int,int>\
-    \ mp;\n    vector<vector<int>> build_graph(){\n        // \u5927\u304D\u306A\u5186\
-    \u3067\u5168\u4F53\u3092\u56F2\u3063\u3066\u3057\u307E\u3046\n        a.push_back({vec(0,0),coordinate_width()*2});\n\
-    \        // x \u5EA7\u6A19\u306E\u5217\u6319\n        xs = x_coordinates();\n\
-    \        // \u5404 x \u306B\u3064\u3044\u3066 y \u5EA7\u6A19\u306E\u5217\u6319\
-    \n        vector<vector<ylr>> yss; yss.reserve(xs.size());\n        for (auto\
-    \ &x : xs) yss.push_back(y_coordinates(x));\n        // x \u3067\u5207\u3063\u3066\
-    \u9818\u57DF\u3092\u8210\u3081\u308B\n        int idx = 0;\n        vector<pair<int,int>>\
-    \ es, merge;\n        vector<int> cur;\n        for (int itr = 0; itr < (int)(xs.size())-1;\
-    \ itr++){\n            lower_idx.emplace_back(idx);\n            vector<int> lid,\
-    \ rid;\n            for (int l = 0; l < (int)(yss[itr].size()); l++){\n      \
-    \          for (int t = 0; t < get<2>(yss[itr][l]); t++){\n                  \
-    \  lid.emplace_back(l);\n                }\n            }\n            for (int\
-    \ r = 0; r < (int)(yss[itr+1].size()); r++){\n                for (int t = 0;\
-    \ t < get<1>(yss[itr+1][r]); t++){\n                    rid.emplace_back(r);\n\
+    \ mp;\n    vector<vector<int>> build_graph(ld max_width = 0){\n        // \u5927\
+    \u304D\u306A\u5186\u3067\u5168\u4F53\u3092\u56F2\u3063\u3066\u3057\u307E\u3046\
+    \n        if (sgn(max_width) == 0) max_width = coordinate_width()*2;\n       \
+    \ a.push_back({vec(0,0),max_width});\n        // x \u5EA7\u6A19\u306E\u5217\u6319\
+    \n        xs = x_coordinates();\n        // \u5404 x \u306B\u3064\u3044\u3066\
+    \ y \u5EA7\u6A19\u306E\u5217\u6319\n        vector<vector<ylr>> yss; yss.reserve(xs.size());\n\
+    \        for (auto &x : xs) yss.push_back(y_coordinates(x));\n        // x \u3067\
+    \u5207\u3063\u3066\u9818\u57DF\u3092\u8210\u3081\u308B\n        int idx = 0;\n\
+    \        vector<pair<int,int>> es, merge;\n        vector<int> cur;\n        for\
+    \ (int itr = 0; itr < (int)(xs.size())-1; itr++){\n            lower_idx.emplace_back(idx);\n\
+    \            vector<int> lid, rid;\n            for (int l = 0; l < (int)(yss[itr].size());\
+    \ l++){\n                for (int t = 0; t < get<2>(yss[itr][l]); t++){\n    \
+    \                lid.emplace_back(l);\n                }\n            }\n    \
+    \        for (int r = 0; r < (int)(yss[itr+1].size()); r++){\n               \
+    \ for (int t = 0; t < get<1>(yss[itr+1][r]); t++){\n                    rid.emplace_back(r);\n\
     \                }\n            }\n            assert(lid.size() == rid.size());\n\
     \            int pre = 0;\n            vector<int> nxt;\n            for (int\
     \ i = 0; i < (int)(lid.size())-1; i++){\n                for (int t = 0; t < rid[i+1]-rid[i];\
@@ -242,8 +244,8 @@ data:
   isVerificationFile: false
   path: geometry/partition_by_circle.hpp
   requiredBy: []
-  timestamp: '2023-06-29 17:25:53+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-06-29 17:39:08+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/aoj1198.test.cpp
 documentation_of: geometry/partition_by_circle.hpp

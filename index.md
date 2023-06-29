@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/dsu.hpp
       title: data_structure/dsu.hpp
     - icon: ':heavy_check_mark:'
@@ -14,10 +14,10 @@ data:
       title: data_structure/sparce_table.hpp
   - name: geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/base_ld.hpp
       title: geometry/base_ld.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/partition_by_circle.hpp
       title: geometry/partition_by_circle.hpp
   - name: misc
@@ -32,7 +32,7 @@ data:
       title: potentialized_dsu/potentialized_dsu.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
   - name: tree
@@ -59,7 +59,7 @@ data:
       title: test/data_structure/Static_RMQ.test.cpp
   - name: test/geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/aoj1198.test.cpp
       title: test/geometry/aoj1198.test.cpp
   - name: test/tree
