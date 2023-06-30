@@ -14,7 +14,7 @@ struct Mo {
     int width;
     std::vector<int> left, right, order;
 
-    Mo(int N, int Q): order(Q) {
+    Mo(int N = 1, int Q = 1): order(Q) {
         width = std::max<int>(1, 1.0 * N / std::max<double>(1.0, std::sqrt(Q * 2.0 / 3.0)));
         std::iota(begin(order), end(order), 0);
     }
