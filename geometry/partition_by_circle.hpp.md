@@ -244,7 +244,7 @@ data:
   isVerificationFile: false
   path: geometry/partition_by_circle.hpp
   requiredBy: []
-  timestamp: '2023-06-29 17:39:08+09:00'
+  timestamp: '2023-06-30 12:42:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/aoj1198.test.cpp

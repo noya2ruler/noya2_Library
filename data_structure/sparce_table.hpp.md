@@ -65,7 +65,7 @@ data:
   isVerificationFile: false
   path: data_structure/sparce_table.hpp
   requiredBy: []
-  timestamp: '2023-06-12 11:44:50+09:00'
+  timestamp: '2023-06-30 12:42:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Static_RMQ.test.cpp

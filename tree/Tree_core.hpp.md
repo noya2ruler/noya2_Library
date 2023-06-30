@@ -158,7 +158,7 @@ data:
   isVerificationFile: false
   path: tree/Tree_core.hpp
   requiredBy: []
-  timestamp: '2023-06-12 11:48:17+09:00'
+  timestamp: '2023-06-30 12:42:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Tree_Diameter.test.cpp

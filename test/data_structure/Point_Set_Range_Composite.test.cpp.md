@@ -292,7 +292,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-06-14 02:12:55+09:00'
+  timestamp: '2023-06-30 12:42:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Point_Set_Range_Composite.test.cpp

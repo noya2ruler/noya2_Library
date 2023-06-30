@@ -68,7 +68,7 @@ data:
   isVerificationFile: false
   path: misc/QMC.hpp
   requiredBy: []
-  timestamp: '2023-06-12 11:44:50+09:00'
+  timestamp: '2023-06-30 12:42:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: misc/QMC.hpp

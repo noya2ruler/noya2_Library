@@ -61,7 +61,7 @@ data:
   path: geometry/base_ld.hpp
   requiredBy:
   - geometry/partition_by_circle.hpp
-  timestamp: '2023-06-27 02:17:49+09:00'
+  timestamp: '2023-06-30 12:42:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/aoj1198.test.cpp

@@ -17,6 +17,9 @@ data:
   - icon: ':warning:'
     path: misc/QMC.hpp
     title: misc/QMC.hpp
+  - icon: ':warning:'
+    path: misc/mo_algorithm.hpp
+    title: misc/mo_algorithm.hpp
   - icon: ':heavy_check_mark:'
     path: tree/RerootingDP.hpp
     title: Rerooting DP
@@ -70,19 +73,20 @@ data:
     template<class T>istream &operator>>(istream &is, vector<T> &v){\n    for (auto\
     \ &e : v) is >> e;\n    return is;\n}\n\nvoid fast_io(){\n    cin.tie(0); ios::sync_with_stdio(0);\
     \ cout << fixed << setprecision(15);\n}\n\nconst int iinf = 1'000'000'007;\nconst\
-    \ ll linf = 2e18;"
+    \ ll linf = 2e18;\n"
   dependsOn: []
   isVerificationFile: false
   path: template/template.hpp
   requiredBy:
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp
+  - misc/mo_algorithm.hpp
   - misc/QMC.hpp
   - tree/RerootingDP.hpp
   - tree/Tree_core.hpp
   - data_structure/dsu.hpp
   - data_structure/sparce_table.hpp
-  timestamp: '2023-06-12 11:44:50+09:00'
+  timestamp: '2023-06-30 12:42:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/aoj1198.test.cpp

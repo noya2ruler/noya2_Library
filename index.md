@@ -25,6 +25,9 @@ data:
     - icon: ':warning:'
       path: misc/QMC.hpp
       title: misc/QMC.hpp
+    - icon: ':warning:'
+      path: misc/mo_algorithm.hpp
+      title: misc/mo_algorithm.hpp
   - name: potentialized_dsu
     pages:
     - icon: ':warning:'
