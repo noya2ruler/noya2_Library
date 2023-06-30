@@ -4,7 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: tree/Mo_on_Tree.hpp
+    title: tree/Mo_on_Tree.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -63,7 +66,8 @@ data:
   - template/template.hpp
   isVerificationFile: false
   path: misc/mo_algorithm.hpp
-  requiredBy: []
+  requiredBy:
+  - tree/Mo_on_Tree.hpp
   timestamp: '2023-06-30 12:42:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

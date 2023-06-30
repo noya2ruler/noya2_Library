@@ -40,6 +40,9 @@ data:
       title: template/template.hpp
   - name: tree
     pages:
+    - icon: ':warning:'
+      path: tree/Mo_on_Tree.hpp
+      title: tree/Mo_on_Tree.hpp
     - icon: ':heavy_check_mark:'
       path: tree/RerootingDP.hpp
       title: Rerooting DP

@@ -20,6 +20,9 @@ data:
   - icon: ':warning:'
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
+  - icon: ':warning:'
+    path: tree/Mo_on_Tree.hpp
+    title: tree/Mo_on_Tree.hpp
   - icon: ':heavy_check_mark:'
     path: tree/RerootingDP.hpp
     title: Rerooting DP
@@ -83,6 +86,7 @@ data:
   - misc/mo_algorithm.hpp
   - misc/QMC.hpp
   - tree/RerootingDP.hpp
+  - tree/Mo_on_Tree.hpp
   - tree/Tree_core.hpp
   - data_structure/dsu.hpp
   - data_structure/sparce_table.hpp
