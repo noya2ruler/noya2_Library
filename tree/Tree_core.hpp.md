@@ -1,54 +1,99 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: template/const.hpp
+    title: template/const.hpp
+  - icon: ':x:'
+    path: template/inout.hpp
+    title: template/inout.hpp
+  - icon: ':x:'
     path: template/template.hpp
     title: template/template.hpp
+  - icon: ':x:'
+    path: template/utils.hpp
+    title: template/utils.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/Tree_core.hpp\"\n\n#line 2 \"template/template.hpp\"\
-    \n\n#include<bits/stdc++.h>\n\n#define rep(i,n) for (int i = 0; i < (int)(n);\
-    \ i++)\n#define reb(i,n) for (int i = (int)(n-1); i >= 0; i--)\n#define all(v)\
-    \ v.begin(),v.end()\n\nusing ll = long long;\nusing ld = long double;\nusing ull\
-    \ = unsigned long long;\n\nusing namespace std;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\ntemplate <typename\
-    \ T> bool chmin(T &a, const T &b) {\n    if (a <= b) return false;\n    a = b;\n\
-    \    return true;\n}\ntemplate <typename T> bool chmax(T &a, const T &b) {\n \
-    \   if (a >= b) return false;\n    a = b;\n    return true;\n}\n\ntemplate<class\
-    \ T>istream &operator>>(istream &is, vector<T> &v){\n    for (auto &e : v) is\
-    \ >> e;\n    return is;\n}\n\nvoid fast_io(){\n    cin.tie(0); ios::sync_with_stdio(0);\
-    \ cout << fixed << setprecision(15);\n}\n\nconst int iinf = 1'000'000'007;\nconst\
-    \ ll linf = 2e18;\n#line 4 \"tree/Tree_core.hpp\"\n\nnamespace noya2{\n\nstruct\
-    \ naiveTree { // undirected unweighted tree\n    naiveTree (int _n = 0) : n(_n){\n\
-    \        es0.resize(_n);\n        es1.resize(_n);\n    }\n    void add_edge(int\
-    \ u, int v, int id = -1){\n        es0[u].emplace_back(v);\n        es0[v].emplace_back(u);\n\
-    \        es1[u].emplace_back(v,id);\n        es1[v].emplace_back(u,id);\n    }\n\
-    \    void input(int _indexed = 1){\n        rep(i,n-1){\n            int u, v;\
-    \ cin >> u >> v;\n            u -= _indexed;\n            v -= _indexed;\n   \
-    \         add_edge(u,v);\n        }\n    }\n    const vector<int>& operator[](int\
-    \ idx) const { return es0[idx]; }\n    const vector<pair<int,int>>& operator()(int\
-    \ idx) const {return es1[idx]; }\n  private:\n    int n;\n    vector<vector<int>>\
-    \ es0;\n    vector<vector<pair<int,int>>> es1;\n};\n\n\nstruct usefulTree { //\
-    \ rooted unweighted tree\n    usefulTree (int _n = 0, int _root = 0) : n(_n),\
-    \ root(_root) {\n        es.resize(n);\n    }\n    void add_edge(int u, int v){\n\
-    \        es[u].emplace_back(v);\n        es[v].emplace_back(u);\n    }\n    void\
-    \ input(int _indexed = 1){\n        rep(i,n-1){\n            int u, v; cin >>\
-    \ u >> v;\n            u -= _indexed;\n            v -= _indexed;\n          \
-    \  add_edge(u,v);\n        }\n    }\n    const vector<int>& operator[](int idx)\
-    \ const { return es[idx]; }\n    int parent(int v){ return par[0][v]; }\n    int\
-    \ subtree_size(int v){\n        if (sub[v] != -1) return sub[v];\n        sub[v]\
-    \ = 1;\n        for (int child : es[v]){\n            if (child != par[0][v])\
+    \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout.hpp\"\
+    \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
+    \ &os, const pair<T, U> &p) {\n  os << p.first << \" \" << p.second;\n  return\
+    \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
+    \ pair<T, U> &p) {\n  is >> p.first >> p.second;\n  return is;\n}\n\ntemplate\
+    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v) {\n  int\
+    \ s = (int)v.size();\n  for (int i = 0; i < s; i++) os << (i ? \" \" : \"\") <<\
+    \ v[i];\n  return os;\n}\ntemplate <typename T>\nistream &operator>>(istream &is,\
+    \ vector<T> &v) {\n  for (auto &x : v) is >> x;\n  return is;\n}\n\nvoid in()\
+    \ {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u) {\n  cin >> t;\n\
+    \  in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename T, class...\
+    \ U, char sep = ' '>\nvoid out(const T &t, const U &...u) {\n  cout << t;\n  if\
+    \ (sizeof...(u)) cout << sep;\n  out(u...);\n}\n\nstruct IoSetup {\n  IoSetup()\
+    \ {\n    cin.tie(nullptr);\n    ios::sync_with_stdio(false);\n    cout << fixed\
+    \ << setprecision(15);\n    cerr << fixed << setprecision(7);\n  }\n} iosetup_noya2;\n\
+    \n}  // namespace noya2\n#line 1 \"template/const.hpp\"\nnamespace noya2{\n\n\
+    const int iinf = 1'000'000'007;\nconst long long linf = 2'000'000'000'000'000'000LL;\n\
+    const long long mod998 =  998244353;\nconst long long mod107 = 1000000007;\nconst\
+    \ long double pi = 3.14159265358979323;\nconst vector<int> dx = {0,1,0,-1,1,1,-1,-1};\n\
+    const vector<int> dy = {1,0,-1,0,1,-1,-1,1};\nconst string ALP = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"\
+    ;\nconst string alp = \"abcdefghijklmnopqrstuvwxyz\";\nconst string NUM = \"0123456789\"\
+    ;\n\nvoid yes(){ cout << \"Yes\\n\"; }\nvoid no(){ cout << \"No\\n\"; }\nvoid\
+    \ YES(){ cout << \"YES\\n\"; }\nvoid NO(){ cout << \"NO\\n\"; }\nvoid yn(bool\
+    \ t){ t ? yes() : no(); }\nvoid YN(bool t){ t ? YES() : NO(); }\n\n} // namespace\
+    \ noya2\n#line 1 \"template/utils.hpp\"\nnamespace noya2{\n\null inner_binary_gcd(ull\
+    \ a, ull b){\n    if (a == 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\n\
+    \    int m = __builtin_ctzll(b);\n    a >>= n;\n    b >>= m;\n    while (a !=\
+    \ b) {\n        int m = __builtin_ctzll(a - b);\n        bool f = a > b;\n   \
+    \     ull c = f ? a : b;\n        b = f ? b : a;\n        a = (c - b) >> m;\n\
+    \    }\n    return a << min(n, m);\n}\n\ntemplate<typename T>\nT gcd_fast(T a,\
+    \ T b){\n    return static_cast<T>(inner_binary_gcd(static_cast<ull>(abs(a)),static_cast<ull>(abs(b))));\n\
+    }\n\ntemplate<typename T>\nT floor_div(const T n, const T d) {\n    assert(d !=\
+    \ 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\ntemplate<typename\
+    \ T>\nT ceil_div(const T n, const T d) {\n    assert(d != 0);\n    return n /\
+    \ d + static_cast<T>((n ^ d) >= 0 && n % d != 0);\n}\n\ntemplate<typename T> void\
+    \ uniq(vector<T> &v){\n    sort(all(v));\n    v.erase(unique(all(v)),v.end());\n\
+    }\n\ntemplate <typename T, typename U>\ninline bool chmin(T &x, U y) {\n    return\
+    \ (y < x) ? (x = y, true) : false;\n}\n\ntemplate <typename T, typename U>\ninline\
+    \ bool chmax(T &x, U y) {\n    return (x < y) ? (x = y, true) : false;\n}\n\n\
+    template<typename T>\ninline bool range(T l, T x, T r){\n    return l <= x &&\
+    \ x < r;\n}\n\n} // namespace noya2\n#line 8 \"template/template.hpp\"\n\n#define\
+    \ rep(i,n) for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for (int i\
+    \ = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1); i >= 0;\
+    \ i--)\n#define all(v) (v).begin(),(v).end()\n\nusing ll = long long;\nusing ld\
+    \ = long double;\nusing uint = unsigned int;\nusing ull = unsigned long long;\n\
+    using pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
+    using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
+    */\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"tree/Tree_core.hpp\"\n\nnamespace\
+    \ noya2{\n\nstruct naiveTree { // undirected unweighted tree\n    naiveTree (int\
+    \ _n = 0) : n(_n){\n        es0.resize(_n);\n        es1.resize(_n);\n    }\n\
+    \    void add_edge(int u, int v, int id = -1){\n        es0[u].emplace_back(v);\n\
+    \        es0[v].emplace_back(u);\n        es1[u].emplace_back(v,id);\n       \
+    \ es1[v].emplace_back(u,id);\n    }\n    void input(int _indexed = 1){\n     \
+    \   rep(i,n-1){\n            int u, v; cin >> u >> v;\n            u -= _indexed;\n\
+    \            v -= _indexed;\n            add_edge(u,v);\n        }\n    }\n  \
+    \  const vector<int>& operator[](int idx) const { return es0[idx]; }\n    const\
+    \ vector<pair<int,int>>& operator()(int idx) const {return es1[idx]; }\n  private:\n\
+    \    int n;\n    vector<vector<int>> es0;\n    vector<vector<pair<int,int>>> es1;\n\
+    };\n\n\nstruct usefulTree { // rooted unweighted tree\n    usefulTree (int _n\
+    \ = 0, int _root = 0) : n(_n), root(_root) {\n        es.resize(n);\n    }\n \
+    \   void add_edge(int u, int v){\n        es[u].emplace_back(v);\n        es[v].emplace_back(u);\n\
+    \    }\n    void input(int _indexed = 1){\n        rep(i,n-1){\n            int\
+    \ u, v; cin >> u >> v;\n            u -= _indexed;\n            v -= _indexed;\n\
+    \            add_edge(u,v);\n        }\n    }\n    const vector<int>& operator[](int\
+    \ idx) const { return es[idx]; }\n    int parent(int v){ return par[0][v]; }\n\
+    \    int subtree_size(int v){\n        if (sub[v] != -1) return sub[v];\n    \
+    \    sub[v] = 1;\n        for (int child : es[v]){\n            if (child != par[0][v])\
     \ sub[v] += subtree_size(child);\n        }\n        return sub[v];\n    }\n \
     \   int depth(int v){ return dep[v]; }\n    int lca(int u, int v){\n        if\
     \ (dep[u] > dep[v]) swap(u,v);\n        for (int i = 0; i < p2size; i++) if ((dep[v]\
@@ -155,11 +200,14 @@ data:
     \ noya2"
   dependsOn:
   - template/template.hpp
+  - template/inout.hpp
+  - template/const.hpp
+  - template/utils.hpp
   isVerificationFile: false
   path: tree/Tree_core.hpp
   requiredBy: []
-  timestamp: '2023-06-30 12:42:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-07-17 20:29:27+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
