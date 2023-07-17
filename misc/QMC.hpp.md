@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: template/inout.hpp
     title: template/inout.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
@@ -53,13 +53,13 @@ data:
     ;\n\nvoid yes(){ cout << \"Yes\\n\"; }\nvoid no(){ cout << \"No\\n\"; }\nvoid\
     \ YES(){ cout << \"YES\\n\"; }\nvoid NO(){ cout << \"NO\\n\"; }\nvoid yn(bool\
     \ t){ t ? yes() : no(); }\nvoid YN(bool t){ t ? YES() : NO(); }\n\n} // namespace\
-    \ noya2\n#line 1 \"template/utils.hpp\"\nnamespace noya2{\n\null inner_binary_gcd(ull\
-    \ a, ull b){\n    if (a == 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\n\
-    \    int m = __builtin_ctzll(b);\n    a >>= n;\n    b >>= m;\n    while (a !=\
-    \ b) {\n        int m = __builtin_ctzll(a - b);\n        bool f = a > b;\n   \
-    \     ull c = f ? a : b;\n        b = f ? b : a;\n        a = (c - b) >> m;\n\
-    \    }\n    return a << min(n, m);\n}\n\ntemplate<typename T>\nT gcd_fast(T a,\
-    \ T b){\n    return static_cast<T>(inner_binary_gcd(static_cast<ull>(abs(a)),static_cast<ull>(abs(b))));\n\
+    \ noya2\n#line 1 \"template/utils.hpp\"\nnamespace noya2{\n\nunsigned long long\
+    \ inner_binary_gcd(unsigned long long a, unsigned long long b){\n    if (a ==\
+    \ 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\n    int m = __builtin_ctzll(b);\n\
+    \    a >>= n;\n    b >>= m;\n    while (a != b) {\n        int m = __builtin_ctzll(a\
+    \ - b);\n        bool f = a > b;\n        unsigned long long c = f ? a : b;\n\
+    \        b = f ? b : a;\n        a = (c - b) >> m;\n    }\n    return a << min(n,\
+    \ m);\n}\n\ntemplate<typename T>\nT gcd_fast(T a, T b){\n    return static_cast<T>(inner_binary_gcd(abs(a),abs(b)));\n\
     }\n\ntemplate<typename T>\nT floor_div(const T n, const T d) {\n    assert(d !=\
     \ 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\ntemplate<typename\
     \ T>\nT ceil_div(const T n, const T d) {\n    assert(d != 0);\n    return n /\
@@ -117,7 +117,7 @@ data:
   isVerificationFile: false
   path: misc/QMC.hpp
   requiredBy: []
-  timestamp: '2023-07-17 20:29:27+09:00'
+  timestamp: '2023-07-17 20:36:50+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: misc/QMC.hpp
