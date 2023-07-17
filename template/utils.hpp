@@ -1,6 +1,6 @@
 namespace noya2{
 
-ull inner_binary_gcd(ull a, ull b){
+unsigned long long inner_binary_gcd(unsigned long long a, unsigned long long b){
     if (a == 0 || b == 0) return a + b;
     int n = __builtin_ctzll(a);
     int m = __builtin_ctzll(b);
@@ -9,7 +9,7 @@ ull inner_binary_gcd(ull a, ull b){
     while (a != b) {
         int m = __builtin_ctzll(a - b);
         bool f = a > b;
-        ull c = f ? a : b;
+        unsigned long long c = f ? a : b;
         b = f ? b : a;
         a = (c - b) >> m;
     }
@@ -18,7 +18,7 @@ ull inner_binary_gcd(ull a, ull b){
 
 template<typename T>
 T gcd_fast(T a, T b){
-    return static_cast<T>(inner_binary_gcd(static_cast<ull>(abs(a)),static_cast<ull>(abs(b))));
+    return static_cast<T>(inner_binary_gcd(abs(a),abs(b)));
 }
 
 template<typename T>
