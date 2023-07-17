@@ -2,77 +2,34 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: data_structure/fenwick_tree.hpp
+    title: data_structure/fenwick_tree.hpp
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
   - icon: ':heavy_check_mark:'
     path: template/inout.hpp
     title: template/inout.hpp
   - icon: ':heavy_check_mark:'
+    path: template/template.hpp
+    title: template/template.hpp
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: data_structure/dsu.hpp
-    title: data_structure/dsu.hpp
-  - icon: ':heavy_check_mark:'
-    path: data_structure/fenwick_tree.hpp
-    title: data_structure/fenwick_tree.hpp
-  - icon: ':heavy_check_mark:'
-    path: data_structure/sparce_table.hpp
-    title: data_structure/sparce_table.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/base_ld.hpp
-    title: geometry/base_ld.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/partition_by_circle.hpp
-    title: geometry/partition_by_circle.hpp
-  - icon: ':warning:'
-    path: misc/QMC.hpp
-    title: misc/QMC.hpp
-  - icon: ':warning:'
-    path: misc/inversion.hpp
-    title: misc/inversion.hpp
-  - icon: ':warning:'
-    path: misc/mo_algorithm.hpp
-    title: misc/mo_algorithm.hpp
-  - icon: ':warning:'
-    path: tree/Mo_on_Tree.hpp
-    title: tree/Mo_on_Tree.hpp
-  - icon: ':heavy_check_mark:'
-    path: tree/RerootingDP.hpp
-    title: Rerooting DP
-  - icon: ':heavy_check_mark:'
-    path: tree/Tree_core.hpp
-    title: tree/Tree_core.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/PointAddRangeSum.test.cpp
-    title: test/data_structure/PointAddRangeSum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Point_Set_Range_Composite.test.cpp
-    title: test/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Static_RMQ.test.cpp
-    title: test/data_structure/Static_RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/geometry/aoj1198.test.cpp
-    title: test/geometry/aoj1198.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Jump_on_Tree.test.cpp
-    title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Rerooting_DP.test.cpp
-    title: test/tree/Rerooting_DP.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Tree_Diameter.test.cpp
-    title: test/tree/Tree_Diameter.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
-    #line 1 \"template/inout.hpp\"\nnamespace noya2 {\n\ntemplate <typename T, typename\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
+    links:
+    - https://judge.yosupo.jp/problem/point_add_range_sum
+  bundledCode: "#line 1 \"test/data_structure/PointAddRangeSum.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\n#line 2 \"\
+    template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n#line\
+    \ 1 \"template/inout.hpp\"\nnamespace noya2 {\n\ntemplate <typename T, typename\
     \ U>\nostream &operator<<(ostream &os, const pair<T, U> &p) {\n  os << p.first\
     \ << \" \" << p.second;\n  return os;\n}\ntemplate <typename T, typename U>\n\
     istream &operator>>(istream &is, pair<T, U> &p) {\n  is >> p.first >> p.second;\n\
@@ -119,48 +76,45 @@ data:
     \ = long double;\nusing uint = unsigned int;\nusing ull = unsigned long long;\n\
     using pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
-    */\n\n}\n\nusing namespace noya2;\n\n\n"
-  code: "#pragma once\nusing namespace std;\n\n#include<bits/stdc++.h>\n#include\"\
-    inout.hpp\"\n#include\"const.hpp\"\n#include\"utils.hpp\"\n\n#define rep(i,n)\
-    \ for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for (int i = (m); i\
-    \ < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1); i >= 0; i--)\n#define\
-    \ all(v) (v).begin(),(v).end()\n\nusing ll = long long;\nusing ld = long double;\n\
-    using uint = unsigned int;\nusing ull = unsigned long long;\nusing pii = pair<int,int>;\n\
-    using pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\
-    \nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace\
-    \ noya2;\n\n\n"
+    */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/fenwick_tree.hpp\"\
+    \n\n#line 4 \"data_structure/fenwick_tree.hpp\"\n\nnamespace noya2{\n\ntemplate\
+    \ <class T> struct fenwick_tree {\n  public:\n    fenwick_tree() : _n(0) {}\n\
+    \    explicit fenwick_tree(int n) : _n(n), data(n) {}\n\n    void add(int p, T\
+    \ x) {\n        assert(0 <= p && p < _n);\n        p++;\n        while (p <= _n)\
+    \ {\n            data[p - 1] += x;\n            p += p & -p;\n        }\n    }\n\
+    \n    T sum(int l, int r) {\n        assert(0 <= l && l <= r && r <= _n);\n  \
+    \      return sum(r) - sum(l);\n    }\n\n  private:\n    int _n;\n    vector<T>\
+    \ data;\n\n    T sum(int r) {\n        T s = 0;\n        while (r > 0) {\n   \
+    \         s += data[r - 1];\n            r -= r & -r;\n        }\n        return\
+    \ s;\n    }\n};\n\n} // namespace noya2\n#line 5 \"test/data_structure/PointAddRangeSum.test.cpp\"\
+    \n\nint main(){\n    int n, q; in(n,q);\n    vector<ll> a(n); in(a);\n    fenwick_tree<ll>\
+    \ fen(n);\n    rep(i,n) fen.add(i,a[i]);\n    while (q--){\n        int t; in(t);\n\
+    \        if (t == 0){\n            int p, x; in(p,x);\n            fen.add(p,x);\n\
+    \        }\n        if (t == 1){\n            int l, r; in(l,r);\n           \
+    \ out(fen.sum(l,r));\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
+    \n#include\"../../template/template.hpp\"\n#include\"../../data_structure/fenwick_tree.hpp\"\
+    \n\nint main(){\n    int n, q; in(n,q);\n    vector<ll> a(n); in(a);\n    fenwick_tree<ll>\
+    \ fen(n);\n    rep(i,n) fen.add(i,a[i]);\n    while (q--){\n        int t; in(t);\n\
+    \        if (t == 0){\n            int p, x; in(p,x);\n            fen.add(p,x);\n\
+    \        }\n        if (t == 1){\n            int l, r; in(l,r);\n           \
+    \ out(fen.sum(l,r));\n        }\n    }\n}"
   dependsOn:
+  - template/template.hpp
   - template/inout.hpp
   - template/const.hpp
   - template/utils.hpp
-  isVerificationFile: false
-  path: template/template.hpp
-  requiredBy:
-  - geometry/base_ld.hpp
-  - geometry/partition_by_circle.hpp
-  - tree/Mo_on_Tree.hpp
-  - tree/RerootingDP.hpp
-  - tree/Tree_core.hpp
   - data_structure/fenwick_tree.hpp
-  - data_structure/dsu.hpp
-  - data_structure/sparce_table.hpp
-  - misc/inversion.hpp
-  - misc/QMC.hpp
-  - misc/mo_algorithm.hpp
-  timestamp: '2023-07-17 20:36:50+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/geometry/aoj1198.test.cpp
-  - test/tree/Rerooting_DP.test.cpp
-  - test/tree/Tree_Diameter.test.cpp
-  - test/tree/Jump_on_Tree.test.cpp
-  - test/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/data_structure/PointAddRangeSum.test.cpp
-  - test/data_structure/Static_RMQ.test.cpp
-documentation_of: template/template.hpp
+  isVerificationFile: true
+  path: test/data_structure/PointAddRangeSum.test.cpp
+  requiredBy: []
+  timestamp: '2023-07-18 01:06:10+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/data_structure/PointAddRangeSum.test.cpp
 layout: document
 redirect_from:
-- /library/template/template.hpp
-- /library/template/template.hpp.html
-title: template/template.hpp
+- /verify/test/data_structure/PointAddRangeSum.test.cpp
+- /verify/test/data_structure/PointAddRangeSum.test.cpp.html
+title: test/data_structure/PointAddRangeSum.test.cpp
 ---

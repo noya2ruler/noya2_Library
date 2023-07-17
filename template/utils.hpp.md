@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/dsu.hpp
     title: data_structure/dsu.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -39,6 +39,9 @@ data:
     path: tree/Tree_core.hpp
     title: tree/Tree_core.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/PointAddRangeSum.test.cpp
+    title: test/data_structure/PointAddRangeSum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/data_structure/Point_Set_Range_Composite.test.cpp
@@ -121,6 +124,7 @@ data:
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/data_structure/PointAddRangeSum.test.cpp
   - test/data_structure/Static_RMQ.test.cpp
 documentation_of: template/utils.hpp
 layout: document
