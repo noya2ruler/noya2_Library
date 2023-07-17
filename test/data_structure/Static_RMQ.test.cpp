@@ -9,11 +9,11 @@ int op(int a, int b){
 }
 
 int main(){
-    int n, q; cin >> n >> q;
-    vector<int> a(n); cin >> a;
+    int n, q; in(n,q);
+    vector<int> a(n); in(a);
     SparseTable<int,op> spt(a);
     while (q--){
         int l, r; cin >> l >> r;
-        cout << spt.get(l,r) << '\n';
+        out(spt.get(l,r));
     }
 }
