@@ -23,13 +23,13 @@ data:
   - icon: ':warning:'
     path: misc/inversion.hpp
     title: misc/inversion.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
   - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: tree/Mo_on_Tree.hpp
     title: tree/Mo_on_Tree.hpp
   - icon: ':heavy_check_mark:'
@@ -60,6 +60,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/aoj_0489.test.cpp
+    title: test/tree/aoj_0489.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -118,6 +121,7 @@ data:
   - test/tree/Rerooting_DP.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/aoj_0489.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
   - test/data_structure/Static_RMQ.test.cpp

@@ -14,13 +14,16 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: tree/Mo_on_Tree.hpp
     title: tree/Mo_on_Tree.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/tree/aoj_0489.test.cpp
+    title: test/tree/aoj_0489.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://nyaannyaan.github.io/library/modulo/multipoint-binomial-sum.hpp
@@ -118,8 +121,9 @@ data:
   requiredBy:
   - tree/Mo_on_Tree.hpp
   timestamp: '2023-07-17 20:36:50+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/tree/aoj_0489.test.cpp
 documentation_of: misc/mo_algorithm.hpp
 layout: document
 redirect_from:

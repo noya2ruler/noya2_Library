@@ -31,7 +31,7 @@ data:
     - icon: ':warning:'
       path: misc/inversion.hpp
       title: misc/inversion.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: misc/mo_algorithm.hpp
       title: misc/mo_algorithm.hpp
   - name: potentialized_dsu
@@ -55,7 +55,7 @@ data:
       title: template/utils.hpp
   - name: tree
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: tree/Mo_on_Tree.hpp
       title: tree/Mo_on_Tree.hpp
     - icon: ':heavy_check_mark:'
@@ -97,5 +97,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Diameter.test.cpp
       title: test/tree/Tree_Diameter.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/aoj_0489.test.cpp
+      title: test/tree/aoj_0489.test.cpp
 layout: toppage
 ---

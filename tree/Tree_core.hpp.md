@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/aoj_0489.test.cpp
+    title: test/tree/aoj_0489.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -211,6 +214,7 @@ data:
   verifiedWith:
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/aoj_0489.test.cpp
 documentation_of: tree/Tree_core.hpp
 layout: document
 redirect_from:
