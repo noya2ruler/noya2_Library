@@ -58,6 +58,9 @@ data:
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+    title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -153,6 +156,7 @@ data:
   timestamp: '2023-07-17 20:36:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/geometry/aoj1198.test.cpp
   - test/tree/Rerooting_DP.test.cpp
   - test/tree/Tree_Diameter.test.cpp

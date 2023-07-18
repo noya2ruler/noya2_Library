@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/data_structure/Point_Set_Range_Composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+    title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -403,6 +406,7 @@ data:
   timestamp: '2023-06-14 02:12:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
 documentation_of: utility/modint.hpp
 layout: document

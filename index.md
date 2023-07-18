@@ -23,6 +23,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/partition_by_circle.hpp
       title: geometry/partition_by_circle.hpp
+  - name: math
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: math/binomial.hpp
+      title: math/binomial.hpp
   - name: misc
     pages:
     - icon: ':warning:'
@@ -86,6 +91,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/geometry/aoj1198.test.cpp
       title: test/geometry/aoj1198.test.cpp
+  - name: test/math
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+      title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - name: test/tree
     pages:
     - icon: ':heavy_check_mark:'
