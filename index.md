@@ -13,8 +13,8 @@ data:
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
     - icon: ':heavy_check_mark:'
-      path: data_structure/sparce_table.hpp
-      title: data_structure/sparce_table.hpp
+      path: data_structure/sparse_table.hpp
+      title: data_structure/sparse_table.hpp
   - name: geometry
     pages:
     - icon: ':heavy_check_mark:'

@@ -9,8 +9,8 @@ data:
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
   - icon: ':heavy_check_mark:'
-    path: data_structure/sparce_table.hpp
-    title: data_structure/sparce_table.hpp
+    path: data_structure/sparse_table.hpp
+    title: data_structure/sparse_table.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/base_ld.hpp
     title: geometry/base_ld.hpp
@@ -163,7 +163,7 @@ data:
   - template/template.hpp
   - data_structure/fenwick_tree.hpp
   - data_structure/dsu.hpp
-  - data_structure/sparce_table.hpp
+  - data_structure/sparse_table.hpp
   - misc/inversion.hpp
   - misc/QMC.hpp
   - misc/mo_algorithm.hpp

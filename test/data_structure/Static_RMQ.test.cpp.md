@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data_structure/sparce_table.hpp
-    title: data_structure/sparce_table.hpp
+    path: data_structure/sparse_table.hpp
+    title: data_structure/sparse_table.hpp
   - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
@@ -76,7 +76,7 @@ data:
     using pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
     */\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"test/data_structure/Static_RMQ.test.cpp\"\
-    \n\n#line 2 \"data_structure/sparce_table.hpp\"\n\n#line 4 \"data_structure/sparce_table.hpp\"\
+    \n\n#line 2 \"data_structure/sparse_table.hpp\"\n\n#line 4 \"data_structure/sparse_table.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<class S, S (*op)(S, S)>\nstruct SparseTable{\n\
     \    vector<vector<S>> table;\n    SparseTable (const vector<S> &vec){\n     \
     \   int n = vec.size(), n2 = 0;\n        while ((1<<n2) < n) n2++;\n        table.resize(n2+1);\n\
@@ -97,7 +97,7 @@ data:
     \    vector<int> a(n); in(a);\n    SparseTable<int,op> spt(a);\n    while (q--){\n\
     \        int l, r; cin >> l >> r;\n        out(spt.get(l,r));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include\"\
-    ../../template/template.hpp\"\n\n#include\"../../data_structure/sparce_table.hpp\"\
+    ../../template/template.hpp\"\n\n#include\"../../data_structure/sparse_table.hpp\"\
     \n\nint op(int a, int b){\n    return min(a,b);\n}\n\nint main(){\n    int n,\
     \ q; in(n,q);\n    vector<int> a(n); in(a);\n    SparseTable<int,op> spt(a);\n\
     \    while (q--){\n        int l, r; cin >> l >> r;\n        out(spt.get(l,r));\n\
@@ -107,11 +107,11 @@ data:
   - template/inout.hpp
   - template/const.hpp
   - template/utils.hpp
-  - data_structure/sparce_table.hpp
+  - data_structure/sparse_table.hpp
   isVerificationFile: true
   path: test/data_structure/Static_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 20:36:50+09:00'
+  timestamp: '2023-07-19 13:45:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Static_RMQ.test.cpp

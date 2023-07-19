@@ -23,7 +23,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/sparce_table.hpp\"\n\n#line 2 \"template/template.hpp\"\
+  bundledCode: "#line 2 \"data_structure/sparse_table.hpp\"\n\n#line 2 \"template/template.hpp\"\
     \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout.hpp\"\
     \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
     \ &os, const pair<T, U> &p) {\n  os << p.first << \" \" << p.second;\n  return\
@@ -71,7 +71,7 @@ data:
     \ = long double;\nusing uint = unsigned int;\nusing ull = unsigned long long;\n\
     using pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
-    */\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"data_structure/sparce_table.hpp\"\
+    */\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"data_structure/sparse_table.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<class S, S (*op)(S, S)>\nstruct SparseTable{\n\
     \    vector<vector<S>> table;\n    SparseTable (const vector<S> &vec){\n     \
     \   int n = vec.size(), n2 = 0;\n        while ((1<<n2) < n) n2++;\n        table.resize(n2+1);\n\
@@ -111,16 +111,16 @@ data:
   - template/const.hpp
   - template/utils.hpp
   isVerificationFile: false
-  path: data_structure/sparce_table.hpp
+  path: data_structure/sparse_table.hpp
   requiredBy: []
-  timestamp: '2023-07-17 20:36:50+09:00'
+  timestamp: '2023-07-19 13:45:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Static_RMQ.test.cpp
-documentation_of: data_structure/sparce_table.hpp
+documentation_of: data_structure/sparse_table.hpp
 layout: document
 redirect_from:
-- /library/data_structure/sparce_table.hpp
-- /library/data_structure/sparce_table.hpp.html
-title: data_structure/sparce_table.hpp
+- /library/data_structure/sparse_table.hpp
+- /library/data_structure/sparse_table.hpp.html
+title: data_structure/sparse_table.hpp
 ---
