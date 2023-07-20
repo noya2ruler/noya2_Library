@@ -229,12 +229,15 @@ data:
     \ friend mint operator/(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
     \ /= rhs;\n    }\n    friend bool operator==(const mint& lhs, const mint& rhs)\
     \ {\n        return lhs._v == rhs._v;\n    }\n    friend bool operator!=(const\
-    \ mint& lhs, const mint& rhs) {\n        return lhs._v != rhs._v;\n    }\n\n \
-    \ private:\n    unsigned int _v;\n    static constexpr unsigned int umod() { return\
-    \ m; }\n    static constexpr bool prime = noya2::is_prime<m>;\n};\n\ntemplate\
-    \ <int id> struct dynamic_modint : noya2::modint_base {\n    using mint = dynamic_modint;\n\
-    \n  public:\n    static int mod() { return (int)(bt.umod()); }\n    static void\
-    \ set_mod(int m) {\n        assert(1 <= m);\n        bt = noya2::barrett(m);\n\
+    \ mint& lhs, const mint& rhs) {\n        return lhs._v != rhs._v;\n    }\n   \
+    \ friend std::ostream &operator<<(std::ostream &os, const mint& p) {\n       \
+    \ return os << p.val();\n    }\n    friend std::istream &operator>>(std::istream\
+    \ &is, mint &a) {\n        long long t; is >> t;\n        a = mint(t);\n     \
+    \   return (is);\n    }\n\n  private:\n    unsigned int _v;\n    static constexpr\
+    \ unsigned int umod() { return m; }\n    static constexpr bool prime = noya2::is_prime<m>;\n\
+    };\n\ntemplate <int id> struct dynamic_modint : noya2::modint_base {\n    using\
+    \ mint = dynamic_modint;\n\n  public:\n    static int mod() { return (int)(bt.umod());\
+    \ }\n    static void set_mod(int m) {\n        assert(1 <= m);\n        bt = noya2::barrett(m);\n\
     \    }\n    static mint raw(int v) {\n        mint x;\n        x._v = v;\n   \
     \     return x;\n    }\n\n    dynamic_modint() : _v(0) {}\n    template <class\
     \ T, noya2::is_signed_int_t<T>* = nullptr>\n    dynamic_modint(T v) {\n      \
@@ -266,13 +269,17 @@ data:
     \ friend mint operator/(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
     \ /= rhs;\n    }\n    friend bool operator==(const mint& lhs, const mint& rhs)\
     \ {\n        return lhs._v == rhs._v;\n    }\n    friend bool operator!=(const\
-    \ mint& lhs, const mint& rhs) {\n        return lhs._v != rhs._v;\n    }\n\n \
-    \ private:\n    unsigned int _v;\n    static noya2::barrett bt;\n    static unsigned\
-    \ int umod() { return bt.umod(); }\n};\ntemplate <int id> noya2::barrett dynamic_modint<id>::bt(998244353);\n\
-    \nusing modint998244353 = static_modint<998244353>;\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\nusing modint = dynamic_modint<-1>;\n\nnamespace\
-    \ noya2 {\n\ntemplate <class T>\nusing is_static_modint = std::is_base_of<noya2::static_modint_base,\
-    \ T>;\n\ntemplate <class T>\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\
+    \ mint& lhs, const mint& rhs) {\n        return lhs._v != rhs._v;\n    }\n   \
+    \ friend std::ostream &operator<<(std::ostream &os, const mint& p) {\n       \
+    \ return os << p.val();\n    }\n    friend std::istream &operator>>(std::istream\
+    \ &is, mint &a) {\n        long long t; is >> t;\n        a = mint(t);\n     \
+    \   return (is);\n    }\n\n  private:\n    unsigned int _v;\n    static noya2::barrett\
+    \ bt;\n    static unsigned int umod() { return bt.umod(); }\n};\ntemplate <int\
+    \ id> noya2::barrett dynamic_modint<id>::bt(998244353);\n\nusing modint998244353\
+    \ = static_modint<998244353>;\nusing modint1000000007 = static_modint<1000000007>;\n\
+    using modint = dynamic_modint<-1>;\n\nnamespace noya2 {\n\ntemplate <class T>\n\
+    using is_static_modint = std::is_base_of<noya2::static_modint_base, T>;\n\ntemplate\
+    \ <class T>\nusing is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;\n\
     \ntemplate <class> struct is_dynamic_modint : public std::false_type {};\ntemplate\
     \ <int id>\nstruct is_dynamic_modint<dynamic_modint<id>> : public std::true_type\
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
@@ -307,7 +314,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-07-20 23:35:28+09:00'
+  timestamp: '2023-07-21 02:32:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Point_Set_Range_Composite.test.cpp
