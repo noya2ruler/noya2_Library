@@ -2,4 +2,5 @@
 .DS_Store
 a.out
 input.txt
+output.txt
 c.cpp
