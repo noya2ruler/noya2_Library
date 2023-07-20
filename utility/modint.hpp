@@ -302,6 +302,14 @@ struct static_modint : noya2::static_modint_base {
     friend bool operator!=(const mint& lhs, const mint& rhs) {
         return lhs._v != rhs._v;
     }
+    friend std::ostream &operator<<(std::ostream &os, const mint& p) {
+        return os << p.val();
+    }
+    friend std::istream &operator>>(std::istream &is, mint &a) {
+        long long t; is >> t;
+        a = mint(t);
+        return (is);
+    }
 
   private:
     unsigned int _v;
@@ -411,6 +419,14 @@ template <int id> struct dynamic_modint : noya2::modint_base {
     }
     friend bool operator!=(const mint& lhs, const mint& rhs) {
         return lhs._v != rhs._v;
+    }
+    friend std::ostream &operator<<(std::ostream &os, const mint& p) {
+        return os << p.val();
+    }
+    friend std::istream &operator>>(std::istream &is, mint &a) {
+        long long t; is >> t;
+        a = mint(t);
+        return (is);
     }
 
   private:
