@@ -91,6 +91,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Static_RMQ.test.cpp
       title: test/data_structure/Static_RMQ.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Unionfind.test.cpp
+      title: test/data_structure/Unionfind.test.cpp
   - name: test/geometry
     pages:
     - icon: ':heavy_check_mark:'

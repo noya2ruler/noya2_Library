@@ -58,6 +58,9 @@ data:
     path: test/data_structure/Static_RMQ.test.cpp
     title: test/data_structure/Static_RMQ.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Unionfind.test.cpp
+    title: test/data_structure/Unionfind.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
   - icon: ':heavy_check_mark:'
@@ -170,6 +173,7 @@ data:
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/aoj_0489.test.cpp
   - test/graph/Shortest_Path.test.cpp
+  - test/data_structure/Unionfind.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
   - test/data_structure/Static_RMQ.test.cpp

@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: data_structure/dsu.hpp
+    title: data_structure/dsu.hpp
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
   - icon: ':heavy_check_mark:'
@@ -13,23 +16,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: geometry/partition_by_circle.hpp
-    title: geometry/partition_by_circle.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Unionfind.test.cpp
-    title: test/data_structure/Unionfind.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/geometry/aoj1198.test.cpp
-    title: test/geometry/aoj1198.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"data_structure/dsu.hpp\"\n\n#line 2 \"template/template.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/unionfind
+    links:
+    - https://judge.yosupo.jp/problem/unionfind
+  bundledCode: "#line 1 \"test/data_structure/Unionfind.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/unionfind\"\n\n#line 2 \"template/template.hpp\"\
     \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout.hpp\"\
     \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
     \ &os, const pair<T, U> &p) {\n  os << p.first << \" \" << p.second;\n  return\
@@ -77,35 +75,13 @@ data:
     \ = long double;\nusing uint = unsigned int;\nusing ull = unsigned long long;\n\
     using pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
-    */\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"data_structure/dsu.hpp\"\n\n\
-    namespace noya2{\n\nstruct dsu {\n  public:\n    dsu() : _n(0) {}\n    dsu(int\
-    \ n) : _n(n), parent_or_size(n, -1) {}\n\n    int merge(int a, int b) {\n    \
-    \    assert(0 <= a && a < _n);\n        assert(0 <= b && b < _n);\n        int\
-    \ x = leader(a), y = leader(b);\n        if (x == y) return x;\n        if (-parent_or_size[x]\
-    \ < -parent_or_size[y]) std::swap(x, y);\n        parent_or_size[x] += parent_or_size[y];\n\
-    \        parent_or_size[y] = x;\n        return x;\n    }\n\n    bool same(int\
-    \ a, int b) {\n        assert(0 <= a && a < _n);\n        assert(0 <= b && b <\
-    \ _n);\n        return leader(a) == leader(b);\n    }\n\n    int leader(int a)\
-    \ {\n        assert(0 <= a && a < _n);\n        if (parent_or_size[a] < 0) return\
-    \ a;\n        return parent_or_size[a] = leader(parent_or_size[a]);\n    }\n\n\
-    \    int size(int a) {\n        assert(0 <= a && a < _n);\n        return -parent_or_size[leader(a)];\n\
-    \    }\n\n    std::vector<std::vector<int>> groups() {\n        std::vector<int>\
-    \ leader_buf(_n), group_size(_n);\n        for (int i = 0; i < _n; i++) {\n  \
-    \          leader_buf[i] = leader(i);\n            group_size[leader_buf[i]]++;\n\
-    \        }\n        std::vector<std::vector<int>> result(_n);\n        for (int\
-    \ i = 0; i < _n; i++) {\n            result[i].reserve(group_size[i]);\n     \
-    \   }\n        for (int i = 0; i < _n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
-    \        }\n        result.erase(\n            std::remove_if(result.begin(),\
-    \ result.end(),\n                           [&](const std::vector<int>& v) { return\
-    \ v.empty(); }),\n            result.end());\n        return result;\n    }\n\n\
-    \  private:\n    int _n;\n    // root node: -1 * component size\n    // otherwise:\
-    \ parent\n    std::vector<int> parent_or_size;\n};\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2{\n\
-    \nstruct dsu {\n  public:\n    dsu() : _n(0) {}\n    dsu(int n) : _n(n), parent_or_size(n,\
-    \ -1) {}\n\n    int merge(int a, int b) {\n        assert(0 <= a && a < _n);\n\
-    \        assert(0 <= b && b < _n);\n        int x = leader(a), y = leader(b);\n\
-    \        if (x == y) return x;\n        if (-parent_or_size[x] < -parent_or_size[y])\
-    \ std::swap(x, y);\n        parent_or_size[x] += parent_or_size[y];\n        parent_or_size[y]\
+    */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/dsu.hpp\"\n\n\
+    #line 4 \"data_structure/dsu.hpp\"\n\nnamespace noya2{\n\nstruct dsu {\n  public:\n\
+    \    dsu() : _n(0) {}\n    dsu(int n) : _n(n), parent_or_size(n, -1) {}\n\n  \
+    \  int merge(int a, int b) {\n        assert(0 <= a && a < _n);\n        assert(0\
+    \ <= b && b < _n);\n        int x = leader(a), y = leader(b);\n        if (x ==\
+    \ y) return x;\n        if (-parent_or_size[x] < -parent_or_size[y]) std::swap(x,\
+    \ y);\n        parent_or_size[x] += parent_or_size[y];\n        parent_or_size[y]\
     \ = x;\n        return x;\n    }\n\n    bool same(int a, int b) {\n        assert(0\
     \ <= a && a < _n);\n        assert(0 <= b && b < _n);\n        return leader(a)\
     \ == leader(b);\n    }\n\n    int leader(int a) {\n        assert(0 <= a && a\
@@ -121,25 +97,33 @@ data:
     \ result.end(),\n                           [&](const std::vector<int>& v) { return\
     \ v.empty(); }),\n            result.end());\n        return result;\n    }\n\n\
     \  private:\n    int _n;\n    // root node: -1 * component size\n    // otherwise:\
-    \ parent\n    std::vector<int> parent_or_size;\n};\n\n} // namespace noya2\n"
+    \ parent\n    std::vector<int> parent_or_size;\n};\n\n} // namespace noya2\n#line\
+    \ 5 \"test/data_structure/Unionfind.test.cpp\"\n\nint main(){\n    int n, q; in(n,q);\n\
+    \    dsu d(n);\n    while (q--){\n        int t, u, v; in(t,u,v);\n        if\
+    \ (t == 0){\n            d.merge(u,v);\n        }\n        else {\n          \
+    \  out(d.same(u,v) ? 1 : 0);\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n\n#include\"\
+    ../../template/template.hpp\"\n#include\"../../data_structure/dsu.hpp\"\n\nint\
+    \ main(){\n    int n, q; in(n,q);\n    dsu d(n);\n    while (q--){\n        int\
+    \ t, u, v; in(t,u,v);\n        if (t == 0){\n            d.merge(u,v);\n     \
+    \   }\n        else {\n            out(d.same(u,v) ? 1 : 0);\n        }\n    }\n\
+    }"
   dependsOn:
   - template/template.hpp
   - template/inout.hpp
   - template/const.hpp
   - template/utils.hpp
-  isVerificationFile: false
-  path: data_structure/dsu.hpp
-  requiredBy:
-  - geometry/partition_by_circle.hpp
-  timestamp: '2023-07-17 20:36:50+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/geometry/aoj1198.test.cpp
-  - test/data_structure/Unionfind.test.cpp
-documentation_of: data_structure/dsu.hpp
+  - data_structure/dsu.hpp
+  isVerificationFile: true
+  path: test/data_structure/Unionfind.test.cpp
+  requiredBy: []
+  timestamp: '2023-07-20 23:07:14+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/data_structure/Unionfind.test.cpp
 layout: document
 redirect_from:
-- /library/data_structure/dsu.hpp
-- /library/data_structure/dsu.hpp.html
-title: data_structure/dsu.hpp
+- /verify/test/data_structure/Unionfind.test.cpp
+- /verify/test/data_structure/Unionfind.test.cpp.html
+title: test/data_structure/Unionfind.test.cpp
 ---
