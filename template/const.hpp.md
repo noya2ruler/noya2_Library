@@ -73,6 +73,9 @@ data:
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Lowest_Common_Ancestor.test.cpp
+    title: test/tree/Lowest_Common_Ancestor.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Rerooting_DP.test.cpp
     title: test/tree/Rerooting_DP.test.cpp
   - icon: ':heavy_check_mark:'
@@ -192,6 +195,7 @@ data:
   - test/tree/Rerooting_DP.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/Lowest_Common_Ancestor.test.cpp
   - test/tree/aoj_0489.test.cpp
   - test/graph/Shortest_Path.test.cpp
   - test/data_structure/Unionfind.test.cpp

@@ -121,6 +121,9 @@ data:
       path: test/tree/Jump_on_Tree.test.cpp
       title: test/tree/Jump_on_Tree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/tree/Lowest_Common_Ancestor.test.cpp
+      title: test/tree/Lowest_Common_Ancestor.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/tree/Rerooting_DP.test.cpp
       title: test/tree/Rerooting_DP.test.cpp
     - icon: ':heavy_check_mark:'
