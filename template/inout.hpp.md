@@ -9,6 +9,9 @@ data:
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
   - icon: ':heavy_check_mark:'
+    path: data_structure/lazy_segment_tree.hpp
+    title: data_structure/lazy_segment_tree.hpp
+  - icon: ':heavy_check_mark:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
   - icon: ':heavy_check_mark:'
@@ -48,6 +51,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/data_structure/Point_Set_Range_Composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Affine_Range_Sum.test.cpp
+    title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_RMQ.test.cpp
     title: test/data_structure/Static_RMQ.test.cpp
@@ -123,6 +129,7 @@ data:
   - graph/Graph_core.hpp
   - data_structure/fenwick_tree.hpp
   - data_structure/dsu.hpp
+  - data_structure/lazy_segment_tree.hpp
   - data_structure/sparse_table.hpp
   - misc/inversion.hpp
   - misc/QMC.hpp
@@ -138,6 +145,7 @@ data:
   - test/tree/aoj_0489.test.cpp
   - test/graph/Shortest_Path.test.cpp
   - test/data_structure/Unionfind.test.cpp
+  - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
   - test/data_structure/Static_RMQ.test.cpp
