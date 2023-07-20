@@ -23,6 +23,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/partition_by_circle.hpp
       title: geometry/partition_by_circle.hpp
+  - name: graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: graph/Graph_core.hpp
+      title: graph/Graph_core.hpp
   - name: math
     pages:
     - icon: ':heavy_check_mark:'
@@ -91,6 +96,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/geometry/aoj1198.test.cpp
       title: test/geometry/aoj1198.test.cpp
+  - name: test/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Shortest_Path.test.cpp
+      title: test/graph/Shortest_Path.test.cpp
   - name: test/math
     pages:
     - icon: ':heavy_check_mark:'

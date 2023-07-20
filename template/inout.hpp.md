@@ -17,6 +17,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/partition_by_circle.hpp
     title: geometry/partition_by_circle.hpp
+  - icon: ':heavy_check_mark:'
+    path: graph/Graph_core.hpp
+    title: graph/Graph_core.hpp
   - icon: ':warning:'
     path: misc/QMC.hpp
     title: misc/QMC.hpp
@@ -51,6 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Shortest_Path.test.cpp
+    title: test/graph/Shortest_Path.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
@@ -111,6 +117,7 @@ data:
   - tree/RerootingDP.hpp
   - tree/Tree_core.hpp
   - template/template.hpp
+  - graph/Graph_core.hpp
   - data_structure/fenwick_tree.hpp
   - data_structure/dsu.hpp
   - data_structure/sparse_table.hpp
@@ -126,6 +133,7 @@ data:
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/aoj_0489.test.cpp
+  - test/graph/Shortest_Path.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
   - test/data_structure/Static_RMQ.test.cpp
