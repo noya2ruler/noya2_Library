@@ -8,6 +8,7 @@
 "test/graph/Shortest_Path.test.cpp": "2023-07-20 21:02:11 +0900",
 "test/math/Binomial_Coefficient_Prime_Mod.test.cpp": "2023-07-20 23:35:28 +0900",
 "test/tree/Jump_on_Tree.test.cpp": "2023-07-17 20:36:50 +0900",
+"test/tree/Lowest_Common_Ancestor.test.cpp": "2023-07-20 23:50:13 +0900",
 "test/tree/Rerooting_DP.test.cpp": "2023-07-17 20:36:50 +0900",
 "test/tree/Tree_Diameter.test.cpp": "2023-07-17 20:36:50 +0900",
 "test/tree/aoj_0489.test.cpp": "2023-07-18 01:17:51 +0900"
