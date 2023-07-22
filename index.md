@@ -31,6 +31,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/Graph_core.hpp
       title: graph/Graph_core.hpp
+    - icon: ':warning:'
+      path: graph/scc.hpp
+      title: graph/scc.hpp
   - name: math
     pages:
     - icon: ':heavy_check_mark:'
