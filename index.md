@@ -31,7 +31,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/Graph_core.hpp
       title: graph/Graph_core.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: graph/scc.hpp
   - name: math
@@ -113,6 +113,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Shortest_Path.test.cpp
       title: test/graph/Shortest_Path.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Strongly_Connected_Components.test.cpp
+      title: test/graph/Strongly_Connected_Components.test.cpp
   - name: test/math
     pages:
     - icon: ':heavy_check_mark:'

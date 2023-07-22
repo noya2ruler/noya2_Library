@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Strongly_Connected_Components.test.cpp
+    title: test/graph/Strongly_Connected_Components.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/scc.hpp\"\n\n#include<vector>\n\nnamespace noya2{\n\
@@ -83,8 +86,9 @@ data:
   path: graph/scc.hpp
   requiredBy: []
   timestamp: '2023-07-22 20:06:49+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/graph/Strongly_Connected_Components.test.cpp
 documentation_of: graph/scc.hpp
 layout: document
 redirect_from:

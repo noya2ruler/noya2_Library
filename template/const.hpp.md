@@ -67,6 +67,9 @@ data:
     path: test/graph/Shortest_Path.test.cpp
     title: test/graph/Shortest_Path.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/Strongly_Connected_Components.test.cpp
+    title: test/graph/Strongly_Connected_Components.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -198,6 +201,7 @@ data:
   - test/tree/Lowest_Common_Ancestor.test.cpp
   - test/tree/aoj_0489.test.cpp
   - test/graph/Shortest_Path.test.cpp
+  - test/graph/Strongly_Connected_Components.test.cpp
   - test/data_structure/Unionfind.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
