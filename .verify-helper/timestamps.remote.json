@@ -6,6 +6,7 @@
 "test/data_structure/Unionfind.test.cpp": "2023-07-20 23:07:14 +0900",
 "test/geometry/aoj1198.test.cpp": "2023-07-17 20:36:50 +0900",
 "test/graph/Shortest_Path.test.cpp": "2023-07-20 21:02:11 +0900",
+"test/graph/Strongly_Connected_Components.test.cpp": "2023-07-22 20:25:35 +0900",
 "test/math/Binomial_Coefficient_Prime_Mod.test.cpp": "2023-07-21 02:32:24 +0900",
 "test/tree/Jump_on_Tree.test.cpp": "2023-07-17 20:36:50 +0900",
 "test/tree/Lowest_Common_Ancestor.test.cpp": "2023-07-20 23:50:13 +0900",
