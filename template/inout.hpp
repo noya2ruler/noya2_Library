@@ -11,13 +11,6 @@ istream &operator>>(istream &is, pair<T, U> &p){
     return is;
 }
 
-template<typename T>
-ostream &operator<<(ostream &os, const vector<vector<T>> &vv){
-    int s = (int)vv.size();
-    for (int i = 0; i < s; i++) os << (i ? "\n" : "") << vv[i];
-    return os;
-}
-
 template <typename T>
 ostream &operator<<(ostream &os, const vector<T> &v){
     int s = (int)v.size();
@@ -43,6 +36,12 @@ void out(const T &t, const U &...u){
     cout << t;
     if (sizeof...(u)) cout << sep;
     out(u...);
+}
+
+template<typename T>
+void out(const vector<vector<T>> &vv){
+    int s = (int)vv.size();
+    for (int i = 0; i < s; i++) out(vv[i]);
 }
 
 struct IoSetup {
