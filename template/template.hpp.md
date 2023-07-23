@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout.hpp
     title: template/inout.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -38,16 +38,16 @@ data:
   - icon: ':warning:'
     path: misc/inversion.hpp
     title: misc/inversion.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/Mo_on_Tree.hpp
     title: tree/Mo_on_Tree.hpp
   - icon: ':heavy_check_mark:'
     path: tree/RerootingDP.hpp
     title: Rerooting DP
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/Tree_core.hpp
     title: tree/Tree_core.hpp
   _extendedVerifiedWith:
@@ -90,12 +90,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
@@ -103,18 +103,17 @@ data:
     \ U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os << p.first\
     \ << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename U>\n\
     istream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
-    \    return is;\n}\n\ntemplate<typename T>\nostream &operator<<(ostream &os, const\
-    \ vector<vector<T>> &vv){\n    int s = (int)vv.size();\n    for (int i = 0; i\
-    \ < s; i++) os << (i ? \"\\n\" : \"\") << vv[i];\n    return os;\n}\n\ntemplate\
-    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int\
-    \ s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\"\
-    ) << v[i];\n    return os;\n}\ntemplate <typename T>\nistream &operator>>(istream\
-    \ &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid\
-    \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
-    \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
-    \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
-    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\nstruct IoSetup\
-    \ {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
+    \    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os,\
+    \ const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s;\
+    \ i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
+    \ T>\nistream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is\
+    \ >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\n\
+    void in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout\
+    \ << \"\\n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const\
+    \ T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n\
+    \    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n\
+    \    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\
+    \nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
     \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
     \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
@@ -179,8 +178,8 @@ data:
   - misc/inversion.hpp
   - misc/QMC.hpp
   - misc/mo_algorithm.hpp
-  timestamp: '2023-07-23 15:58:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-07-23 17:25:49+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/geometry/aoj1198.test.cpp

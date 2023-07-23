@@ -4,16 +4,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/Graph_core.hpp
     title: graph/Graph_core.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout.hpp
     title: template/inout.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
@@ -32,36 +32,36 @@ data:
     \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
     \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
     \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
-    \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate<typename\
-    \ T>\nostream &operator<<(ostream &os, const vector<vector<T>> &vv){\n    int\
-    \ s = (int)vv.size();\n    for (int i = 0; i < s; i++) os << (i ? \"\\n\" : \"\
-    \") << vv[i];\n    return os;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream\
-    \ &os, const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i\
-    \ < s; i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
-    \ T>\nistream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is\
-    \ >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\n\
-    void in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout\
-    \ << \"\\n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const\
-    \ T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n\
-    \    out(u...);\n}\n\nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n\
-    \        ios::sync_with_stdio(false);\n        cout << fixed << setprecision(15);\n\
-    \        cerr << fixed << setprecision(7);\n    }\n} iosetup_noya2;\n\n} // namespace\
-    \ noya2\n#line 1 \"template/const.hpp\"\nnamespace noya2{\n\nconst int iinf =\
-    \ 1'000'000'007;\nconst long long linf = 2'000'000'000'000'000'000LL;\nconst long\
-    \ long mod998 =  998244353;\nconst long long mod107 = 1000000007;\nconst long\
-    \ double pi = 3.14159265358979323;\nconst vector<int> dx = {0,1,0,-1,1,1,-1,-1};\n\
-    const vector<int> dy = {1,0,-1,0,1,-1,-1,1};\nconst string ALP = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"\
-    ;\nconst string alp = \"abcdefghijklmnopqrstuvwxyz\";\nconst string NUM = \"0123456789\"\
-    ;\n\nvoid yes(){ cout << \"Yes\\n\"; }\nvoid no(){ cout << \"No\\n\"; }\nvoid\
-    \ YES(){ cout << \"YES\\n\"; }\nvoid NO(){ cout << \"NO\\n\"; }\nvoid yn(bool\
-    \ t){ t ? yes() : no(); }\nvoid YN(bool t){ t ? YES() : NO(); }\n\n} // namespace\
-    \ noya2\n#line 1 \"template/utils.hpp\"\nnamespace noya2{\n\nunsigned long long\
-    \ inner_binary_gcd(unsigned long long a, unsigned long long b){\n    if (a ==\
-    \ 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\n    int m = __builtin_ctzll(b);\n\
-    \    a >>= n;\n    b >>= m;\n    while (a != b) {\n        int m = __builtin_ctzll(a\
-    \ - b);\n        bool f = a > b;\n        unsigned long long c = f ? a : b;\n\
-    \        b = f ? b : a;\n        a = (c - b) >> m;\n    }\n    return a << min(n,\
-    \ m);\n}\n\ntemplate<typename T>\nT gcd_fast(T a, T b){\n    return static_cast<T>(inner_binary_gcd(abs(a),abs(b)));\n\
+    \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
+    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int\
+    \ s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\"\
+    ) << v[i];\n    return os;\n}\ntemplate <typename T>\nistream &operator>>(istream\
+    \ &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid\
+    \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
+    \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
+    \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
+    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\ntemplate<typename\
+    \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
+    \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
+    \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
+    \ << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n \
+    \   }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
+    \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
+    \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
+    \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
+    \ vector<int> dx = {0,1,0,-1,1,1,-1,-1};\nconst vector<int> dy = {1,0,-1,0,1,-1,-1,1};\n\
+    const string ALP = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\";\nconst string alp = \"abcdefghijklmnopqrstuvwxyz\"\
+    ;\nconst string NUM = \"0123456789\";\n\nvoid yes(){ cout << \"Yes\\n\"; }\nvoid\
+    \ no(){ cout << \"No\\n\"; }\nvoid YES(){ cout << \"YES\\n\"; }\nvoid NO(){ cout\
+    \ << \"NO\\n\"; }\nvoid yn(bool t){ t ? yes() : no(); }\nvoid YN(bool t){ t ?\
+    \ YES() : NO(); }\n\n} // namespace noya2\n#line 1 \"template/utils.hpp\"\nnamespace\
+    \ noya2{\n\nunsigned long long inner_binary_gcd(unsigned long long a, unsigned\
+    \ long long b){\n    if (a == 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\n\
+    \    int m = __builtin_ctzll(b);\n    a >>= n;\n    b >>= m;\n    while (a !=\
+    \ b) {\n        int m = __builtin_ctzll(a - b);\n        bool f = a > b;\n   \
+    \     unsigned long long c = f ? a : b;\n        b = f ? b : a;\n        a = (c\
+    \ - b) >> m;\n    }\n    return a << min(n, m);\n}\n\ntemplate<typename T>\nT\
+    \ gcd_fast(T a, T b){\n    return static_cast<T>(inner_binary_gcd(abs(a),abs(b)));\n\
     }\n\ntemplate<typename T>\nT floor_div(const T n, const T d) {\n    assert(d !=\
     \ 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\ntemplate<typename\
     \ T>\nT ceil_div(const T n, const T d) {\n    assert(d != 0);\n    return n /\
@@ -166,7 +166,7 @@ data:
   isVerificationFile: true
   path: test/graph/Shortest_Path.test.cpp
   requiredBy: []
-  timestamp: '2023-07-23 15:58:17+09:00'
+  timestamp: '2023-07-23 17:25:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Shortest_Path.test.cpp
