@@ -11,5 +11,6 @@
 "test/tree/Jump_on_Tree.test.cpp": "2023-07-23 17:25:49 +0900",
 "test/tree/Lowest_Common_Ancestor.test.cpp": "2023-07-23 17:25:49 +0900",
 "test/tree/Rerooting_DP.test.cpp": "2023-07-23 17:25:49 +0900",
-"test/tree/Tree_Diameter.test.cpp": "2023-07-23 17:25:49 +0900"
+"test/tree/Tree_Diameter.test.cpp": "2023-07-23 17:25:49 +0900",
+"test/tree/aoj_0489.test.cpp": "2023-07-23 17:25:49 +0900"
 }
