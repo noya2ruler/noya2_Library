@@ -12,7 +12,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/lazy_segment_tree.hpp
       title: data_structure/lazy_segment_tree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -47,7 +47,7 @@ data:
     - icon: ':warning:'
       path: misc/inversion.hpp
       title: misc/inversion.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: misc/mo_algorithm.hpp
       title: misc/mo_algorithm.hpp
   - name: potentialized_dsu
@@ -57,27 +57,27 @@ data:
       title: potentialized_dsu/potentialized_dsu.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/const.hpp
       title: template/const.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/Mo_on_Tree.hpp
       title: tree/Mo_on_Tree.hpp
     - icon: ':heavy_check_mark:'
       path: tree/RerootingDP.hpp
       title: Rerooting DP
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
   - name: utility
@@ -135,7 +135,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Diameter.test.cpp
       title: test/tree/Tree_Diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/aoj_0489.test.cpp
       title: test/tree/aoj_0489.test.cpp
 layout: toppage

@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout.hpp
     title: template/inout.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -38,16 +38,16 @@ data:
   - icon: ':warning:'
     path: misc/inversion.hpp
     title: misc/inversion.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/Mo_on_Tree.hpp
     title: tree/Mo_on_Tree.hpp
   - icon: ':heavy_check_mark:'
     path: tree/RerootingDP.hpp
     title: Rerooting DP
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/Tree_core.hpp
     title: tree/Tree_core.hpp
   _extendedVerifiedWith:
@@ -90,12 +90,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
@@ -179,7 +179,7 @@ data:
   - misc/QMC.hpp
   - misc/mo_algorithm.hpp
   timestamp: '2023-07-23 17:25:49+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/geometry/aoj1198.test.cpp
