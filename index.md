@@ -50,6 +50,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/mo_algorithm.hpp
       title: misc/mo_algorithm.hpp
+    - icon: ':warning:'
+      path: misc/timer.hpp
+      title: misc/timer.hpp
   - name: potentialized_dsu
     pages:
     - icon: ':warning:'
