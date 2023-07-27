@@ -6,3 +6,5 @@ output.txt
 a.cpp
 b.cpp
 c.cpp
+checker.cpp
+judge.sh
