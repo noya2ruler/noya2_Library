@@ -39,6 +39,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: math/binomial.hpp
+    - icon: ':warning:'
+      path: math/matrix.hpp
+      title: math/matrix.hpp
   - name: misc
     pages:
     - icon: ':warning:'

@@ -33,6 +33,9 @@ data:
     path: graph/Graph_core.hpp
     title: graph/Graph_core.hpp
   - icon: ':warning:'
+    path: math/matrix.hpp
+    title: math/matrix.hpp
+  - icon: ':warning:'
     path: misc/QMC.hpp
     title: misc/QMC.hpp
   - icon: ':warning:'
@@ -165,6 +168,7 @@ data:
   isVerificationFile: false
   path: template/template.hpp
   requiredBy:
+  - math/matrix.hpp
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp
   - tree/Mo_on_Tree.hpp
