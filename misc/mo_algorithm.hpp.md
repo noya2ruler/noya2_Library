@@ -66,7 +66,7 @@ data:
     \ 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\ntemplate<typename\
     \ T>\nT ceil_div(const T n, const T d) {\n    assert(d != 0);\n    return n /\
     \ d + static_cast<T>((n ^ d) >= 0 && n % d != 0);\n}\n\ntemplate<typename T> void\
-    \ uniq(vector<T> &v){\n    sort(all(v));\n    v.erase(unique(all(v)),v.end());\n\
+    \ uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n    v.erase(unique(v.begin(),v.end()),v.end());\n\
     }\n\ntemplate <typename T, typename U>\ninline bool chmin(T &x, U y) {\n    return\
     \ (y < x) ? (x = y, true) : false;\n}\n\ntemplate <typename T, typename U>\ninline\
     \ bool chmax(T &x, U y) {\n    return (x < y) ? (x = y, true) : false;\n}\n\n\
@@ -122,7 +122,7 @@ data:
   path: misc/mo_algorithm.hpp
   requiredBy:
   - tree/Mo_on_Tree.hpp
-  timestamp: '2023-07-23 17:25:49+09:00'
+  timestamp: '2023-07-29 21:44:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/aoj_0489.test.cpp
