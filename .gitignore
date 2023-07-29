@@ -6,5 +6,5 @@ output.txt
 a.cpp
 b.cpp
 c.cpp
-checker.cpp
+val.cpp
 judge.sh
