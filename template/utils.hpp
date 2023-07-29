@@ -34,8 +34,8 @@ T ceil_div(const T n, const T d) {
 }
 
 template<typename T> void uniq(vector<T> &v){
-    sort(all(v));
-    v.erase(unique(all(v)),v.end());
+    sort(v.begin(),v.end());
+    v.erase(unique(v.begin(),v.end()),v.end());
 }
 
 template <typename T, typename U>
