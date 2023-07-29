@@ -44,6 +44,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
+  - icon: ':warning:'
+    path: string/rolling_hash.hpp
+    title: string/rolling_hash.hpp
   - icon: ':heavy_check_mark:'
     path: tree/Mo_on_Tree.hpp
     title: tree/Mo_on_Tree.hpp
@@ -168,6 +171,7 @@ data:
   isVerificationFile: false
   path: template/template.hpp
   requiredBy:
+  - string/rolling_hash.hpp
   - math/matrix.hpp
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp

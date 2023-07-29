@@ -61,6 +61,11 @@ data:
     - icon: ':warning:'
       path: potentialized_dsu/potentialized_dsu.hpp
       title: potentialized_dsu/potentialized_dsu.hpp
+  - name: string
+    pages:
+    - icon: ':warning:'
+      path: string/rolling_hash.hpp
+      title: string/rolling_hash.hpp
   - name: template
     pages:
     - icon: ':heavy_check_mark:'
