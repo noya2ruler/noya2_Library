@@ -7,4 +7,6 @@ a.cpp
 b.cpp
 c.cpp
 val.cpp
+gen.cpp
 judge.sh
+debug.sh
