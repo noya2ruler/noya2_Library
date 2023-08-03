@@ -57,39 +57,41 @@ data:
     \ noya2{\n\nunsigned long long inner_binary_gcd(unsigned long long a, unsigned\
     \ long long b){\n    if (a == 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\n\
     \    int m = __builtin_ctzll(b);\n    a >>= n;\n    b >>= m;\n    while (a !=\
-    \ b) {\n        int m = __builtin_ctzll(a - b);\n        bool f = a > b;\n   \
-    \     unsigned long long c = f ? a : b;\n        b = f ? b : a;\n        a = (c\
-    \ - b) >> m;\n    }\n    return a << min(n, m);\n}\n\ntemplate<typename T>\nT\
-    \ gcd_fast(T a, T b){\n    return static_cast<T>(inner_binary_gcd(abs(a),abs(b)));\n\
-    }\n\ntemplate<typename T>\nT floor_div(const T n, const T d) {\n    assert(d !=\
-    \ 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\ntemplate<typename\
-    \ T>\nT ceil_div(const T n, const T d) {\n    assert(d != 0);\n    return n /\
-    \ d + static_cast<T>((n ^ d) >= 0 && n % d != 0);\n}\n\ntemplate<typename T> void\
-    \ uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n    v.erase(unique(v.begin(),v.end()),v.end());\n\
-    }\n\ntemplate <typename T, typename U>\ninline bool chmin(T &x, U y) {\n    return\
-    \ (y < x) ? (x = y, true) : false;\n}\n\ntemplate <typename T, typename U>\ninline\
-    \ bool chmax(T &x, U y) {\n    return (x < y) ? (x = y, true) : false;\n}\n\n\
-    template<typename T>\ninline bool range(T l, T x, T r){\n    return l <= x &&\
-    \ x < r;\n}\n\n} // namespace noya2\n#line 8 \"template/template.hpp\"\n\n#define\
-    \ rep(i,n) for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for (int i\
-    \ = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1); i >= 0;\
-    \ i--)\n#define all(v) (v).begin(),(v).end()\n\nusing ll = long long;\nusing ld\
-    \ = long double;\nusing uint = unsigned int;\nusing ull = unsigned long long;\n\
-    using pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
-    using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
-    */\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"geometry/base_ld.hpp\"\n\nnamespace\
-    \ noya2 {\n\nusing vec = complex<ld>;\n\nconst ld PI = acos(-1);\n\nvoid ldout(int\
-    \ len = 20) {\n    cout << fixed << setprecision(len);\n}\n\nint sgn(ld a, const\
-    \ ld eps = 1e-7) {\n    return (a < -eps) ? -1 : (a > eps) ? 1 : 0;\n}\n\nbool\
-    \ same_vec(vec a, vec b) {\n    a -= b;\n    return sgn(a.real()) == 0 && sgn(a.imag())\
-    \ == 0;\n}\n\nld dot(const vec &a, const vec &b) {\n    return (conj(a) * b).real();\n\
-    }\n\nld cross(const vec &a, const vec &b) {\n    return (conj(a) * b).imag();\n\
-    }\n\nint isp(const vec &a, const vec &b, const vec &c) {\n    int cross_sgn =\
-    \ sgn(cross(b - a, c - a));\n    if (cross_sgn == 0) {\n        if (sgn(dot(b\
-    \ - a, c - a)) < 0) return -2;\n        if (sgn(dot(a - b, c - b)) < 0) return\
-    \ 2;\n    }\n    return cross_sgn;\n}\n\nvec rot90(const vec &a) {\n    return\
-    \ {-a.imag(), a.real()};\n}\n\nvec rot(const vec &a, ld rad) {\n    return a *\
-    \ vec(cosl(rad), sinl(rad));\n}\n\n\n}  // namespace lib\n"
+    \ b) {\n        int mm = __builtin_ctzll(a - b);\n        bool f = a > b;\n  \
+    \      unsigned long long c = f ? a : b;\n        b = f ? b : a;\n        a =\
+    \ (c - b) >> mm;\n    }\n    return a << min(n, m);\n}\n\ntemplate<typename T>\n\
+    T gcd_fast(T a, T b){\n    return static_cast<T>(inner_binary_gcd(abs(a),abs(b)));\n\
+    }\n\nlong long sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long long\
+    \ x = sqrt(n);\n    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x > n)\
+    \ x--;\n    return x;\n}\n\ntemplate<typename T>\nT floor_div(const T n, const\
+    \ T d) {\n    assert(d != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 &&\
+    \ n % d != 0);\n}\n\ntemplate<typename T>\nT ceil_div(const T n, const T d) {\n\
+    \    assert(d != 0);\n    return n / d + static_cast<T>((n ^ d) >= 0 && n % d\
+    \ != 0);\n}\n\ntemplate<typename T> void uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n\
+    \    v.erase(unique(v.begin(),v.end()),v.end());\n}\n\ntemplate <typename T, typename\
+    \ U>\ninline bool chmin(T &x, U y) {\n    return (y < x) ? (x = y, true) : false;\n\
+    }\n\ntemplate <typename T, typename U>\ninline bool chmax(T &x, U y) {\n    return\
+    \ (x < y) ? (x = y, true) : false;\n}\n\ntemplate<typename T>\ninline bool range(T\
+    \ l, T x, T r){\n    return l <= x && x < r;\n}\n\n} // namespace noya2\n#line\
+    \ 8 \"template/template.hpp\"\n\n#define rep(i,n) for (int i = 0; i < (int)(n);\
+    \ i++)\n#define repp(i,m,n) for (int i = (m); i < (int)(n); i++)\n#define reb(i,n)\
+    \ for (int i = (int)(n-1); i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\
+    \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
+    using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
+    using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"geometry/base_ld.hpp\"\
+    \n\nnamespace noya2 {\n\nusing vec = complex<ld>;\n\nconst ld PI = acos(-1);\n\
+    \nvoid ldout(int len = 20) {\n    cout << fixed << setprecision(len);\n}\n\nint\
+    \ sgn(ld a, const ld eps = 1e-7) {\n    return (a < -eps) ? -1 : (a > eps) ? 1\
+    \ : 0;\n}\n\nbool same_vec(vec a, vec b) {\n    a -= b;\n    return sgn(a.real())\
+    \ == 0 && sgn(a.imag()) == 0;\n}\n\nld dot(const vec &a, const vec &b) {\n   \
+    \ return (conj(a) * b).real();\n}\n\nld cross(const vec &a, const vec &b) {\n\
+    \    return (conj(a) * b).imag();\n}\n\nint isp(const vec &a, const vec &b, const\
+    \ vec &c) {\n    int cross_sgn = sgn(cross(b - a, c - a));\n    if (cross_sgn\
+    \ == 0) {\n        if (sgn(dot(b - a, c - a)) < 0) return -2;\n        if (sgn(dot(a\
+    \ - b, c - b)) < 0) return 2;\n    }\n    return cross_sgn;\n}\n\nvec rot90(const\
+    \ vec &a) {\n    return {-a.imag(), a.real()};\n}\n\nvec rot(const vec &a, ld\
+    \ rad) {\n    return a * vec(cosl(rad), sinl(rad));\n}\n\n\n}  // namespace lib\n"
   code: "#pragma once\n\n#include \"../template/template.hpp\"\n\nnamespace noya2\
     \ {\n\nusing vec = complex<ld>;\n\nconst ld PI = acos(-1);\n\nvoid ldout(int len\
     \ = 20) {\n    cout << fixed << setprecision(len);\n}\n\nint sgn(ld a, const ld\
@@ -112,7 +114,7 @@ data:
   path: geometry/base_ld.hpp
   requiredBy:
   - geometry/partition_by_circle.hpp
-  timestamp: '2023-07-29 21:44:33+09:00'
+  timestamp: '2023-08-03 18:28:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/aoj1198.test.cpp

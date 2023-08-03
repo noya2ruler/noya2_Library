@@ -102,37 +102,41 @@ data:
     \ long inner_binary_gcd(unsigned long long a, unsigned long long b){\n    if (a\
     \ == 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\n    int m =\
     \ __builtin_ctzll(b);\n    a >>= n;\n    b >>= m;\n    while (a != b) {\n    \
-    \    int m = __builtin_ctzll(a - b);\n        bool f = a > b;\n        unsigned\
-    \ long long c = f ? a : b;\n        b = f ? b : a;\n        a = (c - b) >> m;\n\
+    \    int mm = __builtin_ctzll(a - b);\n        bool f = a > b;\n        unsigned\
+    \ long long c = f ? a : b;\n        b = f ? b : a;\n        a = (c - b) >> mm;\n\
     \    }\n    return a << min(n, m);\n}\n\ntemplate<typename T>\nT gcd_fast(T a,\
-    \ T b){\n    return static_cast<T>(inner_binary_gcd(abs(a),abs(b)));\n}\n\ntemplate<typename\
-    \ T>\nT floor_div(const T n, const T d) {\n    assert(d != 0);\n    return n /\
-    \ d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\ntemplate<typename T>\n\
-    T ceil_div(const T n, const T d) {\n    assert(d != 0);\n    return n / d + static_cast<T>((n\
-    \ ^ d) >= 0 && n % d != 0);\n}\n\ntemplate<typename T> void uniq(vector<T> &v){\n\
-    \    sort(v.begin(),v.end());\n    v.erase(unique(v.begin(),v.end()),v.end());\n\
-    }\n\ntemplate <typename T, typename U>\ninline bool chmin(T &x, U y) {\n    return\
-    \ (y < x) ? (x = y, true) : false;\n}\n\ntemplate <typename T, typename U>\ninline\
-    \ bool chmax(T &x, U y) {\n    return (x < y) ? (x = y, true) : false;\n}\n\n\
-    template<typename T>\ninline bool range(T l, T x, T r){\n    return l <= x &&\
-    \ x < r;\n}\n\n} // namespace noya2\n"
+    \ T b){\n    return static_cast<T>(inner_binary_gcd(abs(a),abs(b)));\n}\n\nlong\
+    \ long sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long long x =\
+    \ sqrt(n);\n    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x > n) x--;\n\
+    \    return x;\n}\n\ntemplate<typename T>\nT floor_div(const T n, const T d) {\n\
+    \    assert(d != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d !=\
+    \ 0);\n}\n\ntemplate<typename T>\nT ceil_div(const T n, const T d) {\n    assert(d\
+    \ != 0);\n    return n / d + static_cast<T>((n ^ d) >= 0 && n % d != 0);\n}\n\n\
+    template<typename T> void uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n\
+    \    v.erase(unique(v.begin(),v.end()),v.end());\n}\n\ntemplate <typename T, typename\
+    \ U>\ninline bool chmin(T &x, U y) {\n    return (y < x) ? (x = y, true) : false;\n\
+    }\n\ntemplate <typename T, typename U>\ninline bool chmax(T &x, U y) {\n    return\
+    \ (x < y) ? (x = y, true) : false;\n}\n\ntemplate<typename T>\ninline bool range(T\
+    \ l, T x, T r){\n    return l <= x && x < r;\n}\n\n} // namespace noya2\n"
   code: "namespace noya2{\n\nunsigned long long inner_binary_gcd(unsigned long long\
     \ a, unsigned long long b){\n    if (a == 0 || b == 0) return a + b;\n    int\
     \ n = __builtin_ctzll(a);\n    int m = __builtin_ctzll(b);\n    a >>= n;\n   \
-    \ b >>= m;\n    while (a != b) {\n        int m = __builtin_ctzll(a - b);\n  \
-    \      bool f = a > b;\n        unsigned long long c = f ? a : b;\n        b =\
-    \ f ? b : a;\n        a = (c - b) >> m;\n    }\n    return a << min(n, m);\n}\n\
-    \ntemplate<typename T>\nT gcd_fast(T a, T b){\n    return static_cast<T>(inner_binary_gcd(abs(a),abs(b)));\n\
-    }\n\ntemplate<typename T>\nT floor_div(const T n, const T d) {\n    assert(d !=\
-    \ 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\ntemplate<typename\
-    \ T>\nT ceil_div(const T n, const T d) {\n    assert(d != 0);\n    return n /\
-    \ d + static_cast<T>((n ^ d) >= 0 && n % d != 0);\n}\n\ntemplate<typename T> void\
-    \ uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n    v.erase(unique(v.begin(),v.end()),v.end());\n\
-    }\n\ntemplate <typename T, typename U>\ninline bool chmin(T &x, U y) {\n    return\
-    \ (y < x) ? (x = y, true) : false;\n}\n\ntemplate <typename T, typename U>\ninline\
-    \ bool chmax(T &x, U y) {\n    return (x < y) ? (x = y, true) : false;\n}\n\n\
-    template<typename T>\ninline bool range(T l, T x, T r){\n    return l <= x &&\
-    \ x < r;\n}\n\n} // namespace noya2"
+    \ b >>= m;\n    while (a != b) {\n        int mm = __builtin_ctzll(a - b);\n \
+    \       bool f = a > b;\n        unsigned long long c = f ? a : b;\n        b\
+    \ = f ? b : a;\n        a = (c - b) >> mm;\n    }\n    return a << min(n, m);\n\
+    }\n\ntemplate<typename T>\nT gcd_fast(T a, T b){\n    return static_cast<T>(inner_binary_gcd(abs(a),abs(b)));\n\
+    }\n\nlong long sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long long\
+    \ x = sqrt(n);\n    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x > n)\
+    \ x--;\n    return x;\n}\n\ntemplate<typename T>\nT floor_div(const T n, const\
+    \ T d) {\n    assert(d != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 &&\
+    \ n % d != 0);\n}\n\ntemplate<typename T>\nT ceil_div(const T n, const T d) {\n\
+    \    assert(d != 0);\n    return n / d + static_cast<T>((n ^ d) >= 0 && n % d\
+    \ != 0);\n}\n\ntemplate<typename T> void uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n\
+    \    v.erase(unique(v.begin(),v.end()),v.end());\n}\n\ntemplate <typename T, typename\
+    \ U>\ninline bool chmin(T &x, U y) {\n    return (y < x) ? (x = y, true) : false;\n\
+    }\n\ntemplate <typename T, typename U>\ninline bool chmax(T &x, U y) {\n    return\
+    \ (x < y) ? (x = y, true) : false;\n}\n\ntemplate<typename T>\ninline bool range(T\
+    \ l, T x, T r){\n    return l <= x && x < r;\n}\n\n} // namespace noya2"
   dependsOn: []
   isVerificationFile: false
   path: template/utils.hpp
@@ -153,7 +157,7 @@ data:
   - misc/inversion.hpp
   - misc/QMC.hpp
   - misc/mo_algorithm.hpp
-  timestamp: '2023-07-29 21:44:33+09:00'
+  timestamp: '2023-08-03 18:28:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
