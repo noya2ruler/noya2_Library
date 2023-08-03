@@ -7,11 +7,11 @@ unsigned long long inner_binary_gcd(unsigned long long a, unsigned long long b){
     a >>= n;
     b >>= m;
     while (a != b) {
-        int m = __builtin_ctzll(a - b);
+        int mm = __builtin_ctzll(a - b);
         bool f = a > b;
         unsigned long long c = f ? a : b;
         b = f ? b : a;
-        a = (c - b) >> m;
+        a = (c - b) >> mm;
     }
     return a << min(n, m);
 }
@@ -19,6 +19,14 @@ unsigned long long inner_binary_gcd(unsigned long long a, unsigned long long b){
 template<typename T>
 T gcd_fast(T a, T b){
     return static_cast<T>(inner_binary_gcd(abs(a),abs(b)));
+}
+
+long long sqrt_fast(long long n) {
+    if (n <= 0) return 0;
+    long long x = sqrt(n);
+    while ((x + 1) * (x + 1) <= n) x++;
+    while (x * x > n) x--;
+    return x;
 }
 
 template<typename T>
