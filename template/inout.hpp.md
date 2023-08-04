@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/lazy_segment_tree.hpp
     title: data_structure/lazy_segment_tree.hpp
+  - icon: ':warning:'
+    path: data_structure/li_chao_tree.hpp
+    title: data_structure/li_chao_tree.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
@@ -140,6 +143,7 @@ data:
   - data_structure/fenwick_tree.hpp
   - data_structure/dsu.hpp
   - data_structure/sparse_table.hpp
+  - data_structure/li_chao_tree.hpp
   - math/matrix.hpp
   - template/template.hpp
   - string/rolling_hash.hpp

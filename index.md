@@ -12,6 +12,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/lazy_segment_tree.hpp
       title: data_structure/lazy_segment_tree.hpp
+    - icon: ':warning:'
+      path: data_structure/li_chao_tree.hpp
+      title: data_structure/li_chao_tree.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
