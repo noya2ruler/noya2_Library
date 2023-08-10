@@ -53,6 +53,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/Tree_core.hpp
     title: tree/Tree_core.hpp
+  - icon: ':warning:'
+    path: utility/modint61.hpp
+    title: utility/modint61.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/PointAddRangeSum.test.cpp
@@ -152,6 +155,7 @@ data:
   - math/matrix.hpp
   - template/template.hpp
   - string/rolling_hash.hpp
+  - utility/modint61.hpp
   - tree/Tree_core.hpp
   - tree/RerootingDP.hpp
   - tree/Mo_on_Tree.hpp
