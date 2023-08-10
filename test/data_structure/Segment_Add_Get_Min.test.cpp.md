@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: data_structure/li_chao_tree.hpp
+    title: data_structure/li_chao_tree.hpp
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
   - icon: ':heavy_check_mark:'
@@ -14,37 +17,35 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Line_Add_Get_Min.test.cpp
-    title: test/data_structure/Line_Add_Get_Min.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Segment_Add_Get_Min.test.cpp
-    title: test/data_structure/Segment_Add_Get_Min.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"data_structure/li_chao_tree.hpp\"\n\n#line 2 \"template/template.hpp\"\
-    \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout.hpp\"\
-    \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
-    \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
-    \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
-    \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
-    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int\
-    \ s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\"\
-    ) << v[i];\n    return os;\n}\ntemplate <typename T>\nistream &operator>>(istream\
-    \ &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid\
-    \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
-    \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
-    \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
-    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\ntemplate<typename\
-    \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
-    \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
-    \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
-    \ << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n \
-    \   }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/segment_add_get_min
+    links:
+    - https://judge.yosupo.jp/problem/segment_add_get_min
+  bundledCode: "#line 1 \"test/data_structure/Segment_Add_Get_Min.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/segment_add_get_min\"\n\n#line 2 \"\
+    template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n#line\
+    \ 1 \"template/inout.hpp\"\nnamespace noya2 {\n\ntemplate <typename T, typename\
+    \ U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os << p.first\
+    \ << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename U>\n\
+    istream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
+    \    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os,\
+    \ const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s;\
+    \ i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
+    \ T>\nistream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is\
+    \ >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\n\
+    void in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout\
+    \ << \"\\n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const\
+    \ T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n\
+    \    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n\
+    \    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\
+    \nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
+    \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
+    \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
     \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
     \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
     \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
@@ -78,7 +79,8 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"data_structure/li_chao_tree.hpp\"\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"test/data_structure/Segment_Add_Get_Min.test.cpp\"\
+    \n\n#line 2 \"data_structure/li_chao_tree.hpp\"\n\n#line 4 \"data_structure/li_chao_tree.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<typename T>\nstruct LiChaoTree {\n    static\
     \ const T ymax = 3e18;\n    struct Line {\n        T a, b;\n        Line (T _a\
     \ = 0, T _b = ymax) : a(_a), b(_b) {}\n        T get(T x){return a * x + b;}\n\
@@ -107,54 +109,49 @@ data:
     \        if (L <= l && r <= R) inner_line_add(S,i,l,r);\n        else {\n    \
     \        int m = (l + r) / 2;\n            inner_segment_add(L,R,S,2*i+1,l,m);\n\
     \            inner_segment_add(L,R,S,2*i+2,m,r);\n        }\n    }\n};\n\n} //\
-    \ namespace noya2\n"
-  code: "#pragma once\n\n#include\"template/template.hpp\"\n\nnamespace noya2{\n\n\
-    template<typename T>\nstruct LiChaoTree {\n    static const T ymax = 3e18;\n \
-    \   struct Line {\n        T a, b;\n        Line (T _a = 0, T _b = ymax) : a(_a),\
-    \ b(_b) {}\n        T get(T x){return a * x + b;}\n    };\n    LiChaoTree (const\
-    \ vector<T> &_xs){\n        xs = _xs;\n        sort(xs.begin(),xs.end());\n  \
-    \      xs.erase(unique(xs.begin(),xs.end()),xs.end());\n        int _n = xs.size();\n\
-    \        n = 1;\n        while (n < _n) n *= 2;\n        xs.resize(n);\n     \
-    \   for (int i = _n; i < n; i++) xs[i] = xs[_n-1];\n        seg.resize(n*2-1);\n\
-    \    }\n    void line_add(T a, T b){ inner_line_add(Line(a,b),0,0,n);}\n    void\
-    \ segment_add(T a, T b, T l, T r){\n        int sl = lower_bound(xs.begin(),xs.end(),l)\
-    \ - xs.begin();\n        int sr = lower_bound(xs.begin(),xs.end(),r) - xs.begin();\n\
-    \        inner_segment_add(sl,sr,Line(a,b),0,0,n);\n    }\n    T get(T x){\n \
-    \       int s = lower_bound(xs.begin(),xs.end(),x) - xs.begin();\n        s +=\
-    \ n-1;\n        T res = ymax;\n        res = min(res,seg[s].get(x));\n       \
-    \ while (s > 0){\n            s = (s-1) / 2;\n            res = min(res,seg[s].get(x));\n\
-    \        }\n        return res;\n    }\n  private:\n    int n;\n    vector<T>\
-    \ xs;\n    vector<Line> seg;\n    void inner_line_add(Line L, int i, int l, int\
-    \ r){\n        T la = L.get(xs[l]);\n        T lb = seg[i].get(xs[l]);\n     \
-    \   T ra = L.get(xs[r-1]);\n        T rb = seg[i].get(xs[r-1]);\n        if (la\
-    \ >= lb && ra >= rb) return ;\n        if (la <= lb && ra <= rb) {\n         \
-    \   seg[i] = L;\n            return ;\n        }\n        int m = (l + r) / 2;\n\
-    \        T ma = L.get(xs[m]);\n        T mb = seg[i].get(xs[m]);\n        if (ma\
-    \ < mb){\n            swap(L,seg[i]);\n            swap(la,lb);\n            swap(ra,rb);\n\
-    \        }\n        if (la < lb) inner_line_add(L,2*i+1,l,m);\n        if (ra\
-    \ < rb) inner_line_add(L,2*i+2,m,r);\n    }\n    void inner_segment_add(int L,\
-    \ int R, Line S, int i, int l, int r){\n        if (r <= L || R <= l) return ;\n\
-    \        if (L <= l && r <= R) inner_line_add(S,i,l,r);\n        else {\n    \
-    \        int m = (l + r) / 2;\n            inner_segment_add(L,R,S,2*i+1,l,m);\n\
-    \            inner_segment_add(L,R,S,2*i+2,m,r);\n        }\n    }\n};\n\n} //\
-    \ namespace noya2"
+    \ namespace noya2\n#line 6 \"test/data_structure/Segment_Add_Get_Min.test.cpp\"\
+    \n\nint main(){\n    int n, q; in(n,q);\n    vector<array<ll,5>> querys(n+q);\n\
+    \    vector<ll> xs;\n    rep(i,n+q){\n        if (i < n){\n            ll a, b,\
+    \ l, r; in(l,r,a,b);\n            querys[i] = {0,a,b,l,r};\n            continue;\n\
+    \        }\n        int t; in(t);\n        if (t == 0){\n            ll a, b,\
+    \ l, r; in(l,r,a,b);\n            querys[i] = {0,a,b,l,r};\n        }\n      \
+    \  else {\n            ll x; in(x);\n            querys[i] = {t,x,0,0,0};\n  \
+    \          xs.emplace_back(x);\n        }\n    }\n    LiChaoTree<ll> lct(xs);\n\
+    \    rep(i,n+q){\n        auto [t,a,b,l,r] = querys[i];\n        if (t == 0){\n\
+    \            lct.segment_add(a,b,l,r);\n        }\n        else {\n          \
+    \  ll ans = lct.get(a);\n            if (ans == lct.ymax){\n                out(\"\
+    INFINITY\");\n            }\n            else {\n                out(ans);\n \
+    \           }\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/segment_add_get_min\"\n\
+    \n#include\"template/template.hpp\"\n\n#include\"../../data_structure/li_chao_tree.hpp\"\
+    \n\nint main(){\n    int n, q; in(n,q);\n    vector<array<ll,5>> querys(n+q);\n\
+    \    vector<ll> xs;\n    rep(i,n+q){\n        if (i < n){\n            ll a, b,\
+    \ l, r; in(l,r,a,b);\n            querys[i] = {0,a,b,l,r};\n            continue;\n\
+    \        }\n        int t; in(t);\n        if (t == 0){\n            ll a, b,\
+    \ l, r; in(l,r,a,b);\n            querys[i] = {0,a,b,l,r};\n        }\n      \
+    \  else {\n            ll x; in(x);\n            querys[i] = {t,x,0,0,0};\n  \
+    \          xs.emplace_back(x);\n        }\n    }\n    LiChaoTree<ll> lct(xs);\n\
+    \    rep(i,n+q){\n        auto [t,a,b,l,r] = querys[i];\n        if (t == 0){\n\
+    \            lct.segment_add(a,b,l,r);\n        }\n        else {\n          \
+    \  ll ans = lct.get(a);\n            if (ans == lct.ymax){\n                out(\"\
+    INFINITY\");\n            }\n            else {\n                out(ans);\n \
+    \           }\n        }\n    }\n}"
   dependsOn:
   - template/template.hpp
   - template/inout.hpp
   - template/const.hpp
   - template/utils.hpp
-  isVerificationFile: false
-  path: data_structure/li_chao_tree.hpp
+  - data_structure/li_chao_tree.hpp
+  isVerificationFile: true
+  path: test/data_structure/Segment_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2023-08-04 23:09:47+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/data_structure/Segment_Add_Get_Min.test.cpp
-  - test/data_structure/Line_Add_Get_Min.test.cpp
-documentation_of: data_structure/li_chao_tree.hpp
+  timestamp: '2023-08-10 23:32:49+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/data_structure/Segment_Add_Get_Min.test.cpp
 layout: document
 redirect_from:
-- /library/data_structure/li_chao_tree.hpp
-- /library/data_structure/li_chao_tree.hpp.html
-title: data_structure/li_chao_tree.hpp
+- /verify/test/data_structure/Segment_Add_Get_Min.test.cpp
+- /verify/test/data_structure/Segment_Add_Get_Min.test.cpp.html
+title: test/data_structure/Segment_Add_Get_Min.test.cpp
 ---

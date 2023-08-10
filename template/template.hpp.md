@@ -76,6 +76,9 @@ data:
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Segment_Add_Get_Min.test.cpp
+    title: test/data_structure/Segment_Add_Get_Min.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_RMQ.test.cpp
     title: test/data_structure/Static_RMQ.test.cpp
   - icon: ':heavy_check_mark:'
@@ -205,6 +208,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/Unionfind.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
