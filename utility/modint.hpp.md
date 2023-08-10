@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Determinant_of_Matrix.test.cpp
+    title: test/math/Determinant_of_Matrix.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -359,6 +362,7 @@ data:
   - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Determinant_of_Matrix.test.cpp
 documentation_of: utility/modint.hpp
 layout: document
 redirect_from:

@@ -42,7 +42,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: math/binomial.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
   - name: misc
@@ -83,11 +83,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: template/utils.hpp
       title: template/utils.hpp
-  - name: .
-    pages:
-    - icon: ':warning:'
-      path: testlib.h
-      title: testlib.h
   - name: tree
     pages:
     - icon: ':heavy_check_mark:'
@@ -146,6 +141,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/Determinant_of_Matrix.test.cpp
+      title: test/math/Determinant_of_Matrix.test.cpp
   - name: test/tree
     pages:
     - icon: ':heavy_check_mark:'

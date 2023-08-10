@@ -26,7 +26,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/Graph_core.hpp
     title: graph/Graph_core.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
   - icon: ':warning:'
@@ -87,6 +87,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Determinant_of_Matrix.test.cpp
+    title: test/math/Determinant_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
@@ -178,6 +181,7 @@ data:
   - test/data_structure/Static_RMQ.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Determinant_of_Matrix.test.cpp
   - test/tree/aoj_0489.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Tree_Diameter.test.cpp

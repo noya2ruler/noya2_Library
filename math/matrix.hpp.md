@@ -14,10 +14,13 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/Determinant_of_Matrix.test.cpp
+    title: test/math/Determinant_of_Matrix.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/matrix.hpp\"\n\n#line 2 \"template/template.hpp\"\n\
@@ -204,8 +207,9 @@ data:
   path: math/matrix.hpp
   requiredBy: []
   timestamp: '2023-08-04 02:45:48+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/math/Determinant_of_Matrix.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:
