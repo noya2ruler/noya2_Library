@@ -12,3 +12,4 @@ judge.sh
 debug.sh
 submit.txt
 testcase.txt
+testlib.h
