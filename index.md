@@ -12,7 +12,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/lazy_segment_tree.hpp
       title: data_structure/lazy_segment_tree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/li_chao_tree.hpp
       title: data_structure/li_chao_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -110,6 +110,9 @@ data:
   verificationCategories:
   - name: test/data_structure
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Line_Add_Get_Min.test.cpp
+      title: test/data_structure/Line_Add_Get_Min.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/PointAddRangeSum.test.cpp
       title: test/data_structure/PointAddRangeSum.test.cpp
