@@ -83,10 +83,9 @@ data:
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
     ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"geometry/base_ld.hpp\"\
     \n\n#line 4 \"geometry/base_ld.hpp\"\n\nnamespace noya2 {\n\nusing vec = complex<ld>;\n\
-    \nconst ld PI = acos(-1);\n\nvoid ldout(int len = 20) {\n    cout << fixed <<\
-    \ setprecision(len);\n}\n\nint sgn(ld a, const ld eps = 1e-7) {\n    return (a\
-    \ < -eps) ? -1 : (a > eps) ? 1 : 0;\n}\n\nbool same_vec(vec a, vec b) {\n    a\
-    \ -= b;\n    return sgn(a.real()) == 0 && sgn(a.imag()) == 0;\n}\n\nld dot(const\
+    \nconst ld PI = acos(-1);\n\nint sgn(ld a, const ld eps = 1e-7) {\n    return\
+    \ (a < -eps) ? -1 : (a > eps) ? 1 : 0;\n}\n\nbool same_vec(vec a, vec b) {\n \
+    \   a -= b;\n    return sgn(a.real()) == 0 && sgn(a.imag()) == 0;\n}\n\nld dot(const\
     \ vec &a, const vec &b) {\n    return (conj(a) * b).real();\n}\n\nld cross(const\
     \ vec &a, const vec &b) {\n    return (conj(a) * b).imag();\n}\n\nint isp(const\
     \ vec &a, const vec &b, const vec &c) {\n    int cross_sgn = sgn(cross(b - a,\
@@ -296,7 +295,7 @@ data:
   isVerificationFile: false
   path: geometry/partition_by_circle.hpp
   requiredBy: []
-  timestamp: '2023-08-04 02:45:48+09:00'
+  timestamp: '2023-08-15 23:00:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/aoj1198.test.cpp
