@@ -10,6 +10,7 @@ val.cpp
 gen.cpp
 judge.sh
 debug.sh
+compare.sh
 submit.txt
 testcase.txt
 testlib.h
