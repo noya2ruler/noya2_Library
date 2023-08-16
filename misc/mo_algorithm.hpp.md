@@ -16,7 +16,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: tree/Mo_on_Tree.hpp
-    title: tree/Mo_on_Tree.hpp
+    title: Mo on Tree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp

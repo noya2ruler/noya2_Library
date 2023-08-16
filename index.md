@@ -87,7 +87,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: tree/Mo_on_Tree.hpp
-      title: tree/Mo_on_Tree.hpp
+      title: Mo on Tree
     - icon: ':heavy_check_mark:'
       path: tree/RerootingDP.hpp
       title: Rerooting DP
