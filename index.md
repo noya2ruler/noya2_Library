@@ -57,6 +57,9 @@ data:
       path: misc/mo_algorithm.hpp
       title: misc/mo_algorithm.hpp
     - icon: ':warning:'
+      path: misc/rng.hpp
+      title: misc/rng.hpp
+    - icon: ':warning:'
       path: misc/timer.hpp
       title: misc/timer.hpp
   - name: potentialized_dsu

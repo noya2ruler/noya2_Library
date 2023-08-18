@@ -39,6 +39,9 @@ data:
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
   - icon: ':warning:'
+    path: misc/rng.hpp
+    title: misc/rng.hpp
+  - icon: ':warning:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
   - icon: ':heavy_check_mark:'
@@ -164,6 +167,7 @@ data:
   - tree/RerootingDP.hpp
   - tree/Mo_on_Tree.hpp
   - misc/mo_algorithm.hpp
+  - misc/rng.hpp
   - misc/inversion.hpp
   - misc/QMC.hpp
   - geometry/base_ld.hpp
