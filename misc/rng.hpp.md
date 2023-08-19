@@ -76,14 +76,18 @@ data:
     \n\nnamespace noya2 {\n\n// [0, 2^64 - 1)\null rng() {\n  static ull _x = 88172645463325252UL;\n\
     \  return _x ^= _x << 7, _x ^= _x >> 9;\n}\n\n// [l, r]\nll rng(ll l, ll r) {\n\
     \  assert(l <= r);\n  return l + rng() % ull(r - l + 1);\n}\n\n// [l, r)\nll randint(ll\
-    \ l, ll r) {\n  assert(l < r);\n  return l + rng() % ull(r - l);\n}\n\n} // namespace\
-    \ noya2\n"
+    \ l, ll r) {\n  assert(l < r);\n  return l + rng() % ull(r - l);\n}\n\n// [0.0,\
+    \ 1.0)\nld rnd() { return rng() * 5.42101086242752217004e-20; }\n// [l, r)\nld\
+    \ rnd(ld l, ld r) {\n  assert(l < r);\n  return l + rnd() * (r - l);\n}\n\n} //\
+    \ namespace noya2\n"
   code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2 {\n\
     \n// [0, 2^64 - 1)\null rng() {\n  static ull _x = 88172645463325252UL;\n  return\
     \ _x ^= _x << 7, _x ^= _x >> 9;\n}\n\n// [l, r]\nll rng(ll l, ll r) {\n  assert(l\
     \ <= r);\n  return l + rng() % ull(r - l + 1);\n}\n\n// [l, r)\nll randint(ll\
-    \ l, ll r) {\n  assert(l < r);\n  return l + rng() % ull(r - l);\n}\n\n} // namespace\
-    \ noya2\n"
+    \ l, ll r) {\n  assert(l < r);\n  return l + rng() % ull(r - l);\n}\n\n// [0.0,\
+    \ 1.0)\nld rnd() { return rng() * 5.42101086242752217004e-20; }\n// [l, r)\nld\
+    \ rnd(ld l, ld r) {\n  assert(l < r);\n  return l + rnd() * (r - l);\n}\n\n} //\
+    \ namespace noya2\n"
   dependsOn:
   - template/template.hpp
   - template/inout.hpp
@@ -92,7 +96,7 @@ data:
   isVerificationFile: false
   path: misc/rng.hpp
   requiredBy: []
-  timestamp: '2023-08-18 13:51:36+09:00'
+  timestamp: '2023-08-19 20:58:30+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: misc/rng.hpp
