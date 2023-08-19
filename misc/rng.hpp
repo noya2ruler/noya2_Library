@@ -22,4 +22,12 @@ ll randint(ll l, ll r) {
   return l + rng() % ull(r - l);
 }
 
+// [0.0, 1.0)
+ld rnd() { return rng() * 5.42101086242752217004e-20; }
+// [l, r)
+ld rnd(ld l, ld r) {
+  assert(l < r);
+  return l + rnd() * (r - l);
+}
+
 } // namespace noya2
