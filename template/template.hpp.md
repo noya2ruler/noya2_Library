@@ -190,44 +190,44 @@ data:
   isVerificationFile: false
   path: template/template.hpp
   requiredBy:
-  - data_structure/lazy_segment_tree.hpp
-  - data_structure/fenwick_tree.hpp
-  - data_structure/dsu.hpp
   - data_structure/sparse_table.hpp
+  - data_structure/lazy_segment_tree.hpp
+  - data_structure/dsu.hpp
+  - data_structure/fenwick_tree.hpp
   - data_structure/li_chao_tree.hpp
-  - math/matrix.hpp
-  - string/rolling_hash.hpp
-  - utility/modint61.hpp
-  - tree/Tree_core.hpp
-  - tree/RerootingDP.hpp
   - tree/Mo_on_Tree.hpp
-  - misc/mo_algorithm.hpp
-  - misc/rng.hpp
+  - tree/RerootingDP.hpp
+  - tree/Tree_core.hpp
+  - string/rolling_hash.hpp
   - misc/inversion.hpp
   - misc/QMC.hpp
+  - misc/rng.hpp
+  - misc/mo_algorithm.hpp
+  - graph/Graph_core.hpp
+  - utility/modint61.hpp
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp
-  - graph/Graph_core.hpp
+  - math/matrix.hpp
   timestamp: '2023-08-04 02:45:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
-  - test/data_structure/Unionfind.test.cpp
-  - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
-  - test/data_structure/Static_RMQ.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/math/Determinant_of_Matrix.test.cpp
-  - test/tree/aoj_0489.test.cpp
-  - test/tree/Jump_on_Tree.test.cpp
+  - test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/data_structure/Unionfind.test.cpp
+  - test/data_structure/Static_RMQ.test.cpp
+  - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Rerooting_DP.test.cpp
+  - test/tree/aoj_0489.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Lowest_Common_Ancestor.test.cpp
-  - test/geometry/aoj1198.test.cpp
-  - test/graph/Shortest_Path.test.cpp
   - test/graph/Strongly_Connected_Components.test.cpp
+  - test/graph/Shortest_Path.test.cpp
+  - test/geometry/aoj1198.test.cpp
+  - test/math/Determinant_of_Matrix.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 documentation_of: template/template.hpp
 layout: document
 redirect_from:
