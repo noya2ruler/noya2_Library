@@ -1,5 +1,8 @@
 namespace noya2 {
 
+template <typename T> ostream &operator<<(ostream &os, const vector<T> &v);
+template <typename T> istream &operator>>(istream &is, vector<T> &v);
+
 template <typename T, typename U>
 ostream &operator<<(ostream &os, const pair<T, U> &p){
     os << p.first << " " << p.second;
@@ -37,7 +40,6 @@ void out(const T &t, const U &...u){
     if (sizeof...(u)) cout << sep;
     out(u...);
 }
-
 template<typename T>
 void out(const vector<vector<T>> &vv){
     int s = (int)vv.size();
