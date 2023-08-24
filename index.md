@@ -3,46 +3,46 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/dsu.hpp
       title: data_structure/dsu.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/fenwick_tree.hpp
       title: data_structure/fenwick_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/lazy_segment_tree.hpp
       title: data_structure/lazy_segment_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/li_chao_tree.hpp
       title: data_structure/li_chao_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/sparse_table.hpp
       title: data_structure/sparse_table.hpp
   - name: geometry
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: geometry/base_ld.hpp
       title: geometry/base_ld.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: geometry/partition_by_circle.hpp
       title: geometry/partition_by_circle.hpp
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/Graph_core.hpp
       title: graph/Graph_core.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/scc.hpp
       title: graph/scc.hpp
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/binomial.hpp
       title: math/binomial.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/matrix.hpp
       title: math/matrix.hpp
   - name: misc
@@ -53,7 +53,7 @@ data:
     - icon: ':warning:'
       path: misc/inversion.hpp
       title: misc/inversion.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: misc/mo_algorithm.hpp
       title: misc/mo_algorithm.hpp
     - icon: ':warning:'
@@ -74,32 +74,32 @@ data:
       title: string/rolling_hash.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: template/const.hpp
       title: template/const.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/Mo_on_Tree.hpp
       title: Mo on Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/RerootingDP.hpp
       title: Rerooting DP
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
   - name: utility
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':warning:'
@@ -108,63 +108,63 @@ data:
   verificationCategories:
   - name: test/data_structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/Line_Add_Get_Min.test.cpp
       title: test/data_structure/Line_Add_Get_Min.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/PointAddRangeSum.test.cpp
       title: test/data_structure/PointAddRangeSum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/data_structure/Point_Set_Range_Composite.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/Segment_Add_Get_Min.test.cpp
       title: test/data_structure/Segment_Add_Get_Min.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/Static_RMQ.test.cpp
       title: test/data_structure/Static_RMQ.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/Unionfind.test.cpp
       title: test/data_structure/Unionfind.test.cpp
   - name: test/geometry
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/geometry/aoj1198.test.cpp
       title: test/geometry/aoj1198.test.cpp
   - name: test/graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/graph/Shortest_Path.test.cpp
       title: test/graph/Shortest_Path.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/graph/Strongly_Connected_Components.test.cpp
       title: test/graph/Strongly_Connected_Components.test.cpp
   - name: test/math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/math/Determinant_of_Matrix.test.cpp
       title: test/math/Determinant_of_Matrix.test.cpp
   - name: test/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Jump_on_Tree.test.cpp
       title: test/tree/Jump_on_Tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Lowest_Common_Ancestor.test.cpp
       title: test/tree/Lowest_Common_Ancestor.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Rerooting_DP.test.cpp
       title: test/tree/Rerooting_DP.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Tree_Diameter.test.cpp
       title: test/tree/Tree_Diameter.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/aoj_0489.test.cpp
       title: test/tree/aoj_0489.test.cpp
 layout: toppage

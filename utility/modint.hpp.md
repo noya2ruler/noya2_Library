@@ -3,21 +3,21 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint.hpp\"\n\n// AtCoderLibrary \u3092\u305D\u306E\
@@ -357,7 +357,7 @@ data:
   path: utility/modint.hpp
   requiredBy: []
   timestamp: '2023-07-21 02:32:24+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp

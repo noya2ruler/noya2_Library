@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/segment_tree.hpp
     title: data_structure/segment_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: template/inout.hpp
     title: template/inout.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
@@ -32,25 +32,29 @@ data:
   bundledCode: "#line 1 \"test/data_structure/Point_Set_Range_Composite.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
-    #line 1 \"template/inout.hpp\"\nnamespace noya2 {\n\ntemplate <typename T> ostream\
-    \ &operator<<(ostream &os, const vector<T> &v);\ntemplate <typename T> istream\
-    \ &operator>>(istream &is, vector<T> &v);\n\ntemplate <typename T, typename U>\n\
-    ostream &operator<<(ostream &os, const pair<T, U> &p){\n    os << p.first << \"\
-    \ \" << p.second;\n    return os;\n}\ntemplate <typename T, typename U>\nistream\
+    #line 1 \"template/inout.hpp\"\nnamespace noya2 {\n\ntemplate<typename T> concept\
+    \ Scanable  = requires (ifstream &is, T &a){ is >> a; };\ntemplate<typename T>\
+    \ concept Printable = requires (ofstream &os, T &a){ os << a; };\n\ntemplate <typename\
+    \ Scanable> istream &operator>>(istream &is, vector<Scanable> &v);\ntemplate <typename\
+    \ Printable> ostream &operator<<(ostream &os, const vector<Printable> &v);\n\n\
+    template <typename T, typename U>\nrequires Scanable<T> && Scanable<U>\nistream\
     \ &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n \
-    \   return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os, const\
-    \ vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s; i++)\
-    \ os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename T>\n\
-    istream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n\
-    \    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\nvoid in(T\
-    \ &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\\
-    n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const T &t,\
-    \ const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n\
-    }\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n\
-    \    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
-    \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
-    \ << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n \
-    \   }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
+    \   return is;\n}\ntemplate <typename T, typename U>\nrequires Printable<T> &&\
+    \ Printable<U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
+    \ << p.first << \" \" << p.second;\n    return os;\n}\n\ntemplate <typename Scanable>\n\
+    istream &operator>>(istream &is, vector<Scanable> &v){\n    for (auto &x : v)\
+    \ is >> x;\n    return is;\n}\ntemplate <typename Printable>\nostream &operator<<(ostream\
+    \ &os, const vector<Printable> &v){\n    int s = (int)v.size();\n    for (int\
+    \ i = 0; i < s; i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\n\n\
+    void in() {}\ntemplate <typename Scanable, class... U>\nvoid in(Scanable &t, U\
+    \ &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\n\
+    template <typename Printable, class... U, char sep = ' '>\nvoid out(const Printable\
+    \ &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n  \
+    \  out(u...);\n}\ntemplate<typename Printable>\nvoid out(const vector<vector<Printable>>\
+    \ &vv){\n    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n\
+    }\n\nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
+    \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
+    \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
     \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
     \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
     \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
@@ -319,8 +323,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-08-24 17:11:00+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-08-24 20:23:56+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Point_Set_Range_Composite.test.cpp
 layout: document

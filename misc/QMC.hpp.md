@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: template/inout.hpp
     title: template/inout.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
@@ -30,22 +30,26 @@ data:
     \u3002\n5\u6B21\u4EE5\u4E0B\u306E\u65E2\u7D04\u591A\u9805\u5F0F\u4E00\u89A7\uFF1A\
     \nhttps://yoshiiz.blog.fc2.com/blog-entry-199.html\n\n*/\n\n#line 2 \"template/template.hpp\"\
     \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout.hpp\"\
-    \nnamespace noya2 {\n\ntemplate <typename T> ostream &operator<<(ostream &os,\
-    \ const vector<T> &v);\ntemplate <typename T> istream &operator>>(istream &is,\
-    \ vector<T> &v);\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
-    \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
-    \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
-    \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
-    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int\
-    \ s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\"\
-    ) << v[i];\n    return os;\n}\ntemplate <typename T>\nistream &operator>>(istream\
-    \ &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid\
-    \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
-    \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
-    \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
-    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\ntemplate<typename\
-    \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
-    \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
+    \nnamespace noya2 {\n\ntemplate<typename T> concept Scanable  = requires (ifstream\
+    \ &is, T &a){ is >> a; };\ntemplate<typename T> concept Printable = requires (ofstream\
+    \ &os, T &a){ os << a; };\n\ntemplate <typename Scanable> istream &operator>>(istream\
+    \ &is, vector<Scanable> &v);\ntemplate <typename Printable> ostream &operator<<(ostream\
+    \ &os, const vector<Printable> &v);\n\ntemplate <typename T, typename U>\nrequires\
+    \ Scanable<T> && Scanable<U>\nistream &operator>>(istream &is, pair<T, U> &p){\n\
+    \    is >> p.first >> p.second;\n    return is;\n}\ntemplate <typename T, typename\
+    \ U>\nrequires Printable<T> && Printable<U>\nostream &operator<<(ostream &os,\
+    \ const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return os;\n\
+    }\n\ntemplate <typename Scanable>\nistream &operator>>(istream &is, vector<Scanable>\
+    \ &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\ntemplate <typename\
+    \ Printable>\nostream &operator<<(ostream &os, const vector<Printable> &v){\n\
+    \    int s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \"\
+    \ : \"\") << v[i];\n    return os;\n}\n\nvoid in() {}\ntemplate <typename Scanable,\
+    \ class... U>\nvoid in(Scanable &t, U &...u){\n    cin >> t;\n    in(u...);\n\
+    }\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename Printable, class... U,\
+    \ char sep = ' '>\nvoid out(const Printable &t, const U &...u){\n    cout << t;\n\
+    \    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\ntemplate<typename Printable>\n\
+    void out(const vector<vector<Printable>> &vv){\n    int s = (int)vv.size();\n\
+    \    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
     \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
     \ << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n \
     \   }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
@@ -123,7 +127,7 @@ data:
   isVerificationFile: false
   path: misc/QMC.hpp
   requiredBy: []
-  timestamp: '2023-08-24 17:11:00+09:00'
+  timestamp: '2023-08-24 20:23:56+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: misc/QMC.hpp
