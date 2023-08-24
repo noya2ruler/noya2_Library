@@ -117,23 +117,27 @@ data:
   attributes:
     links: []
   bundledCode: "#line 1 \"template/inout.hpp\"\nnamespace noya2 {\n\ntemplate <typename\
-    \ T, typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n   \
-    \ os << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T,\
-    \ typename U>\nistream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first\
-    \ >> p.second;\n    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream\
-    \ &os, const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i\
-    \ < s; i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
+    \ T> ostream &operator<<(ostream &os, const vector<T> &v);\ntemplate <typename\
+    \ T> istream &operator>>(istream &is, vector<T> &v);\n\ntemplate <typename T,\
+    \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
+    \ << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename\
+    \ U>\nistream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
+    \    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os,\
+    \ const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s;\
+    \ i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
     \ T>\nistream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is\
     \ >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\n\
     void in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout\
     \ << \"\\n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const\
     \ T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n\
-    \    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n\
+    \    out(u...);\n}\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n\
     \    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\
     \nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
     \    }\n} iosetup_noya2;\n\n} // namespace noya2\n"
-  code: "namespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
+  code: "namespace noya2 {\n\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ const vector<T> &v);\ntemplate <typename T> istream &operator>>(istream &is,\
+    \ vector<T> &v);\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
     \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
     \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
     \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
@@ -144,7 +148,7 @@ data:
     \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
     \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
     \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
-    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\ntemplate<typename\
+    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\ntemplate<typename\
     \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
     \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
     \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
@@ -173,7 +177,7 @@ data:
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp
   - math/matrix.hpp
-  timestamp: '2023-07-23 17:25:49+09:00'
+  timestamp: '2023-08-24 17:11:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Segment_Add_Get_Min.test.cpp

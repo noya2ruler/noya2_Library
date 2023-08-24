@@ -25,7 +25,9 @@ data:
     links: []
   bundledCode: "#line 2 \"data_structure/lazy_segment_tree.hpp\"\n\n#line 2 \"template/template.hpp\"\
     \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout.hpp\"\
-    \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
+    \nnamespace noya2 {\n\ntemplate <typename T> ostream &operator<<(ostream &os,\
+    \ const vector<T> &v);\ntemplate <typename T> istream &operator>>(istream &is,\
+    \ vector<T> &v);\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
     \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
     \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
     \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
@@ -36,7 +38,7 @@ data:
     \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
     \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
     \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
-    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\ntemplate<typename\
+    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\ntemplate<typename\
     \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
     \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
     \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
@@ -208,7 +210,7 @@ data:
   isVerificationFile: false
   path: data_structure/lazy_segment_tree.hpp
   requiredBy: []
-  timestamp: '2023-08-04 02:45:48+09:00'
+  timestamp: '2023-08-24 17:11:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
