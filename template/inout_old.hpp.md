@@ -29,7 +29,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: math/prime.hpp
     title: math/prime.hpp
   - icon: ':warning:'
@@ -50,7 +50,7 @@ data:
   - icon: ':warning:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
   - icon: ':heavy_check_mark:'
@@ -65,6 +65,9 @@ data:
   - icon: ':warning:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
+  - icon: ':x:'
+    path: utility/modint_new.hpp
+    title: utility/modint_new.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Line_Add_Get_Min.test.cpp
@@ -99,6 +102,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - icon: ':x:'
+    path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+    title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
@@ -117,9 +123,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate\
@@ -177,12 +183,13 @@ data:
   - template/template.hpp
   - graph/Graph_core.hpp
   - utility/modint61.hpp
+  - utility/modint_new.hpp
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp
   - math/matrix.hpp
   - math/prime.hpp
   timestamp: '2023-08-26 05:21:53+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
@@ -201,6 +208,7 @@ data:
   - test/geometry/aoj1198.test.cpp
   - test/math/Determinant_of_Matrix.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
 documentation_of: template/inout_old.hpp
 layout: document
 redirect_from:

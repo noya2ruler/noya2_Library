@@ -39,13 +39,13 @@ data:
       title: graph/scc.hpp
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/binomial.hpp
       title: math/binomial.hpp
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: math/prime.hpp
       title: math/prime.hpp
   - name: misc
@@ -80,19 +80,19 @@ data:
       title: string/rolling_hash.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/const.hpp
       title: template/const.hpp
     - icon: ':warning:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/inout_old.hpp
       title: template/inout_old.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
@@ -114,6 +114,9 @@ data:
     - icon: ':warning:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
+    - icon: ':x:'
+      path: utility/modint_new.hpp
+      title: utility/modint_new.hpp
   verificationCategories:
   - name: test/data_structure
     pages:
