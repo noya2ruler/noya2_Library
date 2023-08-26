@@ -456,15 +456,3 @@ template <class T>
 using is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;
 
 }  // namespace noya2
-
-namespace noya2 {
-
-template<typename T>
-concept Modint = requires (T &a){
-    T::mod();
-    a.inv();
-    a.val();
-    a.pow(declval<int>());
-};
-
-}
