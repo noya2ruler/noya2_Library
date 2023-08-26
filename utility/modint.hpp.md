@@ -3,21 +3,21 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint.hpp\"\n\n// AtCoderLibrary \u3092\u305D\u306E\
@@ -185,9 +185,7 @@ data:
     \ntemplate <class> struct is_dynamic_modint : public std::false_type {};\ntemplate\
     \ <int id>\nstruct is_dynamic_modint<dynamic_modint<id>> : public std::true_type\
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
-    \n}  // namespace noya2\n\nnamespace noya2 {\n\ntemplate<typename T>\nconcept\
-    \ Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n    a.pow(declval<int>());\n\
-    };\n\n}\n"
+    \n}  // namespace noya2\n"
   code: "#pragma once\n\n// AtCoderLibrary \u3092\u305D\u306E\u307E\u307E\u30D1\u30AF\
     \u3063\u3066\u3044\u308B \u306A\u306B\u3082\u308F\u304B\u3063\u3066\u3044\u306A\
     \u3044\n// \\( x _______ x) ~\n\n#include <cassert>\n#include <numeric>\n#include\
@@ -353,15 +351,13 @@ data:
     \ntemplate <class> struct is_dynamic_modint : public std::false_type {};\ntemplate\
     \ <int id>\nstruct is_dynamic_modint<dynamic_modint<id>> : public std::true_type\
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
-    \n}  // namespace noya2\n\nnamespace noya2 {\n\ntemplate<typename T>\nconcept\
-    \ Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n    a.pow(declval<int>());\n\
-    };\n\n}"
+    \n}  // namespace noya2"
   dependsOn: []
   isVerificationFile: false
   path: utility/modint.hpp
   requiredBy: []
-  timestamp: '2023-08-26 05:21:30+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-08-26 19:55:22+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp

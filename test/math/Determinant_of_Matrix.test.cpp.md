@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_det
@@ -309,12 +309,10 @@ data:
     \ntemplate <class> struct is_dynamic_modint : public std::false_type {};\ntemplate\
     \ <int id>\nstruct is_dynamic_modint<dynamic_modint<id>> : public std::true_type\
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
-    \n}  // namespace noya2\n\nnamespace noya2 {\n\ntemplate<typename T>\nconcept\
-    \ Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n    a.pow(declval<int>());\n\
-    };\n\n}\n#line 7 \"test/math/Determinant_of_Matrix.test.cpp\"\nusing mint = modint998244353;\n\
-    \nint main(){\n    int n; in(n);\n    Matrix<mint> mat(n);\n    rep(i,n) rep(j,n){\n\
-    \        ll x; in(x);\n        mat[i][j] = x;\n    }\n    out(mat.determinant());\n\
-    }\n"
+    \n}  // namespace noya2\n#line 7 \"test/math/Determinant_of_Matrix.test.cpp\"\n\
+    using mint = modint998244353;\n\nint main(){\n    int n; in(n);\n    Matrix<mint>\
+    \ mat(n);\n    rep(i,n) rep(j,n){\n        ll x; in(x);\n        mat[i][j] = x;\n\
+    \    }\n    out(mat.determinant());\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n\n#include\"\
     template/template.hpp\"\n\n#include\"../../math/matrix.hpp\"\n#include\"../../utility/modint.hpp\"\
     \nusing mint = modint998244353;\n\nint main(){\n    int n; in(n);\n    Matrix<mint>\
@@ -330,8 +328,8 @@ data:
   isVerificationFile: true
   path: test/math/Determinant_of_Matrix.test.cpp
   requiredBy: []
-  timestamp: '2023-08-26 17:35:34+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-26 19:55:22+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Determinant_of_Matrix.test.cpp
 layout: document

@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
@@ -248,13 +248,11 @@ data:
     \ntemplate <class> struct is_dynamic_modint : public std::false_type {};\ntemplate\
     \ <int id>\nstruct is_dynamic_modint<dynamic_modint<id>> : public std::true_type\
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
-    \n}  // namespace noya2\n\nnamespace noya2 {\n\ntemplate<typename T>\nconcept\
-    \ Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n    a.pow(declval<int>());\n\
-    };\n\n}\n#line 2 \"math/binomial.hpp\"\n\nnamespace noya2 {\n\ntemplate<typename\
-    \ mint>\nstruct binomial {\n    binomial(int len = 300000){ extend(len); }\n \
-    \   static mint fact(int n){\n        if (n < 0) return 0;\n        while (n >=\
-    \ (int)_fact.size()) extend();\n        return _fact[n];\n    }\n    static mint\
-    \ ifact(int n){\n        if (n < 0) return 0;\n        while (n >= (int)_fact.size())\
+    \n}  // namespace noya2\n#line 2 \"math/binomial.hpp\"\n\nnamespace noya2 {\n\n\
+    template<typename mint>\nstruct binomial {\n    binomial(int len = 300000){ extend(len);\
+    \ }\n    static mint fact(int n){\n        if (n < 0) return 0;\n        while\
+    \ (n >= (int)_fact.size()) extend();\n        return _fact[n];\n    }\n    static\
+    \ mint ifact(int n){\n        if (n < 0) return 0;\n        while (n >= (int)_fact.size())\
     \ extend();\n        return _ifact[n];\n    }\n    static mint inv(int n){\n \
     \       return ifact(n) * fact(n-1);\n    }\n    static mint C(int n, int r){\n\
     \        if (!(0 <= r && r <= n)) return 0;\n        return fact(n) * ifact(r)\
@@ -294,8 +292,8 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   requiredBy: []
-  timestamp: '2023-08-26 17:35:34+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-26 19:55:22+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 layout: document

@@ -9,13 +9,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/fenwick_tree.hpp
       title: data_structure/fenwick_tree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/lazy_segment_tree.hpp
       title: data_structure/lazy_segment_tree.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/li_chao_tree.hpp
       title: data_structure/li_chao_tree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -39,10 +39,10 @@ data:
       title: graph/scc.hpp
   - name: math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: math/binomial.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
     - icon: ':warning:'
@@ -80,19 +80,19 @@ data:
       title: string/rolling_hash.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/const.hpp
       title: template/const.hpp
     - icon: ':warning:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/inout_old.hpp
       title: template/inout_old.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
@@ -108,7 +108,7 @@ data:
       title: tree/Tree_core.hpp
   - name: utility
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':warning:'
@@ -123,10 +123,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/PointAddRangeSum.test.cpp
       title: test/data_structure/PointAddRangeSum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/data_structure/Point_Set_Range_Composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/data_structure/Range_Affine_Range_Sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -153,10 +153,10 @@ data:
       title: test/graph/Strongly_Connected_Components.test.cpp
   - name: test/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Determinant_of_Matrix.test.cpp
       title: test/math/Determinant_of_Matrix.test.cpp
   - name: test/tree

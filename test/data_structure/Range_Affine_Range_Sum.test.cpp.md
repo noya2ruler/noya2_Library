@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/lazy_segment_tree.hpp
     title: data_structure/lazy_segment_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
@@ -310,19 +310,18 @@ data:
     \ntemplate <class> struct is_dynamic_modint : public std::false_type {};\ntemplate\
     \ <int id>\nstruct is_dynamic_modint<dynamic_modint<id>> : public std::true_type\
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
-    \n}  // namespace noya2\n\nnamespace noya2 {\n\ntemplate<typename T>\nconcept\
-    \ Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n    a.pow(declval<int>());\n\
-    };\n\n}\n#line 6 \"test/data_structure/Range_Affine_Range_Sum.test.cpp\"\n\nusing\
-    \ mint = modint998244353;\nusing pmm = pair<mint,mint>;\n\npmm op(pmm a, pmm b){\n\
-    \    return pmm(a.first+b.first,a.second+b.second);\n}\npmm e(){\n    return pmm(0,0);\n\
-    }\npmm mapping(pmm f, pmm x){\n    return pmm(x.first*f.first + x.second*f.second,\
-    \ x.second);\n}\npmm composition(pmm f, pmm g){\n    return pmm(f.first*g.first,f.first*g.second+f.second);\n\
-    }\npmm ideal(){\n    return pmm(1,0);\n}\n\nint main(){\n    int n, q; in(n,q);\n\
-    \    lazy_segtree<pmm,op,e,pmm,mapping,composition,ideal> seg([&]{\n        vector<pmm>\
-    \ a(n);\n        rep(i,n){\n            ll x; in(x);\n            a[i] = pmm(x,1);\n\
-    \        }\n        return a;\n    }());\n    while (q--){\n        int t; in(t);\n\
-    \        if (t == 0){\n            int l, r, b, c; in(l,r,b,c);\n            seg.apply(l,r,pmm(b,c));\n\
-    \        }\n        else {\n            int l, r; in(l,r);\n            out(seg.prod(l,r).first.val());\n\
+    \n}  // namespace noya2\n#line 6 \"test/data_structure/Range_Affine_Range_Sum.test.cpp\"\
+    \n\nusing mint = modint998244353;\nusing pmm = pair<mint,mint>;\n\npmm op(pmm\
+    \ a, pmm b){\n    return pmm(a.first+b.first,a.second+b.second);\n}\npmm e(){\n\
+    \    return pmm(0,0);\n}\npmm mapping(pmm f, pmm x){\n    return pmm(x.first*f.first\
+    \ + x.second*f.second, x.second);\n}\npmm composition(pmm f, pmm g){\n    return\
+    \ pmm(f.first*g.first,f.first*g.second+f.second);\n}\npmm ideal(){\n    return\
+    \ pmm(1,0);\n}\n\nint main(){\n    int n, q; in(n,q);\n    lazy_segtree<pmm,op,e,pmm,mapping,composition,ideal>\
+    \ seg([&]{\n        vector<pmm> a(n);\n        rep(i,n){\n            ll x; in(x);\n\
+    \            a[i] = pmm(x,1);\n        }\n        return a;\n    }());\n    while\
+    \ (q--){\n        int t; in(t);\n        if (t == 0){\n            int l, r, b,\
+    \ c; in(l,r,b,c);\n            seg.apply(l,r,pmm(b,c));\n        }\n        else\
+    \ {\n            int l, r; in(l,r);\n            out(seg.prod(l,r).first.val());\n\
     \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
     \n\n#include\"../../template/template.hpp\"\n#include\"../../data_structure/lazy_segment_tree.hpp\"\
@@ -348,8 +347,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-08-26 17:35:34+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-26 19:55:22+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Affine_Range_Sum.test.cpp
 layout: document
