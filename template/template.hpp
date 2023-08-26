@@ -2,7 +2,7 @@
 using namespace std;
 
 #include<bits/stdc++.h>
-#include"inout.hpp"
+#include"inout_old.hpp"
 #include"const.hpp"
 #include"utils.hpp"
 
