@@ -156,6 +156,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+    - icon: ':x:'
+      path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+      title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Determinant_of_Matrix.test.cpp
       title: test/math/Determinant_of_Matrix.test.cpp
