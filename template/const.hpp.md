@@ -2,28 +2,28 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/dsu.hpp
     title: data_structure/dsu.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
   - icon: ':x:'
     path: data_structure/lazy_segment_tree.hpp
     title: data_structure/lazy_segment_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/li_chao_tree.hpp
     title: data_structure/li_chao_tree.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/base_ld.hpp
     title: geometry/base_ld.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/partition_by_circle.hpp
     title: geometry/partition_by_circle.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/Graph_core.hpp
     title: graph/Graph_core.hpp
   - icon: ':x:'
@@ -35,7 +35,10 @@ data:
   - icon: ':warning:'
     path: misc/inversion.hpp
     title: misc/inversion.hpp
-  - icon: ':x:'
+  - icon: ':warning:'
+    path: misc/mex.hpp
+    title: misc/mex.hpp
+  - icon: ':heavy_check_mark:'
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
   - icon: ':warning:'
@@ -44,26 +47,26 @@ data:
   - icon: ':warning:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/Mo_on_Tree.hpp
     title: Mo on Tree
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/RerootingDP.hpp
     title: Rerooting DP
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/Tree_core.hpp
     title: tree/Tree_core.hpp
   - icon: ':warning:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Line_Add_Get_Min.test.cpp
     title: test/data_structure/Line_Add_Get_Min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/PointAddRangeSum.test.cpp
     title: test/data_structure/PointAddRangeSum.test.cpp
   - icon: ':x:'
@@ -72,22 +75,22 @@ data:
   - icon: ':x:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Segment_Add_Get_Min.test.cpp
     title: test/data_structure/Segment_Add_Get_Min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_RMQ.test.cpp
     title: test/data_structure/Static_RMQ.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Unionfind.test.cpp
     title: test/data_structure/Unionfind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path.test.cpp
     title: test/graph/Shortest_Path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Strongly_Connected_Components.test.cpp
     title: test/graph/Strongly_Connected_Components.test.cpp
   - icon: ':x:'
@@ -96,24 +99,24 @@ data:
   - icon: ':x:'
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Lowest_Common_Ancestor.test.cpp
     title: test/tree/Lowest_Common_Ancestor.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Rerooting_DP.test.cpp
     title: test/tree/Rerooting_DP.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 1 "template/const.hpp"
@@ -211,6 +214,7 @@ data:
   - string/rolling_hash.hpp
   - misc/inversion.hpp
   - misc/QMC.hpp
+  - misc/mex.hpp
   - misc/rng.hpp
   - misc/mo_algorithm.hpp
   - template/template.hpp
@@ -220,7 +224,7 @@ data:
   - geometry/partition_by_circle.hpp
   - math/matrix.hpp
   timestamp: '2023-07-17 20:27:23+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp

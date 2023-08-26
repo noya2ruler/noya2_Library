@@ -4,16 +4,16 @@ data:
   - icon: ':x:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':x:'
-    path: template/inout.hpp
-    title: template/inout.hpp
-  - icon: ':x:'
+  - icon: ':question:'
+    path: template/inout_old.hpp
+    title: template/inout_old.hpp
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   - icon: ':x:'
@@ -32,27 +32,21 @@ data:
   bundledCode: "#line 1 \"test/math/Binomial_Coefficient_Prime_Mod.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\n\
     \n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
-    #line 1 \"template/inout.hpp\"\nnamespace noya2 {\n\ntemplate<typename T> concept\
-    \ Scanable  = requires (ifstream &is, T &a){ is >> a; };\ntemplate<typename T>\
-    \ concept Printable = requires (ofstream &os, T &a){ os << a; };\n\ntemplate <typename\
-    \ Scanable> istream &operator>>(istream &is, vector<Scanable> &v);\ntemplate <typename\
-    \ Printable> ostream &operator<<(ostream &os, const vector<Printable> &v);\n\n\
-    template <typename T, typename U>\nrequires Scanable<T> && Scanable<U>\nistream\
-    \ &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n \
-    \   return is;\n}\ntemplate <typename T, typename U>\nrequires Printable<T> &&\
-    \ Printable<U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
-    \ << p.first << \" \" << p.second;\n    return os;\n}\n\ntemplate <typename Scanable>\n\
-    istream &operator>>(istream &is, vector<Scanable> &v){\n    for (auto &x : v)\
-    \ is >> x;\n    return is;\n}\ntemplate <typename Printable>\nostream &operator<<(ostream\
-    \ &os, const vector<Printable> &v){\n    int s = (int)v.size();\n    for (int\
-    \ i = 0; i < s; i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\n\n\
-    void in() {}\ntemplate <typename Scanable, class... U>\nvoid in(Scanable &t, U\
-    \ &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\n\
-    template <typename Printable, class... U, char sep = ' '>\nvoid out(const Printable\
-    \ &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n  \
-    \  out(u...);\n}\ntemplate<typename Printable>\nvoid out(const vector<vector<Printable>>\
-    \ &vv){\n    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n\
-    }\n\nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
+    #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
+    \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
+    \ << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename\
+    \ U>\nistream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
+    \    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os,\
+    \ const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s;\
+    \ i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
+    \ T>\nistream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is\
+    \ >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\n\
+    void in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout\
+    \ << \"\\n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const\
+    \ T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n\
+    \    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n\
+    \    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\
+    \nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
     \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
     \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
     \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
@@ -254,11 +248,13 @@ data:
     \ntemplate <class> struct is_dynamic_modint : public std::false_type {};\ntemplate\
     \ <int id>\nstruct is_dynamic_modint<dynamic_modint<id>> : public std::true_type\
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
-    \n}  // namespace noya2\n#line 2 \"math/binomial.hpp\"\n\nnamespace noya2 {\n\n\
-    template<typename mint>\nstruct binomial {\n    binomial(int len = 300000){ extend(len);\
-    \ }\n    static mint fact(int n){\n        if (n < 0) return 0;\n        while\
-    \ (n >= (int)_fact.size()) extend();\n        return _fact[n];\n    }\n    static\
-    \ mint ifact(int n){\n        if (n < 0) return 0;\n        while (n >= (int)_fact.size())\
+    \n}  // namespace noya2\n\nnamespace noya2 {\n\ntemplate<typename T>\nconcept\
+    \ Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n    a.pow(declval<int>());\n\
+    };\n\n}\n#line 2 \"math/binomial.hpp\"\n\nnamespace noya2 {\n\ntemplate<typename\
+    \ mint>\nstruct binomial {\n    binomial(int len = 300000){ extend(len); }\n \
+    \   static mint fact(int n){\n        if (n < 0) return 0;\n        while (n >=\
+    \ (int)_fact.size()) extend();\n        return _fact[n];\n    }\n    static mint\
+    \ ifact(int n){\n        if (n < 0) return 0;\n        while (n >= (int)_fact.size())\
     \ extend();\n        return _ifact[n];\n    }\n    static mint inv(int n){\n \
     \       return ifact(n) * fact(n-1);\n    }\n    static mint C(int n, int r){\n\
     \        if (!(0 <= r && r <= n)) return 0;\n        return fact(n) * ifact(r)\
@@ -290,7 +286,7 @@ data:
     \   out(binomial<modint>::C(n,k).val());\n    }\n}"
   dependsOn:
   - template/template.hpp
-  - template/inout.hpp
+  - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
   - utility/modint.hpp
@@ -298,7 +294,7 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   requiredBy: []
-  timestamp: '2023-08-24 20:23:56+09:00'
+  timestamp: '2023-08-26 17:35:34+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod.test.cpp

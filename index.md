@@ -3,38 +3,38 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/dsu.hpp
       title: data_structure/dsu.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/fenwick_tree.hpp
       title: data_structure/fenwick_tree.hpp
     - icon: ':x:'
       path: data_structure/lazy_segment_tree.hpp
       title: data_structure/lazy_segment_tree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/li_chao_tree.hpp
       title: data_structure/li_chao_tree.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/sparse_table.hpp
       title: data_structure/sparse_table.hpp
   - name: geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/base_ld.hpp
       title: geometry/base_ld.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/partition_by_circle.hpp
       title: geometry/partition_by_circle.hpp
   - name: graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/Graph_core.hpp
       title: graph/Graph_core.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: graph/scc.hpp
   - name: math
@@ -53,7 +53,10 @@ data:
     - icon: ':warning:'
       path: misc/inversion.hpp
       title: misc/inversion.hpp
-    - icon: ':x:'
+    - icon: ':warning:'
+      path: misc/mex.hpp
+      title: misc/mex.hpp
+    - icon: ':heavy_check_mark:'
       path: misc/mo_algorithm.hpp
       title: misc/mo_algorithm.hpp
     - icon: ':warning:'
@@ -74,27 +77,30 @@ data:
       title: string/rolling_hash.hpp
   - name: template
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: template/const.hpp
       title: template/const.hpp
-    - icon: ':x:'
+    - icon: ':warning:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':x:'
+    - icon: ':question:'
+      path: template/inout_old.hpp
+      title: template/inout_old.hpp
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/Mo_on_Tree.hpp
       title: Mo on Tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/RerootingDP.hpp
       title: Rerooting DP
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
   - name: utility
@@ -108,10 +114,10 @@ data:
   verificationCategories:
   - name: test/data_structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Line_Add_Get_Min.test.cpp
       title: test/data_structure/Line_Add_Get_Min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/PointAddRangeSum.test.cpp
       title: test/data_structure/PointAddRangeSum.test.cpp
     - icon: ':x:'
@@ -120,26 +126,26 @@ data:
     - icon: ':x:'
       path: test/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Segment_Add_Get_Min.test.cpp
       title: test/data_structure/Segment_Add_Get_Min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Static_RMQ.test.cpp
       title: test/data_structure/Static_RMQ.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Unionfind.test.cpp
       title: test/data_structure/Unionfind.test.cpp
   - name: test/geometry
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/geometry/aoj1198.test.cpp
       title: test/geometry/aoj1198.test.cpp
   - name: test/graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Shortest_Path.test.cpp
       title: test/graph/Shortest_Path.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Strongly_Connected_Components.test.cpp
       title: test/graph/Strongly_Connected_Components.test.cpp
   - name: test/math
@@ -152,19 +158,19 @@ data:
       title: test/math/Determinant_of_Matrix.test.cpp
   - name: test/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Jump_on_Tree.test.cpp
       title: test/tree/Jump_on_Tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Lowest_Common_Ancestor.test.cpp
       title: test/tree/Lowest_Common_Ancestor.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Rerooting_DP.test.cpp
       title: test/tree/Rerooting_DP.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Diameter.test.cpp
       title: test/tree/Tree_Diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/aoj_0489.test.cpp
       title: test/tree/aoj_0489.test.cpp
 layout: toppage

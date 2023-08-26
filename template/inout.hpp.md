@@ -1,119 +1,11 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':x:'
-    path: data_structure/dsu.hpp
-    title: data_structure/dsu.hpp
-  - icon: ':x:'
-    path: data_structure/fenwick_tree.hpp
-    title: data_structure/fenwick_tree.hpp
-  - icon: ':x:'
-    path: data_structure/lazy_segment_tree.hpp
-    title: data_structure/lazy_segment_tree.hpp
-  - icon: ':x:'
-    path: data_structure/li_chao_tree.hpp
-    title: data_structure/li_chao_tree.hpp
-  - icon: ':x:'
-    path: data_structure/sparse_table.hpp
-    title: data_structure/sparse_table.hpp
-  - icon: ':x:'
-    path: geometry/base_ld.hpp
-    title: geometry/base_ld.hpp
-  - icon: ':x:'
-    path: geometry/partition_by_circle.hpp
-    title: geometry/partition_by_circle.hpp
-  - icon: ':x:'
-    path: graph/Graph_core.hpp
-    title: graph/Graph_core.hpp
-  - icon: ':x:'
-    path: math/matrix.hpp
-    title: math/matrix.hpp
-  - icon: ':warning:'
-    path: misc/QMC.hpp
-    title: misc/QMC.hpp
-  - icon: ':warning:'
-    path: misc/inversion.hpp
-    title: misc/inversion.hpp
-  - icon: ':x:'
-    path: misc/mo_algorithm.hpp
-    title: misc/mo_algorithm.hpp
-  - icon: ':warning:'
-    path: misc/rng.hpp
-    title: misc/rng.hpp
-  - icon: ':warning:'
-    path: string/rolling_hash.hpp
-    title: string/rolling_hash.hpp
-  - icon: ':x:'
-    path: template/template.hpp
-    title: template/template.hpp
-  - icon: ':x:'
-    path: tree/Mo_on_Tree.hpp
-    title: Mo on Tree
-  - icon: ':x:'
-    path: tree/RerootingDP.hpp
-    title: Rerooting DP
-  - icon: ':x:'
-    path: tree/Tree_core.hpp
-    title: tree/Tree_core.hpp
-  - icon: ':warning:'
-    path: utility/modint61.hpp
-    title: utility/modint61.hpp
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/data_structure/Line_Add_Get_Min.test.cpp
-    title: test/data_structure/Line_Add_Get_Min.test.cpp
-  - icon: ':x:'
-    path: test/data_structure/PointAddRangeSum.test.cpp
-    title: test/data_structure/PointAddRangeSum.test.cpp
-  - icon: ':x:'
-    path: test/data_structure/Point_Set_Range_Composite.test.cpp
-    title: test/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
-    path: test/data_structure/Range_Affine_Range_Sum.test.cpp
-    title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
-    path: test/data_structure/Segment_Add_Get_Min.test.cpp
-    title: test/data_structure/Segment_Add_Get_Min.test.cpp
-  - icon: ':x:'
-    path: test/data_structure/Static_RMQ.test.cpp
-    title: test/data_structure/Static_RMQ.test.cpp
-  - icon: ':x:'
-    path: test/data_structure/Unionfind.test.cpp
-    title: test/data_structure/Unionfind.test.cpp
-  - icon: ':x:'
-    path: test/geometry/aoj1198.test.cpp
-    title: test/geometry/aoj1198.test.cpp
-  - icon: ':x:'
-    path: test/graph/Shortest_Path.test.cpp
-    title: test/graph/Shortest_Path.test.cpp
-  - icon: ':x:'
-    path: test/graph/Strongly_Connected_Components.test.cpp
-    title: test/graph/Strongly_Connected_Components.test.cpp
-  - icon: ':x:'
-    path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-    title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - icon: ':x:'
-    path: test/math/Determinant_of_Matrix.test.cpp
-    title: test/math/Determinant_of_Matrix.test.cpp
-  - icon: ':x:'
-    path: test/tree/Jump_on_Tree.test.cpp
-    title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':x:'
-    path: test/tree/Lowest_Common_Ancestor.test.cpp
-    title: test/tree/Lowest_Common_Ancestor.test.cpp
-  - icon: ':x:'
-    path: test/tree/Rerooting_DP.test.cpp
-    title: test/tree/Rerooting_DP.test.cpp
-  - icon: ':x:'
-    path: test/tree/Tree_Diameter.test.cpp
-    title: test/tree/Tree_Diameter.test.cpp
-  - icon: ':x:'
-    path: test/tree/aoj_0489.test.cpp
-    title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: true
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/inout.hpp\"\nnamespace noya2 {\n\ntemplate<typename\
@@ -165,46 +57,10 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: template/inout.hpp
-  requiredBy:
-  - data_structure/sparse_table.hpp
-  - data_structure/lazy_segment_tree.hpp
-  - data_structure/dsu.hpp
-  - data_structure/fenwick_tree.hpp
-  - data_structure/li_chao_tree.hpp
-  - tree/Mo_on_Tree.hpp
-  - tree/RerootingDP.hpp
-  - tree/Tree_core.hpp
-  - string/rolling_hash.hpp
-  - misc/inversion.hpp
-  - misc/QMC.hpp
-  - misc/rng.hpp
-  - misc/mo_algorithm.hpp
-  - template/template.hpp
-  - graph/Graph_core.hpp
-  - utility/modint61.hpp
-  - geometry/base_ld.hpp
-  - geometry/partition_by_circle.hpp
-  - math/matrix.hpp
+  requiredBy: []
   timestamp: '2023-08-24 20:23:56+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/data_structure/Segment_Add_Get_Min.test.cpp
-  - test/data_structure/Line_Add_Get_Min.test.cpp
-  - test/data_structure/PointAddRangeSum.test.cpp
-  - test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - test/data_structure/Unionfind.test.cpp
-  - test/data_structure/Static_RMQ.test.cpp
-  - test/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/tree/Tree_Diameter.test.cpp
-  - test/tree/Rerooting_DP.test.cpp
-  - test/tree/aoj_0489.test.cpp
-  - test/tree/Jump_on_Tree.test.cpp
-  - test/tree/Lowest_Common_Ancestor.test.cpp
-  - test/graph/Strongly_Connected_Components.test.cpp
-  - test/graph/Shortest_Path.test.cpp
-  - test/geometry/aoj1198.test.cpp
-  - test/math/Determinant_of_Matrix.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: template/inout.hpp
 layout: document
 redirect_from:

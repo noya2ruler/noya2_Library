@@ -185,7 +185,9 @@ data:
     \ntemplate <class> struct is_dynamic_modint : public std::false_type {};\ntemplate\
     \ <int id>\nstruct is_dynamic_modint<dynamic_modint<id>> : public std::true_type\
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
-    \n}  // namespace noya2\n"
+    \n}  // namespace noya2\n\nnamespace noya2 {\n\ntemplate<typename T>\nconcept\
+    \ Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n    a.pow(declval<int>());\n\
+    };\n\n}\n"
   code: "#pragma once\n\n// AtCoderLibrary \u3092\u305D\u306E\u307E\u307E\u30D1\u30AF\
     \u3063\u3066\u3044\u308B \u306A\u306B\u3082\u308F\u304B\u3063\u3066\u3044\u306A\
     \u3044\n// \\( x _______ x) ~\n\n#include <cassert>\n#include <numeric>\n#include\
@@ -351,12 +353,14 @@ data:
     \ntemplate <class> struct is_dynamic_modint : public std::false_type {};\ntemplate\
     \ <int id>\nstruct is_dynamic_modint<dynamic_modint<id>> : public std::true_type\
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
-    \n}  // namespace noya2"
+    \n}  // namespace noya2\n\nnamespace noya2 {\n\ntemplate<typename T>\nconcept\
+    \ Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n    a.pow(declval<int>());\n\
+    };\n\n}"
   dependsOn: []
   isVerificationFile: false
   path: utility/modint.hpp
   requiredBy: []
-  timestamp: '2023-07-21 02:32:24+09:00'
+  timestamp: '2023-08-26 05:21:30+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
