@@ -30,6 +30,9 @@ data:
     path: math/matrix.hpp
     title: math/matrix.hpp
   - icon: ':warning:'
+    path: math/prime.hpp
+    title: math/prime.hpp
+  - icon: ':warning:'
     path: misc/QMC.hpp
     title: misc/QMC.hpp
   - icon: ':warning:'
@@ -182,6 +185,7 @@ data:
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp
   - math/matrix.hpp
+  - math/prime.hpp
   timestamp: '2023-08-04 02:45:48+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:

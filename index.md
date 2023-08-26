@@ -45,6 +45,9 @@ data:
     - icon: ':x:'
       path: math/matrix.hpp
       title: math/matrix.hpp
+    - icon: ':warning:'
+      path: math/prime.hpp
+      title: math/prime.hpp
   - name: misc
     pages:
     - icon: ':warning:'
