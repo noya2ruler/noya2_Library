@@ -16,7 +16,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: fps/ntt.hpp
+    title: fps/ntt.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
@@ -292,7 +295,8 @@ data:
   - template/utils.hpp
   isVerificationFile: false
   path: utility/modint_new.hpp
-  requiredBy: []
+  requiredBy:
+  - fps/ntt.hpp
   timestamp: '2023-08-27 04:49:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

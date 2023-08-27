@@ -17,6 +17,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
+  - icon: ':warning:'
+    path: fps/formal_power_series.hpp
+    title: fps/formal_power_series.hpp
+  - icon: ':warning:'
+    path: fps/fps_arbitrary.hpp
+    title: fps/fps_arbitrary.hpp
+  - icon: ':warning:'
+    path: fps/fps_atcoder.hpp
+    title: fps/fps_atcoder.hpp
+  - icon: ':warning:'
+    path: fps/ntt.hpp
+    title: fps/ntt.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/base_ld.hpp
     title: geometry/base_ld.hpp
@@ -188,6 +200,10 @@ data:
   - geometry/partition_by_circle.hpp
   - math/matrix.hpp
   - math/prime.hpp
+  - fps/fps_arbitrary.hpp
+  - fps/formal_power_series.hpp
+  - fps/fps_atcoder.hpp
+  - fps/ntt.hpp
   timestamp: '2023-08-26 05:21:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

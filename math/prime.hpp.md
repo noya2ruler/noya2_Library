@@ -14,6 +14,9 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: fps/ntt.hpp
+    title: fps/ntt.hpp
   - icon: ':heavy_check_mark:'
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
@@ -152,6 +155,7 @@ data:
   path: math/prime.hpp
   requiredBy:
   - utility/modint_new.hpp
+  - fps/ntt.hpp
   timestamp: '2023-08-26 19:50:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

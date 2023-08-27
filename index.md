@@ -21,6 +21,26 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/sparse_table.hpp
       title: data_structure/sparse_table.hpp
+  - name: fps
+    pages:
+    - icon: ':warning:'
+      path: fps/formal_power_series.hpp
+      title: fps/formal_power_series.hpp
+    - icon: ':warning:'
+      path: fps/fps_arbitrary.hpp
+      title: fps/fps_arbitrary.hpp
+    - icon: ':warning:'
+      path: fps/fps_atcoder.hpp
+      title: fps/fps_atcoder.hpp
+    - icon: ':warning:'
+      path: fps/fps_ntt.hpp
+      title: fps/fps_ntt.hpp
+    - icon: ':warning:'
+      path: fps/ntt.hpp
+      title: fps/ntt.hpp
+    - icon: ':warning:'
+      path: fps/relaxed_convolution.hpp
+      title: fps/relaxed_convolution.hpp
   - name: geometry
     pages:
     - icon: ':heavy_check_mark:'
