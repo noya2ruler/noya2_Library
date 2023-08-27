@@ -1,7 +1,7 @@
 #pragma once
 
 #include"formal_power_series.hpp"
-#include"ntt_new.hpp"
+#include"ntt.hpp"
 
 namespace noya2{
 

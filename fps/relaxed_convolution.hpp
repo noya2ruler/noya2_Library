@@ -1,6 +1,6 @@
 #pragma once
 
-#include"ntt_new.hpp"
+#include"ntt.hpp"
 
 namespace noya2{
 
