@@ -23,7 +23,7 @@ data:
       title: data_structure/sparse_table.hpp
   - name: fps
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: fps/formal_power_series.hpp
       title: fps/formal_power_series.hpp
     - icon: ':warning:'
@@ -32,10 +32,10 @@ data:
     - icon: ':warning:'
       path: fps/fps_atcoder.hpp
       title: fps/fps_atcoder.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_ntt.hpp
       title: fps/fps_ntt.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: fps/ntt.hpp
       title: fps/ntt.hpp
     - icon: ':warning:'
@@ -161,6 +161,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Unionfind.test.cpp
       title: test/data_structure/Unionfind.test.cpp
+  - name: test/fps
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/fps/convolution.test.cpp
+      title: test/fps/convolution.test.cpp
   - name: test/geometry
     pages:
     - icon: ':heavy_check_mark:'

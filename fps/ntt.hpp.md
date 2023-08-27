@@ -19,11 +19,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: fps/fps_ntt.hpp
+    title: fps/fps_ntt.hpp
+  - icon: ':warning:'
+    path: fps/relaxed_convolution.hpp
+    title: fps/relaxed_convolution.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/fps/convolution.test.cpp
+    title: test/fps/convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/ntt.hpp\"\n\n#line 2 \"template/template.hpp\"\nusing\
@@ -358,10 +367,13 @@ data:
   - math/prime.hpp
   isVerificationFile: false
   path: fps/ntt.hpp
-  requiredBy: []
+  requiredBy:
+  - fps/fps_ntt.hpp
+  - fps/relaxed_convolution.hpp
   timestamp: '2023-08-28 00:39:13+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/fps/convolution.test.cpp
 documentation_of: fps/ntt.hpp
 layout: document
 redirect_from:

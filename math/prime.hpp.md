@@ -14,13 +14,22 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
+    path: fps/fps_ntt.hpp
+    title: fps/fps_ntt.hpp
+  - icon: ':heavy_check_mark:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
+  - icon: ':warning:'
+    path: fps/relaxed_convolution.hpp
+    title: fps/relaxed_convolution.hpp
   - icon: ':heavy_check_mark:'
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/fps/convolution.test.cpp
+    title: test/fps/convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
@@ -155,11 +164,14 @@ data:
   path: math/prime.hpp
   requiredBy:
   - utility/modint_new.hpp
+  - fps/fps_ntt.hpp
+  - fps/relaxed_convolution.hpp
   - fps/ntt.hpp
   timestamp: '2023-08-26 19:50:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - test/fps/convolution.test.cpp
 documentation_of: math/prime.hpp
 layout: document
 redirect_from:

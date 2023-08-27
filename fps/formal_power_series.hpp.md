@@ -20,10 +20,16 @@ data:
   - icon: ':warning:'
     path: fps/fps_atcoder.hpp
     title: fps/fps_atcoder.hpp
-  _extendedVerifiedWith: []
+  - icon: ':heavy_check_mark:'
+    path: fps/fps_ntt.hpp
+    title: fps/fps_ntt.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/fps/convolution.test.cpp
+    title: test/fps/convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/formal_power_series.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -170,10 +176,12 @@ data:
   path: fps/formal_power_series.hpp
   requiredBy:
   - fps/fps_arbitrary.hpp
+  - fps/fps_ntt.hpp
   - fps/fps_atcoder.hpp
   timestamp: '2023-08-28 00:39:13+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/fps/convolution.test.cpp
 documentation_of: fps/formal_power_series.hpp
 layout: document
 redirect_from:

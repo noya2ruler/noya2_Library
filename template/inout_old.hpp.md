@@ -17,7 +17,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
   - icon: ':warning:'
@@ -26,9 +26,15 @@ data:
   - icon: ':warning:'
     path: fps/fps_atcoder.hpp
     title: fps/fps_atcoder.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
+    path: fps/fps_ntt.hpp
+    title: fps/fps_ntt.hpp
+  - icon: ':heavy_check_mark:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
+  - icon: ':warning:'
+    path: fps/relaxed_convolution.hpp
+    title: fps/relaxed_convolution.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/base_ld.hpp
     title: geometry/base_ld.hpp
@@ -102,6 +108,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Unionfind.test.cpp
     title: test/data_structure/Unionfind.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fps/convolution.test.cpp
+    title: test/fps/convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
@@ -201,6 +210,8 @@ data:
   - math/matrix.hpp
   - math/prime.hpp
   - fps/fps_arbitrary.hpp
+  - fps/fps_ntt.hpp
+  - fps/relaxed_convolution.hpp
   - fps/formal_power_series.hpp
   - fps/fps_atcoder.hpp
   - fps/ntt.hpp
@@ -225,6 +236,7 @@ data:
   - test/math/Determinant_of_Matrix.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - test/fps/convolution.test.cpp
 documentation_of: template/inout_old.hpp
 layout: document
 redirect_from:
