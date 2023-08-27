@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint_new.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\
@@ -294,7 +294,7 @@ data:
   path: utility/modint_new.hpp
   requiredBy: []
   timestamp: '2023-08-27 04:49:05+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
 documentation_of: utility/modint_new.hpp
