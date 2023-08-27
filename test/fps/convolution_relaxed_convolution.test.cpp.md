@@ -4,6 +4,9 @@ data:
   - icon: ':question:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
+  - icon: ':x:'
+    path: fps/relaxed_convolution.hpp
+    title: fps/relaxed_convolution.hpp
   - icon: ':question:'
     path: math/prime.hpp
     title: math/prime.hpp
@@ -23,34 +26,35 @@ data:
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/fps/convolution_relaxed_convolution.test.cpp
-    title: test/fps/convolution_relaxed_convolution.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: true
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"fps/relaxed_convolution.hpp\"\n\n#line 2 \"fps/ntt.hpp\"\
-    \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
-    #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
-    \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
-    \ << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename\
-    \ U>\nistream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
-    \    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os,\
-    \ const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s;\
-    \ i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
-    \ T>\nistream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is\
-    \ >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\n\
-    void in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout\
-    \ << \"\\n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const\
-    \ T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n\
-    \    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n\
-    \    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\
-    \nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
-    \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
-    \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
+    links:
+    - https://judge.yosupo.jp/problem/convolution_mod
+  bundledCode: "#line 1 \"test/fps/convolution_relaxed_convolution.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#line 2 \"template/template.hpp\"\
+    \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
+    \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
+    \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
+    \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
+    \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
+    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int\
+    \ s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\"\
+    ) << v[i];\n    return os;\n}\ntemplate <typename T>\nistream &operator>>(istream\
+    \ &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid\
+    \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
+    \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
+    \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
+    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\ntemplate<typename\
+    \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
+    \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
+    \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
+    \ << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n \
+    \   }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
     \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
     \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
     \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
@@ -84,90 +88,90 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"utility/modint_new.hpp\"\
-    \n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\n\nnamespace noya2\
-    \ {\n\nconstexpr ll safe_mod(ll x, ll m) {\n    x %= m;\n    if (x < 0) x += m;\n\
-    \    return x;\n}\n\nconstexpr ll pow_mod_constexpr(ll x, ll n, int m) {\n   \
-    \ if (m == 1) return 0;\n    uint _m = (uint)(m);\n    ull r = 1;\n    ull y =\
-    \ safe_mod(x, m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n   \
-    \     y = (y * y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr\
-    \ bool is_prime_constexpr(int n) {\n    if (n <= 1) return false;\n    if (n ==\
-    \ 2 || n == 7 || n == 61) return true;\n    if (n % 2 == 0) return false;\n  \
-    \  ll d = n - 1;\n    while (d % 2 == 0) d /= 2;\n    constexpr ll bases[3] =\
-    \ {2, 7, 61};\n    for (ll a : bases) {\n        ll t = d;\n        ll y = pow_mod_constexpr(a,\
-    \ t, n);\n        while (t != n - 1 && y != 1 && y != n - 1) {\n            y\
-    \ = y * y % n;\n            t <<= 1;\n        }\n        if (y != n - 1 && t %\
-    \ 2 == 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\
-    template <int n> constexpr bool is_prime = is_prime_constexpr(n);\n\nconstexpr\
-    \ std::pair<long long, long long> inv_gcd(long long a, long long b) {\n    a =\
-    \ safe_mod(a, b);\n    if (a == 0) return {b, 0};\n    long long s = b, t = a;\n\
-    \    long long m0 = 0, m1 = 1;\n    while (t) {\n        long long u = s / t;\n\
-    \        s -= t * u;\n        m0 -= m1 * u; \n        auto tmp = s;\n        s\
-    \ = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n\
-    \    }\n    if (m0 < 0) m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int\
-    \ primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n    if (m == 167772161)\
-    \ return 3;\n    if (m == 469762049) return 3;\n    if (m == 754974721) return\
-    \ 11;\n    if (m == 998244353) return 3;\n    int divs[20] = {};\n    divs[0]\
-    \ = 2;\n    int cnt = 1;\n    int x = (m - 1) / 2;\n    while (x % 2 == 0) x /=\
-    \ 2;\n    for (int i = 3; (ll)(i)*i <= x; i += 2) {\n        if (x % i == 0) {\n\
-    \            divs[cnt++] = i;\n            while (x % i == 0) {\n            \
-    \    x /= i;\n            }\n        }\n    }\n    if (x > 1) {\n        divs[cnt++]\
-    \ = x;\n    }\n    for (int g = 2;; g++) {\n        bool ok = true;\n        for\
-    \ (int i = 0; i < cnt; i++) {\n            if (pow_mod_constexpr(g, (m - 1) /\
-    \ divs[i], m) == 1) {\n                ok = false;\n                break;\n \
-    \           }\n        }\n        if (ok) return g;\n    }\n}\ntemplate <int m>\
-    \ constexpr int primitive_root = primitive_root_constexpr(m);\n\n} // namespace\
-    \ noya2\n#line 4 \"utility/modint_new.hpp\"\n\nnamespace noya2{\n\nstruct barrett\
-    \ {\n    uint _m;\n    ull  im;\n    explicit barrett(uint m) : _m(m), im((ull)(-1)\
-    \ / m + 1) {}\n    uint umod() const { return _m; }\n    uint mul(uint a, uint\
-    \ b) const {\n        ull z = a;\n        z *= b;\n        ull x = ull((__uint128_t(z)\
-    \ * im) >> 64);\n        uint v = (uint)(z - x * _m);\n        if (_m <= v) v\
-    \ += _m;\n        return v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint\
-    \ {\n    using mint = static_modint;\n  public:\n    static constexpr int mod()\
-    \ { return m; }\n    static mint raw(int v) {\n        mint x;\n        x._v =\
-    \ v;\n        return x;\n    }\n    static_modint() : _v(0) {}\n    template<signed_integral\
-    \ T>\n    static_modint(T v){\n        ll x = (ll)(v % (ll)(umod()));\n      \
-    \  if (x < 0) x += umod();\n        _v = (uint)(x);\n    }\n    template<unsigned_integral\
-    \ T>\n    static_modint(T v){\n        _v = (uint)(v % umod());\n    }\n    uint\
-    \ val() const { return _v; }\n    mint& operator++() {\n        _v++;\n      \
-    \  if (_v == umod()) _v = 0;\n        return *this;\n    }\n    mint& operator--()\
-    \ {\n        if (_v == 0) _v = umod();\n        _v--;\n        return *this;\n\
-    \    }\n    mint operator++(int) {\n        mint result = *this;\n        ++*this;\n\
-    \        return result;\n    }\n    mint operator--(int) {\n        mint result\
-    \ = *this;\n        --*this;\n        return result;\n    }\n    mint& operator+=(const\
-    \ mint& rhs) {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n\
-    \        return *this;\n    }\n    mint& operator-=(const mint& rhs) {\n     \
-    \   _v -= rhs._v;\n        if (_v >= umod()) _v += umod();\n        return *this;\n\
-    \    }\n    mint& operator*=(const mint& rhs) {\n        ull z = _v;\n       \
-    \ z *= rhs._v;\n        _v = (uint)(z % umod());\n        return *this;\n    }\n\
-    \    mint& operator/=(const mint& rhs) { return *this = *this * rhs.inv(); }\n\
-    \    mint operator+() const { return *this; }\n    mint operator-() const { return\
-    \ mint() - *this; }\n    mint pow(ll n) const {\n        assert(0 <= n);\n   \
-    \     mint x = *this, r = 1;\n        while (n) {\n            if (n & 1) r *=\
-    \ x;\n            x *= x;\n            n >>= 1;\n        }\n        return r;\n\
-    \    }\n    mint inv() const {\n        if (prime) {\n            assert(_v);\n\
-    \            return pow(umod() - 2);\n        } else {\n            auto eg =\
-    \ inv_gcd(_v, m);\n            assert(eg.first == 1);\n            return eg.second;\n\
-    \        }\n    }\n    friend mint operator+(const mint& lhs, const mint& rhs)\
-    \ {\n        return mint(lhs) += rhs;\n    }\n    friend mint operator-(const\
-    \ mint& lhs, const mint& rhs) {\n        return mint(lhs) -= rhs;\n    }\n   \
-    \ friend mint operator*(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
-    \ *= rhs;\n    }\n    friend mint operator/(const mint& lhs, const mint& rhs)\
-    \ {\n        return mint(lhs) /= rhs;\n    }\n    friend bool operator==(const\
-    \ mint& lhs, const mint& rhs) {\n        return lhs._v == rhs._v;\n    }\n   \
-    \ friend bool operator!=(const mint& lhs, const mint& rhs) {\n        return lhs._v\
-    \ != rhs._v;\n    }\n    friend std::ostream &operator<<(std::ostream &os, const\
-    \ mint& p) {\n        return os << p.val();\n    }\n    friend std::istream &operator>>(std::istream\
-    \ &is, mint &a) {\n        long long t; is >> t;\n        a = mint(t);\n     \
-    \   return (is);\n    }\n\n  private:\n    unsigned int _v;\n    static constexpr\
-    \ unsigned int umod() { return m; }\n    static constexpr bool prime = is_prime<m>;\n\
-    };\n\n\ntemplate <int id> struct dynamic_modint {\n    using mint = dynamic_modint;\n\
-    \  public:\n    static int mod() { return (int)(bt.umod()); }\n    static void\
-    \ set_mod(int m) {\n        assert(1 <= m);\n        bt = barrett(m);\n    }\n\
-    \    static mint raw(int v) {\n        mint x;\n        x._v = v;\n        return\
-    \ x;\n    }\n\n    dynamic_modint() : _v(0) {}\n    template<signed_integral T>\n\
-    \    dynamic_modint(T v){\n        ll x = (ll)(v % (ll)(mod()));\n        if (x\
-    \ < 0) x += mod();\n        _v = (uint)(x);\n    }\n    template<unsigned_integral\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"fps/relaxed_convolution.hpp\"\
+    \n\n#line 2 \"fps/ntt.hpp\"\n\n#line 2 \"utility/modint_new.hpp\"\n\n#line 2 \"\
+    math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\n\nnamespace noya2 {\n\nconstexpr\
+    \ ll safe_mod(ll x, ll m) {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n\
+    }\n\nconstexpr ll pow_mod_constexpr(ll x, ll n, int m) {\n    if (m == 1) return\
+    \ 0;\n    uint _m = (uint)(m);\n    ull r = 1;\n    ull y = safe_mod(x, m);\n\
+    \    while (n) {\n        if (n & 1) r = (r * y) % _m;\n        y = (y * y) %\
+    \ _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int\
+    \ n) {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
+    \ true;\n    if (n % 2 == 0) return false;\n    ll d = n - 1;\n    while (d %\
+    \ 2 == 0) d /= 2;\n    constexpr ll bases[3] = {2, 7, 61};\n    for (ll a : bases)\
+    \ {\n        ll t = d;\n        ll y = pow_mod_constexpr(a, t, n);\n        while\
+    \ (t != n - 1 && y != 1 && y != n - 1) {\n            y = y * y % n;\n       \
+    \     t <<= 1;\n        }\n        if (y != n - 1 && t % 2 == 0) {\n         \
+    \   return false;\n        }\n    }\n    return true;\n}\ntemplate <int n> constexpr\
+    \ bool is_prime = is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long\
+    \ long> inv_gcd(long long a, long long b) {\n    a = safe_mod(a, b);\n    if (a\
+    \ == 0) return {b, 0};\n    long long s = b, t = a;\n    long long m0 = 0, m1\
+    \ = 1;\n    while (t) {\n        long long u = s / t;\n        s -= t * u;\n \
+    \       m0 -= m1 * u; \n        auto tmp = s;\n        s = t;\n        t = tmp;\n\
+    \        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n    }\n    if (m0 < 0)\
+    \ m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int primitive_root_constexpr(int\
+    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
+    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
+    \ return 3;\n    int divs[20] = {};\n    divs[0] = 2;\n    int cnt = 1;\n    int\
+    \ x = (m - 1) / 2;\n    while (x % 2 == 0) x /= 2;\n    for (int i = 3; (ll)(i)*i\
+    \ <= x; i += 2) {\n        if (x % i == 0) {\n            divs[cnt++] = i;\n \
+    \           while (x % i == 0) {\n                x /= i;\n            }\n   \
+    \     }\n    }\n    if (x > 1) {\n        divs[cnt++] = x;\n    }\n    for (int\
+    \ g = 2;; g++) {\n        bool ok = true;\n        for (int i = 0; i < cnt; i++)\
+    \ {\n            if (pow_mod_constexpr(g, (m - 1) / divs[i], m) == 1) {\n    \
+    \            ok = false;\n                break;\n            }\n        }\n \
+    \       if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int primitive_root\
+    \ = primitive_root_constexpr(m);\n\n} // namespace noya2\n#line 4 \"utility/modint_new.hpp\"\
+    \n\nnamespace noya2{\n\nstruct barrett {\n    uint _m;\n    ull  im;\n    explicit\
+    \ barrett(uint m) : _m(m), im((ull)(-1) / m + 1) {}\n    uint umod() const { return\
+    \ _m; }\n    uint mul(uint a, uint b) const {\n        ull z = a;\n        z *=\
+    \ b;\n        ull x = ull((__uint128_t(z) * im) >> 64);\n        uint v = (uint)(z\
+    \ - x * _m);\n        if (_m <= v) v += _m;\n        return v;\n    }\n};\n\n\
+    template <int m>\nstruct static_modint {\n    using mint = static_modint;\n  public:\n\
+    \    static constexpr int mod() { return m; }\n    static mint raw(int v) {\n\
+    \        mint x;\n        x._v = v;\n        return x;\n    }\n    static_modint()\
+    \ : _v(0) {}\n    template<signed_integral T>\n    static_modint(T v){\n     \
+    \   ll x = (ll)(v % (ll)(umod()));\n        if (x < 0) x += umod();\n        _v\
+    \ = (uint)(x);\n    }\n    template<unsigned_integral T>\n    static_modint(T\
+    \ v){\n        _v = (uint)(v % umod());\n    }\n    uint val() const { return\
+    \ _v; }\n    mint& operator++() {\n        _v++;\n        if (_v == umod()) _v\
+    \ = 0;\n        return *this;\n    }\n    mint& operator--() {\n        if (_v\
+    \ == 0) _v = umod();\n        _v--;\n        return *this;\n    }\n    mint operator++(int)\
+    \ {\n        mint result = *this;\n        ++*this;\n        return result;\n\
+    \    }\n    mint operator--(int) {\n        mint result = *this;\n        --*this;\n\
+    \        return result;\n    }\n    mint& operator+=(const mint& rhs) {\n    \
+    \    _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return *this;\n\
+    \    }\n    mint& operator-=(const mint& rhs) {\n        _v -= rhs._v;\n     \
+    \   if (_v >= umod()) _v += umod();\n        return *this;\n    }\n    mint& operator*=(const\
+    \ mint& rhs) {\n        ull z = _v;\n        z *= rhs._v;\n        _v = (uint)(z\
+    \ % umod());\n        return *this;\n    }\n    mint& operator/=(const mint& rhs)\
+    \ { return *this = *this * rhs.inv(); }\n    mint operator+() const { return *this;\
+    \ }\n    mint operator-() const { return mint() - *this; }\n    mint pow(ll n)\
+    \ const {\n        assert(0 <= n);\n        mint x = *this, r = 1;\n        while\
+    \ (n) {\n            if (n & 1) r *= x;\n            x *= x;\n            n >>=\
+    \ 1;\n        }\n        return r;\n    }\n    mint inv() const {\n        if\
+    \ (prime) {\n            assert(_v);\n            return pow(umod() - 2);\n  \
+    \      } else {\n            auto eg = inv_gcd(_v, m);\n            assert(eg.first\
+    \ == 1);\n            return eg.second;\n        }\n    }\n    friend mint operator+(const\
+    \ mint& lhs, const mint& rhs) {\n        return mint(lhs) += rhs;\n    }\n   \
+    \ friend mint operator-(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
+    \ -= rhs;\n    }\n    friend mint operator*(const mint& lhs, const mint& rhs)\
+    \ {\n        return mint(lhs) *= rhs;\n    }\n    friend mint operator/(const\
+    \ mint& lhs, const mint& rhs) {\n        return mint(lhs) /= rhs;\n    }\n   \
+    \ friend bool operator==(const mint& lhs, const mint& rhs) {\n        return lhs._v\
+    \ == rhs._v;\n    }\n    friend bool operator!=(const mint& lhs, const mint& rhs)\
+    \ {\n        return lhs._v != rhs._v;\n    }\n    friend std::ostream &operator<<(std::ostream\
+    \ &os, const mint& p) {\n        return os << p.val();\n    }\n    friend std::istream\
+    \ &operator>>(std::istream &is, mint &a) {\n        long long t; is >> t;\n  \
+    \      a = mint(t);\n        return (is);\n    }\n\n  private:\n    unsigned int\
+    \ _v;\n    static constexpr unsigned int umod() { return m; }\n    static constexpr\
+    \ bool prime = is_prime<m>;\n};\n\n\ntemplate <int id> struct dynamic_modint {\n\
+    \    using mint = dynamic_modint;\n  public:\n    static int mod() { return (int)(bt.umod());\
+    \ }\n    static void set_mod(int m) {\n        assert(1 <= m);\n        bt = barrett(m);\n\
+    \    }\n    static mint raw(int v) {\n        mint x;\n        x._v = v;\n   \
+    \     return x;\n    }\n\n    dynamic_modint() : _v(0) {}\n    template<signed_integral\
+    \ T>\n    dynamic_modint(T v){\n        ll x = (ll)(v % (ll)(mod()));\n      \
+    \  if (x < 0) x += mod();\n        _v = (uint)(x);\n    }\n    template<unsigned_integral\
     \ T>\n    dynamic_modint(T v){\n        _v = (uint)(v % mod());\n    }\n    uint\
     \ val() const { return _v; }\n    mint& operator++() {\n        _v++;\n      \
     \  if (_v == umod()) _v = 0;\n        return *this;\n    }\n    mint& operator--()\
@@ -305,53 +309,38 @@ data:
     \            ntt.fft4(g_ffted[t],t+1,2*(q+1-w));\n            if (q_special &&\
     \ t == lsb-1) break;\n        }\n    }\n    vector<T> f, g, h;\n    vector<vector<T>>\
     \ f_ffted, g_ffted;\n    uint q;\n    bool q_special;\n    NTT<T> ntt;\n};\n\n\
-    } // namesapce noya2\n"
-  code: "#pragma once\n\n#include\"ntt.hpp\"\n\nnamespace noya2{\n\ntemplate<Modint\
-    \ T>\nstruct RelaxedConvolution {\n    RelaxedConvolution (int n) : f(n), g(n),\
-    \ h(2*n-1), q(0) {}\n    uint join(T fq, T gq){\n        f[q] = fq, g[q] = gq;\n\
-    \        int lsb = countr_zero(q+2);\n        q_special = (q+2 == (1u<<lsb));\n\
-    \        update(lsb);\n        return q;\n    }\n    const T operator[](int idx)\
-    \ const { return h[idx]; }\n  private:\n    void update(int lsb){\n        task(lsb);\n\
-    \        rep(t,lsb+1){\n            uint w = 1u<<t;\n            T iv = T(2*w).inv();\n\
-    \            if (t <= 5){\n                rep(i,w) rep(j,w) h[q+i+j] += f[q+1-w+i]\
-    \ * g[w-1+j];\n            }\n            else {\n                vector<T> fg(2*w);\n\
-    \                rep(i,2*w) fg[i] = f_ffted[t][2*(q+1-w)+i] * g_ffted[t][2*(w-1)+i];\n\
-    \                ntt.ifft4(fg,t+1);\n                rep(i,2*w-1) h[q+i] += fg[i]\
-    \ * iv;\n            }\n            if (q_special && t == lsb-1) break;\n    \
-    \        if (t <= 5){\n                rep(i,w) rep(j,w) h[q+i+j] += f[w-1+i]\
-    \ * g[q+1-w+j];\n            }\n            else {\n                vector<T>\
-    \ fg(2*w);\n                rep(i,2*w) fg[i] = f_ffted[t][2*(w-1)+i] * g_ffted[t][2*(q+1-w)+i];\n\
-    \                ntt.ifft4(fg,t+1);\n                rep(i,2*w-1) h[q+i] += fg[i]\
-    \ * iv;\n            }\n        }\n        q++;\n    }\n    void task(int lsb){\n\
-    \        if (q_special){\n            int siz = (lsb <= 5 ? 0 : (int)(f.size()))\
-    \ * 2;\n            f_ffted.emplace_back(vector<T>(siz));\n            g_ffted.emplace_back(vector<T>(siz));\n\
-    \        }\n        rep(t,lsb+1){\n            if (q_special && t == lsb) break;\n\
-    \            if (t <= 5) continue;\n            uint w = 1u<<t;\n            rep(i,w){\n\
-    \                f_ffted[t][2*(q+1-w)+i] = f[q+1-w+i];\n                g_ffted[t][2*(q+1-w)+i]\
-    \ = g[q+1-w+i];\n            }\n            ntt.fft4(f_ffted[t],t+1,2*(q+1-w));\n\
-    \            ntt.fft4(g_ffted[t],t+1,2*(q+1-w));\n            if (q_special &&\
-    \ t == lsb-1) break;\n        }\n    }\n    vector<T> f, g, h;\n    vector<vector<T>>\
-    \ f_ffted, g_ffted;\n    uint q;\n    bool q_special;\n    NTT<T> ntt;\n};\n\n\
-    } // namesapce noya2"
+    } // namesapce noya2\n#line 5 \"test/fps/convolution_relaxed_convolution.test.cpp\"\
+    \nusing mint = modint998244353;\n\nint main(){\n    int n, m; in(n,m);\n    vector<mint>\
+    \ a(n), b(m); in(a,b);\n    RelaxedConvolution<mint> rc(n+m-1);\n    vector<mint>\
+    \ ans(n+m-1);\n    rep(i,n+m-1){\n        mint fi = (i < n ? a[i] : mint(0));\n\
+    \        mint gi = (i < m ? b[i] : mint(0));\n        rc.join(fi,gi);\n      \
+    \  ans[i] = rc[i];\n    }\n    out(ans);\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#include\"\
+    ../../template/template.hpp\"\n#include\"../../fps/relaxed_convolution.hpp\"\n\
+    using mint = modint998244353;\n\nint main(){\n    int n, m; in(n,m);\n    vector<mint>\
+    \ a(n), b(m); in(a,b);\n    RelaxedConvolution<mint> rc(n+m-1);\n    vector<mint>\
+    \ ans(n+m-1);\n    rep(i,n+m-1){\n        mint fi = (i < n ? a[i] : mint(0));\n\
+    \        mint gi = (i < m ? b[i] : mint(0));\n        rc.join(fi,gi);\n      \
+    \  ans[i] = rc[i];\n    }\n    out(ans);\n}"
   dependsOn:
-  - fps/ntt.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
+  - fps/relaxed_convolution.hpp
+  - fps/ntt.hpp
   - utility/modint_new.hpp
   - math/prime.hpp
-  isVerificationFile: false
-  path: fps/relaxed_convolution.hpp
+  isVerificationFile: true
+  path: test/fps/convolution_relaxed_convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-08-28 00:50:34+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/fps/convolution_relaxed_convolution.test.cpp
-documentation_of: fps/relaxed_convolution.hpp
+  timestamp: '2023-08-28 02:06:23+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
+  verifiedWith: []
+documentation_of: test/fps/convolution_relaxed_convolution.test.cpp
 layout: document
 redirect_from:
-- /library/fps/relaxed_convolution.hpp
-- /library/fps/relaxed_convolution.hpp.html
-title: fps/relaxed_convolution.hpp
+- /verify/test/fps/convolution_relaxed_convolution.test.cpp
+- /verify/test/fps/convolution_relaxed_convolution.test.cpp.html
+title: test/fps/convolution_relaxed_convolution.test.cpp
 ---
