@@ -6,7 +6,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/dsu.hpp
       title: data_structure/dsu.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/dynamic_segment_tree.hpp
       title: data_structure/dynamic_segment_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -152,6 +152,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/data_structure/Point_Set_Range_Composite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
+      title: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/data_structure/Range_Affine_Range_Sum.test.cpp

@@ -14,10 +14,13 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
+    title: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/dynamic_segment_tree.hpp\"\n\n#line 2 \"\
@@ -176,8 +179,9 @@ data:
   path: data_structure/dynamic_segment_tree.hpp
   requiredBy: []
   timestamp: '2023-08-29 00:55:42+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
 documentation_of: data_structure/dynamic_segment_tree.hpp
 layout: document
 redirect_from:

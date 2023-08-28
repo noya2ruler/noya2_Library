@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: data_structure/dynamic_segment_tree.hpp
+    title: data_structure/dynamic_segment_tree.hpp
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
   - icon: ':heavy_check_mark:'
@@ -16,36 +19,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: fps/fps_ntt.hpp
-    title: fps/fps_ntt.hpp
-  - icon: ':heavy_check_mark:'
-    path: fps/ntt.hpp
-    title: fps/ntt.hpp
-  - icon: ':heavy_check_mark:'
-    path: fps/relaxed_convolution.hpp
-    title: fps/relaxed_convolution.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
-    title: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/fps/convolution.test.cpp
-    title: test/fps/convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/fps/convolution_relaxed_convolution.test.cpp
-    title: test/fps/convolution_relaxed_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-    title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+    path: utility/modint_new.hpp
+    title: utility/modint_new.hpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"utility/modint_new.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\
-    \n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
+    links:
+    - https://judge.yosupo.jp/problem/point_set_range_composite
+  bundledCode: "#line 1 \"test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
+    \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
     #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
     \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
     \ << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename\
@@ -96,7 +85,55 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"math/prime.hpp\"\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/dynamic_segment_tree.hpp\"\
+    \n\n#line 4 \"data_structure/dynamic_segment_tree.hpp\"\n\nnamespace noya2{\n\n\
+    template<class S, S(*op)(S, S), S(*e)()>\nstruct dynamic_segtree {\n    struct\
+    \ Node;\n    using Ptr = shared_ptr<Node>;\n    struct Node {\n        S val;\n\
+    \        Ptr lch, rch, par;\n        Node (Ptr par_ = nullptr) : val(e()), lch(nullptr),\
+    \ rch(nullptr), par(par_) {}\n    };\n    Ptr root;\n    ll n;\n    dynamic_segtree\
+    \ (ll n_ = 0) : n(2){\n        while (n < n_) n <<= 1;\n        root = make_shared<Node>();\n\
+    \    }\n    void set(ll idx, S val_){\n        assert(0 <= idx && idx < n);\n\
+    \        ll le = 0, ri = n;\n        Ptr cur = root;\n        while (ri - le >\
+    \ 1){\n            ll md = (le + ri) / 2;\n            if (idx < md){\n      \
+    \          if (cur->lch == nullptr) cur->lch = make_shared<Node>(cur);\n     \
+    \           cur = cur->lch;\n                ri = md;\n            }\n       \
+    \     else {\n                if (cur->rch == nullptr) cur->rch = make_shared<Node>(cur);\n\
+    \                cur = cur->rch;\n                le = md;\n            }\n  \
+    \      }\n        cur->val = val_;\n        while (cur->par){\n            cur\
+    \ = cur->par;\n            cur->val = op(get(cur->lch),get(cur->rch));\n     \
+    \   }\n    }\n    S prod(ll lid, ll rid){\n        assert(0 <= lid && lid <= rid\
+    \ && rid <= n);\n        if (lid == rid) return e();\n        Ptr cur = root;\n\
+    \        ll le = 0, ri = n;\n        while (ri - le > 1){\n            ll md =\
+    \ (le + ri) / 2;\n            if (lid < md && md < rid){\n                if (lid\
+    \ == le && rid == ri) return cur->val;\n                return op(prod_l(cur->lch,le,md,lid),prod_r(cur->rch,md,ri,rid));\n\
+    \            }\n            if (rid <= md){\n                if (cur->lch == nullptr)\
+    \ return e();\n                cur = cur->lch;\n                ri = md;\n   \
+    \         }\n            else {\n                if (cur->rch == nullptr) return\
+    \ e();\n                cur = cur->rch;\n                le = md;\n          \
+    \  }\n        }\n        return cur->val;\n    }\n    S get(Ptr ptr){\n      \
+    \  if (ptr) return ptr->val;\n        return e();\n    }\n    S prod_l(Ptr cur,\
+    \ ll le, ll ri, ll lid){\n        S prd = e();\n        while (cur){\n       \
+    \     ll md = (le + ri) / 2;\n            if (lid == le){\n                prd\
+    \ = op(cur->val,prd);\n                break;\n            }\n            if (lid\
+    \ < md){\n                prd = op(get(cur->rch),prd);\n                cur =\
+    \ cur->lch;\n                ri = md;\n            }\n            else {\n   \
+    \             cur = cur->rch;\n                le = md;\n            }\n     \
+    \   }\n        return prd;\n    }\n    S prod_r(Ptr cur, ll le, ll ri, ll rid){\n\
+    \        S prd = e();\n        while (cur){\n            ll md = (le + ri) / 2;\n\
+    \            if (rid == ri){\n                prd = op(prd,cur->val);\n      \
+    \          break;\n            }\n            if (rid > md){\n               \
+    \ prd = op(prd,get(cur->lch));\n                cur = cur->rch;\n            \
+    \    le = md;\n            }\n            else {\n                cur = cur->lch;\n\
+    \                ri = md;\n            }\n        }\n        return prd;\n   \
+    \ }\n    S all_prod(){\n        return root->val;\n    }\n    S get(ll idx){\n\
+    \        assert(0 <= idx && idx < n);\n        ll le = 0, ri = n;\n        Ptr\
+    \ cur = root;\n        while (ri - le > 1){\n            ll md = (le + ri) / 2;\n\
+    \            if (idx < md){\n                if (cur->lch == nullptr) return e();\n\
+    \                cur = cur->lch;\n                ri = md;\n            }\n  \
+    \          else {\n                if (cur->rch == nullptr) return e();\n    \
+    \            cur = cur->rch;\n                le = md;\n            }\n      \
+    \  }\n        return cur->val;\n    }\n};\n\n} // namespace noya2\n#line 2 \"\
+    utility/modint_new.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\
     \n\nnamespace noya2 {\n\nconstexpr ll safe_mod(ll x, ll m) {\n    x %= m;\n  \
     \  if (x < 0) x += m;\n    return x;\n}\n\nconstexpr ll pow_mod_constexpr(ll x,\
     \ ll n, int m) {\n    if (m == 1) return 0;\n    uint _m = (uint)(m);\n    ull\
@@ -214,117 +251,44 @@ data:
     \nusing modint998244353 = static_modint<998244353>;\nusing modint1000000007 =\
     \ static_modint<1000000007>;\nusing modint = dynamic_modint<-1>;\n\ntemplate<typename\
     \ T>\nconcept Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n\
-    \    a.pow(declval<int>());\n};\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"../math/prime.hpp\"\n\nnamespace noya2{\n\nstruct\
-    \ barrett {\n    uint _m;\n    ull  im;\n    explicit barrett(uint m) : _m(m),\
-    \ im((ull)(-1) / m + 1) {}\n    uint umod() const { return _m; }\n    uint mul(uint\
-    \ a, uint b) const {\n        ull z = a;\n        z *= b;\n        ull x = ull((__uint128_t(z)\
-    \ * im) >> 64);\n        uint v = (uint)(z - x * _m);\n        if (_m <= v) v\
-    \ += _m;\n        return v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint\
-    \ {\n    using mint = static_modint;\n  public:\n    static constexpr int mod()\
-    \ { return m; }\n    static mint raw(int v) {\n        mint x;\n        x._v =\
-    \ v;\n        return x;\n    }\n    static_modint() : _v(0) {}\n    template<signed_integral\
-    \ T>\n    static_modint(T v){\n        ll x = (ll)(v % (ll)(umod()));\n      \
-    \  if (x < 0) x += umod();\n        _v = (uint)(x);\n    }\n    template<unsigned_integral\
-    \ T>\n    static_modint(T v){\n        _v = (uint)(v % umod());\n    }\n    uint\
-    \ val() const { return _v; }\n    mint& operator++() {\n        _v++;\n      \
-    \  if (_v == umod()) _v = 0;\n        return *this;\n    }\n    mint& operator--()\
-    \ {\n        if (_v == 0) _v = umod();\n        _v--;\n        return *this;\n\
-    \    }\n    mint operator++(int) {\n        mint result = *this;\n        ++*this;\n\
-    \        return result;\n    }\n    mint operator--(int) {\n        mint result\
-    \ = *this;\n        --*this;\n        return result;\n    }\n    mint& operator+=(const\
-    \ mint& rhs) {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n\
-    \        return *this;\n    }\n    mint& operator-=(const mint& rhs) {\n     \
-    \   _v -= rhs._v;\n        if (_v >= umod()) _v += umod();\n        return *this;\n\
-    \    }\n    mint& operator*=(const mint& rhs) {\n        ull z = _v;\n       \
-    \ z *= rhs._v;\n        _v = (uint)(z % umod());\n        return *this;\n    }\n\
-    \    mint& operator/=(const mint& rhs) { return *this = *this * rhs.inv(); }\n\
-    \    mint operator+() const { return *this; }\n    mint operator-() const { return\
-    \ mint() - *this; }\n    mint pow(ll n) const {\n        assert(0 <= n);\n   \
-    \     mint x = *this, r = 1;\n        while (n) {\n            if (n & 1) r *=\
-    \ x;\n            x *= x;\n            n >>= 1;\n        }\n        return r;\n\
-    \    }\n    mint inv() const {\n        if (prime) {\n            assert(_v);\n\
-    \            return pow(umod() - 2);\n        } else {\n            auto eg =\
-    \ inv_gcd(_v, m);\n            assert(eg.first == 1);\n            return eg.second;\n\
-    \        }\n    }\n    friend mint operator+(const mint& lhs, const mint& rhs)\
-    \ {\n        return mint(lhs) += rhs;\n    }\n    friend mint operator-(const\
-    \ mint& lhs, const mint& rhs) {\n        return mint(lhs) -= rhs;\n    }\n   \
-    \ friend mint operator*(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
-    \ *= rhs;\n    }\n    friend mint operator/(const mint& lhs, const mint& rhs)\
-    \ {\n        return mint(lhs) /= rhs;\n    }\n    friend bool operator==(const\
-    \ mint& lhs, const mint& rhs) {\n        return lhs._v == rhs._v;\n    }\n   \
-    \ friend bool operator!=(const mint& lhs, const mint& rhs) {\n        return lhs._v\
-    \ != rhs._v;\n    }\n    friend std::ostream &operator<<(std::ostream &os, const\
-    \ mint& p) {\n        return os << p.val();\n    }\n    friend std::istream &operator>>(std::istream\
-    \ &is, mint &a) {\n        long long t; is >> t;\n        a = mint(t);\n     \
-    \   return (is);\n    }\n\n  private:\n    unsigned int _v;\n    static constexpr\
-    \ unsigned int umod() { return m; }\n    static constexpr bool prime = is_prime<m>;\n\
-    };\n\n\ntemplate <int id> struct dynamic_modint {\n    using mint = dynamic_modint;\n\
-    \  public:\n    static int mod() { return (int)(bt.umod()); }\n    static void\
-    \ set_mod(int m) {\n        assert(1 <= m);\n        bt = barrett(m);\n    }\n\
-    \    static mint raw(int v) {\n        mint x;\n        x._v = v;\n        return\
-    \ x;\n    }\n\n    dynamic_modint() : _v(0) {}\n    template<signed_integral T>\n\
-    \    dynamic_modint(T v){\n        ll x = (ll)(v % (ll)(mod()));\n        if (x\
-    \ < 0) x += mod();\n        _v = (uint)(x);\n    }\n    template<unsigned_integral\
-    \ T>\n    dynamic_modint(T v){\n        _v = (uint)(v % mod());\n    }\n    uint\
-    \ val() const { return _v; }\n    mint& operator++() {\n        _v++;\n      \
-    \  if (_v == umod()) _v = 0;\n        return *this;\n    }\n    mint& operator--()\
-    \ {\n        if (_v == 0) _v = umod();\n        _v--;\n        return *this;\n\
-    \    }\n    mint operator++(int) {\n        mint result = *this;\n        ++*this;\n\
-    \        return result;\n    }\n    mint operator--(int) {\n        mint result\
-    \ = *this;\n        --*this;\n        return result;\n    }\n    mint& operator+=(const\
-    \ mint& rhs) {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n\
-    \        return *this;\n    }\n    mint& operator-=(const mint& rhs) {\n     \
-    \   _v += mod() - rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
-    \ *this;\n    }\n    mint& operator*=(const mint& rhs) {\n        _v = bt.mul(_v,\
-    \ rhs._v);\n        return *this;\n    }\n    mint& operator/=(const mint& rhs)\
-    \ { return *this = *this * rhs.inv(); }\n    mint operator+() const { return *this;\
-    \ }\n    mint operator-() const { return mint() - *this; }\n    mint pow(long\
-    \ long n) const {\n        assert(0 <= n);\n        mint x = *this, r = 1;\n \
-    \       while (n) {\n            if (n & 1) r *= x;\n            x *= x;\n   \
-    \         n >>= 1;\n        }\n        return r;\n    }\n    mint inv() const\
-    \ {\n        auto eg = noya2::inv_gcd(_v, mod());\n        assert(eg.first ==\
-    \ 1);\n        return eg.second;\n    }\n    friend mint operator+(const mint&\
-    \ lhs, const mint& rhs) {\n        return mint(lhs) += rhs;\n    }\n    friend\
-    \ mint operator-(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
-    \ -= rhs;\n    }\n    friend mint operator*(const mint& lhs, const mint& rhs)\
-    \ {\n        return mint(lhs) *= rhs;\n    }\n    friend mint operator/(const\
-    \ mint& lhs, const mint& rhs) {\n        return mint(lhs) /= rhs;\n    }\n   \
-    \ friend bool operator==(const mint& lhs, const mint& rhs) {\n        return lhs._v\
-    \ == rhs._v;\n    }\n    friend bool operator!=(const mint& lhs, const mint& rhs)\
-    \ {\n        return lhs._v != rhs._v;\n    }\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const mint& p) {\n        return os << p.val();\n    }\n    friend std::istream\
-    \ &operator>>(std::istream &is, mint &a) {\n        long long t; is >> t;\n  \
-    \      a = mint(t);\n        return (is);\n    }\n\n  private:\n    unsigned int\
-    \ _v;\n    static barrett bt;\n    static unsigned int umod() { return bt.umod();\
-    \ }\n};\ntemplate <int id> noya2::barrett dynamic_modint<id>::bt(998244353);\n\
-    \nusing modint998244353 = static_modint<998244353>;\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\nusing modint = dynamic_modint<-1>;\n\ntemplate<typename\
-    \ T>\nconcept Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n\
-    \    a.pow(declval<int>());\n};\n\n} // namespace noya2"
+    \    a.pow(declval<int>());\n};\n\n} // namespace noya2\n#line 6 \"test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp\"\
+    \nusing mint = modint998244353;\nusing pmm = pair<mint,mint>;\n\npmm op(pmm a,\
+    \ pmm b){\n    return pmm(a.first*b.first,a.second*b.first+b.second);\n}\npmm\
+    \ e(){\n    return pmm(1,0);\n}\n\nint main(){\n    int n, q; in(n,q);\n    dynamic_segtree<pmm,op,e>\
+    \ seg(n);\n    rep(i,n){\n        mint a, b; in(a,b);\n        seg.set(i,pmm(a,b));\n\
+    \    }\n    while (q--){\n        int t; in(t);\n        if (t == 0){\n      \
+    \      int p, c, d; in(p,c,d);\n            seg.set(p,pmm(c,d));\n        }\n\
+    \        if (t == 1){\n            int l, r, x; in(l,r,x);\n            auto [a,\
+    \ b] = seg.prod(l,r);\n            out(a*x+b);\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
+    \n\n#include\"../../template/template.hpp\"\n#include\"../../data_structure/dynamic_segment_tree.hpp\"\
+    \n#include\"../../utility/modint_new.hpp\"\nusing mint = modint998244353;\nusing\
+    \ pmm = pair<mint,mint>;\n\npmm op(pmm a, pmm b){\n    return pmm(a.first*b.first,a.second*b.first+b.second);\n\
+    }\npmm e(){\n    return pmm(1,0);\n}\n\nint main(){\n    int n, q; in(n,q);\n\
+    \    dynamic_segtree<pmm,op,e> seg(n);\n    rep(i,n){\n        mint a, b; in(a,b);\n\
+    \        seg.set(i,pmm(a,b));\n    }\n    while (q--){\n        int t; in(t);\n\
+    \        if (t == 0){\n            int p, c, d; in(p,c,d);\n            seg.set(p,pmm(c,d));\n\
+    \        }\n        if (t == 1){\n            int l, r, x; in(l,r,x);\n      \
+    \      auto [a, b] = seg.prod(l,r);\n            out(a*x+b);\n        }\n    }\n\
+    }"
   dependsOn:
-  - math/prime.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
-  isVerificationFile: false
-  path: utility/modint_new.hpp
-  requiredBy:
-  - fps/fps_ntt.hpp
-  - fps/relaxed_convolution.hpp
-  - fps/ntt.hpp
-  timestamp: '2023-08-27 04:49:05+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  - test/fps/convolution.test.cpp
-  - test/fps/convolution_relaxed_convolution.test.cpp
-documentation_of: utility/modint_new.hpp
+  - data_structure/dynamic_segment_tree.hpp
+  - utility/modint_new.hpp
+  - math/prime.hpp
+  isVerificationFile: true
+  path: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
+  requiredBy: []
+  timestamp: '2023-08-29 00:56:21+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
 layout: document
 redirect_from:
-- /library/utility/modint_new.hpp
-- /library/utility/modint_new.hpp.html
-title: utility/modint_new.hpp
+- /verify/test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
+- /verify/test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp.html
+title: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
 ---
