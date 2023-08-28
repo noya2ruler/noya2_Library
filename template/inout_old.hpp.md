@@ -5,6 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/dsu.hpp
     title: data_structure/dsu.hpp
+  - icon: ':warning:'
+    path: data_structure/dynamic_segment_tree.hpp
+    title: data_structure/dynamic_segment_tree.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
@@ -190,6 +193,7 @@ data:
   isVerificationFile: false
   path: template/inout_old.hpp
   requiredBy:
+  - data_structure/dynamic_segment_tree.hpp
   - data_structure/sparse_table.hpp
   - data_structure/lazy_segment_tree.hpp
   - data_structure/dsu.hpp
