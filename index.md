@@ -35,10 +35,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/fps_ntt.hpp
       title: fps/fps_ntt.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/ntt.hpp
       title: fps/ntt.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/relaxed_convolution.hpp
       title: fps/relaxed_convolution.hpp
   - name: geometry
@@ -65,7 +65,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/prime.hpp
       title: math/prime.hpp
   - name: misc
@@ -100,19 +100,19 @@ data:
       title: string/rolling_hash.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/const.hpp
       title: template/const.hpp
     - icon: ':warning:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/inout_old.hpp
       title: template/inout_old.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
@@ -134,7 +134,7 @@ data:
     - icon: ':warning:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_new.hpp
       title: utility/modint_new.hpp
   verificationCategories:
@@ -166,7 +166,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fps/convolution.test.cpp
       title: test/fps/convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/fps/convolution_relaxed_convolution.test.cpp
       title: test/fps/convolution_relaxed_convolution.test.cpp
   - name: test/geometry
