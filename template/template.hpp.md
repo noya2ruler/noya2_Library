@@ -11,6 +11,9 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: data_structure/compress.hpp
+    title: data_structure/compress.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/dsu.hpp
     title: data_structure/dsu.hpp
@@ -237,6 +240,7 @@ data:
   requiredBy:
   - data_structure/dynamic_segment_tree.hpp
   - data_structure/sparse_table.hpp
+  - data_structure/compress.hpp
   - data_structure/lazy_segment_tree.hpp
   - data_structure/dsu.hpp
   - data_structure/fenwick_tree.hpp
