@@ -21,7 +21,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segment_tree_2d.hpp
       title: data_structure/segment_tree_2d.hpp
     - icon: ':heavy_check_mark:'
@@ -170,6 +170,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Unionfind.test.cpp
       title: test/data_structure/Unionfind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/aoj1068_segtree2d.test.cpp
+      title: test/data_structure/aoj1068_segtree2d.test.cpp
   - name: test/fps
     pages:
     - icon: ':heavy_check_mark:'

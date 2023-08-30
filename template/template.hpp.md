@@ -121,6 +121,9 @@ data:
     path: test/data_structure/Unionfind.test.cpp
     title: test/data_structure/Unionfind.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/aoj1068_segtree2d.test.cpp
+    title: test/data_structure/aoj1068_segtree2d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/fps/convolution.test.cpp
     title: test/fps/convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -265,6 +268,7 @@ data:
   verifiedWith:
   - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
+  - test/data_structure/aoj1068_segtree2d.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Unionfind.test.cpp
