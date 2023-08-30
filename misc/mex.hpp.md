@@ -75,12 +75,12 @@ data:
     ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"misc/mex.hpp\"\
     \n\nnamespace noya2 {\n\ntemplate<typename T>\nint mex(const vector<T> &a){\n\
     \    int n = a.size();\n    vector<bool> has(n,false);\n    rep(i,n) if (a[i]\
-    \ < n) has[i] = true;\n    rep(i,n) if (!has[i]) return i;\n    return n;\n}\n\
-    \n} // namespace noya2\n"
+    \ < n) has[a[i]] = true;\n    rep(i,n) if (!has[i]) return i;\n    return n;\n\
+    }\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2 {\n\
     \ntemplate<typename T>\nint mex(const vector<T> &a){\n    int n = a.size();\n\
-    \    vector<bool> has(n,false);\n    rep(i,n) if (a[i] < n) has[i] = true;\n \
-    \   rep(i,n) if (!has[i]) return i;\n    return n;\n}\n\n} // namespace noya2"
+    \    vector<bool> has(n,false);\n    rep(i,n) if (a[i] < n) has[a[i]] = true;\n\
+    \    rep(i,n) if (!has[i]) return i;\n    return n;\n}\n\n} // namespace noya2"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
@@ -89,7 +89,7 @@ data:
   isVerificationFile: false
   path: misc/mex.hpp
   requiredBy: []
-  timestamp: '2023-08-26 17:35:34+09:00'
+  timestamp: '2023-08-31 00:10:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: misc/mex.hpp
