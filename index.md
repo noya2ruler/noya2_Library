@@ -21,6 +21,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
+    - icon: ':warning:'
+      path: data_structure/segment_tree_2d.hpp
+      title: data_structure/segment_tree_2d.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/sparse_table.hpp
       title: data_structure/sparse_table.hpp
