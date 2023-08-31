@@ -75,21 +75,27 @@ data:
     ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"data_structure/compress.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<typename T> struct compress {\n    vector<T>\
     \ raws;\n    compress(const vector<T> &raws_ = {}) : raws(raws_){ build(); }\n\
-    \    int id(const T &raw){ return lower_bound(all(raws),raw) - raws.begin(); }\n\
-    \    T raw(const int &id){ return raws[id]; }\n    void build(){ uniq(raws); }\n\
-    \    void add(const T &raw){ raws.push_back(raw); }\n    size_t size(){ return\
-    \ raws.size(); }\n    int lb(const T &raw){ return lower_bound(all(raws),raw)\
-    \ - raws.begin(); }\n    int ub(const T &raw){ return upper_bound(all(raws),raw)\
-    \ - raws.begin(); }\n};\n\n} // namespace noya2\n"
+    \    int id(const T &raw){ return lb(raw); }\n    T raw(const int &id){ return\
+    \ raws[id]; }\n    void build(){ uniq(raws); }\n    void add(const T &raw){ raws.push_back(raw);\
+    \ }\n    size_t size(){ return raws.size(); }\n    int lb(const T &raw){ return\
+    \ lower_bound(all(raws),raw) - raws.begin(); }\n    int ub(const T &raw){ return\
+    \ upper_bound(all(raws),raw) - raws.begin(); }\n    bool contains(const T &raw){\n\
+    \        int jd = lb(raw);\n        if (jd < (int)size()) return raws[jd] == raw;\n\
+    \        return false;\n    }\n    int contains_id(const T &raw){\n        int\
+    \ jd = lb(raw);\n        if (jd < (int)size() && raws[jd] == raw) return jd;\n\
+    \        return -1;\n    }\n};\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2{\n\
     \ntemplate<typename T> struct compress {\n    vector<T> raws;\n    compress(const\
     \ vector<T> &raws_ = {}) : raws(raws_){ build(); }\n    int id(const T &raw){\
-    \ return lower_bound(all(raws),raw) - raws.begin(); }\n    T raw(const int &id){\
-    \ return raws[id]; }\n    void build(){ uniq(raws); }\n    void add(const T &raw){\
-    \ raws.push_back(raw); }\n    size_t size(){ return raws.size(); }\n    int lb(const\
-    \ T &raw){ return lower_bound(all(raws),raw) - raws.begin(); }\n    int ub(const\
-    \ T &raw){ return upper_bound(all(raws),raw) - raws.begin(); }\n};\n\n} // namespace\
-    \ noya2"
+    \ return lb(raw); }\n    T raw(const int &id){ return raws[id]; }\n    void build(){\
+    \ uniq(raws); }\n    void add(const T &raw){ raws.push_back(raw); }\n    size_t\
+    \ size(){ return raws.size(); }\n    int lb(const T &raw){ return lower_bound(all(raws),raw)\
+    \ - raws.begin(); }\n    int ub(const T &raw){ return upper_bound(all(raws),raw)\
+    \ - raws.begin(); }\n    bool contains(const T &raw){\n        int jd = lb(raw);\n\
+    \        if (jd < (int)size()) return raws[jd] == raw;\n        return false;\n\
+    \    }\n    int contains_id(const T &raw){\n        int jd = lb(raw);\n      \
+    \  if (jd < (int)size() && raws[jd] == raw) return jd;\n        return -1;\n \
+    \   }\n};\n\n} // namespace noya2"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
@@ -98,7 +104,7 @@ data:
   isVerificationFile: false
   path: data_structure/compress.hpp
   requiredBy: []
-  timestamp: '2023-08-30 23:00:02+09:00'
+  timestamp: '2023-08-31 17:01:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/compress.hpp
