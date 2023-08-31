@@ -13,7 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: data_structure/range_tree.hpp
+    title: data_structure/range_tree.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -103,7 +106,8 @@ data:
   - template/utils.hpp
   isVerificationFile: false
   path: data_structure/compress.hpp
-  requiredBy: []
+  requiredBy:
+  - data_structure/range_tree.hpp
   timestamp: '2023-08-31 17:01:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
