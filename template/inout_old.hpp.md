@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: data_structure/binary_indexed_tree.hpp
+    title: data_structure/binary_indexed_tree.hpp
+  - icon: ':warning:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
   - icon: ':heavy_check_mark:'
@@ -207,6 +210,7 @@ data:
   - data_structure/compress.hpp
   - data_structure/lazy_segment_tree.hpp
   - data_structure/dsu.hpp
+  - data_structure/binary_indexed_tree.hpp
   - data_structure/fenwick_tree.hpp
   - data_structure/li_chao_tree.hpp
   - tree/Mo_on_Tree.hpp

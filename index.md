@@ -4,6 +4,9 @@ data:
   - name: data_structure
     pages:
     - icon: ':warning:'
+      path: data_structure/binary_indexed_tree.hpp
+      title: data_structure/binary_indexed_tree.hpp
+    - icon: ':warning:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
     - icon: ':heavy_check_mark:'
@@ -91,6 +94,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/mo_algorithm.hpp
       title: misc/mo_algorithm.hpp
+    - icon: ':warning:'
+      path: misc/monoids.hpp
+      title: misc/monoids.hpp
     - icon: ':warning:'
       path: misc/rng.hpp
       title: misc/rng.hpp
