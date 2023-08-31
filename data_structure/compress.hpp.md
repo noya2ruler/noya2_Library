@@ -14,13 +14,16 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+    title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/compress.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -109,8 +112,9 @@ data:
   requiredBy:
   - data_structure/range_tree.hpp
   timestamp: '2023-08-31 17:01:32+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
 redirect_from:

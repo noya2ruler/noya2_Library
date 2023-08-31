@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+    title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/monoids.hpp\"\n\n#include<limits>\n\nnamespace noya2{\n\
@@ -46,8 +49,9 @@ data:
   requiredBy:
   - data_structure/binary_indexed_tree.hpp
   timestamp: '2023-08-31 21:58:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
 documentation_of: misc/monoids.hpp
 layout: document
 redirect_from:

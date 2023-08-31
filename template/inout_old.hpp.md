@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
   - icon: ':heavy_check_mark:'
@@ -23,7 +23,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/li_chao_tree.hpp
     title: data_structure/li_chao_tree.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -105,6 +105,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/PointAddRangeSum.test.cpp
     title: test/data_structure/PointAddRangeSum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+    title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/data_structure/Point_Set_Range_Composite.test.cpp
@@ -248,6 +251,7 @@ data:
   - test/data_structure/aoj1068_segtree2d.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - test/data_structure/Unionfind.test.cpp
   - test/data_structure/Static_RMQ.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp

@@ -3,10 +3,10 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/binary_indexed_tree.hpp
       title: data_structure/binary_indexed_tree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
     - icon: ':heavy_check_mark:'
@@ -24,7 +24,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/li_chao_tree.hpp
       title: data_structure/li_chao_tree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/range_tree.hpp
       title: data_structure/range_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -97,7 +97,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/mo_algorithm.hpp
       title: misc/mo_algorithm.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: misc/monoids.hpp
       title: misc/monoids.hpp
     - icon: ':warning:'
@@ -164,6 +164,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/PointAddRangeSum.test.cpp
       title: test/data_structure/PointAddRangeSum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+      title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/data_structure/Point_Set_Range_Composite.test.cpp
