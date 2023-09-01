@@ -10,9 +10,13 @@ struct segtree_2d {
     segtree_2d (int h_ = 1, int w_ = 0) : segtree_2d(std::vector<std::vector<S>>(h_,vector<S>(w_,e()))) {}
     segtree_2d (const std::vector<std::vector<S>> &vec){
         assert(!vec.empty());
-        h = bit_ceil(vec.size()), w = bit_ceil(vec[0].size());
+        //h = bit_ceil(vec.size()), w = bit_ceil(vec[0].size());
+        h = 1; while (h < (int)(vec.size())) h <<= 1; w = 1; while (w < (int)(vec[0].size())) w <<= 1;
         d.assign(h*w*4,e());
         for (int i = 0; i < (int)(vec.size()); i++) for (int j = 0; j < (int)(vec[i].size()); j++) d[id(i+h,j+w)] = vec[i][j];
+        build();
+    }
+    void build(){
         for (int i = 0; i < h; i++) for (int j = w-1; j > 0; j--) update_y(i+h,j);
         for (int i = h-1; i > 0; i--) for (int j = 1; j < 2*w; j++) update_x(i,j);
     }
