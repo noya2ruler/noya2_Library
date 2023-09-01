@@ -19,6 +19,9 @@ data:
     title: Mo on Tree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Static_Range_Inversions_Query.test.cpp
+    title: test/data_structure/Static_Range_Inversions_Query.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
   _isVerificationFailed: false
@@ -126,6 +129,7 @@ data:
   timestamp: '2023-08-26 17:35:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/data_structure/Static_Range_Inversions_Query.test.cpp
   - test/tree/aoj_0489.test.cpp
 documentation_of: misc/mo_algorithm.hpp
 layout: document

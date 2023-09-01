@@ -183,6 +183,9 @@ data:
       path: test/data_structure/Static_RMQ.test.cpp
       title: test/data_structure/Static_RMQ.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/data_structure/Static_Range_Inversions_Query.test.cpp
+      title: test/data_structure/Static_Range_Inversions_Query.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Unionfind.test.cpp
       title: test/data_structure/Unionfind.test.cpp
     - icon: ':heavy_check_mark:'
