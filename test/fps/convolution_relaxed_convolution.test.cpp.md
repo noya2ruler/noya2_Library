@@ -266,50 +266,50 @@ data:
     \ 1;\n            for (int i = 0; i < v; i++, ww *= wp[k]){\n                mint\
     \ aiv = a[l+i+v] * ww;\n                a[l+i+v] = a[l+i] - aiv;\n           \
     \     a[l+i] += aiv;\n            }\n        }\n    }\n    void ntt(vector<mint>\
-    \ &a) {\n        if ((int)a.size() <= 1) return;\n        fft4(a, countr_zero(a.size()));\n\
-    \    }\n    void intt(vector<mint> &a) {\n        if ((int)a.size() <= 1) return;\n\
-    \        ifft4(a, countr_zero(a.size()));\n        mint iv = mint(a.size()).inv();\n\
-    \        for (auto &x : a) x *= iv;\n    }\n    vector<mint> multiply(const vector<mint>\
-    \ &a, const vector<mint> &b) {\n        int l = a.size() + b.size() - 1;\n   \
-    \     if (min<int>(a.size(), b.size()) <= 40){\n            vector<mint> s(l);\n\
-    \            for (int i = 0; i < (int)a.size(); i++) for (int j = 0; j < (int)b.size();\
-    \ j++) s[i + j] += a[i] * b[j];\n            return s;\n        }\n        int\
-    \ k = 2, M = 4;\n        while (M < l) M <<= 1, ++k;\n        set_ws();\n    \
-    \    vector<mint> s(M);\n        for (int i = 0; i < (int)a.size(); ++i) s[i]\
-    \ = a[i];\n        fft4(s, k);\n        if (a.size() == b.size() && a == b) {\n\
-    \            for (int i = 0; i < M; ++i) s[i] *= s[i];\n        }\n        else\
-    \ {\n            vector<mint> t(M);\n            for (int i = 0; i < (int)b.size();\
-    \ ++i) t[i] = b[i];\n            fft4(t, k);\n            for (int i = 0; i <\
-    \ M; ++i) s[i] *= t[i];\n        }\n        ifft4(s, k);\n        s.resize(l);\n\
-    \        mint invm = mint(M).inv();\n        for (int i = 0; i < l; ++i) s[i]\
-    \ *= invm;\n        return s;\n    }\n};\n\n\n} // namespace noya2\n#line 4 \"\
-    fps/relaxed_convolution.hpp\"\n\nnamespace noya2{\n\ntemplate<Modint T>\nstruct\
-    \ RelaxedConvolution {\n    RelaxedConvolution (int n) : f(n), g(n), h(2*n-1),\
-    \ q(0) {}\n    uint join(T fq, T gq){\n        f[q] = fq, g[q] = gq;\n       \
-    \ int lsb = countr_zero(q+2);\n        q_special = (q+2 == (1u<<lsb));\n     \
-    \   update(lsb);\n        return q;\n    }\n    const T operator[](int idx) const\
-    \ { return h[idx]; }\n  private:\n    void update(int lsb){\n        task(lsb);\n\
-    \        rep(t,lsb+1){\n            uint w = 1u<<t;\n            T iv = T(2*w).inv();\n\
-    \            if (t <= 5){\n                rep(i,w) rep(j,w) h[q+i+j] += f[q+1-w+i]\
-    \ * g[w-1+j];\n            }\n            else {\n                vector<T> fg(2*w);\n\
-    \                rep(i,2*w) fg[i] = f_ffted[t][2*(q+1-w)+i] * g_ffted[t][2*(w-1)+i];\n\
-    \                ntt.ifft4(fg,t+1);\n                rep(i,2*w-1) h[q+i] += fg[i]\
-    \ * iv;\n            }\n            if (q_special && t == lsb-1) break;\n    \
-    \        if (t <= 5){\n                rep(i,w) rep(j,w) h[q+i+j] += f[w-1+i]\
-    \ * g[q+1-w+j];\n            }\n            else {\n                vector<T>\
-    \ fg(2*w);\n                rep(i,2*w) fg[i] = f_ffted[t][2*(w-1)+i] * g_ffted[t][2*(q+1-w)+i];\n\
-    \                ntt.ifft4(fg,t+1);\n                rep(i,2*w-1) h[q+i] += fg[i]\
-    \ * iv;\n            }\n        }\n        q++;\n    }\n    void task(int lsb){\n\
-    \        if (q_special){\n            int siz = (lsb <= 5 ? 0 : (int)(f.size()))\
-    \ * 2;\n            f_ffted.emplace_back(vector<T>(siz));\n            g_ffted.emplace_back(vector<T>(siz));\n\
-    \        }\n        rep(t,lsb+1){\n            if (q_special && t == lsb) break;\n\
-    \            if (t <= 5) continue;\n            uint w = 1u<<t;\n            rep(i,w){\n\
-    \                f_ffted[t][2*(q+1-w)+i] = f[q+1-w+i];\n                g_ffted[t][2*(q+1-w)+i]\
-    \ = g[q+1-w+i];\n            }\n            ntt.fft4(f_ffted[t],t+1,2*(q+1-w));\n\
-    \            ntt.fft4(g_ffted[t],t+1,2*(q+1-w));\n            if (q_special &&\
-    \ t == lsb-1) break;\n        }\n    }\n    vector<T> f, g, h;\n    vector<vector<T>>\
-    \ f_ffted, g_ffted;\n    uint q;\n    bool q_special;\n    NTT<T> ntt;\n};\n\n\
-    } // namesapce noya2\n#line 5 \"test/fps/convolution_relaxed_convolution.test.cpp\"\
+    \ &a) {\n        if ((int)a.size() <= 1) return;\n        fft4(a, 63-countl_zero(a.size()));\n\
+    \    }\n    void intt(vector<mint> &a, bool stop = false) {\n        if ((int)a.size()\
+    \ <= 1) return;\n        ifft4(a, 63-countl_zero(a.size()));\n        if (stop)\
+    \ return ;\n        mint iv = mint(a.size()).inv();\n        for (auto &x : a)\
+    \ x *= iv;\n    }\n    vector<mint> multiply(const vector<mint> &a, const vector<mint>\
+    \ &b) {\n        int l = a.size() + b.size() - 1;\n        if (min<int>(a.size(),\
+    \ b.size()) <= 40){\n            vector<mint> s(l);\n            for (int i =\
+    \ 0; i < (int)a.size(); i++) for (int j = 0; j < (int)b.size(); j++) s[i + j]\
+    \ += a[i] * b[j];\n            return s;\n        }\n        int k = 2, M = 4;\n\
+    \        while (M < l) M <<= 1, ++k;\n        set_ws();\n        vector<mint>\
+    \ s(M);\n        for (int i = 0; i < (int)a.size(); ++i) s[i] = a[i];\n      \
+    \  fft4(s, k);\n        if (a.size() == b.size() && a == b) {\n            for\
+    \ (int i = 0; i < M; ++i) s[i] *= s[i];\n        }\n        else {\n         \
+    \   vector<mint> t(M);\n            for (int i = 0; i < (int)b.size(); ++i) t[i]\
+    \ = b[i];\n            fft4(t, k);\n            for (int i = 0; i < M; ++i) s[i]\
+    \ *= t[i];\n        }\n        ifft4(s, k);\n        s.resize(l);\n        mint\
+    \ invm = mint(M).inv();\n        for (int i = 0; i < l; ++i) s[i] *= invm;\n \
+    \       return s;\n    }\n};\n\n\n} // namespace noya2\n#line 4 \"fps/relaxed_convolution.hpp\"\
+    \n\nnamespace noya2{\n\ntemplate<Modint T>\nstruct RelaxedConvolution {\n    RelaxedConvolution\
+    \ (int n) : f(n), g(n), h(2*n-1), q(0) {}\n    uint join(T fq, T gq){\n      \
+    \  f[q] = fq, g[q] = gq;\n        int lsb = countr_zero(q+2);\n        q_special\
+    \ = (q+2 == (1u<<lsb));\n        update(lsb);\n        return q;\n    }\n    const\
+    \ T operator[](int idx) const { return h[idx]; }\n  private:\n    void update(int\
+    \ lsb){\n        task(lsb);\n        rep(t,lsb+1){\n            uint w = 1u<<t;\n\
+    \            T iv = T(2*w).inv();\n            if (t <= 5){\n                rep(i,w)\
+    \ rep(j,w) h[q+i+j] += f[q+1-w+i] * g[w-1+j];\n            }\n            else\
+    \ {\n                vector<T> fg(2*w);\n                rep(i,2*w) fg[i] = f_ffted[t][2*(q+1-w)+i]\
+    \ * g_ffted[t][2*(w-1)+i];\n                ntt.ifft4(fg,t+1);\n             \
+    \   rep(i,2*w-1) h[q+i] += fg[i] * iv;\n            }\n            if (q_special\
+    \ && t == lsb-1) break;\n            if (t <= 5){\n                rep(i,w) rep(j,w)\
+    \ h[q+i+j] += f[w-1+i] * g[q+1-w+j];\n            }\n            else {\n    \
+    \            vector<T> fg(2*w);\n                rep(i,2*w) fg[i] = f_ffted[t][2*(w-1)+i]\
+    \ * g_ffted[t][2*(q+1-w)+i];\n                ntt.ifft4(fg,t+1);\n           \
+    \     rep(i,2*w-1) h[q+i] += fg[i] * iv;\n            }\n        }\n        q++;\n\
+    \    }\n    void task(int lsb){\n        if (q_special){\n            int siz\
+    \ = (lsb <= 5 ? 0 : (int)(f.size())) * 2;\n            f_ffted.emplace_back(vector<T>(siz));\n\
+    \            g_ffted.emplace_back(vector<T>(siz));\n        }\n        rep(t,lsb+1){\n\
+    \            if (q_special && t == lsb) break;\n            if (t <= 5) continue;\n\
+    \            uint w = 1u<<t;\n            rep(i,w){\n                f_ffted[t][2*(q+1-w)+i]\
+    \ = f[q+1-w+i];\n                g_ffted[t][2*(q+1-w)+i] = g[q+1-w+i];\n     \
+    \       }\n            ntt.fft4(f_ffted[t],t+1,2*(q+1-w));\n            ntt.fft4(g_ffted[t],t+1,2*(q+1-w));\n\
+    \            if (q_special && t == lsb-1) break;\n        }\n    }\n    vector<T>\
+    \ f, g, h;\n    vector<vector<T>> f_ffted, g_ffted;\n    uint q;\n    bool q_special;\n\
+    \    NTT<T> ntt;\n};\n\n} // namesapce noya2\n#line 5 \"test/fps/convolution_relaxed_convolution.test.cpp\"\
     \nusing mint = modint998244353;\n\nint main(){\n    int n, m; in(n,m);\n    vector<mint>\
     \ a(n), b(m); in(a,b);\n    RelaxedConvolution<mint> rc(n+m-1);\n    vector<mint>\
     \ ans(n+m-1);\n    rep(i,n+m-1){\n        mint fi = (i < n ? a[i] : mint(0));\n\
@@ -334,7 +334,7 @@ data:
   isVerificationFile: true
   path: test/fps/convolution_relaxed_convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-08-28 02:06:23+09:00'
+  timestamp: '2023-09-03 02:17:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/fps/convolution_relaxed_convolution.test.cpp

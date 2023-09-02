@@ -310,30 +310,31 @@ data:
     \ 1;\n            for (int i = 0; i < v; i++, ww *= wp[k]){\n                mint\
     \ aiv = a[l+i+v] * ww;\n                a[l+i+v] = a[l+i] - aiv;\n           \
     \     a[l+i] += aiv;\n            }\n        }\n    }\n    void ntt(vector<mint>\
-    \ &a) {\n        if ((int)a.size() <= 1) return;\n        fft4(a, countr_zero(a.size()));\n\
-    \    }\n    void intt(vector<mint> &a) {\n        if ((int)a.size() <= 1) return;\n\
-    \        ifft4(a, countr_zero(a.size()));\n        mint iv = mint(a.size()).inv();\n\
-    \        for (auto &x : a) x *= iv;\n    }\n    vector<mint> multiply(const vector<mint>\
-    \ &a, const vector<mint> &b) {\n        int l = a.size() + b.size() - 1;\n   \
-    \     if (min<int>(a.size(), b.size()) <= 40){\n            vector<mint> s(l);\n\
-    \            for (int i = 0; i < (int)a.size(); i++) for (int j = 0; j < (int)b.size();\
-    \ j++) s[i + j] += a[i] * b[j];\n            return s;\n        }\n        int\
-    \ k = 2, M = 4;\n        while (M < l) M <<= 1, ++k;\n        set_ws();\n    \
-    \    vector<mint> s(M);\n        for (int i = 0; i < (int)a.size(); ++i) s[i]\
-    \ = a[i];\n        fft4(s, k);\n        if (a.size() == b.size() && a == b) {\n\
-    \            for (int i = 0; i < M; ++i) s[i] *= s[i];\n        }\n        else\
-    \ {\n            vector<mint> t(M);\n            for (int i = 0; i < (int)b.size();\
-    \ ++i) t[i] = b[i];\n            fft4(t, k);\n            for (int i = 0; i <\
-    \ M; ++i) s[i] *= t[i];\n        }\n        ifft4(s, k);\n        s.resize(l);\n\
-    \        mint invm = mint(M).inv();\n        for (int i = 0; i < l; ++i) s[i]\
-    \ *= invm;\n        return s;\n    }\n};\n\n\n} // namespace noya2\n#line 5 \"\
-    fps/fps_ntt.hpp\"\n\nnamespace noya2{\n\ntemplate<typename T>\nstruct fps_ntt{\n\
-    \    static NTT<T> ntt;\n    static vector<T> multiply(const vector<T> &a, const\
-    \ vector<T> &b){\n        return ntt.multiply(a,b);\n    }\n};\ntemplate<typename\
-    \ T> NTT<T> fps_ntt<T>::ntt;\ntemplate<typename T> using fps = FormalPowerSeries<T,fps_ntt<T>>;\n\
-    \n} // namespace noya2\n\n#line 5 \"test/fps/convolution.test.cpp\"\nusing mint\
-    \ = modint998244353;\n\nint main(){\n    int n, m; in(n,m);\n    fps<mint> f(n),\
-    \ g(m); in(f,g);\n    out(f*g);\n}\n"
+    \ &a) {\n        if ((int)a.size() <= 1) return;\n        fft4(a, 63-countl_zero(a.size()));\n\
+    \    }\n    void intt(vector<mint> &a, bool stop = false) {\n        if ((int)a.size()\
+    \ <= 1) return;\n        ifft4(a, 63-countl_zero(a.size()));\n        if (stop)\
+    \ return ;\n        mint iv = mint(a.size()).inv();\n        for (auto &x : a)\
+    \ x *= iv;\n    }\n    vector<mint> multiply(const vector<mint> &a, const vector<mint>\
+    \ &b) {\n        int l = a.size() + b.size() - 1;\n        if (min<int>(a.size(),\
+    \ b.size()) <= 40){\n            vector<mint> s(l);\n            for (int i =\
+    \ 0; i < (int)a.size(); i++) for (int j = 0; j < (int)b.size(); j++) s[i + j]\
+    \ += a[i] * b[j];\n            return s;\n        }\n        int k = 2, M = 4;\n\
+    \        while (M < l) M <<= 1, ++k;\n        set_ws();\n        vector<mint>\
+    \ s(M);\n        for (int i = 0; i < (int)a.size(); ++i) s[i] = a[i];\n      \
+    \  fft4(s, k);\n        if (a.size() == b.size() && a == b) {\n            for\
+    \ (int i = 0; i < M; ++i) s[i] *= s[i];\n        }\n        else {\n         \
+    \   vector<mint> t(M);\n            for (int i = 0; i < (int)b.size(); ++i) t[i]\
+    \ = b[i];\n            fft4(t, k);\n            for (int i = 0; i < M; ++i) s[i]\
+    \ *= t[i];\n        }\n        ifft4(s, k);\n        s.resize(l);\n        mint\
+    \ invm = mint(M).inv();\n        for (int i = 0; i < l; ++i) s[i] *= invm;\n \
+    \       return s;\n    }\n};\n\n\n} // namespace noya2\n#line 5 \"fps/fps_ntt.hpp\"\
+    \n\nnamespace noya2{\n\ntemplate<typename T>\nstruct fps_ntt{\n    static NTT<T>\
+    \ ntt;\n    static vector<T> multiply(const vector<T> &a, const vector<T> &b){\n\
+    \        return ntt.multiply(a,b);\n    }\n};\ntemplate<typename T> NTT<T> fps_ntt<T>::ntt;\n\
+    template<typename T> using fps = FormalPowerSeries<T,fps_ntt<T>>;\n\n} // namespace\
+    \ noya2\n\n#line 5 \"test/fps/convolution.test.cpp\"\nusing mint = modint998244353;\n\
+    \nint main(){\n    int n, m; in(n,m);\n    fps<mint> f(n), g(m); in(f,g);\n  \
+    \  out(f*g);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#include\"\
     ../../template/template.hpp\"\n#include\"../../fps/fps_ntt.hpp\"\nusing mint =\
     \ modint998244353;\n\nint main(){\n    int n, m; in(n,m);\n    fps<mint> f(n),\
@@ -351,7 +352,7 @@ data:
   isVerificationFile: true
   path: test/fps/convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-08-28 00:52:58+09:00'
+  timestamp: '2023-09-03 02:17:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/fps/convolution.test.cpp
