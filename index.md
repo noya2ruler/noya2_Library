@@ -144,7 +144,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: tree/tree_query.hpp
       title: tree/tree_query.hpp
   - name: utility
@@ -231,6 +231,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Jump_on_Tree.test.cpp
       title: test/tree/Jump_on_Tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Jump_on_Tree_hld.test.cpp
+      title: test/tree/Jump_on_Tree_hld.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/Lowest_Common_Ancestor.test.cpp
       title: test/tree/Lowest_Common_Ancestor.test.cpp

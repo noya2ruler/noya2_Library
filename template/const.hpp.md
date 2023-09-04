@@ -160,6 +160,9 @@ data:
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Jump_on_Tree_hld.test.cpp
+    title: test/tree/Jump_on_Tree_hld.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Lowest_Common_Ancestor.test.cpp
     title: test/tree/Lowest_Common_Ancestor.test.cpp
   - icon: ':heavy_check_mark:'
@@ -306,6 +309,7 @@ data:
   - test/data_structure/Static_RMQ.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
+  - test/tree/Jump_on_Tree_hld.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Rerooting_DP.test.cpp
   - test/tree/aoj_0489.test.cpp

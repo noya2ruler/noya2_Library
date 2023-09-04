@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Jump_on_Tree_hld.test.cpp
+    title: test/tree/Jump_on_Tree_hld.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/tree_query.hpp\"\n\n#include<vector>\n#include<cassert>\n\
@@ -161,8 +164,9 @@ data:
   path: tree/tree_query.hpp
   requiredBy: []
   timestamp: '2023-09-04 18:10:51+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/tree/Jump_on_Tree_hld.test.cpp
 documentation_of: tree/tree_query.hpp
 layout: document
 redirect_from:
