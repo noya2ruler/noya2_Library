@@ -92,7 +92,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/Tree_core.hpp
     title: tree/Tree_core.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: tree/tree_query_weighted.hpp
     title: tree/tree_query_weighted.hpp
   - icon: ':warning:'
@@ -174,6 +174,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Tree_Diameter_hld.test.cpp
+    title: test/tree/Tree_Diameter_hld.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
@@ -277,6 +280,7 @@ data:
   - test/tree/Rerooting_DP.test.cpp
   - test/tree/aoj_0489.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/Tree_Diameter_hld.test.cpp
   - test/tree/Lowest_Common_Ancestor.test.cpp
   - test/graph/Strongly_Connected_Components.test.cpp
   - test/graph/Shortest_Path.test.cpp
