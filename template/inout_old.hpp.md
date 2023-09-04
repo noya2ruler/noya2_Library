@@ -93,6 +93,9 @@ data:
     path: tree/Tree_core.hpp
     title: tree/Tree_core.hpp
   - icon: ':warning:'
+    path: tree/tree_query_weighted.hpp
+    title: tree/tree_query_weighted.hpp
+  - icon: ':warning:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
   - icon: ':heavy_check_mark:'
@@ -229,6 +232,7 @@ data:
   - tree/Mo_on_Tree.hpp
   - tree/RerootingDP.hpp
   - tree/Tree_core.hpp
+  - tree/tree_query_weighted.hpp
   - string/rolling_hash.hpp
   - misc/inversion.hpp
   - misc/QMC.hpp

@@ -147,6 +147,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/tree_query.hpp
       title: tree/tree_query.hpp
+    - icon: ':warning:'
+      path: tree/tree_query_weighted.hpp
+      title: tree/tree_query_weighted.hpp
   - name: utility
     pages:
     - icon: ':heavy_check_mark:'
