@@ -23,5 +23,6 @@
 "test/tree/Lowest_Common_Ancestor.test.cpp": "2023-08-26 17:35:34 +0900",
 "test/tree/Rerooting_DP.test.cpp": "2023-08-26 17:35:34 +0900",
 "test/tree/Tree_Diameter.test.cpp": "2023-08-26 17:35:34 +0900",
+"test/tree/Tree_Diameter_hld.test.cpp": "2023-09-04 21:31:15 +0900",
 "test/tree/aoj_0489.test.cpp": "2023-08-26 17:35:34 +0900"
 }
