@@ -144,6 +144,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
+    - icon: ':warning:'
+      path: tree/tree_query.hpp
+      title: tree/tree_query.hpp
   - name: utility
     pages:
     - icon: ':heavy_check_mark:'
