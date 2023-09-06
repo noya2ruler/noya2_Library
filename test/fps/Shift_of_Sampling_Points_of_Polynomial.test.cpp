@@ -1,6 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/shift_of_sampling_points_of_polynomial"
 
 #include"../../template/template.hpp"
+#include"../../fps/fps_ntt.hpp"
 #include"../../fps/sample_point_shift.hpp"
 using mint = modint998244353;
 using fps = FPS_ntt<mint>;

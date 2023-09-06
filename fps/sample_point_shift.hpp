@@ -1,13 +1,16 @@
 #pragma once
 
 #include"../template/template.hpp"
-#include"../fps/fps_ntt.hpp"
+#include"../fps/formal_power_series.hpp"
+#include"../utility/modint_new.hpp"
 
 namespace noya2{
 
-template<typename mint>
-FPS_ntt<mint> sample_point_shift(FPS_ntt<mint> y, typename FPS_ntt<mint>::value_type t, int m){
-    using fps = FPS_ntt<mint>;
+template<Fps_Info Info>
+requires Modint<typename Info::value_type>
+FormalPowerSeries<Info> sample_point_shift(FormalPowerSeries<Info> y, typename Info::value_type t, int m){
+    using fps = FormalPowerSeries<Info>;
+    using mint = typename Info::value_type;
     ll T = t.val();
     int k = (int)(y.size()) - 1;
     if (T <= k){
