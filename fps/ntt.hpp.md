@@ -26,6 +26,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/relaxed_convolution.hpp
     title: fps/relaxed_convolution.hpp
+  - icon: ':warning:'
+    path: fps/sample_point_shift.hpp
+    title: fps/sample_point_shift.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/fps/convolution.test.cpp
@@ -373,6 +376,7 @@ data:
   isVerificationFile: false
   path: fps/ntt.hpp
   requiredBy:
+  - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
   - fps/relaxed_convolution.hpp
   timestamp: '2023-09-03 02:17:40+09:00'

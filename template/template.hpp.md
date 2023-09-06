@@ -56,6 +56,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/relaxed_convolution.hpp
     title: fps/relaxed_convolution.hpp
+  - icon: ':warning:'
+    path: fps/sample_point_shift.hpp
+    title: fps/sample_point_shift.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/base_ld.hpp
     title: geometry/base_ld.hpp
@@ -285,6 +288,7 @@ data:
   - geometry/partition_by_circle.hpp
   - math/matrix.hpp
   - math/prime.hpp
+  - fps/sample_point_shift.hpp
   - fps/fps_arbitrary.hpp
   - fps/fps_ntt.hpp
   - fps/relaxed_convolution.hpp

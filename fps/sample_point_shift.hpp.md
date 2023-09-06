@@ -5,6 +5,9 @@ data:
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
   - icon: ':heavy_check_mark:'
+    path: fps/fps_ntt.hpp
+    title: fps/fps_ntt.hpp
+  - icon: ':heavy_check_mark:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
   - icon: ':heavy_check_mark:'
@@ -28,38 +31,32 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: fps/sample_point_shift.hpp
-    title: fps/sample_point_shift.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/fps/convolution.test.cpp
-    title: test/fps/convolution.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"fps/fps_ntt.hpp\"\n\n#line 2 \"fps/formal_power_series.hpp\"\
-    \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
-    #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
-    \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
-    \ << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename\
-    \ U>\nistream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
-    \    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os,\
-    \ const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s;\
-    \ i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
-    \ T>\nistream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is\
-    \ >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\n\
-    void in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout\
-    \ << \"\\n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const\
-    \ T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n\
-    \    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n\
-    \    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\
-    \nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
-    \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
-    \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
+  bundledCode: "#line 2 \"fps/sample_point_shift.hpp\"\n\n#line 2 \"template/template.hpp\"\
+    \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
+    \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
+    \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
+    \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
+    \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
+    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int\
+    \ s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\"\
+    ) << v[i];\n    return os;\n}\ntemplate <typename T>\nistream &operator>>(istream\
+    \ &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid\
+    \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
+    \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
+    \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
+    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\ntemplate<typename\
+    \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
+    \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
+    \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
+    \ << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n \
+    \   }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
     \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
     \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
     \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
@@ -93,7 +90,8 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"fps/formal_power_series.hpp\"\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"fps/fps_ntt.hpp\"\
+    \n\n#line 2 \"fps/formal_power_series.hpp\"\n\n#line 4 \"fps/formal_power_series.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<typename T>\nconcept Field = requires (T a, T\
     \ b){\n    a + b; a - b; a / b; a * b;\n    T(0); T(1);\n};\n\ntemplate<class\
     \ Info>\nconcept Fps_Info = requires {\n    typename Info::value_type;\n    requires\
@@ -396,49 +394,69 @@ data:
     \ n = a.size();\n        vector<T> res(n+1);\n        for (int i = 1; i <= n;\
     \ i++) res[i] = a[i-1] * bnm.inv(i);\n        return res;\n    }\n};\ntemplate<typename\
     \ T> NTT<T> fps_ntt<T>::ntt;\ntemplate<typename T> using FPS_ntt = FormalPowerSeries<fps_ntt<T>>;\n\
-    \n} // namespace noya2\n\n"
-  code: "#pragma once\n\n#include\"formal_power_series.hpp\"\n#include\"../math/binomial.hpp\"\
-    \n#include\"ntt.hpp\"\n\nnamespace noya2{\n\ntemplate<typename T>\nstruct fps_ntt{\n\
-    \    using value_type = T;\n    static NTT<T> ntt;\n    static vector<T> multiply(const\
-    \ vector<T> &a, const vector<T> &b){\n        return ntt.multiply(a,b);\n    }\n\
-    \    static vector<T> inv(const vector<T> &a, int d = -1){\n        const int\
-    \ n = a.size();\n        if (d == -1) d = n;\n        vector<T> res = {a[0].inv()};\n\
-    \        for (int siz = 1; siz < d; siz <<= 1){\n            vector<T> f(a.begin(),a.begin()+min(n,siz*2)),\
-    \ g(res);\n            f.resize(siz*2), g.resize(siz*2);\n            ntt.ntt(f),\
-    \ ntt.ntt(g);\n            for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n   \
-    \         ntt.intt(f,true);\n            f.erase(f.begin(),f.begin()+siz);\n \
-    \           f.resize(siz*2);\n            ntt.ntt(f);\n            for (int i\
-    \ = 0; i < siz*2; i++) f[i] *= g[i];\n            ntt.intt(f,true);\n        \
-    \    T siz2_inv = T(siz*2).inv(); siz2_inv *= -siz2_inv;\n            for (int\
-    \ i = 0; i < siz; i++) f[i] *= siz2_inv;\n            res.insert(res.end(),f.begin(),f.begin()+siz);\n\
-    \        }\n        res.resize(d);\n        return res;\n    }\n    static binomial<T>\
-    \ bnm;\n    static vector<T> integral(const vector<T> &a){\n        const int\
-    \ n = a.size();\n        vector<T> res(n+1);\n        for (int i = 1; i <= n;\
-    \ i++) res[i] = a[i-1] * bnm.inv(i);\n        return res;\n    }\n};\ntemplate<typename\
-    \ T> NTT<T> fps_ntt<T>::ntt;\ntemplate<typename T> using FPS_ntt = FormalPowerSeries<fps_ntt<T>>;\n\
-    \n} // namespace noya2\n\n"
+    \n} // namespace noya2\n\n#line 5 \"fps/sample_point_shift.hpp\"\n\nnamespace\
+    \ noya2{\n\ntemplate<typename mint>\nFPS_ntt<mint> sample_point_shift(FPS_ntt<mint>\
+    \ y, typename FPS_ntt<mint>::value_type t, int m){\n    using fps = FPS_ntt<mint>;\n\
+    \    ll T = t.val();\n    int k = (int)(y.size()) - 1;\n    if (T <= k){\n   \
+    \     fps ret(m);\n        int ptr = 0;\n        for (ll i = T; i <= k && ptr\
+    \ < m; i++){\n            ret[ptr++] = y[i];\n        }\n        if (k+1 < T+m){\n\
+    \            auto suf = sample_point_shift(y,k+1,m-ptr);\n            for (int\
+    \ i = k+1; i < T+m; i++){\n                ret[ptr++] = suf[i-(k+1)];\n      \
+    \      }\n        }\n        return ret;\n    }\n    if (T+m > mint::mod()){\n\
+    \        auto pref = sample_point_shift(y,T,mint::mod()-T);\n        auto suf\
+    \  = sample_point_shift(y,0,m-(int)(pref.size()));\n        copy(suf.begin(),suf.end(),back_inserter(pref));\n\
+    \        return pref;\n    }\n    binomial<mint> bnm;\n    fps d(k+1);\n    for\
+    \ (int i = 0; i <= k; i++){\n        d[i] = bnm.ifact(i) * bnm.ifact(k-i) * y[i];\n\
+    \        if ((k-i)&1) d[i] = -d[i];\n    }\n    vector<mint> fact(m+k+1); fact[0]\
+    \ = 1;\n    for (int i = 0; i < m+k; i++) fact[i+1] = fact[i] * (T-k+i);\n   \
+    \ fps h(m+k); h[m+k-1] = fact[m+k].inv();\n    for (int i = m+k-1; i >= 1; i--)\
+    \ h[i-1] = h[i] * (T-k+i);\n    for (int i = 0; i < m+k; i++) h[i] *= fact[i];\n\
+    \    auto dh = d * h;\n    fps ret(m);\n    mint cur = T;\n    for (int i = 1;\
+    \ i <= k; i++) cur *= T-i;\n    for (int i = 0; i < m; i++){\n        ret[i] =\
+    \ cur * dh[k+i];\n        cur *= T+i+1;\n        cur *= h[i];\n    }\n    return\
+    \ ret;\n}\n\n} // namespace noya2\n"
+  code: "#pragma once\n\n#include\"../template/template.hpp\"\n#include\"../fps/fps_ntt.hpp\"\
+    \n\nnamespace noya2{\n\ntemplate<typename mint>\nFPS_ntt<mint> sample_point_shift(FPS_ntt<mint>\
+    \ y, typename FPS_ntt<mint>::value_type t, int m){\n    using fps = FPS_ntt<mint>;\n\
+    \    ll T = t.val();\n    int k = (int)(y.size()) - 1;\n    if (T <= k){\n   \
+    \     fps ret(m);\n        int ptr = 0;\n        for (ll i = T; i <= k && ptr\
+    \ < m; i++){\n            ret[ptr++] = y[i];\n        }\n        if (k+1 < T+m){\n\
+    \            auto suf = sample_point_shift(y,k+1,m-ptr);\n            for (int\
+    \ i = k+1; i < T+m; i++){\n                ret[ptr++] = suf[i-(k+1)];\n      \
+    \      }\n        }\n        return ret;\n    }\n    if (T+m > mint::mod()){\n\
+    \        auto pref = sample_point_shift(y,T,mint::mod()-T);\n        auto suf\
+    \  = sample_point_shift(y,0,m-(int)(pref.size()));\n        copy(suf.begin(),suf.end(),back_inserter(pref));\n\
+    \        return pref;\n    }\n    binomial<mint> bnm;\n    fps d(k+1);\n    for\
+    \ (int i = 0; i <= k; i++){\n        d[i] = bnm.ifact(i) * bnm.ifact(k-i) * y[i];\n\
+    \        if ((k-i)&1) d[i] = -d[i];\n    }\n    vector<mint> fact(m+k+1); fact[0]\
+    \ = 1;\n    for (int i = 0; i < m+k; i++) fact[i+1] = fact[i] * (T-k+i);\n   \
+    \ fps h(m+k); h[m+k-1] = fact[m+k].inv();\n    for (int i = m+k-1; i >= 1; i--)\
+    \ h[i-1] = h[i] * (T-k+i);\n    for (int i = 0; i < m+k; i++) h[i] *= fact[i];\n\
+    \    auto dh = d * h;\n    fps ret(m);\n    mint cur = T;\n    for (int i = 1;\
+    \ i <= k; i++) cur *= T-i;\n    for (int i = 0; i < m; i++){\n        ret[i] =\
+    \ cur * dh[k+i];\n        cur *= T+i+1;\n        cur *= h[i];\n    }\n    return\
+    \ ret;\n}\n\n} // namespace noya2"
   dependsOn:
-  - fps/formal_power_series.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
+  - fps/fps_ntt.hpp
+  - fps/formal_power_series.hpp
   - math/binomial.hpp
   - fps/ntt.hpp
   - utility/modint_new.hpp
   - math/prime.hpp
   isVerificationFile: false
-  path: fps/fps_ntt.hpp
-  requiredBy:
-  - fps/sample_point_shift.hpp
-  timestamp: '2023-09-06 22:50:33+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/fps/convolution.test.cpp
-documentation_of: fps/fps_ntt.hpp
+  path: fps/sample_point_shift.hpp
+  requiredBy: []
+  timestamp: '2023-09-06 22:54:00+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: fps/sample_point_shift.hpp
 layout: document
 redirect_from:
-- /library/fps/fps_ntt.hpp
-- /library/fps/fps_ntt.hpp.html
-title: fps/fps_ntt.hpp
+- /library/fps/sample_point_shift.hpp
+- /library/fps/sample_point_shift.hpp.html
+title: fps/sample_point_shift.hpp
 ---

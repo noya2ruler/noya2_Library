@@ -56,6 +56,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/relaxed_convolution.hpp
       title: fps/relaxed_convolution.hpp
+    - icon: ':warning:'
+      path: fps/sample_point_shift.hpp
+      title: fps/sample_point_shift.hpp
   - name: geometry
     pages:
     - icon: ':heavy_check_mark:'

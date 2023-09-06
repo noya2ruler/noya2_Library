@@ -26,6 +26,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/relaxed_convolution.hpp
     title: fps/relaxed_convolution.hpp
+  - icon: ':warning:'
+    path: fps/sample_point_shift.hpp
+    title: fps/sample_point_shift.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
@@ -311,6 +314,7 @@ data:
   isVerificationFile: false
   path: utility/modint_new.hpp
   requiredBy:
+  - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
   - fps/relaxed_convolution.hpp
   - fps/ntt.hpp

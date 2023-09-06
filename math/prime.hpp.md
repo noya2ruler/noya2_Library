@@ -23,6 +23,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/relaxed_convolution.hpp
     title: fps/relaxed_convolution.hpp
+  - icon: ':warning:'
+    path: fps/sample_point_shift.hpp
+    title: fps/sample_point_shift.hpp
   - icon: ':heavy_check_mark:'
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
@@ -170,6 +173,7 @@ data:
   path: math/prime.hpp
   requiredBy:
   - utility/modint_new.hpp
+  - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
   - fps/relaxed_convolution.hpp
   - fps/ntt.hpp

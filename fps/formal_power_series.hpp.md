@@ -23,6 +23,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
+  - icon: ':warning:'
+    path: fps/sample_point_shift.hpp
+    title: fps/sample_point_shift.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/fps/convolution.test.cpp
@@ -222,6 +225,7 @@ data:
   isVerificationFile: false
   path: fps/formal_power_series.hpp
   requiredBy:
+  - fps/sample_point_shift.hpp
   - fps/fps_arbitrary.hpp
   - fps/fps_ntt.hpp
   - fps/fps_atcoder.hpp
