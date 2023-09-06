@@ -109,7 +109,7 @@ struct FormalPowerSeries : vector<typename Info::value_type> {
     FPS diff() const {
         const int n = (int)this->size();
         FPS ret(max(0, n - 1));
-        mint one(1), coeff(1);
+        T one(1), coeff(1);
         for (int i = 1; i < n; i++) {
             ret[i - 1] = (*this)[i] * coeff;
             coeff += one;
@@ -127,7 +127,7 @@ struct FormalPowerSeries : vector<typename Info::value_type> {
     FPS exp(int d = -1) const {
         const int n = (*this).size();
         if (d == -1) d = n;
-        FPS f = {mint(1)+(*this)[0],(*this)[1]}, res = {1,(n > 1 ? (*this)[1] : 0)};
+        FPS f = {T(1)+(*this)[0],(*this)[1]}, res = {1,(n > 1 ? (*this)[1] : 0)};
         for (int sz = 2; sz < d; sz <<= 1){
             f.insert(f.end(),(*this).begin()+min(n,sz),(*this).begin()+min(n,sz*2));
             if ((int)f.size() < sz*2) f.resize(sz*2);
