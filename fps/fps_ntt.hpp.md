@@ -28,10 +28,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: fps/sample_point_shift.hpp
-    title: fps/sample_point_shift.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
@@ -432,8 +429,7 @@ data:
   - math/prime.hpp
   isVerificationFile: false
   path: fps/fps_ntt.hpp
-  requiredBy:
-  - fps/sample_point_shift.hpp
+  requiredBy: []
   timestamp: '2023-09-06 22:50:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

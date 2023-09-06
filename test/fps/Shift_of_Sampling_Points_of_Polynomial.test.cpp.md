@@ -97,15 +97,14 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"fps/sample_point_shift.hpp\"\
-    \n\n#line 2 \"fps/fps_ntt.hpp\"\n\n#line 2 \"fps/formal_power_series.hpp\"\n\n\
-    #line 4 \"fps/formal_power_series.hpp\"\n\nnamespace noya2{\n\ntemplate<typename\
-    \ T>\nconcept Field = requires (T a, T b){\n    a + b; a - b; a / b; a * b;\n\
-    \    T(0); T(1);\n};\n\ntemplate<class Info>\nconcept Fps_Info = requires {\n\
-    \    typename Info::value_type;\n    requires Field<typename Info::value_type>;\n\
-    \    {Info::multiply(declval<vector<typename Info::value_type>>(),declval<vector<typename\
-    \ Info::value_type>>())} -> convertible_to<vector<typename Info::value_type>>;\n\
-    \    {Info::inv(declval<vector<typename Info::value_type>>(),declval<int>())}\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"fps/fps_ntt.hpp\"\
+    \n\n#line 2 \"fps/formal_power_series.hpp\"\n\n#line 4 \"fps/formal_power_series.hpp\"\
+    \n\nnamespace noya2{\n\ntemplate<typename T>\nconcept Field = requires (T a, T\
+    \ b){\n    a + b; a - b; a / b; a * b;\n    T(0); T(1);\n};\n\ntemplate<class\
+    \ Info>\nconcept Fps_Info = requires {\n    typename Info::value_type;\n    requires\
+    \ Field<typename Info::value_type>;\n    {Info::multiply(declval<vector<typename\
+    \ Info::value_type>>(),declval<vector<typename Info::value_type>>())} -> convertible_to<vector<typename\
+    \ Info::value_type>>;\n    {Info::inv(declval<vector<typename Info::value_type>>(),declval<int>())}\
     \ -> convertible_to<vector<typename Info::value_type>>;\n    {Info::integral(declval<vector<typename\
     \ Info::value_type>>())} -> convertible_to<vector<typename Info::value_type>>;\n\
     };\n\ntemplate<Fps_Info Info>\nstruct FormalPowerSeries : vector<typename Info::value_type>\
@@ -402,15 +401,16 @@ data:
     \ n = a.size();\n        vector<T> res(n+1);\n        for (int i = 1; i <= n;\
     \ i++) res[i] = a[i-1] * bnm.inv(i);\n        return res;\n    }\n};\ntemplate<typename\
     \ T> NTT<T> fps_ntt<T>::ntt;\ntemplate<typename T> using FPS_ntt = FormalPowerSeries<fps_ntt<T>>;\n\
-    \n} // namespace noya2\n\n#line 5 \"fps/sample_point_shift.hpp\"\n\nnamespace\
-    \ noya2{\n\ntemplate<typename mint>\nFPS_ntt<mint> sample_point_shift(FPS_ntt<mint>\
-    \ y, typename FPS_ntt<mint>::value_type t, int m){\n    using fps = FPS_ntt<mint>;\n\
-    \    ll T = t.val();\n    int k = (int)(y.size()) - 1;\n    if (T <= k){\n   \
-    \     fps ret(m);\n        int ptr = 0;\n        for (ll i = T; i <= k && ptr\
-    \ < m; i++){\n            ret[ptr++] = y[i];\n        }\n        if (k+1 < T+m){\n\
-    \            auto suf = sample_point_shift(y,k+1,m-ptr);\n            for (int\
-    \ i = k+1; i < T+m; i++){\n                ret[ptr++] = suf[i-(k+1)];\n      \
-    \      }\n        }\n        return ret;\n    }\n    if (T+m > mint::mod()){\n\
+    \n} // namespace noya2\n\n#line 2 \"fps/sample_point_shift.hpp\"\n\n#line 6 \"\
+    fps/sample_point_shift.hpp\"\n\nnamespace noya2{\n\ntemplate<Fps_Info Info>\n\
+    requires Modint<typename Info::value_type>\nFormalPowerSeries<Info> sample_point_shift(FormalPowerSeries<Info>\
+    \ y, typename Info::value_type t, int m){\n    using fps = FormalPowerSeries<Info>;\n\
+    \    using mint = typename Info::value_type;\n    ll T = t.val();\n    int k =\
+    \ (int)(y.size()) - 1;\n    if (T <= k){\n        fps ret(m);\n        int ptr\
+    \ = 0;\n        for (ll i = T; i <= k && ptr < m; i++){\n            ret[ptr++]\
+    \ = y[i];\n        }\n        if (k+1 < T+m){\n            auto suf = sample_point_shift(y,k+1,m-ptr);\n\
+    \            for (int i = k+1; i < T+m; i++){\n                ret[ptr++] = suf[i-(k+1)];\n\
+    \            }\n        }\n        return ret;\n    }\n    if (T+m > mint::mod()){\n\
     \        auto pref = sample_point_shift(y,T,mint::mod()-T);\n        auto suf\
     \  = sample_point_shift(y,0,m-(int)(pref.size()));\n        copy(suf.begin(),suf.end(),back_inserter(pref));\n\
     \        return pref;\n    }\n    binomial<mint> bnm;\n    fps d(k+1);\n    for\
@@ -422,31 +422,31 @@ data:
     \    auto dh = d * h;\n    fps ret(m);\n    mint cur = T;\n    for (int i = 1;\
     \ i <= k; i++) cur *= T-i;\n    for (int i = 0; i < m; i++){\n        ret[i] =\
     \ cur * dh[k+i];\n        cur *= T+i+1;\n        cur *= h[i];\n    }\n    return\
-    \ ret;\n}\n\n} // namespace noya2\n#line 5 \"test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp\"\
+    \ ret;\n}\n\n} // namespace noya2\n#line 6 \"test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp\"\
     \nusing mint = modint998244353;\nusing fps = FPS_ntt<mint>;\n\nint main(){\n \
     \   int n, m; in(n,m);\n    mint c; in(c);\n    fps y(n); in(y);\n    out(sample_point_shift(y,c,m));\n\
     }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shift_of_sampling_points_of_polynomial\"\
-    \n\n#include\"../../template/template.hpp\"\n#include\"../../fps/sample_point_shift.hpp\"\
-    \nusing mint = modint998244353;\nusing fps = FPS_ntt<mint>;\n\nint main(){\n \
-    \   int n, m; in(n,m);\n    mint c; in(c);\n    fps y(n); in(y);\n    out(sample_point_shift(y,c,m));\n\
-    }"
+    \n\n#include\"../../template/template.hpp\"\n#include\"../../fps/fps_ntt.hpp\"\
+    \n#include\"../../fps/sample_point_shift.hpp\"\nusing mint = modint998244353;\n\
+    using fps = FPS_ntt<mint>;\n\nint main(){\n    int n, m; in(n,m);\n    mint c;\
+    \ in(c);\n    fps y(n); in(y);\n    out(sample_point_shift(y,c,m));\n}"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
-  - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
   - fps/formal_power_series.hpp
   - math/binomial.hpp
   - fps/ntt.hpp
   - utility/modint_new.hpp
   - math/prime.hpp
+  - fps/sample_point_shift.hpp
   isVerificationFile: true
   path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   requiredBy: []
-  timestamp: '2023-09-06 22:56:54+09:00'
+  timestamp: '2023-09-06 23:22:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp

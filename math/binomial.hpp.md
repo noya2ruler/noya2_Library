@@ -5,9 +5,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
-  - icon: ':heavy_check_mark:'
-    path: fps/sample_point_shift.hpp
-    title: fps/sample_point_shift.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
@@ -82,7 +79,6 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
-  - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
   timestamp: '2023-07-19 01:15:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
