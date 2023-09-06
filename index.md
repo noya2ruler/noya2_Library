@@ -38,7 +38,7 @@ data:
       title: data_structure/sparse_table.hpp
   - name: fps
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/formal_power_series.hpp
       title: fps/formal_power_series.hpp
     - icon: ':warning:'
@@ -47,10 +47,10 @@ data:
     - icon: ':warning:'
       path: fps/fps_atcoder.hpp
       title: fps/fps_atcoder.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_ntt.hpp
       title: fps/fps_ntt.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: fps/ntt.hpp
       title: fps/ntt.hpp
     - icon: ':heavy_check_mark:'
@@ -74,13 +74,13 @@ data:
       title: graph/scc.hpp
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: math/binomial.hpp
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/prime.hpp
       title: math/prime.hpp
   - name: misc
@@ -118,19 +118,19 @@ data:
       title: string/rolling_hash.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/const.hpp
       title: template/const.hpp
     - icon: ':warning:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/inout_old.hpp
       title: template/inout_old.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
@@ -158,7 +158,7 @@ data:
     - icon: ':warning:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint_new.hpp
       title: utility/modint_new.hpp
   verificationCategories:
@@ -199,7 +199,7 @@ data:
       title: test/data_structure/aoj1068_segtree2d.test.cpp
   - name: test/fps
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/fps/convolution.test.cpp
       title: test/fps/convolution.test.cpp
     - icon: ':heavy_check_mark:'

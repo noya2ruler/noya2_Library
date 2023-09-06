@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -38,7 +38,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
   - icon: ':warning:'
@@ -47,10 +47,10 @@ data:
   - icon: ':warning:'
     path: fps/fps_atcoder.hpp
     title: fps/fps_atcoder.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
   - icon: ':heavy_check_mark:'
@@ -68,7 +68,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
   - icon: ':warning:'
@@ -104,7 +104,7 @@ data:
   - icon: ':warning:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
   _extendedVerifiedWith:
@@ -141,7 +141,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/aoj1068_segtree2d.test.cpp
     title: test/data_structure/aoj1068_segtree2d.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/convolution.test.cpp
     title: test/fps/convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -186,9 +186,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
@@ -292,7 +292,7 @@ data:
   - fps/fps_atcoder.hpp
   - fps/ntt.hpp
   timestamp: '2023-08-26 17:35:34+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp

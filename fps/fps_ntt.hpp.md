@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/fps/convolution.test.cpp
     title: test/fps/convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/fps_ntt.hpp\"\n\n#line 2 \"fps/formal_power_series.hpp\"\
@@ -140,13 +140,13 @@ data:
     \ < siz) ret.resize(siz);\n        return ret;\n    }\n    FPS rev() const {\n\
     \        FPS ret(*this);\n        reverse(ret.begin(), ret.end());\n        return\
     \ ret;\n    }\n    FPS diff() const {\n        const int n = (int)this->size();\n\
-    \        FPS ret(max(0, n - 1));\n        mint one(1), coeff(1);\n        for\
-    \ (int i = 1; i < n; i++) {\n            ret[i - 1] = (*this)[i] * coeff;\n  \
-    \          coeff += one;\n        }\n        return ret;\n    }\n    FPS integral()\
+    \        FPS ret(max(0, n - 1));\n        T one(1), coeff(1);\n        for (int\
+    \ i = 1; i < n; i++) {\n            ret[i - 1] = (*this)[i] * coeff;\n       \
+    \     coeff += one;\n        }\n        return ret;\n    }\n    FPS integral()\
     \ const {\n        FPS ret = Info::integral(*this);\n        return ret;\n   \
     \ }\n    FPS inv(int d = -1) const {\n        FPS ret = Info::inv(*this,d);\n\
     \        return ret;\n    }\n    FPS exp(int d = -1) const {\n        const int\
-    \ n = (*this).size();\n        if (d == -1) d = n;\n        FPS f = {mint(1)+(*this)[0],(*this)[1]},\
+    \ n = (*this).size();\n        if (d == -1) d = n;\n        FPS f = {T(1)+(*this)[0],(*this)[1]},\
     \ res = {1,(n > 1 ? (*this)[1] : 0)};\n        for (int sz = 2; sz < d; sz <<=\
     \ 1){\n            f.insert(f.end(),(*this).begin()+min(n,sz),(*this).begin()+min(n,sz*2));\n\
     \            if ((int)f.size() < sz*2) f.resize(sz*2);\n            res = res\
@@ -427,8 +427,8 @@ data:
   isVerificationFile: false
   path: fps/fps_ntt.hpp
   requiredBy: []
-  timestamp: '2023-09-06 22:32:22+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-09-06 22:50:33+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/convolution.test.cpp
 documentation_of: fps/fps_ntt.hpp
