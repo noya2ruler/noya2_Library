@@ -1,38 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: math/binomial.hpp
+    title: math/binomial.hpp
+  - icon: ':question:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
@@ -94,10 +97,14 @@ data:
     \n\n#line 2 \"fps/formal_power_series.hpp\"\n\n#line 4 \"fps/formal_power_series.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<typename T>\nconcept Field = requires (T a, T\
     \ b){\n    a + b; a - b; a / b; a * b;\n    T(0); T(1);\n};\n\ntemplate<class\
-    \ Info, class value_type>\nconcept Fps_Info = requires {\n    requires Field<value_type>;\n\
-    \    {Info::multiply(declval<vector<value_type>>(),declval<vector<value_type>>())}\
-    \ -> convertible_to<vector<value_type>>;\n};\n\ntemplate<typename T, Fps_Info<T>\
-    \ Info>\nstruct FormalPowerSeries : vector<T> {\n    using vector<T>::vector;\n\
+    \ Info>\nconcept Fps_Info = requires {\n    typename Info::value_type;\n    requires\
+    \ Field<typename Info::value_type>;\n    {Info::multiply(declval<vector<typename\
+    \ Info::value_type>>(),declval<vector<typename Info::value_type>>())} -> convertible_to<vector<typename\
+    \ Info::value_type>>;\n    {Info::inv(declval<vector<typename Info::value_type>>(),declval<int>())}\
+    \ -> convertible_to<vector<typename Info::value_type>>;\n    {Info::integral(declval<vector<typename\
+    \ Info::value_type>>())} -> convertible_to<vector<typename Info::value_type>>;\n\
+    };\n\ntemplate<Fps_Info Info>\nstruct FormalPowerSeries : vector<typename Info::value_type>\
+    \ {\n    using T = typename Info::value_type;\n    using vector<T>::vector;\n\
     \    using vector<T>::operator=;\n    using FPS = FormalPowerSeries;\n    FormalPowerSeries\
     \ (const vector<T> &init_ = {}){ (*this) = init_; }\n    void shrink(){ while\
     \ (!(*this).empty() && (*this).back() == T(0)) (*this).pop_back(); }\n    FPS\
@@ -132,13 +139,57 @@ data:
     \ += e * w, w *= x;\n        return res;\n    }\n    static FPS dot(const FPS\
     \ &lhs, const FPS &rhs){\n        FPS res(min(lhs.size(),rhs.size()));\n     \
     \   for (int i = 0; i < (int)res.size(); i++) res[i] = lhs[i] * rhs[i];\n    \
-    \    return res;\n    }\n};\n\n} // namespace noya2\n#line 2 \"fps/ntt.hpp\"\n\
-    \n#line 2 \"utility/modint_new.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\n#line 4\
-    \ \"math/prime.hpp\"\n\nnamespace noya2 {\n\nconstexpr ll safe_mod(ll x, ll m)\
-    \ {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n}\n\nconstexpr ll pow_mod_constexpr(ll\
-    \ x, ll n, int m) {\n    if (m == 1) return 0;\n    uint _m = (uint)(m);\n   \
-    \ ull r = 1;\n    ull y = safe_mod(x, m);\n    while (n) {\n        if (n & 1)\
-    \ r = (r * y) % _m;\n        y = (y * y) % _m;\n        n >>= 1;\n    }\n    return\
+    \    return res;\n    }\n    FPS pre(int siz) const {\n        FPS ret((*this).begin(),\
+    \ (*this).begin() + min((int)this->size(), siz));\n        if ((int)ret.size()\
+    \ < siz) ret.resize(siz);\n        return ret;\n    }\n    FPS rev() const {\n\
+    \        FPS ret(*this);\n        reverse(ret.begin(), ret.end());\n        return\
+    \ ret;\n    }\n    FPS diff() const {\n        const int n = (int)this->size();\n\
+    \        FPS ret(max(0, n - 1));\n        mint one(1), coeff(1);\n        for\
+    \ (int i = 1; i < n; i++) {\n            ret[i - 1] = (*this)[i] * coeff;\n  \
+    \          coeff += one;\n        }\n        return ret;\n    }\n    FPS integral()\
+    \ const {\n        FPS ret = Info::integral(*this);\n        return ret;\n   \
+    \ }\n    FPS inv(int d = -1) const {\n        FPS ret = Info::inv(*this,d);\n\
+    \        return ret;\n    }\n    FPS exp(int d = -1) const {\n        const int\
+    \ n = (*this).size();\n        if (d == -1) d = n;\n        FPS f = {mint(1)+(*this)[0],(*this)[1]},\
+    \ res = {1,(n > 1 ? (*this)[1] : 0)};\n        for (int sz = 2; sz < d; sz <<=\
+    \ 1){\n            f.insert(f.end(),(*this).begin()+min(n,sz),(*this).begin()+min(n,sz*2));\n\
+    \            if ((int)f.size() < sz*2) f.resize(sz*2);\n            res = res\
+    \ * (f - res.log(2*sz));\n            res.resize(sz*2);\n        }\n        res.resize(d);\n\
+    \        return res;\n    }\n    FPS log(int d = -1) const {\n        assert(!(*this).empty()\
+    \ && (*this)[0] == T(1));\n        if (d == -1) d = (*this).size();\n        return\
+    \ (this->diff() * this->inv(d)).pre(d - 1).integral();\n    }\n};\n\n} // namespace\
+    \ noya2\n#line 2 \"math/binomial.hpp\"\n\nnamespace noya2 {\n\ntemplate<typename\
+    \ mint>\nstruct binomial {\n    binomial(int len = 300000){ extend(len); }\n \
+    \   static mint fact(int n){\n        if (n < 0) return 0;\n        while (n >=\
+    \ (int)_fact.size()) extend();\n        return _fact[n];\n    }\n    static mint\
+    \ ifact(int n){\n        if (n < 0) return 0;\n        while (n >= (int)_fact.size())\
+    \ extend();\n        return _ifact[n];\n    }\n    static mint inv(int n){\n \
+    \       return ifact(n) * fact(n-1);\n    }\n    static mint C(int n, int r){\n\
+    \        if (!(0 <= r && r <= n)) return 0;\n        return fact(n) * ifact(r)\
+    \ * ifact(n-r);\n    }\n    static mint P(int n, int r){\n        if (!(0 <= r\
+    \ && r <= n)) return 0;\n        return fact(n) * ifact(n-r);\n    }\n    inline\
+    \ mint operator()(int n, int r) { return C(n, r); }\n    template<class... Cnts>\
+    \ static mint M(const Cnts&... cnts){\n        return multinomial(0,1,cnts...);\n\
+    \    }\n  private:\n    static mint multinomial(const int& sum, const mint& div_prod){\n\
+    \        if (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n\
+    \    template<class... Tail> static mint multinomial(const int& sum, const mint&\
+    \ div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n\
+    \        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static\
+    \ vector<mint> _fact, _ifact;\n    static void extend(int len = -1){\n       \
+    \ if (_fact.empty()){\n            _fact = _ifact = {1,1};\n        }\n      \
+    \  int siz = _fact.size();\n        if (len == -1) len = siz * 2;\n        len\
+    \ = min<int>(len, mint::mod()-1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
+    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
+    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
+    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename T>\nstd::vector<T>binomial<T>::_fact\
+    \ = vector<T>(2,T(1));\ntemplate<typename T>\nstd::vector<T>binomial<T>::_ifact\
+    \ = vector<T>(2,T(1));\n\n} // namespace noya2\n#line 2 \"fps/ntt.hpp\"\n\n#line\
+    \ 2 \"utility/modint_new.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\
+    \n\nnamespace noya2 {\n\nconstexpr ll safe_mod(ll x, ll m) {\n    x %= m;\n  \
+    \  if (x < 0) x += m;\n    return x;\n}\n\nconstexpr ll pow_mod_constexpr(ll x,\
+    \ ll n, int m) {\n    if (m == 1) return 0;\n    uint _m = (uint)(m);\n    ull\
+    \ r = 1;\n    ull y = safe_mod(x, m);\n    while (n) {\n        if (n & 1) r =\
+    \ (r * y) % _m;\n        y = (y * y) % _m;\n        n >>= 1;\n    }\n    return\
     \ r;\n}\n\nconstexpr bool is_prime_constexpr(int n) {\n    if (n <= 1) return\
     \ false;\n    if (n == 2 || n == 7 || n == 61) return true;\n    if (n % 2 ==\
     \ 0) return false;\n    ll d = n - 1;\n    while (d % 2 == 0) d /= 2;\n    constexpr\
@@ -327,18 +378,32 @@ data:
     \ = b[i];\n            fft4(t, k);\n            for (int i = 0; i < M; ++i) s[i]\
     \ *= t[i];\n        }\n        ifft4(s, k);\n        s.resize(l);\n        mint\
     \ invm = mint(M).inv();\n        for (int i = 0; i < l; ++i) s[i] *= invm;\n \
-    \       return s;\n    }\n};\n\n\n} // namespace noya2\n#line 5 \"fps/fps_ntt.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<typename T>\nstruct fps_ntt{\n    static NTT<T>\
-    \ ntt;\n    static vector<T> multiply(const vector<T> &a, const vector<T> &b){\n\
-    \        return ntt.multiply(a,b);\n    }\n};\ntemplate<typename T> NTT<T> fps_ntt<T>::ntt;\n\
-    template<typename T> using fps = FormalPowerSeries<T,fps_ntt<T>>;\n\n} // namespace\
-    \ noya2\n\n#line 5 \"test/fps/convolution.test.cpp\"\nusing mint = modint998244353;\n\
-    \nint main(){\n    int n, m; in(n,m);\n    fps<mint> f(n), g(m); in(f,g);\n  \
-    \  out(f*g);\n}\n"
+    \       return s;\n    }\n};\n\n\n} // namespace noya2\n#line 6 \"fps/fps_ntt.hpp\"\
+    \n\nnamespace noya2{\n\ntemplate<typename T>\nstruct fps_ntt{\n    using value_type\
+    \ = T;\n    static NTT<T> ntt;\n    static vector<T> multiply(const vector<T>\
+    \ &a, const vector<T> &b){\n        return ntt.multiply(a,b);\n    }\n    static\
+    \ vector<T> inv(const vector<T> &a, int d = -1){\n        const int n = a.size();\n\
+    \        if (d == -1) d = n;\n        vector<T> res = {a[0].inv()};\n        for\
+    \ (int siz = 1; siz < d; siz <<= 1){\n            vector<T> f(a.begin(),a.begin()+min(n,siz*2)),\
+    \ g(res);\n            f.resize(siz*2), g.resize(siz*2);\n            ntt.ntt(f),\
+    \ ntt.ntt(g);\n            for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n   \
+    \         ntt.intt(f,true);\n            f.erase(f.begin(),f.begin()+siz);\n \
+    \           f.resize(siz*2);\n            ntt.ntt(f);\n            for (int i\
+    \ = 0; i < siz*2; i++) f[i] *= g[i];\n            ntt.intt(f,true);\n        \
+    \    T siz2_inv = T(siz*2).inv(); siz2_inv *= -siz2_inv;\n            for (int\
+    \ i = 0; i < siz; i++) f[i] *= siz2_inv;\n            res.insert(res.end(),f.begin(),f.begin()+siz);\n\
+    \        }\n        res.resize(d);\n        return res;\n    }\n    static binomial<T>\
+    \ bnm;\n    static vector<T> integral(const vector<T> &a){\n        const int\
+    \ n = a.size();\n        vector<T> res(n+1);\n        for (int i = 1; i <= n;\
+    \ i++) res[i] = a[i-1] * bnm.inv(i);\n        return res;\n    }\n};\ntemplate<typename\
+    \ T> NTT<T> fps_ntt<T>::ntt;\ntemplate<typename T> using FPS_ntt = FormalPowerSeries<fps_ntt<T>>;\n\
+    \n} // namespace noya2\n\n#line 5 \"test/fps/convolution.test.cpp\"\nusing mint\
+    \ = modint998244353;\nusing fps = FPS_ntt<mint>;\n\nint main(){\n    int n, m;\
+    \ in(n,m);\n    fps f(n), g(m); in(f,g);\n    out(f*g);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#include\"\
     ../../template/template.hpp\"\n#include\"../../fps/fps_ntt.hpp\"\nusing mint =\
-    \ modint998244353;\n\nint main(){\n    int n, m; in(n,m);\n    fps<mint> f(n),\
-    \ g(m); in(f,g);\n    out(f*g);\n}"
+    \ modint998244353;\nusing fps = FPS_ntt<mint>;\n\nint main(){\n    int n, m; in(n,m);\n\
+    \    fps f(n), g(m); in(f,g);\n    out(f*g);\n}"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
@@ -346,14 +411,15 @@ data:
   - template/utils.hpp
   - fps/fps_ntt.hpp
   - fps/formal_power_series.hpp
+  - math/binomial.hpp
   - fps/ntt.hpp
   - utility/modint_new.hpp
   - math/prime.hpp
   isVerificationFile: true
   path: test/fps/convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-09-03 02:17:40+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-09-06 22:32:22+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/fps/convolution.test.cpp
 layout: document

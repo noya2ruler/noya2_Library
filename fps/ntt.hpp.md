@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
   - icon: ':heavy_check_mark:'
     path: fps/relaxed_convolution.hpp
     title: fps/relaxed_convolution.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps/convolution.test.cpp
     title: test/fps/convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/fps/convolution_relaxed_convolution.test.cpp
     title: test/fps/convolution_relaxed_convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/ntt.hpp\"\n\n#line 2 \"template/template.hpp\"\nusing\
@@ -376,7 +376,7 @@ data:
   - fps/fps_ntt.hpp
   - fps/relaxed_convolution.hpp
   timestamp: '2023-09-03 02:17:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/fps/convolution.test.cpp
   - test/fps/convolution_relaxed_convolution.test.cpp

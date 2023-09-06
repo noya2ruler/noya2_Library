@@ -1,17 +1,23 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: fps/fps_ntt.hpp
+    title: fps/fps_ntt.hpp
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/fps/convolution.test.cpp
+    title: test/fps/convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/binomial.hpp\"\n\nnamespace noya2 {\n\ntemplate<typename\
@@ -69,12 +75,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/binomial.hpp
-  requiredBy: []
+  requiredBy:
+  - fps/fps_ntt.hpp
   timestamp: '2023-07-19 01:15:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - test/fps/convolution.test.cpp
 documentation_of: math/binomial.hpp
 layout: document
 redirect_from:

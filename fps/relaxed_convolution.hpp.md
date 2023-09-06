@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
   _extendedRequiredBy: []

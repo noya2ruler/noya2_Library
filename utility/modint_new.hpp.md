@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
   - icon: ':heavy_check_mark:'
@@ -30,7 +30,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
     title: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps/convolution.test.cpp
     title: test/fps/convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -39,9 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint_new.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\
@@ -315,7 +315,7 @@ data:
   - fps/relaxed_convolution.hpp
   - fps/ntt.hpp
   timestamp: '2023-08-27 04:49:05+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp

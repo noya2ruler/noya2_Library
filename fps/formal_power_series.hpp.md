@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -20,16 +20,16 @@ data:
   - icon: ':warning:'
     path: fps/fps_atcoder.hpp
     title: fps/fps_atcoder.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps/convolution.test.cpp
     title: test/fps/convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/formal_power_series.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -87,10 +87,14 @@ data:
     ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"fps/formal_power_series.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<typename T>\nconcept Field = requires (T a, T\
     \ b){\n    a + b; a - b; a / b; a * b;\n    T(0); T(1);\n};\n\ntemplate<class\
-    \ Info, class value_type>\nconcept Fps_Info = requires {\n    requires Field<value_type>;\n\
-    \    {Info::multiply(declval<vector<value_type>>(),declval<vector<value_type>>())}\
-    \ -> convertible_to<vector<value_type>>;\n};\n\ntemplate<typename T, Fps_Info<T>\
-    \ Info>\nstruct FormalPowerSeries : vector<T> {\n    using vector<T>::vector;\n\
+    \ Info>\nconcept Fps_Info = requires {\n    typename Info::value_type;\n    requires\
+    \ Field<typename Info::value_type>;\n    {Info::multiply(declval<vector<typename\
+    \ Info::value_type>>(),declval<vector<typename Info::value_type>>())} -> convertible_to<vector<typename\
+    \ Info::value_type>>;\n    {Info::inv(declval<vector<typename Info::value_type>>(),declval<int>())}\
+    \ -> convertible_to<vector<typename Info::value_type>>;\n    {Info::integral(declval<vector<typename\
+    \ Info::value_type>>())} -> convertible_to<vector<typename Info::value_type>>;\n\
+    };\n\ntemplate<Fps_Info Info>\nstruct FormalPowerSeries : vector<typename Info::value_type>\
+    \ {\n    using T = typename Info::value_type;\n    using vector<T>::vector;\n\
     \    using vector<T>::operator=;\n    using FPS = FormalPowerSeries;\n    FormalPowerSeries\
     \ (const vector<T> &init_ = {}){ (*this) = init_; }\n    void shrink(){ while\
     \ (!(*this).empty() && (*this).back() == T(0)) (*this).pop_back(); }\n    FPS\
@@ -125,13 +129,37 @@ data:
     \ += e * w, w *= x;\n        return res;\n    }\n    static FPS dot(const FPS\
     \ &lhs, const FPS &rhs){\n        FPS res(min(lhs.size(),rhs.size()));\n     \
     \   for (int i = 0; i < (int)res.size(); i++) res[i] = lhs[i] * rhs[i];\n    \
-    \    return res;\n    }\n};\n\n} // namespace noya2\n"
+    \    return res;\n    }\n    FPS pre(int siz) const {\n        FPS ret((*this).begin(),\
+    \ (*this).begin() + min((int)this->size(), siz));\n        if ((int)ret.size()\
+    \ < siz) ret.resize(siz);\n        return ret;\n    }\n    FPS rev() const {\n\
+    \        FPS ret(*this);\n        reverse(ret.begin(), ret.end());\n        return\
+    \ ret;\n    }\n    FPS diff() const {\n        const int n = (int)this->size();\n\
+    \        FPS ret(max(0, n - 1));\n        mint one(1), coeff(1);\n        for\
+    \ (int i = 1; i < n; i++) {\n            ret[i - 1] = (*this)[i] * coeff;\n  \
+    \          coeff += one;\n        }\n        return ret;\n    }\n    FPS integral()\
+    \ const {\n        FPS ret = Info::integral(*this);\n        return ret;\n   \
+    \ }\n    FPS inv(int d = -1) const {\n        FPS ret = Info::inv(*this,d);\n\
+    \        return ret;\n    }\n    FPS exp(int d = -1) const {\n        const int\
+    \ n = (*this).size();\n        if (d == -1) d = n;\n        FPS f = {mint(1)+(*this)[0],(*this)[1]},\
+    \ res = {1,(n > 1 ? (*this)[1] : 0)};\n        for (int sz = 2; sz < d; sz <<=\
+    \ 1){\n            f.insert(f.end(),(*this).begin()+min(n,sz),(*this).begin()+min(n,sz*2));\n\
+    \            if ((int)f.size() < sz*2) f.resize(sz*2);\n            res = res\
+    \ * (f - res.log(2*sz));\n            res.resize(sz*2);\n        }\n        res.resize(d);\n\
+    \        return res;\n    }\n    FPS log(int d = -1) const {\n        assert(!(*this).empty()\
+    \ && (*this)[0] == T(1));\n        if (d == -1) d = (*this).size();\n        return\
+    \ (this->diff() * this->inv(d)).pre(d - 1).integral();\n    }\n};\n\n} // namespace\
+    \ noya2\n"
   code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2{\n\
     \ntemplate<typename T>\nconcept Field = requires (T a, T b){\n    a + b; a - b;\
-    \ a / b; a * b;\n    T(0); T(1);\n};\n\ntemplate<class Info, class value_type>\n\
-    concept Fps_Info = requires {\n    requires Field<value_type>;\n    {Info::multiply(declval<vector<value_type>>(),declval<vector<value_type>>())}\
-    \ -> convertible_to<vector<value_type>>;\n};\n\ntemplate<typename T, Fps_Info<T>\
-    \ Info>\nstruct FormalPowerSeries : vector<T> {\n    using vector<T>::vector;\n\
+    \ a / b; a * b;\n    T(0); T(1);\n};\n\ntemplate<class Info>\nconcept Fps_Info\
+    \ = requires {\n    typename Info::value_type;\n    requires Field<typename Info::value_type>;\n\
+    \    {Info::multiply(declval<vector<typename Info::value_type>>(),declval<vector<typename\
+    \ Info::value_type>>())} -> convertible_to<vector<typename Info::value_type>>;\n\
+    \    {Info::inv(declval<vector<typename Info::value_type>>(),declval<int>())}\
+    \ -> convertible_to<vector<typename Info::value_type>>;\n    {Info::integral(declval<vector<typename\
+    \ Info::value_type>>())} -> convertible_to<vector<typename Info::value_type>>;\n\
+    };\n\ntemplate<Fps_Info Info>\nstruct FormalPowerSeries : vector<typename Info::value_type>\
+    \ {\n    using T = typename Info::value_type;\n    using vector<T>::vector;\n\
     \    using vector<T>::operator=;\n    using FPS = FormalPowerSeries;\n    FormalPowerSeries\
     \ (const vector<T> &init_ = {}){ (*this) = init_; }\n    void shrink(){ while\
     \ (!(*this).empty() && (*this).back() == T(0)) (*this).pop_back(); }\n    FPS\
@@ -166,7 +194,26 @@ data:
     \ += e * w, w *= x;\n        return res;\n    }\n    static FPS dot(const FPS\
     \ &lhs, const FPS &rhs){\n        FPS res(min(lhs.size(),rhs.size()));\n     \
     \   for (int i = 0; i < (int)res.size(); i++) res[i] = lhs[i] * rhs[i];\n    \
-    \    return res;\n    }\n};\n\n} // namespace noya2"
+    \    return res;\n    }\n    FPS pre(int siz) const {\n        FPS ret((*this).begin(),\
+    \ (*this).begin() + min((int)this->size(), siz));\n        if ((int)ret.size()\
+    \ < siz) ret.resize(siz);\n        return ret;\n    }\n    FPS rev() const {\n\
+    \        FPS ret(*this);\n        reverse(ret.begin(), ret.end());\n        return\
+    \ ret;\n    }\n    FPS diff() const {\n        const int n = (int)this->size();\n\
+    \        FPS ret(max(0, n - 1));\n        mint one(1), coeff(1);\n        for\
+    \ (int i = 1; i < n; i++) {\n            ret[i - 1] = (*this)[i] * coeff;\n  \
+    \          coeff += one;\n        }\n        return ret;\n    }\n    FPS integral()\
+    \ const {\n        FPS ret = Info::integral(*this);\n        return ret;\n   \
+    \ }\n    FPS inv(int d = -1) const {\n        FPS ret = Info::inv(*this,d);\n\
+    \        return ret;\n    }\n    FPS exp(int d = -1) const {\n        const int\
+    \ n = (*this).size();\n        if (d == -1) d = n;\n        FPS f = {mint(1)+(*this)[0],(*this)[1]},\
+    \ res = {1,(n > 1 ? (*this)[1] : 0)};\n        for (int sz = 2; sz < d; sz <<=\
+    \ 1){\n            f.insert(f.end(),(*this).begin()+min(n,sz),(*this).begin()+min(n,sz*2));\n\
+    \            if ((int)f.size() < sz*2) f.resize(sz*2);\n            res = res\
+    \ * (f - res.log(2*sz));\n            res.resize(sz*2);\n        }\n        res.resize(d);\n\
+    \        return res;\n    }\n    FPS log(int d = -1) const {\n        assert(!(*this).empty()\
+    \ && (*this)[0] == T(1));\n        if (d == -1) d = (*this).size();\n        return\
+    \ (this->diff() * this->inv(d)).pre(d - 1).integral();\n    }\n};\n\n} // namespace\
+    \ noya2"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
@@ -178,8 +225,8 @@ data:
   - fps/fps_arbitrary.hpp
   - fps/fps_ntt.hpp
   - fps/fps_atcoder.hpp
-  timestamp: '2023-08-28 00:39:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-09-06 22:32:22+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/fps/convolution.test.cpp
 documentation_of: fps/formal_power_series.hpp
