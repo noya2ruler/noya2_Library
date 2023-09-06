@@ -10,14 +10,18 @@ concept Field = requires (T a, T b){
     T(0); T(1);
 };
 
-template<class Info, class value_type>
+template<class Info>
 concept Fps_Info = requires {
-    requires Field<value_type>;
-    {Info::multiply(declval<vector<value_type>>(),declval<vector<value_type>>())} -> convertible_to<vector<value_type>>;
+    typename Info::value_type;
+    requires Field<typename Info::value_type>;
+    {Info::multiply(declval<vector<typename Info::value_type>>(),declval<vector<typename Info::value_type>>())} -> convertible_to<vector<typename Info::value_type>>;
+    {Info::inv(declval<vector<typename Info::value_type>>(),declval<int>())} -> convertible_to<vector<typename Info::value_type>>;
+    {Info::integral(declval<vector<typename Info::value_type>>())} -> convertible_to<vector<typename Info::value_type>>;
 };
 
-template<typename T, Fps_Info<T> Info>
-struct FormalPowerSeries : vector<T> {
+template<Fps_Info Info>
+struct FormalPowerSeries : vector<typename Info::value_type> {
+    using T = typename Info::value_type;
     using vector<T>::vector;
     using vector<T>::operator=;
     using FPS = FormalPowerSeries;
@@ -91,6 +95,52 @@ struct FormalPowerSeries : vector<T> {
         FPS res(min(lhs.size(),rhs.size()));
         for (int i = 0; i < (int)res.size(); i++) res[i] = lhs[i] * rhs[i];
         return res;
+    }
+    FPS pre(int siz) const {
+        FPS ret((*this).begin(), (*this).begin() + min((int)this->size(), siz));
+        if ((int)ret.size() < siz) ret.resize(siz);
+        return ret;
+    }
+    FPS rev() const {
+        FPS ret(*this);
+        reverse(ret.begin(), ret.end());
+        return ret;
+    }
+    FPS diff() const {
+        const int n = (int)this->size();
+        FPS ret(max(0, n - 1));
+        mint one(1), coeff(1);
+        for (int i = 1; i < n; i++) {
+            ret[i - 1] = (*this)[i] * coeff;
+            coeff += one;
+        }
+        return ret;
+    }
+    FPS integral() const {
+        FPS ret = Info::integral(*this);
+        return ret;
+    }
+    FPS inv(int d = -1) const {
+        FPS ret = Info::inv(*this,d);
+        return ret;
+    }
+    FPS exp(int d = -1) const {
+        const int n = (*this).size();
+        if (d == -1) d = n;
+        FPS f = {mint(1)+(*this)[0],(*this)[1]}, res = {1,(n > 1 ? (*this)[1] : 0)};
+        for (int sz = 2; sz < d; sz <<= 1){
+            f.insert(f.end(),(*this).begin()+min(n,sz),(*this).begin()+min(n,sz*2));
+            if ((int)f.size() < sz*2) f.resize(sz*2);
+            res = res * (f - res.log(2*sz));
+            res.resize(sz*2);
+        }
+        res.resize(d);
+        return res;
+    }
+    FPS log(int d = -1) const {
+        assert(!(*this).empty() && (*this)[0] == T(1));
+        if (d == -1) d = (*this).size();
+        return (this->diff() * this->inv(d)).pre(d - 1).integral();
     }
 };
 
