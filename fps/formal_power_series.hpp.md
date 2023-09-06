@@ -23,10 +23,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+    title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/fps/convolution.test.cpp
     title: test/fps/convolution.test.cpp
@@ -233,6 +236,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/convolution.test.cpp
+  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
 documentation_of: fps/formal_power_series.hpp
 layout: document
 redirect_from:

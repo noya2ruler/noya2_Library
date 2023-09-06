@@ -11,6 +11,9 @@ data:
     path: fps/ntt.hpp
     title: fps/ntt.hpp
   - icon: ':heavy_check_mark:'
+    path: fps/sample_point_shift.hpp
+    title: fps/sample_point_shift.hpp
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
   - icon: ':heavy_check_mark:'
@@ -32,34 +35,35 @@ data:
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-    title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"fps/sample_point_shift.hpp\"\n\n#line 2 \"template/template.hpp\"\
-    \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
-    \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
-    \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
-    \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
-    \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
-    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int\
-    \ s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\"\
-    ) << v[i];\n    return os;\n}\ntemplate <typename T>\nistream &operator>>(istream\
-    \ &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid\
-    \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
-    \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
-    \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
-    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\ntemplate<typename\
-    \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
-    \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
-    \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
-    \ << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n \
-    \   }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/shift_of_sampling_points_of_polynomial
+    links:
+    - https://judge.yosupo.jp/problem/shift_of_sampling_points_of_polynomial
+  bundledCode: "#line 1 \"test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/shift_of_sampling_points_of_polynomial\"\
+    \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
+    #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
+    \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
+    \ << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename\
+    \ U>\nistream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
+    \    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os,\
+    \ const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s;\
+    \ i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
+    \ T>\nistream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is\
+    \ >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\n\
+    void in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout\
+    \ << \"\\n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const\
+    \ T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n\
+    \    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n\
+    \    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\
+    \nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
+    \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
+    \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
     \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
     \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
     \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
@@ -93,14 +97,15 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"fps/fps_ntt.hpp\"\
-    \n\n#line 2 \"fps/formal_power_series.hpp\"\n\n#line 4 \"fps/formal_power_series.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<typename T>\nconcept Field = requires (T a, T\
-    \ b){\n    a + b; a - b; a / b; a * b;\n    T(0); T(1);\n};\n\ntemplate<class\
-    \ Info>\nconcept Fps_Info = requires {\n    typename Info::value_type;\n    requires\
-    \ Field<typename Info::value_type>;\n    {Info::multiply(declval<vector<typename\
-    \ Info::value_type>>(),declval<vector<typename Info::value_type>>())} -> convertible_to<vector<typename\
-    \ Info::value_type>>;\n    {Info::inv(declval<vector<typename Info::value_type>>(),declval<int>())}\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"fps/sample_point_shift.hpp\"\
+    \n\n#line 2 \"fps/fps_ntt.hpp\"\n\n#line 2 \"fps/formal_power_series.hpp\"\n\n\
+    #line 4 \"fps/formal_power_series.hpp\"\n\nnamespace noya2{\n\ntemplate<typename\
+    \ T>\nconcept Field = requires (T a, T b){\n    a + b; a - b; a / b; a * b;\n\
+    \    T(0); T(1);\n};\n\ntemplate<class Info>\nconcept Fps_Info = requires {\n\
+    \    typename Info::value_type;\n    requires Field<typename Info::value_type>;\n\
+    \    {Info::multiply(declval<vector<typename Info::value_type>>(),declval<vector<typename\
+    \ Info::value_type>>())} -> convertible_to<vector<typename Info::value_type>>;\n\
+    \    {Info::inv(declval<vector<typename Info::value_type>>(),declval<int>())}\
     \ -> convertible_to<vector<typename Info::value_type>>;\n    {Info::integral(declval<vector<typename\
     \ Info::value_type>>())} -> convertible_to<vector<typename Info::value_type>>;\n\
     };\n\ntemplate<Fps_Info Info>\nstruct FormalPowerSeries : vector<typename Info::value_type>\
@@ -417,50 +422,37 @@ data:
     \    auto dh = d * h;\n    fps ret(m);\n    mint cur = T;\n    for (int i = 1;\
     \ i <= k; i++) cur *= T-i;\n    for (int i = 0; i < m; i++){\n        ret[i] =\
     \ cur * dh[k+i];\n        cur *= T+i+1;\n        cur *= h[i];\n    }\n    return\
-    \ ret;\n}\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"../template/template.hpp\"\n#include\"../fps/fps_ntt.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<typename mint>\nFPS_ntt<mint> sample_point_shift(FPS_ntt<mint>\
-    \ y, typename FPS_ntt<mint>::value_type t, int m){\n    using fps = FPS_ntt<mint>;\n\
-    \    ll T = t.val();\n    int k = (int)(y.size()) - 1;\n    if (T <= k){\n   \
-    \     fps ret(m);\n        int ptr = 0;\n        for (ll i = T; i <= k && ptr\
-    \ < m; i++){\n            ret[ptr++] = y[i];\n        }\n        if (k+1 < T+m){\n\
-    \            auto suf = sample_point_shift(y,k+1,m-ptr);\n            for (int\
-    \ i = k+1; i < T+m; i++){\n                ret[ptr++] = suf[i-(k+1)];\n      \
-    \      }\n        }\n        return ret;\n    }\n    if (T+m > mint::mod()){\n\
-    \        auto pref = sample_point_shift(y,T,mint::mod()-T);\n        auto suf\
-    \  = sample_point_shift(y,0,m-(int)(pref.size()));\n        copy(suf.begin(),suf.end(),back_inserter(pref));\n\
-    \        return pref;\n    }\n    binomial<mint> bnm;\n    fps d(k+1);\n    for\
-    \ (int i = 0; i <= k; i++){\n        d[i] = bnm.ifact(i) * bnm.ifact(k-i) * y[i];\n\
-    \        if ((k-i)&1) d[i] = -d[i];\n    }\n    vector<mint> fact(m+k+1); fact[0]\
-    \ = 1;\n    for (int i = 0; i < m+k; i++) fact[i+1] = fact[i] * (T-k+i);\n   \
-    \ fps h(m+k); h[m+k-1] = fact[m+k].inv();\n    for (int i = m+k-1; i >= 1; i--)\
-    \ h[i-1] = h[i] * (T-k+i);\n    for (int i = 0; i < m+k; i++) h[i] *= fact[i];\n\
-    \    auto dh = d * h;\n    fps ret(m);\n    mint cur = T;\n    for (int i = 1;\
-    \ i <= k; i++) cur *= T-i;\n    for (int i = 0; i < m; i++){\n        ret[i] =\
-    \ cur * dh[k+i];\n        cur *= T+i+1;\n        cur *= h[i];\n    }\n    return\
-    \ ret;\n}\n\n} // namespace noya2"
+    \ ret;\n}\n\n} // namespace noya2\n#line 5 \"test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp\"\
+    \nusing mint = modint998244353;\nusing fps = FPS_ntt<mint>;\n\nint main(){\n \
+    \   int n, m; in(n,m);\n    mint c; in(c);\n    fps y(n); in(y);\n    out(sample_point_shift(y,c,m));\n\
+    }\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shift_of_sampling_points_of_polynomial\"\
+    \n\n#include\"../../template/template.hpp\"\n#include\"../../fps/sample_point_shift.hpp\"\
+    \nusing mint = modint998244353;\nusing fps = FPS_ntt<mint>;\n\nint main(){\n \
+    \   int n, m; in(n,m);\n    mint c; in(c);\n    fps y(n); in(y);\n    out(sample_point_shift(y,c,m));\n\
+    }"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
+  - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
   - fps/formal_power_series.hpp
   - math/binomial.hpp
   - fps/ntt.hpp
   - utility/modint_new.hpp
   - math/prime.hpp
-  isVerificationFile: false
-  path: fps/sample_point_shift.hpp
+  isVerificationFile: true
+  path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   requiredBy: []
-  timestamp: '2023-09-06 22:54:00+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-documentation_of: fps/sample_point_shift.hpp
+  timestamp: '2023-09-06 22:56:54+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
 layout: document
 redirect_from:
-- /library/fps/sample_point_shift.hpp
-- /library/fps/sample_point_shift.hpp.html
-title: fps/sample_point_shift.hpp
+- /verify/test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+- /verify/test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp.html
+title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
 ---

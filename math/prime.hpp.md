@@ -23,7 +23,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/relaxed_convolution.hpp
     title: fps/relaxed_convolution.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
   - icon: ':heavy_check_mark:'
@@ -33,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
     title: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+    title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/fps/convolution.test.cpp
     title: test/fps/convolution.test.cpp
@@ -183,6 +186,7 @@ data:
   - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
   - test/fps/convolution.test.cpp
+  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/fps/convolution_relaxed_convolution.test.cpp
 documentation_of: math/prime.hpp
 layout: document

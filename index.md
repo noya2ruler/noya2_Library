@@ -56,7 +56,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/relaxed_convolution.hpp
       title: fps/relaxed_convolution.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: fps/sample_point_shift.hpp
       title: fps/sample_point_shift.hpp
   - name: geometry
@@ -202,6 +202,9 @@ data:
       title: test/data_structure/aoj1068_segtree2d.test.cpp
   - name: test/fps
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+      title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/fps/convolution.test.cpp
       title: test/fps/convolution.test.cpp
