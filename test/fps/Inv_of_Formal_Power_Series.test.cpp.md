@@ -5,6 +5,9 @@ data:
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
   - icon: ':heavy_check_mark:'
+    path: fps/fps_ntt.hpp
+    title: fps/fps_ntt.hpp
+  - icon: ':heavy_check_mark:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
   - icon: ':heavy_check_mark:'
@@ -29,23 +32,18 @@ data:
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/fps/Inv_of_Formal_Power_Series.test.cpp
-    title: test/fps/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-    title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/fps/convolution.test.cpp
-    title: test/fps/convolution.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"fps/fps_ntt.hpp\"\n\n#line 2 \"fps/formal_power_series.hpp\"\
-    \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/inv_of_formal_power_series
+    links:
+    - https://judge.yosupo.jp/problem/inv_of_formal_power_series
+  bundledCode: "#line 1 \"test/fps/Inv_of_Formal_Power_Series.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\n\n#line\
+    \ 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
     #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
     \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
     \ << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename\
@@ -96,7 +94,8 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"fps/formal_power_series.hpp\"\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"fps/fps_ntt.hpp\"\
+    \n\n#line 2 \"fps/formal_power_series.hpp\"\n\n#line 4 \"fps/formal_power_series.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<typename T>\nconcept Field = requires (T a, T\
     \ b){\n    a + b; a - b; a / b; a * b;\n    T(0); T(1);\n};\n\ntemplate<class\
     \ Info>\nconcept Fps_Info = requires {\n    typename Info::value_type;\n    requires\
@@ -402,50 +401,34 @@ data:
     \ n = a.size();\n        vector<T> res(n+1);\n        for (int i = 1; i <= n;\
     \ i++) res[i] = a[i-1] * bnm.inv(i);\n        return res;\n    }\n};\ntemplate<typename\
     \ T> NTT<T> fps_ntt<T>::ntt;\ntemplate<typename T> using FPS_ntt = FormalPowerSeries<fps_ntt<T>>;\n\
-    \n} // namespace noya2\n\n"
-  code: "#pragma once\n\n#include\"formal_power_series.hpp\"\n#include\"../math/binomial.hpp\"\
-    \n#include\"ntt.hpp\"\n\nnamespace noya2{\n\ntemplate<typename T>\nstruct fps_ntt{\n\
-    \    using value_type = T;\n    static NTT<T> ntt;\n    static vector<T> multiply(const\
-    \ vector<T> &a, const vector<T> &b){\n        return ntt.multiply(a,b);\n    }\n\
-    \    static vector<T> inv(const vector<T> &a, int d = -1){\n        const int\
-    \ n = a.size();\n        if (d == -1) d = n;\n        vector<T> res = {a[0].inv()};\n\
-    \        for (int siz = 1; siz < d; siz <<= 1){\n            vector<T> f(a.begin(),a.begin()+min(n,siz*2)),\
-    \ g(res);\n            f.resize(siz*2), g.resize(siz*2);\n            ntt.ntt(f),\
-    \ ntt.ntt(g);\n            for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n   \
-    \         ntt.intt(f,true);\n            f.erase(f.begin(),f.begin()+siz);\n \
-    \           f.resize(siz*2);\n            ntt.ntt(f);\n            for (int i\
-    \ = 0; i < siz*2; i++) f[i] *= g[i];\n            ntt.intt(f,true);\n        \
-    \    T siz2_inv = T(siz*2).inv(); siz2_inv *= -siz2_inv;\n            for (int\
-    \ i = 0; i < siz; i++) f[i] *= siz2_inv;\n            res.insert(res.end(),f.begin(),f.begin()+siz);\n\
-    \        }\n        res.resize(d);\n        return res;\n    }\n    static binomial<T>\
-    \ bnm;\n    static vector<T> integral(const vector<T> &a){\n        const int\
-    \ n = a.size();\n        vector<T> res(n+1);\n        for (int i = 1; i <= n;\
-    \ i++) res[i] = a[i-1] * bnm.inv(i);\n        return res;\n    }\n};\ntemplate<typename\
-    \ T> NTT<T> fps_ntt<T>::ntt;\ntemplate<typename T> using FPS_ntt = FormalPowerSeries<fps_ntt<T>>;\n\
-    \n} // namespace noya2\n\n"
+    \n} // namespace noya2\n\n#line 5 \"test/fps/Inv_of_Formal_Power_Series.test.cpp\"\
+    \nusing mint = modint998244353;\nusing fps = FPS_ntt<mint>;\n\nint main(){\n \
+    \   int n; in(n);\n    fps f(n); in(f);\n    out(f.inv(n));\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
+    \n\n#include\"../../template/template.hpp\"\n#include\"../../fps/fps_ntt.hpp\"\
+    \nusing mint = modint998244353;\nusing fps = FPS_ntt<mint>;\n\nint main(){\n \
+    \   int n; in(n);\n    fps f(n); in(f);\n    out(f.inv(n));\n}"
   dependsOn:
-  - fps/formal_power_series.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
+  - fps/fps_ntt.hpp
+  - fps/formal_power_series.hpp
   - math/binomial.hpp
   - fps/ntt.hpp
   - utility/modint_new.hpp
   - math/prime.hpp
-  isVerificationFile: false
-  path: fps/fps_ntt.hpp
+  isVerificationFile: true
+  path: test/fps/Inv_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-09-07 15:57:19+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/fps/convolution.test.cpp
-  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/fps/Inv_of_Formal_Power_Series.test.cpp
-documentation_of: fps/fps_ntt.hpp
+  timestamp: '2023-09-07 16:22:33+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/fps/Inv_of_Formal_Power_Series.test.cpp
 layout: document
 redirect_from:
-- /library/fps/fps_ntt.hpp
-- /library/fps/fps_ntt.hpp.html
-title: fps/fps_ntt.hpp
+- /verify/test/fps/Inv_of_Formal_Power_Series.test.cpp
+- /verify/test/fps/Inv_of_Formal_Power_Series.test.cpp.html
+title: test/fps/Inv_of_Formal_Power_Series.test.cpp
 ---

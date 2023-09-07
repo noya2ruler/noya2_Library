@@ -209,6 +209,9 @@ data:
       path: test/fps/Convolution1000000007.test.cpp
       title: test/fps/Convolution1000000007.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/fps/Inv_of_Formal_Power_Series.test.cpp
+      title: test/fps/Inv_of_Formal_Power_Series.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
       title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
     - icon: ':heavy_check_mark:'
