@@ -20,7 +20,7 @@ data:
   - icon: ':warning:'
     path: fps/fps_atcoder.hpp
     title: fps/fps_atcoder.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps/fps_modint.hpp
     title: fps/fps_modint.hpp
   - icon: ':heavy_check_mark:'
@@ -30,6 +30,9 @@ data:
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/fps/Convolution1000000007.test.cpp
+    title: test/fps/Convolution1000000007.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
     title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
@@ -241,6 +244,7 @@ data:
   verifiedWith:
   - test/fps/convolution.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/fps/Convolution1000000007.test.cpp
 documentation_of: fps/formal_power_series.hpp
 layout: document
 redirect_from:

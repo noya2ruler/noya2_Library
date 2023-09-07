@@ -5,6 +5,9 @@ data:
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
   - icon: ':heavy_check_mark:'
+    path: fps/fps_modint.hpp
+    title: fps/fps_modint.hpp
+  - icon: ':heavy_check_mark:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
   - icon: ':heavy_check_mark:'
@@ -26,21 +29,22 @@ data:
     path: utility/modint_new.hpp
     title: utility/modint_new.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/fps/Convolution1000000007.test.cpp
-    title: test/fps/Convolution1000000007.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"fps/fps_modint.hpp\"\n\n#line 2 \"fps/formal_power_series.hpp\"\
-    \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
-    #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
-    \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
-    \ << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename\
-    \ U>\nistream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/convolution_mod_1000000007
+    links:
+    - https://judge.yosupo.jp/problem/convolution_mod_1000000007
+  bundledCode: "#line 1 \"test/fps/Convolution1000000007.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\n\n#line 2 \"\
+    template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n#line\
+    \ 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T, typename\
+    \ U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os << p.first\
+    \ << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename U>\n\
+    istream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
     \    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os,\
     \ const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s;\
     \ i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
@@ -87,7 +91,8 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"fps/formal_power_series.hpp\"\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"fps/fps_modint.hpp\"\
+    \n\n#line 2 \"fps/formal_power_series.hpp\"\n\n#line 4 \"fps/formal_power_series.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<typename T>\nconcept Field = requires (T a, T\
     \ b){\n    a + b; a - b; a / b; a * b;\n    T(0); T(1);\n};\n\ntemplate<class\
     \ Info>\nconcept Fps_Info = requires {\n    typename Info::value_type;\n    requires\
@@ -384,64 +389,33 @@ data:
     \ ArbitraryModConvolution::multiply(a,b);\n    }\n    static vector<T> inv(const\
     \ vector<T> &a, int d = -1){ assert(false); }\n    static vector<T> integral(const\
     \ vector<T> &a){ assert(false); }\n};\ntemplate<typename T> using FPS_modint =\
-    \ FormalPowerSeries<fps_modint<T>>;\n\n} // namespace noya2\n\n"
-  code: "#pragma once\n\n#include\"formal_power_series.hpp\"\n#include\"ntt.hpp\"\n\
-    \nnamespace noya2{\n\nnamespace ArbitraryModConvolution {\n\nconstexpr int m0\
-    \ = 167772161;\nconstexpr int m1 = 469762049;\nconstexpr int m2 = 754974721;\n\
-    using mint0 = static_modint<m0>;\nusing mint1 = static_modint<m1>;\nusing mint2\
-    \ = static_modint<m2>;\nconstexpr int r01 = mint1(m0).inv().val();\nconstexpr\
-    \ int r02 = mint2(m0).inv().val();\nconstexpr int r12 = mint2(m1).inv().val();\n\
-    constexpr int r02r12 = (long long)(r02) * r12 % m2;\nconstexpr long long w1 =\
-    \ m0;\nconstexpr long long w2 = (long long)(m0) * m1;\n\ntemplate <typename T,\
-    \ typename submint>\nvector<submint> mul(const vector<T> &a, const vector<T> &b)\
-    \ {\n    static NTT<submint> ntt;\n    vector<submint> s(a.size()), t(b.size());\n\
-    \    for (int i = 0; i < (int)a.size(); ++i) s[i] = (long long)(a[i] % submint::mod());\n\
-    \    for (int i = 0; i < (int)b.size(); ++i) t[i] = (long long)(b[i] % submint::mod());\n\
-    \    return ntt.multiply(s, t);\n}\n\ntemplate <typename T>\nvector<int> multiply(const\
-    \ vector<T> &s, const vector<T> &t, int mod) {\n    auto d0 = mul<T, mint0>(s,\
-    \ t);\n    auto d1 = mul<T, mint1>(s, t);\n    auto d2 = mul<T, mint2>(s, t);\n\
-    \    int n = d0.size();\n    vector<int> ret(n);\n    const int W1 = w1 % mod;\n\
-    \    const int W2 = w2 % mod;\n    for (int i = 0; i < n; i++) {\n        int\
-    \ n1 = d1[i].val(), n2 = d2[i].val(), a = d0[i].val();\n        int b = (long\
-    \ long)(n1 + m1 - a) * r01 % m1;\n        int c = ((long long)(n2 + m2 - a) *\
-    \ r02r12 + (long long)(m2 - b) * r12) % m2;\n        ret[i] = ((long long)(a)\
-    \ + (long long)(b) * W1 + (long long)(c) * W2) % mod;\n    }\n    return ret;\n\
-    }\n\ntemplate <typename mint>\nvector<mint> multiply(const vector<mint> &a, const\
-    \ vector<mint> &b) {\n    if (a.size() == 0 && b.size() == 0) return {};\n   \
-    \ if (min<int>(a.size(), b.size()) < 128) {\n        vector<mint> ret(a.size()\
-    \ + b.size() - 1);\n        for (int i = 0; i < (int)a.size(); ++i)\n        \
-    \    for (int j = 0; j < (int)b.size(); ++j) ret[i + j] += a[i] * b[j];\n    \
-    \    return ret;\n    }\n    vector<int> s(a.size()), t(b.size());\n    for (int\
-    \ i = 0; i < (int)a.size(); ++i) s[i] = a[i].val();\n    for (int i = 0; i < (int)b.size();\
-    \ ++i) t[i] = b[i].val();\n    vector<int> u = multiply<int>(s, t, mint::mod());\n\
-    \    vector<mint> ret(u.size());\n    for (int i = 0; i < (int)u.size(); ++i)\
-    \ ret[i] = mint(u[i]);\n    return ret;\n}\n\n} // namespace ArbitraryModConvolution\n\
-    \ntemplate<Modint T>\nstruct fps_modint{\n    using value_type = T;\n    static\
-    \ vector<T> multiply(const vector<T> &a, const vector<T> &b){\n        return\
-    \ ArbitraryModConvolution::multiply(a,b);\n    }\n    static vector<T> inv(const\
-    \ vector<T> &a, int d = -1){ assert(false); }\n    static vector<T> integral(const\
-    \ vector<T> &a){ assert(false); }\n};\ntemplate<typename T> using FPS_modint =\
-    \ FormalPowerSeries<fps_modint<T>>;\n\n} // namespace noya2\n\n"
+    \ FormalPowerSeries<fps_modint<T>>;\n\n} // namespace noya2\n\n#line 5 \"test/fps/Convolution1000000007.test.cpp\"\
+    \nusing mint = modint1000000007;\nusing fps = FPS_modint<mint>;\n\nint main(){\n\
+    \    int n, m; in(n,m);\n    fps f(n), g(m); in(f,g);\n    out(f*g);\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod_1000000007\"\
+    \n\n#include\"../../template/template.hpp\"\n#include\"../../fps/fps_modint.hpp\"\
+    \nusing mint = modint1000000007;\nusing fps = FPS_modint<mint>;\n\nint main(){\n\
+    \    int n, m; in(n,m);\n    fps f(n), g(m); in(f,g);\n    out(f*g);\n}"
   dependsOn:
-  - fps/formal_power_series.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
+  - fps/fps_modint.hpp
+  - fps/formal_power_series.hpp
   - fps/ntt.hpp
   - utility/modint_new.hpp
   - math/prime.hpp
-  isVerificationFile: false
-  path: fps/fps_modint.hpp
+  isVerificationFile: true
+  path: test/fps/Convolution1000000007.test.cpp
   requiredBy: []
-  timestamp: '2023-09-07 16:00:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/fps/Convolution1000000007.test.cpp
-documentation_of: fps/fps_modint.hpp
+  timestamp: '2023-09-07 16:06:21+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/fps/Convolution1000000007.test.cpp
 layout: document
 redirect_from:
-- /library/fps/fps_modint.hpp
-- /library/fps/fps_modint.hpp.html
-title: fps/fps_modint.hpp
+- /verify/test/fps/Convolution1000000007.test.cpp
+- /verify/test/fps/Convolution1000000007.test.cpp.html
+title: test/fps/Convolution1000000007.test.cpp
 ---

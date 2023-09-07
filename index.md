@@ -47,7 +47,7 @@ data:
     - icon: ':warning:'
       path: fps/fps_atcoder.hpp
       title: fps/fps_atcoder.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: fps/fps_modint.hpp
       title: fps/fps_modint.hpp
     - icon: ':heavy_check_mark:'
@@ -205,6 +205,9 @@ data:
       title: test/data_structure/aoj1068_segtree2d.test.cpp
   - name: test/fps
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/fps/Convolution1000000007.test.cpp
+      title: test/fps/Convolution1000000007.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
       title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
