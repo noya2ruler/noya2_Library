@@ -29,18 +29,18 @@ struct static_modint {
         x._v = v;
         return x;
     }
-    static_modint() : _v(0) {}
+    constexpr static_modint() : _v(0) {}
     template<signed_integral T>
-    static_modint(T v){
+    constexpr static_modint(T v){
         ll x = (ll)(v % (ll)(umod()));
         if (x < 0) x += umod();
         _v = (uint)(x);
     }
     template<unsigned_integral T>
-    static_modint(T v){
+    constexpr static_modint(T v){
         _v = (uint)(v % umod());
     }
-    uint val() const { return _v; }
+    constexpr unsigned int val() const { return _v; }
     mint& operator++() {
         _v++;
         if (_v == umod()) _v = 0;
@@ -61,26 +61,26 @@ struct static_modint {
         --*this;
         return result;
     }
-    mint& operator+=(const mint& rhs) {
+    constexpr mint& operator+=(const mint& rhs) {
         _v += rhs._v;
         if (_v >= umod()) _v -= umod();
         return *this;
     }
-    mint& operator-=(const mint& rhs) {
+    constexpr mint& operator-=(const mint& rhs) {
         _v -= rhs._v;
         if (_v >= umod()) _v += umod();
         return *this;
     }
-    mint& operator*=(const mint& rhs) {
+    constexpr mint& operator*=(const mint& rhs) {
         ull z = _v;
         z *= rhs._v;
         _v = (uint)(z % umod());
         return *this;
     }
-    mint& operator/=(const mint& rhs) { return *this = *this * rhs.inv(); }
-    mint operator+() const { return *this; }
-    mint operator-() const { return mint() - *this; }
-    mint pow(ll n) const {
+    constexpr mint& operator/=(const mint& rhs) { return *this = *this * rhs.inv(); }
+    constexpr mint operator+() const { return *this; }
+    constexpr mint operator-() const { return mint() - *this; }
+    constexpr mint pow(ll n) const {
         assert(0 <= n);
         mint x = *this, r = 1;
         while (n) {
@@ -90,7 +90,7 @@ struct static_modint {
         }
         return r;
     }
-    mint inv() const {
+    constexpr mint inv() const {
         if (prime) {
             assert(_v);
             return pow(umod() - 2);
@@ -100,22 +100,22 @@ struct static_modint {
             return eg.second;
         }
     }
-    friend mint operator+(const mint& lhs, const mint& rhs) {
+    friend constexpr mint operator+(const mint& lhs, const mint& rhs) {
         return mint(lhs) += rhs;
     }
-    friend mint operator-(const mint& lhs, const mint& rhs) {
+    friend constexpr mint operator-(const mint& lhs, const mint& rhs) {
         return mint(lhs) -= rhs;
     }
-    friend mint operator*(const mint& lhs, const mint& rhs) {
+    friend constexpr mint operator*(const mint& lhs, const mint& rhs) {
         return mint(lhs) *= rhs;
     }
-    friend mint operator/(const mint& lhs, const mint& rhs) {
+    friend constexpr mint operator/(const mint& lhs, const mint& rhs) {
         return mint(lhs) /= rhs;
     }
-    friend bool operator==(const mint& lhs, const mint& rhs) {
+    friend constexpr bool operator==(const mint& lhs, const mint& rhs) {
         return lhs._v == rhs._v;
     }
-    friend bool operator!=(const mint& lhs, const mint& rhs) {
+    friend constexpr bool operator!=(const mint& lhs, const mint& rhs) {
         return lhs._v != rhs._v;
     }
     friend std::ostream &operator<<(std::ostream &os, const mint& p) {
