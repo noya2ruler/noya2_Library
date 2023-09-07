@@ -5,17 +5,8 @@ data:
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
   - icon: ':heavy_check_mark:'
-    path: fps/fps_ntt.hpp
-    title: fps/fps_ntt.hpp
-  - icon: ':heavy_check_mark:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
-  - icon: ':heavy_check_mark:'
-    path: fps/sample_point_shift.hpp
-    title: fps/sample_point_shift.hpp
-  - icon: ':heavy_check_mark:'
-    path: math/binomial.hpp
-    title: math/binomial.hpp
   - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
@@ -37,15 +28,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _pathExtension: hpp
+  _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/shift_of_sampling_points_of_polynomial
-    links:
-    - https://judge.yosupo.jp/problem/shift_of_sampling_points_of_polynomial
-  bundledCode: "#line 1 \"test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/shift_of_sampling_points_of_polynomial\"\
+    links: []
+  bundledCode: "#line 2 \"fps/fps_modint.hpp\"\n\n#line 2 \"fps/formal_power_series.hpp\"\
     \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
     #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
     \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
@@ -97,8 +84,7 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"fps/fps_ntt.hpp\"\
-    \n\n#line 2 \"fps/formal_power_series.hpp\"\n\n#line 4 \"fps/formal_power_series.hpp\"\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"fps/formal_power_series.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<typename T>\nconcept Field = requires (T a, T\
     \ b){\n    a + b; a - b; a / b; a * b;\n    T(0); T(1);\n};\n\ntemplate<class\
     \ Info>\nconcept Fps_Info = requires {\n    typename Info::value_type;\n    requires\
@@ -162,57 +148,31 @@ data:
     \        return res;\n    }\n    FPS log(int d = -1) const {\n        assert(!(*this).empty()\
     \ && (*this)[0] == T(1));\n        if (d == -1) d = (*this).size();\n        return\
     \ (this->diff() * this->inv(d)).pre(d - 1).integral();\n    }\n};\n\n} // namespace\
-    \ noya2\n#line 2 \"math/binomial.hpp\"\n\nnamespace noya2 {\n\ntemplate<typename\
-    \ mint>\nstruct binomial {\n    binomial(int len = 300000){ extend(len); }\n \
-    \   static mint fact(int n){\n        if (n < 0) return 0;\n        while (n >=\
-    \ (int)_fact.size()) extend();\n        return _fact[n];\n    }\n    static mint\
-    \ ifact(int n){\n        if (n < 0) return 0;\n        while (n >= (int)_fact.size())\
-    \ extend();\n        return _ifact[n];\n    }\n    static mint inv(int n){\n \
-    \       return ifact(n) * fact(n-1);\n    }\n    static mint C(int n, int r){\n\
-    \        if (!(0 <= r && r <= n)) return 0;\n        return fact(n) * ifact(r)\
-    \ * ifact(n-r);\n    }\n    static mint P(int n, int r){\n        if (!(0 <= r\
-    \ && r <= n)) return 0;\n        return fact(n) * ifact(n-r);\n    }\n    inline\
-    \ mint operator()(int n, int r) { return C(n, r); }\n    template<class... Cnts>\
-    \ static mint M(const Cnts&... cnts){\n        return multinomial(0,1,cnts...);\n\
-    \    }\n  private:\n    static mint multinomial(const int& sum, const mint& div_prod){\n\
-    \        if (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n\
-    \    template<class... Tail> static mint multinomial(const int& sum, const mint&\
-    \ div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n\
-    \        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static\
-    \ vector<mint> _fact, _ifact;\n    static void extend(int len = -1){\n       \
-    \ if (_fact.empty()){\n            _fact = _ifact = {1,1};\n        }\n      \
-    \  int siz = _fact.size();\n        if (len == -1) len = siz * 2;\n        len\
-    \ = min<int>(len, mint::mod()-1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
-    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
-    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
-    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename T>\nstd::vector<T>binomial<T>::_fact\
-    \ = vector<T>(2,T(1));\ntemplate<typename T>\nstd::vector<T>binomial<T>::_ifact\
-    \ = vector<T>(2,T(1));\n\n} // namespace noya2\n#line 2 \"fps/ntt.hpp\"\n\n#line\
-    \ 2 \"utility/modint_new.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\
-    \n\nnamespace noya2 {\n\nconstexpr ll safe_mod(ll x, ll m) {\n    x %= m;\n  \
-    \  if (x < 0) x += m;\n    return x;\n}\n\nconstexpr ll pow_mod_constexpr(ll x,\
-    \ ll n, int m) {\n    if (m == 1) return 0;\n    uint _m = (uint)(m);\n    ull\
-    \ r = 1;\n    ull y = safe_mod(x, m);\n    while (n) {\n        if (n & 1) r =\
-    \ (r * y) % _m;\n        y = (y * y) % _m;\n        n >>= 1;\n    }\n    return\
-    \ r;\n}\n\nconstexpr bool is_prime_constexpr(int n) {\n    if (n <= 1) return\
-    \ false;\n    if (n == 2 || n == 7 || n == 61) return true;\n    if (n % 2 ==\
-    \ 0) return false;\n    ll d = n - 1;\n    while (d % 2 == 0) d /= 2;\n    constexpr\
-    \ ll bases[3] = {2, 7, 61};\n    for (ll a : bases) {\n        ll t = d;\n   \
-    \     ll y = pow_mod_constexpr(a, t, n);\n        while (t != n - 1 && y != 1\
-    \ && y != n - 1) {\n            y = y * y % n;\n            t <<= 1;\n       \
-    \ }\n        if (y != n - 1 && t % 2 == 0) {\n            return false;\n    \
-    \    }\n    }\n    return true;\n}\ntemplate <int n> constexpr bool is_prime =\
-    \ is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long long> inv_gcd(long\
-    \ long a, long long b) {\n    a = safe_mod(a, b);\n    if (a == 0) return {b,\
-    \ 0};\n    long long s = b, t = a;\n    long long m0 = 0, m1 = 1;\n    while (t)\
-    \ {\n        long long u = s / t;\n        s -= t * u;\n        m0 -= m1 * u;\
-    \ \n        auto tmp = s;\n        s = t;\n        t = tmp;\n        tmp = m0;\n\
-    \        m0 = m1;\n        m1 = tmp;\n    }\n    if (m0 < 0) m0 += b / s;\n  \
-    \  return {s, m0};\n}\n\nconstexpr int primitive_root_constexpr(int m) {\n   \
-    \ if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m == 469762049)\
-    \ return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353) return\
-    \ 3;\n    int divs[20] = {};\n    divs[0] = 2;\n    int cnt = 1;\n    int x =\
-    \ (m - 1) / 2;\n    while (x % 2 == 0) x /= 2;\n    for (int i = 3; (ll)(i)*i\
+    \ noya2\n#line 2 \"fps/ntt.hpp\"\n\n#line 2 \"utility/modint_new.hpp\"\n\n#line\
+    \ 2 \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\n\nnamespace noya2 {\n\n\
+    constexpr ll safe_mod(ll x, ll m) {\n    x %= m;\n    if (x < 0) x += m;\n   \
+    \ return x;\n}\n\nconstexpr ll pow_mod_constexpr(ll x, ll n, int m) {\n    if\
+    \ (m == 1) return 0;\n    uint _m = (uint)(m);\n    ull r = 1;\n    ull y = safe_mod(x,\
+    \ m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n        y = (y *\
+    \ y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int\
+    \ n) {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
+    \ true;\n    if (n % 2 == 0) return false;\n    ll d = n - 1;\n    while (d %\
+    \ 2 == 0) d /= 2;\n    constexpr ll bases[3] = {2, 7, 61};\n    for (ll a : bases)\
+    \ {\n        ll t = d;\n        ll y = pow_mod_constexpr(a, t, n);\n        while\
+    \ (t != n - 1 && y != 1 && y != n - 1) {\n            y = y * y % n;\n       \
+    \     t <<= 1;\n        }\n        if (y != n - 1 && t % 2 == 0) {\n         \
+    \   return false;\n        }\n    }\n    return true;\n}\ntemplate <int n> constexpr\
+    \ bool is_prime = is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long\
+    \ long> inv_gcd(long long a, long long b) {\n    a = safe_mod(a, b);\n    if (a\
+    \ == 0) return {b, 0};\n    long long s = b, t = a;\n    long long m0 = 0, m1\
+    \ = 1;\n    while (t) {\n        long long u = s / t;\n        s -= t * u;\n \
+    \       m0 -= m1 * u; \n        auto tmp = s;\n        s = t;\n        t = tmp;\n\
+    \        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n    }\n    if (m0 < 0)\
+    \ m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int primitive_root_constexpr(int\
+    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
+    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
+    \ return 3;\n    int divs[20] = {};\n    divs[0] = 2;\n    int cnt = 1;\n    int\
+    \ x = (m - 1) / 2;\n    while (x % 2 == 0) x /= 2;\n    for (int i = 3; (ll)(i)*i\
     \ <= x; i += 2) {\n        if (x % i == 0) {\n            divs[cnt++] = i;\n \
     \           while (x % i == 0) {\n                x /= i;\n            }\n   \
     \     }\n    }\n    if (x > 1) {\n        divs[cnt++] = x;\n    }\n    for (int\
@@ -385,77 +345,99 @@ data:
     \ = b[i];\n            fft4(t, k);\n            for (int i = 0; i < M; ++i) s[i]\
     \ *= t[i];\n        }\n        ifft4(s, k);\n        s.resize(l);\n        mint\
     \ invm = mint(M).inv();\n        for (int i = 0; i < l; ++i) s[i] *= invm;\n \
-    \       return s;\n    }\n};\n\n\n} // namespace noya2\n#line 6 \"fps/fps_ntt.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<typename T>\nstruct fps_ntt{\n    using value_type\
-    \ = T;\n    static NTT<T> ntt;\n    static vector<T> multiply(const vector<T>\
-    \ &a, const vector<T> &b){\n        return ntt.multiply(a,b);\n    }\n    static\
-    \ vector<T> inv(const vector<T> &a, int d = -1){\n        const int n = a.size();\n\
-    \        if (d == -1) d = n;\n        vector<T> res = {a[0].inv()};\n        for\
-    \ (int siz = 1; siz < d; siz <<= 1){\n            vector<T> f(a.begin(),a.begin()+min(n,siz*2)),\
-    \ g(res);\n            f.resize(siz*2), g.resize(siz*2);\n            ntt.ntt(f),\
-    \ ntt.ntt(g);\n            for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n   \
-    \         ntt.intt(f,true);\n            f.erase(f.begin(),f.begin()+siz);\n \
-    \           f.resize(siz*2);\n            ntt.ntt(f);\n            for (int i\
-    \ = 0; i < siz*2; i++) f[i] *= g[i];\n            ntt.intt(f,true);\n        \
-    \    T siz2_inv = T(siz*2).inv(); siz2_inv *= -siz2_inv;\n            for (int\
-    \ i = 0; i < siz; i++) f[i] *= siz2_inv;\n            res.insert(res.end(),f.begin(),f.begin()+siz);\n\
-    \        }\n        res.resize(d);\n        return res;\n    }\n    static binomial<T>\
-    \ bnm;\n    static vector<T> integral(const vector<T> &a){\n        const int\
-    \ n = a.size();\n        vector<T> res(n+1);\n        for (int i = 1; i <= n;\
-    \ i++) res[i] = a[i-1] * bnm.inv(i);\n        return res;\n    }\n};\ntemplate<typename\
-    \ T> NTT<T> fps_ntt<T>::ntt;\ntemplate<typename T> using FPS_ntt = FormalPowerSeries<fps_ntt<T>>;\n\
-    \n} // namespace noya2\n\n#line 2 \"fps/sample_point_shift.hpp\"\n\n#line 7 \"\
-    fps/sample_point_shift.hpp\"\n\nnamespace noya2{\n\ntemplate<Fps_Info Info>\n\
-    requires Modint<typename Info::value_type>\nFormalPowerSeries<Info> sample_point_shift(FormalPowerSeries<Info>\
-    \ y, typename Info::value_type t, int m){\n    using fps = FormalPowerSeries<Info>;\n\
-    \    using mint = typename Info::value_type;\n    ll T = t.val();\n    int k =\
-    \ (int)(y.size()) - 1;\n    if (T <= k){\n        fps ret(m);\n        int ptr\
-    \ = 0;\n        for (ll i = T; i <= k && ptr < m; i++){\n            ret[ptr++]\
-    \ = y[i];\n        }\n        if (k+1 < T+m){\n            auto suf = sample_point_shift(y,k+1,m-ptr);\n\
-    \            for (int i = k+1; i < T+m; i++){\n                ret[ptr++] = suf[i-(k+1)];\n\
-    \            }\n        }\n        return ret;\n    }\n    if (T+m > mint::mod()){\n\
-    \        auto pref = sample_point_shift(y,T,mint::mod()-T);\n        auto suf\
-    \  = sample_point_shift(y,0,m-(int)(pref.size()));\n        copy(suf.begin(),suf.end(),back_inserter(pref));\n\
-    \        return pref;\n    }\n    binomial<mint> bnm;\n    fps d(k+1);\n    for\
-    \ (int i = 0; i <= k; i++){\n        d[i] = bnm.ifact(i) * bnm.ifact(k-i) * y[i];\n\
-    \        if ((k-i)&1) d[i] = -d[i];\n    }\n    vector<mint> fact(m+k+1); fact[0]\
-    \ = 1;\n    for (int i = 0; i < m+k; i++) fact[i+1] = fact[i] * (T-k+i);\n   \
-    \ fps h(m+k); h[m+k-1] = fact[m+k].inv();\n    for (int i = m+k-1; i >= 1; i--)\
-    \ h[i-1] = h[i] * (T-k+i);\n    for (int i = 0; i < m+k; i++) h[i] *= fact[i];\n\
-    \    auto dh = d * h;\n    fps ret(m);\n    mint cur = T;\n    for (int i = 1;\
-    \ i <= k; i++) cur *= T-i;\n    for (int i = 0; i < m; i++){\n        ret[i] =\
-    \ cur * dh[k+i];\n        cur *= T+i+1;\n        cur *= h[i];\n    }\n    return\
-    \ ret;\n}\n\n} // namespace noya2\n#line 6 \"test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp\"\
-    \nusing mint = modint998244353;\nusing fps = FPS_ntt<mint>;\n\nint main(){\n \
-    \   int n, m; in(n,m);\n    mint c; in(c);\n    fps y(n); in(y);\n    out(sample_point_shift(y,c,m));\n\
-    }\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shift_of_sampling_points_of_polynomial\"\
-    \n\n#include\"../../template/template.hpp\"\n#include\"../../fps/fps_ntt.hpp\"\
-    \n#include\"../../fps/sample_point_shift.hpp\"\nusing mint = modint998244353;\n\
-    using fps = FPS_ntt<mint>;\n\nint main(){\n    int n, m; in(n,m);\n    mint c;\
-    \ in(c);\n    fps y(n); in(y);\n    out(sample_point_shift(y,c,m));\n}"
+    \       return s;\n    }\n};\n\n\n} // namespace noya2\n#line 5 \"fps/fps_modint.hpp\"\
+    \n\nnamespace noya2{\n\nnamespace ArbitraryModConvolution {\n\nconstexpr int m0\
+    \ = 167772161;\nconstexpr int m1 = 469762049;\nconstexpr int m2 = 754974721;\n\
+    using mint0 = static_modint<m0>;\nusing mint1 = static_modint<m1>;\nusing mint2\
+    \ = static_modint<m2>;\nconstexpr int r01 = mint1(m0).inv().val();\nconstexpr\
+    \ int r02 = mint2(m0).inv().val();\nconstexpr int r12 = mint2(m1).inv().val();\n\
+    constexpr int r02r12 = (long long)(r02) * r12 % m2;\nconstexpr long long w1 =\
+    \ m0;\nconstexpr long long w2 = (long long)(m0) * m1;\n\ntemplate <typename T,\
+    \ typename submint>\nvector<submint> mul(const vector<T> &a, const vector<T> &b)\
+    \ {\n    static NTT<submint> ntt;\n    vector<submint> s(a.size()), t(b.size());\n\
+    \    for (int i = 0; i < (int)a.size(); ++i) s[i] = (long long)(a[i] % submint::mod());\n\
+    \    for (int i = 0; i < (int)b.size(); ++i) t[i] = (long long)(b[i] % submint::mod());\n\
+    \    return ntt.multiply(s, t);\n}\n\ntemplate <typename T>\nvector<int> multiply(const\
+    \ vector<T> &s, const vector<T> &t, int mod) {\n    auto d0 = mul<T, mint0>(s,\
+    \ t);\n    auto d1 = mul<T, mint1>(s, t);\n    auto d2 = mul<T, mint2>(s, t);\n\
+    \    int n = d0.size();\n    vector<int> ret(n);\n    const int W1 = w1 % mod;\n\
+    \    const int W2 = w2 % mod;\n    for (int i = 0; i < n; i++) {\n        int\
+    \ n1 = d1[i].val(), n2 = d2[i].val(), a = d0[i].val();\n        int b = (long\
+    \ long)(n1 + m1 - a) * r01 % m1;\n        int c = ((long long)(n2 + m2 - a) *\
+    \ r02r12 + (long long)(m2 - b) * r12) % m2;\n        ret[i] = ((long long)(a)\
+    \ + (long long)(b) * W1 + (long long)(c) * W2) % mod;\n    }\n    return ret;\n\
+    }\n\ntemplate <typename mint>\nvector<mint> multiply(const vector<mint> &a, const\
+    \ vector<mint> &b) {\n    if (a.size() == 0 && b.size() == 0) return {};\n   \
+    \ if (min<int>(a.size(), b.size()) < 128) {\n        vector<mint> ret(a.size()\
+    \ + b.size() - 1);\n        for (int i = 0; i < (int)a.size(); ++i)\n        \
+    \    for (int j = 0; j < (int)b.size(); ++j) ret[i + j] += a[i] * b[j];\n    \
+    \    return ret;\n    }\n    vector<int> s(a.size()), t(b.size());\n    for (int\
+    \ i = 0; i < (int)a.size(); ++i) s[i] = a[i].val();\n    for (int i = 0; i < (int)b.size();\
+    \ ++i) t[i] = b[i].val();\n    vector<int> u = multiply<int>(s, t, mint::mod());\n\
+    \    vector<mint> ret(u.size());\n    for (int i = 0; i < (int)u.size(); ++i)\
+    \ ret[i] = mint(u[i]);\n    return ret;\n}\n\n} // namespace ArbitraryModConvolution\n\
+    \ntemplate<Modint T>\nstruct fps_modint{\n    using value_type = T;\n    static\
+    \ vector<T> multiply(const vector<T> &a, const vector<T> &b){\n        return\
+    \ ArbitraryModConvolution::multiply(a,b);\n    }\n    static vector<T> inv(const\
+    \ vector<T> &a, int d = -1){ assert(false); }\n    static vector<T> integral(const\
+    \ vector<T> &a){ assert(false); }\n};\ntemplate<typename T> using FPS_modint =\
+    \ FormalPowerSeries<fps_modint<T>>;\n\n} // namespace noya2\n\n"
+  code: "#pragma once\n\n#include\"formal_power_series.hpp\"\n#include\"ntt.hpp\"\n\
+    \nnamespace noya2{\n\nnamespace ArbitraryModConvolution {\n\nconstexpr int m0\
+    \ = 167772161;\nconstexpr int m1 = 469762049;\nconstexpr int m2 = 754974721;\n\
+    using mint0 = static_modint<m0>;\nusing mint1 = static_modint<m1>;\nusing mint2\
+    \ = static_modint<m2>;\nconstexpr int r01 = mint1(m0).inv().val();\nconstexpr\
+    \ int r02 = mint2(m0).inv().val();\nconstexpr int r12 = mint2(m1).inv().val();\n\
+    constexpr int r02r12 = (long long)(r02) * r12 % m2;\nconstexpr long long w1 =\
+    \ m0;\nconstexpr long long w2 = (long long)(m0) * m1;\n\ntemplate <typename T,\
+    \ typename submint>\nvector<submint> mul(const vector<T> &a, const vector<T> &b)\
+    \ {\n    static NTT<submint> ntt;\n    vector<submint> s(a.size()), t(b.size());\n\
+    \    for (int i = 0; i < (int)a.size(); ++i) s[i] = (long long)(a[i] % submint::mod());\n\
+    \    for (int i = 0; i < (int)b.size(); ++i) t[i] = (long long)(b[i] % submint::mod());\n\
+    \    return ntt.multiply(s, t);\n}\n\ntemplate <typename T>\nvector<int> multiply(const\
+    \ vector<T> &s, const vector<T> &t, int mod) {\n    auto d0 = mul<T, mint0>(s,\
+    \ t);\n    auto d1 = mul<T, mint1>(s, t);\n    auto d2 = mul<T, mint2>(s, t);\n\
+    \    int n = d0.size();\n    vector<int> ret(n);\n    const int W1 = w1 % mod;\n\
+    \    const int W2 = w2 % mod;\n    for (int i = 0; i < n; i++) {\n        int\
+    \ n1 = d1[i].val(), n2 = d2[i].val(), a = d0[i].val();\n        int b = (long\
+    \ long)(n1 + m1 - a) * r01 % m1;\n        int c = ((long long)(n2 + m2 - a) *\
+    \ r02r12 + (long long)(m2 - b) * r12) % m2;\n        ret[i] = ((long long)(a)\
+    \ + (long long)(b) * W1 + (long long)(c) * W2) % mod;\n    }\n    return ret;\n\
+    }\n\ntemplate <typename mint>\nvector<mint> multiply(const vector<mint> &a, const\
+    \ vector<mint> &b) {\n    if (a.size() == 0 && b.size() == 0) return {};\n   \
+    \ if (min<int>(a.size(), b.size()) < 128) {\n        vector<mint> ret(a.size()\
+    \ + b.size() - 1);\n        for (int i = 0; i < (int)a.size(); ++i)\n        \
+    \    for (int j = 0; j < (int)b.size(); ++j) ret[i + j] += a[i] * b[j];\n    \
+    \    return ret;\n    }\n    vector<int> s(a.size()), t(b.size());\n    for (int\
+    \ i = 0; i < (int)a.size(); ++i) s[i] = a[i].val();\n    for (int i = 0; i < (int)b.size();\
+    \ ++i) t[i] = b[i].val();\n    vector<int> u = multiply<int>(s, t, mint::mod());\n\
+    \    vector<mint> ret(u.size());\n    for (int i = 0; i < (int)u.size(); ++i)\
+    \ ret[i] = mint(u[i]);\n    return ret;\n}\n\n} // namespace ArbitraryModConvolution\n\
+    \ntemplate<Modint T>\nstruct fps_modint{\n    using value_type = T;\n    static\
+    \ vector<T> multiply(const vector<T> &a, const vector<T> &b){\n        return\
+    \ ArbitraryModConvolution::multiply(a,b);\n    }\n    static vector<T> inv(const\
+    \ vector<T> &a, int d = -1){ assert(false); }\n    static vector<T> integral(const\
+    \ vector<T> &a){ assert(false); }\n};\ntemplate<typename T> using FPS_modint =\
+    \ FormalPowerSeries<fps_modint<T>>;\n\n} // namespace noya2\n\n"
   dependsOn:
+  - fps/formal_power_series.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
-  - fps/fps_ntt.hpp
-  - fps/formal_power_series.hpp
-  - math/binomial.hpp
   - fps/ntt.hpp
   - utility/modint_new.hpp
   - math/prime.hpp
-  - fps/sample_point_shift.hpp
-  isVerificationFile: true
-  path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  isVerificationFile: false
+  path: fps/fps_modint.hpp
   requiredBy: []
-  timestamp: '2023-09-07 16:00:09+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-09-07 16:00:22+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+documentation_of: fps/fps_modint.hpp
 layout: document
 redirect_from:
-- /verify/test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-- /verify/test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp.html
-title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+- /library/fps/fps_modint.hpp
+- /library/fps/fps_modint.hpp.html
+title: fps/fps_modint.hpp
 ---

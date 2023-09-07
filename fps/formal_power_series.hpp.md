@@ -20,6 +20,9 @@ data:
   - icon: ':warning:'
     path: fps/fps_atcoder.hpp
     title: fps/fps_atcoder.hpp
+  - icon: ':warning:'
+    path: fps/fps_modint.hpp
+    title: fps/fps_modint.hpp
   - icon: ':heavy_check_mark:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
@@ -231,6 +234,7 @@ data:
   - fps/sample_point_shift.hpp
   - fps/fps_arbitrary.hpp
   - fps/fps_ntt.hpp
+  - fps/fps_modint.hpp
   - fps/fps_atcoder.hpp
   timestamp: '2023-09-06 22:50:33+09:00'
   verificationStatus: LIBRARY_ALL_AC

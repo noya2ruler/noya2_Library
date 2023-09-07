@@ -47,6 +47,9 @@ data:
     - icon: ':warning:'
       path: fps/fps_atcoder.hpp
       title: fps/fps_atcoder.hpp
+    - icon: ':warning:'
+      path: fps/fps_modint.hpp
+      title: fps/fps_modint.hpp
     - icon: ':heavy_check_mark:'
       path: fps/fps_ntt.hpp
       title: fps/fps_ntt.hpp

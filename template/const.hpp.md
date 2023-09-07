@@ -38,6 +38,9 @@ data:
   - icon: ':warning:'
     path: fps/fps_atcoder.hpp
     title: fps/fps_atcoder.hpp
+  - icon: ':warning:'
+    path: fps/fps_modint.hpp
+    title: fps/fps_modint.hpp
   - icon: ':heavy_check_mark:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
@@ -307,6 +310,7 @@ data:
   - fps/fps_ntt.hpp
   - fps/relaxed_convolution.hpp
   - fps/formal_power_series.hpp
+  - fps/fps_modint.hpp
   - fps/fps_atcoder.hpp
   - fps/ntt.hpp
   timestamp: '2023-07-17 20:27:23+09:00'

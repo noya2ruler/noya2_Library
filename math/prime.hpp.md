@@ -14,6 +14,9 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: fps/fps_modint.hpp
+    title: fps/fps_modint.hpp
   - icon: ':heavy_check_mark:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
@@ -179,6 +182,7 @@ data:
   - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
   - fps/relaxed_convolution.hpp
+  - fps/fps_modint.hpp
   - fps/ntt.hpp
   timestamp: '2023-08-26 19:50:16+09:00'
   verificationStatus: LIBRARY_ALL_AC

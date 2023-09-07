@@ -17,6 +17,9 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: fps/fps_modint.hpp
+    title: fps/fps_modint.hpp
   - icon: ':heavy_check_mark:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
@@ -142,49 +145,52 @@ data:
     \ - x * _m);\n        if (_m <= v) v += _m;\n        return v;\n    }\n};\n\n\
     template <int m>\nstruct static_modint {\n    using mint = static_modint;\n  public:\n\
     \    static constexpr int mod() { return m; }\n    static mint raw(int v) {\n\
-    \        mint x;\n        x._v = v;\n        return x;\n    }\n    static_modint()\
-    \ : _v(0) {}\n    template<signed_integral T>\n    static_modint(T v){\n     \
-    \   ll x = (ll)(v % (ll)(umod()));\n        if (x < 0) x += umod();\n        _v\
-    \ = (uint)(x);\n    }\n    template<unsigned_integral T>\n    static_modint(T\
-    \ v){\n        _v = (uint)(v % umod());\n    }\n    uint val() const { return\
-    \ _v; }\n    mint& operator++() {\n        _v++;\n        if (_v == umod()) _v\
-    \ = 0;\n        return *this;\n    }\n    mint& operator--() {\n        if (_v\
-    \ == 0) _v = umod();\n        _v--;\n        return *this;\n    }\n    mint operator++(int)\
-    \ {\n        mint result = *this;\n        ++*this;\n        return result;\n\
-    \    }\n    mint operator--(int) {\n        mint result = *this;\n        --*this;\n\
-    \        return result;\n    }\n    mint& operator+=(const mint& rhs) {\n    \
-    \    _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return *this;\n\
-    \    }\n    mint& operator-=(const mint& rhs) {\n        _v -= rhs._v;\n     \
-    \   if (_v >= umod()) _v += umod();\n        return *this;\n    }\n    mint& operator*=(const\
-    \ mint& rhs) {\n        ull z = _v;\n        z *= rhs._v;\n        _v = (uint)(z\
-    \ % umod());\n        return *this;\n    }\n    mint& operator/=(const mint& rhs)\
-    \ { return *this = *this * rhs.inv(); }\n    mint operator+() const { return *this;\
-    \ }\n    mint operator-() const { return mint() - *this; }\n    mint pow(ll n)\
-    \ const {\n        assert(0 <= n);\n        mint x = *this, r = 1;\n        while\
-    \ (n) {\n            if (n & 1) r *= x;\n            x *= x;\n            n >>=\
-    \ 1;\n        }\n        return r;\n    }\n    mint inv() const {\n        if\
-    \ (prime) {\n            assert(_v);\n            return pow(umod() - 2);\n  \
-    \      } else {\n            auto eg = inv_gcd(_v, m);\n            assert(eg.first\
-    \ == 1);\n            return eg.second;\n        }\n    }\n    friend mint operator+(const\
-    \ mint& lhs, const mint& rhs) {\n        return mint(lhs) += rhs;\n    }\n   \
-    \ friend mint operator-(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
-    \ -= rhs;\n    }\n    friend mint operator*(const mint& lhs, const mint& rhs)\
-    \ {\n        return mint(lhs) *= rhs;\n    }\n    friend mint operator/(const\
+    \        mint x;\n        x._v = v;\n        return x;\n    }\n    constexpr static_modint()\
+    \ : _v(0) {}\n    template<signed_integral T>\n    constexpr static_modint(T v){\n\
+    \        ll x = (ll)(v % (ll)(umod()));\n        if (x < 0) x += umod();\n   \
+    \     _v = (uint)(x);\n    }\n    template<unsigned_integral T>\n    constexpr\
+    \ static_modint(T v){\n        _v = (uint)(v % umod());\n    }\n    constexpr\
+    \ unsigned int val() const { return _v; }\n    mint& operator++() {\n        _v++;\n\
+    \        if (_v == umod()) _v = 0;\n        return *this;\n    }\n    mint& operator--()\
+    \ {\n        if (_v == 0) _v = umod();\n        _v--;\n        return *this;\n\
+    \    }\n    mint operator++(int) {\n        mint result = *this;\n        ++*this;\n\
+    \        return result;\n    }\n    mint operator--(int) {\n        mint result\
+    \ = *this;\n        --*this;\n        return result;\n    }\n    constexpr mint&\
+    \ operator+=(const mint& rhs) {\n        _v += rhs._v;\n        if (_v >= umod())\
+    \ _v -= umod();\n        return *this;\n    }\n    constexpr mint& operator-=(const\
+    \ mint& rhs) {\n        _v -= rhs._v;\n        if (_v >= umod()) _v += umod();\n\
+    \        return *this;\n    }\n    constexpr mint& operator*=(const mint& rhs)\
+    \ {\n        ull z = _v;\n        z *= rhs._v;\n        _v = (uint)(z % umod());\n\
+    \        return *this;\n    }\n    constexpr mint& operator/=(const mint& rhs)\
+    \ { return *this = *this * rhs.inv(); }\n    constexpr mint operator+() const\
+    \ { return *this; }\n    constexpr mint operator-() const { return mint() - *this;\
+    \ }\n    constexpr mint pow(ll n) const {\n        assert(0 <= n);\n        mint\
+    \ x = *this, r = 1;\n        while (n) {\n            if (n & 1) r *= x;\n   \
+    \         x *= x;\n            n >>= 1;\n        }\n        return r;\n    }\n\
+    \    constexpr mint inv() const {\n        if (prime) {\n            assert(_v);\n\
+    \            return pow(umod() - 2);\n        } else {\n            auto eg =\
+    \ inv_gcd(_v, m);\n            assert(eg.first == 1);\n            return eg.second;\n\
+    \        }\n    }\n    friend constexpr mint operator+(const mint& lhs, const\
+    \ mint& rhs) {\n        return mint(lhs) += rhs;\n    }\n    friend constexpr\
+    \ mint operator-(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
+    \ -= rhs;\n    }\n    friend constexpr mint operator*(const mint& lhs, const mint&\
+    \ rhs) {\n        return mint(lhs) *= rhs;\n    }\n    friend constexpr mint operator/(const\
     \ mint& lhs, const mint& rhs) {\n        return mint(lhs) /= rhs;\n    }\n   \
-    \ friend bool operator==(const mint& lhs, const mint& rhs) {\n        return lhs._v\
-    \ == rhs._v;\n    }\n    friend bool operator!=(const mint& lhs, const mint& rhs)\
-    \ {\n        return lhs._v != rhs._v;\n    }\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const mint& p) {\n        return os << p.val();\n    }\n    friend std::istream\
-    \ &operator>>(std::istream &is, mint &a) {\n        long long t; is >> t;\n  \
-    \      a = mint(t);\n        return (is);\n    }\n\n  private:\n    unsigned int\
-    \ _v;\n    static constexpr unsigned int umod() { return m; }\n    static constexpr\
-    \ bool prime = is_prime<m>;\n};\n\n\ntemplate <int id> struct dynamic_modint {\n\
-    \    using mint = dynamic_modint;\n  public:\n    static int mod() { return (int)(bt.umod());\
-    \ }\n    static void set_mod(int m) {\n        assert(1 <= m);\n        bt = barrett(m);\n\
-    \    }\n    static mint raw(int v) {\n        mint x;\n        x._v = v;\n   \
-    \     return x;\n    }\n\n    dynamic_modint() : _v(0) {}\n    template<signed_integral\
-    \ T>\n    dynamic_modint(T v){\n        ll x = (ll)(v % (ll)(mod()));\n      \
-    \  if (x < 0) x += mod();\n        _v = (uint)(x);\n    }\n    template<unsigned_integral\
+    \ friend constexpr bool operator==(const mint& lhs, const mint& rhs) {\n     \
+    \   return lhs._v == rhs._v;\n    }\n    friend constexpr bool operator!=(const\
+    \ mint& lhs, const mint& rhs) {\n        return lhs._v != rhs._v;\n    }\n   \
+    \ friend std::ostream &operator<<(std::ostream &os, const mint& p) {\n       \
+    \ return os << p.val();\n    }\n    friend std::istream &operator>>(std::istream\
+    \ &is, mint &a) {\n        long long t; is >> t;\n        a = mint(t);\n     \
+    \   return (is);\n    }\n\n  private:\n    unsigned int _v;\n    static constexpr\
+    \ unsigned int umod() { return m; }\n    static constexpr bool prime = is_prime<m>;\n\
+    };\n\n\ntemplate <int id> struct dynamic_modint {\n    using mint = dynamic_modint;\n\
+    \  public:\n    static int mod() { return (int)(bt.umod()); }\n    static void\
+    \ set_mod(int m) {\n        assert(1 <= m);\n        bt = barrett(m);\n    }\n\
+    \    static mint raw(int v) {\n        mint x;\n        x._v = v;\n        return\
+    \ x;\n    }\n\n    dynamic_modint() : _v(0) {}\n    template<signed_integral T>\n\
+    \    dynamic_modint(T v){\n        ll x = (ll)(v % (ll)(mod()));\n        if (x\
+    \ < 0) x += mod();\n        _v = (uint)(x);\n    }\n    template<unsigned_integral\
     \ T>\n    dynamic_modint(T v){\n        _v = (uint)(v % mod());\n    }\n    uint\
     \ val() const { return _v; }\n    mint& operator++() {\n        _v++;\n      \
     \  if (_v == umod()) _v = 0;\n        return *this;\n    }\n    mint& operator--()\
@@ -229,39 +235,42 @@ data:
     \ += _m;\n        return v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint\
     \ {\n    using mint = static_modint;\n  public:\n    static constexpr int mod()\
     \ { return m; }\n    static mint raw(int v) {\n        mint x;\n        x._v =\
-    \ v;\n        return x;\n    }\n    static_modint() : _v(0) {}\n    template<signed_integral\
-    \ T>\n    static_modint(T v){\n        ll x = (ll)(v % (ll)(umod()));\n      \
-    \  if (x < 0) x += umod();\n        _v = (uint)(x);\n    }\n    template<unsigned_integral\
-    \ T>\n    static_modint(T v){\n        _v = (uint)(v % umod());\n    }\n    uint\
-    \ val() const { return _v; }\n    mint& operator++() {\n        _v++;\n      \
-    \  if (_v == umod()) _v = 0;\n        return *this;\n    }\n    mint& operator--()\
-    \ {\n        if (_v == 0) _v = umod();\n        _v--;\n        return *this;\n\
-    \    }\n    mint operator++(int) {\n        mint result = *this;\n        ++*this;\n\
-    \        return result;\n    }\n    mint operator--(int) {\n        mint result\
-    \ = *this;\n        --*this;\n        return result;\n    }\n    mint& operator+=(const\
+    \ v;\n        return x;\n    }\n    constexpr static_modint() : _v(0) {}\n   \
+    \ template<signed_integral T>\n    constexpr static_modint(T v){\n        ll x\
+    \ = (ll)(v % (ll)(umod()));\n        if (x < 0) x += umod();\n        _v = (uint)(x);\n\
+    \    }\n    template<unsigned_integral T>\n    constexpr static_modint(T v){\n\
+    \        _v = (uint)(v % umod());\n    }\n    constexpr unsigned int val() const\
+    \ { return _v; }\n    mint& operator++() {\n        _v++;\n        if (_v == umod())\
+    \ _v = 0;\n        return *this;\n    }\n    mint& operator--() {\n        if\
+    \ (_v == 0) _v = umod();\n        _v--;\n        return *this;\n    }\n    mint\
+    \ operator++(int) {\n        mint result = *this;\n        ++*this;\n        return\
+    \ result;\n    }\n    mint operator--(int) {\n        mint result = *this;\n \
+    \       --*this;\n        return result;\n    }\n    constexpr mint& operator+=(const\
     \ mint& rhs) {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n\
-    \        return *this;\n    }\n    mint& operator-=(const mint& rhs) {\n     \
-    \   _v -= rhs._v;\n        if (_v >= umod()) _v += umod();\n        return *this;\n\
-    \    }\n    mint& operator*=(const mint& rhs) {\n        ull z = _v;\n       \
-    \ z *= rhs._v;\n        _v = (uint)(z % umod());\n        return *this;\n    }\n\
-    \    mint& operator/=(const mint& rhs) { return *this = *this * rhs.inv(); }\n\
-    \    mint operator+() const { return *this; }\n    mint operator-() const { return\
-    \ mint() - *this; }\n    mint pow(ll n) const {\n        assert(0 <= n);\n   \
-    \     mint x = *this, r = 1;\n        while (n) {\n            if (n & 1) r *=\
-    \ x;\n            x *= x;\n            n >>= 1;\n        }\n        return r;\n\
-    \    }\n    mint inv() const {\n        if (prime) {\n            assert(_v);\n\
-    \            return pow(umod() - 2);\n        } else {\n            auto eg =\
-    \ inv_gcd(_v, m);\n            assert(eg.first == 1);\n            return eg.second;\n\
-    \        }\n    }\n    friend mint operator+(const mint& lhs, const mint& rhs)\
-    \ {\n        return mint(lhs) += rhs;\n    }\n    friend mint operator-(const\
+    \        return *this;\n    }\n    constexpr mint& operator-=(const mint& rhs)\
+    \ {\n        _v -= rhs._v;\n        if (_v >= umod()) _v += umod();\n        return\
+    \ *this;\n    }\n    constexpr mint& operator*=(const mint& rhs) {\n        ull\
+    \ z = _v;\n        z *= rhs._v;\n        _v = (uint)(z % umod());\n        return\
+    \ *this;\n    }\n    constexpr mint& operator/=(const mint& rhs) { return *this\
+    \ = *this * rhs.inv(); }\n    constexpr mint operator+() const { return *this;\
+    \ }\n    constexpr mint operator-() const { return mint() - *this; }\n    constexpr\
+    \ mint pow(ll n) const {\n        assert(0 <= n);\n        mint x = *this, r =\
+    \ 1;\n        while (n) {\n            if (n & 1) r *= x;\n            x *= x;\n\
+    \            n >>= 1;\n        }\n        return r;\n    }\n    constexpr mint\
+    \ inv() const {\n        if (prime) {\n            assert(_v);\n            return\
+    \ pow(umod() - 2);\n        } else {\n            auto eg = inv_gcd(_v, m);\n\
+    \            assert(eg.first == 1);\n            return eg.second;\n        }\n\
+    \    }\n    friend constexpr mint operator+(const mint& lhs, const mint& rhs)\
+    \ {\n        return mint(lhs) += rhs;\n    }\n    friend constexpr mint operator-(const\
     \ mint& lhs, const mint& rhs) {\n        return mint(lhs) -= rhs;\n    }\n   \
-    \ friend mint operator*(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
-    \ *= rhs;\n    }\n    friend mint operator/(const mint& lhs, const mint& rhs)\
-    \ {\n        return mint(lhs) /= rhs;\n    }\n    friend bool operator==(const\
-    \ mint& lhs, const mint& rhs) {\n        return lhs._v == rhs._v;\n    }\n   \
-    \ friend bool operator!=(const mint& lhs, const mint& rhs) {\n        return lhs._v\
-    \ != rhs._v;\n    }\n    friend std::ostream &operator<<(std::ostream &os, const\
-    \ mint& p) {\n        return os << p.val();\n    }\n    friend std::istream &operator>>(std::istream\
+    \ friend constexpr mint operator*(const mint& lhs, const mint& rhs) {\n      \
+    \  return mint(lhs) *= rhs;\n    }\n    friend constexpr mint operator/(const\
+    \ mint& lhs, const mint& rhs) {\n        return mint(lhs) /= rhs;\n    }\n   \
+    \ friend constexpr bool operator==(const mint& lhs, const mint& rhs) {\n     \
+    \   return lhs._v == rhs._v;\n    }\n    friend constexpr bool operator!=(const\
+    \ mint& lhs, const mint& rhs) {\n        return lhs._v != rhs._v;\n    }\n   \
+    \ friend std::ostream &operator<<(std::ostream &os, const mint& p) {\n       \
+    \ return os << p.val();\n    }\n    friend std::istream &operator>>(std::istream\
     \ &is, mint &a) {\n        long long t; is >> t;\n        a = mint(t);\n     \
     \   return (is);\n    }\n\n  private:\n    unsigned int _v;\n    static constexpr\
     \ unsigned int umod() { return m; }\n    static constexpr bool prime = is_prime<m>;\n\
@@ -320,8 +329,9 @@ data:
   - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
   - fps/relaxed_convolution.hpp
+  - fps/fps_modint.hpp
   - fps/ntt.hpp
-  timestamp: '2023-08-27 04:49:05+09:00'
+  timestamp: '2023-09-07 15:57:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
