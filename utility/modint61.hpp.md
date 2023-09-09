@@ -103,7 +103,8 @@ data:
     \        modint61 ret(1), mul(val);\n        while (n > 0) {\n            if (n\
     \ & 1) ret = ret * mul;\n            mul = mul * mul;\n            n >>= 1;\n\
     \        }\n        return ret;\n    }\n    static constexpr ll get_mod() { return\
-    \ mod; }\n};\n"
+    \ mod; }\n    friend std::ostream &operator<<(std::ostream &os, const modint61&\
+    \ p) {\n        return os << p.val;\n    }\n};\n"
   code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nstruct modint61 {\n\
     \    static constexpr bool is_modint = true;\n    static constexpr ll mod = (1LL\
     \ << 61) - 1;\n    ll val;\n    constexpr modint61(const ll x = 0) : val(x) {\n\
@@ -135,7 +136,8 @@ data:
     \        modint61 ret(1), mul(val);\n        while (n > 0) {\n            if (n\
     \ & 1) ret = ret * mul;\n            mul = mul * mul;\n            n >>= 1;\n\
     \        }\n        return ret;\n    }\n    static constexpr ll get_mod() { return\
-    \ mod; }\n};"
+    \ mod; }\n    friend std::ostream &operator<<(std::ostream &os, const modint61&\
+    \ p) {\n        return os << p.val;\n    }\n};"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
@@ -144,7 +146,7 @@ data:
   isVerificationFile: false
   path: utility/modint61.hpp
   requiredBy: []
-  timestamp: '2023-08-26 17:35:34+09:00'
+  timestamp: '2023-09-09 14:49:53+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: utility/modint61.hpp
