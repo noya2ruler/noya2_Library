@@ -67,4 +67,7 @@ struct modint61 {
         return ret;
     }
     static constexpr ll get_mod() { return mod; }
+    friend std::ostream &operator<<(std::ostream &os, const modint61& p) {
+        return os << p.val;
+    }
 };
