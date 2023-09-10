@@ -11,6 +11,7 @@ struct vector2d {
         if (m == -1) m = n-1;
         es.resize(m);
         start.resize(m,0);
+        if (m == 0) build();
     }
     void add(int from, E e){
         static int id = 0;
