@@ -81,13 +81,14 @@ data:
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
     ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"tree/tree_query.hpp\"\
     \n\n#line 9 \"tree/tree_query.hpp\"\n#include<ranges>\n\nstruct Tree {\n    Tree\
-    \ (int n_ = 0, int root_ = 0) : n(n_), root(root_), es(n-1), start(n+1,0){}\n\
-    \    void add_edge(int u, int v){\n        static int id = 0;\n        es[id]\
-    \ = u, start[id] = v;\n        if (++id == n-1) build();\n    }\n    void input(int\
-    \ indexed = 1){\n        for (int i = 0; i < n-1; i++){\n            int u, v;\
-    \ std::cin >> u >> v;\n            u -= indexed, v -= indexed;\n            add_edge(u,v);\n\
-    \        }\n    }\n    void input_parents(int indexed = 1){\n        for (int\
-    \ i = 0; i < n-1; i++){\n            int p; std::cin >> p;\n            p -= indexed;\n\
+    \ (int n_ = 0, int root_ = 0) : n(n_), root(root_), inner_edge_id(0), es(n-1),\
+    \ start(n+1,0){\n        if (n == 1) build();\n    }\n    void add_edge(int u,\
+    \ int v){\n        es[inner_edge_id] = u, start[inner_edge_id] = v;\n        if\
+    \ (++inner_edge_id == n-1) build();\n    }\n    void input(int indexed = 1){\n\
+    \        for (int i = 0; i < n-1; i++){\n            int u, v; std::cin >> u >>\
+    \ v;\n            u -= indexed, v -= indexed;\n            add_edge(u,v);\n  \
+    \      }\n    }\n    void input_parents(int indexed = 1){\n        for (int i\
+    \ = 0; i < n-1; i++){\n            int p; std::cin >> p;\n            p -= indexed;\n\
     \            add_edge(p,i+1);\n        }\n    }\n    int degree(int v){\n    \
     \    assert(0 <= v && v < n);\n        return start[v+1] - start[v];\n    }\n\
     \    int parent(int v){\n        assert(0 <= v && v < n);\n        if (v == root)\
@@ -151,8 +152,8 @@ data:
     \            sfs(sfs,es[stv]);\n            for (int i = stv+1; i < start[v+1];\
     \ i++){\n                nxt[es[i]] = es[i];\n                sfs(sfs,es[i]);\n\
     \            }\n        };\n        dfs(dfs,root);\n    }\n    inline int start_skip_parent(int\
-    \ v) const { return start[v]+int(v != root); }\n    int n, root;\n    std::vector<int>\
-    \ es, start, dep, sub, down, tour, nxt;\n};\n#line 5 \"test/tree/Jump_on_Tree_hld.test.cpp\"\
+    \ v) const { return start[v]+int(v != root); }\n    int n, root, inner_edge_id;\n\
+    \    std::vector<int> es, start, dep, sub, down, tour, nxt;\n};\n#line 5 \"test/tree/Jump_on_Tree_hld.test.cpp\"\
     \n\nint main(){\n    int n, q; in(n,q);\n    Tree g(n);\n    g.input(0);\n   \
     \ while (q--){\n        int u, v, k; in(u,v,k);\n        out(g.jump(u,v,k));\n\
     \    }\n}\n"
@@ -169,7 +170,7 @@ data:
   isVerificationFile: true
   path: test/tree/Jump_on_Tree_hld.test.cpp
   requiredBy: []
-  timestamp: '2023-09-04 20:27:27+09:00'
+  timestamp: '2023-09-22 14:25:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Jump_on_Tree_hld.test.cpp

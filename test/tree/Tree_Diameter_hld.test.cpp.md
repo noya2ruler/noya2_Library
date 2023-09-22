@@ -81,35 +81,36 @@ data:
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
     ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"tree/tree_query_weighted.hpp\"\
     \n\n#line 4 \"tree/tree_query_weighted.hpp\"\n\nnamespace noya2{\n\nstruct Tree_weighted\
-    \ {\n    Tree_weighted (int n_ = 0, int root_ = 0) : n(n_), root(root_), es(n-1),\
-    \ start(n+1,0){}\n    void add_edge(int u, int v, ll w){\n        static int id\
-    \ = 0;\n        es[id] = {u,w}, start[id] = v;\n        if (++id == n-1) build();\n\
-    \    }\n    void input(int indexed = 1){\n        rep(i,n-1){\n            int\
-    \ u, v; ll w; cin >> u >> v >> w;\n            u -= indexed, v -= indexed;\n \
-    \           add_edge(u,v,w);\n        }\n    }\n    void input_parents(int indexed\
-    \ = 1){\n        rep(i,n-1){\n            int p; ll w; cin >> p >> w;\n      \
-    \      p -= indexed;\n            add_edge(p,i+1,w);\n        }\n    }\n    int\
-    \ degree(int v){\n        assert(0 <= v && v < n);\n        return start[v+1]\
-    \ - start[v];\n    }\n    int parent(int v){\n        assert(0 <= v && v < n);\n\
-    \        if (v == root) return -1;\n        return es[start[v]].first;\n    }\n\
-    \    int subtree_size(int v){\n        assert(0 <= v && v < n);\n        return\
-    \ sub[v];\n    }\n    int depth(int v){\n        assert(0 <= v && v < n);\n  \
-    \      return dep[v];\n    }\n    ll depth_weighted(int v){\n        assert(0\
-    \ <= v && v < n);\n        return wdep[v];\n    }\n    int la(int v, int d){\n\
-    \        assert(0 <= v && v < n);\n        while (v != -1){\n            int u\
-    \ = nxt[v];\n            if (down[v] - d >= down[u]){\n                v = tour[down[v]\
-    \ - d];\n                break;\n            }\n            d -= down[v] - down[u]\
-    \ + 1;\n            v = parent(u);\n        }\n        return v;\n    }\n    pair<int,ll>\
-    \ la_weighted(int v, ll d){\n        assert(0 <= v && v < n);\n        if (d >\
-    \ wdep[v]) return make_pair(-1,0LL);\n        if (d == wdep[v]) return make_pair(root,0LL);\n\
-    \        while (v != -1){\n            int u = nxt[v];\n            if (d < wdep[v]\
-    \ - wdep[u]) break;\n            d -= wdep[v] - wdep[u];\n            if (d <\
-    \ es[start[u]].second){\n                return make_pair(u,d);\n            }\n\
-    \            d -= es[start[u]].second;\n            v = parent(u);\n        }\n\
-    \        int le = down[nxt[v]], ri = down[v];\n        while (ri - le > 1){\n\
-    \            int md = (le + ri) / 2;\n            if (d >= wdep[v] - wdep[tour[md]])\
-    \ ri = md;\n            else le = md;\n        }\n        return make_pair(tour[ri],d-(wdep[v]-wdep[tour[ri]]));\n\
-    \    }\n    int lca(int u, int v){\n        assert(0 <= v && v < n && 0 <= u &&\
+    \ {\n    Tree_weighted (int n_ = 0, int root_ = 0) : n(n_), root(root_), inner_edge_id(0),\
+    \ es(n-1), start(n+1,0){\n        if (n == 1) build();\n    }\n    void add_edge(int\
+    \ u, int v, ll w){\n        es[inner_edge_id] = {u,w}, start[inner_edge_id] =\
+    \ v;\n        if (++inner_edge_id == n-1) build();\n    }\n    void input(int\
+    \ indexed = 1){\n        rep(i,n-1){\n            int u, v; ll w; cin >> u >>\
+    \ v >> w;\n            u -= indexed, v -= indexed;\n            add_edge(u,v,w);\n\
+    \        }\n    }\n    void input_parents(int indexed = 1){\n        rep(i,n-1){\n\
+    \            int p; ll w; cin >> p >> w;\n            p -= indexed;\n        \
+    \    add_edge(p,i+1,w);\n        }\n    }\n    int degree(int v){\n        assert(0\
+    \ <= v && v < n);\n        return start[v+1] - start[v];\n    }\n    int parent(int\
+    \ v){\n        assert(0 <= v && v < n);\n        if (v == root) return -1;\n \
+    \       return es[start[v]].first;\n    }\n    int subtree_size(int v){\n    \
+    \    assert(0 <= v && v < n);\n        return sub[v];\n    }\n    int depth(int\
+    \ v){\n        assert(0 <= v && v < n);\n        return dep[v];\n    }\n    ll\
+    \ depth_weighted(int v){\n        assert(0 <= v && v < n);\n        return wdep[v];\n\
+    \    }\n    int la(int v, int d){\n        assert(0 <= v && v < n);\n        while\
+    \ (v != -1){\n            int u = nxt[v];\n            if (down[v] - d >= down[u]){\n\
+    \                v = tour[down[v] - d];\n                break;\n            }\n\
+    \            d -= down[v] - down[u] + 1;\n            v = parent(u);\n       \
+    \ }\n        return v;\n    }\n    pair<int,ll> la_weighted(int v, ll d){\n  \
+    \      assert(0 <= v && v < n);\n        if (d > wdep[v]) return make_pair(-1,0LL);\n\
+    \        if (d == wdep[v]) return make_pair(root,0LL);\n        while (v != -1){\n\
+    \            int u = nxt[v];\n            if (d < wdep[v] - wdep[u]) break;\n\
+    \            d -= wdep[v] - wdep[u];\n            if (d < es[start[u]].second){\n\
+    \                return make_pair(u,d);\n            }\n            d -= es[start[u]].second;\n\
+    \            v = parent(u);\n        }\n        int le = down[nxt[v]], ri = down[v];\n\
+    \        while (ri - le > 1){\n            int md = (le + ri) / 2;\n         \
+    \   if (d >= wdep[v] - wdep[tour[md]]) ri = md;\n            else le = md;\n \
+    \       }\n        return make_pair(tour[ri],d-(wdep[v]-wdep[tour[ri]]));\n  \
+    \  }\n    int lca(int u, int v){\n        assert(0 <= v && v < n && 0 <= u &&\
     \ u < n);\n        while (nxt[u] != nxt[v]){\n            if (down[u] < down[v])\
     \ swap(u,v);\n            u = es[start[nxt[u]]].first;\n        }\n        return\
     \ dep[u] < dep[v] ? u : v;\n    }\n    int jump(int from, int to, int d){\n  \
@@ -177,12 +178,12 @@ data:
     \ i < start[v+1]; i++){\n                nxt[es[i].first] = es[i].first;\n   \
     \             sfs(sfs,es[i].first);\n            }\n        };\n        dfs(dfs,root);\n\
     \    }\n    inline int start_skip_parent(int v) const { return start[v]+int(v\
-    \ != root); }\n    int n, root;\n    vector<pair<int,ll>> es;\n    vector<int>\
-    \ start, dep, sub, down, tour, nxt;\n    vector<ll> wdep;\n};\n\n} // namespace\
-    \ noya2\n#line 5 \"test/tree/Tree_Diameter_hld.test.cpp\"\n\nint main(){\n   \
-    \ int n; in(n);\n    Tree_weighted g(n);\n    g.input(0);\n    auto [x, v1, v2]\
-    \ = g.diameter_weighted();\n    vector<int> vs = g.path(v1,v2);\n    out(x,vs.size());\n\
-    \    out(vs);\n}\n"
+    \ != root); }\n    int n, root, inner_edge_id;\n    vector<pair<int,ll>> es;\n\
+    \    vector<int> start, dep, sub, down, tour, nxt;\n    vector<ll> wdep;\n};\n\
+    \n} // namespace noya2\n#line 5 \"test/tree/Tree_Diameter_hld.test.cpp\"\n\nint\
+    \ main(){\n    int n; in(n);\n    Tree_weighted g(n);\n    g.input(0);\n    auto\
+    \ [x, v1, v2] = g.diameter_weighted();\n    vector<int> vs = g.path(v1,v2);\n\
+    \    out(x,vs.size());\n    out(vs);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include\"\
     ../../template/template.hpp\"\n#include\"../../tree/tree_query_weighted.hpp\"\n\
     \nint main(){\n    int n; in(n);\n    Tree_weighted g(n);\n    g.input(0);\n \
@@ -197,7 +198,7 @@ data:
   isVerificationFile: true
   path: test/tree/Tree_Diameter_hld.test.cpp
   requiredBy: []
-  timestamp: '2023-09-04 21:31:15+09:00'
+  timestamp: '2023-09-22 14:25:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Tree_Diameter_hld.test.cpp

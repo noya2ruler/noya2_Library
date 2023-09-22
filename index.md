@@ -38,7 +38,7 @@ data:
       title: data_structure/sparse_table.hpp
     - icon: ':warning:'
       path: data_structure/vector2d.hpp
-      title: data_structure/vector2d.hpp
+      title: 2-dimentional vector
   - name: fps
     pages:
     - icon: ':heavy_check_mark:'
