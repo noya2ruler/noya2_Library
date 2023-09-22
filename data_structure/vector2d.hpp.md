@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
+    title: test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/vector2d.hpp\"\n\n#include<vector>\n#include<ranges>\n\
@@ -38,8 +41,9 @@ data:
   path: data_structure/vector2d.hpp
   requiredBy: []
   timestamp: '2023-09-22 14:26:46+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
 documentation_of: data_structure/vector2d.hpp
 layout: document
 title: 2-dimentional vector

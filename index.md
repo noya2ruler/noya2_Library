@@ -36,7 +36,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/sparse_table.hpp
       title: data_structure/sparse_table.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/vector2d.hpp
       title: 2-dimentional vector
   - name: fps
@@ -173,6 +173,9 @@ data:
   verificationCategories:
   - name: test/data_structure
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
+      title: test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Line_Add_Get_Min.test.cpp
       title: test/data_structure/Line_Add_Get_Min.test.cpp

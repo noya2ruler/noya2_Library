@@ -109,6 +109,9 @@ data:
     title: utility/modint_new.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
+    title: test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Line_Add_Get_Min.test.cpp
     title: test/data_structure/Line_Add_Get_Min.test.cpp
   - icon: ':heavy_check_mark:'
@@ -279,6 +282,7 @@ data:
   - test/data_structure/aoj1068_segtree2d.test.cpp
   - test/data_structure/Static_Range_Inversions_Query.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
+  - test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
