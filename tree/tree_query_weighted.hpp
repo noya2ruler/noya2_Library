@@ -5,11 +5,12 @@
 namespace noya2{
 
 struct Tree_weighted {
-    Tree_weighted (int n_ = 0, int root_ = 0) : n(n_), root(root_), es(n-1), start(n+1,0){}
+    Tree_weighted (int n_ = 0, int root_ = 0) : n(n_), root(root_), inner_edge_id(0), es(n-1), start(n+1,0){
+        if (n == 1) build();
+    }
     void add_edge(int u, int v, ll w){
-        static int id = 0;
-        es[id] = {u,w}, start[id] = v;
-        if (++id == n-1) build();
+        es[inner_edge_id] = {u,w}, start[inner_edge_id] = v;
+        if (++inner_edge_id == n-1) build();
     }
     void input(int indexed = 1){
         rep(i,n-1){
@@ -234,7 +235,7 @@ struct Tree_weighted {
         dfs(dfs,root);
     }
     inline int start_skip_parent(int v) const { return start[v]+int(v != root); }
-    int n, root;
+    int n, root, inner_edge_id;
     vector<pair<int,ll>> es;
     vector<int> start, dep, sub, down, tour, nxt;
     vector<ll> wdep;
