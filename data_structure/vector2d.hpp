@@ -17,6 +17,7 @@ struct vector2d {
         if (++inner_element_id == m) build();
     }
     const auto operator[](int idx){ return std::ranges::subrange(es.begin()+start[idx],es.begin()+start[idx+1]); }
+    std::vector<int> start;
   private:
     void build(){
         std::vector<E> nes(m);
@@ -29,7 +30,6 @@ struct vector2d {
     }
     int n, m, inner_element_id;
     std::vector<E> es;
-    std::vector<int> start;
 };
 
 } // namespace noya2
