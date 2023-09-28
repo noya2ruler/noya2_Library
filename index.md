@@ -153,6 +153,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
+    - icon: ':warning:'
+      path: tree/heavy_light_decomposition.hpp
+      title: tree/heavy_light_decomposition.hpp
     - icon: ':heavy_check_mark:'
       path: tree/tree_query.hpp
       title: tree/tree_query.hpp

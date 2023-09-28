@@ -439,9 +439,9 @@ data:
   timestamp: '2023-09-07 15:57:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/fps/convolution.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
-  - test/fps/convolution.test.cpp
 documentation_of: fps/fps_ntt.hpp
 layout: document
 redirect_from:

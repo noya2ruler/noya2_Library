@@ -86,14 +86,14 @@ data:
     \        if (m == 0) build();\n    }\n    void add(int from, E e){\n        es[inner_element_id]\
     \ = e, start[inner_element_id] = from;\n        if (++inner_element_id == m) build();\n\
     \    }\n    const auto operator[](int idx){ return std::ranges::subrange(es.begin()+start[idx],es.begin()+start[idx+1]);\
-    \ }\n  private:\n    void build(){\n        std::vector<E> nes(m);\n        std::vector<int>\
-    \ nstart(n+1,0);\n        for (int i = 0; i < m; i++) nstart[start[i]+1]++;\n\
-    \        for (int i = 0; i < n; i++) nstart[i+1] += nstart[i];\n        auto geta\
-    \ = nstart;\n        for (int i = 0; i < m; i++) nes[geta[start[i]]++] = es[i];\n\
-    \        std::swap(nes,es); std::swap(nstart,start);\n    }\n    int n, m, inner_element_id;\n\
-    \    std::vector<E> es;\n    std::vector<int> start;\n};\n\n} // namespace noya2\n\
-    #line 5 \"test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp\"\n\
-    \nint main(){\n    int n, m; in(n,m);\n    vector2d<pii> g(n,m*2);\n    rep(i,m){\n\
+    \ }\n    std::vector<int> start;\n  private:\n    void build(){\n        std::vector<E>\
+    \ nes(m);\n        std::vector<int> nstart(n+1,0);\n        for (int i = 0; i\
+    \ < m; i++) nstart[start[i]+1]++;\n        for (int i = 0; i < n; i++) nstart[i+1]\
+    \ += nstart[i];\n        auto geta = nstart;\n        for (int i = 0; i < m; i++)\
+    \ nes[geta[start[i]]++] = es[i];\n        std::swap(nes,es); std::swap(nstart,start);\n\
+    \    }\n    int n, m, inner_element_id;\n    std::vector<E> es;\n};\n\n} // namespace\
+    \ noya2\n#line 5 \"test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp\"\
+    \n\nint main(){\n    int n, m; in(n,m);\n    vector2d<pii> g(n,m*2);\n    rep(i,m){\n\
     \        int u, v; in(u,v);\n        g.add(u,pii(v,i));\n        g.add(v,pii(u,i));\n\
     \    }\n    vector<bool> used(m,false), visited(n,false);\n    queue<int> que;\n\
     \    int sv = -1, tv = -1, eid = -1;\n    rep(i,n){\n        if (visited[i]) continue;\n\
@@ -142,7 +142,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
   requiredBy: []
-  timestamp: '2023-09-22 16:28:55+09:00'
+  timestamp: '2023-09-26 16:23:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
