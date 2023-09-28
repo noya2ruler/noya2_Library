@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/PointAddRangeSum.test.cpp
     title: test/data_structure/PointAddRangeSum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Path_Sum.test.cpp
+    title: test/tree/Vertex_Add_Path_Sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -110,6 +113,7 @@ data:
   timestamp: '2023-08-26 17:35:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/tree/Vertex_Add_Path_Sum.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document

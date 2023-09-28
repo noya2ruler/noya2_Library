@@ -153,7 +153,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: tree/heavy_light_decomposition.hpp
     - icon: ':heavy_check_mark:'
@@ -273,6 +273,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Diameter_hld.test.cpp
       title: test/tree/Tree_Diameter_hld.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/tree/Vertex_Add_Path_Sum.test.cpp
+      title: test/tree/Vertex_Add_Path_Sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/aoj_0489.test.cpp
       title: test/tree/aoj_0489.test.cpp
