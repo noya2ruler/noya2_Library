@@ -28,5 +28,6 @@
 "test/tree/Rerooting_DP.test.cpp": "2023-08-26 17:35:34 +0900",
 "test/tree/Tree_Diameter.test.cpp": "2023-08-26 17:35:34 +0900",
 "test/tree/Tree_Diameter_hld.test.cpp": "2023-09-22 14:25:09 +0900",
+"test/tree/Vertex_Add_Path_Sum.test.cpp": "2023-09-29 03:20:50 +0900",
 "test/tree/aoj_0489.test.cpp": "2023-08-26 17:35:34 +0900"
 }
