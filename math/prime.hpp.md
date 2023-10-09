@@ -30,12 +30,18 @@ data:
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
   - icon: ':heavy_check_mark:'
-    path: utility/modint_new.hpp
-    title: utility/modint_new.hpp
+    path: utility/modint.hpp
+    title: utility/modint.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Point_Set_Range_Composite.test.cpp
+    title: test/data_structure/Point_Set_Range_Composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
     title: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Range_Affine_Range_Sum.test.cpp
+    title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/fps/Convolution1000000007.test.cpp
     title: test/fps/Convolution1000000007.test.cpp
@@ -52,8 +58,14 @@ data:
     path: test/fps/convolution_relaxed_convolution.test.cpp
     title: test/fps/convolution_relaxed_convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+    title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Determinant_of_Matrix.test.cpp
+    title: test/math/Determinant_of_Matrix.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -124,8 +136,8 @@ data:
     \     ll y = pow_mod_constexpr(a, t, n);\n        while (t != n - 1 && y != 1\
     \ && y != n - 1) {\n            y = y * y % n;\n            t <<= 1;\n       \
     \ }\n        if (y != n - 1 && t % 2 == 0) {\n            return false;\n    \
-    \    }\n    }\n    return true;\n}\ntemplate <int n> constexpr bool is_prime =\
-    \ is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long long> inv_gcd(long\
+    \    }\n    }\n    return true;\n}\ntemplate <int n> constexpr bool is_prime_flag\
+    \ = is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long long> inv_gcd(long\
     \ long a, long long b) {\n    a = safe_mod(a, b);\n    if (a == 0) return {b,\
     \ 0};\n    long long s = b, t = a;\n    long long m0 = 0, m1 = 1;\n    while (t)\
     \ {\n        long long u = s / t;\n        s -= t * u;\n        m0 -= m1 * u;\
@@ -142,7 +154,7 @@ data:
     \ g = 2;; g++) {\n        bool ok = true;\n        for (int i = 0; i < cnt; i++)\
     \ {\n            if (pow_mod_constexpr(g, (m - 1) / divs[i], m) == 1) {\n    \
     \            ok = false;\n                break;\n            }\n        }\n \
-    \       if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int primitive_root\
+    \       if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int primitive_root_flag\
     \ = primitive_root_constexpr(m);\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2 {\n\
     \nconstexpr ll safe_mod(ll x, ll m) {\n    x %= m;\n    if (x < 0) x += m;\n \
@@ -157,13 +169,13 @@ data:
     \ (t != n - 1 && y != 1 && y != n - 1) {\n            y = y * y % n;\n       \
     \     t <<= 1;\n        }\n        if (y != n - 1 && t % 2 == 0) {\n         \
     \   return false;\n        }\n    }\n    return true;\n}\ntemplate <int n> constexpr\
-    \ bool is_prime = is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long\
-    \ long> inv_gcd(long long a, long long b) {\n    a = safe_mod(a, b);\n    if (a\
-    \ == 0) return {b, 0};\n    long long s = b, t = a;\n    long long m0 = 0, m1\
-    \ = 1;\n    while (t) {\n        long long u = s / t;\n        s -= t * u;\n \
-    \       m0 -= m1 * u; \n        auto tmp = s;\n        s = t;\n        t = tmp;\n\
-    \        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n    }\n    if (m0 < 0)\
-    \ m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int primitive_root_constexpr(int\
+    \ bool is_prime_flag = is_prime_constexpr(n);\n\nconstexpr std::pair<long long,\
+    \ long long> inv_gcd(long long a, long long b) {\n    a = safe_mod(a, b);\n  \
+    \  if (a == 0) return {b, 0};\n    long long s = b, t = a;\n    long long m0 =\
+    \ 0, m1 = 1;\n    while (t) {\n        long long u = s / t;\n        s -= t *\
+    \ u;\n        m0 -= m1 * u; \n        auto tmp = s;\n        s = t;\n        t\
+    \ = tmp;\n        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n    }\n    if\
+    \ (m0 < 0) m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int primitive_root_constexpr(int\
     \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
     \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
     \ return 3;\n    int divs[20] = {};\n    divs[0] = 2;\n    int cnt = 1;\n    int\
@@ -174,7 +186,7 @@ data:
     \ g = 2;; g++) {\n        bool ok = true;\n        for (int i = 0; i < cnt; i++)\
     \ {\n            if (pow_mod_constexpr(g, (m - 1) / divs[i], m) == 1) {\n    \
     \            ok = false;\n                break;\n            }\n        }\n \
-    \       if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int primitive_root\
+    \       if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int primitive_root_flag\
     \ = primitive_root_constexpr(m);\n\n} // namespace noya2"
   dependsOn:
   - template/template.hpp
@@ -189,8 +201,8 @@ data:
   - fps/ntt.hpp
   - fps/relaxed_convolution.hpp
   - fps/fps_modint.hpp
-  - utility/modint_new.hpp
-  timestamp: '2023-08-26 19:50:16+09:00'
+  - utility/modint.hpp
+  timestamp: '2023-10-09 15:49:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/convolution.test.cpp
@@ -198,8 +210,12 @@ data:
   - test/fps/Convolution1000000007.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
   - test/fps/convolution_relaxed_convolution.test.cpp
+  - test/math/Determinant_of_Matrix.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
+  - test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/data_structure/Point_Set_Range_Composite.test.cpp
 documentation_of: math/prime.hpp
 layout: document
 redirect_from:

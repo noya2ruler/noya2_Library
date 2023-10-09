@@ -23,8 +23,8 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   - icon: ':heavy_check_mark:'
-    path: utility/modint_new.hpp
-    title: utility/modint_new.hpp
+    path: utility/modint.hpp
+    title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -151,13 +151,13 @@ data:
     \        return res;\n    }\n    FPS log(int d = -1) const {\n        assert(!(*this).empty()\
     \ && (*this)[0] == T(1));\n        if (d == -1) d = (*this).size();\n        return\
     \ (this->diff() * this->inv(d)).pre(d - 1).integral();\n    }\n};\n\n} // namespace\
-    \ noya2\n#line 2 \"fps/ntt.hpp\"\n\n#line 2 \"utility/modint_new.hpp\"\n\n#line\
-    \ 2 \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\n\nnamespace noya2 {\n\n\
-    constexpr ll safe_mod(ll x, ll m) {\n    x %= m;\n    if (x < 0) x += m;\n   \
-    \ return x;\n}\n\nconstexpr ll pow_mod_constexpr(ll x, ll n, int m) {\n    if\
-    \ (m == 1) return 0;\n    uint _m = (uint)(m);\n    ull r = 1;\n    ull y = safe_mod(x,\
-    \ m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n        y = (y *\
-    \ y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int\
+    \ noya2\n#line 2 \"fps/ntt.hpp\"\n\n#line 2 \"utility/modint.hpp\"\n\n#line 2\
+    \ \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\n\nnamespace noya2 {\n\nconstexpr\
+    \ ll safe_mod(ll x, ll m) {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n\
+    }\n\nconstexpr ll pow_mod_constexpr(ll x, ll n, int m) {\n    if (m == 1) return\
+    \ 0;\n    uint _m = (uint)(m);\n    ull r = 1;\n    ull y = safe_mod(x, m);\n\
+    \    while (n) {\n        if (n & 1) r = (r * y) % _m;\n        y = (y * y) %\
+    \ _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int\
     \ n) {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
     \ true;\n    if (n % 2 == 0) return false;\n    ll d = n - 1;\n    while (d %\
     \ 2 == 0) d /= 2;\n    constexpr ll bases[3] = {2, 7, 61};\n    for (ll a : bases)\
@@ -165,13 +165,13 @@ data:
     \ (t != n - 1 && y != 1 && y != n - 1) {\n            y = y * y % n;\n       \
     \     t <<= 1;\n        }\n        if (y != n - 1 && t % 2 == 0) {\n         \
     \   return false;\n        }\n    }\n    return true;\n}\ntemplate <int n> constexpr\
-    \ bool is_prime = is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long\
-    \ long> inv_gcd(long long a, long long b) {\n    a = safe_mod(a, b);\n    if (a\
-    \ == 0) return {b, 0};\n    long long s = b, t = a;\n    long long m0 = 0, m1\
-    \ = 1;\n    while (t) {\n        long long u = s / t;\n        s -= t * u;\n \
-    \       m0 -= m1 * u; \n        auto tmp = s;\n        s = t;\n        t = tmp;\n\
-    \        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n    }\n    if (m0 < 0)\
-    \ m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int primitive_root_constexpr(int\
+    \ bool is_prime_flag = is_prime_constexpr(n);\n\nconstexpr std::pair<long long,\
+    \ long long> inv_gcd(long long a, long long b) {\n    a = safe_mod(a, b);\n  \
+    \  if (a == 0) return {b, 0};\n    long long s = b, t = a;\n    long long m0 =\
+    \ 0, m1 = 1;\n    while (t) {\n        long long u = s / t;\n        s -= t *\
+    \ u;\n        m0 -= m1 * u; \n        auto tmp = s;\n        s = t;\n        t\
+    \ = tmp;\n        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n    }\n    if\
+    \ (m0 < 0) m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int primitive_root_constexpr(int\
     \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
     \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
     \ return 3;\n    int divs[20] = {};\n    divs[0] = 2;\n    int cnt = 1;\n    int\
@@ -182,8 +182,8 @@ data:
     \ g = 2;; g++) {\n        bool ok = true;\n        for (int i = 0; i < cnt; i++)\
     \ {\n            if (pow_mod_constexpr(g, (m - 1) / divs[i], m) == 1) {\n    \
     \            ok = false;\n                break;\n            }\n        }\n \
-    \       if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int primitive_root\
-    \ = primitive_root_constexpr(m);\n\n} // namespace noya2\n#line 4 \"utility/modint_new.hpp\"\
+    \       if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int primitive_root_flag\
+    \ = primitive_root_constexpr(m);\n\n} // namespace noya2\n#line 4 \"utility/modint.hpp\"\
     \n\nnamespace noya2{\n\nstruct barrett {\n    uint _m;\n    ull  im;\n    explicit\
     \ barrett(uint m) : _m(m), im((ull)(-1) / m + 1) {}\n    uint umod() const { return\
     \ _m; }\n    uint mul(uint a, uint b) const {\n        ull z = a;\n        z *=\
@@ -229,7 +229,7 @@ data:
     \ return os << p.val();\n    }\n    friend std::istream &operator>>(std::istream\
     \ &is, mint &a) {\n        long long t; is >> t;\n        a = mint(t);\n     \
     \   return (is);\n    }\n\n  private:\n    unsigned int _v;\n    static constexpr\
-    \ unsigned int umod() { return m; }\n    static constexpr bool prime = is_prime<m>;\n\
+    \ unsigned int umod() { return m; }\n    static constexpr bool prime = is_prime_flag<m>;\n\
     };\n\n\ntemplate <int id> struct dynamic_modint {\n    using mint = dynamic_modint;\n\
     \  public:\n    static int mod() { return (int)(bt.umod()); }\n    static void\
     \ set_mod(int m) {\n        assert(1 <= m);\n        bt = barrett(m);\n    }\n\
@@ -429,12 +429,12 @@ data:
   - template/const.hpp
   - template/utils.hpp
   - fps/ntt.hpp
-  - utility/modint_new.hpp
+  - utility/modint.hpp
   - math/prime.hpp
   isVerificationFile: false
   path: fps/fps_modint.hpp
   requiredBy: []
-  timestamp: '2023-09-07 16:00:22+09:00'
+  timestamp: '2023-10-09 15:49:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/Convolution1000000007.test.cpp

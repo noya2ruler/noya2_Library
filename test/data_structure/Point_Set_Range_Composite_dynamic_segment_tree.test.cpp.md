@@ -20,8 +20,8 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   - icon: ':heavy_check_mark:'
-    path: utility/modint_new.hpp
-    title: utility/modint_new.hpp
+    path: utility/modint.hpp
+    title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -133,7 +133,7 @@ data:
     \          else {\n                if (cur->rch == nullptr) return e();\n    \
     \            cur = cur->rch;\n                le = md;\n            }\n      \
     \  }\n        return cur->val;\n    }\n};\n\n} // namespace noya2\n#line 2 \"\
-    utility/modint_new.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\
+    utility/modint.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\
     \n\nnamespace noya2 {\n\nconstexpr ll safe_mod(ll x, ll m) {\n    x %= m;\n  \
     \  if (x < 0) x += m;\n    return x;\n}\n\nconstexpr ll pow_mod_constexpr(ll x,\
     \ ll n, int m) {\n    if (m == 1) return 0;\n    uint _m = (uint)(m);\n    ull\
@@ -146,8 +146,8 @@ data:
     \     ll y = pow_mod_constexpr(a, t, n);\n        while (t != n - 1 && y != 1\
     \ && y != n - 1) {\n            y = y * y % n;\n            t <<= 1;\n       \
     \ }\n        if (y != n - 1 && t % 2 == 0) {\n            return false;\n    \
-    \    }\n    }\n    return true;\n}\ntemplate <int n> constexpr bool is_prime =\
-    \ is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long long> inv_gcd(long\
+    \    }\n    }\n    return true;\n}\ntemplate <int n> constexpr bool is_prime_flag\
+    \ = is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long long> inv_gcd(long\
     \ long a, long long b) {\n    a = safe_mod(a, b);\n    if (a == 0) return {b,\
     \ 0};\n    long long s = b, t = a;\n    long long m0 = 0, m1 = 1;\n    while (t)\
     \ {\n        long long u = s / t;\n        s -= t * u;\n        m0 -= m1 * u;\
@@ -164,8 +164,8 @@ data:
     \ g = 2;; g++) {\n        bool ok = true;\n        for (int i = 0; i < cnt; i++)\
     \ {\n            if (pow_mod_constexpr(g, (m - 1) / divs[i], m) == 1) {\n    \
     \            ok = false;\n                break;\n            }\n        }\n \
-    \       if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int primitive_root\
-    \ = primitive_root_constexpr(m);\n\n} // namespace noya2\n#line 4 \"utility/modint_new.hpp\"\
+    \       if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int primitive_root_flag\
+    \ = primitive_root_constexpr(m);\n\n} // namespace noya2\n#line 4 \"utility/modint.hpp\"\
     \n\nnamespace noya2{\n\nstruct barrett {\n    uint _m;\n    ull  im;\n    explicit\
     \ barrett(uint m) : _m(m), im((ull)(-1) / m + 1) {}\n    uint umod() const { return\
     \ _m; }\n    uint mul(uint a, uint b) const {\n        ull z = a;\n        z *=\
@@ -211,7 +211,7 @@ data:
     \ return os << p.val();\n    }\n    friend std::istream &operator>>(std::istream\
     \ &is, mint &a) {\n        long long t; is >> t;\n        a = mint(t);\n     \
     \   return (is);\n    }\n\n  private:\n    unsigned int _v;\n    static constexpr\
-    \ unsigned int umod() { return m; }\n    static constexpr bool prime = is_prime<m>;\n\
+    \ unsigned int umod() { return m; }\n    static constexpr bool prime = is_prime_flag<m>;\n\
     };\n\n\ntemplate <int id> struct dynamic_modint {\n    using mint = dynamic_modint;\n\
     \  public:\n    static int mod() { return (int)(bt.umod()); }\n    static void\
     \ set_mod(int m) {\n        assert(1 <= m);\n        bt = barrett(m);\n    }\n\
@@ -265,8 +265,8 @@ data:
     \ b] = seg.prod(l,r);\n            out(a*x+b);\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n\n#include\"../../template/template.hpp\"\n#include\"../../data_structure/dynamic_segment_tree.hpp\"\
-    \n#include\"../../utility/modint_new.hpp\"\nusing mint = modint998244353;\nusing\
-    \ pmm = pair<mint,mint>;\n\npmm op(pmm a, pmm b){\n    return pmm(a.first*b.first,a.second*b.first+b.second);\n\
+    \n#include\"../../utility/modint.hpp\"\nusing mint = modint998244353;\nusing pmm\
+    \ = pair<mint,mint>;\n\npmm op(pmm a, pmm b){\n    return pmm(a.first*b.first,a.second*b.first+b.second);\n\
     }\npmm e(){\n    return pmm(1,0);\n}\n\nint main(){\n    int n, q; in(n,q);\n\
     \    dynamic_segtree<pmm,op,e> seg(n);\n    rep(i,n){\n        mint a, b; in(a,b);\n\
     \        seg.set(i,pmm(a,b));\n    }\n    while (q--){\n        int t; in(t);\n\
@@ -280,12 +280,12 @@ data:
   - template/const.hpp
   - template/utils.hpp
   - data_structure/dynamic_segment_tree.hpp
-  - utility/modint_new.hpp
+  - utility/modint.hpp
   - math/prime.hpp
   isVerificationFile: true
   path: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2023-09-07 15:57:19+09:00'
+  timestamp: '2023-10-09 15:49:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp

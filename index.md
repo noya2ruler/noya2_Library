@@ -170,9 +170,9 @@ data:
     - icon: ':warning:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
-    - icon: ':heavy_check_mark:'
-      path: utility/modint_new.hpp
-      title: utility/modint_new.hpp
+    - icon: ':warning:'
+      path: utility/modint_old.hpp
+      title: utility/modint_old.hpp
   verificationCategories:
   - name: test/data_structure
     pages:

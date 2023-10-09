@@ -104,12 +104,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/tree_query_weighted.hpp
     title: tree/tree_query_weighted.hpp
+  - icon: ':heavy_check_mark:'
+    path: utility/modint.hpp
+    title: utility/modint.hpp
   - icon: ':warning:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
-  - icon: ':heavy_check_mark:'
-    path: utility/modint_new.hpp
-    title: utility/modint_new.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
@@ -308,7 +308,7 @@ data:
   - string/rolling_hash.hpp
   - math/prime.hpp
   - math/matrix.hpp
-  - utility/modint_new.hpp
+  - utility/modint.hpp
   - utility/modint61.hpp
   - tree/Tree_core.hpp
   - tree/tree_query_weighted.hpp
