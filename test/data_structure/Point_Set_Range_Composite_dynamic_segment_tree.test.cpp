@@ -2,7 +2,7 @@
 
 #include"../../template/template.hpp"
 #include"../../data_structure/dynamic_segment_tree.hpp"
-#include"../../utility/modint_new.hpp"
+#include"../../utility/modint.hpp"
 using mint = modint998244353;
 using pmm = pair<mint,mint>;
 

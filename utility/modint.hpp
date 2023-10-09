@@ -1,204 +1,27 @@
 #pragma once
 
-// AtCoderLibrary をそのままパクっている なにもわかっていない
-// \( x _______ x) ~
+#include"../math/prime.hpp"
 
-#include <cassert>
-#include <numeric>
-#include <type_traits>
-#include <utility>
-
-namespace noya2 {
-
-constexpr long long safe_mod(long long x, long long m) {
-    x %= m;
-    if (x < 0) x += m;
-    return x;
-}
+namespace noya2{
 
 struct barrett {
-    unsigned int _m;
-    unsigned long long im;
-
-    explicit barrett(unsigned int m) : _m(m), im((unsigned long long)(-1) / m + 1) {}
-
-    unsigned int umod() const { return _m; }
-
-    unsigned int mul(unsigned int a, unsigned int b) const {
-        unsigned long long z = a;
+    uint _m;
+    ull  im;
+    explicit barrett(uint m) : _m(m), im((ull)(-1) / m + 1) {}
+    uint umod() const { return _m; }
+    uint mul(uint a, uint b) const {
+        ull z = a;
         z *= b;
-#ifdef _MSC_VER
-        unsigned long long x;
-        _umul128(z, im, &x);
-#else
-        unsigned long long x = (unsigned long long)(((unsigned __int128)(z)*im) >> 64);
-#endif
-        unsigned int v = (unsigned int)(z - x * _m);
+        ull x = ull((__uint128_t(z) * im) >> 64);
+        uint v = (uint)(z - x * _m);
         if (_m <= v) v += _m;
         return v;
     }
 };
 
-constexpr long long pow_mod_constexpr(long long x, long long n, int m) {
-    if (m == 1) return 0;
-    unsigned int _m = (unsigned int)(m);
-    unsigned long long r = 1;
-    unsigned long long y = safe_mod(x, m);
-    while (n) {
-        if (n & 1) r = (r * y) % _m;
-        y = (y * y) % _m;
-        n >>= 1;
-    }
-    return r;
-}
-
-constexpr bool is_prime_constexpr(int n) {
-    if (n <= 1) return false;
-    if (n == 2 || n == 7 || n == 61) return true;
-    if (n % 2 == 0) return false;
-    long long d = n - 1;
-    while (d % 2 == 0) d /= 2;
-    constexpr long long bases[3] = {2, 7, 61};
-    for (long long a : bases) {
-        long long t = d;
-        long long y = pow_mod_constexpr(a, t, n);
-        while (t != n - 1 && y != 1 && y != n - 1) {
-            y = y * y % n;
-            t <<= 1;
-        }
-        if (y != n - 1 && t % 2 == 0) {
-            return false;
-        }
-    }
-    return true;
-}
-template <int n> constexpr bool is_prime = is_prime_constexpr(n);
-
-// @param b `1 <= b`
-// @return pair(g, x) s.t. g = gcd(a, b), xa = g (mod b), 0 <= x < b/g
-constexpr std::pair<long long, long long> inv_gcd(long long a, long long b) {
-    a = safe_mod(a, b);
-    if (a == 0) return {b, 0};
-
-    long long s = b, t = a;
-    long long m0 = 0, m1 = 1;
-
-    while (t) {
-        long long u = s / t;
-        s -= t * u;
-        m0 -= m1 * u; 
-
-        auto tmp = s;
-        s = t;
-        t = tmp;
-        tmp = m0;
-        m0 = m1;
-        m1 = tmp;
-    }
-    if (m0 < 0) m0 += b / s;
-    return {s, m0};
-}
-
-constexpr int primitive_root_constexpr(int m) {
-    if (m == 2) return 1;
-    if (m == 167772161) return 3;
-    if (m == 469762049) return 3;
-    if (m == 754974721) return 11;
-    if (m == 998244353) return 3;
-    int divs[20] = {};
-    divs[0] = 2;
-    int cnt = 1;
-    int x = (m - 1) / 2;
-    while (x % 2 == 0) x /= 2;
-    for (int i = 3; (long long)(i)*i <= x; i += 2) {
-        if (x % i == 0) {
-            divs[cnt++] = i;
-            while (x % i == 0) {
-                x /= i;
-            }
-        }
-    }
-    if (x > 1) {
-        divs[cnt++] = x;
-    }
-    for (int g = 2;; g++) {
-        bool ok = true;
-        for (int i = 0; i < cnt; i++) {
-            if (pow_mod_constexpr(g, (m - 1) / divs[i], m) == 1) {
-                ok = false;
-                break;
-            }
-        }
-        if (ok) return g;
-    }
-}
-template <int m> constexpr int primitive_root = primitive_root_constexpr(m);
-
-}  // namespace noya2
-
-namespace noya2 {
-
-#ifndef _MSC_VER
-template <class T>
-using is_signed_int128 = typename std::conditional<std::is_same<T, __int128_t>::value || std::is_same<T, __int128>::value, std::true_type, std::false_type>::type;
-
-template <class T>
-using is_unsigned_int128 = typename std::conditional<std::is_same<T, __uint128_t>::value || std::is_same<T, unsigned __int128>::value, std::true_type, std::false_type>::type;
-
-template <class T>
-using make_unsigned_int128 = typename std::conditional<std::is_same<T, __int128_t>::value, __uint128_t, unsigned __int128>;
-
-template <class T>
-using is_integral = typename std::conditional<std::is_integral<T>::value || is_signed_int128<T>::value || is_unsigned_int128<T>::value, std::true_type, std::false_type>::type;
-
-template <class T>
-using is_signed_int = typename std::conditional<(is_integral<T>::value && std::is_signed<T>::value) || is_signed_int128<T>::value, std::true_type, std::false_type>::type;
-
-template <class T>
-using is_unsigned_int = typename std::conditional<(is_integral<T>::value && std::is_unsigned<T>::value) || is_unsigned_int128<T>::value, std::true_type, std::false_type>::type;
-
-template <class T>
-using to_unsigned = typename std::conditional<is_signed_int128<T>::value, make_unsigned_int128<T>, typename std::conditional<std::is_signed<T>::value, std::make_unsigned<T>, std::common_type<T>>::type>::type;
-
-#else
-
-template <class T> using is_integral = typename std::is_integral<T>;
-
-template <class T>
-using is_signed_int = typename std::conditional<is_integral<T>::value && std::is_signed<T>::value, std::true_type, std::false_type>::type;
-
-template <class T>
-using is_unsigned_int = typename std::conditional<is_integral<T>::value && std::is_unsigned<T>::value, std::true_type, std::false_type>::type;
-
-template <class T>
-using to_unsigned = typename std::conditional<is_signed_int<T>::value, std::make_unsigned<T>, std::common_type<T>>::type;
-
-#endif
-
-template <class T>
-using is_signed_int_t = std::enable_if_t<is_signed_int<T>::value>;
-
-template <class T>
-using is_unsigned_int_t = std::enable_if_t<is_unsigned_int<T>::value>;
-
-template <class T> using to_unsigned_t = typename to_unsigned<T>::type;
-
-}  // namespace noya2
-
-namespace noya2 {
-
-struct modint_base {};
-struct static_modint_base : modint_base {};
-
-template <class T> using is_modint = std::is_base_of<modint_base, T>;
-template <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;
-
-}  // namespace noya2
-
-template <int m, std::enable_if_t<(1 <= m)>* = nullptr>
-struct static_modint : noya2::static_modint_base {
+template <int m>
+struct static_modint {
     using mint = static_modint;
-
   public:
     static constexpr int mod() { return m; }
     static mint raw(int v) {
@@ -206,21 +29,18 @@ struct static_modint : noya2::static_modint_base {
         x._v = v;
         return x;
     }
-
-    static_modint() : _v(0) {}
-    template <class T, noya2::is_signed_int_t<T>* = nullptr>
-    static_modint(T v) {
-        long long x = (long long)(v % (long long)(umod()));
+    constexpr static_modint() : _v(0) {}
+    template<signed_integral T>
+    constexpr static_modint(T v){
+        ll x = (ll)(v % (ll)(umod()));
         if (x < 0) x += umod();
-        _v = (unsigned int)(x);
+        _v = (uint)(x);
     }
-    template <class T, noya2::is_unsigned_int_t<T>* = nullptr>
-    static_modint(T v) {
-        _v = (unsigned int)(v % umod());
+    template<unsigned_integral T>
+    constexpr static_modint(T v){
+        _v = (uint)(v % umod());
     }
-
-    unsigned int val() const { return _v; }
-
+    constexpr unsigned int val() const { return _v; }
     mint& operator++() {
         _v++;
         if (_v == umod()) _v = 0;
@@ -241,29 +61,26 @@ struct static_modint : noya2::static_modint_base {
         --*this;
         return result;
     }
-
-    mint& operator+=(const mint& rhs) {
+    constexpr mint& operator+=(const mint& rhs) {
         _v += rhs._v;
         if (_v >= umod()) _v -= umod();
         return *this;
     }
-    mint& operator-=(const mint& rhs) {
+    constexpr mint& operator-=(const mint& rhs) {
         _v -= rhs._v;
         if (_v >= umod()) _v += umod();
         return *this;
     }
-    mint& operator*=(const mint& rhs) {
-        unsigned long long z = _v;
+    constexpr mint& operator*=(const mint& rhs) {
+        ull z = _v;
         z *= rhs._v;
-        _v = (unsigned int)(z % umod());
+        _v = (uint)(z % umod());
         return *this;
     }
-    mint& operator/=(const mint& rhs) { return *this = *this * rhs.inv(); }
-
-    mint operator+() const { return *this; }
-    mint operator-() const { return mint() - *this; }
-
-    mint pow(long long n) const {
+    constexpr mint& operator/=(const mint& rhs) { return *this = *this * rhs.inv(); }
+    constexpr mint operator+() const { return *this; }
+    constexpr mint operator-() const { return mint() - *this; }
+    constexpr mint pow(ll n) const {
         assert(0 <= n);
         mint x = *this, r = 1;
         while (n) {
@@ -273,33 +90,32 @@ struct static_modint : noya2::static_modint_base {
         }
         return r;
     }
-    mint inv() const {
+    constexpr mint inv() const {
         if (prime) {
             assert(_v);
             return pow(umod() - 2);
         } else {
-            auto eg = noya2::inv_gcd(_v, m);
+            auto eg = inv_gcd(_v, m);
             assert(eg.first == 1);
             return eg.second;
         }
     }
-
-    friend mint operator+(const mint& lhs, const mint& rhs) {
+    friend constexpr mint operator+(const mint& lhs, const mint& rhs) {
         return mint(lhs) += rhs;
     }
-    friend mint operator-(const mint& lhs, const mint& rhs) {
+    friend constexpr mint operator-(const mint& lhs, const mint& rhs) {
         return mint(lhs) -= rhs;
     }
-    friend mint operator*(const mint& lhs, const mint& rhs) {
+    friend constexpr mint operator*(const mint& lhs, const mint& rhs) {
         return mint(lhs) *= rhs;
     }
-    friend mint operator/(const mint& lhs, const mint& rhs) {
+    friend constexpr mint operator/(const mint& lhs, const mint& rhs) {
         return mint(lhs) /= rhs;
     }
-    friend bool operator==(const mint& lhs, const mint& rhs) {
+    friend constexpr bool operator==(const mint& lhs, const mint& rhs) {
         return lhs._v == rhs._v;
     }
-    friend bool operator!=(const mint& lhs, const mint& rhs) {
+    friend constexpr bool operator!=(const mint& lhs, const mint& rhs) {
         return lhs._v != rhs._v;
     }
     friend std::ostream &operator<<(std::ostream &os, const mint& p) {
@@ -314,17 +130,17 @@ struct static_modint : noya2::static_modint_base {
   private:
     unsigned int _v;
     static constexpr unsigned int umod() { return m; }
-    static constexpr bool prime = noya2::is_prime<m>;
+    static constexpr bool prime = is_prime_flag<m>;
 };
 
-template <int id> struct dynamic_modint : noya2::modint_base {
-    using mint = dynamic_modint;
 
+template <int id> struct dynamic_modint {
+    using mint = dynamic_modint;
   public:
     static int mod() { return (int)(bt.umod()); }
     static void set_mod(int m) {
         assert(1 <= m);
-        bt = noya2::barrett(m);
+        bt = barrett(m);
     }
     static mint raw(int v) {
         mint x;
@@ -333,19 +149,17 @@ template <int id> struct dynamic_modint : noya2::modint_base {
     }
 
     dynamic_modint() : _v(0) {}
-    template <class T, noya2::is_signed_int_t<T>* = nullptr>
-    dynamic_modint(T v) {
-        long long x = (long long)(v % (long long)(mod()));
+    template<signed_integral T>
+    dynamic_modint(T v){
+        ll x = (ll)(v % (ll)(mod()));
         if (x < 0) x += mod();
-        _v = (unsigned int)(x);
+        _v = (uint)(x);
     }
-    template <class T, noya2::is_unsigned_int_t<T>* = nullptr>
-    dynamic_modint(T v) {
-        _v = (unsigned int)(v % mod());
+    template<unsigned_integral T>
+    dynamic_modint(T v){
+        _v = (uint)(v % mod());
     }
-
-    unsigned int val() const { return _v; }
-
+    uint val() const { return _v; }
     mint& operator++() {
         _v++;
         if (_v == umod()) _v = 0;
@@ -366,7 +180,6 @@ template <int id> struct dynamic_modint : noya2::modint_base {
         --*this;
         return result;
     }
-
     mint& operator+=(const mint& rhs) {
         _v += rhs._v;
         if (_v >= umod()) _v -= umod();
@@ -382,10 +195,8 @@ template <int id> struct dynamic_modint : noya2::modint_base {
         return *this;
     }
     mint& operator/=(const mint& rhs) { return *this = *this * rhs.inv(); }
-
     mint operator+() const { return *this; }
     mint operator-() const { return mint() - *this; }
-
     mint pow(long long n) const {
         assert(0 <= n);
         mint x = *this, r = 1;
@@ -401,7 +212,6 @@ template <int id> struct dynamic_modint : noya2::modint_base {
         assert(eg.first == 1);
         return eg.second;
     }
-
     friend mint operator+(const mint& lhs, const mint& rhs) {
         return mint(lhs) += rhs;
     }
@@ -431,7 +241,7 @@ template <int id> struct dynamic_modint : noya2::modint_base {
 
   private:
     unsigned int _v;
-    static noya2::barrett bt;
+    static barrett bt;
     static unsigned int umod() { return bt.umod(); }
 };
 template <int id> noya2::barrett dynamic_modint<id>::bt(998244353);
@@ -440,19 +250,12 @@ using modint998244353 = static_modint<998244353>;
 using modint1000000007 = static_modint<1000000007>;
 using modint = dynamic_modint<-1>;
 
-namespace noya2 {
+template<typename T>
+concept Modint = requires (T &a){
+    T::mod();
+    a.inv();
+    a.val();
+    a.pow(declval<int>());
+};
 
-template <class T>
-using is_static_modint = std::is_base_of<noya2::static_modint_base, T>;
-
-template <class T>
-using is_static_modint_t = std::enable_if_t<is_static_modint<T>::value>;
-
-template <class> struct is_dynamic_modint : public std::false_type {};
-template <int id>
-struct is_dynamic_modint<dynamic_modint<id>> : public std::true_type {};
-
-template <class T>
-using is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;
-
-}  // namespace noya2
+} // namespace noya2

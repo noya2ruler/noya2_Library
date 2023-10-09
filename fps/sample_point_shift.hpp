@@ -2,7 +2,7 @@
 
 #include"../template/template.hpp"
 #include"../fps/formal_power_series.hpp"
-#include"../utility/modint_new.hpp"
+#include"../utility/modint.hpp"
 #include"../math/binomial.hpp"
 
 namespace noya2{

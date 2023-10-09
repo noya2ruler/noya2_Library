@@ -1,7 +1,7 @@
 #pragma once
 
 #include"../template/template.hpp"
-#include"../utility/modint_new.hpp"
+#include"../utility/modint.hpp"
 
 namespace noya2{
 

@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod"
 
 #include"../../template/template.hpp"
-#include"../../utility/modint_new.hpp"
+#include"../../utility/modint.hpp"
 #include"../../math/binomial.hpp"
 
 int main(){

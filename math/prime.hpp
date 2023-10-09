@@ -43,7 +43,7 @@ constexpr bool is_prime_constexpr(int n) {
     }
     return true;
 }
-template <int n> constexpr bool is_prime = is_prime_constexpr(n);
+template <int n> constexpr bool is_prime_flag = is_prime_constexpr(n);
 
 constexpr std::pair<long long, long long> inv_gcd(long long a, long long b) {
     a = safe_mod(a, b);
@@ -98,6 +98,6 @@ constexpr int primitive_root_constexpr(int m) {
         if (ok) return g;
     }
 }
-template <int m> constexpr int primitive_root = primitive_root_constexpr(m);
+template <int m> constexpr int primitive_root_flag = primitive_root_constexpr(m);
 
 } // namespace noya2
