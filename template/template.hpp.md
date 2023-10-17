@@ -187,6 +187,9 @@ data:
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/Sum_of_Floor_of_Linear.test.cpp
+    title: test/math/Sum_of_Floor_of_Linear.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -332,6 +335,7 @@ data:
   - test/math/Determinant_of_Matrix.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/Sum_of_Floor_of_Linear.test.cpp
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/aoj_0489.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
