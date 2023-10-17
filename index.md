@@ -86,6 +86,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: math/binomial.hpp
+    - icon: ':warning:'
+      path: math/floor_sum.hpp
+      title: math/floor_sum.hpp
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
