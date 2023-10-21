@@ -170,20 +170,21 @@ data:
     \     nxt.resize(n);\n        nxt[root] = root;\n        int nowtime = 0;\n  \
     \      auto dfs = [&](auto sfs, int v) -> void {\n            down[v] = nowtime++;\n\
     \            tour[down[v]] = v;\n            int stv = start_skip_parent(v);\n\
-    \            if (stv >= start[v+1]) return ;\n            nxt[es[stv]] = nxt[v];\n\
-    \            sfs(sfs,es[stv]);\n            for (int i = stv+1; i < start[v+1];\
-    \ i++){\n                nxt[es[i]] = es[i];\n                sfs(sfs,es[i]);\n\
-    \            }\n            up[v] = nowtime;\n        };\n        dfs(dfs,root);\n\
-    \    }\n    inline int start_skip_parent(int v) const { return start[v]+int(v\
-    \ != root); }\n    vector<pair<int,int>> ascend(int u, int v){ // [u,v), depth[u]\
-    \ > depth[v]\n        vector<pair<int,int>> res;\n        while (nxt[u] != nxt[v]){\n\
-    \            res.emplace_back(down[u],down[nxt[u]]); // [s1,t1], [s2,t2], ...\n\
-    \            u = parent(nxt[u]);\n        }\n        if (u != v) res.emplace_back(down[u],down[v]+1);\
-    \ // [s,t). v is not in the range (down[] is ordered opposite direction of depth)\n\
-    \        return res;\n    }\n    vector<pair<int,int>> descend(int u, int v){\
-    \ // (u,v], depth[u] < depth[v]\n        if (u == v) return {};\n        if (nxt[u]\
-    \ == nxt[v]){\n            return {pair<int,int>(down[u]+1,down[v])}; // (s,t].\
-    \ u is not in the range\n        }\n        vector<pair<int,int>> res = descend(u,parent(nxt[v]));\n\
+    \            if (stv < start[v+1]){\n                nxt[es[stv]] = nxt[v];\n\
+    \                sfs(sfs,es[stv]);\n                for (int i = stv+1; i < start[v+1];\
+    \ i++){\n                    nxt[es[i]] = es[i];\n                    sfs(sfs,es[i]);\n\
+    \                }\n            }\n            up[v] = nowtime;\n        };\n\
+    \        dfs(dfs,root);\n    }\n    inline int start_skip_parent(int v) const\
+    \ { return start[v]+int(v != root); }\n    vector<pair<int,int>> ascend(int u,\
+    \ int v){ // [u,v), depth[u] > depth[v]\n        vector<pair<int,int>> res;\n\
+    \        while (nxt[u] != nxt[v]){\n            res.emplace_back(down[u],down[nxt[u]]);\
+    \ // [s1,t1], [s2,t2], ...\n            u = parent(nxt[u]);\n        }\n     \
+    \   if (u != v) res.emplace_back(down[u],down[v]+1); // [s,t). v is not in the\
+    \ range (down[] is ordered opposite direction of depth)\n        return res;\n\
+    \    }\n    vector<pair<int,int>> descend(int u, int v){ // (u,v], depth[u] <\
+    \ depth[v]\n        if (u == v) return {};\n        if (nxt[u] == nxt[v]){\n \
+    \           return {pair<int,int>(down[u]+1,down[v])}; // (s,t]. u is not in the\
+    \ range\n        }\n        vector<pair<int,int>> res = descend(u,parent(nxt[v]));\n\
     \        res.emplace_back(down[nxt[v]],down[v]); // [s1,t1], [s2,t2], ...\n  \
     \      return res;\n    }\n    int n, root, inner_edge_id;\n    std::vector<int>\
     \ es, start, dep, sub, down, up, tour, nxt;\n};\n\n} // namespace noya2\n"
@@ -281,20 +282,21 @@ data:
     \     nxt.resize(n);\n        nxt[root] = root;\n        int nowtime = 0;\n  \
     \      auto dfs = [&](auto sfs, int v) -> void {\n            down[v] = nowtime++;\n\
     \            tour[down[v]] = v;\n            int stv = start_skip_parent(v);\n\
-    \            if (stv >= start[v+1]) return ;\n            nxt[es[stv]] = nxt[v];\n\
-    \            sfs(sfs,es[stv]);\n            for (int i = stv+1; i < start[v+1];\
-    \ i++){\n                nxt[es[i]] = es[i];\n                sfs(sfs,es[i]);\n\
-    \            }\n            up[v] = nowtime;\n        };\n        dfs(dfs,root);\n\
-    \    }\n    inline int start_skip_parent(int v) const { return start[v]+int(v\
-    \ != root); }\n    vector<pair<int,int>> ascend(int u, int v){ // [u,v), depth[u]\
-    \ > depth[v]\n        vector<pair<int,int>> res;\n        while (nxt[u] != nxt[v]){\n\
-    \            res.emplace_back(down[u],down[nxt[u]]); // [s1,t1], [s2,t2], ...\n\
-    \            u = parent(nxt[u]);\n        }\n        if (u != v) res.emplace_back(down[u],down[v]+1);\
-    \ // [s,t). v is not in the range (down[] is ordered opposite direction of depth)\n\
-    \        return res;\n    }\n    vector<pair<int,int>> descend(int u, int v){\
-    \ // (u,v], depth[u] < depth[v]\n        if (u == v) return {};\n        if (nxt[u]\
-    \ == nxt[v]){\n            return {pair<int,int>(down[u]+1,down[v])}; // (s,t].\
-    \ u is not in the range\n        }\n        vector<pair<int,int>> res = descend(u,parent(nxt[v]));\n\
+    \            if (stv < start[v+1]){\n                nxt[es[stv]] = nxt[v];\n\
+    \                sfs(sfs,es[stv]);\n                for (int i = stv+1; i < start[v+1];\
+    \ i++){\n                    nxt[es[i]] = es[i];\n                    sfs(sfs,es[i]);\n\
+    \                }\n            }\n            up[v] = nowtime;\n        };\n\
+    \        dfs(dfs,root);\n    }\n    inline int start_skip_parent(int v) const\
+    \ { return start[v]+int(v != root); }\n    vector<pair<int,int>> ascend(int u,\
+    \ int v){ // [u,v), depth[u] > depth[v]\n        vector<pair<int,int>> res;\n\
+    \        while (nxt[u] != nxt[v]){\n            res.emplace_back(down[u],down[nxt[u]]);\
+    \ // [s1,t1], [s2,t2], ...\n            u = parent(nxt[u]);\n        }\n     \
+    \   if (u != v) res.emplace_back(down[u],down[v]+1); // [s,t). v is not in the\
+    \ range (down[] is ordered opposite direction of depth)\n        return res;\n\
+    \    }\n    vector<pair<int,int>> descend(int u, int v){ // (u,v], depth[u] <\
+    \ depth[v]\n        if (u == v) return {};\n        if (nxt[u] == nxt[v]){\n \
+    \           return {pair<int,int>(down[u]+1,down[v])}; // (s,t]. u is not in the\
+    \ range\n        }\n        vector<pair<int,int>> res = descend(u,parent(nxt[v]));\n\
     \        res.emplace_back(down[nxt[v]],down[v]); // [s1,t1], [s2,t2], ...\n  \
     \      return res;\n    }\n    int n, root, inner_edge_id;\n    std::vector<int>\
     \ es, start, dep, sub, down, up, tour, nxt;\n};\n\n} // namespace noya2"
@@ -306,7 +308,7 @@ data:
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2023-09-29 03:18:23+09:00'
+  timestamp: '2023-10-22 06:17:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Vertex_Add_Path_Sum.test.cpp
