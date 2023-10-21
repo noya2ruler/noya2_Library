@@ -210,12 +210,13 @@ struct hldTree {
             down[v] = nowtime++;
             tour[down[v]] = v;
             int stv = start_skip_parent(v);
-            if (stv >= start[v+1]) return ;
-            nxt[es[stv]] = nxt[v];
-            sfs(sfs,es[stv]);
-            for (int i = stv+1; i < start[v+1]; i++){
-                nxt[es[i]] = es[i];
-                sfs(sfs,es[i]);
+            if (stv < start[v+1]){
+                nxt[es[stv]] = nxt[v];
+                sfs(sfs,es[stv]);
+                for (int i = stv+1; i < start[v+1]; i++){
+                    nxt[es[i]] = es[i];
+                    sfs(sfs,es[i]);
+                }
             }
             up[v] = nowtime;
         };
