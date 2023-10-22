@@ -23,6 +23,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/li_chao_tree.hpp
     title: data_structure/li_chao_tree.hpp
+  - icon: ':warning:'
+    path: data_structure/offline_dynamic_connectivity.hpp
+    title: data_structure/offline_dynamic_connectivity.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
@@ -353,6 +356,7 @@ data:
   - data_structure/dsu.hpp
   - data_structure/li_chao_tree.hpp
   - data_structure/lazy_segment_tree.hpp
+  - data_structure/offline_dynamic_connectivity.hpp
   - data_structure/sparse_table.hpp
   timestamp: '2023-07-17 20:27:23+09:00'
   verificationStatus: LIBRARY_ALL_AC

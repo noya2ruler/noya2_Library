@@ -1,6 +1,9 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':warning:'
+    path: data_structure/rollback_dsu.hpp
+    title: data_structure/rollback_dsu.hpp
   - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
@@ -13,18 +16,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: data_structure/offline_dynamic_connectivity.hpp
-    title: data_structure/offline_dynamic_connectivity.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/rollback_dsu.hpp\"\n\n#line 2 \"template/template.hpp\"\
-    \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
+  bundledCode: "#line 2 \"data_structure/offline_dynamic_connectivity.hpp\"\n\n#line\
+    \ 2 \"data_structure/rollback_dsu.hpp\"\n\n#line 2 \"template/template.hpp\"\n\
+    using namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
     \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
     \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
     \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
@@ -88,37 +89,71 @@ data:
     \    }\n    void rollback(){\n        par_or_siz[logs.top().first] = logs.top().second;\
     \ logs.pop();\n        par_or_siz[logs.top().first] = logs.top().second; logs.pop();\n\
     \    }\n  private:\n    int n;\n    vector<int> par_or_siz;\n    stack<pair<int,int>>\
-    \ logs;\n};\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2 {\n\
-    \nstruct rollback_dsu {\n    rollback_dsu (int n_ = 0) : n(n_), par_or_siz(n_,-1)\
-    \ {};\n    int leader(int v){\n        assert(0 <= v && v < n);\n        if (par_or_siz[v]\
-    \ < 0) return v;\n        return leader(par_or_siz[v]);\n    }\n    bool same(int\
-    \ u, int v){\n        return leader(u) == leader(v);\n    }\n    int merge(int\
-    \ u, int v){\n        u = leader(u);\n        v = leader(v);\n        logs.push(make_pair(u,par_or_siz[u]));\n\
-    \        logs.push(make_pair(v,par_or_siz[v]));\n        if (u == v) return u;\n\
-    \        if (-par_or_siz[u] < -par_or_siz[v]) swap(u,v);\n        par_or_siz[u]\
-    \ += par_or_siz[v];\n        par_or_siz[v] = u;\n        return u;\n    }\n  \
-    \  int size(int v){\n        return -par_or_siz[leader(v)];\n    }\n    void rollback(){\n\
-    \        par_or_siz[logs.top().first] = logs.top().second; logs.pop();\n     \
-    \   par_or_siz[logs.top().first] = logs.top().second; logs.pop();\n    }\n  private:\n\
-    \    int n;\n    vector<int> par_or_siz;\n    stack<pair<int,int>> logs;\n};\n\
-    \n} // namespace noya2"
+    \ logs;\n};\n\n} // namespace noya2\n#line 4 \"data_structure/offline_dynamic_connectivity.hpp\"\
+    \n\nnamespace noya2 {\n\nstruct offline_dynamic_connectivity : rollback_dsu {\n\
+    \    using rollback_dsu::operator=;\n    offline_dynamic_connectivity (int n_\
+    \ = 0, unsigned int t_max = 0, size_t reserve_edge = 0) : n(n_) {\n        size\
+    \ = bit_ceil(t_max);\n        ids.resize(size*2);\n        *this = rollback_dsu(n);\n\
+    \        edges.reserve(reserve_edge);\n        inner_clock = -1;\n    }\n    void\
+    \ add_edge(int l, int r, int u, int v){\n        assert(0 <= l && l <= r && r\
+    \ <= size);\n        assert(0 <= u && u < n && 0 <= v && v < n);\n        l +=\
+    \ size, r += size;\n        int edge_id = edges.size();\n        while (l < r){\n\
+    \            if (l & 1) ids[l++].push_back(edge_id);\n            if (r & 1) ids[--r].push_back(edge_id);\n\
+    \            l >>= 1, r >>= 1;\n        }\n        edges.emplace_back(u,v);\n\
+    \    }\n    void build(){\n        inner_clock = 1;\n        while (inner_clock\
+    \ != size){\n            add_block(inner_clock);\n            inner_clock <<=\
+    \ 1;\n        }\n    }\n    void set(int t){\n        assert(0 <= t && t < size\
+    \ && inner_clock != -1);\n        t += size;\n        if (inner_clock == t) return\
+    \ ;\n        int k = 32 - countl_zero((unsigned int)(inner_clock ^ t));\n    \
+    \    for (int i = 0; i < k; i++){\n            del_block(inner_clock);\n     \
+    \       inner_clock >>= 1;\n        }\n        for (int i = k-1; i >= 0; i--){\n\
+    \            inner_clock <<= 1;\n            if (t >> i & 1) inner_clock++;\n\
+    \            add_block(inner_clock);\n        }\n        inner_clock = t;\n  \
+    \  }\n  private:\n    void add_block(int i){\n        for (auto &id : ids[i]){\n\
+    \            this->merge(edges[id].first,edges[id].second);\n        }\n    }\n\
+    \    void del_block(int i){\n        int ctr = ids[i].size();\n        while (ctr--)\
+    \ this->rollback();\n    }\n    int n, size, inner_clock;\n    vector<vector<int>>\
+    \ ids;\n    vector<pair<int,int>> edges;\n};\n\n} // namespace noya2\n"
+  code: "#pragma once\n\n#include\"../data_structure/rollback_dsu.hpp\"\n\nnamespace\
+    \ noya2 {\n\nstruct offline_dynamic_connectivity : rollback_dsu {\n    using rollback_dsu::operator=;\n\
+    \    offline_dynamic_connectivity (int n_ = 0, unsigned int t_max = 0, size_t\
+    \ reserve_edge = 0) : n(n_) {\n        size = bit_ceil(t_max);\n        ids.resize(size*2);\n\
+    \        *this = rollback_dsu(n);\n        edges.reserve(reserve_edge);\n    \
+    \    inner_clock = -1;\n    }\n    void add_edge(int l, int r, int u, int v){\n\
+    \        assert(0 <= l && l <= r && r <= size);\n        assert(0 <= u && u <\
+    \ n && 0 <= v && v < n);\n        l += size, r += size;\n        int edge_id =\
+    \ edges.size();\n        while (l < r){\n            if (l & 1) ids[l++].push_back(edge_id);\n\
+    \            if (r & 1) ids[--r].push_back(edge_id);\n            l >>= 1, r >>=\
+    \ 1;\n        }\n        edges.emplace_back(u,v);\n    }\n    void build(){\n\
+    \        inner_clock = 1;\n        while (inner_clock != size){\n            add_block(inner_clock);\n\
+    \            inner_clock <<= 1;\n        }\n    }\n    void set(int t){\n    \
+    \    assert(0 <= t && t < size && inner_clock != -1);\n        t += size;\n  \
+    \      if (inner_clock == t) return ;\n        int k = 32 - countl_zero((unsigned\
+    \ int)(inner_clock ^ t));\n        for (int i = 0; i < k; i++){\n            del_block(inner_clock);\n\
+    \            inner_clock >>= 1;\n        }\n        for (int i = k-1; i >= 0;\
+    \ i--){\n            inner_clock <<= 1;\n            if (t >> i & 1) inner_clock++;\n\
+    \            add_block(inner_clock);\n        }\n        inner_clock = t;\n  \
+    \  }\n  private:\n    void add_block(int i){\n        for (auto &id : ids[i]){\n\
+    \            this->merge(edges[id].first,edges[id].second);\n        }\n    }\n\
+    \    void del_block(int i){\n        int ctr = ids[i].size();\n        while (ctr--)\
+    \ this->rollback();\n    }\n    int n, size, inner_clock;\n    vector<vector<int>>\
+    \ ids;\n    vector<pair<int,int>> edges;\n};\n\n} // namespace noya2"
   dependsOn:
+  - data_structure/rollback_dsu.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
   isVerificationFile: false
-  path: data_structure/rollback_dsu.hpp
-  requiredBy:
-  - data_structure/offline_dynamic_connectivity.hpp
-  timestamp: '2023-10-23 02:42:13+09:00'
+  path: data_structure/offline_dynamic_connectivity.hpp
+  requiredBy: []
+  timestamp: '2023-10-23 03:10:09+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: data_structure/rollback_dsu.hpp
+documentation_of: data_structure/offline_dynamic_connectivity.hpp
 layout: document
 redirect_from:
-- /library/data_structure/rollback_dsu.hpp
-- /library/data_structure/rollback_dsu.hpp.html
-title: data_structure/rollback_dsu.hpp
+- /library/data_structure/offline_dynamic_connectivity.hpp
+- /library/data_structure/offline_dynamic_connectivity.hpp.html
+title: data_structure/offline_dynamic_connectivity.hpp
 ---
