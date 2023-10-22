@@ -14,13 +14,16 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/gcd_convolution.hpp
     title: math/gcd_convolution.hpp
   - icon: ':heavy_check_mark:'
     path: math/lcm_convolution.hpp
     title: math/lcm_convolution.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/Gcd_Convolution.test.cpp
+    title: test/math/Gcd_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Lcm_Convolution.test.cpp
     title: test/math/Lcm_Convolution.test.cpp
@@ -147,6 +150,7 @@ data:
   timestamp: '2023-10-23 02:05:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/math/Gcd_Convolution.test.cpp
   - test/math/Lcm_Convolution.test.cpp
 documentation_of: math/sieve.hpp
 layout: document

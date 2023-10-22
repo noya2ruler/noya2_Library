@@ -89,7 +89,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/floor_sum.hpp
       title: math/floor_sum.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/gcd_convolution.hpp
       title: math/gcd_convolution.hpp
     - icon: ':heavy_check_mark:'
@@ -265,6 +265,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Determinant_of_Matrix.test.cpp
       title: test/math/Determinant_of_Matrix.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/Gcd_Convolution.test.cpp
+      title: test/math/Gcd_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Lcm_Convolution.test.cpp
       title: test/math/Lcm_Convolution.test.cpp

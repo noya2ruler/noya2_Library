@@ -17,10 +17,13 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/Gcd_Convolution.test.cpp
+    title: test/math/Gcd_Convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/gcd_convolution.hpp\"\n\n#line 2 \"math/sieve.hpp\"\
@@ -138,8 +141,9 @@ data:
   path: math/gcd_convolution.hpp
   requiredBy: []
   timestamp: '2023-10-23 02:05:32+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/math/Gcd_Convolution.test.cpp
 documentation_of: math/gcd_convolution.hpp
 layout: document
 redirect_from:

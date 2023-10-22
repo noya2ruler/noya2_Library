@@ -62,7 +62,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/Graph_core.hpp
     title: graph/Graph_core.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/gcd_convolution.hpp
     title: math/gcd_convolution.hpp
   - icon: ':heavy_check_mark:'
@@ -189,6 +189,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Gcd_Convolution.test.cpp
+    title: test/math/Gcd_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Lcm_Convolution.test.cpp
     title: test/math/Lcm_Convolution.test.cpp
@@ -325,6 +328,7 @@ data:
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - test/math/Gcd_Convolution.test.cpp
   - test/math/Sum_of_Floor_of_Linear.test.cpp
   - test/math/Lcm_Convolution.test.cpp
   - test/math/Determinant_of_Matrix.test.cpp
