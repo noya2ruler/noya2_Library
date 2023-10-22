@@ -26,6 +26,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
+  - icon: ':warning:'
+    path: data_structure/rollback_dsu.hpp
+    title: data_structure/rollback_dsu.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/sparse_table.hpp
     title: data_structure/sparse_table.hpp
@@ -301,6 +304,7 @@ data:
   - geometry/partition_by_circle.hpp
   - string/rolling_hash.hpp
   - data_structure/fenwick_tree.hpp
+  - data_structure/rollback_dsu.hpp
   - data_structure/binary_indexed_tree.hpp
   - data_structure/dynamic_segment_tree.hpp
   - data_structure/range_tree.hpp

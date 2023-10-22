@@ -27,6 +27,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/range_tree.hpp
       title: data_structure/range_tree.hpp
+    - icon: ':warning:'
+      path: data_structure/rollback_dsu.hpp
+      title: data_structure/rollback_dsu.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
