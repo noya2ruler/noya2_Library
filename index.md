@@ -24,13 +24,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/li_chao_tree.hpp
       title: data_structure/li_chao_tree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/offline_dynamic_connectivity.hpp
       title: data_structure/offline_dynamic_connectivity.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/range_tree.hpp
       title: data_structure/range_tree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/rollback_dsu.hpp
       title: data_structure/rollback_dsu.hpp
     - icon: ':heavy_check_mark:'
@@ -230,6 +230,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/aoj1068_segtree2d.test.cpp
       title: test/data_structure/aoj1068_segtree2d.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/aoj_2235.test.cpp
+      title: test/data_structure/aoj_2235.test.cpp
   - name: test/fps
     pages:
     - icon: ':heavy_check_mark:'
