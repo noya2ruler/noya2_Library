@@ -89,12 +89,21 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/floor_sum.hpp
       title: math/floor_sum.hpp
+    - icon: ':warning:'
+      path: math/gcd_convolution.hpp
+      title: math/gcd_convolution.hpp
+    - icon: ':warning:'
+      path: math/lcm_convolution.hpp
+      title: math/lcm_convolution.hpp
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
     - icon: ':heavy_check_mark:'
       path: math/prime.hpp
       title: math/prime.hpp
+    - icon: ':warning:'
+      path: math/sieve.hpp
+      title: math/sieve.hpp
   - name: misc
     pages:
     - icon: ':warning:'

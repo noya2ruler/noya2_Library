@@ -71,12 +71,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/Graph_core.hpp
     title: graph/Graph_core.hpp
+  - icon: ':warning:'
+    path: math/gcd_convolution.hpp
+    title: math/gcd_convolution.hpp
+  - icon: ':warning:'
+    path: math/lcm_convolution.hpp
+    title: math/lcm_convolution.hpp
   - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
   - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
+  - icon: ':warning:'
+    path: math/sieve.hpp
+    title: math/sieve.hpp
   - icon: ':warning:'
     path: misc/QMC.hpp
     title: misc/QMC.hpp
@@ -308,7 +317,10 @@ data:
   - fps/fps_arbitrary.hpp
   - fps/fps_ntt.hpp
   - math/matrix.hpp
+  - math/gcd_convolution.hpp
   - math/prime.hpp
+  - math/lcm_convolution.hpp
+  - math/sieve.hpp
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp
   - string/rolling_hash.hpp
