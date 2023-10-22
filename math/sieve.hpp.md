@@ -17,13 +17,16 @@ data:
   - icon: ':warning:'
     path: math/gcd_convolution.hpp
     title: math/gcd_convolution.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/lcm_convolution.hpp
     title: math/lcm_convolution.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/Lcm_Convolution.test.cpp
+    title: test/math/Lcm_Convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/sieve.hpp\"\n\n#line 2 \"template/template.hpp\"\n\
@@ -142,8 +145,9 @@ data:
   - math/gcd_convolution.hpp
   - math/lcm_convolution.hpp
   timestamp: '2023-10-23 02:05:25+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/math/Lcm_Convolution.test.cpp
 documentation_of: math/sieve.hpp
 layout: document
 redirect_from:

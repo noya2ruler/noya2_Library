@@ -66,6 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/Lcm_Convolution.test.cpp
+    title: test/math/Lcm_Convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -211,6 +214,7 @@ data:
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - test/math/Lcm_Convolution.test.cpp
   - test/math/Determinant_of_Matrix.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp

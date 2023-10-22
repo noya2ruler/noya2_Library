@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/sieve.hpp
     title: math/sieve.hpp
   - icon: ':heavy_check_mark:'

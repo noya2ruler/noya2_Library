@@ -92,7 +92,7 @@ data:
     - icon: ':warning:'
       path: math/gcd_convolution.hpp
       title: math/gcd_convolution.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/lcm_convolution.hpp
       title: math/lcm_convolution.hpp
     - icon: ':heavy_check_mark:'
@@ -101,7 +101,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/prime.hpp
       title: math/prime.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/sieve.hpp
       title: math/sieve.hpp
   - name: misc
@@ -265,6 +265,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Determinant_of_Matrix.test.cpp
       title: test/math/Determinant_of_Matrix.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/Lcm_Convolution.test.cpp
+      title: test/math/Lcm_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Floor_of_Linear.test.cpp
       title: test/math/Sum_of_Floor_of_Linear.test.cpp
