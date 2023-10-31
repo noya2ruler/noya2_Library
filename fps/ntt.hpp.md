@@ -396,8 +396,8 @@ data:
   verifiedWith:
   - test/fps/convolution_relaxed_convolution.test.cpp
   - test/fps/Convolution1000000007.test.cpp
-  - test/fps/convolution.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
+  - test/fps/convolution.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
 documentation_of: fps/ntt.hpp
 layout: document

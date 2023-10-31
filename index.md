@@ -131,6 +131,9 @@ data:
       path: misc/rng.hpp
       title: misc/rng.hpp
     - icon: ':warning:'
+      path: misc/subset_sum.hpp
+      title: misc/subset_sum.hpp
+    - icon: ':warning:'
       path: misc/timer.hpp
       title: misc/timer.hpp
   - name: potentialized_dsu

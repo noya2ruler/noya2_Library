@@ -237,17 +237,17 @@ data:
   isVerificationFile: false
   path: fps/formal_power_series.hpp
   requiredBy:
-  - fps/sample_point_shift.hpp
-  - fps/fps_modint.hpp
   - fps/fps_atcoder.hpp
   - fps/fps_arbitrary.hpp
+  - fps/fps_modint.hpp
+  - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
   timestamp: '2023-09-06 22:50:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/Convolution1000000007.test.cpp
-  - test/fps/convolution.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
+  - test/fps/convolution.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
 documentation_of: fps/formal_power_series.hpp
 layout: document
