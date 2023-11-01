@@ -5,26 +5,15 @@
 namespace noya2 {
 
 struct hldTree {
-    hldTree (int n_ = 0, int root_ = 0) : n(n_), root(root_), inner_edge_id(0), es(n-1), start(n+1,0){
+    hldTree (int n_ = 0, int root_ = 0) : n(n_), root(root_), inner_edge_id(0){
+        down.resize(n);
+        tour.resize(n);
         if (n == 1) build();
     }
     void add_edge(int u, int v){
-        es[inner_edge_id] = u, start[inner_edge_id] = v;
+        down[inner_edge_id] = u;
+        tour[inner_edge_id] = v;
         if (++inner_edge_id == n-1) build();
-    }
-    void input(int indexed = 1){
-        for (int i = 0; i < n-1; i++){
-            int u, v; std::cin >> u >> v;
-            u -= indexed, v -= indexed;
-            add_edge(u,v);
-        }
-    }
-    void input_parents(int indexed = 1){
-        for (int i = 0; i < n-1; i++){
-            int p; std::cin >> p;
-            p -= indexed;
-            add_edge(p,i+1);
-        }
     }
     int degree(int v){
         assert(0 <= v && v < n);
@@ -78,10 +67,10 @@ struct hldTree {
     int dist(int u, int v){ return dep[lca(u,v)]*(-2) + dep[u] + dep[v]; }
     bool is_in_subtree(int r, int v){ return down[r] < down[v] && up[v] <= up[r]; }
     bool is_in_path(int lv, int mv, int rv){ return dist(lv,mv) + dist(mv,rv) == dist(lv,rv); }
-    std::vector<int> path(int from, int to){
+    vector<int> path(int from, int to){
         int l = lca(from,to);
         const int sizf = dep[from]-dep[l], sizt = dep[to]-dep[l];
-        std::vector<int> pf = {from}, pt;
+        vector<int> pf = {from}, pt;
         pf.reserve(sizf+1); pt.reserve(sizt);
         for (int i = 0; i < sizf; i++){
             from = parent(from);
@@ -95,10 +84,10 @@ struct hldTree {
         return pf;
     }
     // dist, v1, v2
-    std::tuple<int,int,int> diameter(){
-        int v1 = std::max_element(dep.begin(),dep.end()) - dep.begin();
-        std::vector<int> dist_from_v1(n,std::numeric_limits<int>::max());
-        std::queue<int> que;
+    tuple<int,int,int> diameter(){
+        int v1 = max_element(dep.begin(),dep.end()) - dep.begin();
+        vector<int> dist_from_v1(n,numeric_limits<int>::max());
+        queue<int> que;
         que.push(v1);
         dist_from_v1[v1] = 0;
         while (!que.empty()){
@@ -111,7 +100,7 @@ struct hldTree {
             }
         }
         int v2 = max_element(dist_from_v1.begin(),dist_from_v1.end()) - dist_from_v1.begin();
-        return std::make_tuple(dist_from_v1[v2],v1,v2);
+        return make_tuple(dist_from_v1[v2],v1,v2);
     }
     template<typename F>
     void path_query(int u, int v, bool vertex, const F &f){ // f is function takes (left, right) as argument, range = [left,right).
@@ -156,58 +145,62 @@ struct hldTree {
     }
   private:
     void build(){
-        std::vector<int> nes(2*(n-1)), fs = start;
-        std::fill(start.begin(),start.end(),0);
-        for (int i = 0; i < n-1; i++) start[es[i]+1]++, start[fs[i]+1]++;
-        for (int i = 0; i < n; i++) start[i+1] += start[i];
-        auto geta = start;
+        es.resize((n-1)*2);
+        start.resize(n+2,0);
         for (int i = 0; i < n-1; i++){
-            nes[geta[es[i]]++] = fs[i];
-            nes[geta[fs[i]]++] = es[i];
+            start[down[i]+2]++;
+            start[tour[i]+2]++;
         }
-        std::swap(es,nes);
+        for (int i = 1; i <= n; i++){
+            start[i+1] += start[i];
+        }
+        for (int i = 0; i < n-1; i++){
+            es[start[down[i]+1]++] = tour[i];
+            es[start[tour[i]+1]++] = down[i];
+        }
         init_bfs();
         init_dfs();
     }
     void init_bfs(){
-        dep.resize(n,std::numeric_limits<int>::max());
-        std::queue<int> que;
-        que.push(root);
+        dep.resize(n,numeric_limits<int>::max());
+        up.resize(n);
+        int l = 0, r = 0;
+        auto push = [&](int x){
+            up[r++] = x;
+        };
+        auto pop_front = [&](){
+            return up[l++];
+        };
         dep[root] = 0;
-        std::vector<int> order; order.reserve(n);
-        while (!que.empty()){
-            int p = que.front(); que.pop();
-            order.push_back(p);
+        push(root);
+        while (l < r){
+            int p = pop_front();
             for (int i = start[p]; i < start[p+1]; i++){
                 auto q = es[i];
                 if (dep[q] > dep[p]+1){
                     dep[q] = dep[p]+1;
-                    que.push(q);
+                    push(q);
                 }
                 else {
-                    std::swap(es[start[p]],es[i]);
+                    swap(es[start[p]],es[i]);
                 }
             }
         }
-        sub.resize(n,0);
-        for (int v : order | std::views::reverse){
-            sub[v] = 1;
-            int stv = start_skip_parent(v);
+        sub.resize(n,1);
+        for (int v : up | std::views::reverse){
+            const int stv = start_skip_parent(v);
             for (int i = stv; i < start[v+1]; i++){
                 sub[v] += sub[es[i]];
-                if (sub[es[stv]] < sub[es[i]]) std::swap(es[stv],es[i]);
+                if (sub[es[stv]] < sub[es[i]]) swap(es[stv],es[i]);
             }
         }
     }
     void init_dfs(){
-        down.resize(n);
-        up.resize(n);
-        tour.resize(n);
         nxt.resize(n);
         nxt[root] = root;
-        int nowtime = 0;
+        int inner_clock = 0;
         auto dfs = [&](auto sfs, int v) -> void {
-            down[v] = nowtime++;
+            down[v] = inner_clock++;
             tour[down[v]] = v;
             int stv = start_skip_parent(v);
             if (stv < start[v+1]){
@@ -218,16 +211,15 @@ struct hldTree {
                     sfs(sfs,es[i]);
                 }
             }
-            up[v] = nowtime;
+            up[v] = inner_clock;
         };
         dfs(dfs,root);
     }
-    inline int start_skip_parent(int v) const { return start[v]+int(v != root); }
     vector<pair<int,int>> ascend(int u, int v){ // [u,v), depth[u] > depth[v]
         vector<pair<int,int>> res;
         while (nxt[u] != nxt[v]){
             res.emplace_back(down[u],down[nxt[u]]); // [s1,t1], [s2,t2], ...
-            u = parent(nxt[u]);
+            u = es[start[nxt[u]]]; // parent of nxt[u]
         }
         if (u != v) res.emplace_back(down[u],down[v]+1); // [s,t). v is not in the range (down[] is ordered opposite direction of depth)
         return res;
@@ -237,12 +229,13 @@ struct hldTree {
         if (nxt[u] == nxt[v]){
             return {pair<int,int>(down[u]+1,down[v])}; // (s,t]. u is not in the range
         }
-        vector<pair<int,int>> res = descend(u,parent(nxt[v]));
+        vector<pair<int,int>> res = descend(u,es[start[nxt[v]]]); // descend(u, parent of nxt[v])
         res.emplace_back(down[nxt[v]],down[v]); // [s1,t1], [s2,t2], ...
         return res;
     }
+    int start_skip_parent(int v) const { return start[v]+int(v != root); }
     int n, root, inner_edge_id;
-    std::vector<int> es, start, dep, sub, down, up, tour, nxt;
+    vector<int> es, start, dep, sub, down, up, tour, nxt;
 };
 
 } // namespace noya2
