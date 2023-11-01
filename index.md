@@ -15,7 +15,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/dynamic_segment_tree.hpp
       title: data_structure/dynamic_segment_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/fenwick_tree.hpp
       title: data_structure/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -148,19 +148,19 @@ data:
       title: string/rolling_hash.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/const.hpp
       title: template/const.hpp
     - icon: ':warning:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/inout_old.hpp
       title: template/inout_old.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
@@ -174,7 +174,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/heavy_light_decomposition.hpp
       title: tree/heavy_light_decomposition.hpp
     - icon: ':heavy_check_mark:'
@@ -306,7 +306,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Diameter_hld.test.cpp
       title: test/tree/Tree_Diameter_hld.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Vertex_Add_Path_Sum.test.cpp
       title: test/tree/Vertex_Add_Path_Sum.test.cpp
     - icon: ':heavy_check_mark:'
