@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: tree/heavy_light_decomposition.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
@@ -98,29 +98,33 @@ data:
     \        down.resize(n);\n        tour.resize(n);\n        if (n == 1) build();\n\
     \    }\n    void add_edge(int u, int v){\n        down[inner_edge_id] = u;\n \
     \       tour[inner_edge_id] = v;\n        if (++inner_edge_id == n-1) build();\n\
-    \    }\n    int degree(int v){\n        assert(0 <= v && v < n);\n        return\
-    \ start[v+1] - start[v];\n    }\n    int parent(int v){\n        assert(0 <= v\
-    \ && v < n);\n        if (v == root) return -1;\n        return es[start[v]];\n\
-    \    }\n    int subtree_size(int v){\n        assert(0 <= v && v < n);\n     \
-    \   return sub[v];\n    }\n    int depth(int v){\n        assert(0 <= v && v <\
-    \ n);\n        return dep[v];\n    }\n    int la(int v, int d){\n        assert(0\
-    \ <= v && v < n);\n        while (v != -1){\n            int u = nxt[v];\n   \
-    \         if (down[v] - d >= down[u]){\n                v = tour[down[v] - d];\n\
-    \                break;\n            }\n            d -= down[v] - down[u] + 1;\n\
-    \            v = parent(u);\n        }\n        return v;\n    }\n    int lca(int\
-    \ u, int v){\n        assert(0 <= v && v < n && 0 <= u && u < n);\n        while\
-    \ (nxt[u] != nxt[v]){\n            if (down[u] < down[v]) std::swap(u,v);\n  \
-    \          u = es[start[nxt[u]]];\n        }\n        return dep[u] < dep[v] ?\
-    \ u : v;\n    }\n    int jump(int from, int to, int d){\n        int l = lca(from,to);\n\
-    \        if (d <= dep[from] - dep[l]){\n            return la(from,d);\n     \
-    \   }\n        d -= dep[from] - dep[l];\n        if (d <= dep[to] - dep[l]){\n\
-    \            return la(to,dep[to]-dep[l]-d);\n        }\n        return -1;\n\
-    \    }\n    int dist(int u, int v){ return dep[lca(u,v)]*(-2) + dep[u] + dep[v];\
-    \ }\n    bool is_in_subtree(int r, int v){ return down[r] < down[v] && up[v] <=\
-    \ up[r]; }\n    bool is_in_path(int lv, int mv, int rv){ return dist(lv,mv) +\
-    \ dist(mv,rv) == dist(lv,rv); }\n    vector<int> path(int from, int to){\n   \
-    \     int l = lca(from,to);\n        const int sizf = dep[from]-dep[l], sizt =\
-    \ dep[to]-dep[l];\n        vector<int> pf = {from}, pt;\n        pf.reserve(sizf+1);\
+    \    }\n    void input(int indexed = 1){\n        for (int i = 0; i < n-1; i++){\n\
+    \            int u, v; cin >> u >> v;\n            u -= indexed, v -= indexed;\n\
+    \            add_edge(u,v);\n        }\n    }\n    void input_parents(int indexed\
+    \ = 1){\n        for (int i = 0; i < n-1; i++){\n            int p; cin >> p;\n\
+    \            p -= indexed;\n            add_edge(p,i+1);\n        }\n    }\n \
+    \   int degree(int v){\n        assert(0 <= v && v < n);\n        return start[v+1]\
+    \ - start[v];\n    }\n    int parent(int v){\n        assert(0 <= v && v < n);\n\
+    \        if (v == root) return -1;\n        return es[start[v]];\n    }\n    int\
+    \ subtree_size(int v){\n        assert(0 <= v && v < n);\n        return sub[v];\n\
+    \    }\n    int depth(int v){\n        assert(0 <= v && v < n);\n        return\
+    \ dep[v];\n    }\n    int la(int v, int d){\n        assert(0 <= v && v < n);\n\
+    \        while (v != -1){\n            int u = nxt[v];\n            if (down[v]\
+    \ - d >= down[u]){\n                v = tour[down[v] - d];\n                break;\n\
+    \            }\n            d -= down[v] - down[u] + 1;\n            v = parent(u);\n\
+    \        }\n        return v;\n    }\n    int lca(int u, int v){\n        assert(0\
+    \ <= v && v < n && 0 <= u && u < n);\n        while (nxt[u] != nxt[v]){\n    \
+    \        if (down[u] < down[v]) std::swap(u,v);\n            u = es[start[nxt[u]]];\n\
+    \        }\n        return dep[u] < dep[v] ? u : v;\n    }\n    int jump(int from,\
+    \ int to, int d){\n        int l = lca(from,to);\n        if (d <= dep[from] -\
+    \ dep[l]){\n            return la(from,d);\n        }\n        d -= dep[from]\
+    \ - dep[l];\n        if (d <= dep[to] - dep[l]){\n            return la(to,dep[to]-dep[l]-d);\n\
+    \        }\n        return -1;\n    }\n    int dist(int u, int v){ return dep[lca(u,v)]*(-2)\
+    \ + dep[u] + dep[v]; }\n    bool is_in_subtree(int r, int v){ return down[r] <\
+    \ down[v] && up[v] <= up[r]; }\n    bool is_in_path(int lv, int mv, int rv){ return\
+    \ dist(lv,mv) + dist(mv,rv) == dist(lv,rv); }\n    vector<int> path(int from,\
+    \ int to){\n        int l = lca(from,to);\n        const int sizf = dep[from]-dep[l],\
+    \ sizt = dep[to]-dep[l];\n        vector<int> pf = {from}, pt;\n        pf.reserve(sizf+1);\
     \ pt.reserve(sizt);\n        for (int i = 0; i < sizf; i++){\n            from\
     \ = parent(from);\n            pf.push_back(from);\n        }\n        for (int\
     \ i = 0; i < sizt; i++){\n            pt.push_back(to);\n            to = parent(to);\n\
@@ -229,8 +233,8 @@ data:
   isVerificationFile: true
   path: test/tree/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-11-01 21:53:40+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-11-02 15:20:47+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Vertex_Add_Path_Sum.test.cpp
 layout: document

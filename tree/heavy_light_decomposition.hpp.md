@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -80,20 +80,25 @@ data:
     \ = 0) : n(n_), root(root_), inner_edge_id(0){\n        down.resize(n);\n    \
     \    tour.resize(n);\n        if (n == 1) build();\n    }\n    void add_edge(int\
     \ u, int v){\n        down[inner_edge_id] = u;\n        tour[inner_edge_id] =\
-    \ v;\n        if (++inner_edge_id == n-1) build();\n    }\n    int degree(int\
-    \ v){\n        assert(0 <= v && v < n);\n        return start[v+1] - start[v];\n\
-    \    }\n    int parent(int v){\n        assert(0 <= v && v < n);\n        if (v\
-    \ == root) return -1;\n        return es[start[v]];\n    }\n    int subtree_size(int\
-    \ v){\n        assert(0 <= v && v < n);\n        return sub[v];\n    }\n    int\
-    \ depth(int v){\n        assert(0 <= v && v < n);\n        return dep[v];\n  \
-    \  }\n    int la(int v, int d){\n        assert(0 <= v && v < n);\n        while\
-    \ (v != -1){\n            int u = nxt[v];\n            if (down[v] - d >= down[u]){\n\
-    \                v = tour[down[v] - d];\n                break;\n            }\n\
-    \            d -= down[v] - down[u] + 1;\n            v = parent(u);\n       \
-    \ }\n        return v;\n    }\n    int lca(int u, int v){\n        assert(0 <=\
-    \ v && v < n && 0 <= u && u < n);\n        while (nxt[u] != nxt[v]){\n       \
-    \     if (down[u] < down[v]) std::swap(u,v);\n            u = es[start[nxt[u]]];\n\
-    \        }\n        return dep[u] < dep[v] ? u : v;\n    }\n    int jump(int from,\
+    \ v;\n        if (++inner_edge_id == n-1) build();\n    }\n    void input(int\
+    \ indexed = 1){\n        for (int i = 0; i < n-1; i++){\n            int u, v;\
+    \ cin >> u >> v;\n            u -= indexed, v -= indexed;\n            add_edge(u,v);\n\
+    \        }\n    }\n    void input_parents(int indexed = 1){\n        for (int\
+    \ i = 0; i < n-1; i++){\n            int p; cin >> p;\n            p -= indexed;\n\
+    \            add_edge(p,i+1);\n        }\n    }\n    int degree(int v){\n    \
+    \    assert(0 <= v && v < n);\n        return start[v+1] - start[v];\n    }\n\
+    \    int parent(int v){\n        assert(0 <= v && v < n);\n        if (v == root)\
+    \ return -1;\n        return es[start[v]];\n    }\n    int subtree_size(int v){\n\
+    \        assert(0 <= v && v < n);\n        return sub[v];\n    }\n    int depth(int\
+    \ v){\n        assert(0 <= v && v < n);\n        return dep[v];\n    }\n    int\
+    \ la(int v, int d){\n        assert(0 <= v && v < n);\n        while (v != -1){\n\
+    \            int u = nxt[v];\n            if (down[v] - d >= down[u]){\n     \
+    \           v = tour[down[v] - d];\n                break;\n            }\n  \
+    \          d -= down[v] - down[u] + 1;\n            v = parent(u);\n        }\n\
+    \        return v;\n    }\n    int lca(int u, int v){\n        assert(0 <= v &&\
+    \ v < n && 0 <= u && u < n);\n        while (nxt[u] != nxt[v]){\n            if\
+    \ (down[u] < down[v]) std::swap(u,v);\n            u = es[start[nxt[u]]];\n  \
+    \      }\n        return dep[u] < dep[v] ? u : v;\n    }\n    int jump(int from,\
     \ int to, int d){\n        int l = lca(from,to);\n        if (d <= dep[from] -\
     \ dep[l]){\n            return la(from,d);\n        }\n        d -= dep[from]\
     \ - dep[l];\n        if (d <= dep[to] - dep[l]){\n            return la(to,dep[to]-dep[l]-d);\n\
@@ -187,20 +192,25 @@ data:
     \ inner_edge_id(0){\n        down.resize(n);\n        tour.resize(n);\n      \
     \  if (n == 1) build();\n    }\n    void add_edge(int u, int v){\n        down[inner_edge_id]\
     \ = u;\n        tour[inner_edge_id] = v;\n        if (++inner_edge_id == n-1)\
-    \ build();\n    }\n    int degree(int v){\n        assert(0 <= v && v < n);\n\
-    \        return start[v+1] - start[v];\n    }\n    int parent(int v){\n      \
-    \  assert(0 <= v && v < n);\n        if (v == root) return -1;\n        return\
-    \ es[start[v]];\n    }\n    int subtree_size(int v){\n        assert(0 <= v &&\
-    \ v < n);\n        return sub[v];\n    }\n    int depth(int v){\n        assert(0\
-    \ <= v && v < n);\n        return dep[v];\n    }\n    int la(int v, int d){\n\
-    \        assert(0 <= v && v < n);\n        while (v != -1){\n            int u\
-    \ = nxt[v];\n            if (down[v] - d >= down[u]){\n                v = tour[down[v]\
-    \ - d];\n                break;\n            }\n            d -= down[v] - down[u]\
-    \ + 1;\n            v = parent(u);\n        }\n        return v;\n    }\n    int\
-    \ lca(int u, int v){\n        assert(0 <= v && v < n && 0 <= u && u < n);\n  \
-    \      while (nxt[u] != nxt[v]){\n            if (down[u] < down[v]) std::swap(u,v);\n\
-    \            u = es[start[nxt[u]]];\n        }\n        return dep[u] < dep[v]\
-    \ ? u : v;\n    }\n    int jump(int from, int to, int d){\n        int l = lca(from,to);\n\
+    \ build();\n    }\n    void input(int indexed = 1){\n        for (int i = 0; i\
+    \ < n-1; i++){\n            int u, v; cin >> u >> v;\n            u -= indexed,\
+    \ v -= indexed;\n            add_edge(u,v);\n        }\n    }\n    void input_parents(int\
+    \ indexed = 1){\n        for (int i = 0; i < n-1; i++){\n            int p; cin\
+    \ >> p;\n            p -= indexed;\n            add_edge(p,i+1);\n        }\n\
+    \    }\n    int degree(int v){\n        assert(0 <= v && v < n);\n        return\
+    \ start[v+1] - start[v];\n    }\n    int parent(int v){\n        assert(0 <= v\
+    \ && v < n);\n        if (v == root) return -1;\n        return es[start[v]];\n\
+    \    }\n    int subtree_size(int v){\n        assert(0 <= v && v < n);\n     \
+    \   return sub[v];\n    }\n    int depth(int v){\n        assert(0 <= v && v <\
+    \ n);\n        return dep[v];\n    }\n    int la(int v, int d){\n        assert(0\
+    \ <= v && v < n);\n        while (v != -1){\n            int u = nxt[v];\n   \
+    \         if (down[v] - d >= down[u]){\n                v = tour[down[v] - d];\n\
+    \                break;\n            }\n            d -= down[v] - down[u] + 1;\n\
+    \            v = parent(u);\n        }\n        return v;\n    }\n    int lca(int\
+    \ u, int v){\n        assert(0 <= v && v < n && 0 <= u && u < n);\n        while\
+    \ (nxt[u] != nxt[v]){\n            if (down[u] < down[v]) std::swap(u,v);\n  \
+    \          u = es[start[nxt[u]]];\n        }\n        return dep[u] < dep[v] ?\
+    \ u : v;\n    }\n    int jump(int from, int to, int d){\n        int l = lca(from,to);\n\
     \        if (d <= dep[from] - dep[l]){\n            return la(from,d);\n     \
     \   }\n        d -= dep[from] - dep[l];\n        if (d <= dep[to] - dep[l]){\n\
     \            return la(to,dep[to]-dep[l]-d);\n        }\n        return -1;\n\
@@ -297,8 +307,8 @@ data:
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2023-11-01 21:53:40+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-11-02 15:20:47+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Vertex_Add_Path_Sum.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
