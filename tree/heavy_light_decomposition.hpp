@@ -15,6 +15,20 @@ struct hldTree {
         tour[inner_edge_id] = v;
         if (++inner_edge_id == n-1) build();
     }
+    void input(int indexed = 1){
+        for (int i = 0; i < n-1; i++){
+            int u, v; cin >> u >> v;
+            u -= indexed, v -= indexed;
+            add_edge(u,v);
+        }
+    }
+    void input_parents(int indexed = 1){
+        for (int i = 0; i < n-1; i++){
+            int p; cin >> p;
+            p -= indexed;
+            add_edge(p,i+1);
+        }
+    }
     int degree(int v){
         assert(0 <= v && v < n);
         return start[v+1] - start[v];
