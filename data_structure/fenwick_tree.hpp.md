@@ -83,7 +83,7 @@ data:
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
     ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"data_structure/fenwick_tree.hpp\"\
     \n\nnamespace noya2{\n\ntemplate <class T> struct fenwick_tree {\n  public:\n\
-    \    fenwick_tree() : _n(0) {}\n    explicit fenwick_tree(int n) : _n(n), data(n)\
+    \    fenwick_tree() : _n(0) {}\n    explicit fenwick_tree(int n_) : _n(n_), data(n_)\
     \ {}\n\n    void add(int p, T x) {\n        assert(0 <= p && p < _n);\n      \
     \  p++;\n        while (p <= _n) {\n            data[p - 1] += x;\n          \
     \  p += p & -p;\n        }\n    }\n\n    T sum(int l, int r) {\n        assert(0\
@@ -93,7 +93,7 @@ data:
     \        }\n        return s;\n    }\n};\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2{\n\
     \ntemplate <class T> struct fenwick_tree {\n  public:\n    fenwick_tree() : _n(0)\
-    \ {}\n    explicit fenwick_tree(int n) : _n(n), data(n) {}\n\n    void add(int\
+    \ {}\n    explicit fenwick_tree(int n_) : _n(n_), data(n_) {}\n\n    void add(int\
     \ p, T x) {\n        assert(0 <= p && p < _n);\n        p++;\n        while (p\
     \ <= _n) {\n            data[p - 1] += x;\n            p += p & -p;\n        }\n\
     \    }\n\n    T sum(int l, int r) {\n        assert(0 <= l && l <= r && r <= _n);\n\
@@ -110,11 +110,11 @@ data:
   path: data_structure/fenwick_tree.hpp
   requiredBy:
   - misc/inversion.hpp
-  timestamp: '2023-08-26 17:35:34+09:00'
+  timestamp: '2023-11-05 22:23:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/PointAddRangeSum.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
+  - test/data_structure/PointAddRangeSum.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document
 redirect_from:

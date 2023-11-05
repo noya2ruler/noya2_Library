@@ -78,11 +78,11 @@ data:
     ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/fenwick_tree.hpp\"\
     \n\n#line 4 \"data_structure/fenwick_tree.hpp\"\n\nnamespace noya2{\n\ntemplate\
     \ <class T> struct fenwick_tree {\n  public:\n    fenwick_tree() : _n(0) {}\n\
-    \    explicit fenwick_tree(int n) : _n(n), data(n) {}\n\n    void add(int p, T\
-    \ x) {\n        assert(0 <= p && p < _n);\n        p++;\n        while (p <= _n)\
-    \ {\n            data[p - 1] += x;\n            p += p & -p;\n        }\n    }\n\
-    \n    T sum(int l, int r) {\n        assert(0 <= l && l <= r && r <= _n);\n  \
-    \      return sum(r) - sum(l);\n    }\n\n  private:\n    int _n;\n    vector<T>\
+    \    explicit fenwick_tree(int n_) : _n(n_), data(n_) {}\n\n    void add(int p,\
+    \ T x) {\n        assert(0 <= p && p < _n);\n        p++;\n        while (p <=\
+    \ _n) {\n            data[p - 1] += x;\n            p += p & -p;\n        }\n\
+    \    }\n\n    T sum(int l, int r) {\n        assert(0 <= l && l <= r && r <= _n);\n\
+    \        return sum(r) - sum(l);\n    }\n\n  private:\n    int _n;\n    vector<T>\
     \ data;\n\n    T sum(int r) {\n        T s = 0;\n        while (r > 0) {\n   \
     \         s += data[r - 1];\n            r -= r & -r;\n        }\n        return\
     \ s;\n    }\n};\n\n} // namespace noya2\n#line 5 \"misc/inversion.hpp\"\n\nnamespace\
@@ -106,7 +106,7 @@ data:
   isVerificationFile: false
   path: misc/inversion.hpp
   requiredBy: []
-  timestamp: '2023-08-26 17:35:34+09:00'
+  timestamp: '2023-11-05 22:23:24+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: misc/inversion.hpp
