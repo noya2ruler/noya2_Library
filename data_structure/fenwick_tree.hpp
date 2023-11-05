@@ -7,7 +7,7 @@ namespace noya2{
 template <class T> struct fenwick_tree {
   public:
     fenwick_tree() : _n(0) {}
-    explicit fenwick_tree(int n) : _n(n), data(n) {}
+    explicit fenwick_tree(int n_) : _n(n_), data(n_) {}
 
     void add(int p, T x) {
         assert(0 <= p && p < _n);
