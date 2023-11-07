@@ -1,4 +1,4 @@
-# Noya2-Library
+# noya2-Library
 
 [![Actions Status](https://github.com/noya2ruler/Library/workflows/verify/badge.svg)](https://github.com/noya2ruler/noya2_Library/actions)
 [![GitHub Pages](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://noya2ruler.github.io/noya2_Library/)
