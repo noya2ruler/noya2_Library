@@ -77,6 +77,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
+  - icon: ':warning:'
+    path: math/matrix_square.hpp
+    title: math/matrix_square.hpp
   - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
@@ -313,6 +316,7 @@ data:
   - data_structure/range_tree.hpp
   - data_structure/dsu.hpp
   - math/gcd_convolution.hpp
+  - math/matrix_square.hpp
   - math/prime.hpp
   - math/lcm_convolution.hpp
   - math/sieve.hpp

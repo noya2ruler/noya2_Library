@@ -80,11 +80,12 @@ data:
     \ get_hash(const string &s){\n        int len = s.size();\n        set_hash();\n\
     \        extend_pow_base(len);\n        ull res = 0;\n        for (int i = 0;\
     \ i < len; i++) res = cal_mod(mul_mod(res,BASE) + s[i]);\n        return res;\n\
-    \    }\n    template<class... Hash_Lengths> static ull concat(const Hash_Lengths&...\
-    \ hash_length){\n        return inner_concat(0ULL,hash_length...);\n    }\n  private:\n\
-    \    static ull inner_concat(const ull& temp){\n        return temp;\n    }\n\
-    \    template<class... Tail> static ull inner_concat(const ull& temp, const ull&\
-    \ hash, const int& len, const Tail&... tail){\n        return inner_concat(cal_mod(cal_mod(mul_mod(temp,pow_base[len]))+hash),tail...);\n\
+    \    }\n    size_t size() const { return n; }\n    template<class... Hash_Lengths>\
+    \ static ull concat(const Hash_Lengths&... hash_length){\n        return inner_concat(0ULL,hash_length...);\n\
+    \    }\n  private:\n    static ull inner_concat(const ull& temp){\n        return\
+    \ temp;\n    }\n    template<class... Tail> static ull inner_concat(const ull&\
+    \ temp, const ull& hash, const int& len, const Tail&... tail){\n        return\
+    \ inner_concat(cal_mod(cal_mod(mul_mod(temp,pow_base[len]))+hash),tail...);\n\
     \    }\n    static constexpr ull MASK30 = (1ULL << 30) - 1;\n    static constexpr\
     \ ull MASK31 = (1ULL << 31) - 1;\n    static constexpr ull MASK61 = (1ULL << 61)\
     \ - 1;\n    static constexpr ull MOD = (1ULL << 61) - 1;\n    static constexpr\
@@ -113,12 +114,12 @@ data:
     \ - mul_mod(inner_hash[l], pow_base[r-l]));\n    }\n    static ull get_hash(const\
     \ string &s){\n        int len = s.size();\n        set_hash();\n        extend_pow_base(len);\n\
     \        ull res = 0;\n        for (int i = 0; i < len; i++) res = cal_mod(mul_mod(res,BASE)\
-    \ + s[i]);\n        return res;\n    }\n    template<class... Hash_Lengths> static\
-    \ ull concat(const Hash_Lengths&... hash_length){\n        return inner_concat(0ULL,hash_length...);\n\
-    \    }\n  private:\n    static ull inner_concat(const ull& temp){\n        return\
-    \ temp;\n    }\n    template<class... Tail> static ull inner_concat(const ull&\
-    \ temp, const ull& hash, const int& len, const Tail&... tail){\n        return\
-    \ inner_concat(cal_mod(cal_mod(mul_mod(temp,pow_base[len]))+hash),tail...);\n\
+    \ + s[i]);\n        return res;\n    }\n    size_t size() const { return n; }\n\
+    \    template<class... Hash_Lengths> static ull concat(const Hash_Lengths&...\
+    \ hash_length){\n        return inner_concat(0ULL,hash_length...);\n    }\n  private:\n\
+    \    static ull inner_concat(const ull& temp){\n        return temp;\n    }\n\
+    \    template<class... Tail> static ull inner_concat(const ull& temp, const ull&\
+    \ hash, const int& len, const Tail&... tail){\n        return inner_concat(cal_mod(cal_mod(mul_mod(temp,pow_base[len]))+hash),tail...);\n\
     \    }\n    static constexpr ull MASK30 = (1ULL << 30) - 1;\n    static constexpr\
     \ ull MASK31 = (1ULL << 31) - 1;\n    static constexpr ull MASK61 = (1ULL << 61)\
     \ - 1;\n    static constexpr ull MOD = (1ULL << 61) - 1;\n    static constexpr\
@@ -148,7 +149,7 @@ data:
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-08-26 17:35:34+09:00'
+  timestamp: '2023-11-13 03:49:14+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: string/rolling_hash.hpp
