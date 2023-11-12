@@ -19,6 +19,7 @@ struct RollingHash {
         for (int i = 0; i < len; i++) res = cal_mod(mul_mod(res,BASE) + s[i]);
         return res;
     }
+    size_t size() const { return n; }
     template<class... Hash_Lengths> static ull concat(const Hash_Lengths&... hash_length){
         return inner_concat(0ULL,hash_length...);
     }
