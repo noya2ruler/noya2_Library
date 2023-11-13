@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: data_structure/potentialized_dsu.hpp
+    title: data_structure/potentialized_dsu.hpp
+  - icon: ':heavy_check_mark:'
     path: misc/concepts.hpp
     title: misc/concepts.hpp
   - icon: ':heavy_check_mark:'
@@ -20,34 +23,35 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/aoj_dsl_1_b.test.cpp
-    title: test/data_structure/aoj_dsl_1_b.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"data_structure/potentialized_dsu.hpp\"\n\n#line 2 \"template/template.hpp\"\
-    \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
-    \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
-    \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
-    \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
-    \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
-    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int\
-    \ s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\"\
-    ) << v[i];\n    return os;\n}\ntemplate <typename T>\nistream &operator>>(istream\
-    \ &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid\
-    \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
-    \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
-    \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
-    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\ntemplate<typename\
-    \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
-    \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
-    \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
-    \ << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n \
-    \   }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B&lang=ja
+    links:
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B&lang=ja
+  bundledCode: "#line 1 \"test/data_structure/aoj_dsl_1_b.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B&lang=ja\"\
+    \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
+    #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
+    \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
+    \ << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename\
+    \ U>\nistream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
+    \    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os,\
+    \ const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s;\
+    \ i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
+    \ T>\nistream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is\
+    \ >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\n\
+    void in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout\
+    \ << \"\\n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const\
+    \ T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n\
+    \    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n\
+    \    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\
+    \nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
+    \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
+    \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
     \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
     \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
     \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
@@ -81,13 +85,14 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"misc/monoids.hpp\"\
-    \n\n#line 4 \"misc/monoids.hpp\"\n\nnamespace noya2{\n\ntemplate<typename T>\n\
-    struct Max_monoid {\n    using value_type = T;\n    static constexpr T op(const\
-    \ T &a, const T &b){ return max(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::min();\
-    \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
-    \ T>\nstruct Min_monoid {\n    using value_type = T;\n    static constexpr T op(const\
-    \ T &a, const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/potentialized_dsu.hpp\"\
+    \n\n#line 2 \"misc/monoids.hpp\"\n\n#line 4 \"misc/monoids.hpp\"\n\nnamespace\
+    \ noya2{\n\ntemplate<typename T>\nstruct Max_monoid {\n    using value_type =\
+    \ T;\n    static constexpr T op(const T &a, const T &b){ return max(a,b); }\n\
+    \    static constexpr T e(){ return std::numeric_limits<T>::min(); }\n    static\
+    \ constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename T>\nstruct\
+    \ Min_monoid {\n    using value_type = T;\n    static constexpr T op(const T &a,\
+    \ const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
     \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
     \ T>\nstruct Plus_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a + b; }\n    static constexpr T e(){ return T(0);\
@@ -119,44 +124,39 @@ data:
     \ }\n    T potential(int v){\n        leader(v);\n        return pot[v];\n   \
     \ }\n    T diff(int u, int v){\n        return G::op(G::inv(potential(u)),potential(v));\n\
     \    }\n    int n;\n    vector<int> parent_or_size;\n    vector<T> pot;\n};\n\n\
-    } // namespace noya2\n"
-  code: "#pragma once\n\n#include\"../template/template.hpp\"\n#include\"../misc/monoids.hpp\"\
-    \n#include\"../misc/concepts.hpp\"\n\nnamespace noya2 {\n\ntemplate<Group G>\n\
-    struct potentialized_dsu {\n    using T = typename G::value_type;\n    potentialized_dsu\
-    \ (int n_ = 0) : n(n_), parent_or_size(n_,-1) {\n        auto ee = G::e();\n \
-    \       pot.resize(n,ee);\n    }\n    int merge(int u, int v, T d){\n        int\
-    \ x = leader(u), y = leader(v);\n        if (x == y){\n            if (diff(u,v)\
-    \ == d) return x;\n            else return -1;\n        }\n        d = G::op(G::op(potential(u),d),G::inv(potential(v)));\n\
-    \        if (-parent_or_size[x] < -parent_or_size[y]){\n            d = G::inv(d);\n\
-    \            swap(x,y);\n        }\n        parent_or_size[x] += parent_or_size[y];\n\
-    \        parent_or_size[y] = x;\n        pot[y] = d;\n        return x;\n    }\n\
-    \    int leader(int v){\n        assert(0 <= v && v < n);\n        if (parent_or_size[v]\
-    \ < 0) return v;\n        int l = leader(parent_or_size[v]);\n        pot[v] =\
-    \ G::op(pot[v],pot[parent_or_size[v]]);\n        return parent_or_size[v] = l;\n\
-    \    }\n    bool same(int u, int v){\n        return leader(u) == leader(v);\n\
-    \    }\n    int size(int v){\n        return -parent_or_size[leader(v)];\n   \
-    \ }\n    T potential(int v){\n        leader(v);\n        return pot[v];\n   \
-    \ }\n    T diff(int u, int v){\n        return G::op(G::inv(potential(u)),potential(v));\n\
-    \    }\n    int n;\n    vector<int> parent_or_size;\n    vector<T> pot;\n};\n\n\
-    } // namespace noya2"
+    } // namespace noya2\n#line 5 \"test/data_structure/aoj_dsl_1_b.test.cpp\"\n\n\
+    int main(){\n    int n, q; in(n,q);\n    potentialized_dsu<Plus_group<ll>> d(n);\n\
+    \    while (q--){\n        int t; in(t);\n        if (t == 0){\n            int\
+    \ u, v; in(u,v);\n            ll w; in(w);\n            d.merge(u,v,w);\n    \
+    \    }\n        else {\n            int u, v; in(u,v);\n            if (d.same(u,v)){\n\
+    \                out(d.diff(u,v));\n            }\n            else {\n      \
+    \          out('?');\n            }\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B&lang=ja\"\
+    \n\n#include\"../../template/template.hpp\"\n#include\"../../data_structure/potentialized_dsu.hpp\"\
+    \n\nint main(){\n    int n, q; in(n,q);\n    potentialized_dsu<Plus_group<ll>>\
+    \ d(n);\n    while (q--){\n        int t; in(t);\n        if (t == 0){\n     \
+    \       int u, v; in(u,v);\n            ll w; in(w);\n            d.merge(u,v,w);\n\
+    \        }\n        else {\n            int u, v; in(u,v);\n            if (d.same(u,v)){\n\
+    \                out(d.diff(u,v));\n            }\n            else {\n      \
+    \          out('?');\n            }\n        }\n    }\n}"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
+  - data_structure/potentialized_dsu.hpp
   - misc/monoids.hpp
   - misc/concepts.hpp
-  isVerificationFile: false
-  path: data_structure/potentialized_dsu.hpp
+  isVerificationFile: true
+  path: test/data_structure/aoj_dsl_1_b.test.cpp
   requiredBy: []
   timestamp: '2023-11-13 11:52:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/data_structure/aoj_dsl_1_b.test.cpp
-documentation_of: data_structure/potentialized_dsu.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/data_structure/aoj_dsl_1_b.test.cpp
 layout: document
 redirect_from:
-- /library/data_structure/potentialized_dsu.hpp
-- /library/data_structure/potentialized_dsu.hpp.html
-title: data_structure/potentialized_dsu.hpp
+- /verify/test/data_structure/aoj_dsl_1_b.test.cpp
+- /verify/test/data_structure/aoj_dsl_1_b.test.cpp.html
+title: test/data_structure/aoj_dsl_1_b.test.cpp
 ---

@@ -27,6 +27,9 @@ data:
     path: data_structure/offline_dynamic_connectivity.hpp
     title: data_structure/offline_dynamic_connectivity.hpp
   - icon: ':heavy_check_mark:'
+    path: data_structure/potentialized_dsu.hpp
+    title: data_structure/potentialized_dsu.hpp
+  - icon: ':heavy_check_mark:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -169,6 +172,9 @@ data:
     path: test/data_structure/aoj_2235.test.cpp
     title: test/data_structure/aoj_2235.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/aoj_dsl_1_b.test.cpp
+    title: test/data_structure/aoj_dsl_1_b.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/fps/Convolution1000000007.test.cpp
     title: test/fps/Convolution1000000007.test.cpp
   - icon: ':heavy_check_mark:'
@@ -301,6 +307,7 @@ data:
   - utility/modint61.hpp
   - data_structure/rollback_dsu.hpp
   - data_structure/lazy_segment_tree.hpp
+  - data_structure/potentialized_dsu.hpp
   - data_structure/fenwick_tree.hpp
   - data_structure/compress.hpp
   - data_structure/offline_dynamic_connectivity.hpp
@@ -350,6 +357,7 @@ data:
   - test/data_structure/Static_Range_Inversions_Query.test.cpp
   - test/data_structure/aoj1068_segtree2d.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+  - test/data_structure/aoj_dsl_1_b.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
   - test/math/Lcm_Convolution.test.cpp
   - test/math/Gcd_Convolution.test.cpp

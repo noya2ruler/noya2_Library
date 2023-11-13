@@ -5,6 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
+  - icon: ':heavy_check_mark:'
+    path: data_structure/potentialized_dsu.hpp
+    title: data_structure/potentialized_dsu.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
@@ -12,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Inversions_Query.test.cpp
     title: test/data_structure/Static_Range_Inversions_Query.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/aoj_dsl_1_b.test.cpp
+    title: test/data_structure/aoj_dsl_1_b.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -50,12 +56,14 @@ data:
   isVerificationFile: false
   path: misc/monoids.hpp
   requiredBy:
+  - data_structure/potentialized_dsu.hpp
   - data_structure/binary_indexed_tree.hpp
   timestamp: '2023-08-31 21:58:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Static_Range_Inversions_Query.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+  - test/data_structure/aoj_dsl_1_b.test.cpp
 documentation_of: misc/monoids.hpp
 layout: document
 redirect_from:

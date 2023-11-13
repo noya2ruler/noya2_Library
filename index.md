@@ -27,7 +27,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/offline_dynamic_connectivity.hpp
       title: data_structure/offline_dynamic_connectivity.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/potentialized_dsu.hpp
       title: data_structure/potentialized_dsu.hpp
     - icon: ':heavy_check_mark:'
@@ -121,6 +121,9 @@ data:
     - icon: ':warning:'
       path: misc/QMC.hpp
       title: misc/QMC.hpp
+    - icon: ':heavy_check_mark:'
+      path: misc/concepts.hpp
+      title: misc/concepts.hpp
     - icon: ':warning:'
       path: misc/inversion.hpp
       title: misc/inversion.hpp
@@ -242,6 +245,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/aoj_2235.test.cpp
       title: test/data_structure/aoj_2235.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/aoj_dsl_1_b.test.cpp
+      title: test/data_structure/aoj_dsl_1_b.test.cpp
   - name: test/fps
     pages:
     - icon: ':heavy_check_mark:'
