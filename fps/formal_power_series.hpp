@@ -43,6 +43,7 @@ struct FormalPowerSeries : vector<typename Info::value_type> {
     }
     FPS &operator/=(const T &r){
         (*this) *= T(1)/r;
+        return *this;
     }
     FPS &operator<<=(const int &d){
         (*this).insert((*this).begin(),d,T(0));
