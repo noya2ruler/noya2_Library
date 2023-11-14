@@ -94,33 +94,33 @@ data:
     \ T &r){\n        if ((*this).empty()) (*this).resize(1);\n        (*this)[0]\
     \ -= r;\n        return *this;\n    }\n    FPS &operator*=(const T &r){\n    \
     \    for (auto &x : *this) x *= r;\n        return *this;\n    }\n    FPS &operator/=(const\
-    \ T &r){\n        (*this) *= T(1)/r;\n    }\n    FPS &operator<<=(const int &d){\n\
-    \        (*this).insert((*this).begin(),d,T(0));\n        return *this;\n    }\n\
-    \    FPS &operator>>=(const int &d){\n        if ((int)(*this).size() <= d) (*this).clear();\n\
-    \        else (*this).erase((*this).begin(),(*this).begin()+d);\n        return\
-    \ *this;\n    }\n    FPS &operator+=(const FPS &r){\n        if ((*this).size()\
-    \ < r.size()) (*this).resize(r.size());\n        for (int i = 0; i < (int)(r.size());\
-    \ i++) (*this)[i] += r[i];\n        return *this;\n    }\n    FPS &operator-=(const\
-    \ FPS &r){\n        if ((*this).size() < r.size()) (*this).resize(r.size());\n\
-    \        for (int i = 0; i < (int)(r.size()); i++) (*this)[i] -= r[i];\n     \
-    \   return *this;\n    }\n    FPS &operator*=(const FPS &r){\n        if ((*this).empty()\
-    \ || r.empty()){\n            (*this).clear();\n            return *this;\n  \
-    \      }\n        (*this) = Info::multiply(*this,r);\n        return *this;\n\
-    \    }\n    FPS operator+(const T &r) const { return FPS(*this) += r; }\n    FPS\
-    \ operator-(const T &r) const { return FPS(*this) -= r; }\n    FPS operator*(const\
-    \ T &r) const { return FPS(*this) *= r; }\n    FPS operator/(const T &r) const\
-    \ { return FPS(*this) /= r; }\n    FPS operator<<(const int &d) const { return\
-    \ FPS(*this) <<= d; }\n    FPS operator>>(const int &d) const { return FPS(*this)\
-    \ >>= d; }\n    FPS operator+(const FPS &r) const { return FPS(*this) += r; }\n\
-    \    FPS operator-(const FPS &r) const { return FPS(*this) -= r; }\n    FPS operator*(const\
-    \ FPS &r) const { return FPS(*this) *= r; }\n    FPS operator+() const { return\
-    \ *this; }\n    FPS operator-() const {\n        FPS res(*this);\n        for\
-    \ (auto &x : res) x = -x;\n        return res;\n    }\n    T eval(const T &x)\
-    \ const {\n        T res = T(0), w = T(1);\n        for (auto &e : *this) res\
-    \ += e * w, w *= x;\n        return res;\n    }\n    static FPS dot(const FPS\
-    \ &lhs, const FPS &rhs){\n        FPS res(min(lhs.size(),rhs.size()));\n     \
-    \   for (int i = 0; i < (int)res.size(); i++) res[i] = lhs[i] * rhs[i];\n    \
-    \    return res;\n    }\n    FPS pre(int siz) const {\n        FPS ret((*this).begin(),\
+    \ T &r){\n        (*this) *= T(1)/r;\n        return *this;\n    }\n    FPS &operator<<=(const\
+    \ int &d){\n        (*this).insert((*this).begin(),d,T(0));\n        return *this;\n\
+    \    }\n    FPS &operator>>=(const int &d){\n        if ((int)(*this).size() <=\
+    \ d) (*this).clear();\n        else (*this).erase((*this).begin(),(*this).begin()+d);\n\
+    \        return *this;\n    }\n    FPS &operator+=(const FPS &r){\n        if\
+    \ ((*this).size() < r.size()) (*this).resize(r.size());\n        for (int i =\
+    \ 0; i < (int)(r.size()); i++) (*this)[i] += r[i];\n        return *this;\n  \
+    \  }\n    FPS &operator-=(const FPS &r){\n        if ((*this).size() < r.size())\
+    \ (*this).resize(r.size());\n        for (int i = 0; i < (int)(r.size()); i++)\
+    \ (*this)[i] -= r[i];\n        return *this;\n    }\n    FPS &operator*=(const\
+    \ FPS &r){\n        if ((*this).empty() || r.empty()){\n            (*this).clear();\n\
+    \            return *this;\n        }\n        (*this) = Info::multiply(*this,r);\n\
+    \        return *this;\n    }\n    FPS operator+(const T &r) const { return FPS(*this)\
+    \ += r; }\n    FPS operator-(const T &r) const { return FPS(*this) -= r; }\n \
+    \   FPS operator*(const T &r) const { return FPS(*this) *= r; }\n    FPS operator/(const\
+    \ T &r) const { return FPS(*this) /= r; }\n    FPS operator<<(const int &d) const\
+    \ { return FPS(*this) <<= d; }\n    FPS operator>>(const int &d) const { return\
+    \ FPS(*this) >>= d; }\n    FPS operator+(const FPS &r) const { return FPS(*this)\
+    \ += r; }\n    FPS operator-(const FPS &r) const { return FPS(*this) -= r; }\n\
+    \    FPS operator*(const FPS &r) const { return FPS(*this) *= r; }\n    FPS operator+()\
+    \ const { return *this; }\n    FPS operator-() const {\n        FPS res(*this);\n\
+    \        for (auto &x : res) x = -x;\n        return res;\n    }\n    T eval(const\
+    \ T &x) const {\n        T res = T(0), w = T(1);\n        for (auto &e : *this)\
+    \ res += e * w, w *= x;\n        return res;\n    }\n    static FPS dot(const\
+    \ FPS &lhs, const FPS &rhs){\n        FPS res(min(lhs.size(),rhs.size()));\n \
+    \       for (int i = 0; i < (int)res.size(); i++) res[i] = lhs[i] * rhs[i];\n\
+    \        return res;\n    }\n    FPS pre(int siz) const {\n        FPS ret((*this).begin(),\
     \ (*this).begin() + min((int)this->size(), siz));\n        if ((int)ret.size()\
     \ < siz) ret.resize(siz);\n        return ret;\n    }\n    FPS rev() const {\n\
     \        FPS ret(*this);\n        reverse(ret.begin(), ret.end());\n        return\
@@ -162,7 +162,7 @@ data:
   isVerificationFile: false
   path: fps/fps_arbitrary.hpp
   requiredBy: []
-  timestamp: '2023-09-06 22:50:33+09:00'
+  timestamp: '2023-11-14 18:29:09+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: fps/fps_arbitrary.hpp
