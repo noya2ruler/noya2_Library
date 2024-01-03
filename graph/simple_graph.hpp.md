@@ -13,23 +13,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: data_structure/range_tree.hpp
-    title: data_structure/range_tree.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-    title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Static_Range_Inversions_Query.test.cpp
-    title: test/data_structure/Static_Range_Inversions_Query.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/compress.hpp\"\n\n#line 2 \"template/template.hpp\"\
+  bundledCode: "#line 2 \"graph/simple_graph.hpp\"\n\n#line 2 \"template/template.hpp\"\
     \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
     \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
     \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
@@ -81,48 +72,47 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"data_structure/compress.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<typename T> struct compress {\n    vector<T>\
-    \ raws;\n    compress(const vector<T> &raws_ = {}) : raws(raws_){ build(); }\n\
-    \    int id(const T &raw){ return lb(raw); }\n    T raw(const int &id){ return\
-    \ raws[id]; }\n    void build(){ uniq(raws); }\n    void add(const T &raw){ raws.push_back(raw);\
-    \ }\n    size_t size(){ return raws.size(); }\n    int lb(const T &raw){ return\
-    \ lower_bound(all(raws),raw) - raws.begin(); }\n    int ub(const T &raw){ return\
-    \ upper_bound(all(raws),raw) - raws.begin(); }\n    bool contains(const T &raw){\n\
-    \        int jd = lb(raw);\n        if (jd < (int)size()) return raws[jd] == raw;\n\
-    \        return false;\n    }\n    int contains_id(const T &raw){\n        int\
-    \ jd = lb(raw);\n        if (jd < (int)size() && raws[jd] == raw) return jd;\n\
-    \        return -1;\n    }\n};\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2{\n\
-    \ntemplate<typename T> struct compress {\n    vector<T> raws;\n    compress(const\
-    \ vector<T> &raws_ = {}) : raws(raws_){ build(); }\n    int id(const T &raw){\
-    \ return lb(raw); }\n    T raw(const int &id){ return raws[id]; }\n    void build(){\
-    \ uniq(raws); }\n    void add(const T &raw){ raws.push_back(raw); }\n    size_t\
-    \ size(){ return raws.size(); }\n    int lb(const T &raw){ return lower_bound(all(raws),raw)\
-    \ - raws.begin(); }\n    int ub(const T &raw){ return upper_bound(all(raws),raw)\
-    \ - raws.begin(); }\n    bool contains(const T &raw){\n        int jd = lb(raw);\n\
-    \        if (jd < (int)size()) return raws[jd] == raw;\n        return false;\n\
-    \    }\n    int contains_id(const T &raw){\n        int jd = lb(raw);\n      \
-    \  if (jd < (int)size() && raws[jd] == raw) return jd;\n        return -1;\n \
-    \   }\n};\n\n} // namespace noya2"
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"graph/simple_graph.hpp\"\
+    \n\ntemplate<class E>\nstruct simple_graph {\n    simple_graph (int n_ = 0, int\
+    \ m_ = -1) : n(n_), m(m_) {\n        if (m >= 0){\n            es.reserve(m);\n\
+    \            start.reserve(m);\n        }\n    }\n    int add_edge(int from, E\
+    \ e){\n        int eid = start.size();\n        es.emplace_back(e);\n        start.emplace_back(from);\n\
+    \        if (eid+1 == m) build();\n        return eid;\n    }\n    void build(){\n\
+    \        if (m == -2) return ;\n        m = start.size();\n        vector<E> nes(m);\n\
+    \        vector<int> nstart(n+2,0);\n        for (int i = 0; i < m; i++) nstart[start[i]+2]++;\n\
+    \        for (int i = 1; i < n; i++) nstart[i+2] += nstart[i+1];\n        for\
+    \ (int i = 0; i < m; i++) nes[nstart[start[i]+1]++] = es[i];\n        swap(es,nes);\n\
+    \        swap(start,nstart);\n        m = -2;\n    }\n    const auto operator[](int\
+    \ idx) const { return std::ranges::subrange(es.begin()+start[idx],es.begin()+start[idx+1]);\
+    \ }\n  private:\n    int n, m;\n    vector<E> es;\n    vector<int> start;\n};\n"
+  code: "#pragma once\n\n#include\"../template/template.hpp\"\n\ntemplate<class E>\n\
+    struct simple_graph {\n    simple_graph (int n_ = 0, int m_ = -1) : n(n_), m(m_)\
+    \ {\n        if (m >= 0){\n            es.reserve(m);\n            start.reserve(m);\n\
+    \        }\n    }\n    int add_edge(int from, E e){\n        int eid = start.size();\n\
+    \        es.emplace_back(e);\n        start.emplace_back(from);\n        if (eid+1\
+    \ == m) build();\n        return eid;\n    }\n    void build(){\n        if (m\
+    \ == -2) return ;\n        m = start.size();\n        vector<E> nes(m);\n    \
+    \    vector<int> nstart(n+2,0);\n        for (int i = 0; i < m; i++) nstart[start[i]+2]++;\n\
+    \        for (int i = 1; i < n; i++) nstart[i+2] += nstart[i+1];\n        for\
+    \ (int i = 0; i < m; i++) nes[nstart[start[i]+1]++] = es[i];\n        swap(es,nes);\n\
+    \        swap(start,nstart);\n        m = -2;\n    }\n    const auto operator[](int\
+    \ idx) const { return std::ranges::subrange(es.begin()+start[idx],es.begin()+start[idx+1]);\
+    \ }\n  private:\n    int n, m;\n    vector<E> es;\n    vector<int> start;\n};"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
   isVerificationFile: false
-  path: data_structure/compress.hpp
-  requiredBy:
-  - data_structure/range_tree.hpp
-  timestamp: '2023-08-31 17:01:32+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - test/data_structure/Static_Range_Inversions_Query.test.cpp
-documentation_of: data_structure/compress.hpp
+  path: graph/simple_graph.hpp
+  requiredBy: []
+  timestamp: '2024-01-03 18:54:39+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: graph/simple_graph.hpp
 layout: document
 redirect_from:
-- /library/data_structure/compress.hpp
-- /library/data_structure/compress.hpp.html
-title: data_structure/compress.hpp
+- /library/graph/simple_graph.hpp
+- /library/graph/simple_graph.hpp.html
+title: graph/simple_graph.hpp
 ---
