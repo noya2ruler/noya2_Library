@@ -83,9 +83,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
-  - icon: ':warning:'
-    path: graph/simple_graph.hpp
-    title: graph/simple_graph.hpp
   - icon: ':heavy_check_mark:'
     path: math/gcd_convolution.hpp
     title: math/gcd_convolution.hpp
@@ -367,7 +364,6 @@ data:
   - tree/Mo_on_Tree.hpp
   - tree/heavy_light_decomposition.hpp
   - graph/Graph_core.hpp
-  - graph/simple_graph.hpp
   - graph/graph_query.hpp
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp

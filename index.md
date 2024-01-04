@@ -96,9 +96,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: graph/scc.hpp
-    - icon: ':warning:'
-      path: graph/simple_graph.hpp
-      title: graph/simple_graph.hpp
   - name: math
     pages:
     - icon: ':heavy_check_mark:'
