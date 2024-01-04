@@ -72,6 +72,9 @@ data:
     path: graph/Graph_core.hpp
     title: graph/Graph_core.hpp
   - icon: ':warning:'
+    path: graph/graph_query.hpp
+    title: graph/graph_query.hpp
+  - icon: ':warning:'
     path: graph/simple_graph.hpp
     title: graph/simple_graph.hpp
   - icon: ':heavy_check_mark:'
@@ -327,6 +330,7 @@ data:
   - tree/heavy_light_decomposition.hpp
   - graph/Graph_core.hpp
   - graph/simple_graph.hpp
+  - graph/graph_query.hpp
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp
   - string/rolling_hash.hpp
