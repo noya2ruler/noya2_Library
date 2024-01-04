@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/graph/Shortest_Path2.test.cpp
+    title: test/graph/Shortest_Path2.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/csr.hpp\"\n\n#include<vector>\n#include<ranges>\n\
@@ -48,8 +51,9 @@ data:
   requiredBy:
   - graph/graph_query.hpp
   timestamp: '2024-01-04 13:41:34+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/graph/Shortest_Path2.test.cpp
 documentation_of: data_structure/csr.hpp
 layout: document
 redirect_from:

@@ -9,7 +9,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/csr.hpp
       title: data_structure/csr.hpp
     - icon: ':heavy_check_mark:'
@@ -90,7 +90,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/Graph_core.hpp
       title: graph/Graph_core.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/graph_query.hpp
       title: graph/graph_query.hpp
     - icon: ':heavy_check_mark:'
@@ -284,6 +284,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Shortest_Path.test.cpp
       title: test/graph/Shortest_Path.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/graph/Shortest_Path2.test.cpp
+      title: test/graph/Shortest_Path2.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/Strongly_Connected_Components.test.cpp
       title: test/graph/Strongly_Connected_Components.test.cpp

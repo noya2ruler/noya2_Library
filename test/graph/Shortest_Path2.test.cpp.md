@@ -5,6 +5,9 @@ data:
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
   - icon: ':heavy_check_mark:'
+    path: graph/graph_query.hpp
+    title: graph/graph_query.hpp
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
   - icon: ':heavy_check_mark:'
@@ -17,16 +20,17 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/graph/Shortest_Path2.test.cpp
-    title: test/graph/Shortest_Path2.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"graph/graph_query.hpp\"\n\n#line 2 \"template/template.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/shortest_path
+    links:
+    - https://judge.yosupo.jp/problem/shortest_path
+  bundledCode: "#line 1 \"test/graph/Shortest_Path2.test.cpp\"\n#define PROBLEM \"\
+    https://judge.yosupo.jp/problem/shortest_path\"\n\n#line 2 \"template/template.hpp\"\
     \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
     \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
     \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
@@ -78,20 +82,21 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/csr.hpp\"\
-    \n\n#line 4 \"data_structure/csr.hpp\"\n#include<ranges>\n#line 7 \"data_structure/csr.hpp\"\
-    \n\nnamespace noya2 {\n\ntemplate<class E>\nstruct csr {\n    csr (int n_ = 0,\
-    \ int m_ = -1) : n(n_), m(m_) {\n        if (m >= 0){\n            es.reserve(m);\n\
-    \            start.reserve(m);\n        }\n        if (m == 0){\n            build();\n\
-    \        }\n    }\n    int add(int idx, E elem){\n        int eid = start.size();\n\
-    \        es.emplace_back(elem);\n        start.emplace_back(idx);\n        if\
-    \ (eid+1 == m) build();\n        return eid;\n    }\n    void build(){\n     \
-    \   if (m == -2) return ;\n        m = start.size();\n        std::vector<E> nes(m);\n\
-    \        std::vector<int> nstart(n+2,0);\n        for (int i = 0; i < m; i++)\
-    \ nstart[start[i]+2]++;\n        for (int i = 1; i < n; i++) nstart[i+2] += nstart[i+1];\n\
-    \        for (int i = 0; i < m; i++) nes[nstart[start[i]+1]++] = es[i];\n    \
-    \    swap(es,nes);\n        swap(start,nstart);\n        m = -2;\n    }\n    const\
-    \ auto operator[](int idx) const {\n        assert(m == -2);\n        return std::ranges::subrange(es.begin()+start[idx],es.begin()+start[idx+1]);\n\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"graph/graph_query.hpp\"\
+    \n\n#line 2 \"data_structure/csr.hpp\"\n\n#line 4 \"data_structure/csr.hpp\"\n\
+    #include<ranges>\n#line 7 \"data_structure/csr.hpp\"\n\nnamespace noya2 {\n\n\
+    template<class E>\nstruct csr {\n    csr (int n_ = 0, int m_ = -1) : n(n_), m(m_)\
+    \ {\n        if (m >= 0){\n            es.reserve(m);\n            start.reserve(m);\n\
+    \        }\n        if (m == 0){\n            build();\n        }\n    }\n   \
+    \ int add(int idx, E elem){\n        int eid = start.size();\n        es.emplace_back(elem);\n\
+    \        start.emplace_back(idx);\n        if (eid+1 == m) build();\n        return\
+    \ eid;\n    }\n    void build(){\n        if (m == -2) return ;\n        m = start.size();\n\
+    \        std::vector<E> nes(m);\n        std::vector<int> nstart(n+2,0);\n   \
+    \     for (int i = 0; i < m; i++) nstart[start[i]+2]++;\n        for (int i =\
+    \ 1; i < n; i++) nstart[i+2] += nstart[i+1];\n        for (int i = 0; i < m; i++)\
+    \ nes[nstart[start[i]+1]++] = es[i];\n        swap(es,nes);\n        swap(start,nstart);\n\
+    \        m = -2;\n    }\n    const auto operator[](int idx) const {\n        assert(m\
+    \ == -2);\n        return std::ranges::subrange(es.begin()+start[idx],es.begin()+start[idx+1]);\n\
     \    }\n  private:\n    int n, m;\n    std::vector<E> es;\n    std::vector<int>\
     \ start;\n};\n\n} // namespace noya2\n#line 5 \"graph/graph_query.hpp\"\n\nnamespace\
     \ noya2 {\n\ntemplate<typename Cost>\nstruct Graph {\n    int n;\n    csr<pair<int,Cost>>\
@@ -139,71 +144,38 @@ data:
     \ = 0;\n            for (auto [u, c] : g[v]){\n                chmin(dist[v][u],c);\n\
     \            }\n        }\n        rep(k,n) rep(i,n) rep(j,n){\n            chmin(dist[i][j],dist[i][k]+dist[k][j]);\n\
     \        }\n        return dist;\n    }\n    const auto operator[](int idx) const\
-    \ { return g[idx]; }\n};\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"../template/template.hpp\"\n#include\"../data_structure/csr.hpp\"\
-    \n\nnamespace noya2 {\n\ntemplate<typename Cost>\nstruct Graph {\n    int n;\n\
-    \    csr<pair<int,Cost>> g;\n    Cost dist_inf;\n    Graph (int n_ = 0, int m_\
-    \ = -1) : n(n_), g(n_,m_) {\n        dist_inf = numeric_limits<Cost>::max() /\
-    \ 2;\n    }\n    int add_edge(int u, int v, Cost cost = 1){\n        return g.add(u,pair<int,Cost>(v,cost));\n\
-    \    }\n    void build(){\n        g.build();\n    }\n    void set_inf(Cost new_inf){\n\
-    \        dist_inf = new_inf;\n    }\n    vector<Cost> dijkstra(int s){\n     \
-    \   vector<Cost> dist(n,dist_inf);\n        dist[s] = 0;\n        using P = pair<Cost,int>;\n\
-    \        priority_queue<P,vector<P>,greater<P>> pque;\n        pque.push(P(0,s));\n\
-    \        while (!pque.empty()){\n            auto [d, v] = pque.top(); pque.pop();\n\
-    \            if (dist[v] < d) continue;\n            for (auto [u, c] : g[v]){\n\
-    \                if (chmin(dist[u],d+c)){\n                    pque.push(P(dist[u],u));\n\
-    \                }\n            }\n        }\n        return dist;\n    }\n  \
-    \  vector<int> reconstruct(int s, int t, const vector<Cost> &dist){\n        if\
-    \ (dist[t] == linf) return {};\n        vector<int> from(n,-1);\n        queue<int>\
-    \ que;\n        que.push(s);\n        while (!que.empty()){\n            int v\
-    \ = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n         \
-    \       if (from[u] == -1 && dist[u] == dist[v] + c){\n                    from[u]\
-    \ = v;\n                    que.push(u);\n                }\n            }\n \
-    \       }\n        vector<int> ans = {t};\n        while (t != s){\n         \
-    \   t = from[t];\n            ans.emplace_back(t);\n        }\n        reverse(all(ans));\n\
-    \        return ans;\n    }\n    vector<Cost> bfs01(int s){\n        vector<Cost>\
-    \ dist(n,iinf);\n        dist[s] = 0;\n        deque<int> que;\n        que.push_back(s);\n\
-    \        while (!que.empty()){\n            int v = que.front(); que.pop_front();\n\
-    \            for (auto [u, c] : g[v]){\n                if (chmin(dist[u],dist[v]+c)){\n\
-    \                    if (c == 0) que.push_front(u);\n                    else\
-    \ que.push_back(u);\n                }\n            }\n        }\n        return\
-    \ dist;\n    }\n    vector<Cost> bellman_ford(int s, bool &ng_cycle){\n      \
-    \  vector<Cost> dist(n,dist_inf);\n        vector<int> ng;\n        dist[s] =\
-    \ 0;\n        int tm = 0;\n        while (tm < n){\n            bool finish =\
-    \ true;\n            for (int v = 0; v < n; v++){\n                if (dist[v]\
-    \ == dist_inf) continue;\n                for (auto [u, c] : g[v]){\n        \
-    \            if (chmin(dist[u],dist[v]+c)){\n                        finish =\
-    \ false;\n                        if (tm == n-1) ng.emplace_back(u);\n       \
-    \             }\n                }\n            }\n            if (finish) break;\n\
-    \            tm++;\n        }\n        ng_cycle = (tm == n);\n        if (ng_cycle){\n\
-    \            for (auto v : ng) dist[v] = -dist_inf;\n            tm = n;\n   \
-    \         while (tm--){\n                for (int v = 0; v < n; v++){\n      \
-    \              if (dist[v] != -dist_inf) continue;\n                    for (auto\
-    \ [u, c] : g[v]){\n                        dist[u] = -dist_inf;\n            \
-    \        }\n                }\n            }\n        }\n        return dist;\n\
-    \    }\n    vector<vector<Cost>> warshall_floyd(){\n        vector<vector<Cost>>\
-    \ dist(n,vector<Cost>(n,dist_inf));\n        rep(v,n){\n            dist[v][v]\
-    \ = 0;\n            for (auto [u, c] : g[v]){\n                chmin(dist[v][u],c);\n\
-    \            }\n        }\n        rep(k,n) rep(i,n) rep(j,n){\n            chmin(dist[i][j],dist[i][k]+dist[k][j]);\n\
-    \        }\n        return dist;\n    }\n    const auto operator[](int idx) const\
-    \ { return g[idx]; }\n};\n\n} // namespace noya2"
+    \ { return g[idx]; }\n};\n\n} // namespace noya2\n#line 5 \"test/graph/Shortest_Path2.test.cpp\"\
+    \n\nint main(){\n    int n, m, s, t; in(n,m,s,t);\n    Graph<ll> g(n,m);\n   \
+    \ rep(i,m){\n        int u, v; in(u,v);\n        ll c; in(c);\n        g.add_edge(u,v,c);\n\
+    \    }\n    auto dist = g.dijkstra(s);\n    if (dist[t] == g.dist_inf){\n    \
+    \    out(-1);\n        return 0;\n    }\n    auto ans = g.reconstruct(s,t,dist);\n\
+    \    out(dist[t],ans.size()-1);\n    rep(i,ans.size()-1) out(ans[i],ans[i+1]);\n\
+    }\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include\"\
+    ../../template/template.hpp\"\n#include\"../../graph/graph_query.hpp\"\n\nint\
+    \ main(){\n    int n, m, s, t; in(n,m,s,t);\n    Graph<ll> g(n,m);\n    rep(i,m){\n\
+    \        int u, v; in(u,v);\n        ll c; in(c);\n        g.add_edge(u,v,c);\n\
+    \    }\n    auto dist = g.dijkstra(s);\n    if (dist[t] == g.dist_inf){\n    \
+    \    out(-1);\n        return 0;\n    }\n    auto ans = g.reconstruct(s,t,dist);\n\
+    \    out(dist[t],ans.size()-1);\n    rep(i,ans.size()-1) out(ans[i],ans[i+1]);\n\
+    }"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
+  - graph/graph_query.hpp
   - data_structure/csr.hpp
-  isVerificationFile: false
-  path: graph/graph_query.hpp
+  isVerificationFile: true
+  path: test/graph/Shortest_Path2.test.cpp
   requiredBy: []
-  timestamp: '2024-01-04 13:41:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/graph/Shortest_Path2.test.cpp
-documentation_of: graph/graph_query.hpp
+  timestamp: '2024-01-04 13:43:08+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/graph/Shortest_Path2.test.cpp
 layout: document
 redirect_from:
-- /library/graph/graph_query.hpp
-- /library/graph/graph_query.hpp.html
-title: graph/graph_query.hpp
+- /verify/test/graph/Shortest_Path2.test.cpp
+- /verify/test/graph/Shortest_Path2.test.cpp.html
+title: test/graph/Shortest_Path2.test.cpp
 ---
