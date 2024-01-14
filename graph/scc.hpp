@@ -4,10 +4,10 @@
 
 namespace noya2{
 
-template <class E> struct csr {
+template <class E> struct internal_csr {
     std::vector<int> start;
     std::vector<E> elist;
-    explicit csr(int n, const std::vector<std::pair<int, E>>& edges)
+    explicit internal_csr(int n, const std::vector<std::pair<int, E>>& edges)
         : start(n + 1), elist(edges.size()) {
         for (auto e : edges) {
             start[e.first + 1]++;
@@ -32,7 +32,7 @@ struct scc_graph {
 
     // @return pair of (# of scc, scc id)
     std::pair<int, std::vector<int>> scc_ids() {
-        auto g = csr<edge>(_n, edges);
+        auto g = internal_csr<edge>(_n, edges);
         int now_ord = 0, group_num = 0;
         std::vector<int> visited, low(_n), ord(_n, -1), ids(_n);
         visited.reserve(_n);
