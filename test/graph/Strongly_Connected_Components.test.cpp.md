@@ -81,42 +81,42 @@ data:
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
     ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"graph/scc.hpp\"\
     \n\n#line 4 \"graph/scc.hpp\"\n\nnamespace noya2{\n\ntemplate <class E> struct\
-    \ csr {\n    std::vector<int> start;\n    std::vector<E> elist;\n    explicit\
-    \ csr(int n, const std::vector<std::pair<int, E>>& edges)\n        : start(n +\
-    \ 1), elist(edges.size()) {\n        for (auto e : edges) {\n            start[e.first\
-    \ + 1]++;\n        }\n        for (int i = 1; i <= n; i++) {\n            start[i]\
-    \ += start[i - 1];\n        }\n        auto counter = start;\n        for (auto\
-    \ e : edges) {\n            elist[counter[e.first]++] = e.second;\n        }\n\
-    \    }\n};\n\nstruct scc_graph {\n  public:\n    explicit scc_graph(int n) : _n(n)\
-    \ {}\n\n    int num_vertices() { return _n; }\n\n    void add_edge(int from, int\
-    \ to) { edges.push_back({from, {to}}); }\n\n    // @return pair of (# of scc,\
-    \ scc id)\n    std::pair<int, std::vector<int>> scc_ids() {\n        auto g =\
-    \ csr<edge>(_n, edges);\n        int now_ord = 0, group_num = 0;\n        std::vector<int>\
-    \ visited, low(_n), ord(_n, -1), ids(_n);\n        visited.reserve(_n);\n    \
-    \    auto dfs = [&](auto self, int v) -> void {\n            low[v] = ord[v] =\
-    \ now_ord++;\n            visited.push_back(v);\n            for (int i = g.start[v];\
-    \ i < g.start[v + 1]; i++) {\n                auto to = g.elist[i].to;\n     \
-    \           if (ord[to] == -1) {\n                    self(self, to);\n      \
-    \              low[v] = std::min(low[v], low[to]);\n                } else {\n\
-    \                    low[v] = std::min(low[v], ord[to]);\n                }\n\
-    \            }\n            if (low[v] == ord[v]) {\n                while (true)\
-    \ {\n                    int u = visited.back();\n                    visited.pop_back();\n\
-    \                    ord[u] = _n;\n                    ids[u] = group_num;\n \
-    \                   if (u == v) break;\n                }\n                group_num++;\n\
-    \            }\n        };\n        for (int i = 0; i < _n; i++) {\n         \
-    \   if (ord[i] == -1) dfs(dfs, i);\n        }\n        for (auto& x : ids) {\n\
-    \            x = group_num - 1 - x;\n        }\n        return {group_num, ids};\n\
-    \    }\n\n    std::vector<std::vector<int>> scc() {\n        auto ids = scc_ids();\n\
-    \        int group_num = ids.first;\n        std::vector<int> counts(group_num);\n\
-    \        for (auto x : ids.second) counts[x]++;\n        std::vector<std::vector<int>>\
-    \ groups(ids.first);\n        for (int i = 0; i < group_num; i++) {\n        \
-    \    groups[i].reserve(counts[i]);\n        }\n        for (int i = 0; i < _n;\
-    \ i++) {\n            groups[ids.second[i]].push_back(i);\n        }\n       \
-    \ return groups;\n    }\n\n  private:\n    int _n;\n    struct edge {\n      \
-    \  int to;\n    };\n    std::vector<std::pair<int, edge>> edges;\n};\n\n} // namespace\
-    \ noya2\n#line 5 \"test/graph/Strongly_Connected_Components.test.cpp\"\n\nint\
-    \ main(){\n    int n, m; in(n,m);\n    scc_graph g(n);\n    rep(i,m){\n      \
-    \  int u, v; in(u,v);\n        g.add_edge(u,v);\n    }\n    auto ans = g.scc();\n\
+    \ internal_csr {\n    std::vector<int> start;\n    std::vector<E> elist;\n   \
+    \ explicit internal_csr(int n, const std::vector<std::pair<int, E>>& edges)\n\
+    \        : start(n + 1), elist(edges.size()) {\n        for (auto e : edges) {\n\
+    \            start[e.first + 1]++;\n        }\n        for (int i = 1; i <= n;\
+    \ i++) {\n            start[i] += start[i - 1];\n        }\n        auto counter\
+    \ = start;\n        for (auto e : edges) {\n            elist[counter[e.first]++]\
+    \ = e.second;\n        }\n    }\n};\n\nstruct scc_graph {\n  public:\n    explicit\
+    \ scc_graph(int n) : _n(n) {}\n\n    int num_vertices() { return _n; }\n\n   \
+    \ void add_edge(int from, int to) { edges.push_back({from, {to}}); }\n\n    //\
+    \ @return pair of (# of scc, scc id)\n    std::pair<int, std::vector<int>> scc_ids()\
+    \ {\n        auto g = internal_csr<edge>(_n, edges);\n        int now_ord = 0,\
+    \ group_num = 0;\n        std::vector<int> visited, low(_n), ord(_n, -1), ids(_n);\n\
+    \        visited.reserve(_n);\n        auto dfs = [&](auto self, int v) -> void\
+    \ {\n            low[v] = ord[v] = now_ord++;\n            visited.push_back(v);\n\
+    \            for (int i = g.start[v]; i < g.start[v + 1]; i++) {\n           \
+    \     auto to = g.elist[i].to;\n                if (ord[to] == -1) {\n       \
+    \             self(self, to);\n                    low[v] = std::min(low[v], low[to]);\n\
+    \                } else {\n                    low[v] = std::min(low[v], ord[to]);\n\
+    \                }\n            }\n            if (low[v] == ord[v]) {\n     \
+    \           while (true) {\n                    int u = visited.back();\n    \
+    \                visited.pop_back();\n                    ord[u] = _n;\n     \
+    \               ids[u] = group_num;\n                    if (u == v) break;\n\
+    \                }\n                group_num++;\n            }\n        };\n\
+    \        for (int i = 0; i < _n; i++) {\n            if (ord[i] == -1) dfs(dfs,\
+    \ i);\n        }\n        for (auto& x : ids) {\n            x = group_num - 1\
+    \ - x;\n        }\n        return {group_num, ids};\n    }\n\n    std::vector<std::vector<int>>\
+    \ scc() {\n        auto ids = scc_ids();\n        int group_num = ids.first;\n\
+    \        std::vector<int> counts(group_num);\n        for (auto x : ids.second)\
+    \ counts[x]++;\n        std::vector<std::vector<int>> groups(ids.first);\n   \
+    \     for (int i = 0; i < group_num; i++) {\n            groups[i].reserve(counts[i]);\n\
+    \        }\n        for (int i = 0; i < _n; i++) {\n            groups[ids.second[i]].push_back(i);\n\
+    \        }\n        return groups;\n    }\n\n  private:\n    int _n;\n    struct\
+    \ edge {\n        int to;\n    };\n    std::vector<std::pair<int, edge>> edges;\n\
+    };\n\n} // namespace noya2\n#line 5 \"test/graph/Strongly_Connected_Components.test.cpp\"\
+    \n\nint main(){\n    int n, m; in(n,m);\n    scc_graph g(n);\n    rep(i,m){\n\
+    \        int u, v; in(u,v);\n        g.add_edge(u,v);\n    }\n    auto ans = g.scc();\n\
     \    out(ans.size());\n    for (auto &v : ans){\n        out(v.size(),v);\n  \
     \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\n\n#include\"../../template/template.hpp\"\
@@ -133,7 +133,7 @@ data:
   isVerificationFile: true
   path: test/graph/Strongly_Connected_Components.test.cpp
   requiredBy: []
-  timestamp: '2023-08-26 17:35:34+09:00'
+  timestamp: '2024-01-14 20:54:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Strongly_Connected_Components.test.cpp
