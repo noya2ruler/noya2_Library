@@ -8,6 +8,7 @@ namespace noya2{
 template<Modint mint>
 struct NTT {
     static constexpr uint mod = mint::mod();
+    static constexpr ull mod2 = (ull)mod * mod;
     static constexpr uint pr  = primitive_root_constexpr(mod);
     static constexpr int level = countr_zero(mod-1);
     mint wp[level+1], wm[level+1];
@@ -20,103 +21,103 @@ struct NTT {
         }
     }
     NTT () { set_ws(); }
-    void fft2(vector<mint> &a, int k, int l = -1){
-        if (k <= 0 || a.empty()) return ;
-        if (l == -1) l = 0;
-        for (int t = 1, v = 1<<(k-1), wi = k; v > 0; t <<= 1, v >>= 1, wi -= 1){
-            mint ww = 1;
-            int pl = 1<<wi;
-            for (int j = 0; j < v; j++, ww *= wm[wi]){
-                int j0 = l+j, j1 = j0+v;
-                for (int i = 0; i < t; i++, j0 += pl, j1 += pl){
-                    mint a1 = a[j1];
-                    a[j1] = (a[j0] - a1) * ww;
-                    a[j0] += a1;
+    void fft4(vector<mint> &a, int k, int s = 0){
+        uint im = wm[2].val();
+        uint n = 1<<k;
+        uint len = n;
+        int l = k;
+        while (len > 1){
+            if (l == 1){
+                for (int i = 0; i < (1<<(k-1)); i++){
+                    int i0 = s + i*2, i1 = i0+1;
+                    a[i0] += a[i1];
+                    a[i1]  = a[i0] - a[i1] * 2;
                 }
+                len >>= 1;
+                l -= 1;
+            }
+            else {
+                int len4 = len/4;
+                int nlen = n/len;
+                ull r1 = 1, r2 = 1, r3 = 1, imr1 = im, imr3 = im;
+                for (int i = 0; i < len4; i++){
+                    int offset = 0;
+                    for (int j = 0; j < nlen; j++){
+                        int i0 = s + i + offset, i1 = i0 + len4, i2 = i1 + len4, i3 = i2 + len4;
+                        uint a0 = a[i0].val();
+                        uint a1 = a[i1].val();
+                        uint a2 = a[i2].val();
+                        uint a3 = a[i3].val();
+                        uint a0p2 = a0 + a2;
+                        uint a1p3 = a1 + a3;
+                        ull b0m2 = (a0 + mod - a2) * r1;
+                        ull b1m3 = (a1 + mod - a3) * imr1;
+                        ull c0m2 = (a0 + mod - a2) * r3;
+                        ull c1m3 = (a1 + mod - a3) * imr3;
+                        a[i0] = a0p2 + a1p3;
+                        a[i1] = b0m2 + b1m3;
+                        a[i2] = (a0p2 + mod*2 - a1p3) * r2;
+                        a[i3] = c0m2 + mod2*2 - c1m3;
+                        offset += len;
+                    }
+                    r1 = r1 * wm[l].val() % mod;
+                    r2 = r1 * r1 % mod;
+                    r3 = r1 * r2 % mod;
+                    imr1 = im * r1 % mod;
+                    imr3 = im * r3 % mod;
+                }
+                len >>= 2;
+                l -= 2;
             }
         }
     }
-    void ifft2(vector<mint> &a, int k, int l = -1){
-        if (k <= 0 || a.empty()) return ;
-        if (l == -1) l = 0;
-        for (int v = 1, t = 1<<(k-1), wi = 1; t > 0; v <<= 1, t >>= 1, wi += 1){
-            mint ww = 1;
-            int pl = 1<<wi;
-            for (int j = 0; j < v; j++, ww *= wp[wi]){
-                int j0 = l+j, j1 = j0+v;
-                for (int i = 0; i < t; i++, j0 += pl, j1 += pl){
-                    mint a1 = a[j1] * ww;
-                    a[j1] = a[j0] - a1;
-                    a[j0] += a1;
+    void ifft4(vector<mint> &a, int k, int s = 0){
+        uint im = wp[2].val();
+        uint n = 1<<k;
+        uint len = (k & 1 ? 2 : 4);
+        int l = (k & 1 ? 1 : 2);
+        while (len <= n){
+            if (l == 1){
+                for (int i = 0; i < (1<<(k-1)); i++){
+                    int i0 = s + i*2, i1 = i0+1;
+                    a[i0] += a[i1];
+                    a[i1]  = a[i0] - a[i1] * 2;
                 }
+                len <<= 2;
+                l += 2;
             }
-        }
-    }
-    void fft4(vector<mint> &a, int k, int l = -1){
-        if (k <= 0 || a.empty()) return ;
-        if (l == -1) l = 0;
-        if (k == 1){
-            mint a1 = a[l+1];
-            a[l+1] = a[l] - a1;
-            a[l] += a1;
-            return ;
-        }
-        if (k & 1){
-            int v = 1 << (k - 1);
-            mint ww = 1;
-            for (int i = 0; i < v; i++, ww *= wm[k]){
-                mint aiv = a[l+i+v];
-                a[l+i+v] = (a[l+i] - aiv) * ww;
-                a[l+i]   = a[l+i] + aiv;
-            }
-        }
-        mint im = wm[2];
-        for (int t = 1 << (k & 1), v = 1 << (k - 2 - (k & 1)), wi = k - (k & 1); v > 0; t <<= 2, v >>= 2, wi -= 2){
-            mint ww = 1, xx = 1;
-            int pl = 1 << wi;
-            for (int j = 0; j < v; j++, ww *= wm[wi], xx = ww * ww){
-                int j0 = l+j, j1 = j0 + v, j2 = j1 + v, j3 = j2 + v;
-                for (int i = 0; i < t; i++, j0 += pl, j1 += pl, j2 += pl, j3 += pl){
-                    mint a0 = a[j0], a1 = a[j1], a2 = a[j2], a3 = a[j3];
-                    mint a0p2 = a0 + a2, a0m2 = (a0 - a2) * ww;
-                    mint a1p3 = a1 + a3, a1m3 = (a1 - a3) * im * ww;
-                    a[j0] = a0p2 + a1p3, a[j2] = (a0p2 - a1p3) * xx;
-                    a[j1] = a0m2 + a1m3, a[j3] = (a0m2 - a1m3) * xx;
+            else {
+                int len4 = len/4;
+                int nlen = n/len;
+                ull r1 = 1, r2 = 1, r3 = 1, imr1 = im, imr3 = im;
+                for (int i = 0; i < len4; i++){
+                    int offset = 0;
+                    for (int j = 0; j < nlen; j++){
+                        int i0 = s + i + offset, i1 = i0 + len4, i2 = i1 + len4, i3 = i2 + len4;
+                        ull a0 = a[i0].val();
+                        ull a1 = a[i1].val() * r1;
+                        ull a2 = a[i2].val() * r2;
+                        ull a3 = a[i3].val() * r3;
+                        ull b1 = a[i1].val() * imr1;
+                        ull b3 = a[i3].val() * imr3;
+                        ull a0p2 = a0 + a2;
+                        ull a1p3 = a1 + a3;
+                        ull a0m2 = a0 + mod2 - a2;
+                        ull b1m3 = b1 + mod2 - b3;
+                        a[i0] = a0p2 + a1p3;
+                        a[i1] = a0m2 + b1m3;
+                        a[i2] = a0p2 + mod2*2 - a1p3;
+                        a[i3] = a0m2 + mod2*2 - b1m3;
+                        offset += len;
+                    }
+                    r1 = r1 * wp[l].val() % mod;
+                    r2 = r1 * r1 % mod;
+                    r3 = r1 * r2 % mod;
+                    imr1 = im * r1 % mod;
+                    imr3 = im * r3 % mod;
                 }
-            }
-        }
-    }
-    void ifft4(vector<mint> &a, int k, int l = -1){
-        if (k <= 0 || a.empty()) return ;
-        if (l == -1) l = 0;
-        if (k == 1){
-            mint a1 = a[l+1];
-            a[l+1] = a[l] - a1;
-            a[l+0] += a1;
-            return ;
-        }
-        mint im = wp[2];
-        for (int v = 1, t = 1 << (k - 2), wi = 2; t > 0; v <<= 2, t >>= 2, wi += 2){
-            mint ww = 1, xx = 1;
-            int pl = 1 << wi;
-            for (int j = 0; j < v; j++, ww *= wp[wi], xx = ww * ww){
-                int j0 = l+j, j1 = j0 + v, j2 = j1 + v, j3 = j2 + v;
-                for (int i = 0; i < t; i++, j0 += pl, j1 += pl, j2 += pl, j3 += pl){
-                    mint a0 = a[j0], a1 = a[j1] * ww, a2 = a[j2] * xx, a3 = a[j3] * ww * xx;
-                    mint a0p2 = a0 + a2, a0m2 = a0 - a2;
-                    mint a1p3 = a1 + a3, a1m3 = (a1 - a3) * im;
-                    a[j0] = a0p2 + a1p3, a[j2] = a0p2 - a1p3;
-                    a[j1] = a0m2 + a1m3, a[j3] = a0m2 - a1m3;
-                }
-            }
-        }
-        if (k & 1){
-            int v = 1 << (k - 1);
-            mint ww = 1;
-            for (int i = 0; i < v; i++, ww *= wp[k]){
-                mint aiv = a[l+i+v] * ww;
-                a[l+i+v] = a[l+i] - aiv;
-                a[l+i] += aiv;
+                len <<= 2;
+                l += 2;
             }
         }
     }
