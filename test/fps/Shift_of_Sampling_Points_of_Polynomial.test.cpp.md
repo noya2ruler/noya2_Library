@@ -311,87 +311,88 @@ data:
     \ T>\nconcept Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n\
     \    a.pow(declval<int>());\n};\n\n} // namespace noya2\n#line 5 \"fps/ntt.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<Modint mint>\nstruct NTT {\n    static constexpr\
-    \ uint mod = mint::mod();\n    static constexpr uint pr  = primitive_root_constexpr(mod);\n\
-    \    static constexpr int level = countr_zero(mod-1);\n    mint wp[level+1], wm[level+1];\n\
-    \    void set_ws(){\n        mint r = mint(pr).pow((mod-1) >> level);\n      \
-    \  wp[level] = r, wm[level] = r.inv();\n        for (int i = level-1; i >= 0;\
-    \ i--){\n            wp[i] = wp[i+1] * wp[i+1];\n            wm[i] = wm[i+1] *\
-    \ wm[i+1];\n        }\n    }\n    NTT () { set_ws(); }\n    void fft2(vector<mint>\
-    \ &a, int k, int l = -1){\n        if (k <= 0 || a.empty()) return ;\n       \
-    \ if (l == -1) l = 0;\n        for (int t = 1, v = 1<<(k-1), wi = k; v > 0; t\
-    \ <<= 1, v >>= 1, wi -= 1){\n            mint ww = 1;\n            int pl = 1<<wi;\n\
-    \            for (int j = 0; j < v; j++, ww *= wm[wi]){\n                int j0\
-    \ = l+j, j1 = j0+v;\n                for (int i = 0; i < t; i++, j0 += pl, j1\
-    \ += pl){\n                    mint a1 = a[j1];\n                    a[j1] = (a[j0]\
-    \ - a1) * ww;\n                    a[j0] += a1;\n                }\n         \
-    \   }\n        }\n    }\n    void ifft2(vector<mint> &a, int k, int l = -1){\n\
-    \        if (k <= 0 || a.empty()) return ;\n        if (l == -1) l = 0;\n    \
-    \    for (int v = 1, t = 1<<(k-1), wi = 1; t > 0; v <<= 1, t >>= 1, wi += 1){\n\
-    \            mint ww = 1;\n            int pl = 1<<wi;\n            for (int j\
-    \ = 0; j < v; j++, ww *= wp[wi]){\n                int j0 = l+j, j1 = j0+v;\n\
-    \                for (int i = 0; i < t; i++, j0 += pl, j1 += pl){\n          \
-    \          mint a1 = a[j1] * ww;\n                    a[j1] = a[j0] - a1;\n  \
-    \                  a[j0] += a1;\n                }\n            }\n        }\n\
-    \    }\n    void fft4(vector<mint> &a, int k, int l = -1){\n        if (k <= 0\
-    \ || a.empty()) return ;\n        if (l == -1) l = 0;\n        if (k == 1){\n\
-    \            mint a1 = a[l+1];\n            a[l+1] = a[l] - a1;\n            a[l]\
-    \ += a1;\n            return ;\n        }\n        if (k & 1){\n            int\
-    \ v = 1 << (k - 1);\n            mint ww = 1;\n            for (int i = 0; i <\
-    \ v; i++, ww *= wm[k]){\n                mint aiv = a[l+i+v];\n              \
-    \  a[l+i+v] = (a[l+i] - aiv) * ww;\n                a[l+i]   = a[l+i] + aiv;\n\
-    \            }\n        }\n        mint im = wm[2];\n        for (int t = 1 <<\
-    \ (k & 1), v = 1 << (k - 2 - (k & 1)), wi = k - (k & 1); v > 0; t <<= 2, v >>=\
-    \ 2, wi -= 2){\n            mint ww = 1, xx = 1;\n            int pl = 1 << wi;\n\
-    \            for (int j = 0; j < v; j++, ww *= wm[wi], xx = ww * ww){\n      \
-    \          int j0 = l+j, j1 = j0 + v, j2 = j1 + v, j3 = j2 + v;\n            \
-    \    for (int i = 0; i < t; i++, j0 += pl, j1 += pl, j2 += pl, j3 += pl){\n  \
-    \                  mint a0 = a[j0], a1 = a[j1], a2 = a[j2], a3 = a[j3];\n    \
-    \                mint a0p2 = a0 + a2, a0m2 = (a0 - a2) * ww;\n               \
-    \     mint a1p3 = a1 + a3, a1m3 = (a1 - a3) * im * ww;\n                    a[j0]\
-    \ = a0p2 + a1p3, a[j2] = (a0p2 - a1p3) * xx;\n                    a[j1] = a0m2\
-    \ + a1m3, a[j3] = (a0m2 - a1m3) * xx;\n                }\n            }\n    \
-    \    }\n    }\n    void ifft4(vector<mint> &a, int k, int l = -1){\n        if\
-    \ (k <= 0 || a.empty()) return ;\n        if (l == -1) l = 0;\n        if (k ==\
-    \ 1){\n            mint a1 = a[l+1];\n            a[l+1] = a[l] - a1;\n      \
-    \      a[l+0] += a1;\n            return ;\n        }\n        mint im = wp[2];\n\
-    \        for (int v = 1, t = 1 << (k - 2), wi = 2; t > 0; v <<= 2, t >>= 2, wi\
-    \ += 2){\n            mint ww = 1, xx = 1;\n            int pl = 1 << wi;\n  \
-    \          for (int j = 0; j < v; j++, ww *= wp[wi], xx = ww * ww){\n        \
-    \        int j0 = l+j, j1 = j0 + v, j2 = j1 + v, j3 = j2 + v;\n              \
-    \  for (int i = 0; i < t; i++, j0 += pl, j1 += pl, j2 += pl, j3 += pl){\n    \
-    \                mint a0 = a[j0], a1 = a[j1] * ww, a2 = a[j2] * xx, a3 = a[j3]\
-    \ * ww * xx;\n                    mint a0p2 = a0 + a2, a0m2 = a0 - a2;\n     \
-    \               mint a1p3 = a1 + a3, a1m3 = (a1 - a3) * im;\n                \
-    \    a[j0] = a0p2 + a1p3, a[j2] = a0p2 - a1p3;\n                    a[j1] = a0m2\
-    \ + a1m3, a[j3] = a0m2 - a1m3;\n                }\n            }\n        }\n\
-    \        if (k & 1){\n            int v = 1 << (k - 1);\n            mint ww =\
-    \ 1;\n            for (int i = 0; i < v; i++, ww *= wp[k]){\n                mint\
-    \ aiv = a[l+i+v] * ww;\n                a[l+i+v] = a[l+i] - aiv;\n           \
-    \     a[l+i] += aiv;\n            }\n        }\n    }\n    void ntt(vector<mint>\
-    \ &a) {\n        if ((int)a.size() <= 1) return;\n        fft4(a, 63-countl_zero(a.size()));\n\
-    \    }\n    void intt(vector<mint> &a, bool stop = false) {\n        if ((int)a.size()\
-    \ <= 1) return;\n        ifft4(a, 63-countl_zero(a.size()));\n        if (stop)\
-    \ return ;\n        mint iv = mint(a.size()).inv();\n        for (auto &x : a)\
-    \ x *= iv;\n    }\n    vector<mint> multiply(const vector<mint> &a, const vector<mint>\
-    \ &b) {\n        int l = a.size() + b.size() - 1;\n        if (min<int>(a.size(),\
-    \ b.size()) <= 40){\n            vector<mint> s(l);\n            for (int i =\
-    \ 0; i < (int)a.size(); i++) for (int j = 0; j < (int)b.size(); j++) s[i + j]\
-    \ += a[i] * b[j];\n            return s;\n        }\n        int k = 2, M = 4;\n\
-    \        while (M < l) M <<= 1, ++k;\n        set_ws();\n        vector<mint>\
-    \ s(M);\n        for (int i = 0; i < (int)a.size(); ++i) s[i] = a[i];\n      \
-    \  fft4(s, k);\n        if (a.size() == b.size() && a == b) {\n            for\
-    \ (int i = 0; i < M; ++i) s[i] *= s[i];\n        }\n        else {\n         \
-    \   vector<mint> t(M);\n            for (int i = 0; i < (int)b.size(); ++i) t[i]\
-    \ = b[i];\n            fft4(t, k);\n            for (int i = 0; i < M; ++i) s[i]\
-    \ *= t[i];\n        }\n        ifft4(s, k);\n        s.resize(l);\n        mint\
-    \ invm = mint(M).inv();\n        for (int i = 0; i < l; ++i) s[i] *= invm;\n \
-    \       return s;\n    }\n};\n\n\n} // namespace noya2\n#line 6 \"fps/fps_ntt.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<typename T>\nstruct fps_ntt{\n    using value_type\
-    \ = T;\n    static NTT<T> ntt;\n    static vector<T> multiply(const vector<T>\
-    \ &a, const vector<T> &b){\n        return ntt.multiply(a,b);\n    }\n    static\
-    \ vector<T> inv(const vector<T> &a, int d = -1){\n        const int n = a.size();\n\
-    \        if (d == -1) d = n;\n        vector<T> res = {a[0].inv()};\n        for\
-    \ (int siz = 1; siz < d; siz <<= 1){\n            vector<T> f(a.begin(),a.begin()+min(n,siz*2)),\
+    \ uint mod = mint::mod();\n    static constexpr ull mod2 = (ull)mod * mod;\n \
+    \   static constexpr uint pr  = primitive_root_constexpr(mod);\n    static constexpr\
+    \ int level = countr_zero(mod-1);\n    mint wp[level+1], wm[level+1];\n    void\
+    \ set_ws(){\n        mint r = mint(pr).pow((mod-1) >> level);\n        wp[level]\
+    \ = r, wm[level] = r.inv();\n        for (int i = level-1; i >= 0; i--){\n   \
+    \         wp[i] = wp[i+1] * wp[i+1];\n            wm[i] = wm[i+1] * wm[i+1];\n\
+    \        }\n    }\n    NTT () { set_ws(); }\n    void fft4(vector<mint> &a, int\
+    \ k, int s = 0){\n        uint im = wm[2].val();\n        uint n = 1<<k;\n   \
+    \     uint len = n;\n        int l = k;\n        while (len > 1){\n          \
+    \  if (l == 1){\n                for (int i = 0; i < (1<<(k-1)); i++){\n     \
+    \               int i0 = s + i*2, i1 = i0+1;\n                    a[i0] += a[i1];\n\
+    \                    a[i1]  = a[i0] - a[i1] * 2;\n                }\n        \
+    \        len >>= 1;\n                l -= 1;\n            }\n            else\
+    \ {\n                int len4 = len/4;\n                int nlen = n/len;\n  \
+    \              ull r1 = 1, r2 = 1, r3 = 1, imr1 = im, imr3 = im;\n           \
+    \     for (int i = 0; i < len4; i++){\n                    int offset = 0;\n \
+    \                   for (int j = 0; j < nlen; j++){\n                        int\
+    \ i0 = s + i + offset, i1 = i0 + len4, i2 = i1 + len4, i3 = i2 + len4;\n     \
+    \                   uint a0 = a[i0].val();\n                        uint a1 =\
+    \ a[i1].val();\n                        uint a2 = a[i2].val();\n             \
+    \           uint a3 = a[i3].val();\n                        uint a0p2 = a0 + a2;\n\
+    \                        uint a1p3 = a1 + a3;\n                        ull b0m2\
+    \ = (a0 + mod - a2) * r1;\n                        ull b1m3 = (a1 + mod - a3)\
+    \ * imr1;\n                        ull c0m2 = (a0 + mod - a2) * r3;\n        \
+    \                ull c1m3 = (a1 + mod - a3) * imr3;\n                        a[i0]\
+    \ = a0p2 + a1p3;\n                        a[i1] = b0m2 + b1m3;\n             \
+    \           a[i2] = (a0p2 + mod*2 - a1p3) * r2;\n                        a[i3]\
+    \ = c0m2 + mod2*2 - c1m3;\n                        offset += len;\n          \
+    \          }\n                    r1 = r1 * wm[l].val() % mod;\n             \
+    \       r2 = r1 * r1 % mod;\n                    r3 = r1 * r2 % mod;\n       \
+    \             imr1 = im * r1 % mod;\n                    imr3 = im * r3 % mod;\n\
+    \                }\n                len >>= 2;\n                l -= 2;\n    \
+    \        }\n        }\n    }\n    void ifft4(vector<mint> &a, int k, int s = 0){\n\
+    \        uint im = wp[2].val();\n        uint n = 1<<k;\n        uint len = (k\
+    \ & 1 ? 2 : 4);\n        int l = (k & 1 ? 1 : 2);\n        while (len <= n){\n\
+    \            if (l == 1){\n                for (int i = 0; i < (1<<(k-1)); i++){\n\
+    \                    int i0 = s + i*2, i1 = i0+1;\n                    a[i0] +=\
+    \ a[i1];\n                    a[i1]  = a[i0] - a[i1] * 2;\n                }\n\
+    \                len <<= 2;\n                l += 2;\n            }\n        \
+    \    else {\n                int len4 = len/4;\n                int nlen = n/len;\n\
+    \                ull r1 = 1, r2 = 1, r3 = 1, imr1 = im, imr3 = im;\n         \
+    \       for (int i = 0; i < len4; i++){\n                    int offset = 0;\n\
+    \                    for (int j = 0; j < nlen; j++){\n                       \
+    \ int i0 = s + i + offset, i1 = i0 + len4, i2 = i1 + len4, i3 = i2 + len4;\n \
+    \                       ull a0 = a[i0].val();\n                        ull a1\
+    \ = a[i1].val() * r1;\n                        ull a2 = a[i2].val() * r2;\n  \
+    \                      ull a3 = a[i3].val() * r3;\n                        ull\
+    \ b1 = a[i1].val() * imr1;\n                        ull b3 = a[i3].val() * imr3;\n\
+    \                        ull a0p2 = a0 + a2;\n                        ull a1p3\
+    \ = a1 + a3;\n                        ull a0m2 = a0 + mod2 - a2;\n           \
+    \             ull b1m3 = b1 + mod2 - b3;\n                        a[i0] = a0p2\
+    \ + a1p3;\n                        a[i1] = a0m2 + b1m3;\n                    \
+    \    a[i2] = a0p2 + mod2*2 - a1p3;\n                        a[i3] = a0m2 + mod2*2\
+    \ - b1m3;\n                        offset += len;\n                    }\n   \
+    \                 r1 = r1 * wp[l].val() % mod;\n                    r2 = r1 *\
+    \ r1 % mod;\n                    r3 = r1 * r2 % mod;\n                    imr1\
+    \ = im * r1 % mod;\n                    imr3 = im * r3 % mod;\n              \
+    \  }\n                len <<= 2;\n                l += 2;\n            }\n   \
+    \     }\n    }\n    void ntt(vector<mint> &a) {\n        if ((int)a.size() <=\
+    \ 1) return;\n        fft4(a, 63-countl_zero(a.size()));\n    }\n    void intt(vector<mint>\
+    \ &a, bool stop = false) {\n        if ((int)a.size() <= 1) return;\n        ifft4(a,\
+    \ 63-countl_zero(a.size()));\n        if (stop) return ;\n        mint iv = mint(a.size()).inv();\n\
+    \        for (auto &x : a) x *= iv;\n    }\n    vector<mint> multiply(const vector<mint>\
+    \ &a, const vector<mint> &b) {\n        int l = a.size() + b.size() - 1;\n   \
+    \     if (min<int>(a.size(), b.size()) <= 40){\n            vector<mint> s(l);\n\
+    \            for (int i = 0; i < (int)a.size(); i++) for (int j = 0; j < (int)b.size();\
+    \ j++) s[i + j] += a[i] * b[j];\n            return s;\n        }\n        int\
+    \ k = 2, M = 4;\n        while (M < l) M <<= 1, ++k;\n        set_ws();\n    \
+    \    vector<mint> s(M);\n        for (int i = 0; i < (int)a.size(); ++i) s[i]\
+    \ = a[i];\n        fft4(s, k);\n        if (a.size() == b.size() && a == b) {\n\
+    \            for (int i = 0; i < M; ++i) s[i] *= s[i];\n        }\n        else\
+    \ {\n            vector<mint> t(M);\n            for (int i = 0; i < (int)b.size();\
+    \ ++i) t[i] = b[i];\n            fft4(t, k);\n            for (int i = 0; i <\
+    \ M; ++i) s[i] *= t[i];\n        }\n        ifft4(s, k);\n        s.resize(l);\n\
+    \        mint invm = mint(M).inv();\n        for (int i = 0; i < l; ++i) s[i]\
+    \ *= invm;\n        return s;\n    }\n};\n\n\n} // namespace noya2\n#line 6 \"\
+    fps/fps_ntt.hpp\"\n\nnamespace noya2{\n\ntemplate<typename T>\nstruct fps_ntt{\n\
+    \    using value_type = T;\n    static NTT<T> ntt;\n    static vector<T> multiply(const\
+    \ vector<T> &a, const vector<T> &b){\n        return ntt.multiply(a,b);\n    }\n\
+    \    static vector<T> inv(const vector<T> &a, int d = -1){\n        const int\
+    \ n = a.size();\n        if (d == -1) d = n;\n        vector<T> res = {a[0].inv()};\n\
+    \        for (int siz = 1; siz < d; siz <<= 1){\n            vector<T> f(a.begin(),a.begin()+min(n,siz*2)),\
     \ g(res);\n            f.resize(siz*2), g.resize(siz*2);\n            ntt.ntt(f),\
     \ ntt.ntt(g);\n            for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n   \
     \         ntt.intt(f,true);\n            f.erase(f.begin(),f.begin()+siz);\n \
@@ -449,7 +450,7 @@ data:
   isVerificationFile: true
   path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   requiredBy: []
-  timestamp: '2023-11-14 18:29:09+09:00'
+  timestamp: '2024-01-17 04:07:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
