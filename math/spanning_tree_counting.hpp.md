@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: math/matrix.hpp
+    title: math/matrix.hpp
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
   - icon: ':heavy_check_mark:'
@@ -17,37 +20,31 @@ data:
   - icon: ':warning:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
-  - icon: ':warning:'
-    path: math/spanning_tree_counting.hpp
-    title: math/spanning_tree_counting.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/math/Determinant_of_Matrix.test.cpp
-    title: test/math/Determinant_of_Matrix.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/matrix.hpp\"\n\n#line 2 \"template/template.hpp\"\n\
-    using namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
-    \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
-    \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
-    \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
-    \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
-    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int\
-    \ s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\"\
-    ) << v[i];\n    return os;\n}\ntemplate <typename T>\nistream &operator>>(istream\
-    \ &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid\
-    \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
-    \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
-    \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
-    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\ntemplate<typename\
-    \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
-    \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
-    \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
-    \ << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n \
-    \   }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
+  bundledCode: "#line 2 \"math/spanning_tree_counting.hpp\"\n\n#line 2 \"math/matrix.hpp\"\
+    \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
+    #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
+    \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
+    \ << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename\
+    \ U>\nistream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
+    \    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os,\
+    \ const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s;\
+    \ i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
+    \ T>\nistream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is\
+    \ >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\n\
+    void in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout\
+    \ << \"\\n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const\
+    \ T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n\
+    \    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n\
+    \    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\
+    \nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
+    \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
+    \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
     \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
     \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
     \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
@@ -142,86 +139,45 @@ data:
     \     T a = B[j][i];\n                if (a == 0) continue;\n                for\
     \ (int k = i; k < cols; k++) {\n                    B[j][k] -= B[i][k] * a;\n\
     \                }\n            }\n        }\n        return ret;\n    }\n};\n\
-    \n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2{\n\
-    \ntemplate<typename T> struct Matrix{\n    int rows, cols;\n    vector<vector<T>>\
-    \ m;\n    Matrix (int h = 0, int w = -1, T init = T(0)) : m(h,vector<T>((w ==\
-    \ -1 ? h : w),init)){\n        rows = h, cols = (w == -1 ? h : w);\n    } \n \
-    \   Matrix (vector<vector<T>> _init) : m(_init), rows(_init.size()), cols(_init.at(0).size()){}\n\
-    \    vector<T>& operator[](const int i) const {return m[i];}\n    vector<T>& operator[](const\
-    \ int i) {return m[i];}\n    Matrix &operator+= (const Matrix &r){\n        assert(this->rows\
-    \ == r.rows && this->cols == r.cols);\n        for (int i = 0; i < r.rows; ++i){\n\
-    \            for (int j = 0; j < r.cols; ++j){\n                m[i][j] += r.m[i][j];\n\
-    \            }\n        }\n        return *this;\n    }\n    Matrix &operator-=\
-    \ (const Matrix &r){\n        assert(this->rows == r.rows && this->cols == r.cols);\n\
-    \        for (int i = 0; i < r.rows; ++i){\n            for (int j = 0; j < r.cols;\
-    \ ++j){\n                m[i][j] -= r.m[i][j];\n            }\n        }\n   \
-    \     return *this;\n    }\n    Matrix &operator*= (const Matrix &r){\n      \
-    \  assert(this->cols == r.rows);\n        Matrix res(rows, r.cols);\n        for\
-    \ (int i = 0; i < rows; ++i){\n            for (int j = 0; j < r.cols; ++j){\n\
-    \                for (int k = 0; k < r.rows; ++k){\n                    res[i][j]\
-    \ += m[i][k] * r.m[k][j];\n                }\n            }\n        }\n     \
-    \   return *this = res;\n    }\n    Matrix operator+ (const Matrix &r) const {return\
-    \ Matrix(*this) += r;}\n    Matrix operator- (const Matrix &r) const {return Matrix(*this)\
-    \ -= r;}\n    Matrix operator* (const Matrix &r) const {return Matrix(*this) *=\
-    \ r;}\n    bool operator== (const Matrix &r){\n        if (rows != r.rows || cols\
-    \ != r.cols) return false;\n        for (int i = 0; i < r.rows; ++i){\n      \
-    \      for (int j = 0; j < r.cols; ++j){\n                if (m[i][j] != r.m[i][j])\
-    \ return false;\n            }\n        }\n        return true;\n    }\n    Matrix&\
-    \ operator+=(const T &r){\n        for (int i = 0; i < rows; ++i){\n         \
-    \   for (int j = 0; j < cols; ++j){\n                m[i][j] += r;\n         \
-    \   }\n        }\n        return *this;\n    }\n    Matrix& operator-=(const T\
-    \ &r){\n        for (int i = 0; i < rows; ++i){\n            for (int j = 0; j\
-    \ < cols; ++j){\n                m[i][j] -= r;\n            }\n        }\n   \
-    \     return *this;\n    }\n    Matrix& operator*=(const T &r){\n        for (int\
-    \ i = 0; i < rows; ++i){\n            for (int j = 0; j < cols; ++j){\n      \
-    \          m[i][j] *= r;\n            }\n        }\n        return *this;\n  \
-    \  }\n    Matrix& operator/=(const T &r){\n        for (int i = 0; i < rows; ++i){\n\
-    \            for (int j = 0; j < cols; ++j){\n                m[i][j] /= r;\n\
-    \            }\n        }\n        return *this;\n    }\n    Matrix operator+\
-    \ (const T &r) const {return Matrix(*this) += r;}\n    Matrix operator- (const\
-    \ T &r) const {return Matrix(*this) -= r;}\n    Matrix operator* (const T &r)\
-    \ const {return Matrix(*this) *= r;}\n    Matrix operator/ (const T &r) const\
-    \ {return Matrix(*this) /= r;}\n    Matrix e(){\n        assert(this->rows ==\
-    \ this->cols);\n        Matrix res(this->rows, this->rows);\n        for (int\
-    \ i = 0; i < rows; ++i) res[i][i] = 1;\n        return res;\n    }\n    Matrix\
-    \ pow(long long n){\n        assert(this->rows == this->cols);\n        if (n\
-    \ == 0) return e();\n        Matrix f = pow(n / 2);\n        Matrix ans = f *\
-    \ f;\n        if (n % 2 == 1) ans *= *this;\n        return ans;\n    }\n    //\
-    \ for T = int, long long, double, long double\n    void show(){\n        for (int\
-    \ i = 0; i < rows; ++i){\n            for (int j = 0; j < cols; ++j){\n      \
-    \          cout << m[i][j] << (j+1 == this->cols ? \"\\n\" : \" \");\n       \
-    \     }\n        }\n    }\n    T determinant() const {\n        Matrix B(*this);\n\
-    \        assert(rows == cols);\n        T ret = 1;\n        for (int i = 0; i\
-    \ < rows; i++) {\n            int idx = -1;\n            for (int j = i; j < cols;\
-    \ j++) {\n                if (B[j][i] != 0) {\n                    idx = j;\n\
-    \                    break;\n                }\n            }\n            if\
-    \ (idx == -1) return 0;\n            if (i != idx) {\n                ret *= T(-1);\n\
-    \                swap(B[i], B[idx]);\n            }\n            ret *= B[i][i];\n\
-    \            T inv = T(1) / B[i][i];\n            for (int j = 0; j < cols; j++)\
-    \ {\n                B[i][j] *= inv;\n            }\n            for (int j =\
-    \ i + 1; j < rows; j++) {\n                T a = B[j][i];\n                if\
-    \ (a == 0) continue;\n                for (int k = i; k < cols; k++) {\n     \
-    \               B[j][k] -= B[i][k] * a;\n                }\n            }\n  \
-    \      }\n        return ret;\n    }\n};\n\n} // namespace noya2\n"
+    \n} // namespace noya2\n#line 4 \"math/spanning_tree_counting.hpp\"\n\nnamespace\
+    \ noya2 {\n\ntemplate<typename T>\nT directed_spanning_tree_counting(int n, vector<tuple<int,int,T>>\
+    \ es){\n    Matrix<T> mat(n-1);\n    for (auto [u, v, c] : es){\n        if (u\
+    \ < n-1 && v < n-1){\n            mat[u][v] -= c;\n        }\n        if (v <\
+    \ n-1){\n            mat[v][v] += c;\n        }\n    }\n    return mat.determinant();\n\
+    }\n\ntemplate<typename T>\nT undirected_spanning_tree_counting(int n, vector<tuple<int,int,T>>\
+    \ es){\n    Matrix<T> mat(n-1);\n    for (auto [u, v, c] : es){\n        if (u\
+    \ < n-1 && v < n-1){\n            mat[u][v] -= c;\n            mat[v][u] -= c;\n\
+    \        }\n        if (v < n-1){\n            mat[v][v] += c;\n        }\n  \
+    \      if (u < n-1){\n            mat[u][u] += c;\n        }\n    }\n    return\
+    \ mat.determinant();\n}\n\n} // namespace noya2\n"
+  code: "#pragma once\n\n#include\"../math/matrix.hpp\"\n\nnamespace noya2 {\n\ntemplate<typename\
+    \ T>\nT directed_spanning_tree_counting(int n, vector<tuple<int,int,T>> es){\n\
+    \    Matrix<T> mat(n-1);\n    for (auto [u, v, c] : es){\n        if (u < n-1\
+    \ && v < n-1){\n            mat[u][v] -= c;\n        }\n        if (v < n-1){\n\
+    \            mat[v][v] += c;\n        }\n    }\n    return mat.determinant();\n\
+    }\n\ntemplate<typename T>\nT undirected_spanning_tree_counting(int n, vector<tuple<int,int,T>>\
+    \ es){\n    Matrix<T> mat(n-1);\n    for (auto [u, v, c] : es){\n        if (u\
+    \ < n-1 && v < n-1){\n            mat[u][v] -= c;\n            mat[v][u] -= c;\n\
+    \        }\n        if (v < n-1){\n            mat[v][v] += c;\n        }\n  \
+    \      if (u < n-1){\n            mat[u][u] += c;\n        }\n    }\n    return\
+    \ mat.determinant();\n}\n\n} // namespace noya2"
   dependsOn:
+  - math/matrix.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
   isVerificationFile: false
-  path: math/matrix.hpp
+  path: math/spanning_tree_counting.hpp
   requiredBy:
   - math/euler_circuit_counting.hpp
-  - math/spanning_tree_counting.hpp
-  timestamp: '2023-08-26 17:35:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/math/Determinant_of_Matrix.test.cpp
-documentation_of: math/matrix.hpp
+  timestamp: '2024-01-17 23:51:31+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: math/spanning_tree_counting.hpp
 layout: document
 redirect_from:
-- /library/math/matrix.hpp
-- /library/math/matrix.hpp.html
-title: math/matrix.hpp
+- /library/math/spanning_tree_counting.hpp
+- /library/math/spanning_tree_counting.hpp.html
+title: math/spanning_tree_counting.hpp
 ---

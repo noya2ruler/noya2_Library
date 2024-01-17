@@ -101,6 +101,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: math/binomial.hpp
+    - icon: ':warning:'
+      path: math/euler_circuit_counting.hpp
+      title: math/euler_circuit_counting.hpp
     - icon: ':heavy_check_mark:'
       path: math/floor_sum.hpp
       title: math/floor_sum.hpp
@@ -122,6 +125,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/sieve.hpp
       title: math/sieve.hpp
+    - icon: ':warning:'
+      path: math/spanning_tree_counting.hpp
+      title: math/spanning_tree_counting.hpp
   - name: misc
     pages:
     - icon: ':warning:'

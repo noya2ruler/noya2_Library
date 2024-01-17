@@ -74,6 +74,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
+  - icon: ':warning:'
+    path: math/euler_circuit_counting.hpp
+    title: math/euler_circuit_counting.hpp
   - icon: ':heavy_check_mark:'
     path: math/gcd_convolution.hpp
     title: math/gcd_convolution.hpp
@@ -92,6 +95,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/sieve.hpp
     title: math/sieve.hpp
+  - icon: ':warning:'
+    path: math/spanning_tree_counting.hpp
+    title: math/spanning_tree_counting.hpp
   - icon: ':warning:'
     path: misc/QMC.hpp
     title: misc/QMC.hpp
@@ -292,7 +298,9 @@ data:
   - math/gcd_convolution.hpp
   - math/matrix_square.hpp
   - math/lcm_convolution.hpp
+  - math/euler_circuit_counting.hpp
   - math/prime.hpp
+  - math/spanning_tree_counting.hpp
   - math/sieve.hpp
   - math/matrix.hpp
   - fps/ntt.hpp

@@ -8,6 +8,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
+  - icon: ':warning:'
+    path: math/euler_circuit_counting.hpp
+    title: math/euler_circuit_counting.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/fps/Inv_of_Formal_Power_Series.test.cpp
@@ -85,6 +88,7 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
+  - math/euler_circuit_counting.hpp
   - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
   timestamp: '2023-07-19 01:15:42+09:00'
