@@ -157,6 +157,12 @@ struct hldTree {
     int vertex_id(int i){
         return tour[i];
     }
+    int subtree_l(int v) const {
+        return down[v];
+    }
+    int subtree_r(int v) const {
+        return up[v];
+    }
   private:
     void build(){
         es.resize((n-1)*2);
