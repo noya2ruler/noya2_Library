@@ -163,16 +163,17 @@ data:
     \ }\n    int set_id_v(int v) const {\n        return down[v];\n    }\n    int\
     \ set_id_e(int u, int v) const {\n        return (dep[u] < dep[v] ? down[v] :\
     \ down[u]);\n    }\n    int vertex_id(int i){\n        return tour[i];\n    }\n\
-    \  private:\n    void build(){\n        es.resize((n-1)*2);\n        start.resize(n+2,0);\n\
-    \        for (int i = 0; i < n-1; i++){\n            start[down[i]+2]++;\n   \
-    \         start[tour[i]+2]++;\n        }\n        for (int i = 1; i <= n; i++){\n\
-    \            start[i+1] += start[i];\n        }\n        for (int i = 0; i < n-1;\
-    \ i++){\n            es[start[down[i]+1]++] = tour[i];\n            es[start[tour[i]+1]++]\
-    \ = down[i];\n        }\n        init_bfs();\n        init_dfs();\n    }\n   \
-    \ void init_bfs(){\n        dep.resize(n,numeric_limits<int>::max());\n      \
-    \  up.resize(n);\n        int l = 0, r = 0;\n        auto push = [&](int x){\n\
-    \            up[r++] = x;\n        };\n        auto pop_front = [&](){\n     \
-    \       return up[l++];\n        };\n        dep[root] = 0;\n        push(root);\n\
+    \    int subtree_l(int v) const {\n        return down[v];\n    }\n    int subtree_r(int\
+    \ v) const {\n        return up[v];\n    }\n  private:\n    void build(){\n  \
+    \      es.resize((n-1)*2);\n        start.resize(n+2,0);\n        for (int i =\
+    \ 0; i < n-1; i++){\n            start[down[i]+2]++;\n            start[tour[i]+2]++;\n\
+    \        }\n        for (int i = 1; i <= n; i++){\n            start[i+1] += start[i];\n\
+    \        }\n        for (int i = 0; i < n-1; i++){\n            es[start[down[i]+1]++]\
+    \ = tour[i];\n            es[start[tour[i]+1]++] = down[i];\n        }\n     \
+    \   init_bfs();\n        init_dfs();\n    }\n    void init_bfs(){\n        dep.resize(n,numeric_limits<int>::max());\n\
+    \        up.resize(n);\n        int l = 0, r = 0;\n        auto push = [&](int\
+    \ x){\n            up[r++] = x;\n        };\n        auto pop_front = [&](){\n\
+    \            return up[l++];\n        };\n        dep[root] = 0;\n        push(root);\n\
     \        while (l < r){\n            int p = pop_front();\n            for (int\
     \ i = start[p]; i < start[p+1]; i++){\n                auto q = es[i];\n     \
     \           if (dep[q] > dep[p]+1){\n                    dep[q] = dep[p]+1;\n\
@@ -233,7 +234,7 @@ data:
   isVerificationFile: true
   path: test/tree/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-11-05 22:23:24+09:00'
+  timestamp: '2024-01-20 23:52:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Vertex_Add_Path_Sum.test.cpp
