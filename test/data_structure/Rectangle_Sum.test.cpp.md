@@ -5,8 +5,14 @@ data:
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
   - icon: ':heavy_check_mark:'
+    path: data_structure/compress.hpp
+    title: data_structure/compress.hpp
+  - icon: ':heavy_check_mark:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
+  - icon: ':heavy_check_mark:'
+    path: data_structure/offline_rectangle_sum.hpp
+    title: data_structure/offline_rectangle_sum.hpp
   - icon: ':heavy_check_mark:'
     path: misc/concepts.hpp
     title: misc/concepts.hpp
@@ -26,18 +32,18 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Rectangle_Sum.test.cpp
-    title: test/data_structure/Rectangle_Sum.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"data_structure/offline_rectangle_sum.hpp\"\n\n#line 2 \"\
-    data_structure/binary_indexed_tree.hpp\"\n\n#line 2 \"template/template.hpp\"\n\
-    using namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/rectangle_sum
+    links:
+    - https://judge.yosupo.jp/problem/rectangle_sum
+  bundledCode: "#line 1 \"test/data_structure/Rectangle_Sum.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#line 2 \"template/template.hpp\"\
+    \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
     \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
     \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
     \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
@@ -88,7 +94,8 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"misc/monoids.hpp\"\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/offline_rectangle_sum.hpp\"\
+    \n\n#line 2 \"data_structure/binary_indexed_tree.hpp\"\n\n#line 2 \"misc/monoids.hpp\"\
     \n\n#line 4 \"misc/monoids.hpp\"\n\nnamespace noya2{\n\ntemplate<typename T>\n\
     struct Max_monoid {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return max(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::min();\
@@ -154,45 +161,65 @@ data:
     \ G::op(ans[-1-qid],G::inv(fen.prod(ly,ry)));\n                }\n           \
     \ }\n            if (x == h) break;\n            for (auto [y, e] : elems[x]){\n\
     \                fen.add(y,e);\n            }\n        }\n        return ans;\n\
-    \    }\n};\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"data_structure/binary_indexed_tree.hpp\"\n#include\"\
-    data_structure/csr.hpp\"\n\nnamespace noya2 {\n\ntemplate<Group G = Plus_group<ll>>\n\
-    struct offline_rectangle_sum {\n    using T = typename G::value_type;\n    int\
-    \ h, w, query_id;\n    csr<pair<int,T>> elems;\n    csr<tuple<int,int,int>> queries;\n\
-    \    offline_rectangle_sum () {}\n    offline_rectangle_sum (int h_, int w_, int\
-    \ m = -1, int q = -1) : h(h_), w(w_), query_id(0), elems(h_,m), queries(h_+1,q*2)\
-    \ {}\n    void add_elem(int x, int y, T e){\n        elems.add(x,pair<int,T>(y,e));\n\
-    \    }\n    void add_query(int lx, int rx, int ly, int ry){\n        queries.add(lx,tuple<int,int,int>(ly,ry,-1-query_id));\n\
-    \        queries.add(rx,tuple<int,int,int>(ly,ry,query_id));\n        query_id++;\n\
-    \    }\n    vector<T> run(){\n        elems.build();\n        queries.build();\n\
-    \        BinaryIndexedTree<G> fen(w);\n        vector<T> ans(query_id,G::e());\n\
-    \        for (int x = 0; ; x++){\n            for (auto [ly, ry, qid] : queries[x]){\n\
-    \                if (qid >= 0){\n                    ans[qid] = G::op(ans[qid],fen.prod(ly,ry));\n\
-    \                }\n                else {\n                    ans[-1-qid] =\
-    \ G::op(ans[-1-qid],G::inv(fen.prod(ly,ry)));\n                }\n           \
-    \ }\n            if (x == h) break;\n            for (auto [y, e] : elems[x]){\n\
-    \                fen.add(y,e);\n            }\n        }\n        return ans;\n\
-    \    }\n};\n\n} // namespace noya2"
+    \    }\n};\n\n} // namespace noya2\n#line 5 \"test/data_structure/Rectangle_Sum.test.cpp\"\
+    \n\n#line 2 \"data_structure/compress.hpp\"\n\n#line 4 \"data_structure/compress.hpp\"\
+    \n\nnamespace noya2{\n\ntemplate<typename T> struct compress {\n    vector<T>\
+    \ raws;\n    compress(const vector<T> &raws_ = {}) : raws(raws_){ build(); }\n\
+    \    int id(const T &raw){ return lb(raw); }\n    T raw(const int &id){ return\
+    \ raws[id]; }\n    void build(){ uniq(raws); }\n    void add(const T &raw){ raws.push_back(raw);\
+    \ }\n    size_t size(){ return raws.size(); }\n    int lb(const T &raw){ return\
+    \ lower_bound(all(raws),raw) - raws.begin(); }\n    int ub(const T &raw){ return\
+    \ upper_bound(all(raws),raw) - raws.begin(); }\n    bool contains(const T &raw){\n\
+    \        int jd = lb(raw);\n        if (jd < (int)size()) return raws[jd] == raw;\n\
+    \        return false;\n    }\n    int contains_id(const T &raw){\n        int\
+    \ jd = lb(raw);\n        if (jd < (int)size() && raws[jd] == raw) return jd;\n\
+    \        return -1;\n    }\n};\n\n} // namespace noya2\n#line 7 \"test/data_structure/Rectangle_Sum.test.cpp\"\
+    \n\nint main(){\n    int n, q; in(n,q);\n    compress<int> cpx, cpy;\n    vector<tuple<int,int,ll>>\
+    \ a(n);\n    rep(i,n){\n        int x, y, w; in(x,y,w);\n        a[i] = tuple<int,int,ll>(x,y,w);\n\
+    \        cpx.add(x);\n        cpy.add(y);\n    }\n    vector<tuple<int,int,int,int>>\
+    \ queries(q);\n    rep(i,q){\n        int lx, ly, rx, ry; in(lx,ly,rx,ry);\n \
+    \       queries[i] = tuple<int,int,int,int>(lx,rx,ly,ry);\n    }\n    cpx.build();\n\
+    \    cpy.build();\n    offline_rectangle_sum<> ors(cpx.size(),cpy.size(),n,q);\n\
+    \    for (auto [x, y, w] : a){\n        x = cpx.id(x);\n        y = cpy.id(y);\n\
+    \        ors.add_elem(x,y,w);\n    }\n    for (auto [lx, rx, ly, ry] : queries){\n\
+    \        lx = cpx.lb(lx);\n        rx = cpx.lb(rx);\n        ly = cpy.lb(ly);\n\
+    \        ry = cpy.lb(ry);\n        ors.add_query(lx,rx,ly,ry);\n    }\n    for\
+    \ (auto ans : ors.run()){\n        out(ans);\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#include\"\
+    ../../template/template.hpp\"\n#include\"../../data_structure/offline_rectangle_sum.hpp\"\
+    \n\n#include\"data_structure/compress.hpp\"\n\nint main(){\n    int n, q; in(n,q);\n\
+    \    compress<int> cpx, cpy;\n    vector<tuple<int,int,ll>> a(n);\n    rep(i,n){\n\
+    \        int x, y, w; in(x,y,w);\n        a[i] = tuple<int,int,ll>(x,y,w);\n \
+    \       cpx.add(x);\n        cpy.add(y);\n    }\n    vector<tuple<int,int,int,int>>\
+    \ queries(q);\n    rep(i,q){\n        int lx, ly, rx, ry; in(lx,ly,rx,ry);\n \
+    \       queries[i] = tuple<int,int,int,int>(lx,rx,ly,ry);\n    }\n    cpx.build();\n\
+    \    cpy.build();\n    offline_rectangle_sum<> ors(cpx.size(),cpy.size(),n,q);\n\
+    \    for (auto [x, y, w] : a){\n        x = cpx.id(x);\n        y = cpy.id(y);\n\
+    \        ors.add_elem(x,y,w);\n    }\n    for (auto [lx, rx, ly, ry] : queries){\n\
+    \        lx = cpx.lb(lx);\n        rx = cpx.lb(rx);\n        ly = cpy.lb(ly);\n\
+    \        ry = cpy.lb(ry);\n        ors.add_query(lx,rx,ly,ry);\n    }\n    for\
+    \ (auto ans : ors.run()){\n        out(ans);\n    }\n}\n"
   dependsOn:
-  - data_structure/binary_indexed_tree.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
+  - data_structure/offline_rectangle_sum.hpp
+  - data_structure/binary_indexed_tree.hpp
   - misc/monoids.hpp
   - misc/concepts.hpp
   - data_structure/csr.hpp
-  isVerificationFile: false
-  path: data_structure/offline_rectangle_sum.hpp
+  - data_structure/compress.hpp
+  isVerificationFile: true
+  path: test/data_structure/Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-01-21 01:01:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/data_structure/Rectangle_Sum.test.cpp
-documentation_of: data_structure/offline_rectangle_sum.hpp
+  timestamp: '2024-01-21 01:04:41+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/data_structure/Rectangle_Sum.test.cpp
 layout: document
 redirect_from:
-- /library/data_structure/offline_rectangle_sum.hpp
-- /library/data_structure/offline_rectangle_sum.hpp.html
-title: data_structure/offline_rectangle_sum.hpp
+- /verify/test/data_structure/Rectangle_Sum.test.cpp
+- /verify/test/data_structure/Rectangle_Sum.test.cpp.html
+title: test/data_structure/Rectangle_Sum.test.cpp
 ---

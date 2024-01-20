@@ -35,7 +35,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/offline_dynamic_connectivity.hpp
     title: data_structure/offline_dynamic_connectivity.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/offline_rectangle_sum.hpp
     title: data_structure/offline_rectangle_sum.hpp
   - icon: ':heavy_check_mark:'
@@ -171,6 +171,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Rectangle_Sum.test.cpp
+    title: test/data_structure/Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Segment_Add_Get_Min.test.cpp
     title: test/data_structure/Segment_Add_Get_Min.test.cpp
@@ -398,6 +401,7 @@ data:
   - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
   - test/data_structure/Static_RMQ.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
+  - test/data_structure/Rectangle_Sum.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - test/data_structure/Static_Range_Inversions_Query.test.cpp
   - test/data_structure/Unionfind.test.cpp

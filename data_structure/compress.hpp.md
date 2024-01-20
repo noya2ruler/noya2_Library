@@ -22,6 +22,9 @@ data:
     path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
     title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Rectangle_Sum.test.cpp
+    title: test/data_structure/Rectangle_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Inversions_Query.test.cpp
     title: test/data_structure/Static_Range_Inversions_Query.test.cpp
   _isVerificationFailed: false
@@ -117,6 +120,7 @@ data:
   timestamp: '2023-08-31 17:01:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/data_structure/Rectangle_Sum.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - test/data_structure/Static_Range_Inversions_Query.test.cpp
 documentation_of: data_structure/compress.hpp

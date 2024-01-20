@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/offline_rectangle_sum.hpp
     title: data_structure/offline_rectangle_sum.hpp
   - icon: ':heavy_check_mark:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/Rectangle_Sum.test.cpp
+    title: test/data_structure/Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
@@ -57,6 +60,7 @@ data:
   timestamp: '2024-01-04 13:41:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/data_structure/Rectangle_Sum.test.cpp
   - test/graph/Shortest_Path2.test.cpp
 documentation_of: data_structure/csr.hpp
 layout: document
