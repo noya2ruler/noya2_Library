@@ -5,6 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
+  - icon: ':warning:'
+    path: data_structure/offline_rectangle_sum.hpp
+    title: data_structure/offline_rectangle_sum.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/potentialized_dsu.hpp
     title: data_structure/potentialized_dsu.hpp
@@ -56,6 +59,7 @@ data:
   isVerificationFile: false
   path: misc/monoids.hpp
   requiredBy:
+  - data_structure/offline_rectangle_sum.hpp
   - data_structure/binary_indexed_tree.hpp
   - data_structure/potentialized_dsu.hpp
   timestamp: '2023-08-31 21:58:46+09:00'

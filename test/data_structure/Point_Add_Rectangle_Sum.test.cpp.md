@@ -11,6 +11,9 @@ data:
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
   - icon: ':heavy_check_mark:'
+    path: misc/concepts.hpp
+    title: misc/concepts.hpp
+  - icon: ':heavy_check_mark:'
     path: misc/monoids.hpp
     title: misc/monoids.hpp
   - icon: ':heavy_check_mark:'
@@ -141,8 +144,15 @@ data:
     \ T>\nstruct Xor_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a ^ b; }\n    static constexpr T e(){ return T(0);\
     \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n    \n} // namespace\
-    \ noya2\n#line 5 \"data_structure/binary_indexed_tree.hpp\"\n\nnamespace noya2{\n\
-    \ntemplate <class G> struct BinaryIndexedTree {\n    using T = typename G::value_type;\n\
+    \ noya2\n#line 2 \"misc/concepts.hpp\"\n\n#include<concepts>\n\nnamespace noya2\
+    \ {\n\ntemplate<class monoid>\nconcept Monoid = requires {\n    typename monoid::value_type;\n\
+    \    {monoid::op(declval<typename monoid::value_type>(),declval<typename monoid::value_type>())}\
+    \ -> std::same_as<typename monoid::value_type>;\n    {monoid::e()} -> std::same_as<typename\
+    \ monoid::value_type>;\n};\n\ntemplate<class group>\nconcept Group = requires\
+    \ {\n    requires Monoid<group>;\n    {group::inv(declval<typename group::value_type>())}\
+    \ -> std::same_as<typename group::value_type>;\n};\n\n} // namespace noya2\n#line\
+    \ 6 \"data_structure/binary_indexed_tree.hpp\"\n\nnamespace noya2{\n\ntemplate\
+    \ <Group G> struct BinaryIndexedTree {\n    using T = typename G::value_type;\n\
     \    BinaryIndexedTree(int n_ = 0) : n(n_), d(std::vector<T>(n_ + 1, G::e()))\
     \ {}\n    void add(int i, T val) {\n        for (int x = i+1; x <= n; x += x &\
     \ -x) {\n            d[x] = G::op(d[x],val);\n        }\n    }\n    T prod(int\
@@ -190,10 +200,11 @@ data:
   - data_structure/compress.hpp
   - data_structure/binary_indexed_tree.hpp
   - misc/monoids.hpp
+  - misc/concepts.hpp
   isVerificationFile: true
   path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-09-01 01:48:48+09:00'
+  timestamp: '2024-01-21 01:01:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Point_Add_Rectangle_Sum.test.cpp

@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: data_structure/binary_indexed_tree.hpp
+    title: data_structure/binary_indexed_tree.hpp
+  - icon: ':heavy_check_mark:'
+    path: data_structure/csr.hpp
+    title: data_structure/csr.hpp
+  - icon: ':heavy_check_mark:'
     path: misc/concepts.hpp
     title: misc/concepts.hpp
   - icon: ':heavy_check_mark:'
@@ -19,24 +25,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: data_structure/offline_rectangle_sum.hpp
-    title: data_structure/offline_rectangle_sum.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-    title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Static_Range_Inversions_Query.test.cpp
-    title: test/data_structure/Static_Range_Inversions_Query.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/binary_indexed_tree.hpp\"\n\n#line 2 \"template/template.hpp\"\
-    \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
+  bundledCode: "#line 2 \"data_structure/offline_rectangle_sum.hpp\"\n\n#line 2 \"\
+    data_structure/binary_indexed_tree.hpp\"\n\n#line 2 \"template/template.hpp\"\n\
+    using namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
     \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
     \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
     \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
@@ -121,42 +119,76 @@ data:
     \ x = i; x > 0; x -= x & -x) {\n            ret = G::op(ret,d[x]);\n        }\n\
     \        return ret;\n    }\n};\ntemplate<typename T> using BIT_Plus = BinaryIndexedTree<Plus_group<T>>;\n\
     template<typename T> using BIT_Xor = BinaryIndexedTree<Xor_group<T>>;\n\n} //\
-    \ namespace noya2\n"
-  code: "#pragma once\n\n#include\"../template/template.hpp\"\n#include\"../misc/monoids.hpp\"\
-    \n#include\"../misc/concepts.hpp\"\n\nnamespace noya2{\n\ntemplate <Group G> struct\
-    \ BinaryIndexedTree {\n    using T = typename G::value_type;\n    BinaryIndexedTree(int\
-    \ n_ = 0) : n(n_), d(std::vector<T>(n_ + 1, G::e())) {}\n    void add(int i, T\
-    \ val) {\n        for (int x = i+1; x <= n; x += x & -x) {\n            d[x] =\
-    \ G::op(d[x],val);\n        }\n    }\n    T prod(int l, int r = -1) {\n      \
-    \  if (r == -1) return prefix_prod(l);\n        return G::op(G::inv(prefix_prod(l)),prefix_prod(r));\n\
-    \    }\n    T get(int i){\n        return prod(i,i+1);\n    }\n    void set(int\
-    \ i, T val){\n        add(i,G::op(G::inv(get(i)),val));\n    }\n  private:\n \
-    \   int n;\n    std::vector<T> d;\n    T prefix_prod(int i) {\n        assert(0\
-    \ <= i && i <= n);\n        T ret = G::e();\n        for (int x = i; x > 0; x\
-    \ -= x & -x) {\n            ret = G::op(ret,d[x]);\n        }\n        return\
-    \ ret;\n    }\n};\ntemplate<typename T> using BIT_Plus = BinaryIndexedTree<Plus_group<T>>;\n\
-    template<typename T> using BIT_Xor = BinaryIndexedTree<Xor_group<T>>;\n\n} //\
-    \ namespace noya2"
+    \ namespace noya2\n#line 2 \"data_structure/csr.hpp\"\n\n#line 4 \"data_structure/csr.hpp\"\
+    \n#include<ranges>\n#line 7 \"data_structure/csr.hpp\"\n\nnamespace noya2 {\n\n\
+    template<class E>\nstruct csr {\n    csr (int n_ = 0, int m_ = -1) : n(n_), m(m_)\
+    \ {\n        if (m >= 0){\n            es.reserve(m);\n            start.reserve(m);\n\
+    \        }\n        if (m == 0){\n            build();\n        }\n    }\n   \
+    \ int add(int idx, E elem){\n        int eid = start.size();\n        es.emplace_back(elem);\n\
+    \        start.emplace_back(idx);\n        if (eid+1 == m) build();\n        return\
+    \ eid;\n    }\n    void build(){\n        if (m == -2) return ;\n        m = start.size();\n\
+    \        std::vector<E> nes(m);\n        std::vector<int> nstart(n+2,0);\n   \
+    \     for (int i = 0; i < m; i++) nstart[start[i]+2]++;\n        for (int i =\
+    \ 1; i < n; i++) nstart[i+2] += nstart[i+1];\n        for (int i = 0; i < m; i++)\
+    \ nes[nstart[start[i]+1]++] = es[i];\n        swap(es,nes);\n        swap(start,nstart);\n\
+    \        m = -2;\n    }\n    const auto operator[](int idx) const {\n        assert(m\
+    \ == -2);\n        return std::ranges::subrange(es.begin()+start[idx],es.begin()+start[idx+1]);\n\
+    \    }\n  private:\n    int n, m;\n    std::vector<E> es;\n    std::vector<int>\
+    \ start;\n};\n\n} // namespace noya2\n#line 5 \"data_structure/offline_rectangle_sum.hpp\"\
+    \n\nnamespace noya2 {\n\ntemplate<Group G = Plus_group<ll>>\nstruct offline_rectangle_sum\
+    \ {\n    using T = typename G::value_type;\n    int h, w, query_id;\n    csr<pair<int,T>>\
+    \ elems;\n    csr<tuple<int,int,int>> queries;\n    offline_rectangle_sum () {}\n\
+    \    offline_rectangle_sum (int h_, int w_, int m = -1, int q = -1) : h(h_), w(w_),\
+    \ query_id(0), elems(h_,m), queries(h_+1,q*2) {}\n    void add_elem(int x, int\
+    \ y, T e){\n        elems.add(x,pair<int,T>(y,e));\n    }\n    void add_query(int\
+    \ lx, int rx, int ly, int ry){\n        queries.add(lx,tuple<int,int,int>(ly,ry,-1-query_id));\n\
+    \        queries.add(rx,tuple<int,int,int>(ly,ry,query_id));\n        query_id++;\n\
+    \    }\n    vector<T> run(){\n        elems.build();\n        queries.build();\n\
+    \        BinaryIndexedTree<G> fen(w);\n        vector<T> ans(query_id,G::e());\n\
+    \        for (int x = 0; ; x++){\n            for (auto [ly, ry, qid] : queries[x]){\n\
+    \                if (qid >= 0){\n                    ans[qid] = G::op(ans[qid],fen.prod(ly,ry));\n\
+    \                }\n                else {\n                    ans[-1-qid] =\
+    \ G::op(ans[-1-qid],G::inv(fen.prod(ly,ry)));\n                }\n           \
+    \ }\n            if (x == h) break;\n            for (auto [y, e] : elems[x]){\n\
+    \                fen.add(y,e);\n            }\n        }\n        return ans;\n\
+    \    }\n};\n\n} // namespace noya2\n"
+  code: "#pragma once\n\n#include\"data_structure/binary_indexed_tree.hpp\"\n#include\"\
+    data_structure/csr.hpp\"\n\nnamespace noya2 {\n\ntemplate<Group G = Plus_group<ll>>\n\
+    struct offline_rectangle_sum {\n    using T = typename G::value_type;\n    int\
+    \ h, w, query_id;\n    csr<pair<int,T>> elems;\n    csr<tuple<int,int,int>> queries;\n\
+    \    offline_rectangle_sum () {}\n    offline_rectangle_sum (int h_, int w_, int\
+    \ m = -1, int q = -1) : h(h_), w(w_), query_id(0), elems(h_,m), queries(h_+1,q*2)\
+    \ {}\n    void add_elem(int x, int y, T e){\n        elems.add(x,pair<int,T>(y,e));\n\
+    \    }\n    void add_query(int lx, int rx, int ly, int ry){\n        queries.add(lx,tuple<int,int,int>(ly,ry,-1-query_id));\n\
+    \        queries.add(rx,tuple<int,int,int>(ly,ry,query_id));\n        query_id++;\n\
+    \    }\n    vector<T> run(){\n        elems.build();\n        queries.build();\n\
+    \        BinaryIndexedTree<G> fen(w);\n        vector<T> ans(query_id,G::e());\n\
+    \        for (int x = 0; ; x++){\n            for (auto [ly, ry, qid] : queries[x]){\n\
+    \                if (qid >= 0){\n                    ans[qid] = G::op(ans[qid],fen.prod(ly,ry));\n\
+    \                }\n                else {\n                    ans[-1-qid] =\
+    \ G::op(ans[-1-qid],G::inv(fen.prod(ly,ry)));\n                }\n           \
+    \ }\n            if (x == h) break;\n            for (auto [y, e] : elems[x]){\n\
+    \                fen.add(y,e);\n            }\n        }\n        return ans;\n\
+    \    }\n};\n\n} // namespace noya2"
   dependsOn:
+  - data_structure/binary_indexed_tree.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
   - misc/monoids.hpp
   - misc/concepts.hpp
+  - data_structure/csr.hpp
   isVerificationFile: false
-  path: data_structure/binary_indexed_tree.hpp
-  requiredBy:
-  - data_structure/offline_rectangle_sum.hpp
-  timestamp: '2024-01-21 01:01:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - test/data_structure/Static_Range_Inversions_Query.test.cpp
-documentation_of: data_structure/binary_indexed_tree.hpp
+  path: data_structure/offline_rectangle_sum.hpp
+  requiredBy: []
+  timestamp: '2024-01-21 01:01:58+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: data_structure/offline_rectangle_sum.hpp
 layout: document
 redirect_from:
-- /library/data_structure/binary_indexed_tree.hpp
-- /library/data_structure/binary_indexed_tree.hpp.html
-title: data_structure/binary_indexed_tree.hpp
+- /library/data_structure/offline_rectangle_sum.hpp
+- /library/data_structure/offline_rectangle_sum.hpp.html
+title: data_structure/offline_rectangle_sum.hpp
 ---

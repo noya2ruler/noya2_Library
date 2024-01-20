@@ -35,6 +35,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/offline_dynamic_connectivity.hpp
     title: data_structure/offline_dynamic_connectivity.hpp
+  - icon: ':warning:'
+    path: data_structure/offline_rectangle_sum.hpp
+    title: data_structure/offline_rectangle_sum.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/potentialized_dsu.hpp
     title: data_structure/potentialized_dsu.hpp
@@ -348,6 +351,7 @@ data:
   - fps/formal_power_series.hpp
   - fps/fps_arbitrary.hpp
   - data_structure/range_tree.hpp
+  - data_structure/offline_rectangle_sum.hpp
   - data_structure/lazy_segment_tree.hpp
   - data_structure/offline_dynamic_connectivity.hpp
   - data_structure/binary_indexed_tree.hpp
