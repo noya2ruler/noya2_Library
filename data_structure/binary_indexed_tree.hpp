@@ -2,10 +2,11 @@
 
 #include"../template/template.hpp"
 #include"../misc/monoids.hpp"
+#include"../misc/concepts.hpp"
 
 namespace noya2{
 
-template <class G> struct BinaryIndexedTree {
+template <Group G> struct BinaryIndexedTree {
     using T = typename G::value_type;
     BinaryIndexedTree(int n_ = 0) : n(n_), d(std::vector<T>(n_ + 1, G::e())) {}
     void add(int i, T val) {
