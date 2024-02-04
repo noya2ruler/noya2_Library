@@ -40,7 +40,7 @@ struct Graph {
         return dist;
     }
     vector<int> reconstruct(int s, int t, const vector<Cost> &dist){
-        if (dist[t] == linf) return {};
+        if (dist[t] == dist_inf) return {};
         vector<int> from(n,-1);
         queue<int> que;
         que.push(s);
@@ -62,7 +62,7 @@ struct Graph {
         return ans;
     }
     vector<Cost> bfs01(int s){
-        vector<Cost> dist(n,iinf);
+        vector<Cost> dist(n,dist_inf);
         dist[s] = 0;
         deque<int> que;
         que.push_back(s);
@@ -72,6 +72,21 @@ struct Graph {
                 if (chmin(dist[u],dist[v]+c)){
                     if (c == 0) que.push_front(u);
                     else que.push_back(u);
+                }
+            }
+        }
+        return dist;
+    }
+    vector<Cost> bfs1(int s){
+        vector<Cost> dist(n,dist_inf);
+        dist[s] = 0;
+        queue<int> que;
+        que.push(s);
+        while (!que.empty()){
+            int v = que.front(); que.pop();
+            for (auto [u, c] : g[v]){
+                if (chmin(dist[u],dist[v]+c)){
+                    que.push(u);
                 }
             }
         }
