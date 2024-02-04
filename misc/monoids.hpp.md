@@ -62,9 +62,9 @@ data:
   isVerificationFile: false
   path: misc/monoids.hpp
   requiredBy:
-  - data_structure/offline_rectangle_sum.hpp
   - data_structure/binary_indexed_tree.hpp
   - data_structure/potentialized_dsu.hpp
+  - data_structure/offline_rectangle_sum.hpp
   timestamp: '2023-08-31 21:58:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

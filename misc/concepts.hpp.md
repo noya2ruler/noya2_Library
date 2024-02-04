@@ -47,9 +47,9 @@ data:
   isVerificationFile: false
   path: misc/concepts.hpp
   requiredBy:
-  - data_structure/offline_rectangle_sum.hpp
   - data_structure/binary_indexed_tree.hpp
   - data_structure/potentialized_dsu.hpp
+  - data_structure/offline_rectangle_sum.hpp
   timestamp: '2023-11-13 11:52:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

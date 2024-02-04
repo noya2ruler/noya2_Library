@@ -107,7 +107,7 @@ data:
     \                if (chmin(dist[u],d+c)){\n                    pque.push(P(dist[u],u));\n\
     \                }\n            }\n        }\n        return dist;\n    }\n  \
     \  vector<int> reconstruct(int s, int t, const vector<Cost> &dist){\n        if\
-    \ (dist[t] == linf) return {};\n        vector<int> from(n,-1);\n        queue<int>\
+    \ (dist[t] == dist_inf) return {};\n        vector<int> from(n,-1);\n        queue<int>\
     \ que;\n        que.push(s);\n        while (!que.empty()){\n            int v\
     \ = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n         \
     \       if (from[u] == -1 && dist[u] == dist[v] + c){\n                    from[u]\
@@ -115,15 +115,20 @@ data:
     \       }\n        vector<int> ans = {t};\n        while (t != s){\n         \
     \   t = from[t];\n            ans.emplace_back(t);\n        }\n        reverse(all(ans));\n\
     \        return ans;\n    }\n    vector<Cost> bfs01(int s){\n        vector<Cost>\
-    \ dist(n,iinf);\n        dist[s] = 0;\n        deque<int> que;\n        que.push_back(s);\n\
+    \ dist(n,dist_inf);\n        dist[s] = 0;\n        deque<int> que;\n        que.push_back(s);\n\
     \        while (!que.empty()){\n            int v = que.front(); que.pop_front();\n\
     \            for (auto [u, c] : g[v]){\n                if (chmin(dist[u],dist[v]+c)){\n\
     \                    if (c == 0) que.push_front(u);\n                    else\
     \ que.push_back(u);\n                }\n            }\n        }\n        return\
-    \ dist;\n    }\n    vector<Cost> bellman_ford(int s, bool &ng_cycle){\n      \
-    \  vector<Cost> dist(n,dist_inf);\n        vector<int> ng;\n        dist[s] =\
-    \ 0;\n        int tm = 0;\n        while (tm < n){\n            bool finish =\
-    \ true;\n            for (int v = 0; v < n; v++){\n                if (dist[v]\
+    \ dist;\n    }\n    vector<Cost> bfs1(int s){\n        vector<Cost> dist(n,dist_inf);\n\
+    \        dist[s] = 0;\n        queue<int> que;\n        que.push(s);\n       \
+    \ while (!que.empty()){\n            int v = que.front(); que.pop();\n       \
+    \     for (auto [u, c] : g[v]){\n                if (chmin(dist[u],dist[v]+c)){\n\
+    \                    que.push(u);\n                }\n            }\n        }\n\
+    \        return dist;\n    }\n    vector<Cost> bellman_ford(int s, bool &ng_cycle){\n\
+    \        vector<Cost> dist(n,dist_inf);\n        vector<int> ng;\n        dist[s]\
+    \ = 0;\n        int tm = 0;\n        while (tm < n){\n            bool finish\
+    \ = true;\n            for (int v = 0; v < n; v++){\n                if (dist[v]\
     \ == dist_inf) continue;\n                for (auto [u, c] : g[v]){\n        \
     \            if (chmin(dist[u],dist[v]+c)){\n                        finish =\
     \ false;\n                        if (tm == n-1) ng.emplace_back(u);\n       \
@@ -154,7 +159,7 @@ data:
     \                if (chmin(dist[u],d+c)){\n                    pque.push(P(dist[u],u));\n\
     \                }\n            }\n        }\n        return dist;\n    }\n  \
     \  vector<int> reconstruct(int s, int t, const vector<Cost> &dist){\n        if\
-    \ (dist[t] == linf) return {};\n        vector<int> from(n,-1);\n        queue<int>\
+    \ (dist[t] == dist_inf) return {};\n        vector<int> from(n,-1);\n        queue<int>\
     \ que;\n        que.push(s);\n        while (!que.empty()){\n            int v\
     \ = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n         \
     \       if (from[u] == -1 && dist[u] == dist[v] + c){\n                    from[u]\
@@ -162,15 +167,20 @@ data:
     \       }\n        vector<int> ans = {t};\n        while (t != s){\n         \
     \   t = from[t];\n            ans.emplace_back(t);\n        }\n        reverse(all(ans));\n\
     \        return ans;\n    }\n    vector<Cost> bfs01(int s){\n        vector<Cost>\
-    \ dist(n,iinf);\n        dist[s] = 0;\n        deque<int> que;\n        que.push_back(s);\n\
+    \ dist(n,dist_inf);\n        dist[s] = 0;\n        deque<int> que;\n        que.push_back(s);\n\
     \        while (!que.empty()){\n            int v = que.front(); que.pop_front();\n\
     \            for (auto [u, c] : g[v]){\n                if (chmin(dist[u],dist[v]+c)){\n\
     \                    if (c == 0) que.push_front(u);\n                    else\
     \ que.push_back(u);\n                }\n            }\n        }\n        return\
-    \ dist;\n    }\n    vector<Cost> bellman_ford(int s, bool &ng_cycle){\n      \
-    \  vector<Cost> dist(n,dist_inf);\n        vector<int> ng;\n        dist[s] =\
-    \ 0;\n        int tm = 0;\n        while (tm < n){\n            bool finish =\
-    \ true;\n            for (int v = 0; v < n; v++){\n                if (dist[v]\
+    \ dist;\n    }\n    vector<Cost> bfs1(int s){\n        vector<Cost> dist(n,dist_inf);\n\
+    \        dist[s] = 0;\n        queue<int> que;\n        que.push(s);\n       \
+    \ while (!que.empty()){\n            int v = que.front(); que.pop();\n       \
+    \     for (auto [u, c] : g[v]){\n                if (chmin(dist[u],dist[v]+c)){\n\
+    \                    que.push(u);\n                }\n            }\n        }\n\
+    \        return dist;\n    }\n    vector<Cost> bellman_ford(int s, bool &ng_cycle){\n\
+    \        vector<Cost> dist(n,dist_inf);\n        vector<int> ng;\n        dist[s]\
+    \ = 0;\n        int tm = 0;\n        while (tm < n){\n            bool finish\
+    \ = true;\n            for (int v = 0; v < n; v++){\n                if (dist[v]\
     \ == dist_inf) continue;\n                for (auto [u, c] : g[v]){\n        \
     \            if (chmin(dist[u],dist[v]+c)){\n                        finish =\
     \ false;\n                        if (tm == n-1) ng.emplace_back(u);\n       \
@@ -196,7 +206,7 @@ data:
   isVerificationFile: false
   path: graph/graph_query.hpp
   requiredBy: []
-  timestamp: '2024-01-04 13:41:37+09:00'
+  timestamp: '2024-02-04 15:22:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Shortest_Path2.test.cpp
