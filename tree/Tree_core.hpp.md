@@ -221,8 +221,8 @@ data:
   verifiedWith:
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Lowest_Common_Ancestor.test.cpp
-  - test/tree/Jump_on_Tree.test.cpp
   - test/tree/aoj_0489.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
 documentation_of: tree/Tree_core.hpp
 layout: document
 redirect_from:

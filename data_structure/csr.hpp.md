@@ -55,13 +55,13 @@ data:
   isVerificationFile: false
   path: data_structure/csr.hpp
   requiredBy:
-  - data_structure/offline_rectangle_sum.hpp
   - graph/graph_query.hpp
+  - data_structure/offline_rectangle_sum.hpp
   timestamp: '2024-01-04 13:41:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Rectangle_Sum.test.cpp
   - test/graph/Shortest_Path2.test.cpp
+  - test/data_structure/Rectangle_Sum.test.cpp
 documentation_of: data_structure/csr.hpp
 layout: document
 redirect_from:

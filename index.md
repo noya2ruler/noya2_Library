@@ -152,6 +152,9 @@ data:
       path: misc/monoids.hpp
       title: misc/monoids.hpp
     - icon: ':warning:'
+      path: misc/random_tree.hpp
+      title: misc/random_tree.hpp
+    - icon: ':warning:'
       path: misc/rng.hpp
       title: misc/rng.hpp
     - icon: ':warning:'

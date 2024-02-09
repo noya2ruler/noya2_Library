@@ -13,26 +13,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: data_structure/range_tree.hpp
-    title: data_structure/range_tree.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-    title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Rectangle_Sum.test.cpp
-    title: test/data_structure/Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Static_Range_Inversions_Query.test.cpp
-    title: test/data_structure/Static_Range_Inversions_Query.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/compress.hpp\"\n\n#line 2 \"template/template.hpp\"\
+  bundledCode: "#line 2 \"misc/random_tree.hpp\"\n\n#line 2 \"template/template.hpp\"\
     \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
     \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
     \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
@@ -84,49 +72,57 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"data_structure/compress.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<typename T> struct compress {\n    vector<T>\
-    \ raws;\n    compress(const vector<T> &raws_ = {}) : raws(raws_){ build(); }\n\
-    \    int id(const T &raw){ return lb(raw); }\n    T raw(const int &id){ return\
-    \ raws[id]; }\n    void build(){ uniq(raws); }\n    void add(const T &raw){ raws.push_back(raw);\
-    \ }\n    size_t size(){ return raws.size(); }\n    int lb(const T &raw){ return\
-    \ lower_bound(all(raws),raw) - raws.begin(); }\n    int ub(const T &raw){ return\
-    \ upper_bound(all(raws),raw) - raws.begin(); }\n    bool contains(const T &raw){\n\
-    \        int jd = lb(raw);\n        if (jd < (int)size()) return raws[jd] == raw;\n\
-    \        return false;\n    }\n    int contains_id(const T &raw){\n        int\
-    \ jd = lb(raw);\n        if (jd < (int)size() && raws[jd] == raw) return jd;\n\
-    \        return -1;\n    }\n};\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2{\n\
-    \ntemplate<typename T> struct compress {\n    vector<T> raws;\n    compress(const\
-    \ vector<T> &raws_ = {}) : raws(raws_){ build(); }\n    int id(const T &raw){\
-    \ return lb(raw); }\n    T raw(const int &id){ return raws[id]; }\n    void build(){\
-    \ uniq(raws); }\n    void add(const T &raw){ raws.push_back(raw); }\n    size_t\
-    \ size(){ return raws.size(); }\n    int lb(const T &raw){ return lower_bound(all(raws),raw)\
-    \ - raws.begin(); }\n    int ub(const T &raw){ return upper_bound(all(raws),raw)\
-    \ - raws.begin(); }\n    bool contains(const T &raw){\n        int jd = lb(raw);\n\
-    \        if (jd < (int)size()) return raws[jd] == raw;\n        return false;\n\
-    \    }\n    int contains_id(const T &raw){\n        int jd = lb(raw);\n      \
-    \  if (jd < (int)size() && raws[jd] == raw) return jd;\n        return -1;\n \
-    \   }\n};\n\n} // namespace noya2"
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"misc/random_tree.hpp\"\
+    \n\nnamespace noya2 {\n\n// input: [c \\in [0, n)] * (n-2), n >= 3\nvector<vector<int>>\
+    \ pruefer_code(const vector<int>& code) {\n    int n = code.size() + 2;\n    assert(n\
+    \ > 2);\n    vector<vector<int>> g(n);\n    vector<int> deg(n, 1);\n    int e\
+    \ = 0;\n    for (auto& x : code) deg[x]++;\n    set<int> ps;\n    for (int j =\
+    \ 0; j < n; j++) {\n        if (deg[j] == 1) ps.insert(j);\n    }\n    for (auto&\
+    \ i : code) {\n        if (ps.empty()) break;\n        int j = *begin(ps);\n \
+    \       ps.erase(j);\n        g[i].push_back(j);\n        g[j].push_back(i);\n\
+    \        if (deg[i] == 1) ps.erase(i);\n        deg[i]--, deg[j]--;\n        if\
+    \ (deg[i] == 1) ps.insert(i);\n        e++;\n    }\n    int u = -1, v = -1;\n\
+    \    for (int i = 0; i < n; i++) {\n        if (deg[i] == 1) (u == -1 ? u : v)\
+    \ = i;\n    }\n    assert(u != -1 and v != -1);\n    g[u].push_back(v);\n    g[v].push_back(u);\n\
+    \    e++;\n    assert(e == n - 1);\n    return g;\n}\n\nvector<vector<int>> random_tree(int\
+    \ n) {\n    if (n <= 2) {\n        vector<vector<int>> g(n);\n        if (n ==\
+    \ 2) {\n            g[0].push_back(1);\n            g[1].push_back(0);\n     \
+    \   }\n        return g;\n    }\n    vector<int> pruefer(n - 2);\n    for (auto&\
+    \ x : pruefer) x = rnd.next(n);\n    return pruefer_code(pruefer);\n}\n\n} //\
+    \ namespace noya2\n"
+  code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2 {\n\
+    \n// input: [c \\in [0, n)] * (n-2), n >= 3\nvector<vector<int>> pruefer_code(const\
+    \ vector<int>& code) {\n    int n = code.size() + 2;\n    assert(n > 2);\n   \
+    \ vector<vector<int>> g(n);\n    vector<int> deg(n, 1);\n    int e = 0;\n    for\
+    \ (auto& x : code) deg[x]++;\n    set<int> ps;\n    for (int j = 0; j < n; j++)\
+    \ {\n        if (deg[j] == 1) ps.insert(j);\n    }\n    for (auto& i : code) {\n\
+    \        if (ps.empty()) break;\n        int j = *begin(ps);\n        ps.erase(j);\n\
+    \        g[i].push_back(j);\n        g[j].push_back(i);\n        if (deg[i] ==\
+    \ 1) ps.erase(i);\n        deg[i]--, deg[j]--;\n        if (deg[i] == 1) ps.insert(i);\n\
+    \        e++;\n    }\n    int u = -1, v = -1;\n    for (int i = 0; i < n; i++)\
+    \ {\n        if (deg[i] == 1) (u == -1 ? u : v) = i;\n    }\n    assert(u != -1\
+    \ and v != -1);\n    g[u].push_back(v);\n    g[v].push_back(u);\n    e++;\n  \
+    \  assert(e == n - 1);\n    return g;\n}\n\nvector<vector<int>> random_tree(int\
+    \ n) {\n    if (n <= 2) {\n        vector<vector<int>> g(n);\n        if (n ==\
+    \ 2) {\n            g[0].push_back(1);\n            g[1].push_back(0);\n     \
+    \   }\n        return g;\n    }\n    vector<int> pruefer(n - 2);\n    for (auto&\
+    \ x : pruefer) x = rnd.next(n);\n    return pruefer_code(pruefer);\n}\n\n} //\
+    \ namespace noya2"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
   isVerificationFile: false
-  path: data_structure/compress.hpp
-  requiredBy:
-  - data_structure/range_tree.hpp
-  timestamp: '2023-08-31 17:01:32+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/data_structure/Static_Range_Inversions_Query.test.cpp
-  - test/data_structure/Rectangle_Sum.test.cpp
-  - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-documentation_of: data_structure/compress.hpp
+  path: misc/random_tree.hpp
+  requiredBy: []
+  timestamp: '2024-02-09 20:15:06+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: misc/random_tree.hpp
 layout: document
 redirect_from:
-- /library/data_structure/compress.hpp
-- /library/data_structure/compress.hpp.html
-title: data_structure/compress.hpp
+- /library/misc/random_tree.hpp
+- /library/misc/random_tree.hpp.html
+title: misc/random_tree.hpp
 ---
