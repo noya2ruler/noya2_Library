@@ -101,55 +101,57 @@ data:
     \ start;\n};\n\n} // namespace noya2\n#line 5 \"graph/graph_query.hpp\"\n\nnamespace\
     \ noya2 {\n\ntemplate<typename Cost>\nstruct Graph {\n    int n;\n    csr<pair<int,Cost>>\
     \ g;\n    Cost dist_inf;\n    Graph (int n_ = 0, int m_ = -1) : n(n_), g(n_,m_)\
-    \ {\n        dist_inf = numeric_limits<Cost>::max() / 2;\n    }\n    int add_edge(int\
-    \ u, int v, Cost cost = 1){\n        return g.add(u,pair<int,Cost>(v,cost));\n\
-    \    }\n    void build(){\n        g.build();\n    }\n    void set_inf(Cost new_inf){\n\
-    \        dist_inf = new_inf;\n    }\n    vector<Cost> dijkstra(int s){\n     \
-    \   vector<Cost> dist(n,dist_inf);\n        dist[s] = 0;\n        using P = pair<Cost,int>;\n\
-    \        priority_queue<P,vector<P>,greater<P>> pque;\n        pque.push(P(0,s));\n\
-    \        while (!pque.empty()){\n            auto [d, v] = pque.top(); pque.pop();\n\
-    \            if (dist[v] < d) continue;\n            for (auto [u, c] : g[v]){\n\
-    \                if (chmin(dist[u],d+c)){\n                    pque.push(P(dist[u],u));\n\
+    \ {\n        dist_inf = numeric_limits<Cost>::max() / 2;\n    }\n    // \u6709\
+    \u5411\u8FBA\u3092\u8FFD\u52A0 (\u7121\u5411\u8FBA\u3067\u306F\u306A\u3044\u3053\
+    \u3068\u306B\u6CE8\u610F\uFF01)\n    int add_edge(int u, int v, Cost cost = 1){\n\
+    \        return g.add(u,pair<int,Cost>(v,cost));\n    }\n    void build(){\n \
+    \       g.build();\n    }\n    void set_inf(Cost new_inf){\n        dist_inf =\
+    \ new_inf;\n    }\n    vector<Cost> dijkstra(int s){\n        vector<Cost> dist(n,dist_inf);\n\
+    \        dist[s] = 0;\n        using P = pair<Cost,int>;\n        priority_queue<P,vector<P>,greater<P>>\
+    \ pque;\n        pque.push(P(0,s));\n        while (!pque.empty()){\n        \
+    \    auto [d, v] = pque.top(); pque.pop();\n            if (dist[v] < d) continue;\n\
+    \            for (auto [u, c] : g[v]){\n                if (chmin(dist[u],d+c)){\n\
+    \                    pque.push(P(dist[u],u));\n                }\n           \
+    \ }\n        }\n        return dist;\n    }\n    vector<int> reconstruct(int s,\
+    \ int t, const vector<Cost> &dist){\n        if (dist[t] == dist_inf) return {};\n\
+    \        vector<int> from(n,-1);\n        queue<int> que;\n        que.push(s);\n\
+    \        while (!que.empty()){\n            int v = que.front(); que.pop();\n\
+    \            for (auto [u, c] : g[v]){\n                if (from[u] == -1 && dist[u]\
+    \ == dist[v] + c){\n                    from[u] = v;\n                    que.push(u);\n\
+    \                }\n            }\n        }\n        vector<int> ans = {t};\n\
+    \        while (t != s){\n            t = from[t];\n            ans.emplace_back(t);\n\
+    \        }\n        reverse(all(ans));\n        return ans;\n    }\n    vector<Cost>\
+    \ bfs01(int s){\n        vector<Cost> dist(n,dist_inf);\n        dist[s] = 0;\n\
+    \        deque<int> que;\n        que.push_back(s);\n        while (!que.empty()){\n\
+    \            int v = que.front(); que.pop_front();\n            for (auto [u,\
+    \ c] : g[v]){\n                if (chmin(dist[u],dist[v]+c)){\n              \
+    \      if (c == 0) que.push_front(u);\n                    else que.push_back(u);\n\
     \                }\n            }\n        }\n        return dist;\n    }\n  \
-    \  vector<int> reconstruct(int s, int t, const vector<Cost> &dist){\n        if\
-    \ (dist[t] == dist_inf) return {};\n        vector<int> from(n,-1);\n        queue<int>\
-    \ que;\n        que.push(s);\n        while (!que.empty()){\n            int v\
-    \ = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n         \
-    \       if (from[u] == -1 && dist[u] == dist[v] + c){\n                    from[u]\
-    \ = v;\n                    que.push(u);\n                }\n            }\n \
-    \       }\n        vector<int> ans = {t};\n        while (t != s){\n         \
-    \   t = from[t];\n            ans.emplace_back(t);\n        }\n        reverse(all(ans));\n\
-    \        return ans;\n    }\n    vector<Cost> bfs01(int s){\n        vector<Cost>\
-    \ dist(n,dist_inf);\n        dist[s] = 0;\n        deque<int> que;\n        que.push_back(s);\n\
-    \        while (!que.empty()){\n            int v = que.front(); que.pop_front();\n\
-    \            for (auto [u, c] : g[v]){\n                if (chmin(dist[u],dist[v]+c)){\n\
-    \                    if (c == 0) que.push_front(u);\n                    else\
-    \ que.push_back(u);\n                }\n            }\n        }\n        return\
-    \ dist;\n    }\n    vector<Cost> bfs1(int s){\n        vector<Cost> dist(n,dist_inf);\n\
-    \        dist[s] = 0;\n        queue<int> que;\n        que.push(s);\n       \
-    \ while (!que.empty()){\n            int v = que.front(); que.pop();\n       \
-    \     for (auto [u, c] : g[v]){\n                if (chmin(dist[u],dist[v]+c)){\n\
-    \                    que.push(u);\n                }\n            }\n        }\n\
-    \        return dist;\n    }\n    vector<Cost> bellman_ford(int s, bool &ng_cycle){\n\
-    \        vector<Cost> dist(n,dist_inf);\n        vector<int> ng;\n        dist[s]\
-    \ = 0;\n        int tm = 0;\n        while (tm < n){\n            bool finish\
-    \ = true;\n            for (int v = 0; v < n; v++){\n                if (dist[v]\
-    \ == dist_inf) continue;\n                for (auto [u, c] : g[v]){\n        \
-    \            if (chmin(dist[u],dist[v]+c)){\n                        finish =\
-    \ false;\n                        if (tm == n-1) ng.emplace_back(u);\n       \
-    \             }\n                }\n            }\n            if (finish) break;\n\
-    \            tm++;\n        }\n        ng_cycle = (tm == n);\n        if (ng_cycle){\n\
-    \            for (auto v : ng) dist[v] = -dist_inf;\n            tm = n;\n   \
-    \         while (tm--){\n                for (int v = 0; v < n; v++){\n      \
-    \              if (dist[v] != -dist_inf) continue;\n                    for (auto\
-    \ [u, c] : g[v]){\n                        dist[u] = -dist_inf;\n            \
-    \        }\n                }\n            }\n        }\n        return dist;\n\
-    \    }\n    vector<vector<Cost>> warshall_floyd(){\n        vector<vector<Cost>>\
-    \ dist(n,vector<Cost>(n,dist_inf));\n        rep(v,n){\n            dist[v][v]\
-    \ = 0;\n            for (auto [u, c] : g[v]){\n                chmin(dist[v][u],c);\n\
-    \            }\n        }\n        rep(k,n) rep(i,n) rep(j,n){\n            chmin(dist[i][j],dist[i][k]+dist[k][j]);\n\
-    \        }\n        return dist;\n    }\n    const auto operator[](int idx) const\
-    \ { return g[idx]; }\n};\n\n} // namespace noya2\n#line 5 \"test/graph/Shortest_Path2.test.cpp\"\
+    \  vector<Cost> bfs1(int s){\n        vector<Cost> dist(n,dist_inf);\n       \
+    \ dist[s] = 0;\n        queue<int> que;\n        que.push(s);\n        while (!que.empty()){\n\
+    \            int v = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n\
+    \                if (chmin(dist[u],dist[v]+c)){\n                    que.push(u);\n\
+    \                }\n            }\n        }\n        return dist;\n    }\n  \
+    \  vector<Cost> bellman_ford(int s, bool &ng_cycle){\n        vector<Cost> dist(n,dist_inf);\n\
+    \        vector<int> ng;\n        dist[s] = 0;\n        int tm = 0;\n        while\
+    \ (tm < n){\n            bool finish = true;\n            for (int v = 0; v <\
+    \ n; v++){\n                if (dist[v] == dist_inf) continue;\n             \
+    \   for (auto [u, c] : g[v]){\n                    if (chmin(dist[u],dist[v]+c)){\n\
+    \                        finish = false;\n                        if (tm == n-1)\
+    \ ng.emplace_back(u);\n                    }\n                }\n            }\n\
+    \            if (finish) break;\n            tm++;\n        }\n        ng_cycle\
+    \ = (tm == n);\n        if (ng_cycle){\n            for (auto v : ng) dist[v]\
+    \ = -dist_inf;\n            tm = n;\n            while (tm--){\n             \
+    \   for (int v = 0; v < n; v++){\n                    if (dist[v] != -dist_inf)\
+    \ continue;\n                    for (auto [u, c] : g[v]){\n                 \
+    \       dist[u] = -dist_inf;\n                    }\n                }\n     \
+    \       }\n        }\n        return dist;\n    }\n    vector<vector<Cost>> warshall_floyd(){\n\
+    \        vector<vector<Cost>> dist(n,vector<Cost>(n,dist_inf));\n        rep(v,n){\n\
+    \            dist[v][v] = 0;\n            for (auto [u, c] : g[v]){\n        \
+    \        chmin(dist[v][u],c);\n            }\n        }\n        rep(k,n) rep(i,n)\
+    \ rep(j,n){\n            chmin(dist[i][j],dist[i][k]+dist[k][j]);\n        }\n\
+    \        return dist;\n    }\n    const auto operator[](int idx) const { return\
+    \ g[idx]; }\n};\n\n} // namespace noya2\n#line 5 \"test/graph/Shortest_Path2.test.cpp\"\
     \n\nint main(){\n    int n, m, s, t; in(n,m,s,t);\n    Graph<ll> g(n,m);\n   \
     \ rep(i,m){\n        int u, v; in(u,v);\n        ll c; in(c);\n        g.add_edge(u,v,c);\n\
     \    }\n    auto dist = g.dijkstra(s);\n    if (dist[t] == g.dist_inf){\n    \
@@ -174,7 +176,7 @@ data:
   isVerificationFile: true
   path: test/graph/Shortest_Path2.test.cpp
   requiredBy: []
-  timestamp: '2024-02-04 15:22:37+09:00'
+  timestamp: '2024-02-09 20:16:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Shortest_Path2.test.cpp
