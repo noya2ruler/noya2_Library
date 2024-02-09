@@ -13,6 +13,7 @@ struct Graph {
     Graph (int n_ = 0, int m_ = -1) : n(n_), g(n_,m_) {
         dist_inf = numeric_limits<Cost>::max() / 2;
     }
+    // 有向辺を追加 (無向辺ではないことに注意！)
     int add_edge(int u, int v, Cost cost = 1){
         return g.add(u,pair<int,Cost>(v,cost));
     }
