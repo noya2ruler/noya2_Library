@@ -16,6 +16,9 @@ data:
     path: test/fps/Inv_of_Formal_Power_Series.test.cpp
     title: test/fps/Inv_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
+    title: test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
     title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - icon: ':heavy_check_mark:'
@@ -94,6 +97,7 @@ data:
   timestamp: '2023-07-19 01:15:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/fps/convolution.test.cpp

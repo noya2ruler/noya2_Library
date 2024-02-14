@@ -23,10 +23,13 @@ data:
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
+    title: test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/multipoint_evaluation.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -309,8 +312,9 @@ data:
   path: fps/multipoint_evaluation.hpp
   requiredBy: []
   timestamp: '2024-02-14 17:06:29+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
 documentation_of: fps/multipoint_evaluation.hpp
 layout: document
 redirect_from:

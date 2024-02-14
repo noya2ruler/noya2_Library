@@ -5,6 +5,12 @@ data:
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
   - icon: ':heavy_check_mark:'
+    path: fps/fps_ntt.hpp
+    title: fps/fps_ntt.hpp
+  - icon: ':heavy_check_mark:'
+    path: fps/multipoint_evaluation.hpp
+    title: fps/multipoint_evaluation.hpp
+  - icon: ':heavy_check_mark:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
   - icon: ':heavy_check_mark:'
@@ -29,25 +35,17 @@ data:
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/fps/Inv_of_Formal_Power_Series.test.cpp
-    title: test/fps/Inv_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
-    title: test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-    title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/fps/convolution.test.cpp
-    title: test/fps/convolution.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"fps/fps_ntt.hpp\"\n\n#line 2 \"fps/formal_power_series.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/multipoint_evaluation_on_geometric_sequence
+    links:
+    - https://judge.yosupo.jp/problem/multipoint_evaluation_on_geometric_sequence
+  bundledCode: "#line 1 \"test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/multipoint_evaluation_on_geometric_sequence\"\
     \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
     #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
     \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
@@ -99,7 +97,8 @@ data:
     \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
     using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"fps/formal_power_series.hpp\"\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"fps/fps_ntt.hpp\"\
+    \n\n#line 2 \"fps/formal_power_series.hpp\"\n\n#line 4 \"fps/formal_power_series.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<typename T>\nconcept Field = requires (T a, T\
     \ b){\n    a + b; a - b; a / b; a * b;\n    T(0); T(1);\n};\n\ntemplate<class\
     \ Info>\nconcept Fps_Info = requires {\n    typename Info::value_type;\n    requires\
@@ -406,51 +405,51 @@ data:
     \ n = a.size();\n        vector<T> res(n+1);\n        for (int i = 1; i <= n;\
     \ i++) res[i] = a[i-1] * bnm.inv(i);\n        return res;\n    }\n};\ntemplate<typename\
     \ T> NTT<T> fps_ntt<T>::ntt;\ntemplate<typename T> using FPS_ntt = FormalPowerSeries<fps_ntt<T>>;\n\
-    \n} // namespace noya2\n\n"
-  code: "#pragma once\n\n#include\"formal_power_series.hpp\"\n#include\"../math/binomial.hpp\"\
-    \n#include\"ntt.hpp\"\n\nnamespace noya2{\n\ntemplate<typename T>\nstruct fps_ntt{\n\
-    \    using value_type = T;\n    static NTT<T> ntt;\n    static vector<T> multiply(const\
-    \ vector<T> &a, const vector<T> &b){\n        return ntt.multiply(a,b);\n    }\n\
-    \    static vector<T> inv(const vector<T> &a, int d = -1){\n        const int\
-    \ n = a.size();\n        if (d == -1) d = n;\n        vector<T> res = {a[0].inv()};\n\
-    \        for (int siz = 1; siz < d; siz <<= 1){\n            vector<T> f(a.begin(),a.begin()+min(n,siz*2)),\
-    \ g(res);\n            f.resize(siz*2), g.resize(siz*2);\n            ntt.ntt(f),\
-    \ ntt.ntt(g);\n            for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n   \
-    \         ntt.intt(f,true);\n            f.erase(f.begin(),f.begin()+siz);\n \
-    \           f.resize(siz*2);\n            ntt.ntt(f);\n            for (int i\
-    \ = 0; i < siz*2; i++) f[i] *= g[i];\n            ntt.intt(f,true);\n        \
-    \    T siz2_inv = T(siz*2).inv(); siz2_inv *= -siz2_inv;\n            for (int\
-    \ i = 0; i < siz; i++) f[i] *= siz2_inv;\n            res.insert(res.end(),f.begin(),f.begin()+siz);\n\
-    \        }\n        res.resize(d);\n        return res;\n    }\n    static binomial<T>\
-    \ bnm;\n    static vector<T> integral(const vector<T> &a){\n        const int\
-    \ n = a.size();\n        vector<T> res(n+1);\n        for (int i = 1; i <= n;\
-    \ i++) res[i] = a[i-1] * bnm.inv(i);\n        return res;\n    }\n};\ntemplate<typename\
-    \ T> NTT<T> fps_ntt<T>::ntt;\ntemplate<typename T> using FPS_ntt = FormalPowerSeries<fps_ntt<T>>;\n\
-    \n} // namespace noya2\n\n"
+    \n} // namespace noya2\n\n#line 2 \"fps/multipoint_evaluation.hpp\"\n\n#line 6\
+    \ \"fps/multipoint_evaluation.hpp\"\n\nnamespace noya2 {\n\ntemplate<Fps_Info\
+    \ Info>\nrequires Modint<typename Info::value_type>\nvector<typename Info::value_type>\
+    \ multipoint_evaluation_geo(const FormalPowerSeries<Info> &f, typename Info::value_type\
+    \ a, typename Info::value_type r, int m){\n    using mint = typename Info::value_type;\n\
+    \    using fps = FormalPowerSeries<Info>;\n    int n = f.size();\n    if (r.val()\
+    \ == 0){\n        vector<mint> ans(m);\n        repp(i,1,m) ans[i] = f[0];\n \
+    \       ans[0] = f.eval(a);\n        return ans;\n    }\n    fps p(n);\n    mint\
+    \ aprd = 1;\n    mint ir = r.inv();\n    mint irpp = 1, irp = 1;\n    rep(i,n){\n\
+    \        p[n-1-i] = aprd * f[i] * irpp;\n        irpp *= irp;\n        irp *=\
+    \ ir;\n        aprd *= a;\n    }\n    fps q(n+m-1);\n    mint rpp = 1, rp = 1;\n\
+    \    rep(i,n+m-1){\n        q[i] = rpp;\n        rpp *= rp;\n        rp *= r;\n\
+    \    }\n    p *= q;\n    vector<mint> ans(m);\n    irpp = 1, irp = 1;\n    rep(i,m){\n\
+    \        ans[i] = p[n-1+i] * irpp;\n        irpp *= irp;\n        irp *= ir;\n\
+    \    }\n    return ans;\n}\n\n} // namespace noya2\n#line 6 \"test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp\"\
+    \nusing mint = modint998244353;\nusing fps = FPS_ntt<mint>;\n\nint main(){\n \
+    \   int n, m, a, r; in(n,m,a,r);\n    fps f(n); in(f);\n    out(multipoint_evaluation_geo(f,a,r,m));\n\
+    }\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/multipoint_evaluation_on_geometric_sequence\"\
+    \n\n#include\"../../template/template.hpp\"\n#include\"../../fps/fps_ntt.hpp\"\
+    \n#include\"../../fps/multipoint_evaluation.hpp\"\nusing mint = modint998244353;\n\
+    using fps = FPS_ntt<mint>;\n\nint main(){\n    int n, m, a, r; in(n,m,a,r);\n\
+    \    fps f(n); in(f);\n    out(multipoint_evaluation_geo(f,a,r,m));\n}"
   dependsOn:
-  - fps/formal_power_series.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
+  - fps/fps_ntt.hpp
+  - fps/formal_power_series.hpp
   - math/binomial.hpp
   - fps/ntt.hpp
   - utility/modint.hpp
   - math/prime.hpp
-  isVerificationFile: false
-  path: fps/fps_ntt.hpp
+  - fps/multipoint_evaluation.hpp
+  isVerificationFile: true
+  path: test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   requiredBy: []
-  timestamp: '2024-01-17 04:07:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
-  - test/fps/Inv_of_Formal_Power_Series.test.cpp
-  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/fps/convolution.test.cpp
-documentation_of: fps/fps_ntt.hpp
+  timestamp: '2024-02-14 17:11:00+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
 layout: document
 redirect_from:
-- /library/fps/fps_ntt.hpp
-- /library/fps/fps_ntt.hpp.html
-title: fps/fps_ntt.hpp
+- /verify/test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
+- /verify/test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp.html
+title: test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
 ---

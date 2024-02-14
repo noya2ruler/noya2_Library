@@ -56,7 +56,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/fps_ntt.hpp
     title: fps/fps_ntt.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps/multipoint_evaluation.hpp
     title: fps/multipoint_evaluation.hpp
   - icon: ':heavy_check_mark:'
@@ -201,6 +201,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps/Inv_of_Formal_Power_Series.test.cpp
     title: test/fps/Inv_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
+    title: test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
     title: test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
@@ -362,6 +365,7 @@ data:
   - test/graph/Shortest_Path2.test.cpp
   - test/graph/Shortest_Path.test.cpp
   - test/graph/Strongly_Connected_Components.test.cpp
+  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/fps/Convolution1000000007.test.cpp
