@@ -71,6 +71,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/fps_ntt.hpp
       title: fps/fps_ntt.hpp
+    - icon: ':warning:'
+      path: fps/multipoint_evaluation.hpp
+      title: fps/multipoint_evaluation.hpp
     - icon: ':heavy_check_mark:'
       path: fps/ntt.hpp
       title: fps/ntt.hpp
