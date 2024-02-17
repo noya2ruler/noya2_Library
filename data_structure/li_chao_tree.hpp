@@ -6,7 +6,7 @@ namespace noya2{
 
 template<typename T>
 struct LiChaoTree {
-    static const T ymax = 3e18;
+    static constexpr T ymax = 3e18;
     struct Line {
         T a, b;
         Line (T _a = 0, T _b = ymax) : a(_a), b(_b) {}
