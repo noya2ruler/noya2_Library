@@ -80,8 +80,8 @@ data:
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
     ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"data_structure/li_chao_tree.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<typename T>\nstruct LiChaoTree {\n    static\
-    \ const T ymax = 3e18;\n    struct Line {\n        T a, b;\n        Line (T _a\
-    \ = 0, T _b = ymax) : a(_a), b(_b) {}\n        T get(T x){return a * x + b;}\n\
+    \ constexpr T ymax = 3e18;\n    struct Line {\n        T a, b;\n        Line (T\
+    \ _a = 0, T _b = ymax) : a(_a), b(_b) {}\n        T get(T x){return a * x + b;}\n\
     \    };\n    LiChaoTree (const vector<T> &_xs){\n        xs = _xs;\n        sort(xs.begin(),xs.end());\n\
     \        xs.erase(unique(xs.begin(),xs.end()),xs.end());\n        int _n = xs.size();\n\
     \        n = 1;\n        while (n < _n) n *= 2;\n        xs.resize(n);\n     \
@@ -109,8 +109,8 @@ data:
     \            inner_segment_add(L,R,S,2*i+2,m,r);\n        }\n    }\n};\n\n} //\
     \ namespace noya2\n"
   code: "#pragma once\n\n#include\"template/template.hpp\"\n\nnamespace noya2{\n\n\
-    template<typename T>\nstruct LiChaoTree {\n    static const T ymax = 3e18;\n \
-    \   struct Line {\n        T a, b;\n        Line (T _a = 0, T _b = ymax) : a(_a),\
+    template<typename T>\nstruct LiChaoTree {\n    static constexpr T ymax = 3e18;\n\
+    \    struct Line {\n        T a, b;\n        Line (T _a = 0, T _b = ymax) : a(_a),\
     \ b(_b) {}\n        T get(T x){return a * x + b;}\n    };\n    LiChaoTree (const\
     \ vector<T> &_xs){\n        xs = _xs;\n        sort(xs.begin(),xs.end());\n  \
     \      xs.erase(unique(xs.begin(),xs.end()),xs.end());\n        int _n = xs.size();\n\
@@ -146,7 +146,7 @@ data:
   isVerificationFile: false
   path: data_structure/li_chao_tree.hpp
   requiredBy: []
-  timestamp: '2023-08-26 17:35:34+09:00'
+  timestamp: '2024-02-17 23:30:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Line_Add_Get_Min.test.cpp
