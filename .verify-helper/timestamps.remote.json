@@ -16,6 +16,7 @@
 "test/data_structure/aoj_dsl_1_b.test.cpp": "2023-11-13 11:52:58 +0900",
 "test/fps/Convolution1000000007.test.cpp": "2024-01-17 04:07:54 +0900",
 "test/fps/Inv_of_Formal_Power_Series.test.cpp": "2024-01-17 04:07:54 +0900",
+"test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp": "2024-02-14 17:11:00 +0900",
 "test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp": "2024-01-17 04:07:54 +0900",
 "test/fps/convolution.test.cpp": "2024-01-17 04:07:54 +0900",
 "test/fps/convolution_relaxed_convolution.test.cpp": "2024-01-17 04:07:54 +0900",
