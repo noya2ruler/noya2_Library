@@ -13,7 +13,7 @@ struct hld_tree {
     void add_edge(int u, int v){
         g.add(u, v);
         int id = g.add(v, u);
-        if (id + 1 == (g.n - 1)*2) build();
+        if (id + 1 == (n - 1)*2) build();
     }
     void input(int indexed = 1){
         for (int i = 0; i < n - 1; i++){
