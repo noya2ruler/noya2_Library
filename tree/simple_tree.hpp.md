@@ -22,6 +22,9 @@ data:
     title: tree/heavy_light_decomposition.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/tree/Jump_on_Tree.test.cpp
+    title: test/tree/Jump_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
   _isVerificationFailed: false
@@ -143,6 +146,7 @@ data:
   timestamp: '2024-02-25 21:32:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
 documentation_of: tree/simple_tree.hpp
 layout: document

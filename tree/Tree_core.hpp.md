@@ -16,9 +16,6 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/tree/Jump_on_Tree.test.cpp
-    title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/tree/Lowest_Common_Ancestor.test.cpp
     title: test/tree/Lowest_Common_Ancestor.test.cpp
   - icon: ':heavy_check_mark:'
@@ -222,7 +219,6 @@ data:
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/aoj_0489.test.cpp
   - test/tree/Lowest_Common_Ancestor.test.cpp
-  - test/tree/Jump_on_Tree.test.cpp
 documentation_of: tree/Tree_core.hpp
 layout: document
 redirect_from:

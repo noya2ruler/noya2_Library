@@ -22,6 +22,9 @@ data:
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Jump_on_Tree.test.cpp
+    title: test/tree/Jump_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
   _isVerificationFailed: false
@@ -93,6 +96,7 @@ data:
   verifiedWith:
   - test/graph/Shortest_Path2.test.cpp
   - test/data_structure/Rectangle_Sum.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
 documentation_of: data_structure/csr.hpp
 layout: document
