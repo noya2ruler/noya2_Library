@@ -2,15 +2,14 @@
 
 #include"../../template/template.hpp"
 
-#include"../../tree/Tree_core.hpp"
+#include"../../tree/heavy_light_decomposition.hpp"
 
 int main(){
-    int n, q; cin >> n >> q;
-    usefulTree g(n);
+    int n, q; in(n,q);
+    hld_tree g(n);
     g.input(0);
-    g.build();
     while (q--){
         int u, v, d; cin >> u >> v >> d;
-        cout << g.jump(u,v,d) << '\n';
+        out(g.jump(u,v,d));
     }
 }
