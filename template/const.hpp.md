@@ -140,6 +140,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: tree/heavy_light_decomposition.hpp
+  - icon: ':warning:'
+    path: tree/simple_tree.hpp
+    title: tree/simple_tree.hpp
   - icon: ':heavy_check_mark:'
     path: tree/tree_query_weighted.hpp
     title: tree/tree_query_weighted.hpp
@@ -403,6 +406,7 @@ data:
   - tree/heavy_light_decomposition.hpp
   - tree/RerootingDP.hpp
   - tree/tree_query_weighted.hpp
+  - tree/simple_tree.hpp
   - tree/Mo_on_Tree.hpp
   - template/template.hpp
   timestamp: '2023-07-17 20:27:23+09:00'

@@ -8,6 +8,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
+  - icon: ':warning:'
+    path: tree/simple_tree.hpp
+    title: tree/simple_tree.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Rectangle_Sum.test.cpp
@@ -77,6 +80,7 @@ data:
   requiredBy:
   - graph/graph_query.hpp
   - data_structure/offline_rectangle_sum.hpp
+  - tree/simple_tree.hpp
   timestamp: '2024-02-25 20:48:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
