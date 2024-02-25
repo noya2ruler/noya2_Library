@@ -7,15 +7,15 @@
 int main(){
     int n, q; in(n,q);
     vector<ll> a(n); in(a);
-    hldTree g(n);
+    hld_tree g(n);
     g.input(0);
     fenwick_tree<ll> fen(n);
-    rep(i,n) fen.add(g.set_id_v(i),a[i]);
+    rep(v,n) fen.add(g.index(v),a[v]);
     while (q--){
         int t; in(t);
         if (t == 0){
             int p, x; in(p,x);
-            fen.add(g.set_id_v(p),x);
+            fen.add(g.index(p),x);
         }
         else {
             int u, v; in(u,v);
