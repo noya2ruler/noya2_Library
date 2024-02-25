@@ -16,11 +16,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: tree/heavy_light_decomposition.hpp
+    title: tree/heavy_light_decomposition.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Path_Sum.test.cpp
+    title: test/tree/Vertex_Add_Path_Sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/simple_tree.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -132,10 +138,12 @@ data:
   - data_structure/csr.hpp
   isVerificationFile: false
   path: tree/simple_tree.hpp
-  requiredBy: []
+  requiredBy:
+  - tree/heavy_light_decomposition.hpp
   timestamp: '2024-02-25 21:32:37+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/tree/Vertex_Add_Path_Sum.test.cpp
 documentation_of: tree/simple_tree.hpp
 layout: document
 redirect_from:

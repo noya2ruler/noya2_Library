@@ -207,7 +207,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: tree/heavy_light_decomposition.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: tree/simple_tree.hpp
       title: tree/simple_tree.hpp
     - icon: ':heavy_check_mark:'

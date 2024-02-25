@@ -8,7 +8,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
+    path: tree/heavy_light_decomposition.hpp
+    title: tree/heavy_light_decomposition.hpp
+  - icon: ':heavy_check_mark:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
   _extendedVerifiedWith:
@@ -18,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Vertex_Add_Path_Sum.test.cpp
+    title: test/tree/Vertex_Add_Path_Sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -80,12 +86,14 @@ data:
   requiredBy:
   - graph/graph_query.hpp
   - data_structure/offline_rectangle_sum.hpp
+  - tree/heavy_light_decomposition.hpp
   - tree/simple_tree.hpp
   timestamp: '2024-02-25 20:48:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Shortest_Path2.test.cpp
   - test/data_structure/Rectangle_Sum.test.cpp
+  - test/tree/Vertex_Add_Path_Sum.test.cpp
 documentation_of: data_structure/csr.hpp
 layout: document
 redirect_from:
