@@ -7,15 +7,16 @@ namespace noya2 {
 
 template<typename Cost>
 struct Graph {
-    int n;
-    csr<pair<int,Cost>> g;
-    Cost dist_inf;
-    Graph (int n_ = 0, int m_ = -1) : n(n_), g(n_,m_) {
-        dist_inf = numeric_limits<Cost>::max() / 2;
-    }
+    int n, m;
+    internal::csr<pair<int,Cost>> g;
+    Cost dist_inf = numeric_limits<Cost>::max() / 2;
+    Graph (int n_ = 0) : n(n_), m(-1), g(n_) {}
+    Graph (int n_, int m_) : n(n_), m(m_), g(n_,m_) {}
     // 有向辺を追加 (無向辺ではないことに注意！)
     int add_edge(int u, int v, Cost cost = 1){
-        return g.add(u,pair<int,Cost>(v,cost));
+        int id = g.add(u,pair<int,Cost>(v,cost));
+        if (id == m-1) build();
+        return id;
     }
     void build(){
         g.build();
@@ -141,6 +142,7 @@ struct Graph {
         return dist;
     }
     const auto operator[](int idx) const { return g[idx]; }
+    auto operator[](int idx) { return g[idx]; }
 };
 
 } // namespace noya2

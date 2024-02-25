@@ -5,46 +5,69 @@
 #include<cassert>
 #include<utility>
 
-namespace noya2 {
+namespace noya2::internal {
 
 template<class E>
-struct csr {
-    csr (int n_ = 0, int m_ = -1) : n(n_), m(m_) {
-        if (m >= 0){
-            es.reserve(m);
-            start.reserve(m);
+struct csr final {
+    csr () {}
+    csr (int _n) : n(_n) {}
+    csr (int _n, int m) : n(_n){
+        start.reserve(m);
+        elist.reserve(m);
+    }
+    // ACL style constructor (do not have to call build)
+    csr (int _n, const std::vector<std::pair<int,E>> &idx_elem) : n(_n), start(_n + 2), elist(idx_elem.size()) {
+        for (auto &[i, e] : idx_elem){
+            start[i + 2]++;
         }
-        if (m == 0){
-            build();
+        for (int i = 1; i < n; i++){
+            start[i + 2] += start[i + 1];
         }
+        for (auto &[i, e] : idx_elem){
+            elist[start[i + 1]++] = e;
+        }
+        prepared = true;
     }
     int add(int idx, E elem){
         int eid = start.size();
-        es.emplace_back(elem);
         start.emplace_back(idx);
-        if (eid+1 == m) build();
+        elist.emplace_back(elem);
         return eid;
     }
     void build(){
-        if (m == -2) return ;
-        m = start.size();
-        std::vector<E> nes(m);
-        std::vector<int> nstart(n+2,0);
-        for (int i = 0; i < m; i++) nstart[start[i]+2]++;
-        for (int i = 1; i < n; i++) nstart[i+2] += nstart[i+1];
-        for (int i = 0; i < m; i++) nes[nstart[start[i]+1]++] = es[i];
-        swap(es,nes);
+        if (prepared) return ;
+        int m = start.size();
+        std::vector<E> nelist(m);
+        std::vector<int> nstart(n + 2, 0);
+        for (int i = 0; i < m; i++){
+            nstart[start[i] + 2]++;
+        }
+        for (int i = 1; i < n; i++){
+            nstart[i + 2] += nstart[i + 1];
+        }
+        for (int i = 0; i < m; i++){
+            nelist[nstart[start[i] + 1]++] = elist[i];
+        }
+        swap(elist,nelist);
         swap(start,nstart);
-        m = -2;
+        prepared = true;
     }
     const auto operator[](int idx) const {
-        assert(m == -2);
-        return std::ranges::subrange(es.begin()+start[idx],es.begin()+start[idx+1]);
+        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);
     }
-  private:
-    int n, m;
-    std::vector<E> es;
+    auto operator[](int idx){
+        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);
+    }
+    const auto operator()(int idx, int l, int r) const {
+        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);
+    }
+    auto operator()(int idx, int l, int r){
+        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);
+    }
+    int n;
     std::vector<int> start;
+    std::vector<E> elist;
+    bool prepared = false;
 };
 
-} // namespace noya2
+} // namespace noya2::internal

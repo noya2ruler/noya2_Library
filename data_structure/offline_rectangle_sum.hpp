@@ -9,8 +9,8 @@ template<Group G = Plus_group<ll>>
 struct offline_rectangle_sum {
     using T = typename G::value_type;
     int h, w, query_id;
-    csr<pair<int,T>> elems;
-    csr<tuple<int,int,int>> queries;
+    internal::csr<pair<int,T>> elems;
+    internal::csr<tuple<int,int,int>> queries;
     offline_rectangle_sum () {}
     offline_rectangle_sum (int h_, int w_, int m = -1, int q = -1) : h(h_), w(w_), query_id(0), elems(h_,m), queries(h_+1,q*2) {}
     void add_elem(int x, int y, T e){
