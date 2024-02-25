@@ -140,16 +140,16 @@ data:
     \ () {}\n    hld_tree (int _n, int _root = 0) : g(_n,(_n - 1)*2), n(_n), root(_root)\
     \ {}\n    hld_tree (simple_tree _g, int _root = 0) : g(_g.g), n(_g.g.n), root(_root){}\n\
     \n    void add_edge(int u, int v){\n        g.add(u, v);\n        int id = g.add(v,\
-    \ u);\n        if (id + 1 == (g.n - 1)*2) build();\n    }\n    void input(int\
-    \ indexed = 1){\n        for (int i = 0; i < n - 1; i++){\n            int u,\
-    \ v; cin >> u >> v;\n            u -= indexed, v -= indexed;\n            add_edge(u,\
-    \ v);\n        }\n    }\n    void input_parents(int indexed = 1){\n        for\
-    \ (int i = 0; i < n - 1; i++){\n            int v; cin >> v;\n            v -=\
-    \ indexed;\n            add_edge(i + 1, v);\n        }\n    }\n\n    int depth(int\
-    \ v) const {\n        return dep[v];\n    }\n\n    int parent(int v) const {\n\
-    \        if (v == root) return -1;\n        return g[v].back();\n    }\n\n   \
-    \ int degree(int v) const {\n        return g[v].size();\n    }\n\n    int subtree_size(int\
-    \ v) const {\n        return sub[v];\n    }\n\n    // if d > dep[v], return -1\n\
+    \ u);\n        if (id + 1 == (n - 1)*2) build();\n    }\n    void input(int indexed\
+    \ = 1){\n        for (int i = 0; i < n - 1; i++){\n            int u, v; cin >>\
+    \ u >> v;\n            u -= indexed, v -= indexed;\n            add_edge(u, v);\n\
+    \        }\n    }\n    void input_parents(int indexed = 1){\n        for (int\
+    \ i = 0; i < n - 1; i++){\n            int v; cin >> v;\n            v -= indexed;\n\
+    \            add_edge(i + 1, v);\n        }\n    }\n\n    int depth(int v) const\
+    \ {\n        return dep[v];\n    }\n\n    int parent(int v) const {\n        if\
+    \ (v == root) return -1;\n        return g[v].back();\n    }\n\n    int degree(int\
+    \ v) const {\n        return g[v].size();\n    }\n\n    int subtree_size(int v)\
+    \ const {\n        return sub[v];\n    }\n\n    // if d > dep[v], return -1\n\
     \    int la(int v, int d) const {\n        while (v != -1){\n            int u\
     \ = nxt[v];\n            if (down[v] - d >= down[u]){\n                v = tour[down[v]\
     \ - d];\n                break;\n            }\n            d -= down[v] - down[u]\
@@ -289,7 +289,7 @@ data:
   isVerificationFile: true
   path: test/tree/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-02-25 21:35:33+09:00'
+  timestamp: '2024-02-25 21:40:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Vertex_Add_Path_Sum.test.cpp
