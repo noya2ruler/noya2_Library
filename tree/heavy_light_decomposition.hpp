@@ -8,7 +8,9 @@ struct hld_tree {
     internal::csr<int> g;
     hld_tree () {}
     hld_tree (int _n, int _root = 0) : g(_n,(_n - 1)*2), n(_n), root(_root) {}
-    hld_tree (simple_tree _g, int _root = 0) : g(_g.g), n(_g.g.n), root(_root){}
+    hld_tree (simple_tree _g, int _root = 0) : g(_g.g), n(_g.g.n), root(_root){
+        build();
+    }
 
     void add_edge(int u, int v){
         g.add(u, v);
