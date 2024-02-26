@@ -19,7 +19,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
-    title: tree/heavy_light_decomposition.hpp
+    title: "\u5168\u90E8\u8F09\u305B\u6728"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp

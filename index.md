@@ -206,7 +206,7 @@ data:
       title: tree/Tree_core.hpp
     - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
-      title: tree/heavy_light_decomposition.hpp
+      title: "\u5168\u90E8\u8F09\u305B\u6728"
     - icon: ':heavy_check_mark:'
       path: tree/simple_tree.hpp
       title: tree/simple_tree.hpp

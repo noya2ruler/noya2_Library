@@ -385,8 +385,9 @@ data:
   - test/tree/Vertex_Add_Path_Sum.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
 layout: document
-redirect_from:
-- /library/tree/heavy_light_decomposition.hpp
-- /library/tree/heavy_light_decomposition.hpp.html
-title: tree/heavy_light_decomposition.hpp
+title: "\u5168\u90E8\u8F09\u305B\u6728"
 ---
+
+# `hld_tree`
+
+WIP
