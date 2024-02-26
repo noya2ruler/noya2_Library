@@ -125,72 +125,73 @@ data:
     \ v){\n        return g[v];\n    }\n};\n\n} // namespace noya2\n#line 4 \"tree/heavy_light_decomposition.hpp\"\
     \n\nnamespace noya2 {\n\nstruct hld_tree {\n    internal::csr<int> g;\n    hld_tree\
     \ () {}\n    hld_tree (int _n, int _root = 0) : g(_n,(_n - 1)*2), n(_n), root(_root)\
-    \ {}\n    hld_tree (simple_tree _g, int _root = 0) : g(_g.g), n(_g.g.n), root(_root){}\n\
-    \n    void add_edge(int u, int v){\n        g.add(u, v);\n        int id = g.add(v,\
-    \ u);\n        if (id + 1 == (n - 1)*2) build();\n    }\n    void input(int indexed\
-    \ = 1){\n        for (int i = 0; i < n - 1; i++){\n            int u, v; cin >>\
-    \ u >> v;\n            u -= indexed, v -= indexed;\n            add_edge(u, v);\n\
-    \        }\n    }\n    void input_parents(int indexed = 1){\n        for (int\
-    \ i = 0; i < n - 1; i++){\n            int v; cin >> v;\n            v -= indexed;\n\
-    \            add_edge(i + 1, v);\n        }\n    }\n\n    int depth(int v) const\
-    \ {\n        return dep[v];\n    }\n\n    int parent(int v) const {\n        if\
-    \ (v == root) return -1;\n        return g[v].back();\n    }\n\n    int degree(int\
-    \ v) const {\n        return g[v].size();\n    }\n\n    int subtree_size(int v)\
-    \ const {\n        return sub[v];\n    }\n\n    // if d > dep[v], return -1\n\
-    \    int la(int v, int d) const {\n        while (v != -1){\n            int u\
-    \ = nxt[v];\n            if (down[v] - d >= down[u]){\n                v = tour[down[v]\
-    \ - d];\n                break;\n            }\n            d -= down[v] - down[u]\
-    \ + 1;\n            v = parent(u);\n        }\n        return v;\n    }\n\n  \
-    \  int lca(int u, int v) const {\n        while (nxt[u] != nxt[v]){\n        \
-    \    if (down[u] < down[v]) swap(u,v);\n            u = parent(nxt[u]);\n    \
-    \    }\n        return dep[u] < dep[v] ? u : v;\n    }\n\n    int dist(int u,\
-    \ int v) const {\n        return dep[u] + dep[v] - 2*dep[lca(u,v)];\n    }\n\n\
-    \    // if d > dist(from, to), return -1\n    int jump(int from, int to, int d)\
-    \ const {\n        int l = lca(from,to);\n        if (d <= dep[from] - dep[l]){\n\
-    \            return la(from, d);\n        }\n        d -= dep[from] - dep[l];\n\
-    \        if (d <= dep[to] - dep[l]){\n            return la(to, dep[to] - dep[l]\
-    \ - d);\n        }\n        return -1;\n    }\n\n    // seg.set(index(v), X[v]);\n\
-    \    int index(int vertex) const {\n        return down[vertex];\n    }\n\n  \
-    \  int index_from_edge(int u, int v) const {\n        return (dep[u] < dep[v]\
-    \ ? down[v] : down[u]);\n    }\n\n    // X[vertex(i)] = seg.get(i);\n    int vertex(int\
-    \ index) const {\n        return tour[index];\n    }\n\n    int subtree_l(int\
-    \ v) const {\n        return down[v];\n    }\n\n    int subtree_r(int v) const\
-    \ {\n        return down[v] + sub[v];\n    }\n\n    // if r == v, return true\n\
-    \    bool is_in_subtree(int r, int v) const {\n        return subtree_l(r) <=\
-    \ subtree_l(v) && subtree_l(v) < subtree_r(r);\n    }\n\n    bool is_in_path(int\
-    \ lv, int mv, int rv) const {\n        return dist(lv,mv) + dist(mv,rv) == dist(lv,rv);\n\
-    \    }\n\n    // dist, v1, v2\n    tuple<int,int,int> diameter(){\n        int\
-    \ v1 = max_element(dep.begin(),dep.end()) - dep.begin();\n        vector<int>\
-    \ dist_from_v1(n,numeric_limits<int>::max());\n        queue<int> que;\n     \
-    \   que.push(v1);\n        dist_from_v1[v1] = 0;\n        while (!que.empty()){\n\
-    \            int v = que.front(); que.pop();\n            for (int u : g[v]){\n\
-    \                if (dist_from_v1[u] > dist_from_v1[v]+1){\n                 \
-    \   dist_from_v1[u] = dist_from_v1[v]+1;\n                    que.push(u);\n \
-    \               }\n            }\n        }\n        int v2 = max_element(dist_from_v1.begin(),dist_from_v1.end())\
-    \ - dist_from_v1.begin();\n        return make_tuple(dist_from_v1[v2],v1,v2);\n\
-    \    }\n\n    // vertex array : vector<int> {from, v1, v2, ... , to}\n    vector<int>\
-    \ path(int from, int to){\n        int l = lca(from,to);\n        const int sizf\
-    \ = dep[from]-dep[l], sizt = dep[to]-dep[l];\n        vector<int> pf = {from},\
-    \ pt;\n        pf.reserve(sizf+1); pt.reserve(sizt);\n        for (int i = 0;\
-    \ i < sizf; i++){\n            from = parent(from);\n            pf.push_back(from);\n\
-    \        }\n        for (int i = 0; i < sizt; i++){\n            pt.push_back(to);\n\
-    \            to = parent(to);\n        }\n        pf.insert(pf.end(),pt.rbegin(),pt.rend());\n\
-    \        return pf;\n    }\n\n    template<typename F>\n    void path_query(int\
+    \ {}\n    hld_tree (simple_tree _g, int _root = 0) : g(_g.g), n(_g.g.n), root(_root){\n\
+    \        build();\n    }\n\n    void add_edge(int u, int v){\n        g.add(u,\
+    \ v);\n        int id = g.add(v, u);\n        if (id + 1 == (n - 1)*2) build();\n\
+    \    }\n    void input(int indexed = 1){\n        for (int i = 0; i < n - 1; i++){\n\
+    \            int u, v; cin >> u >> v;\n            u -= indexed, v -= indexed;\n\
+    \            add_edge(u, v);\n        }\n    }\n    void input_parents(int indexed\
+    \ = 1){\n        for (int i = 0; i < n - 1; i++){\n            int v; cin >> v;\n\
+    \            v -= indexed;\n            add_edge(i + 1, v);\n        }\n    }\n\
+    \n    int depth(int v) const {\n        return dep[v];\n    }\n\n    int parent(int\
+    \ v) const {\n        if (v == root) return -1;\n        return g[v].back();\n\
+    \    }\n\n    int degree(int v) const {\n        return g[v].size();\n    }\n\n\
+    \    int subtree_size(int v) const {\n        return sub[v];\n    }\n\n    //\
+    \ if d > dep[v], return -1\n    int la(int v, int d) const {\n        while (v\
+    \ != -1){\n            int u = nxt[v];\n            if (down[v] - d >= down[u]){\n\
+    \                v = tour[down[v] - d];\n                break;\n            }\n\
+    \            d -= down[v] - down[u] + 1;\n            v = parent(u);\n       \
+    \ }\n        return v;\n    }\n\n    int lca(int u, int v) const {\n        while\
+    \ (nxt[u] != nxt[v]){\n            if (down[u] < down[v]) swap(u,v);\n       \
+    \     u = parent(nxt[u]);\n        }\n        return dep[u] < dep[v] ? u : v;\n\
+    \    }\n\n    int dist(int u, int v) const {\n        return dep[u] + dep[v] -\
+    \ 2*dep[lca(u,v)];\n    }\n\n    // if d > dist(from, to), return -1\n    int\
+    \ jump(int from, int to, int d) const {\n        int l = lca(from,to);\n     \
+    \   if (d <= dep[from] - dep[l]){\n            return la(from, d);\n        }\n\
+    \        d -= dep[from] - dep[l];\n        if (d <= dep[to] - dep[l]){\n     \
+    \       return la(to, dep[to] - dep[l] - d);\n        }\n        return -1;\n\
+    \    }\n\n    // seg.set(index(v), X[v]);\n    int index(int vertex) const {\n\
+    \        return down[vertex];\n    }\n\n    int index_from_edge(int u, int v)\
+    \ const {\n        return (dep[u] < dep[v] ? down[v] : down[u]);\n    }\n\n  \
+    \  // X[vertex(i)] = seg.get(i);\n    int vertex(int index) const {\n        return\
+    \ tour[index];\n    }\n\n    int subtree_l(int v) const {\n        return down[v];\n\
+    \    }\n\n    int subtree_r(int v) const {\n        return down[v] + sub[v];\n\
+    \    }\n\n    // if r == v, return true\n    bool is_in_subtree(int r, int v)\
+    \ const {\n        return subtree_l(r) <= subtree_l(v) && subtree_l(v) < subtree_r(r);\n\
+    \    }\n\n    bool is_in_path(int lv, int mv, int rv) const {\n        return\
+    \ dist(lv,mv) + dist(mv,rv) == dist(lv,rv);\n    }\n\n    // dist, v1, v2\n  \
+    \  tuple<int,int,int> diameter(){\n        int v1 = max_element(dep.begin(),dep.end())\
+    \ - dep.begin();\n        vector<int> dist_from_v1(n,numeric_limits<int>::max());\n\
+    \        queue<int> que;\n        que.push(v1);\n        dist_from_v1[v1] = 0;\n\
+    \        while (!que.empty()){\n            int v = que.front(); que.pop();\n\
+    \            for (int u : g[v]){\n                if (dist_from_v1[u] > dist_from_v1[v]+1){\n\
+    \                    dist_from_v1[u] = dist_from_v1[v]+1;\n                  \
+    \  que.push(u);\n                }\n            }\n        }\n        int v2 =\
+    \ max_element(dist_from_v1.begin(),dist_from_v1.end()) - dist_from_v1.begin();\n\
+    \        return make_tuple(dist_from_v1[v2],v1,v2);\n    }\n\n    // vertex array\
+    \ : vector<int> {from, v1, v2, ... , to}\n    vector<int> path(int from, int to){\n\
+    \        int l = lca(from,to);\n        const int sizf = dep[from]-dep[l], sizt\
+    \ = dep[to]-dep[l];\n        vector<int> pf = {from}, pt;\n        pf.reserve(sizf+1);\
+    \ pt.reserve(sizt);\n        for (int i = 0; i < sizf; i++){\n            from\
+    \ = parent(from);\n            pf.push_back(from);\n        }\n        for (int\
+    \ i = 0; i < sizt; i++){\n            pt.push_back(to);\n            to = parent(to);\n\
+    \        }\n        pf.insert(pf.end(),pt.rbegin(),pt.rend());\n        return\
+    \ pf;\n    }\n\n    template<typename F>\n    void path_query(int u, int v, bool\
+    \ vertex, const F &f){\n        int l = lca(u,v);\n        for (auto [s, t] :\
+    \ ascend(u, l)){\n            f(t, s + 1);\n        }\n        if (vertex) f(down[l],\
+    \ down[l] + 1);\n        for (auto [s, t] : descend(l, v)){\n            f(s,\
+    \ t + 1);\n        }\n    }\n\n    template<typename F>\n    void path_noncommutative_query(int\
     \ u, int v, bool vertex, const F &f){\n        int l = lca(u,v);\n        for\
-    \ (auto [s, t] : ascend(u, l)){\n            f(t, s + 1);\n        }\n       \
-    \ if (vertex) f(down[l], down[l] + 1);\n        for (auto [s, t] : descend(l,\
-    \ v)){\n            f(s, t + 1);\n        }\n    }\n\n    template<typename F>\n\
-    \    void path_noncommutative_query(int u, int v, bool vertex, const F &f){\n\
-    \        int l = lca(u,v);\n        for (auto [s, t] : ascend(u, l)){\n      \
-    \      f(s + 1, t); // l > r ok\n        }\n        if (vertex) f(down[l],down[l]\
-    \ + 1);\n        for (auto [s, t] : descend(l, v)){\n            f(s, t + 1);\
-    \ // l > r ok\n        }\n    }\n\n    template<typename F>\n    void subtree_query(int\
-    \ v, bool vertex, const F &f){\n        f(down[v] + (vertex ? 0 : 1), down[v]\
-    \ + sub[v]);\n    }\n\n    // adjacent to v\n    const auto operator[](int v)\
-    \ const {\n        return g[v];\n    }\n    auto operator[](int v){\n        return\
-    \ g[v];\n    }\n\n    // only child\n    const auto operator()(int v) const {\n\
-    \        return g(v, 0, degree(v) - (v == root ? 0 : 1));\n    }\n    auto operator()(int\
-    \ v){\n        return g(v, 0, degree(v) - (v == root ? 0 : 1));\n    }\n\n  private:\n\
+    \ (auto [s, t] : ascend(u, l)){\n            f(s + 1, t); // l > r ok\n      \
+    \  }\n        if (vertex) f(down[l],down[l] + 1);\n        for (auto [s, t] :\
+    \ descend(l, v)){\n            f(s, t + 1); // l > r ok\n        }\n    }\n\n\
+    \    template<typename F>\n    void subtree_query(int v, bool vertex, const F\
+    \ &f){\n        f(down[v] + (vertex ? 0 : 1), down[v] + sub[v]);\n    }\n\n  \
+    \  // adjacent to v\n    const auto operator[](int v) const {\n        return\
+    \ g[v];\n    }\n    auto operator[](int v){\n        return g[v];\n    }\n\n \
+    \   // only child\n    const auto operator()(int v) const {\n        return g(v,\
+    \ 0, degree(v) - (v == root ? 0 : 1));\n    }\n    auto operator()(int v){\n \
+    \       return g(v, 0, degree(v) - (v == root ? 0 : 1));\n    }\n\n  private:\n\
     \    int n, root;\n    vector<int> dep, sub, down, tour, nxt;\n\n    // v is ancestor\
     \ of u.\n    // enumerate [closed] intervals of down ( interval [l, r] may hold\
     \ l > r ).\n    vector<pair<int,int>> ascend(int u, int v){\n        vector<pair<int,int>>\
@@ -265,7 +266,7 @@ data:
   isVerificationFile: true
   path: test/tree/Jump_on_Tree.test.cpp
   requiredBy: []
-  timestamp: '2024-02-25 21:40:26+09:00'
+  timestamp: '2024-02-26 20:52:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Jump_on_Tree.test.cpp
