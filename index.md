@@ -95,7 +95,7 @@ data:
     pages:
     - icon: ':warning:'
       path: geometry_shojin/Symmetric_Boundary.cpp
-      title: geometry_shojin/Symmetric_Boundary.cpp
+      title: ICPC 2024 Asia Pacific Championship - I Symmetric Boundary
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
