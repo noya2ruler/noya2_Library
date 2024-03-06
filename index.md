@@ -91,6 +91,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/partition_by_circle.hpp
       title: geometry/partition_by_circle.hpp
+  - name: geometry_shojin
+    pages:
+    - icon: ':warning:'
+      path: geometry_shojin/Symmetric_Boundary.cpp
+      title: geometry_shojin/Symmetric_Boundary.cpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
