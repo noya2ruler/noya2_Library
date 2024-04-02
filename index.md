@@ -115,6 +115,9 @@ data:
     - icon: ':warning:'
       path: math/euler_circuit_counting.hpp
       title: math/euler_circuit_counting.hpp
+    - icon: ':warning:'
+      path: math/factorize.hpp
+      title: math/factorize.hpp
     - icon: ':heavy_check_mark:'
       path: math/floor_sum.hpp
       title: math/floor_sum.hpp
