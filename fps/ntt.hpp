@@ -123,11 +123,13 @@ struct NTT {
     }
     void ntt(vector<mint> &a) {
         if ((int)a.size() <= 1) return;
-        fft4(a, 63-countl_zero(a.size()));
+        assert(has_single_bit(a.size()));
+        fft4(a, countr_zero(a.size()));
     }
     void intt(vector<mint> &a, bool stop = false) {
         if ((int)a.size() <= 1) return;
-        ifft4(a, 63-countl_zero(a.size()));
+        assert(has_single_bit(a.size()));
+        ifft4(a, countr_zero(a.size()));
         if (stop) return ;
         mint iv = mint(a.size()).inv();
         for (auto &x : a) x *= iv;
