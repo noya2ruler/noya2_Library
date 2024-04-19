@@ -288,10 +288,11 @@ data:
     \ = im * r1 % mod;\n                    imr3 = im * r3 % mod;\n              \
     \  }\n                len <<= 2;\n                l += 2;\n            }\n   \
     \     }\n    }\n    void ntt(vector<mint> &a) {\n        if ((int)a.size() <=\
-    \ 1) return;\n        fft4(a, 63-countl_zero(a.size()));\n    }\n    void intt(vector<mint>\
-    \ &a, bool stop = false) {\n        if ((int)a.size() <= 1) return;\n        ifft4(a,\
-    \ 63-countl_zero(a.size()));\n        if (stop) return ;\n        mint iv = mint(a.size()).inv();\n\
-    \        for (auto &x : a) x *= iv;\n    }\n    vector<mint> multiply(const vector<mint>\
+    \ 1) return;\n        assert(has_single_bit(a.size()));\n        fft4(a, countr_zero(a.size()));\n\
+    \    }\n    void intt(vector<mint> &a, bool stop = false) {\n        if ((int)a.size()\
+    \ <= 1) return;\n        assert(has_single_bit(a.size()));\n        ifft4(a, countr_zero(a.size()));\n\
+    \        if (stop) return ;\n        mint iv = mint(a.size()).inv();\n       \
+    \ for (auto &x : a) x *= iv;\n    }\n    vector<mint> multiply(const vector<mint>\
     \ &a, const vector<mint> &b) {\n        int l = a.size() + b.size() - 1;\n   \
     \     if (min<int>(a.size(), b.size()) <= 40){\n            vector<mint> s(l);\n\
     \            for (int i = 0; i < (int)a.size(); i++) for (int j = 0; j < (int)b.size();\
@@ -366,10 +367,11 @@ data:
     \ = im * r1 % mod;\n                    imr3 = im * r3 % mod;\n              \
     \  }\n                len <<= 2;\n                l += 2;\n            }\n   \
     \     }\n    }\n    void ntt(vector<mint> &a) {\n        if ((int)a.size() <=\
-    \ 1) return;\n        fft4(a, 63-countl_zero(a.size()));\n    }\n    void intt(vector<mint>\
-    \ &a, bool stop = false) {\n        if ((int)a.size() <= 1) return;\n        ifft4(a,\
-    \ 63-countl_zero(a.size()));\n        if (stop) return ;\n        mint iv = mint(a.size()).inv();\n\
-    \        for (auto &x : a) x *= iv;\n    }\n    vector<mint> multiply(const vector<mint>\
+    \ 1) return;\n        assert(has_single_bit(a.size()));\n        fft4(a, countr_zero(a.size()));\n\
+    \    }\n    void intt(vector<mint> &a, bool stop = false) {\n        if ((int)a.size()\
+    \ <= 1) return;\n        assert(has_single_bit(a.size()));\n        ifft4(a, countr_zero(a.size()));\n\
+    \        if (stop) return ;\n        mint iv = mint(a.size()).inv();\n       \
+    \ for (auto &x : a) x *= iv;\n    }\n    vector<mint> multiply(const vector<mint>\
     \ &a, const vector<mint> &b) {\n        int l = a.size() + b.size() - 1;\n   \
     \     if (min<int>(a.size(), b.size()) <= 40){\n            vector<mint> s(l);\n\
     \            for (int i = 0; i < (int)a.size(); i++) for (int j = 0; j < (int)b.size();\
@@ -396,15 +398,15 @@ data:
   - fps/fps_modint.hpp
   - fps/relaxed_convolution.hpp
   - fps/fps_ntt.hpp
-  timestamp: '2024-01-17 04:07:54+09:00'
+  timestamp: '2024-04-19 16:53:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/convolution.test.cpp
   - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
-  - test/fps/Inv_of_Formal_Power_Series.test.cpp
-  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/fps/Convolution1000000007.test.cpp
   - test/fps/convolution_relaxed_convolution.test.cpp
+  - test/fps/Inv_of_Formal_Power_Series.test.cpp
+  - test/fps/Convolution1000000007.test.cpp
+  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
 documentation_of: fps/ntt.hpp
 layout: document
 redirect_from:
