@@ -208,22 +208,22 @@ data:
     \ static_modint<1000000007>;\nusing modint = dynamic_modint<-1>;\n\ntemplate<typename\
     \ T>\nconcept Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n\
     \    a.pow(declval<int>());\n};\n\n} // namespace noya2\n#line 2 \"math/binomial.hpp\"\
-    \n\nnamespace noya2 {\n\ntemplate<typename mint>\nstruct binomial {\n    binomial(int\
-    \ len = 300000){ extend(len); }\n    static mint fact(int n){\n        if (n <\
-    \ 0) return 0;\n        while (n >= (int)_fact.size()) extend();\n        return\
-    \ _fact[n];\n    }\n    static mint ifact(int n){\n        if (n < 0) return 0;\n\
-    \        while (n >= (int)_fact.size()) extend();\n        return _ifact[n];\n\
-    \    }\n    static mint inv(int n){\n        return ifact(n) * fact(n-1);\n  \
-    \  }\n    static mint C(int n, int r){\n        if (!(0 <= r && r <= n)) return\
-    \ 0;\n        return fact(n) * ifact(r) * ifact(n-r);\n    }\n    static mint\
-    \ P(int n, int r){\n        if (!(0 <= r && r <= n)) return 0;\n        return\
-    \ fact(n) * ifact(n-r);\n    }\n    inline mint operator()(int n, int r) { return\
-    \ C(n, r); }\n    template<class... Cnts> static mint M(const Cnts&... cnts){\n\
-    \        return multinomial(0,1,cnts...);\n    }\n  private:\n    static mint\
-    \ multinomial(const int& sum, const mint& div_prod){\n        if (sum < 0) return\
-    \ 0;\n        return fact(sum) * div_prod;\n    }\n    template<class... Tail>\
-    \ static mint multinomial(const int& sum, const mint& div_prod, const int& n1,\
-    \ const Tail&... tail){\n        if (n1 < 0) return 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n\
+    \n\n#line 4 \"math/binomial.hpp\"\nnamespace noya2 {\n\ntemplate<typename mint>\n\
+    struct binomial {\n    binomial(int len = 300000){ extend(len); }\n    static\
+    \ mint fact(int n){\n        if (n < 0) return 0;\n        while (n >= (int)_fact.size())\
+    \ extend();\n        return _fact[n];\n    }\n    static mint ifact(int n){\n\
+    \        if (n < 0) return 0;\n        while (n >= (int)_fact.size()) extend();\n\
+    \        return _ifact[n];\n    }\n    static mint inv(int n){\n        return\
+    \ ifact(n) * fact(n-1);\n    }\n    static mint C(int n, int r){\n        if (!(0\
+    \ <= r && r <= n)) return 0;\n        return fact(n) * ifact(r) * ifact(n-r);\n\
+    \    }\n    static mint P(int n, int r){\n        if (!(0 <= r && r <= n)) return\
+    \ 0;\n        return fact(n) * ifact(n-r);\n    }\n    inline mint operator()(int\
+    \ n, int r) { return C(n, r); }\n    template<class... Cnts> static mint M(const\
+    \ Cnts&... cnts){\n        return multinomial(0,1,cnts...);\n    }\n  private:\n\
+    \    static mint multinomial(const int& sum, const mint& div_prod){\n        if\
+    \ (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n    template<class...\
+    \ Tail> static mint multinomial(const int& sum, const mint& div_prod, const int&\
+    \ n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n\
     \    }\n    static vector<mint> _fact, _ifact;\n    static void extend(int len\
     \ = -1){\n        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n \
     \       }\n        int siz = _fact.size();\n        if (len == -1) len = siz *\
@@ -253,7 +253,7 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
   requiredBy: []
-  timestamp: '2023-10-09 15:49:38+09:00'
+  timestamp: '2024-04-21 01:46:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
