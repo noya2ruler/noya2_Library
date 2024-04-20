@@ -1,5 +1,6 @@
 #pragma once
 
+#include<vector>
 namespace noya2 {
 
 template<typename mint>
