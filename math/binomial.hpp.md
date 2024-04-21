@@ -11,6 +11,9 @@ data:
   - icon: ':warning:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
+  - icon: ':warning:'
+    path: math/lagrange_interpolation.hpp
+    title: lagrange interpolation of at most n-degree polynomial y
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/fps/Inv_of_Formal_Power_Series.test.cpp
@@ -93,6 +96,7 @@ data:
   requiredBy:
   - fps/fps_ntt.hpp
   - fps/sample_point_shift.hpp
+  - math/lagrange_interpolation.hpp
   - math/euler_circuit_counting.hpp
   timestamp: '2024-04-21 01:46:27+09:00'
   verificationStatus: LIBRARY_ALL_AC

@@ -127,6 +127,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/gcd_convolution.hpp
       title: math/gcd_convolution.hpp
+    - icon: ':warning:'
+      path: math/lagrange_interpolation.hpp
+      title: lagrange interpolation of at most n-degree polynomial y
     - icon: ':heavy_check_mark:'
       path: math/lcm_convolution.hpp
       title: math/lcm_convolution.hpp
