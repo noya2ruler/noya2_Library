@@ -10,7 +10,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: lagrange interpolation of at most n-degree polynomial y
+    document_title: Lagrange interpolation
     links: []
   bundledCode: "#line 2 \"math/lagrange_interpolation.hpp\"\n\n#line 2 \"math/binomial.hpp\"\
     \n\n#include<vector>\nnamespace noya2 {\n\ntemplate<typename mint>\nstruct binomial\
@@ -39,8 +39,21 @@ data:
     };\ntemplate<typename T>\nstd::vector<T>binomial<T>::_fact = vector<T>(2,T(1));\n\
     template<typename T>\nstd::vector<T>binomial<T>::_ifact = vector<T>(2,T(1));\n\
     \n} // namespace noya2\n#line 4 \"math/lagrange_interpolation.hpp\"\n\nnamespace\
-    \ noya2 {\n\n/**\n * @brief lagrange interpolation of at most n-degree polynomial\
-    \ y\n * \n * @tparam mint (use noya2::binomial<mint>::ifact(int))\n * @param y\
+    \ noya2 {\n\n/**\n * @brief Lagrange interpolation\n * @note y is at most n-degree\
+    \ polynomial of x\n * \n * @tparam mint (use noya2::binomial<mint>::ifact(int))\n\
+    \ * @param y value of y(0), y(1), ... y(n)\n * @param x specific value of x\n\
+    \ * @return mint y(x)\n */\ntemplate<typename mint>\nmint lagrange_interpolation(const\
+    \ std::vector<mint> &y, mint x){\n    if (x.val() < y.size()){\n        return\
+    \ y[x.val()];\n    }\n    int n = y.size() - 1;\n    std::vector<mint> lui(n+1,1),\
+    \ rui(n+1,1);\n    mint a = x;\n    for (int i = 0; i < n; i++){\n        lui[i+1]\
+    \ = lui[i] * a;\n        a -= 1;\n    }\n    for (int i = n-1; i >= 0; i--){\n\
+    \        rui[i] = rui[i+1] * a;\n        a += 1;\n    }\n    mint ans = 0;\n \
+    \   binomial<mint> bnm;\n    for (int i = 0; i <= n; i++){\n        mint tmp =\
+    \ y[i] * lui[i] * rui[i] * bnm.ifact(i) * bnm.ifact(n-i);\n        ans += ((n-i)\
+    \ & 1) ? -tmp : tmp;\n    }\n    return ans;\n}\n\n} // namespace noya2\n"
+  code: "#pragma once\n\n#include\"binomial.hpp\"\n\nnamespace noya2 {\n\n/**\n *\
+    \ @brief Lagrange interpolation\n * @note y is at most n-degree polynomial of\
+    \ x\n * \n * @tparam mint (use noya2::binomial<mint>::ifact(int))\n * @param y\
     \ value of y(0), y(1), ... y(n)\n * @param x specific value of x\n * @return mint\
     \ y(x)\n */\ntemplate<typename mint>\nmint lagrange_interpolation(const std::vector<mint>\
     \ &y, mint x){\n    if (x.val() < y.size()){\n        return y[x.val()];\n   \
@@ -50,26 +63,13 @@ data:
     \ = rui[i+1] * a;\n        a += 1;\n    }\n    mint ans = 0;\n    binomial<mint>\
     \ bnm;\n    for (int i = 0; i <= n; i++){\n        mint tmp = y[i] * lui[i] *\
     \ rui[i] * bnm.ifact(i) * bnm.ifact(n-i);\n        ans += ((n-i) & 1) ? -tmp :\
-    \ tmp;\n    }\n    return ans;\n}\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"binomial.hpp\"\n\nnamespace noya2 {\n\n/**\n *\
-    \ @brief lagrange interpolation of at most n-degree polynomial y\n * \n * @tparam\
-    \ mint (use noya2::binomial<mint>::ifact(int))\n * @param y value of y(0), y(1),\
-    \ ... y(n)\n * @param x specific value of x\n * @return mint y(x)\n */\ntemplate<typename\
-    \ mint>\nmint lagrange_interpolation(const std::vector<mint> &y, mint x){\n  \
-    \  if (x.val() < y.size()){\n        return y[x.val()];\n    }\n    int n = y.size()\
-    \ - 1;\n    std::vector<mint> lui(n+1,1), rui(n+1,1);\n    mint a = x;\n    for\
-    \ (int i = 0; i < n; i++){\n        lui[i+1] = lui[i] * a;\n        a -= 1;\n\
-    \    }\n    for (int i = n-1; i >= 0; i--){\n        rui[i] = rui[i+1] * a;\n\
-    \        a += 1;\n    }\n    mint ans = 0;\n    binomial<mint> bnm;\n    for (int\
-    \ i = 0; i <= n; i++){\n        mint tmp = y[i] * lui[i] * rui[i] * bnm.ifact(i)\
-    \ * bnm.ifact(n-i);\n        ans += ((n-i) & 1) ? -tmp : tmp;\n    }\n    return\
-    \ ans;\n}\n\n} // namespace noya2"
+    \ tmp;\n    }\n    return ans;\n}\n\n} // namespace noya2"
   dependsOn:
   - math/binomial.hpp
   isVerificationFile: false
   path: math/lagrange_interpolation.hpp
   requiredBy: []
-  timestamp: '2024-04-21 20:52:11+09:00'
+  timestamp: '2024-04-22 11:32:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/lagrange_interpolation.hpp
@@ -77,5 +77,5 @@ layout: document
 redirect_from:
 - /library/math/lagrange_interpolation.hpp
 - /library/math/lagrange_interpolation.hpp.html
-title: lagrange interpolation of at most n-degree polynomial y
+title: Lagrange interpolation
 ---

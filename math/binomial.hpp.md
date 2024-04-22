@@ -13,7 +13,7 @@ data:
     title: math/euler_circuit_counting.hpp
   - icon: ':warning:'
     path: math/lagrange_interpolation.hpp
-    title: lagrange interpolation of at most n-degree polynomial y
+    title: Lagrange interpolation
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/fps/Inv_of_Formal_Power_Series.test.cpp
