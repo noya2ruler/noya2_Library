@@ -5,7 +5,8 @@
 namespace noya2 {
 
 /**
- * @brief lagrange interpolation of at most n-degree polynomial y
+ * @brief Lagrange interpolation
+ * @note y is at most n-degree polynomial of x
  * 
  * @tparam mint (use noya2::binomial<mint>::ifact(int))
  * @param y value of y(0), y(1), ... y(n)
