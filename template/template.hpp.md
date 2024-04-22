@@ -105,9 +105,6 @@ data:
     path: math/matrix_square.hpp
     title: math/matrix_square.hpp
   - icon: ':heavy_check_mark:'
-    path: math/prime.hpp
-    title: math/prime.hpp
-  - icon: ':heavy_check_mark:'
     path: math/sieve.hpp
     title: math/sieve.hpp
   - icon: ':warning:'
@@ -152,9 +149,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/tree_query_weighted.hpp
     title: tree/tree_query_weighted.hpp
-  - icon: ':heavy_check_mark:'
-    path: utility/modint.hpp
-    title: utility/modint.hpp
   - icon: ':warning:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
@@ -386,11 +380,9 @@ data:
   - math/lcm_convolution.hpp
   - math/matrix.hpp
   - math/euler_circuit_counting.hpp
-  - math/prime.hpp
   - math/spanning_tree_counting.hpp
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp
-  - utility/modint.hpp
   - utility/modint61.hpp
   - tree/tree_query_weighted.hpp
   - tree/Tree_core.hpp
