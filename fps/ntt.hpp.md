@@ -35,6 +35,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps998244353/multipoint_evaluation.hpp
     title: fps998244353/multipoint_evaluation.hpp
+  - icon: ':warning:'
+    path: fps998244353/sample_point_shift.hpp
+    title: fps998244353/sample_point_shift.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/fps/Convolution1000000007.test.cpp
@@ -417,6 +420,7 @@ data:
   requiredBy:
   - fps998244353/fps998244353.hpp
   - fps998244353/multipoint_evaluation.hpp
+  - fps998244353/sample_point_shift.hpp
   - fps/fps_modint.hpp
   - fps/relaxed_convolution.hpp
   - fps/fps_ntt.hpp

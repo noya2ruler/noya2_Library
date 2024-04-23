@@ -74,6 +74,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps998244353/multipoint_evaluation.hpp
     title: fps998244353/multipoint_evaluation.hpp
+  - icon: ':warning:'
+    path: fps998244353/sample_point_shift.hpp
+    title: fps998244353/sample_point_shift.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/base_ld.hpp
     title: geometry/base_ld.hpp
@@ -332,6 +335,7 @@ data:
   requiredBy:
   - fps998244353/fps998244353.hpp
   - fps998244353/multipoint_evaluation.hpp
+  - fps998244353/sample_point_shift.hpp
   - graph/Graph_core.hpp
   - graph/graph_query.hpp
   - misc/mo_algorithm.hpp

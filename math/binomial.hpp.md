@@ -15,6 +15,9 @@ data:
     path: fps998244353/multipoint_evaluation.hpp
     title: fps998244353/multipoint_evaluation.hpp
   - icon: ':warning:'
+    path: fps998244353/sample_point_shift.hpp
+    title: fps998244353/sample_point_shift.hpp
+  - icon: ':warning:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
   - icon: ':warning:'
@@ -114,6 +117,7 @@ data:
   requiredBy:
   - fps998244353/fps998244353.hpp
   - fps998244353/multipoint_evaluation.hpp
+  - fps998244353/sample_point_shift.hpp
   - fps/fps_ntt.hpp
   - fps/sample_point_shift.hpp
   - math/lagrange_interpolation.hpp

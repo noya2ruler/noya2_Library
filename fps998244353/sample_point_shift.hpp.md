@@ -5,6 +5,9 @@ data:
     path: fps/ntt.hpp
     title: fps/ntt.hpp
   - icon: ':heavy_check_mark:'
+    path: fps998244353/fps998244353.hpp
+    title: fps998244353/fps998244353.hpp
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
   - icon: ':heavy_check_mark:'
@@ -25,43 +28,26 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: fps998244353/multipoint_evaluation.hpp
-    title: fps998244353/multipoint_evaluation.hpp
-  - icon: ':warning:'
-    path: fps998244353/sample_point_shift.hpp
-    title: fps998244353/sample_point_shift.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
-    title: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/fps998244353/convolution_998244353.test.cpp
-    title: test/fps998244353/convolution_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/fps998244353/multipoint_evaluation_998244353.test.cpp
-    title: test/fps998244353/multipoint_evaluation_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
-    title: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"fps998244353/fps998244353.hpp\"\n\n#line 2 \"utility/modint.hpp\"\
-    \n\n#line 2 \"math/prime.hpp\"\n\n#include<utility>\nnamespace noya2 {\n\nconstexpr\
-    \ long long safe_mod(long long x, long long m) {\n    x %= m;\n    if (x < 0)\
-    \ x += m;\n    return x;\n}\n\nconstexpr long long pow_mod_constexpr(long long\
-    \ x, long long n, int m) {\n    if (m == 1) return 0;\n    unsigned int _m = (unsigned\
-    \ int)(m);\n    unsigned long long r = 1;\n    unsigned long long y = safe_mod(x,\
-    \ m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n        y = (y *\
-    \ y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int\
-    \ n) {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
-    \ true;\n    if (n % 2 == 0) return false;\n    long long d = n - 1;\n    while\
-    \ (d % 2 == 0) d /= 2;\n    constexpr long long bases[3] = {2, 7, 61};\n    for\
-    \ (long long a : bases) {\n        long long t = d;\n        long long y = pow_mod_constexpr(a,\
+  bundledCode: "#line 2 \"fps998244353/sample_point_shift.hpp\"\n\n#line 2 \"fps998244353/fps998244353.hpp\"\
+    \n\n#line 2 \"utility/modint.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\n#include<utility>\n\
+    namespace noya2 {\n\nconstexpr long long safe_mod(long long x, long long m) {\n\
+    \    x %= m;\n    if (x < 0) x += m;\n    return x;\n}\n\nconstexpr long long\
+    \ pow_mod_constexpr(long long x, long long n, int m) {\n    if (m == 1) return\
+    \ 0;\n    unsigned int _m = (unsigned int)(m);\n    unsigned long long r = 1;\n\
+    \    unsigned long long y = safe_mod(x, m);\n    while (n) {\n        if (n &\
+    \ 1) r = (r * y) % _m;\n        y = (y * y) % _m;\n        n >>= 1;\n    }\n \
+    \   return r;\n}\n\nconstexpr bool is_prime_constexpr(int n) {\n    if (n <= 1)\
+    \ return false;\n    if (n == 2 || n == 7 || n == 61) return true;\n    if (n\
+    \ % 2 == 0) return false;\n    long long d = n - 1;\n    while (d % 2 == 0) d\
+    \ /= 2;\n    constexpr long long bases[3] = {2, 7, 61};\n    for (long long a\
+    \ : bases) {\n        long long t = d;\n        long long y = pow_mod_constexpr(a,\
     \ t, n);\n        while (t != n - 1 && y != 1 && y != n - 1) {\n            y\
     \ = y * y % n;\n            t <<= 1;\n        }\n        if (y != n - 1 && t %\
     \ 2 == 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\
@@ -423,104 +409,51 @@ data:
     \        rem.shrink();\n        return rem;\n    }\n    std::pair<fps,fps> remquo(fps\
     \ r) const {\n        r.shrink();\n        fps quo = quotient(r);\n        fps\
     \ rem(*this);\n        rem -= quo * r;\n        rem.shrink();\n        return\
-    \ {rem, quo};\n    }\n};\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"../utility/modint.hpp\"\n\n#include\"../fps/ntt.hpp\"\
-    \n#include\"../math/binomial.hpp\"\n\nnamespace noya2 {\n\n// Formal Power Series\
-    \ for modint998244353\nstruct fps998244353 : std::vector<modint998244353> {\n\
-    \    using mint = modint998244353;\n    using std::vector<mint>::vector;\n   \
-    \ using std::vector<mint>::operator=;\n    using fps = fps998244353;\n    static\
-    \ inline NTT<mint> ntt_;\n    static inline binomial<mint> bnm;\n\n    fps998244353\
-    \ (const std::vector<mint> &init){\n        (*this) = init;\n    }\n\n    void\
-    \ shrink(){\n        while(!(this->empty()) && this->back().val() == 0){\n   \
-    \         this->pop_back();\n        }\n    }\n\n    fps &operator*= (const mint\
-    \ &r){\n        for (auto &x : *this) x *= r;\n        return *this;\n    }\n\
-    \    fps &operator/= (const mint &r){\n        (*this) *= r.inv();\n        return\
-    \ *this;\n    }\n\n    fps &operator<<= (const int &d){\n        this->insert(this->begin(),\
-    \ d, mint(0));\n        return *this;\n    }\n    fps &operator>>= (const int\
-    \ &d){\n        if ((int)(this->size()) <= d) this->clear();\n        else this->erase(this->begin(),this->begin()\
-    \ + d);\n        return *this;\n    }\n\n    fps &operator+= (const fps &r){\n\
-    \        if (this->size() < r.size()) this->resize(r.size());\n        for (int\
-    \ i = 0; auto x : r){\n            (*this)[i++] += x;\n        }\n        return\
-    \ *this;\n    }\n    fps &operator-= (const fps &r){\n        if (this->size()\
-    \ < r.size()) this->resize(r.size());\n        for (int i = 0; auto x : r){\n\
-    \            (*this)[i++] -= x;\n        }\n        return *this;\n    }\n   \
-    \ fps &operator*= (const fps &r){\n        if (this->empty() || r.empty()){\n\
-    \            this->clear();\n            return *this;\n        }\n        (*this)\
-    \ = ntt_.multiply(*this, r);\n        return *this;\n    }\n\n    fps operator*\
-    \ (const mint &r) const { return fps(*this) *= r; }\n    fps operator/ (const\
-    \ mint &r) const { return fps(*this) /= r; }\n    fps operator<< (const int &d)\
-    \ const { return fps(*this) <<= d; }\n    fps operator>> (const int &d) const\
-    \ { return fps(*this) >>= d; }\n\n    fps operator+ (const fps &r) const { return\
-    \ fps(*this) += r; }\n    fps operator- (const fps &r) const { return fps(*this)\
-    \ -= r; }\n    fps operator* (const fps &r) const { return fps(*this) *= r; }\n\
-    \n    fps operator+ () const { return *this; }\n    fps operator- () const {\n\
-    \        fps ret(*this);\n        for (auto &x : ret) x = -x;\n        return\
-    \ ret;\n    }\n\n    mint eval(const mint &x) const {\n        mint res(0), w(1);\n\
-    \        for (auto a : *this){\n            res += a * w;\n            w *= x;\n\
-    \        }\n        return res;\n    }\n\n    [[nodiscard(\"Do not change but\
-    \ return changed object.\")]]\n    fps pre(std::size_t sz) const {\n        fps\
-    \ ret(this->begin(), this->begin() + std::min(this->size(), sz));\n        if\
-    \ (ret.size() < sz) ret.resize(sz);\n        return ret;\n    }\n    [[nodiscard(\"\
-    Do not change but return changed object.\")]]\n    fps rev() const {\n       \
-    \ fps ret(*this);\n        std::reverse(ret.begin(), ret.end());\n        return\
-    \ ret;\n    }\n    [[nodiscard(\"Do not change but return changed object.\")]]\n\
-    \    fps diff() const {\n        if (this->empty()){\n            return fps();\n\
-    \        }\n        fps ret(this->begin() + 1, this->end());\n        for (int\
-    \ i = 1; auto &x : ret){\n            x *= i++;\n        }\n        return ret;\n\
-    \    }\n    [[nodiscard(\"Do not change but return changed object.\")]]\n    fps\
-    \ integral() const {\n        if (this->empty()){\n            return fps();\n\
-    \        }\n        fps ret(1, mint(0));\n        ret.insert(ret.end(), this->begin(),\
-    \ this->end());\n        for (int i = 0; auto &x : ret){\n            x *= bnm.inv(i++);\
-    \ // inv(0) = 0\n        }\n        return ret;\n    }\n    [[nodiscard(\"Do not\
-    \ change but return changed object.\")]]\n    fps inv(int d = -1) const {\n  \
-    \      const int n = this->size();\n        if (d == -1) d = n;\n        fps res\
-    \ = {(*this)[0].inv()};\n        for (int siz = 1; siz < d; siz <<= 1){\n    \
-    \        fps f(this->begin(),this->begin()+min(n,siz*2)), g(res);\n          \
-    \  f.resize(siz*2), g.resize(siz*2);\n            f.ntt(), g.ntt();\n        \
-    \    for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n            ntt_.intt(f,true);\n\
-    \            f.erase(f.begin(),f.begin()+siz);\n            f.resize(siz*2);\n\
-    \            f.ntt();\n            for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n\
-    \            f.intt(true);\n            mint siz2_inv = mint(siz*2).inv(); siz2_inv\
-    \ *= -siz2_inv;\n            for (int i = 0; i < siz; i++) f[i] *= siz2_inv;\n\
-    \            res.insert(res.end(),f.begin(),f.begin()+siz);\n        }\n     \
-    \   res.resize(d);\n        return res;\n    }\n    [[nodiscard(\"Do not change\
-    \ but return changed object.\")]]\n    fps log(int d = -1) const {\n        assert(this->empty()\
-    \ == false && (*this)[0].val() == 1u);\n        if (d == -1) d = this->size();\n\
-    \        return (this->diff() * this->inv(d)).pre(d - 1).integral();\n    }\n\
-    \    [[nodiscard(\"Do not change but return changed object.\")]]\n    fps exp(int\
-    \ d = -1) const {\n        const int n = this->size();\n        if (d == -1) d\
-    \ = n;\n        assert(n == 0 || (*this)[0].val() == 0u);\n        if (n <= 1){\n\
-    \            fps ret(1,1);\n            ret.resize(d);\n            return ret;\n\
-    \        }\n        // n >= 2\n        fps f = {mint(1), (*this)[1]}, ret = f;\n\
-    \        for (int sz = 2; sz < d; sz <<= 1){\n            f.insert(f.end(), this->begin()+std::min(n,sz),\
-    \ this->begin()+std::min(n,sz*2));\n            f.resize(sz*2);\n            ret\
-    \ *= f - ret.log(sz*2);\n            ret.resize(sz*2);\n        }\n        ret.resize(d);\n\
-    \        return ret;\n    }\n    [[nodiscard(\"Do not change but return changed\
-    \ object.\")]]\n    fps pow(long long k, int d = -1) const {\n        const int\
-    \ n = this->size();\n        if (d == -1) d = n;\n        if (k == 0){\n     \
-    \       fps ret(d, mint(0));\n            if (d >= 1) ret[0] = 1;\n          \
-    \  return ret;\n        }\n        // Find left-most nonzero term.\n        for\
-    \ (int i = 0; i < n; i++){\n            if ((*this)[i].val() != 0u){\n       \
-    \         mint iv = (*this)[i].inv();\n                fps ret = ((((*this) *\
-    \ iv) >> i).log(d) * mint(k)).exp(d);\n                ret *= (*this)[i].pow(k);\n\
-    \                ret = (ret << (i * k)).pre(d);\n                return ret;\n\
-    \            }\n            if ((i + 1) * k >= d) break;\n        }\n        return\
-    \ fps(d, mint(0));\n    }\n\n    void ntt(){\n        return ntt_.ntt(*this);\n\
-    \    }\n    // already /= len\n    void intt(bool stop = false){\n        return\
-    \ ntt_.intt(*this, stop);\n    }\n    fps quotient(fps r) const {\n        r.shrink();\n\
-    \        const int n = this->size(), m = r.size();\n        if (n < m){\n    \
-    \        return fps();\n        }\n        fps quo(*this);\n        const int\
-    \ sz = n - m + 1;\n        std::reverse(quo.begin(), quo.end());\n        std::reverse(r.begin(),\
-    \ r.end());\n        quo.resize(sz);\n        quo *= r.inv(sz);\n        quo.resize(sz);\n\
-    \        std::reverse(quo.begin(), quo.end());\n        return quo;\n    }\n \
-    \   fps remainder(fps r) const {\n        r.shrink();\n        const int n = this->size(),\
-    \ m = r.size();\n        if (n < m){\n            return fps(*this);\n       \
-    \ }\n        fps rem(*this);\n        rem -= quotient(r) * r;\n        rem.resize(m-1);\n\
-    \        rem.shrink();\n        return rem;\n    }\n    std::pair<fps,fps> remquo(fps\
-    \ r) const {\n        r.shrink();\n        fps quo = quotient(r);\n        fps\
-    \ rem(*this);\n        rem -= quo * r;\n        rem.shrink();\n        return\
-    \ {rem, quo};\n    }\n};\n\n} // namespace noya2"
+    \ {rem, quo};\n    }\n};\n\n} // namespace noya2\n#line 4 \"fps998244353/sample_point_shift.hpp\"\
+    \n\nnamespace noya2 {\n\nstd::vector<modint998244353> sample_point_shift(fps998244353\
+    \ y, modint998244353 t, int m){\n    long long T = t.val();\n    int k = (int)(y.size())\
+    \ - 1;\n    if (T <= k){\n        std::vector<modint998244353> ret(m);\n     \
+    \   int ptr = 0;\n        for (long long i = T; i <= k && ptr < m; i++){\n   \
+    \         ret[ptr++] = y[i];\n        }\n        if (k+1 < T+m){\n           \
+    \ auto suf = sample_point_shift(y,k+1,m-ptr);\n            for (int i = k+1; i\
+    \ < T+m; i++){\n                ret[ptr++] = suf[i-(k+1)];\n            }\n  \
+    \      }\n        return ret;\n    }\n    if (T+m > modint998244353::mod()){\n\
+    \        auto pref = sample_point_shift(y,T,modint998244353::mod()-T);\n     \
+    \   auto suf  = sample_point_shift(y,0,m-(int)(pref.size()));\n        copy(suf.begin(),suf.end(),back_inserter(pref));\n\
+    \        return pref;\n    }\n    binomial<modint998244353> bnm;\n    fps998244353\
+    \ d(k+1);\n    for (int i = 0; i <= k; i++){\n        d[i] = bnm.ifact(i) * bnm.ifact(k-i)\
+    \ * y[i];\n        if ((k-i)&1) d[i] = -d[i];\n    }\n    std::vector<modint998244353>\
+    \ fact(m+k+1); fact[0] = 1;\n    for (int i = 0; i < m+k; i++) fact[i+1] = fact[i]\
+    \ * (T-k+i);\n    fps998244353 h(m+k); h[m+k-1] = fact[m+k].inv();\n    for (int\
+    \ i = m+k-1; i >= 1; i--) h[i-1] = h[i] * (T-k+i);\n    for (int i = 0; i < m+k;\
+    \ i++) h[i] *= fact[i];\n    auto dh = d * h;\n    std::vector<modint998244353>\
+    \ ret(m);\n    modint998244353 cur = T;\n    for (int i = 1; i <= k; i++) cur\
+    \ *= T-i;\n    for (int i = 0; i < m; i++){\n        ret[i] = cur * dh[k+i];\n\
+    \        cur *= T+i+1;\n        cur *= h[i];\n    }\n    return ret;\n}\n\n} //\
+    \ namespace noya2\n"
+  code: "#pragma once\n\n#include\"fps998244353.hpp\"\n\nnamespace noya2 {\n\nstd::vector<modint998244353>\
+    \ sample_point_shift(fps998244353 y, modint998244353 t, int m){\n    long long\
+    \ T = t.val();\n    int k = (int)(y.size()) - 1;\n    if (T <= k){\n        std::vector<modint998244353>\
+    \ ret(m);\n        int ptr = 0;\n        for (long long i = T; i <= k && ptr <\
+    \ m; i++){\n            ret[ptr++] = y[i];\n        }\n        if (k+1 < T+m){\n\
+    \            auto suf = sample_point_shift(y,k+1,m-ptr);\n            for (int\
+    \ i = k+1; i < T+m; i++){\n                ret[ptr++] = suf[i-(k+1)];\n      \
+    \      }\n        }\n        return ret;\n    }\n    if (T+m > modint998244353::mod()){\n\
+    \        auto pref = sample_point_shift(y,T,modint998244353::mod()-T);\n     \
+    \   auto suf  = sample_point_shift(y,0,m-(int)(pref.size()));\n        copy(suf.begin(),suf.end(),back_inserter(pref));\n\
+    \        return pref;\n    }\n    binomial<modint998244353> bnm;\n    fps998244353\
+    \ d(k+1);\n    for (int i = 0; i <= k; i++){\n        d[i] = bnm.ifact(i) * bnm.ifact(k-i)\
+    \ * y[i];\n        if ((k-i)&1) d[i] = -d[i];\n    }\n    std::vector<modint998244353>\
+    \ fact(m+k+1); fact[0] = 1;\n    for (int i = 0; i < m+k; i++) fact[i+1] = fact[i]\
+    \ * (T-k+i);\n    fps998244353 h(m+k); h[m+k-1] = fact[m+k].inv();\n    for (int\
+    \ i = m+k-1; i >= 1; i--) h[i-1] = h[i] * (T-k+i);\n    for (int i = 0; i < m+k;\
+    \ i++) h[i] *= fact[i];\n    auto dh = d * h;\n    std::vector<modint998244353>\
+    \ ret(m);\n    modint998244353 cur = T;\n    for (int i = 1; i <= k; i++) cur\
+    \ *= T-i;\n    for (int i = 0; i < m; i++){\n        ret[i] = cur * dh[k+i];\n\
+    \        cur *= T+i+1;\n        cur *= h[i];\n    }\n    return ret;\n}\n\n} //\
+    \ namespace noya2"
   dependsOn:
+  - fps998244353/fps998244353.hpp
   - utility/modint.hpp
   - math/prime.hpp
   - fps/ntt.hpp
@@ -530,21 +463,15 @@ data:
   - template/utils.hpp
   - math/binomial.hpp
   isVerificationFile: false
-  path: fps998244353/fps998244353.hpp
-  requiredBy:
-  - fps998244353/multipoint_evaluation.hpp
-  - fps998244353/sample_point_shift.hpp
-  timestamp: '2024-04-23 16:44:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/fps998244353/multipoint_evaluation_998244353.test.cpp
-  - test/fps998244353/convolution_998244353.test.cpp
-  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
-  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
-documentation_of: fps998244353/fps998244353.hpp
+  path: fps998244353/sample_point_shift.hpp
+  requiredBy: []
+  timestamp: '2024-04-23 19:29:55+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: fps998244353/sample_point_shift.hpp
 layout: document
 redirect_from:
-- /library/fps998244353/fps998244353.hpp
-- /library/fps998244353/fps998244353.hpp.html
-title: fps998244353/fps998244353.hpp
+- /library/fps998244353/sample_point_shift.hpp
+- /library/fps998244353/sample_point_shift.hpp.html
+title: fps998244353/sample_point_shift.hpp
 ---

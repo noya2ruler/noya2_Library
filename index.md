@@ -94,6 +94,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps998244353/multipoint_evaluation.hpp
       title: fps998244353/multipoint_evaluation.hpp
+    - icon: ':warning:'
+      path: fps998244353/sample_point_shift.hpp
+      title: fps998244353/sample_point_shift.hpp
   - name: geometry
     pages:
     - icon: ':heavy_check_mark:'

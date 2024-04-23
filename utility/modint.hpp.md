@@ -29,6 +29,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps998244353/multipoint_evaluation.hpp
     title: fps998244353/multipoint_evaluation.hpp
+  - icon: ':warning:'
+    path: fps998244353/sample_point_shift.hpp
+    title: fps998244353/sample_point_shift.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite.test.cpp
@@ -310,6 +313,7 @@ data:
   requiredBy:
   - fps998244353/fps998244353.hpp
   - fps998244353/multipoint_evaluation.hpp
+  - fps998244353/sample_point_shift.hpp
   - fps/fps_modint.hpp
   - fps/relaxed_convolution.hpp
   - fps/ntt.hpp
