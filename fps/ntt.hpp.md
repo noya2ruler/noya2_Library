@@ -63,6 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps998244353/multipoint_evaluation_998244353.test.cpp
     title: test/fps998244353/multipoint_evaluation_998244353.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+    title: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -423,6 +426,7 @@ data:
   - test/fps998244353/multipoint_evaluation_998244353.test.cpp
   - test/fps998244353/convolution_998244353.test.cpp
   - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
   - test/fps/convolution.test.cpp
   - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   - test/fps/convolution_relaxed_convolution.test.cpp
