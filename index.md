@@ -91,7 +91,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps998244353/fps998244353.hpp
       title: fps998244353/fps998244353.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: fps998244353/multipoint_evaluation.hpp
       title: fps998244353/multipoint_evaluation.hpp
   - name: geometry
@@ -325,6 +325,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fps998244353/convolution_998244353.test.cpp
       title: test/fps998244353/convolution_998244353.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/fps998244353/multipoint_evaluation_998244353.test.cpp
+      title: test/fps998244353/multipoint_evaluation_998244353.test.cpp
   - name: test/geometry
     pages:
     - icon: ':heavy_check_mark:'

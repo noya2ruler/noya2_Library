@@ -23,7 +23,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps998244353/fps998244353.hpp
     title: fps998244353/fps998244353.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps998244353/multipoint_evaluation.hpp
     title: fps998244353/multipoint_evaluation.hpp
   - icon: ':heavy_check_mark:'
@@ -63,6 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps998244353/convolution_998244353.test.cpp
     title: test/fps998244353/convolution_998244353.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fps998244353/multipoint_evaluation_998244353.test.cpp
+    title: test/fps998244353/multipoint_evaluation_998244353.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
@@ -167,6 +170,7 @@ data:
   timestamp: '2024-04-22 12:03:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/fps998244353/multipoint_evaluation_998244353.test.cpp
   - test/fps998244353/convolution_998244353.test.cpp
   - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - test/fps/convolution.test.cpp
