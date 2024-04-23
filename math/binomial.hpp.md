@@ -9,6 +9,9 @@ data:
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
   - icon: ':warning:'
+    path: fps998244353/fps998244353.hpp
+    title: fps998244353/fps998244353.hpp
+  - icon: ':warning:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
   - icon: ':warning:'
@@ -94,6 +97,7 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
+  - fps998244353/fps998244353.hpp
   - fps/fps_ntt.hpp
   - fps/sample_point_shift.hpp
   - math/lagrange_interpolation.hpp

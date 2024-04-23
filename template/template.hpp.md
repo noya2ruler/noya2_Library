@@ -77,6 +77,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
+  - icon: ':warning:'
+    path: fps998244353/fps998244353.hpp
+    title: fps998244353/fps998244353.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/base_ld.hpp
     title: geometry/base_ld.hpp
@@ -343,6 +346,7 @@ data:
   isVerificationFile: false
   path: template/template.hpp
   requiredBy:
+  - fps998244353/fps998244353.hpp
   - graph/Graph_core.hpp
   - graph/graph_query.hpp
   - misc/mo_algorithm.hpp

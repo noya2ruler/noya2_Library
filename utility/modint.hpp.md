@@ -23,6 +23,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
+  - icon: ':warning:'
+    path: fps998244353/fps998244353.hpp
+    title: fps998244353/fps998244353.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite.test.cpp
@@ -290,6 +293,7 @@ data:
   isVerificationFile: false
   path: utility/modint.hpp
   requiredBy:
+  - fps998244353/fps998244353.hpp
   - fps/fps_modint.hpp
   - fps/relaxed_convolution.hpp
   - fps/ntt.hpp

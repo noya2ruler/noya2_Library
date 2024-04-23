@@ -86,6 +86,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps/sample_point_shift.hpp
       title: fps/sample_point_shift.hpp
+  - name: fps998244353
+    pages:
+    - icon: ':warning:'
+      path: fps998244353/fps998244353.hpp
+      title: fps998244353/fps998244353.hpp
   - name: geometry
     pages:
     - icon: ':heavy_check_mark:'

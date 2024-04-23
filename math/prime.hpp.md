@@ -20,6 +20,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
+  - icon: ':warning:'
+    path: fps998244353/fps998244353.hpp
+    title: fps998244353/fps998244353.hpp
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
@@ -143,6 +146,7 @@ data:
   isVerificationFile: false
   path: math/prime.hpp
   requiredBy:
+  - fps998244353/fps998244353.hpp
   - fps/fps_modint.hpp
   - fps/relaxed_convolution.hpp
   - fps/ntt.hpp
