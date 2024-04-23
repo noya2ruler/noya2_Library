@@ -5,6 +5,9 @@ data:
     path: fps/ntt.hpp
     title: fps/ntt.hpp
   - icon: ':heavy_check_mark:'
+    path: fps998244353/fps998244353.hpp
+    title: fps998244353/fps998244353.hpp
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
   - icon: ':heavy_check_mark:'
@@ -25,31 +28,79 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: fps998244353/multipoint_evaluation.hpp
-    title: fps998244353/multipoint_evaluation.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
-    title: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/fps998244353/convolution_998244353.test.cpp
-    title: test/fps998244353/convolution_998244353.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"fps998244353/fps998244353.hpp\"\n\n#line 2 \"utility/modint.hpp\"\
-    \n\n#line 2 \"math/prime.hpp\"\n\n#include<utility>\nnamespace noya2 {\n\nconstexpr\
-    \ long long safe_mod(long long x, long long m) {\n    x %= m;\n    if (x < 0)\
-    \ x += m;\n    return x;\n}\n\nconstexpr long long pow_mod_constexpr(long long\
-    \ x, long long n, int m) {\n    if (m == 1) return 0;\n    unsigned int _m = (unsigned\
-    \ int)(m);\n    unsigned long long r = 1;\n    unsigned long long y = safe_mod(x,\
-    \ m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n        y = (y *\
-    \ y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int\
-    \ n) {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
+    links:
+    - https://judge.yosupo.jp/problem/convolution_mod
+  bundledCode: "#line 1 \"test/fps998244353/convolution_998244353.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#line 2 \"template/template.hpp\"\
+    \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
+    \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
+    \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
+    \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
+    \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
+    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int\
+    \ s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\"\
+    ) << v[i];\n    return os;\n}\ntemplate <typename T>\nistream &operator>>(istream\
+    \ &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid\
+    \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
+    \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
+    \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
+    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\ntemplate<typename\
+    \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
+    \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
+    \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
+    \ << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n \
+    \   }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
+    \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
+    \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
+    \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
+    \ vector<int> dx = {0,1,0,-1,1,1,-1,-1};\nconst vector<int> dy = {1,0,-1,0,1,-1,-1,1};\n\
+    const string ALP = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\";\nconst string alp = \"abcdefghijklmnopqrstuvwxyz\"\
+    ;\nconst string NUM = \"0123456789\";\n\nvoid yes(){ cout << \"Yes\\n\"; }\nvoid\
+    \ no(){ cout << \"No\\n\"; }\nvoid YES(){ cout << \"YES\\n\"; }\nvoid NO(){ cout\
+    \ << \"NO\\n\"; }\nvoid yn(bool t){ t ? yes() : no(); }\nvoid YN(bool t){ t ?\
+    \ YES() : NO(); }\n\n} // namespace noya2\n#line 1 \"template/utils.hpp\"\nnamespace\
+    \ noya2{\n\nunsigned long long inner_binary_gcd(unsigned long long a, unsigned\
+    \ long long b){\n    if (a == 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\
+    \ a >>= n;\n    int m = __builtin_ctzll(b); b >>= m;\n    while (a != b) {\n \
+    \       int mm = __builtin_ctzll(a - b);\n        bool f = a > b;\n        unsigned\
+    \ long long c = f ? a : b;\n        b = f ? b : a;\n        a = (c - b) >> mm;\n\
+    \    }\n    return a << min(n, m);\n}\n\ntemplate<typename T> T gcd_fast(T a,\
+    \ T b){ return static_cast<T>(inner_binary_gcd(abs(a),abs(b))); }\n\nlong long\
+    \ sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long long x = sqrt(n);\n\
+    \    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x > n) x--;\n    return\
+    \ x;\n}\n\ntemplate<typename T> T floor_div(const T n, const T d) {\n    assert(d\
+    \ != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\n\
+    template<typename T> T ceil_div(const T n, const T d) {\n    assert(d != 0);\n\
+    \    return n / d + static_cast<T>((n ^ d) >= 0 && n % d != 0);\n}\n\ntemplate<typename\
+    \ T> void uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n    v.erase(unique(v.begin(),v.end()),v.end());\n\
+    }\n\ntemplate <typename T, typename U> inline bool chmin(T &x, U y) { return (y\
+    \ < x) ? (x = y, true) : false; }\n\ntemplate <typename T, typename U> inline\
+    \ bool chmax(T &x, U y) { return (x < y) ? (x = y, true) : false; }\n\ntemplate<typename\
+    \ T> inline bool range(T l, T x, T r){ return l <= x && x < r; }\n\n} // namespace\
+    \ noya2\n#line 8 \"template/template.hpp\"\n\n#define rep(i,n) for (int i = 0;\
+    \ i < (int)(n); i++)\n#define repp(i,m,n) for (int i = (m); i < (int)(n); i++)\n\
+    #define reb(i,n) for (int i = (int)(n-1); i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\
+    \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
+    using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
+    using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
+    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"fps998244353/fps998244353.hpp\"\
+    \n\n#line 2 \"utility/modint.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"\
+    math/prime.hpp\"\nnamespace noya2 {\n\nconstexpr long long safe_mod(long long\
+    \ x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n}\n\n\
+    constexpr long long pow_mod_constexpr(long long x, long long n, int m) {\n   \
+    \ if (m == 1) return 0;\n    unsigned int _m = (unsigned int)(m);\n    unsigned\
+    \ long long r = 1;\n    unsigned long long y = safe_mod(x, m);\n    while (n)\
+    \ {\n        if (n & 1) r = (r * y) % _m;\n        y = (y * y) % _m;\n       \
+    \ n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int n)\
+    \ {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
     \ true;\n    if (n % 2 == 0) return false;\n    long long d = n - 1;\n    while\
     \ (d % 2 == 0) d /= 2;\n    constexpr long long bases[3] = {2, 7, 61};\n    for\
     \ (long long a : bases) {\n        long long t = d;\n        long long y = pow_mod_constexpr(a,\
@@ -165,104 +216,52 @@ data:
     \ static_modint<1000000007>;\nusing modint = dynamic_modint<-1>;\n\ntemplate<typename\
     \ T>\nconcept Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n\
     \    a.pow(declval<int>());\n};\n\n} // namespace noya2\n#line 4 \"fps998244353/fps998244353.hpp\"\
-    \n\n#line 2 \"fps/ntt.hpp\"\n\n#line 2 \"template/template.hpp\"\nusing namespace\
-    \ std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\nnamespace\
-    \ noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream &os,\
-    \ const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return os;\n\
-    }\ntemplate <typename T, typename U>\nistream &operator>>(istream &is, pair<T,\
-    \ U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate <typename\
-    \ T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int s = (int)v.size();\n\
-    \    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\") << v[i];\n    return\
-    \ os;\n}\ntemplate <typename T>\nistream &operator>>(istream &is, vector<T> &v){\n\
-    \    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename\
-    \ T, class... U>\nvoid in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\n\
-    void out() { cout << \"\\n\"; }\ntemplate <typename T, class... U, char sep =\
-    \ ' '>\nvoid out(const T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u))\
-    \ cout << sep;\n    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>>\
-    \ &vv){\n    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n\
-    }\n\nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
-    \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
-    \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
-    \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
-    \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
-    \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
-    \ vector<int> dx = {0,1,0,-1,1,1,-1,-1};\nconst vector<int> dy = {1,0,-1,0,1,-1,-1,1};\n\
-    const string ALP = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\";\nconst string alp = \"abcdefghijklmnopqrstuvwxyz\"\
-    ;\nconst string NUM = \"0123456789\";\n\nvoid yes(){ cout << \"Yes\\n\"; }\nvoid\
-    \ no(){ cout << \"No\\n\"; }\nvoid YES(){ cout << \"YES\\n\"; }\nvoid NO(){ cout\
-    \ << \"NO\\n\"; }\nvoid yn(bool t){ t ? yes() : no(); }\nvoid YN(bool t){ t ?\
-    \ YES() : NO(); }\n\n} // namespace noya2\n#line 1 \"template/utils.hpp\"\nnamespace\
-    \ noya2{\n\nunsigned long long inner_binary_gcd(unsigned long long a, unsigned\
-    \ long long b){\n    if (a == 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\
-    \ a >>= n;\n    int m = __builtin_ctzll(b); b >>= m;\n    while (a != b) {\n \
-    \       int mm = __builtin_ctzll(a - b);\n        bool f = a > b;\n        unsigned\
-    \ long long c = f ? a : b;\n        b = f ? b : a;\n        a = (c - b) >> mm;\n\
-    \    }\n    return a << min(n, m);\n}\n\ntemplate<typename T> T gcd_fast(T a,\
-    \ T b){ return static_cast<T>(inner_binary_gcd(abs(a),abs(b))); }\n\nlong long\
-    \ sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long long x = sqrt(n);\n\
-    \    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x > n) x--;\n    return\
-    \ x;\n}\n\ntemplate<typename T> T floor_div(const T n, const T d) {\n    assert(d\
-    \ != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\n\
-    template<typename T> T ceil_div(const T n, const T d) {\n    assert(d != 0);\n\
-    \    return n / d + static_cast<T>((n ^ d) >= 0 && n % d != 0);\n}\n\ntemplate<typename\
-    \ T> void uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n    v.erase(unique(v.begin(),v.end()),v.end());\n\
-    }\n\ntemplate <typename T, typename U> inline bool chmin(T &x, U y) { return (y\
-    \ < x) ? (x = y, true) : false; }\n\ntemplate <typename T, typename U> inline\
-    \ bool chmax(T &x, U y) { return (x < y) ? (x = y, true) : false; }\n\ntemplate<typename\
-    \ T> inline bool range(T l, T x, T r){ return l <= x && x < r; }\n\n} // namespace\
-    \ noya2\n#line 8 \"template/template.hpp\"\n\n#define rep(i,n) for (int i = 0;\
-    \ i < (int)(n); i++)\n#define repp(i,m,n) for (int i = (m); i < (int)(n); i++)\n\
-    #define reb(i,n) for (int i = (int)(n-1); i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\
-    \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
-    using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
-    using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 5 \"fps/ntt.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<Modint mint>\nstruct NTT {\n    static constexpr\
-    \ uint mod = mint::mod();\n    static constexpr ull mod2 = (ull)mod * mod;\n \
-    \   static constexpr uint pr  = primitive_root_constexpr(mod);\n    static constexpr\
-    \ int level = countr_zero(mod-1);\n    mint wp[level+1], wm[level+1];\n    void\
-    \ set_ws(){\n        mint r = mint(pr).pow((mod-1) >> level);\n        wp[level]\
-    \ = r, wm[level] = r.inv();\n        for (int i = level-1; i >= 0; i--){\n   \
-    \         wp[i] = wp[i+1] * wp[i+1];\n            wm[i] = wm[i+1] * wm[i+1];\n\
-    \        }\n    }\n    NTT () { set_ws(); }\n    void fft4(vector<mint> &a, int\
-    \ k, int s = 0){\n        uint im = wm[2].val();\n        uint n = 1<<k;\n   \
-    \     uint len = n;\n        int l = k;\n        while (len > 1){\n          \
-    \  if (l == 1){\n                for (int i = 0; i < (1<<(k-1)); i++){\n     \
-    \               int i0 = s + i*2, i1 = i0+1;\n                    a[i0] += a[i1];\n\
-    \                    a[i1]  = a[i0] - a[i1] * 2;\n                }\n        \
-    \        len >>= 1;\n                l -= 1;\n            }\n            else\
-    \ {\n                int len4 = len/4;\n                int nlen = n/len;\n  \
-    \              ull r1 = 1, r2 = 1, r3 = 1, imr1 = im, imr3 = im;\n           \
-    \     for (int i = 0; i < len4; i++){\n                    int offset = 0;\n \
-    \                   for (int j = 0; j < nlen; j++){\n                        int\
-    \ i0 = s + i + offset, i1 = i0 + len4, i2 = i1 + len4, i3 = i2 + len4;\n     \
-    \                   uint a0 = a[i0].val();\n                        uint a1 =\
-    \ a[i1].val();\n                        uint a2 = a[i2].val();\n             \
-    \           uint a3 = a[i3].val();\n                        uint a0p2 = a0 + a2;\n\
-    \                        uint a1p3 = a1 + a3;\n                        ull b0m2\
-    \ = (a0 + mod - a2) * r1;\n                        ull b1m3 = (a1 + mod - a3)\
-    \ * imr1;\n                        ull c0m2 = (a0 + mod - a2) * r3;\n        \
-    \                ull c1m3 = (a1 + mod - a3) * imr3;\n                        a[i0]\
-    \ = a0p2 + a1p3;\n                        a[i1] = b0m2 + b1m3;\n             \
-    \           a[i2] = (a0p2 + mod*2 - a1p3) * r2;\n                        a[i3]\
-    \ = c0m2 + mod2*2 - c1m3;\n                        offset += len;\n          \
-    \          }\n                    r1 = r1 * wm[l].val() % mod;\n             \
-    \       r2 = r1 * r1 % mod;\n                    r3 = r1 * r2 % mod;\n       \
-    \             imr1 = im * r1 % mod;\n                    imr3 = im * r3 % mod;\n\
-    \                }\n                len >>= 2;\n                l -= 2;\n    \
-    \        }\n        }\n    }\n    void ifft4(vector<mint> &a, int k, int s = 0){\n\
-    \        uint im = wp[2].val();\n        uint n = 1<<k;\n        uint len = (k\
-    \ & 1 ? 2 : 4);\n        int l = (k & 1 ? 1 : 2);\n        while (len <= n){\n\
-    \            if (l == 1){\n                for (int i = 0; i < (1<<(k-1)); i++){\n\
-    \                    int i0 = s + i*2, i1 = i0+1;\n                    a[i0] +=\
-    \ a[i1];\n                    a[i1]  = a[i0] - a[i1] * 2;\n                }\n\
-    \                len <<= 2;\n                l += 2;\n            }\n        \
-    \    else {\n                int len4 = len/4;\n                int nlen = n/len;\n\
-    \                ull r1 = 1, r2 = 1, r3 = 1, imr1 = im, imr3 = im;\n         \
-    \       for (int i = 0; i < len4; i++){\n                    int offset = 0;\n\
-    \                    for (int j = 0; j < nlen; j++){\n                       \
-    \ int i0 = s + i + offset, i1 = i0 + len4, i2 = i1 + len4, i3 = i2 + len4;\n \
-    \                       ull a0 = a[i0].val();\n                        ull a1\
+    \n\n#line 2 \"fps/ntt.hpp\"\n\n#line 5 \"fps/ntt.hpp\"\n\nnamespace noya2{\n\n\
+    template<Modint mint>\nstruct NTT {\n    static constexpr uint mod = mint::mod();\n\
+    \    static constexpr ull mod2 = (ull)mod * mod;\n    static constexpr uint pr\
+    \  = primitive_root_constexpr(mod);\n    static constexpr int level = countr_zero(mod-1);\n\
+    \    mint wp[level+1], wm[level+1];\n    void set_ws(){\n        mint r = mint(pr).pow((mod-1)\
+    \ >> level);\n        wp[level] = r, wm[level] = r.inv();\n        for (int i\
+    \ = level-1; i >= 0; i--){\n            wp[i] = wp[i+1] * wp[i+1];\n         \
+    \   wm[i] = wm[i+1] * wm[i+1];\n        }\n    }\n    NTT () { set_ws(); }\n \
+    \   void fft4(vector<mint> &a, int k, int s = 0){\n        uint im = wm[2].val();\n\
+    \        uint n = 1<<k;\n        uint len = n;\n        int l = k;\n        while\
+    \ (len > 1){\n            if (l == 1){\n                for (int i = 0; i < (1<<(k-1));\
+    \ i++){\n                    int i0 = s + i*2, i1 = i0+1;\n                  \
+    \  a[i0] += a[i1];\n                    a[i1]  = a[i0] - a[i1] * 2;\n        \
+    \        }\n                len >>= 1;\n                l -= 1;\n            }\n\
+    \            else {\n                int len4 = len/4;\n                int nlen\
+    \ = n/len;\n                ull r1 = 1, r2 = 1, r3 = 1, imr1 = im, imr3 = im;\n\
+    \                for (int i = 0; i < len4; i++){\n                    int offset\
+    \ = 0;\n                    for (int j = 0; j < nlen; j++){\n                \
+    \        int i0 = s + i + offset, i1 = i0 + len4, i2 = i1 + len4, i3 = i2 + len4;\n\
+    \                        uint a0 = a[i0].val();\n                        uint\
+    \ a1 = a[i1].val();\n                        uint a2 = a[i2].val();\n        \
+    \                uint a3 = a[i3].val();\n                        uint a0p2 = a0\
+    \ + a2;\n                        uint a1p3 = a1 + a3;\n                      \
+    \  ull b0m2 = (a0 + mod - a2) * r1;\n                        ull b1m3 = (a1 +\
+    \ mod - a3) * imr1;\n                        ull c0m2 = (a0 + mod - a2) * r3;\n\
+    \                        ull c1m3 = (a1 + mod - a3) * imr3;\n                \
+    \        a[i0] = a0p2 + a1p3;\n                        a[i1] = b0m2 + b1m3;\n\
+    \                        a[i2] = (a0p2 + mod*2 - a1p3) * r2;\n               \
+    \         a[i3] = c0m2 + mod2*2 - c1m3;\n                        offset += len;\n\
+    \                    }\n                    r1 = r1 * wm[l].val() % mod;\n   \
+    \                 r2 = r1 * r1 % mod;\n                    r3 = r1 * r2 % mod;\n\
+    \                    imr1 = im * r1 % mod;\n                    imr3 = im * r3\
+    \ % mod;\n                }\n                len >>= 2;\n                l -=\
+    \ 2;\n            }\n        }\n    }\n    void ifft4(vector<mint> &a, int k,\
+    \ int s = 0){\n        uint im = wp[2].val();\n        uint n = 1<<k;\n      \
+    \  uint len = (k & 1 ? 2 : 4);\n        int l = (k & 1 ? 1 : 2);\n        while\
+    \ (len <= n){\n            if (l == 1){\n                for (int i = 0; i < (1<<(k-1));\
+    \ i++){\n                    int i0 = s + i*2, i1 = i0+1;\n                  \
+    \  a[i0] += a[i1];\n                    a[i1]  = a[i0] - a[i1] * 2;\n        \
+    \        }\n                len <<= 2;\n                l += 2;\n            }\n\
+    \            else {\n                int len4 = len/4;\n                int nlen\
+    \ = n/len;\n                ull r1 = 1, r2 = 1, r3 = 1, imr1 = im, imr3 = im;\n\
+    \                for (int i = 0; i < len4; i++){\n                    int offset\
+    \ = 0;\n                    for (int j = 0; j < nlen; j++){\n                \
+    \        int i0 = s + i + offset, i1 = i0 + len4, i2 = i1 + len4, i3 = i2 + len4;\n\
+    \                        ull a0 = a[i0].val();\n                        ull a1\
     \ = a[i1].val() * r1;\n                        ull a2 = a[i2].val() * r2;\n  \
     \                      ull a3 = a[i3].val() * r3;\n                        ull\
     \ b1 = a[i1].val() * imr1;\n                        ull b3 = a[i3].val() * imr3;\n\
@@ -414,125 +413,33 @@ data:
     \        rem.shrink();\n        return rem;\n    }\n    std::pair<fps,fps> remquo(fps\
     \ r) const {\n        r.shrink();\n        fps quo = quotient(r);\n        fps\
     \ rem(*this);\n        rem -= quo * r;\n        rem.shrink();\n        return\
-    \ {rem, quo};\n    }\n};\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"../utility/modint.hpp\"\n\n#include\"../fps/ntt.hpp\"\
-    \n#include\"../math/binomial.hpp\"\n\nnamespace noya2 {\n\n// Formal Power Series\
-    \ for modint998244353\nstruct fps998244353 : std::vector<modint998244353> {\n\
-    \    using mint = modint998244353;\n    using std::vector<mint>::vector;\n   \
-    \ using std::vector<mint>::operator=;\n    using fps = fps998244353;\n    static\
-    \ inline NTT<mint> ntt_;\n    static inline binomial<mint> bnm;\n\n    fps998244353\
-    \ (const std::vector<mint> &init){\n        (*this) = init;\n    }\n\n    void\
-    \ shrink(){\n        while(!(this->empty()) && this->back().val() == 0){\n   \
-    \         this->pop_back();\n        }\n    }\n\n    fps &operator*= (const mint\
-    \ &r){\n        for (auto &x : *this) x *= r;\n        return *this;\n    }\n\
-    \    fps &operator/= (const mint &r){\n        (*this) *= r.inv();\n        return\
-    \ *this;\n    }\n\n    fps &operator<<= (const int &d){\n        this->insert(this->begin(),\
-    \ d, mint(0));\n        return *this;\n    }\n    fps &operator>>= (const int\
-    \ &d){\n        if ((int)(this->size()) <= d) this->clear();\n        else this->erase(this->begin(),this->begin()\
-    \ + d);\n        return *this;\n    }\n\n    fps &operator+= (const fps &r){\n\
-    \        if (this->size() < r.size()) this->resize(r.size());\n        for (int\
-    \ i = 0; auto x : r){\n            (*this)[i++] += x;\n        }\n        return\
-    \ *this;\n    }\n    fps &operator-= (const fps &r){\n        if (this->size()\
-    \ < r.size()) this->resize(r.size());\n        for (int i = 0; auto x : r){\n\
-    \            (*this)[i++] -= x;\n        }\n        return *this;\n    }\n   \
-    \ fps &operator*= (const fps &r){\n        if (this->empty() || r.empty()){\n\
-    \            this->clear();\n            return *this;\n        }\n        (*this)\
-    \ = ntt_.multiply(*this, r);\n        return *this;\n    }\n\n    fps operator*\
-    \ (const mint &r) const { return fps(*this) *= r; }\n    fps operator/ (const\
-    \ mint &r) const { return fps(*this) /= r; }\n    fps operator<< (const int &d)\
-    \ const { return fps(*this) <<= d; }\n    fps operator>> (const int &d) const\
-    \ { return fps(*this) >>= d; }\n\n    fps operator+ (const fps &r) const { return\
-    \ fps(*this) += r; }\n    fps operator- (const fps &r) const { return fps(*this)\
-    \ -= r; }\n    fps operator* (const fps &r) const { return fps(*this) *= r; }\n\
-    \n    fps operator+ () const { return *this; }\n    fps operator- () const {\n\
-    \        fps ret(*this);\n        for (auto &x : ret) x = -x;\n        return\
-    \ ret;\n    }\n\n    mint eval(const mint &x) const {\n        mint res(0), w(1);\n\
-    \        for (auto a : *this){\n            res += a * w;\n            w *= x;\n\
-    \        }\n        return res;\n    }\n\n    [[nodiscard(\"Do not change but\
-    \ return changed object.\")]]\n    fps pre(std::size_t sz) const {\n        fps\
-    \ ret(this->begin(), this->begin() + std::min(this->size(), sz));\n        if\
-    \ (ret.size() < sz) ret.resize(sz);\n        return ret;\n    }\n    [[nodiscard(\"\
-    Do not change but return changed object.\")]]\n    fps rev() const {\n       \
-    \ fps ret(*this);\n        std::reverse(ret.begin(), ret.end());\n        return\
-    \ ret;\n    }\n    [[nodiscard(\"Do not change but return changed object.\")]]\n\
-    \    fps diff() const {\n        if (this->empty()){\n            return fps();\n\
-    \        }\n        fps ret(this->begin() + 1, this->end());\n        for (int\
-    \ i = 1; auto &x : ret){\n            x *= i++;\n        }\n        return ret;\n\
-    \    }\n    [[nodiscard(\"Do not change but return changed object.\")]]\n    fps\
-    \ integral() const {\n        if (this->empty()){\n            return fps();\n\
-    \        }\n        fps ret(1, mint(0));\n        ret.insert(ret.end(), this->begin(),\
-    \ this->end());\n        for (int i = 0; auto &x : ret){\n            x *= bnm.inv(i++);\
-    \ // inv(0) = 0\n        }\n        return ret;\n    }\n    [[nodiscard(\"Do not\
-    \ change but return changed object.\")]]\n    fps inv(int d = -1) const {\n  \
-    \      const int n = this->size();\n        if (d == -1) d = n;\n        fps res\
-    \ = {(*this)[0].inv()};\n        for (int siz = 1; siz < d; siz <<= 1){\n    \
-    \        fps f(this->begin(),this->begin()+min(n,siz*2)), g(res);\n          \
-    \  f.resize(siz*2), g.resize(siz*2);\n            f.ntt(), g.ntt();\n        \
-    \    for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n            ntt_.intt(f,true);\n\
-    \            f.erase(f.begin(),f.begin()+siz);\n            f.resize(siz*2);\n\
-    \            f.ntt();\n            for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n\
-    \            f.intt(true);\n            mint siz2_inv = mint(siz*2).inv(); siz2_inv\
-    \ *= -siz2_inv;\n            for (int i = 0; i < siz; i++) f[i] *= siz2_inv;\n\
-    \            res.insert(res.end(),f.begin(),f.begin()+siz);\n        }\n     \
-    \   res.resize(d);\n        return res;\n    }\n    [[nodiscard(\"Do not change\
-    \ but return changed object.\")]]\n    fps log(int d = -1) const {\n        assert(this->empty()\
-    \ == false && (*this)[0].val() == 1u);\n        if (d == -1) d = this->size();\n\
-    \        return (this->diff() * this->inv(d)).pre(d - 1).integral();\n    }\n\
-    \    [[nodiscard(\"Do not change but return changed object.\")]]\n    fps exp(int\
-    \ d = -1) const {\n        const int n = this->size();\n        if (d == -1) d\
-    \ = n;\n        assert(n == 0 || (*this)[0].val() == 0u);\n        if (n <= 1){\n\
-    \            fps ret(1,1);\n            ret.resize(d);\n            return ret;\n\
-    \        }\n        // n >= 2\n        fps f = {mint(1), (*this)[1]}, ret = f;\n\
-    \        for (int sz = 2; sz < d; sz <<= 1){\n            f.insert(f.end(), this->begin()+std::min(n,sz),\
-    \ this->begin()+std::min(n,sz*2));\n            f.resize(sz*2);\n            ret\
-    \ *= f - ret.log(sz*2);\n            ret.resize(sz*2);\n        }\n        ret.resize(d);\n\
-    \        return ret;\n    }\n    [[nodiscard(\"Do not change but return changed\
-    \ object.\")]]\n    fps pow(long long k, int d = -1) const {\n        const int\
-    \ n = this->size();\n        if (d == -1) d = n;\n        if (k == 0){\n     \
-    \       fps ret(d, mint(0));\n            if (d >= 1) ret[0] = 1;\n          \
-    \  return ret;\n        }\n        // Find left-most nonzero term.\n        for\
-    \ (int i = 0; i < n; i++){\n            if ((*this)[i].val() != 0u){\n       \
-    \         mint iv = (*this)[i].inv();\n                fps ret = ((((*this) *\
-    \ iv) >> i).log(d) * mint(k)).exp(d);\n                ret *= (*this)[i].pow(k);\n\
-    \                ret = (ret << (i * k)).pre(d);\n                return ret;\n\
-    \            }\n            if ((i + 1) * k >= d) break;\n        }\n        return\
-    \ fps(d, mint(0));\n    }\n\n    void ntt(){\n        return ntt_.ntt(*this);\n\
-    \    }\n    // already /= len\n    void intt(bool stop = false){\n        return\
-    \ ntt_.intt(*this, stop);\n    }\n    fps quotient(fps r) const {\n        r.shrink();\n\
-    \        const int n = this->size(), m = r.size();\n        if (n < m){\n    \
-    \        return fps();\n        }\n        fps quo(*this);\n        const int\
-    \ sz = n - m + 1;\n        std::reverse(quo.begin(), quo.end());\n        std::reverse(r.begin(),\
-    \ r.end());\n        quo.resize(sz);\n        quo *= r.inv(sz);\n        quo.resize(sz);\n\
-    \        std::reverse(quo.begin(), quo.end());\n        return quo;\n    }\n \
-    \   fps remainder(fps r) const {\n        r.shrink();\n        const int n = this->size(),\
-    \ m = r.size();\n        if (n < m){\n            return fps(*this);\n       \
-    \ }\n        fps rem(*this);\n        rem -= quotient(r) * r;\n        rem.resize(m-1);\n\
-    \        rem.shrink();\n        return rem;\n    }\n    std::pair<fps,fps> remquo(fps\
-    \ r) const {\n        r.shrink();\n        fps quo = quotient(r);\n        fps\
-    \ rem(*this);\n        rem -= quo * r;\n        rem.shrink();\n        return\
-    \ {rem, quo};\n    }\n};\n\n} // namespace noya2"
+    \ {rem, quo};\n    }\n};\n\n} // namespace noya2\n#line 5 \"test/fps998244353/convolution_998244353.test.cpp\"\
+    \n\nusing mint = modint998244353;\nusing fps = fps998244353;\n\nint main(){\n\
+    \    int n, m; in(n,m);\n    fps f(n), g(m); in(f,g);\n    out(f*g);\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#include\"\
+    ../../template/template.hpp\"\n#include\"../../fps998244353/fps998244353.hpp\"\
+    \n\nusing mint = modint998244353;\nusing fps = fps998244353;\n\nint main(){\n\
+    \    int n, m; in(n,m);\n    fps f(n), g(m); in(f,g);\n    out(f*g);\n}"
   dependsOn:
-  - utility/modint.hpp
-  - math/prime.hpp
-  - fps/ntt.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
+  - fps998244353/fps998244353.hpp
+  - utility/modint.hpp
+  - math/prime.hpp
+  - fps/ntt.hpp
   - math/binomial.hpp
-  isVerificationFile: false
-  path: fps998244353/fps998244353.hpp
-  requiredBy:
-  - fps998244353/multipoint_evaluation.hpp
-  timestamp: '2024-04-23 16:44:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/fps998244353/convolution_998244353.test.cpp
-  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
-documentation_of: fps998244353/fps998244353.hpp
+  isVerificationFile: true
+  path: test/fps998244353/convolution_998244353.test.cpp
+  requiredBy: []
+  timestamp: '2024-04-23 16:51:05+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/fps998244353/convolution_998244353.test.cpp
 layout: document
 redirect_from:
-- /library/fps998244353/fps998244353.hpp
-- /library/fps998244353/fps998244353.hpp.html
-title: fps998244353/fps998244353.hpp
+- /verify/test/fps998244353/convolution_998244353.test.cpp
+- /verify/test/fps998244353/convolution_998244353.test.cpp.html
+title: test/fps998244353/convolution_998244353.test.cpp
 ---
