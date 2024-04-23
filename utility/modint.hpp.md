@@ -29,7 +29,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps998244353/multipoint_evaluation.hpp
     title: fps998244353/multipoint_evaluation.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps998244353/sample_point_shift.hpp
     title: fps998244353/sample_point_shift.hpp
   _extendedVerifiedWith:
@@ -72,6 +72,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
     title: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
+    title: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
@@ -324,6 +327,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps998244353/multipoint_evaluation_998244353.test.cpp
+  - test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
   - test/fps998244353/convolution_998244353.test.cpp
   - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp

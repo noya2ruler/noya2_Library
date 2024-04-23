@@ -94,7 +94,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps998244353/multipoint_evaluation.hpp
       title: fps998244353/multipoint_evaluation.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: fps998244353/sample_point_shift.hpp
       title: fps998244353/sample_point_shift.hpp
   - name: geometry
@@ -334,6 +334,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
       title: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
+      title: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
   - name: test/geometry
     pages:
     - icon: ':heavy_check_mark:'
