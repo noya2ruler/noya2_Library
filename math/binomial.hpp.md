@@ -8,9 +8,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps998244353/fps998244353.hpp
     title: fps998244353/fps998244353.hpp
+  - icon: ':warning:'
+    path: fps998244353/multipoint_evaluation.hpp
+    title: fps998244353/multipoint_evaluation.hpp
   - icon: ':warning:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
@@ -30,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps/convolution.test.cpp
     title: test/fps/convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+    title: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
@@ -98,6 +104,7 @@ data:
   path: math/binomial.hpp
   requiredBy:
   - fps998244353/fps998244353.hpp
+  - fps998244353/multipoint_evaluation.hpp
   - fps/fps_ntt.hpp
   - fps/sample_point_shift.hpp
   - math/lagrange_interpolation.hpp
@@ -105,6 +112,7 @@ data:
   timestamp: '2024-04-21 01:46:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - test/fps/convolution.test.cpp
   - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp

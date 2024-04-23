@@ -68,9 +68,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps998244353/fps998244353.hpp
     title: fps998244353/fps998244353.hpp
+  - icon: ':warning:'
+    path: fps998244353/multipoint_evaluation.hpp
+    title: fps998244353/multipoint_evaluation.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/base_ld.hpp
     title: geometry/base_ld.hpp
@@ -214,6 +217,9 @@ data:
     path: test/fps/convolution_relaxed_convolution.test.cpp
     title: test/fps/convolution_relaxed_convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+    title: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
   - icon: ':heavy_check_mark:'
@@ -311,6 +317,7 @@ data:
   path: template/inout_old.hpp
   requiredBy:
   - fps998244353/fps998244353.hpp
+  - fps998244353/multipoint_evaluation.hpp
   - graph/Graph_core.hpp
   - graph/graph_query.hpp
   - misc/mo_algorithm.hpp
@@ -362,6 +369,7 @@ data:
   timestamp: '2023-08-26 05:21:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - test/graph/Shortest_Path.test.cpp
   - test/graph/Shortest_Path2.test.cpp
   - test/graph/Strongly_Connected_Components.test.cpp

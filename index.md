@@ -88,9 +88,12 @@ data:
       title: fps/sample_point_shift.hpp
   - name: fps998244353
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: fps998244353/fps998244353.hpp
       title: fps998244353/fps998244353.hpp
+    - icon: ':warning:'
+      path: fps998244353/multipoint_evaluation.hpp
+      title: fps998244353/multipoint_evaluation.hpp
   - name: geometry
     pages:
     - icon: ':heavy_check_mark:'
@@ -314,6 +317,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fps/convolution_relaxed_convolution.test.cpp
       title: test/fps/convolution_relaxed_convolution.test.cpp
+  - name: test/fps998244353
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+      title: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - name: test/geometry
     pages:
     - icon: ':heavy_check_mark:'

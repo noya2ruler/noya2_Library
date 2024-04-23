@@ -29,9 +29,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/relaxed_convolution.hpp
     title: fps/relaxed_convolution.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps998244353/fps998244353.hpp
     title: fps998244353/fps998244353.hpp
+  - icon: ':warning:'
+    path: fps998244353/multipoint_evaluation.hpp
+    title: fps998244353/multipoint_evaluation.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/fps/Convolution1000000007.test.cpp
@@ -51,6 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps/convolution_relaxed_convolution.test.cpp
     title: test/fps/convolution_relaxed_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+    title: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -401,12 +407,14 @@ data:
   path: fps/ntt.hpp
   requiredBy:
   - fps998244353/fps998244353.hpp
+  - fps998244353/multipoint_evaluation.hpp
   - fps/fps_modint.hpp
   - fps/relaxed_convolution.hpp
   - fps/fps_ntt.hpp
   timestamp: '2024-04-22 12:03:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - test/fps/convolution.test.cpp
   - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   - test/fps/convolution_relaxed_convolution.test.cpp
