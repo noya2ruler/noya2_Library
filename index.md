@@ -95,6 +95,9 @@ data:
       path: fps998244353/multipoint_evaluation.hpp
       title: fps998244353/multipoint_evaluation.hpp
     - icon: ':heavy_check_mark:'
+      path: fps998244353/polynomial_taylor_shift.hpp
+      title: fps998244353/polynomial_taylor_shift.hpp
+    - icon: ':heavy_check_mark:'
       path: fps998244353/sample_point_shift.hpp
       title: fps998244353/sample_point_shift.hpp
   - name: geometry
@@ -334,6 +337,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
       title: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
+      title: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
       title: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp

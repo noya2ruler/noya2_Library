@@ -15,6 +15,9 @@ data:
     path: fps998244353/multipoint_evaluation.hpp
     title: fps998244353/multipoint_evaluation.hpp
   - icon: ':heavy_check_mark:'
+    path: fps998244353/polynomial_taylor_shift.hpp
+    title: fps998244353/polynomial_taylor_shift.hpp
+  - icon: ':heavy_check_mark:'
     path: fps998244353/sample_point_shift.hpp
     title: fps998244353/sample_point_shift.hpp
   - icon: ':warning:'
@@ -48,6 +51,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
     title: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
+    title: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
     title: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
@@ -118,6 +124,7 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
+  - fps998244353/polynomial_taylor_shift.hpp
   - fps998244353/fps998244353.hpp
   - fps998244353/multipoint_evaluation.hpp
   - fps998244353/sample_point_shift.hpp
@@ -131,6 +138,7 @@ data:
   - test/fps998244353/multipoint_evaluation_998244353.test.cpp
   - test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
   - test/fps998244353/convolution_998244353.test.cpp
+  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
   - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
   - test/fps/convolution.test.cpp
