@@ -41,6 +41,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/potentialized_dsu.hpp
     title: data_structure/potentialized_dsu.hpp
+  - icon: ':warning:'
+    path: data_structure/range_parallel_dsu.hpp
+    title: data_structure/range_parallel_dsu.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
@@ -404,6 +407,7 @@ data:
   - data_structure/sparse_table.hpp
   - data_structure/dynamic_segment_tree.hpp
   - data_structure/rollback_dsu.hpp
+  - data_structure/range_parallel_dsu.hpp
   - data_structure/binary_indexed_tree.hpp
   - data_structure/dsu.hpp
   - data_structure/compress.hpp

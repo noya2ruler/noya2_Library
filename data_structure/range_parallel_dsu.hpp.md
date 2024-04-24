@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: data_structure/dsu.hpp
+    title: data_structure/dsu.hpp
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
   - icon: ':heavy_check_mark:'
@@ -13,44 +16,32 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: data_structure/range_parallel_dsu.hpp
-    title: data_structure/range_parallel_dsu.hpp
-  - icon: ':heavy_check_mark:'
-    path: geometry/partition_by_circle.hpp
-    title: geometry/partition_by_circle.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/data_structure/Unionfind.test.cpp
-    title: test/data_structure/Unionfind.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/geometry/aoj1198.test.cpp
-    title: test/geometry/aoj1198.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"data_structure/dsu.hpp\"\n\n#line 2 \"template/template.hpp\"\
-    \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
-    \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
-    \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
-    \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
-    \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
-    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int\
-    \ s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\"\
-    ) << v[i];\n    return os;\n}\ntemplate <typename T>\nistream &operator>>(istream\
-    \ &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid\
-    \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
-    \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
-    \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
-    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\ntemplate<typename\
-    \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
-    \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
-    \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
-    \ << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n \
-    \   }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
+  bundledCode: "#line 2 \"data_structure/range_parallel_dsu.hpp\"\n\n#line 2 \"data_structure/dsu.hpp\"\
+    \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
+    #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
+    \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
+    \ << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename\
+    \ U>\nistream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
+    \    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os,\
+    \ const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s;\
+    \ i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
+    \ T>\nistream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is\
+    \ >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\n\
+    void in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout\
+    \ << \"\\n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const\
+    \ T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n\
+    \    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n\
+    \    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\
+    \nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
+    \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
+    \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
     \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
     \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
     \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
@@ -106,48 +97,53 @@ data:
     \ result.end(),\n                           [&](const std::vector<int>& v) { return\
     \ v.empty(); }),\n            result.end());\n        return result;\n    }\n\n\
     \  private:\n    int _n;\n    // root node: -1 * component size\n    // otherwise:\
-    \ parent\n    std::vector<int> parent_or_size;\n};\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2{\n\
-    \nstruct dsu {\n  public:\n    dsu() : _n(0) {}\n    dsu(int n) : _n(n), parent_or_size(n,\
-    \ -1) {}\n\n    int merge(int a, int b) {\n        assert(0 <= a && a < _n);\n\
-    \        assert(0 <= b && b < _n);\n        int x = leader(a), y = leader(b);\n\
-    \        if (x == y) return x;\n        if (-parent_or_size[x] < -parent_or_size[y])\
-    \ std::swap(x, y);\n        parent_or_size[x] += parent_or_size[y];\n        parent_or_size[y]\
-    \ = x;\n        return x;\n    }\n\n    bool same(int a, int b) {\n        assert(0\
-    \ <= a && a < _n);\n        assert(0 <= b && b < _n);\n        return leader(a)\
-    \ == leader(b);\n    }\n\n    int leader(int a) {\n        assert(0 <= a && a\
-    \ < _n);\n        if (parent_or_size[a] < 0) return a;\n        return parent_or_size[a]\
-    \ = leader(parent_or_size[a]);\n    }\n\n    int size(int a) {\n        assert(0\
-    \ <= a && a < _n);\n        return -parent_or_size[leader(a)];\n    }\n\n    std::vector<std::vector<int>>\
-    \ groups() {\n        std::vector<int> leader_buf(_n), group_size(_n);\n     \
-    \   for (int i = 0; i < _n; i++) {\n            leader_buf[i] = leader(i);\n \
-    \           group_size[leader_buf[i]]++;\n        }\n        std::vector<std::vector<int>>\
-    \ result(_n);\n        for (int i = 0; i < _n; i++) {\n            result[i].reserve(group_size[i]);\n\
-    \        }\n        for (int i = 0; i < _n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
-    \        }\n        result.erase(\n            std::remove_if(result.begin(),\
-    \ result.end(),\n                           [&](const std::vector<int>& v) { return\
-    \ v.empty(); }),\n            result.end());\n        return result;\n    }\n\n\
-    \  private:\n    int _n;\n    // root node: -1 * component size\n    // otherwise:\
-    \ parent\n    std::vector<int> parent_or_size;\n};\n\n} // namespace noya2\n"
+    \ parent\n    std::vector<int> parent_or_size;\n};\n\n} // namespace noya2\n#line\
+    \ 4 \"data_structure/range_parallel_dsu.hpp\"\n\nnamespace noya2 {\n\nstruct range_parallel_dsu\
+    \ {\n    int n;\n    std::vector<dsu> ds;\n    range_parallel_dsu (int _n) : n(_n)\
+    \ {\n        int msb = 31 - countl_zero((unsigned int)(n));\n        ds.resize(msb+1,dsu(n));\n\
+    \    }\n    // for k = 0, 1, ... ,d-1\n    // merge(i+k,j+k)\n    void merge(int\
+    \ i, int j, int d){\n        assert(i + d <= n);\n        assert(j + d <= n);\n\
+    \        if (d == 0) return ;\n        int k2 = std::bit_floor((unsigned int)(d));\n\
+    \        int msb = 31 - countl_zero((unsigned int)(k2));\n        inner_merge(i,\
+    \ j, msb);\n        inner_merge(i + d - k2, j + d - k2, msb);\n    }\n    int\
+    \ same(int i, int j){\n        return ds[0].same(i, j);\n    }\n    int size(int\
+    \ i){\n        return ds[0].size(i);\n    }\n    int leader(int i){\n        return\
+    \ ds[0].leader(i);\n    }\n  private:\n    // d = 2^k\n    void inner_merge(int\
+    \ i, int j, int k){\n        // k >= 0\n        if (ds[k].same(i, j)) return ;\n\
+    \        ds[k].merge(i,j);\n        if (k >= 1){\n            inner_merge(i, j,\
+    \ k-1);\n            inner_merge(i + (1<<(k-1)), j + (1<<(k-1)), k-1);\n     \
+    \   }\n    }\n};\n\n} // namespace noya2\n"
+  code: "#pragma once\n\n#include\"data_structure/dsu.hpp\"\n\nnamespace noya2 {\n\
+    \nstruct range_parallel_dsu {\n    int n;\n    std::vector<dsu> ds;\n    range_parallel_dsu\
+    \ (int _n) : n(_n) {\n        int msb = 31 - countl_zero((unsigned int)(n));\n\
+    \        ds.resize(msb+1,dsu(n));\n    }\n    // for k = 0, 1, ... ,d-1\n    //\
+    \ merge(i+k,j+k)\n    void merge(int i, int j, int d){\n        assert(i + d <=\
+    \ n);\n        assert(j + d <= n);\n        if (d == 0) return ;\n        int\
+    \ k2 = std::bit_floor((unsigned int)(d));\n        int msb = 31 - countl_zero((unsigned\
+    \ int)(k2));\n        inner_merge(i, j, msb);\n        inner_merge(i + d - k2,\
+    \ j + d - k2, msb);\n    }\n    int same(int i, int j){\n        return ds[0].same(i,\
+    \ j);\n    }\n    int size(int i){\n        return ds[0].size(i);\n    }\n   \
+    \ int leader(int i){\n        return ds[0].leader(i);\n    }\n  private:\n   \
+    \ // d = 2^k\n    void inner_merge(int i, int j, int k){\n        // k >= 0\n\
+    \        if (ds[k].same(i, j)) return ;\n        ds[k].merge(i,j);\n        if\
+    \ (k >= 1){\n            inner_merge(i, j, k-1);\n            inner_merge(i +\
+    \ (1<<(k-1)), j + (1<<(k-1)), k-1);\n        }\n    }\n};\n\n} // namespace noya2"
   dependsOn:
+  - data_structure/dsu.hpp
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
   isVerificationFile: false
-  path: data_structure/dsu.hpp
-  requiredBy:
-  - data_structure/range_parallel_dsu.hpp
-  - geometry/partition_by_circle.hpp
-  timestamp: '2023-08-26 17:35:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/data_structure/Unionfind.test.cpp
-  - test/geometry/aoj1198.test.cpp
-documentation_of: data_structure/dsu.hpp
+  path: data_structure/range_parallel_dsu.hpp
+  requiredBy: []
+  timestamp: '2024-04-24 12:20:06+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: data_structure/range_parallel_dsu.hpp
 layout: document
 redirect_from:
-- /library/data_structure/dsu.hpp
-- /library/data_structure/dsu.hpp.html
-title: data_structure/dsu.hpp
+- /library/data_structure/range_parallel_dsu.hpp
+- /library/data_structure/range_parallel_dsu.hpp.html
+title: data_structure/range_parallel_dsu.hpp
 ---
