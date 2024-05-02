@@ -77,15 +77,15 @@ data:
     using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
     ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"data_structure/sparse_table.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<class S, S (*op)(S, S)>\nstruct SparseTable{\n\
-    \    vector<vector<S>> table;\n    SparseTable (const vector<S> &vec){\n     \
-    \   int n = vec.size(), n2 = 0;\n        while ((1<<n2) < n) n2++;\n        table.resize(n2+1);\n\
-    \        for (int i = 0; i <= n2; i++){\n            table[i].resize(n);\n   \
-    \         if (i == 0){\n                for (int j = 0; j < n; j++){\n       \
-    \             table[i][j] = vec[j];\n                }\n            }\n      \
-    \      else {\n                for (int j = 0; j < n; j++){\n                \
-    \    if (j + (1 << (i-1)) < n) table[i][j] = op(table[i-1][j],table[i-1][j + (1\
-    \ << (i-1))]);\n                    else table[i][j] = table[i-1][j];\n      \
-    \          }\n            }\n        }\n    }\n    // \u5358\u4F4D\u5143\u3092\
+    \    vector<vector<S>> table;\n    SparseTable () {}\n    SparseTable (const vector<S>\
+    \ &vec){\n        int n = vec.size(), n2 = 0;\n        while ((1<<n2) < n) n2++;\n\
+    \        table.resize(n2+1);\n        for (int i = 0; i <= n2; i++){\n       \
+    \     table[i].resize(n);\n            if (i == 0){\n                for (int\
+    \ j = 0; j < n; j++){\n                    table[i][j] = vec[j];\n           \
+    \     }\n            }\n            else {\n                for (int j = 0; j\
+    \ < n; j++){\n                    if (j + (1 << (i-1)) < n) table[i][j] = op(table[i-1][j],table[i-1][j\
+    \ + (1 << (i-1))]);\n                    else table[i][j] = table[i-1][j];\n \
+    \               }\n            }\n        }\n    }\n    // \u5358\u4F4D\u5143\u3092\
     \u8981\u6C42\u3057\u306A\u3044\u306E\u3067 if (l >= r) return e() \u307F\u305F\
     \u3044\u306A\u3053\u3068\u3092\u3057\u3066\u3044\u306A\u3044\u3001\u6CE8\u610F\
     \u3059\u308B\u3053\u3068\uFF01\uFF01\n    S get(int l, int r){\n        assert(r\
@@ -94,15 +94,15 @@ data:
     \ namespace noya2\n"
   code: "#pragma once\n\n#include\"../template/template.hpp\"\n\nnamespace noya2{\n\
     \ntemplate<class S, S (*op)(S, S)>\nstruct SparseTable{\n    vector<vector<S>>\
-    \ table;\n    SparseTable (const vector<S> &vec){\n        int n = vec.size(),\
-    \ n2 = 0;\n        while ((1<<n2) < n) n2++;\n        table.resize(n2+1);\n  \
-    \      for (int i = 0; i <= n2; i++){\n            table[i].resize(n);\n     \
-    \       if (i == 0){\n                for (int j = 0; j < n; j++){\n         \
-    \           table[i][j] = vec[j];\n                }\n            }\n        \
-    \    else {\n                for (int j = 0; j < n; j++){\n                  \
-    \  if (j + (1 << (i-1)) < n) table[i][j] = op(table[i-1][j],table[i-1][j + (1\
-    \ << (i-1))]);\n                    else table[i][j] = table[i-1][j];\n      \
-    \          }\n            }\n        }\n    }\n    // \u5358\u4F4D\u5143\u3092\
+    \ table;\n    SparseTable () {}\n    SparseTable (const vector<S> &vec){\n   \
+    \     int n = vec.size(), n2 = 0;\n        while ((1<<n2) < n) n2++;\n       \
+    \ table.resize(n2+1);\n        for (int i = 0; i <= n2; i++){\n            table[i].resize(n);\n\
+    \            if (i == 0){\n                for (int j = 0; j < n; j++){\n    \
+    \                table[i][j] = vec[j];\n                }\n            }\n   \
+    \         else {\n                for (int j = 0; j < n; j++){\n             \
+    \       if (j + (1 << (i-1)) < n) table[i][j] = op(table[i-1][j],table[i-1][j\
+    \ + (1 << (i-1))]);\n                    else table[i][j] = table[i-1][j];\n \
+    \               }\n            }\n        }\n    }\n    // \u5358\u4F4D\u5143\u3092\
     \u8981\u6C42\u3057\u306A\u3044\u306E\u3067 if (l >= r) return e() \u307F\u305F\
     \u3044\u306A\u3053\u3068\u3092\u3057\u3066\u3044\u306A\u3044\u3001\u6CE8\u610F\
     \u3059\u308B\u3053\u3068\uFF01\uFF01\n    S get(int l, int r){\n        assert(r\
@@ -117,7 +117,7 @@ data:
   isVerificationFile: false
   path: data_structure/sparse_table.hpp
   requiredBy: []
-  timestamp: '2023-08-26 17:35:34+09:00'
+  timestamp: '2024-05-02 14:45:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Static_RMQ.test.cpp
