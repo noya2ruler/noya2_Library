@@ -7,6 +7,7 @@ namespace noya2{
 template<class S, S (*op)(S, S)>
 struct SparseTable{
     vector<vector<S>> table;
+    SparseTable () {}
     SparseTable (const vector<S> &vec){
         int n = vec.size(), n2 = 0;
         while ((1<<n2) < n) n2++;
