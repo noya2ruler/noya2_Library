@@ -8,7 +8,11 @@ namespace noya2 {
 struct simple_tree {
     internal::csr<int> g;
     simple_tree () {}
-    simple_tree (int _n) : g(_n, (_n - 1)*2) {}
+    simple_tree (int _n) : g(_n, (_n - 1)*2) {
+        if (_n == 1){
+            g.build();
+        }
+    }
     void add_edge(int u, int v){
         g.add(u, v);
         int id = g.add(v, u);
