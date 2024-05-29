@@ -111,28 +111,30 @@ data:
     \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
     \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n#line 5 \"tree/simple_tree.hpp\"\
     \n\nnamespace noya2 {\n\nstruct simple_tree {\n    internal::csr<int> g;\n   \
-    \ simple_tree () {}\n    simple_tree (int _n) : g(_n, (_n - 1)*2) {}\n    void\
-    \ add_edge(int u, int v){\n        g.add(u, v);\n        int id = g.add(v, u);\n\
-    \        if (id + 1 == (g.n - 1)*2) g.build();\n    }\n    void input(int indexed\
-    \ = 1){\n        for (int i = 0; i < g.n - 1; i++){\n            int u, v; cin\
-    \ >> u >> v;\n            u -= indexed, v -= indexed;\n            add_edge(u,\
-    \ v);\n        }\n    }\n    void input_parents(int indexed = 1){\n        for\
-    \ (int i = 0; i < g.n - 1; i++){\n            int v; cin >> v;\n            v\
-    \ -= indexed;\n            add_edge(i + 1, v);\n        }\n    }\n    const auto\
-    \ operator[](int v) const {\n        return g[v];\n    }\n    auto operator[](int\
-    \ v){\n        return g[v];\n    }\n};\n\n} // namespace noya2\n"
+    \ simple_tree () {}\n    simple_tree (int _n) : g(_n, (_n - 1)*2) {\n        if\
+    \ (_n == 1){\n            g.build();\n        }\n    }\n    void add_edge(int\
+    \ u, int v){\n        g.add(u, v);\n        int id = g.add(v, u);\n        if\
+    \ (id + 1 == (g.n - 1)*2) g.build();\n    }\n    void input(int indexed = 1){\n\
+    \        for (int i = 0; i < g.n - 1; i++){\n            int u, v; cin >> u >>\
+    \ v;\n            u -= indexed, v -= indexed;\n            add_edge(u, v);\n \
+    \       }\n    }\n    void input_parents(int indexed = 1){\n        for (int i\
+    \ = 0; i < g.n - 1; i++){\n            int v; cin >> v;\n            v -= indexed;\n\
+    \            add_edge(i + 1, v);\n        }\n    }\n    const auto operator[](int\
+    \ v) const {\n        return g[v];\n    }\n    auto operator[](int v){\n     \
+    \   return g[v];\n    }\n};\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include\"../template/template.hpp\"\n#include\"../data_structure/csr.hpp\"\
     \n\nnamespace noya2 {\n\nstruct simple_tree {\n    internal::csr<int> g;\n   \
-    \ simple_tree () {}\n    simple_tree (int _n) : g(_n, (_n - 1)*2) {}\n    void\
-    \ add_edge(int u, int v){\n        g.add(u, v);\n        int id = g.add(v, u);\n\
-    \        if (id + 1 == (g.n - 1)*2) g.build();\n    }\n    void input(int indexed\
-    \ = 1){\n        for (int i = 0; i < g.n - 1; i++){\n            int u, v; cin\
-    \ >> u >> v;\n            u -= indexed, v -= indexed;\n            add_edge(u,\
-    \ v);\n        }\n    }\n    void input_parents(int indexed = 1){\n        for\
-    \ (int i = 0; i < g.n - 1; i++){\n            int v; cin >> v;\n            v\
-    \ -= indexed;\n            add_edge(i + 1, v);\n        }\n    }\n    const auto\
-    \ operator[](int v) const {\n        return g[v];\n    }\n    auto operator[](int\
-    \ v){\n        return g[v];\n    }\n};\n\n} // namespace noya2"
+    \ simple_tree () {}\n    simple_tree (int _n) : g(_n, (_n - 1)*2) {\n        if\
+    \ (_n == 1){\n            g.build();\n        }\n    }\n    void add_edge(int\
+    \ u, int v){\n        g.add(u, v);\n        int id = g.add(v, u);\n        if\
+    \ (id + 1 == (g.n - 1)*2) g.build();\n    }\n    void input(int indexed = 1){\n\
+    \        for (int i = 0; i < g.n - 1; i++){\n            int u, v; cin >> u >>\
+    \ v;\n            u -= indexed, v -= indexed;\n            add_edge(u, v);\n \
+    \       }\n    }\n    void input_parents(int indexed = 1){\n        for (int i\
+    \ = 0; i < g.n - 1; i++){\n            int v; cin >> v;\n            v -= indexed;\n\
+    \            add_edge(i + 1, v);\n        }\n    }\n    const auto operator[](int\
+    \ v) const {\n        return g[v];\n    }\n    auto operator[](int v){\n     \
+    \   return g[v];\n    }\n};\n\n} // namespace noya2"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
@@ -143,7 +145,7 @@ data:
   path: tree/simple_tree.hpp
   requiredBy:
   - tree/heavy_light_decomposition.hpp
-  timestamp: '2024-02-25 21:32:37+09:00'
+  timestamp: '2024-05-29 13:23:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Vertex_Add_Path_Sum.test.cpp

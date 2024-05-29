@@ -145,8 +145,8 @@ data:
   isVerificationFile: false
   path: math/sieve.hpp
   requiredBy:
-  - math/gcd_convolution.hpp
   - math/lcm_convolution.hpp
+  - math/gcd_convolution.hpp
   timestamp: '2023-10-23 02:05:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

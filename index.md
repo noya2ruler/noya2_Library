@@ -100,6 +100,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: fps998244353/polynomial_taylor_shift.hpp
       title: fps998244353/polynomial_taylor_shift.hpp
+    - icon: ':warning:'
+      path: fps998244353/product_1_minus_x_pow_a.hpp
+      title: fps998244353/product_1_minus_x_pow_a.hpp
     - icon: ':heavy_check_mark:'
       path: fps998244353/sample_point_shift.hpp
       title: fps998244353/sample_point_shift.hpp
@@ -204,6 +207,9 @@ data:
       title: potentialized_dsu/potentialized_dsu.hpp
   - name: string
     pages:
+    - icon: ':warning:'
+      path: string/dynamic_rolling_hash.hpp
+      title: string/dynamic_rolling_hash.hpp
     - icon: ':warning:'
       path: string/rolling_hash.hpp
       title: string/rolling_hash.hpp
