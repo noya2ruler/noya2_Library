@@ -7,16 +7,16 @@ namespace noya2 {
 struct offline_dynamic_connectivity : rollback_dsu {
     using rollback_dsu::operator=;
     offline_dynamic_connectivity (int n_ = 0, unsigned int t_max = 0, size_t reserve_edge = 0) : n(n_) {
-        size = bit_ceil(t_max);
-        ids.resize(size*2);
+        sz = bit_ceil(t_max);
+        ids.resize(sz*2);
         *this = rollback_dsu(n);
         edges.reserve(reserve_edge);
         inner_clock = -1;
     }
     void add_edge(int l, int r, int u, int v){
-        assert(0 <= l && l <= r && r <= size);
+        assert(0 <= l && l <= r && r <= sz);
         assert(0 <= u && u < n && 0 <= v && v < n);
-        l += size, r += size;
+        l += sz, r += sz;
         int edge_id = edges.size();
         while (l < r){
             if (l & 1) ids[l++].push_back(edge_id);
@@ -27,14 +27,14 @@ struct offline_dynamic_connectivity : rollback_dsu {
     }
     void build(){
         inner_clock = 1;
-        while (inner_clock != size){
+        while (inner_clock != sz){
             add_block(inner_clock);
             inner_clock <<= 1;
         }
     }
     void set(int t){
-        assert(0 <= t && t < size && inner_clock != -1);
-        t += size;
+        assert(0 <= t && t < sz && inner_clock != -1);
+        t += sz;
         if (inner_clock == t) return ;
         int k = 32 - countl_zero((unsigned int)(inner_clock ^ t));
         for (int i = 0; i < k; i++){
@@ -58,7 +58,7 @@ struct offline_dynamic_connectivity : rollback_dsu {
         int ctr = ids[i].size();
         while (ctr--) this->rollback();
     }
-    int n, size, inner_clock;
+    int n, sz, inner_clock;
     vector<vector<int>> ids;
     vector<pair<int,int>> edges;
 };
