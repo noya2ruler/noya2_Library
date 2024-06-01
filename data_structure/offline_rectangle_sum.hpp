@@ -12,7 +12,9 @@ struct offline_rectangle_sum {
     internal::csr<pair<int,T>> elems;
     internal::csr<tuple<int,int,int>> queries;
     offline_rectangle_sum () {}
-    offline_rectangle_sum (int h_, int w_, int m = -1, int q = -1) : h(h_), w(w_), query_id(0), elems(h_,m), queries(h_+1,q*2) {}
+    offline_rectangle_sum (int h_, int w_) : h(h_), w(w_), query_id(0), elems(h_), queries(h_+1) {}
+    offline_rectangle_sum (int h_, int w_, int m) : h(h_), w(w_), query_id(0), elems(h_,m), queries(h_+1) {}
+    offline_rectangle_sum (int h_, int w_, int m, int q) : h(h_), w(w_), query_id(0), elems(h_,m), queries(h_+1,q*2) {}
     void add_elem(int x, int y, T e){
         elems.add(x,pair<int,T>(y,e));
     }
