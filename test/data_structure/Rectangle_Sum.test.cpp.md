@@ -158,10 +158,12 @@ data:
     \n\nnamespace noya2 {\n\ntemplate<Group G = Plus_group<ll>>\nstruct offline_rectangle_sum\
     \ {\n    using T = typename G::value_type;\n    int h, w, query_id;\n    internal::csr<pair<int,T>>\
     \ elems;\n    internal::csr<tuple<int,int,int>> queries;\n    offline_rectangle_sum\
-    \ () {}\n    offline_rectangle_sum (int h_, int w_, int m = -1, int q = -1) :\
-    \ h(h_), w(w_), query_id(0), elems(h_,m), queries(h_+1,q*2) {}\n    void add_elem(int\
-    \ x, int y, T e){\n        elems.add(x,pair<int,T>(y,e));\n    }\n    void add_query(int\
-    \ lx, int rx, int ly, int ry){\n        queries.add(lx,tuple<int,int,int>(ly,ry,-1-query_id));\n\
+    \ () {}\n    offline_rectangle_sum (int h_, int w_) : h(h_), w(w_), query_id(0),\
+    \ elems(h_), queries(h_+1) {}\n    offline_rectangle_sum (int h_, int w_, int\
+    \ m) : h(h_), w(w_), query_id(0), elems(h_,m), queries(h_+1) {}\n    offline_rectangle_sum\
+    \ (int h_, int w_, int m, int q) : h(h_), w(w_), query_id(0), elems(h_,m), queries(h_+1,q*2)\
+    \ {}\n    void add_elem(int x, int y, T e){\n        elems.add(x,pair<int,T>(y,e));\n\
+    \    }\n    void add_query(int lx, int rx, int ly, int ry){\n        queries.add(lx,tuple<int,int,int>(ly,ry,-1-query_id));\n\
     \        queries.add(rx,tuple<int,int,int>(ly,ry,query_id));\n        query_id++;\n\
     \    }\n    vector<T> run(){\n        elems.build();\n        queries.build();\n\
     \        BinaryIndexedTree<G> fen(w);\n        vector<T> ans(query_id,G::e());\n\
@@ -223,7 +225,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-02-25 20:48:17+09:00'
+  timestamp: '2024-06-01 21:56:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Rectangle_Sum.test.cpp
