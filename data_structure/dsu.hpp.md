@@ -14,13 +14,16 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/range_parallel_dsu.hpp
     title: data_structure/range_parallel_dsu.hpp
   - icon: ':heavy_check_mark:'
     path: geometry/partition_by_circle.hpp
     title: geometry/partition_by_circle.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/RangeParallelUnionfind.test.cpp
+    title: test/data_structure/RangeParallelUnionfind.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Unionfind.test.cpp
     title: test/data_structure/Unionfind.test.cpp
@@ -143,6 +146,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Unionfind.test.cpp
+  - test/data_structure/RangeParallelUnionfind.test.cpp
   - test/geometry/aoj1198.test.cpp
 documentation_of: data_structure/dsu.hpp
 layout: document

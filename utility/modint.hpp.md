@@ -46,6 +46,9 @@ data:
     path: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
     title: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/RangeParallelUnionfind.test.cpp
+    title: test/data_structure/RangeParallelUnionfind.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -340,6 +343,7 @@ data:
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/data_structure/RangeParallelUnionfind.test.cpp
   - test/fps/convolution.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
   - test/fps/Convolution1000000007.test.cpp

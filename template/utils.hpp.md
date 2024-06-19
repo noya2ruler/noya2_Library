@@ -32,7 +32,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/potentialized_dsu.hpp
     title: data_structure/potentialized_dsu.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/range_parallel_dsu.hpp
     title: data_structure/range_parallel_dsu.hpp
   - icon: ':heavy_check_mark:'
@@ -183,6 +183,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
     title: test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/RangeParallelUnionfind.test.cpp
+    title: test/data_structure/RangeParallelUnionfind.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
@@ -415,6 +418,7 @@ data:
   - test/data_structure/aoj_dsl_1_b.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/data_structure/RangeParallelUnionfind.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
   - test/data_structure/aoj1068_segtree2d.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
