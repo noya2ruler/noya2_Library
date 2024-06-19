@@ -5,6 +5,7 @@
 "test/data_structure/Point_Add_Rectangle_Sum.test.cpp": "2024-01-21 01:01:37 +0900",
 "test/data_structure/Point_Set_Range_Composite.test.cpp": "2024-04-22 12:03:56 +0900",
 "test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp": "2024-04-22 12:03:56 +0900",
+"test/data_structure/RangeParallelUnionfind.test.cpp": "2024-06-19 21:23:52 +0900",
 "test/data_structure/Range_Affine_Range_Sum.test.cpp": "2024-04-22 12:03:56 +0900",
 "test/data_structure/Rectangle_Sum.test.cpp": "2024-06-01 21:56:46 +0900",
 "test/data_structure/Segment_Add_Get_Min.test.cpp": "2024-02-17 23:30:46 +0900",
