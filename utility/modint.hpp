@@ -5,15 +5,15 @@
 namespace noya2{
 
 struct barrett {
-    uint _m;
-    ull  im;
-    explicit barrett(uint m) : _m(m), im((ull)(-1) / m + 1) {}
-    uint umod() const { return _m; }
-    uint mul(uint a, uint b) const {
-        ull z = a;
+    unsigned int _m;
+    unsigned long long im;
+    explicit barrett(unsigned int m) : _m(m), im((unsigned long long)(-1) / m + 1) {}
+    unsigned int umod() const { return _m; }
+    unsigned int mul(unsigned int a, unsigned int b) const {
+        unsigned long long z = a;
         z *= b;
-        ull x = ull((__uint128_t(z) * im) >> 64);
-        uint v = (uint)(z - x * _m);
+        unsigned long long x = (unsigned long long)((__uint128_t(z) * im) >> 64);
+        unsigned int v = (unsigned int)(z - x * _m);
         if (_m <= v) v += _m;
         return v;
     }
@@ -32,13 +32,13 @@ struct static_modint {
     constexpr static_modint() : _v(0) {}
     template<signed_integral T>
     constexpr static_modint(T v){
-        ll x = (ll)(v % (ll)(umod()));
+        long long x = (long long)(v % (long long)(umod()));
         if (x < 0) x += umod();
-        _v = (uint)(x);
+        _v = (unsigned int)(x);
     }
     template<unsigned_integral T>
     constexpr static_modint(T v){
-        _v = (uint)(v % umod());
+        _v = (unsigned int)(v % umod());
     }
     constexpr unsigned int val() const { return _v; }
     mint& operator++() {
@@ -151,13 +151,13 @@ template <int id> struct dynamic_modint {
     dynamic_modint() : _v(0) {}
     template<signed_integral T>
     dynamic_modint(T v){
-        ll x = (ll)(v % (ll)(mod()));
-        if (x < 0) x += mod();
-        _v = (uint)(x);
+        long long x = (long long)(v % (long long)(umod()));
+        if (x < 0) x += umod();
+        _v = (unsigned int)(x);
     }
     template<unsigned_integral T>
     dynamic_modint(T v){
-        _v = (uint)(v % mod());
+        _v = (unsigned int)(v % umod());
     }
     uint val() const { return _v; }
     mint& operator++() {
