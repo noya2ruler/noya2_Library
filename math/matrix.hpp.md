@@ -212,8 +212,8 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy:
-  - math/spanning_tree_counting.hpp
   - math/euler_circuit_counting.hpp
+  - math/spanning_tree_counting.hpp
   timestamp: '2023-08-26 17:35:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
