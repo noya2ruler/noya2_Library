@@ -72,21 +72,6 @@ data:
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
   - icon: ':heavy_check_mark:'
-    path: fps998244353/fps998244353.hpp
-    title: fps998244353/fps998244353.hpp
-  - icon: ':heavy_check_mark:'
-    path: fps998244353/multipoint_evaluation.hpp
-    title: fps998244353/multipoint_evaluation.hpp
-  - icon: ':heavy_check_mark:'
-    path: fps998244353/polynomial_taylor_shift.hpp
-    title: fps998244353/polynomial_taylor_shift.hpp
-  - icon: ':warning:'
-    path: fps998244353/product_1_minus_x_pow_a.hpp
-    title: fps998244353/product_1_minus_x_pow_a.hpp
-  - icon: ':heavy_check_mark:'
-    path: fps998244353/sample_point_shift.hpp
-    title: fps998244353/sample_point_shift.hpp
-  - icon: ':heavy_check_mark:'
     path: geometry/base_ld.hpp
     title: geometry/base_ld.hpp
   - icon: ':heavy_check_mark:'
@@ -396,11 +381,6 @@ data:
   - fps/multipoint_evaluation.hpp
   - graph/Graph_core.hpp
   - graph/graph_query.hpp
-  - fps998244353/polynomial_taylor_shift.hpp
-  - fps998244353/sample_point_shift.hpp
-  - fps998244353/fps998244353.hpp
-  - fps998244353/product_1_minus_x_pow_a.hpp
-  - fps998244353/multipoint_evaluation.hpp
   - template/template.hpp
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp

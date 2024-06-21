@@ -2,29 +2,17 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: fps/ntt.hpp
-    title: fps/ntt.hpp
-  - icon: ':heavy_check_mark:'
     path: fps998244353/fps998244353.hpp
     title: fps998244353/fps998244353.hpp
+  - icon: ':heavy_check_mark:'
+    path: fps998244353/ntt998244353.hpp
+    title: fps998244353/ntt998244353.hpp
   - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
   - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':heavy_check_mark:'
-    path: template/const.hpp
-    title: template/const.hpp
-  - icon: ':heavy_check_mark:'
-    path: template/inout_old.hpp
-    title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
-    path: template/template.hpp
-    title: template/template.hpp
-  - icon: ':heavy_check_mark:'
-    path: template/utils.hpp
-    title: template/utils.hpp
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
@@ -166,176 +154,140 @@ data:
     using modint = dynamic_modint<-1>;\n\ntemplate<typename T>\nconcept Modint = requires\
     \ (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n    a.pow(declval<int>());\n\
     };\n\n} // namespace noya2\n#line 4 \"fps998244353/fps998244353.hpp\"\n\n#line\
-    \ 2 \"fps/ntt.hpp\"\n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\
-    \n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\nnamespace noya2\
-    \ {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream &os, const\
-    \ pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return os;\n}\n\
-    template <typename T, typename U>\nistream &operator>>(istream &is, pair<T, U>\
-    \ &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate <typename\
-    \ T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int s = (int)v.size();\n\
-    \    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\") << v[i];\n    return\
-    \ os;\n}\ntemplate <typename T>\nistream &operator>>(istream &is, vector<T> &v){\n\
-    \    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename\
-    \ T, class... U>\nvoid in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\n\
-    void out() { cout << \"\\n\"; }\ntemplate <typename T, class... U, char sep =\
-    \ ' '>\nvoid out(const T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u))\
-    \ cout << sep;\n    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>>\
-    \ &vv){\n    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n\
-    }\n\nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
-    \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
-    \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
-    \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
-    \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
-    \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
-    \ vector<int> dx = {0,1,0,-1,1,1,-1,-1};\nconst vector<int> dy = {1,0,-1,0,1,-1,-1,1};\n\
-    const string ALP = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\";\nconst string alp = \"abcdefghijklmnopqrstuvwxyz\"\
-    ;\nconst string NUM = \"0123456789\";\n\nvoid yes(){ cout << \"Yes\\n\"; }\nvoid\
-    \ no(){ cout << \"No\\n\"; }\nvoid YES(){ cout << \"YES\\n\"; }\nvoid NO(){ cout\
-    \ << \"NO\\n\"; }\nvoid yn(bool t){ t ? yes() : no(); }\nvoid YN(bool t){ t ?\
-    \ YES() : NO(); }\n\n} // namespace noya2\n#line 1 \"template/utils.hpp\"\nnamespace\
-    \ noya2{\n\nunsigned long long inner_binary_gcd(unsigned long long a, unsigned\
-    \ long long b){\n    if (a == 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\
-    \ a >>= n;\n    int m = __builtin_ctzll(b); b >>= m;\n    while (a != b) {\n \
-    \       int mm = __builtin_ctzll(a - b);\n        bool f = a > b;\n        unsigned\
-    \ long long c = f ? a : b;\n        b = f ? b : a;\n        a = (c - b) >> mm;\n\
-    \    }\n    return a << min(n, m);\n}\n\ntemplate<typename T> T gcd_fast(T a,\
-    \ T b){ return static_cast<T>(inner_binary_gcd(abs(a),abs(b))); }\n\nlong long\
-    \ sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long long x = sqrt(n);\n\
-    \    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x > n) x--;\n    return\
-    \ x;\n}\n\ntemplate<typename T> T floor_div(const T n, const T d) {\n    assert(d\
-    \ != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\n\
-    template<typename T> T ceil_div(const T n, const T d) {\n    assert(d != 0);\n\
-    \    return n / d + static_cast<T>((n ^ d) >= 0 && n % d != 0);\n}\n\ntemplate<typename\
-    \ T> void uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n    v.erase(unique(v.begin(),v.end()),v.end());\n\
-    }\n\ntemplate <typename T, typename U> inline bool chmin(T &x, U y) { return (y\
-    \ < x) ? (x = y, true) : false; }\n\ntemplate <typename T, typename U> inline\
-    \ bool chmax(T &x, U y) { return (x < y) ? (x = y, true) : false; }\n\ntemplate<typename\
-    \ T> inline bool range(T l, T x, T r){ return l <= x && x < r; }\n\n} // namespace\
-    \ noya2\n#line 8 \"template/template.hpp\"\n\n#define rep(i,n) for (int i = 0;\
-    \ i < (int)(n); i++)\n#define repp(i,m,n) for (int i = (m); i < (int)(n); i++)\n\
-    #define reb(i,n) for (int i = (int)(n-1); i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\
-    \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
-    using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
-    using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 5 \"fps/ntt.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<Modint mint>\nstruct NTT {\n    static constexpr\
-    \ uint mod = mint::mod();\n    static constexpr ull mod2 = (ull)mod * mod;\n \
-    \   static constexpr uint pr  = primitive_root_constexpr(mod);\n    static constexpr\
-    \ int level = countr_zero(mod-1);\n    mint wp[level+1], wm[level+1];\n    void\
-    \ set_ws(){\n        mint r = mint(pr).pow((mod-1) >> level);\n        wp[level]\
-    \ = r, wm[level] = r.inv();\n        for (int i = level-1; i >= 0; i--){\n   \
-    \         wp[i] = wp[i+1] * wp[i+1];\n            wm[i] = wm[i+1] * wm[i+1];\n\
-    \        }\n    }\n    NTT () { set_ws(); }\n    void fft4(vector<mint> &a, int\
-    \ k, int s = 0){\n        uint im = wm[2].val();\n        uint n = 1<<k;\n   \
-    \     uint len = n;\n        int l = k;\n        while (len > 1){\n          \
-    \  if (l == 1){\n                for (int i = 0; i < (1<<(k-1)); i++){\n     \
-    \               int i0 = s + i*2, i1 = i0+1;\n                    a[i0] += a[i1];\n\
-    \                    a[i1]  = a[i0] - a[i1] * 2;\n                }\n        \
-    \        len >>= 1;\n                l -= 1;\n            }\n            else\
-    \ {\n                int len4 = len/4;\n                int nlen = n/len;\n  \
-    \              ull r1 = 1, r2 = 1, r3 = 1, imr1 = im, imr3 = im;\n           \
-    \     for (int i = 0; i < len4; i++){\n                    int offset = 0;\n \
-    \                   for (int j = 0; j < nlen; j++){\n                        int\
-    \ i0 = s + i + offset, i1 = i0 + len4, i2 = i1 + len4, i3 = i2 + len4;\n     \
-    \                   uint a0 = a[i0].val();\n                        uint a1 =\
-    \ a[i1].val();\n                        uint a2 = a[i2].val();\n             \
-    \           uint a3 = a[i3].val();\n                        uint a0p2 = a0 + a2;\n\
-    \                        uint a1p3 = a1 + a3;\n                        ull b0m2\
-    \ = (a0 + mod - a2) * r1;\n                        ull b1m3 = (a1 + mod - a3)\
-    \ * imr1;\n                        ull c0m2 = (a0 + mod - a2) * r3;\n        \
-    \                ull c1m3 = (a1 + mod - a3) * imr3;\n                        a[i0]\
-    \ = a0p2 + a1p3;\n                        a[i1] = b0m2 + b1m3;\n             \
-    \           a[i2] = (a0p2 + mod*2 - a1p3) * r2;\n                        a[i3]\
-    \ = c0m2 + mod2*2 - c1m3;\n                        offset += len;\n          \
-    \          }\n                    r1 = r1 * wm[l].val() % mod;\n             \
-    \       r2 = r1 * r1 % mod;\n                    r3 = r1 * r2 % mod;\n       \
-    \             imr1 = im * r1 % mod;\n                    imr3 = im * r3 % mod;\n\
-    \                }\n                len >>= 2;\n                l -= 2;\n    \
-    \        }\n        }\n    }\n    void ifft4(vector<mint> &a, int k, int s = 0){\n\
-    \        uint im = wp[2].val();\n        uint n = 1<<k;\n        uint len = (k\
-    \ & 1 ? 2 : 4);\n        int l = (k & 1 ? 1 : 2);\n        while (len <= n){\n\
-    \            if (l == 1){\n                for (int i = 0; i < (1<<(k-1)); i++){\n\
-    \                    int i0 = s + i*2, i1 = i0+1;\n                    a[i0] +=\
-    \ a[i1];\n                    a[i1]  = a[i0] - a[i1] * 2;\n                }\n\
-    \                len <<= 2;\n                l += 2;\n            }\n        \
-    \    else {\n                int len4 = len/4;\n                int nlen = n/len;\n\
-    \                ull r1 = 1, r2 = 1, r3 = 1, imr1 = im, imr3 = im;\n         \
-    \       for (int i = 0; i < len4; i++){\n                    int offset = 0;\n\
-    \                    for (int j = 0; j < nlen; j++){\n                       \
-    \ int i0 = s + i + offset, i1 = i0 + len4, i2 = i1 + len4, i3 = i2 + len4;\n \
-    \                       ull a0 = a[i0].val();\n                        ull a1\
-    \ = a[i1].val() * r1;\n                        ull a2 = a[i2].val() * r2;\n  \
-    \                      ull a3 = a[i3].val() * r3;\n                        ull\
-    \ b1 = a[i1].val() * imr1;\n                        ull b3 = a[i3].val() * imr3;\n\
-    \                        ull a0p2 = a0 + a2;\n                        ull a1p3\
-    \ = a1 + a3;\n                        ull a0m2 = a0 + mod2 - a2;\n           \
-    \             ull b1m3 = b1 + mod2 - b3;\n                        a[i0] = a0p2\
-    \ + a1p3;\n                        a[i1] = a0m2 + b1m3;\n                    \
-    \    a[i2] = a0p2 + mod2*2 - a1p3;\n                        a[i3] = a0m2 + mod2*2\
-    \ - b1m3;\n                        offset += len;\n                    }\n   \
-    \                 r1 = r1 * wp[l].val() % mod;\n                    r2 = r1 *\
-    \ r1 % mod;\n                    r3 = r1 * r2 % mod;\n                    imr1\
-    \ = im * r1 % mod;\n                    imr3 = im * r3 % mod;\n              \
-    \  }\n                len <<= 2;\n                l += 2;\n            }\n   \
-    \     }\n    }\n    void ntt(vector<mint> &a) {\n        if ((int)a.size() <=\
-    \ 1) return;\n        assert(has_single_bit(a.size()));\n        fft4(a, countr_zero(a.size()));\n\
-    \    }\n    void intt(vector<mint> &a, bool stop = false) {\n        if ((int)a.size()\
-    \ <= 1) return;\n        assert(has_single_bit(a.size()));\n        ifft4(a, countr_zero(a.size()));\n\
-    \        if (stop) return ;\n        mint iv = mint(a.size()).inv();\n       \
-    \ for (auto &x : a) x *= iv;\n    }\n    vector<mint> multiply(const vector<mint>\
-    \ &a, const vector<mint> &b) {\n        int l = a.size() + b.size() - 1;\n   \
-    \     if (min<int>(a.size(), b.size()) <= 40){\n            vector<mint> s(l);\n\
-    \            for (int i = 0; i < (int)a.size(); i++) for (int j = 0; j < (int)b.size();\
-    \ j++) s[i + j] += a[i] * b[j];\n            return s;\n        }\n        int\
-    \ k = 2, M = 4;\n        while (M < l) M <<= 1, ++k;\n        set_ws();\n    \
-    \    vector<mint> s(M);\n        for (int i = 0; i < (int)a.size(); ++i) s[i]\
-    \ = a[i];\n        fft4(s, k);\n        if (a.size() == b.size() && a == b) {\n\
-    \            for (int i = 0; i < M; ++i) s[i] *= s[i];\n        }\n        else\
-    \ {\n            vector<mint> t(M);\n            for (int i = 0; i < (int)b.size();\
-    \ ++i) t[i] = b[i];\n            fft4(t, k);\n            for (int i = 0; i <\
-    \ M; ++i) s[i] *= t[i];\n        }\n        ifft4(s, k);\n        s.resize(l);\n\
-    \        mint invm = mint(M).inv();\n        for (int i = 0; i < l; ++i) s[i]\
-    \ *= invm;\n        return s;\n    }\n};\n\n\n} // namespace noya2\n#line 2 \"\
-    math/binomial.hpp\"\n\n#line 4 \"math/binomial.hpp\"\nnamespace noya2 {\n\ntemplate<typename\
-    \ mint>\nstruct binomial {\n    binomial(int len = 300000){ extend(len); }\n \
-    \   static mint fact(int n){\n        if (n < 0) return 0;\n        while (n >=\
-    \ (int)_fact.size()) extend();\n        return _fact[n];\n    }\n    static mint\
-    \ ifact(int n){\n        if (n < 0) return 0;\n        while (n >= (int)_fact.size())\
-    \ extend();\n        return _ifact[n];\n    }\n    static mint inv(int n){\n \
-    \       return ifact(n) * fact(n-1);\n    }\n    static mint C(int n, int r){\n\
-    \        if (!(0 <= r && r <= n)) return 0;\n        return fact(n) * ifact(r)\
-    \ * ifact(n-r);\n    }\n    static mint P(int n, int r){\n        if (!(0 <= r\
-    \ && r <= n)) return 0;\n        return fact(n) * ifact(n-r);\n    }\n    inline\
-    \ mint operator()(int n, int r) { return C(n, r); }\n    template<class... Cnts>\
-    \ static mint M(const Cnts&... cnts){\n        return multinomial(0,1,cnts...);\n\
-    \    }\n  private:\n    static mint multinomial(const int& sum, const mint& div_prod){\n\
-    \        if (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n\
-    \    template<class... Tail> static mint multinomial(const int& sum, const mint&\
-    \ div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n\
-    \        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static\
-    \ vector<mint> _fact, _ifact;\n    static void extend(int len = -1){\n       \
-    \ if (_fact.empty()){\n            _fact = _ifact = {1,1};\n        }\n      \
-    \  int siz = _fact.size();\n        if (len == -1) len = siz * 2;\n        len\
-    \ = min<int>(len, mint::mod()-1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
-    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
-    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
-    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename T>\nstd::vector<T>binomial<T>::_fact\
-    \ = vector<T>(2,T(1));\ntemplate<typename T>\nstd::vector<T>binomial<T>::_ifact\
-    \ = vector<T>(2,T(1));\n\n} // namespace noya2\n#line 7 \"fps998244353/fps998244353.hpp\"\
-    \n\nnamespace noya2 {\n\n// Formal Power Series for modint998244353\nstruct fps998244353\
-    \ : std::vector<modint998244353> {\n    using mint = modint998244353;\n    using\
+    \ 2 \"fps998244353/ntt998244353.hpp\"\n\n#line 4 \"fps998244353/ntt998244353.hpp\"\
+    \n\n#include <cassert>\n#include <vector>\n\nnamespace noya2 {\n\nnamespace internal\
+    \ {\n\nconstexpr int FFT_MAX = 23;\nconstexpr unsigned FFT_ROOTS[FFT_MAX + 1]\
+    \ = {1U, 998244352U, 911660635U, 372528824U, 929031873U, 452798380U, 922799308U,\
+    \ 781712469U, 476477967U, 166035806U, 258648936U, 584193783U, 63912897U, 350007156U,\
+    \ 666702199U, 968855178U, 629671588U, 24514907U, 996173970U, 363395222U, 565042129U,\
+    \ 733596141U, 267099868U, 15311432U};\nconstexpr unsigned INV_FFT_ROOTS[FFT_MAX\
+    \ + 1] = {1U, 998244352U, 86583718U, 509520358U, 337190230U, 87557064U, 609441965U,\
+    \ 135236158U, 304459705U, 685443576U, 381598368U, 335559352U, 129292727U, 358024708U,\
+    \ 814576206U, 708402881U, 283043518U, 3707709U, 121392023U, 704923114U, 950391366U,\
+    \ 428961804U, 382752275U, 469870224U};\nconstexpr unsigned FFT_RATIOS[FFT_MAX]\
+    \ = {911660635U, 509520358U, 369330050U, 332049552U, 983190778U, 123842337U, 238493703U,\
+    \ 975955924U, 603855026U, 856644456U, 131300601U, 842657263U, 730768835U, 942482514U,\
+    \ 806263778U, 151565301U, 510815449U, 503497456U, 743006876U, 741047443U, 56250497U,\
+    \ 867605899U};\nconstexpr unsigned INV_FFT_RATIOS[FFT_MAX] = {86583718U, 372528824U,\
+    \ 373294451U, 645684063U, 112220581U, 692852209U, 155456985U, 797128860U, 90816748U,\
+    \ 860285882U, 927414960U, 354738543U, 109331171U, 293255632U, 535113200U, 308540755U,\
+    \ 121186627U, 608385704U, 438932459U, 359477183U, 824071951U, 103369235U};\n\n\
+    } // namespace noya2::internal\n\nstruct ntt998244353 {\n    using mint = modint998244353;\n\
+    \    static constexpr unsigned MO = modint998244353::mod();\n    static constexpr\
+    \ unsigned MO2 = MO * 2;\n    static void ntt(mint *as, int n){\n        int m\
+    \ = n;\n        if (m >>= 1){\n            for (int i = 0; i < m; i++){\n    \
+    \            const unsigned x = as[i + m].val();\n                as[i + m] =\
+    \ mint::raw(as[i].val() + MO - x);\n                as[i] = mint::raw(as[i].val()\
+    \ + x);\n            }\n        }\n        if (m >>= 1){\n            mint prod\
+    \ = mint::raw(1);\n            for (int h = 0, i0 = 0; i0 < n; i0 += (m << 1)){\n\
+    \                for (int i = i0; i < i0 + m; i++){\n                    const\
+    \ unsigned x = (prod * as[i + m]).val();\n                    as[i + m] = mint::raw(as[i].val()\
+    \ + MO - x);\n                    as[i] = mint::raw(as[i].val() + x);\n      \
+    \          }\n                prod *= mint::raw(internal::FFT_RATIOS[__builtin_ctz(++h)]);\n\
+    \            }\n        }\n        for (; m; ){\n            if (m >>= 1){\n \
+    \               mint prod = mint::raw(1);\n                for (int h = 0, i0\
+    \ = 0; i0 < n; i0 += (m << 1)){\n                    for (int i = i0; i < i0 +\
+    \ m; i++){\n                        const unsigned x = (prod * as[i + m]).val();\n\
+    \                        as[i + m] = mint::raw(as[i].val() + MO - x);\n      \
+    \                  as[i] = mint::raw(as[i].val() + x);\n                    }\n\
+    \                    prod *= mint::raw(internal::FFT_RATIOS[__builtin_ctz(++h)]);\n\
+    \                }\n            }\n            if (m >>= 1){\n               \
+    \ mint prod = mint::raw(1);\n                for (int h = 0, i0 = 0; i0 < n; i0\
+    \ += (m << 1)) {\n                    for (int i = i0; i < i0 + m; i++) {\n  \
+    \                      const unsigned x = (prod * as[i + m]).val();\n        \
+    \                as[i] = mint::raw((as[i].val() >= MO2) ? (as[i].val() - MO2)\
+    \ : as[i].val());\n                        as[i + m] = mint::raw(as[i].val() +\
+    \ MO - x);\n                        as[i] = mint::raw(as[i].val() + x);\n    \
+    \                }\n                    prod *= mint::raw(internal::FFT_RATIOS[__builtin_ctz(++h)]);\n\
+    \                }\n            }\n        }\n        for (int i = 0; i < n; i++){\n\
+    \            as[i] = mint::raw((as[i].val() >= MO2) ? as[i].val() - MO2 : as[i].val());\n\
+    \            as[i] = mint::raw((as[i].val() >= MO) ? as[i].val() - MO : as[i].val());\n\
+    \        }\n    }\n    static void intt(mint *as, int n){\n        int m = 1;\n\
+    \        if (m < (n >> 1)){\n            mint prod = mint::raw(1);\n         \
+    \   for (int h = 0, i0 = 0; i0 < n; i0 += (m << 1)){\n                for (int\
+    \ i = i0; i < i0 + m; i++){\n                    const unsigned long long y =\
+    \ as[i].val() + MO - as[i + m].val();\n                    as[i] = mint::raw(as[i].val()\
+    \ + as[i + m].val());\n                    as[i + m] = mint::raw(prod.val() *\
+    \ y % MO);\n                }\n                prod *= mint::raw(internal::INV_FFT_RATIOS[__builtin_ctz(++h)]);\n\
+    \            }\n            m <<= 1;\n        }\n        for (; m < (n >> 1);\
+    \ m <<= 1){\n            mint prod = mint::raw(1);\n            for (int h = 0,\
+    \ i0 = 0; i0 < n; i0 += (m << 1)) {\n                for (int i = i0; i < i0 +\
+    \ (m >> 1); ++i) {\n                    const unsigned long long y = as[i].val()\
+    \ + MO2 - as[i + m].val();\n                    as[i] = mint::raw(as[i].val()\
+    \ + as[i + m].val());\n                    as[i] = mint::raw((as[i].val() >= MO2)\
+    \ ? (as[i].val() - MO2) : as[i].val());\n                    as[i + m] = mint::raw(prod.val()\
+    \ * y % MO);\n                }\n                for (int i = i0 + (m >> 1); i\
+    \ < i0 + m; ++i) {\n                    const unsigned long long y = as[i].val()\
+    \ + MO - as[i + m].val();\n                    as[i] = mint::raw(as[i].val() +\
+    \ as[i + m].val());\n                    as[i + m] = mint::raw(prod.val() * y\
+    \ % MO);\n                }\n                prod *= mint::raw(internal::INV_FFT_RATIOS[__builtin_ctz(++h)]);\n\
+    \            }\n        }\n        if (m < n){\n            for (int i = 0; i\
+    \ < m; i++){\n                const unsigned y = as[i].val() + MO2 - as[i + m].val();\n\
+    \                as[i] = mint::raw(as[i].val() + as[i + m].val());\n         \
+    \       as[i + m] = mint::raw(y);\n            }\n        }\n        for (int\
+    \ i = 0; i < n; i++){\n            as[i] = mint::raw((as[i].val() >= MO2) ? as[i].val()\
+    \ - MO2 : as[i].val());\n            as[i] = mint::raw((as[i].val() >= MO) ? as[i].val()\
+    \ - MO : as[i].val());\n        }\n    }\n    void ntt(std::vector<mint> &as){\n\
+    \        ntt(as.data(), as.size());\n    }\n    void intt(std::vector<mint> &as){\n\
+    \        intt(as.data(), as.size());\n    }\n    void intt_div(std::vector<mint>\
+    \ &as){\n        intt(as);\n        int n = as.size();\n        const mint inv_n\
+    \ = mint::raw(n).inv();\n        for (int i = 0; i < n; i++){\n            as[i]\
+    \ *= inv_n;\n        }\n    }\n    std::vector<mint> multiply(std::vector<mint>\
+    \ as, std::vector<mint> bs){\n        if (as.empty() || bs.empty()) return {};\n\
+    \        const int len = as.size() + bs.size() - 1u;\n        if (std::min(as.size(),\
+    \ bs.size()) <= 40u){\n            std::vector<mint> s(len);\n            for\
+    \ (int i = 0; i < (int)(as.size()); i++){\n                for (int j = 0; j <\
+    \ (int)(bs.size()); j++){\n                    s[i + j] += as[i] * bs[j];\n  \
+    \              }\n            }\n            return s;\n        }\n        int\
+    \ n = 1;\n        for (; n < len; n <<= 1) {}\n        if (as.size() == bs.size()\
+    \ && as == bs){\n            as.resize(n);\n            ntt(as);\n           \
+    \ for (int i = 0; i < n; i++){\n                as[i] *= as[i];\n            }\n\
+    \        }\n        else {\n            as.resize(n);\n            ntt(as);\n\
+    \            bs.resize(n);\n            ntt(bs);\n            for (int i = 0;\
+    \ i < n; i++){\n                as[i] *= bs[i];\n            }\n        }\n  \
+    \      intt_div(as);\n        as.resize(len);\n        return as;\n    }\n};\n\
+    \n} // namespace noya2\n#line 2 \"math/binomial.hpp\"\n\n#line 4 \"math/binomial.hpp\"\
+    \nnamespace noya2 {\n\ntemplate<typename mint>\nstruct binomial {\n    binomial(int\
+    \ len = 300000){ extend(len); }\n    static mint fact(int n){\n        if (n <\
+    \ 0) return 0;\n        while (n >= (int)_fact.size()) extend();\n        return\
+    \ _fact[n];\n    }\n    static mint ifact(int n){\n        if (n < 0) return 0;\n\
+    \        while (n >= (int)_fact.size()) extend();\n        return _ifact[n];\n\
+    \    }\n    static mint inv(int n){\n        return ifact(n) * fact(n-1);\n  \
+    \  }\n    static mint C(int n, int r){\n        if (!(0 <= r && r <= n)) return\
+    \ 0;\n        return fact(n) * ifact(r) * ifact(n-r);\n    }\n    static mint\
+    \ P(int n, int r){\n        if (!(0 <= r && r <= n)) return 0;\n        return\
+    \ fact(n) * ifact(n-r);\n    }\n    inline mint operator()(int n, int r) { return\
+    \ C(n, r); }\n    template<class... Cnts> static mint M(const Cnts&... cnts){\n\
+    \        return multinomial(0,1,cnts...);\n    }\n  private:\n    static mint\
+    \ multinomial(const int& sum, const mint& div_prod){\n        if (sum < 0) return\
+    \ 0;\n        return fact(sum) * div_prod;\n    }\n    template<class... Tail>\
+    \ static mint multinomial(const int& sum, const mint& div_prod, const int& n1,\
+    \ const Tail&... tail){\n        if (n1 < 0) return 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n\
+    \    }\n    static vector<mint> _fact, _ifact;\n    static void extend(int len\
+    \ = -1){\n        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n \
+    \       }\n        int siz = _fact.size();\n        if (len == -1) len = siz *\
+    \ 2;\n        len = min<int>(len, mint::mod()-1);\n        if (len < siz) return\
+    \ ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n        for (int i =\
+    \ siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len] = _fact[len].inv();\n\
+    \        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n\
+    };\ntemplate<typename T>\nstd::vector<T>binomial<T>::_fact = vector<T>(2,T(1));\n\
+    template<typename T>\nstd::vector<T>binomial<T>::_ifact = vector<T>(2,T(1));\n\
+    \n} // namespace noya2\n#line 7 \"fps998244353/fps998244353.hpp\"\n\nnamespace\
+    \ noya2 {\n\n// Formal Power Series for modint998244353\nstruct fps998244353 :\
+    \ std::vector<modint998244353> {\n    using mint = modint998244353;\n    using\
     \ std::vector<mint>::vector;\n    using std::vector<mint>::operator=;\n    using\
-    \ fps = fps998244353;\n    static inline NTT<mint> ntt_;\n    static inline binomial<mint>\
-    \ bnm;\n\n    fps998244353 (const std::vector<mint> &init){\n        (*this) =\
-    \ init;\n    }\n\n    void shrink(){\n        while(!(this->empty()) && this->back().val()\
-    \ == 0){\n            this->pop_back();\n        }\n    }\n\n    fps &operator*=\
-    \ (const mint &r){\n        for (auto &x : *this) x *= r;\n        return *this;\n\
-    \    }\n    fps &operator/= (const mint &r){\n        (*this) *= r.inv();\n  \
-    \      return *this;\n    }\n\n    fps &operator<<= (const int &d){\n        this->insert(this->begin(),\
-    \ d, mint(0));\n        return *this;\n    }\n    fps &operator>>= (const int\
-    \ &d){\n        if ((int)(this->size()) <= d) this->clear();\n        else this->erase(this->begin(),this->begin()\
-    \ + d);\n        return *this;\n    }\n\n    fps &operator+= (const fps &r){\n\
-    \        if (this->size() < r.size()) this->resize(r.size());\n        for (int\
+    \ fps = fps998244353;\n    static inline ntt998244353 ntt_;\n    static inline\
+    \ binomial<mint> bnm;\n\n    fps998244353 (const std::vector<mint> &init){\n \
+    \       (*this) = init;\n    }\n\n    void shrink(){\n        while(!(this->empty())\
+    \ && this->back().val() == 0){\n            this->pop_back();\n        }\n   \
+    \ }\n\n    fps &operator*= (const mint &r){\n        for (auto &x : *this) x *=\
+    \ r;\n        return *this;\n    }\n    fps &operator/= (const mint &r){\n   \
+    \     (*this) *= r.inv();\n        return *this;\n    }\n\n    fps &operator<<=\
+    \ (const int &d){\n        this->insert(this->begin(), d, mint(0));\n        return\
+    \ *this;\n    }\n    fps &operator>>= (const int &d){\n        if ((int)(this->size())\
+    \ <= d) this->clear();\n        else this->erase(this->begin(),this->begin() +\
+    \ d);\n        return *this;\n    }\n\n    fps &operator+= (const fps &r){\n \
+    \       if (this->size() < r.size()) this->resize(r.size());\n        for (int\
     \ i = 0; auto x : r){\n            (*this)[i++] += x;\n        }\n        return\
     \ *this;\n    }\n    fps &operator-= (const fps &r){\n        if (this->size()\
     \ < r.size()) this->resize(r.size());\n        for (int i = 0; auto x : r){\n\
@@ -373,10 +325,10 @@ data:
     \ = {(*this)[0].inv()};\n        for (int siz = 1; siz < d; siz <<= 1){\n    \
     \        fps f(this->begin(),this->begin()+min(n,siz*2)), g(res);\n          \
     \  f.resize(siz*2), g.resize(siz*2);\n            f.ntt(), g.ntt();\n        \
-    \    for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n            ntt_.intt(f,true);\n\
+    \    for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n            ntt_.intt(f);\n\
     \            f.erase(f.begin(),f.begin()+siz);\n            f.resize(siz*2);\n\
     \            f.ntt();\n            for (int i = 0; i < siz*2; i++) f[i] *= g[i];\n\
-    \            f.intt(true);\n            mint siz2_inv = mint(siz*2).inv(); siz2_inv\
+    \            f.intt();\n            mint siz2_inv = mint(siz*2).inv(); siz2_inv\
     \ *= -siz2_inv;\n            for (int i = 0; i < siz; i++) f[i] *= siz2_inv;\n\
     \            res.insert(res.end(),f.begin(),f.begin()+siz);\n        }\n     \
     \   res.resize(d);\n        return res;\n    }\n    [[nodiscard(\"Do not change\
@@ -402,12 +354,13 @@ data:
     \                ret = (ret << (i * k)).pre(d);\n                return ret;\n\
     \            }\n            if ((i + 1) * k >= d) break;\n        }\n        return\
     \ fps(d, mint(0));\n    }\n\n    void ntt(){\n        return ntt_.ntt(*this);\n\
-    \    }\n    // already /= len\n    void intt(bool stop = false){\n        return\
-    \ ntt_.intt(*this, stop);\n    }\n    fps quotient(fps r) const {\n        r.shrink();\n\
-    \        const int n = this->size(), m = r.size();\n        if (n < m){\n    \
-    \        return fps();\n        }\n        fps quo(*this);\n        const int\
-    \ sz = n - m + 1;\n        std::reverse(quo.begin(), quo.end());\n        std::reverse(r.begin(),\
-    \ r.end());\n        quo.resize(sz);\n        quo *= r.inv(sz);\n        quo.resize(sz);\n\
+    \    }\n    // NOT /= len\n    void intt(){\n        ntt_.intt(*this);\n    }\n\
+    \    // already /= len\n    void intt_div(){\n        return ntt_.intt_div(*this);\n\
+    \    }\n    fps quotient(fps r) const {\n        r.shrink();\n        const int\
+    \ n = this->size(), m = r.size();\n        if (n < m){\n            return fps();\n\
+    \        }\n        fps quo(*this);\n        const int sz = n - m + 1;\n     \
+    \   std::reverse(quo.begin(), quo.end());\n        std::reverse(r.begin(), r.end());\n\
+    \        quo.resize(sz);\n        quo *= r.inv(sz);\n        quo.resize(sz);\n\
     \        std::reverse(quo.begin(), quo.end());\n        return quo;\n    }\n \
     \   fps remainder(fps r) const {\n        r.shrink();\n        const int n = this->size(),\
     \ m = r.size();\n        if (n < m){\n            return fps(*this);\n       \
@@ -462,16 +415,12 @@ data:
   - fps998244353/fps998244353.hpp
   - utility/modint.hpp
   - math/prime.hpp
-  - fps/ntt.hpp
-  - template/template.hpp
-  - template/inout_old.hpp
-  - template/const.hpp
-  - template/utils.hpp
+  - fps998244353/ntt998244353.hpp
   - math/binomial.hpp
   isVerificationFile: false
   path: fps998244353/sample_point_shift.hpp
   requiredBy: []
-  timestamp: '2024-06-20 19:16:50+09:00'
+  timestamp: '2024-06-21 13:51:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
