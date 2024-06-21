@@ -2,7 +2,7 @@
 
 #include"../utility/modint.hpp"
 
-#include"../fps/ntt.hpp"
+#include"ntt998244353.hpp"
 #include"../math/binomial.hpp"
 
 namespace noya2 {
@@ -13,7 +13,7 @@ struct fps998244353 : std::vector<modint998244353> {
     using std::vector<mint>::vector;
     using std::vector<mint>::operator=;
     using fps = fps998244353;
-    static inline NTT<mint> ntt_;
+    static inline ntt998244353 ntt_;
     static inline binomial<mint> bnm;
 
     fps998244353 (const std::vector<mint> &init){
@@ -138,12 +138,12 @@ struct fps998244353 : std::vector<modint998244353> {
             f.resize(siz*2), g.resize(siz*2);
             f.ntt(), g.ntt();
             for (int i = 0; i < siz*2; i++) f[i] *= g[i];
-            ntt_.intt(f,true);
+            ntt_.intt(f);
             f.erase(f.begin(),f.begin()+siz);
             f.resize(siz*2);
             f.ntt();
             for (int i = 0; i < siz*2; i++) f[i] *= g[i];
-            f.intt(true);
+            f.intt();
             mint siz2_inv = mint(siz*2).inv(); siz2_inv *= -siz2_inv;
             for (int i = 0; i < siz; i++) f[i] *= siz2_inv;
             res.insert(res.end(),f.begin(),f.begin()+siz);
@@ -204,9 +204,13 @@ struct fps998244353 : std::vector<modint998244353> {
     void ntt(){
         return ntt_.ntt(*this);
     }
+    // NOT /= len
+    void intt(){
+        ntt_.intt(*this);
+    }
     // already /= len
-    void intt(bool stop = false){
-        return ntt_.intt(*this, stop);
+    void intt_div(){
+        return ntt_.intt_div(*this);
     }
     fps quotient(fps r) const {
         r.shrink();
