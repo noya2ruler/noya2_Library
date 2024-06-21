@@ -26,6 +26,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps998244353/multipoint_evaluation.hpp
     title: fps998244353/multipoint_evaluation.hpp
+  - icon: ':warning:'
+    path: fps998244353/ntt998244353.hpp
+    title: fps998244353/ntt998244353.hpp
   - icon: ':heavy_check_mark:'
     path: fps998244353/polynomial_taylor_shift.hpp
     title: fps998244353/polynomial_taylor_shift.hpp
@@ -190,6 +193,7 @@ data:
   - fps998244353/sample_point_shift.hpp
   - fps998244353/fps998244353.hpp
   - fps998244353/product_1_minus_x_pow_a.hpp
+  - fps998244353/ntt998244353.hpp
   - fps998244353/multipoint_evaluation.hpp
   timestamp: '2024-04-22 12:03:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
