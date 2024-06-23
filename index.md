@@ -54,6 +54,9 @@ data:
     - icon: ':warning:'
       path: data_structure/simple_queue.hpp
       title: data_structure/simple_queue.hpp
+    - icon: ':warning:'
+      path: data_structure/slope_trick.hpp
+      title: data_structure/slope_trick.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/sparse_table.hpp
       title: data_structure/sparse_table.hpp
