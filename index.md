@@ -183,6 +183,9 @@ data:
       path: misc/concepts.hpp
       title: misc/concepts.hpp
     - icon: ':warning:'
+      path: misc/golden_section_search.hpp
+      title: misc/golden_section_search.hpp
+    - icon: ':warning:'
       path: misc/inversion.hpp
       title: misc/inversion.hpp
     - icon: ':warning:'
