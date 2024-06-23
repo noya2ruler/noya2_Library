@@ -196,6 +196,9 @@ data:
     path: test/data_structure/aoj_dsl_1_b.test.cpp
     title: test/data_structure/aoj_dsl_1_b.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/yuki_1077.test.cpp
+    title: test/data_structure/yuki_1077.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/fps/Convolution1000000007.test.cpp
     title: test/fps/Convolution1000000007.test.cpp
   - icon: ':heavy_check_mark:'
@@ -394,6 +397,7 @@ data:
   - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/Unionfind.test.cpp
   - test/data_structure/RangeParallelUnionfind.test.cpp
+  - test/data_structure/yuki_1077.test.cpp
   - test/data_structure/aoj1068_segtree2d.test.cpp
   - test/math/Lcm_Convolution.test.cpp
   - test/math/Gcd_Convolution.test.cpp

@@ -54,7 +54,7 @@ data:
     - icon: ':warning:'
       path: data_structure/simple_queue.hpp
       title: data_structure/simple_queue.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/slope_trick.hpp
       title: data_structure/slope_trick.hpp
     - icon: ':heavy_check_mark:'
@@ -321,6 +321,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/aoj_dsl_1_b.test.cpp
       title: test/data_structure/aoj_dsl_1_b.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/yuki_1077.test.cpp
+      title: test/data_structure/yuki_1077.test.cpp
   - name: test/fps
     pages:
     - icon: ':heavy_check_mark:'
