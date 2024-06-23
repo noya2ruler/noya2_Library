@@ -15,6 +15,7 @@
 "test/data_structure/aoj1068_segtree2d.test.cpp": "2023-09-01 19:27:14 +0900",
 "test/data_structure/aoj_2235.test.cpp": "2024-06-01 21:57:03 +0900",
 "test/data_structure/aoj_dsl_1_b.test.cpp": "2023-11-13 11:52:58 +0900",
+"test/data_structure/yuki_1077.test.cpp": "2024-06-23 16:23:13 +0900",
 "test/fps/Convolution1000000007.test.cpp": "2024-06-20 19:16:50 +0900",
 "test/fps/Inv_of_Formal_Power_Series.test.cpp": "2024-06-20 19:16:50 +0900",
 "test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp": "2024-06-20 19:16:50 +0900",
