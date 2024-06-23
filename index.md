@@ -222,6 +222,9 @@ data:
     - icon: ':warning:'
       path: string/rolling_hash.hpp
       title: string/rolling_hash.hpp
+    - icon: ':warning:'
+      path: string/trie.hpp
+      title: string/trie.hpp
   - name: template
     pages:
     - icon: ':heavy_check_mark:'
