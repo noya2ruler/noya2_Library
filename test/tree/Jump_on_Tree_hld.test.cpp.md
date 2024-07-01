@@ -13,14 +13,14 @@ data:
   - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/tree_query.hpp
     title: tree/tree_query.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/jump_on_tree
@@ -54,77 +54,77 @@ data:
     ;\nconst string NUM = \"0123456789\";\n\nvoid yes(){ cout << \"Yes\\n\"; }\nvoid\
     \ no(){ cout << \"No\\n\"; }\nvoid YES(){ cout << \"YES\\n\"; }\nvoid NO(){ cout\
     \ << \"NO\\n\"; }\nvoid yn(bool t){ t ? yes() : no(); }\nvoid YN(bool t){ t ?\
-    \ YES() : NO(); }\n\n} // namespace noya2\n#line 1 \"template/utils.hpp\"\nnamespace\
-    \ noya2{\n\nunsigned long long inner_binary_gcd(unsigned long long a, unsigned\
-    \ long long b){\n    if (a == 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\
-    \ a >>= n;\n    int m = __builtin_ctzll(b); b >>= m;\n    while (a != b) {\n \
-    \       int mm = __builtin_ctzll(a - b);\n        bool f = a > b;\n        unsigned\
-    \ long long c = f ? a : b;\n        b = f ? b : a;\n        a = (c - b) >> mm;\n\
-    \    }\n    return a << min(n, m);\n}\n\ntemplate<typename T> T gcd_fast(T a,\
-    \ T b){ return static_cast<T>(inner_binary_gcd(abs(a),abs(b))); }\n\nlong long\
-    \ sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long long x = sqrt(n);\n\
-    \    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x > n) x--;\n    return\
-    \ x;\n}\n\ntemplate<typename T> T floor_div(const T n, const T d) {\n    assert(d\
-    \ != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\n\
-    template<typename T> T ceil_div(const T n, const T d) {\n    assert(d != 0);\n\
-    \    return n / d + static_cast<T>((n ^ d) >= 0 && n % d != 0);\n}\n\ntemplate<typename\
-    \ T> void uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n    v.erase(unique(v.begin(),v.end()),v.end());\n\
-    }\n\ntemplate <typename T, typename U> inline bool chmin(T &x, U y) { return (y\
-    \ < x) ? (x = y, true) : false; }\n\ntemplate <typename T, typename U> inline\
-    \ bool chmax(T &x, U y) { return (x < y) ? (x = y, true) : false; }\n\ntemplate<typename\
-    \ T> inline bool range(T l, T x, T r){ return l <= x && x < r; }\n\n} // namespace\
-    \ noya2\n#line 8 \"template/template.hpp\"\n\n#define rep(i,n) for (int i = 0;\
-    \ i < (int)(n); i++)\n#define repp(i,m,n) for (int i = (m); i < (int)(n); i++)\n\
-    #define reb(i,n) for (int i = (int)(n-1); i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\
-    \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
-    using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
-    using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"tree/tree_query.hpp\"\
-    \n\n#line 9 \"tree/tree_query.hpp\"\n#include<ranges>\n\nstruct Tree {\n    Tree\
-    \ (int n_ = 0, int root_ = 0) : n(n_), root(root_), inner_edge_id(0), es(n-1),\
-    \ start(n+1,0){\n        if (n == 1) build();\n    }\n    void add_edge(int u,\
-    \ int v){\n        es[inner_edge_id] = u, start[inner_edge_id] = v;\n        if\
-    \ (++inner_edge_id == n-1) build();\n    }\n    void input(int indexed = 1){\n\
-    \        for (int i = 0; i < n-1; i++){\n            int u, v; std::cin >> u >>\
-    \ v;\n            u -= indexed, v -= indexed;\n            add_edge(u,v);\n  \
-    \      }\n    }\n    void input_parents(int indexed = 1){\n        for (int i\
-    \ = 0; i < n-1; i++){\n            int p; std::cin >> p;\n            p -= indexed;\n\
-    \            add_edge(p,i+1);\n        }\n    }\n    int degree(int v){\n    \
-    \    assert(0 <= v && v < n);\n        return start[v+1] - start[v];\n    }\n\
-    \    int parent(int v){\n        assert(0 <= v && v < n);\n        if (v == root)\
-    \ return -1;\n        return es[start[v]];\n    }\n    int subtree_size(int v){\n\
-    \        assert(0 <= v && v < n);\n        return sub[v];\n    }\n    int depth(int\
-    \ v){\n        assert(0 <= v && v < n);\n        return dep[v];\n    }\n    int\
-    \ la(int v, int d){\n        assert(0 <= v && v < n);\n        while (v != -1){\n\
-    \            int u = nxt[v];\n            if (down[v] - d >= down[u]){\n     \
-    \           v = tour[down[v] - d];\n                break;\n            }\n  \
-    \          d -= down[v] - down[u] + 1;\n            v = parent(u);\n        }\n\
-    \        return v;\n    }\n    int lca(int u, int v){\n        assert(0 <= v &&\
-    \ v < n && 0 <= u && u < n);\n        while (nxt[u] != nxt[v]){\n            if\
-    \ (down[u] < down[v]) std::swap(u,v);\n            u = es[start[nxt[u]]];\n  \
-    \      }\n        return dep[u] < dep[v] ? u : v;\n    }\n    int jump(int from,\
-    \ int to, int d){\n        int l = lca(from,to);\n        if (d <= dep[from] -\
-    \ dep[l]){\n            return la(from,d);\n        }\n        d -= dep[from]\
-    \ - dep[l];\n        if (d <= dep[to] - dep[l]){\n            return la(to,dep[to]-dep[l]-d);\n\
-    \        }\n        return -1;\n    }\n    int dist(int u, int v){ return dep[lca(u,v)]*(-2)\
-    \ + dep[u] + dep[v]; }\n    std::vector<int> path(int from, int to){\n       \
-    \ int l = lca(from,to);\n        const int sizf = dep[from]-dep[l], sizt = dep[to]-dep[l];\n\
-    \        std::vector<int> pf = {from}, pt;\n        pf.reserve(sizf+1); pt.reserve(sizt);\n\
-    \        for (int i = 0; i < sizf; i++){\n            from = parent(from);\n \
-    \           pf.push_back(from);\n        }\n        for (int i = 0; i < sizt;\
-    \ i++){\n            pt.push_back(to);\n            to = parent(to);\n       \
-    \ }\n        pf.insert(pf.end(),pt.rbegin(),pt.rend());\n        return pf;\n\
-    \    }\n    // dist, v1, v2\n    std::tuple<int,int,int> diameter(){\n       \
-    \ int v1 = std::max_element(dep.begin(),dep.end()) - dep.begin();\n        std::vector<int>\
-    \ dist_from_v1(n,std::numeric_limits<int>::max());\n        std::queue<int> que;\n\
-    \        que.push(v1);\n        dist_from_v1[v1] = 0;\n        while (!que.empty()){\n\
-    \            int p = que.front(); que.pop();\n            for (int i = start[p];\
-    \ i < start[p+1]; i++){\n                if (dist_from_v1[es[i]] > dist_from_v1[p]+1){\n\
-    \                    dist_from_v1[es[i]] = dist_from_v1[p]+1;\n              \
-    \      que.push(es[i]);\n                }\n            }\n        }\n       \
-    \ int v2 = max_element(dist_from_v1.begin(),dist_from_v1.end()) - dist_from_v1.begin();\n\
-    \        return std::make_tuple(dist_from_v1[v2],v1,v2);\n    }\n    const auto\
-    \ operator[](int idx){ return std::ranges::subrange(es.begin()+start[idx],es.begin()+start[idx+1]);\
+    \ YES() : NO(); }\n\n} // namespace noya2\n#line 2 \"template/utils.hpp\"\n\n\
+    #line 6 \"template/utils.hpp\"\n\nnamespace noya2{\n\nunsigned long long inner_binary_gcd(unsigned\
+    \ long long a, unsigned long long b){\n    if (a == 0 || b == 0) return a + b;\n\
+    \    int n = __builtin_ctzll(a); a >>= n;\n    int m = __builtin_ctzll(b); b >>=\
+    \ m;\n    while (a != b) {\n        int mm = __builtin_ctzll(a - b);\n       \
+    \ bool f = a > b;\n        unsigned long long c = f ? a : b;\n        b = f ?\
+    \ b : a;\n        a = (c - b) >> mm;\n    }\n    return a << std::min(n, m);\n\
+    }\n\ntemplate<typename T> T gcd_fast(T a, T b){ return static_cast<T>(inner_binary_gcd(std::abs(a),std::abs(b)));\
+    \ }\n\nlong long sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long\
+    \ long x = sqrt(n);\n    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x\
+    \ > n) x--;\n    return x;\n}\n\ntemplate<typename T> T floor_div(const T n, const\
+    \ T d) {\n    assert(d != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 &&\
+    \ n % d != 0);\n}\n\ntemplate<typename T> T ceil_div(const T n, const T d) {\n\
+    \    assert(d != 0);\n    return n / d + static_cast<T>((n ^ d) >= 0 && n % d\
+    \ != 0);\n}\n\ntemplate<typename T> void uniq(std::vector<T> &v){\n    std::sort(v.begin(),v.end());\n\
+    \    v.erase(unique(v.begin(),v.end()),v.end());\n}\n\ntemplate <typename T, typename\
+    \ U> inline bool chmin(T &x, U y) { return (y < x) ? (x = y, true) : false; }\n\
+    \ntemplate <typename T, typename U> inline bool chmax(T &x, U y) { return (x <\
+    \ y) ? (x = y, true) : false; }\n\ntemplate<typename T> inline bool range(T l,\
+    \ T x, T r){ return l <= x && x < r; }\n\n} // namespace noya2\n#line 8 \"template/template.hpp\"\
+    \n\n#define rep(i,n) for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for\
+    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1);\
+    \ i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\nusing ll = long long;\n\
+    using ld = long double;\nusing uint = unsigned int;\nusing ull = unsigned long\
+    \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
+    using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
+    */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"tree/tree_query.hpp\"\n\n#line\
+    \ 9 \"tree/tree_query.hpp\"\n#include<ranges>\n\nstruct Tree {\n    Tree (int\
+    \ n_ = 0, int root_ = 0) : n(n_), root(root_), inner_edge_id(0), es(n-1), start(n+1,0){\n\
+    \        if (n == 1) build();\n    }\n    void add_edge(int u, int v){\n     \
+    \   es[inner_edge_id] = u, start[inner_edge_id] = v;\n        if (++inner_edge_id\
+    \ == n-1) build();\n    }\n    void input(int indexed = 1){\n        for (int\
+    \ i = 0; i < n-1; i++){\n            int u, v; std::cin >> u >> v;\n         \
+    \   u -= indexed, v -= indexed;\n            add_edge(u,v);\n        }\n    }\n\
+    \    void input_parents(int indexed = 1){\n        for (int i = 0; i < n-1; i++){\n\
+    \            int p; std::cin >> p;\n            p -= indexed;\n            add_edge(p,i+1);\n\
+    \        }\n    }\n    int degree(int v){\n        assert(0 <= v && v < n);\n\
+    \        return start[v+1] - start[v];\n    }\n    int parent(int v){\n      \
+    \  assert(0 <= v && v < n);\n        if (v == root) return -1;\n        return\
+    \ es[start[v]];\n    }\n    int subtree_size(int v){\n        assert(0 <= v &&\
+    \ v < n);\n        return sub[v];\n    }\n    int depth(int v){\n        assert(0\
+    \ <= v && v < n);\n        return dep[v];\n    }\n    int la(int v, int d){\n\
+    \        assert(0 <= v && v < n);\n        while (v != -1){\n            int u\
+    \ = nxt[v];\n            if (down[v] - d >= down[u]){\n                v = tour[down[v]\
+    \ - d];\n                break;\n            }\n            d -= down[v] - down[u]\
+    \ + 1;\n            v = parent(u);\n        }\n        return v;\n    }\n    int\
+    \ lca(int u, int v){\n        assert(0 <= v && v < n && 0 <= u && u < n);\n  \
+    \      while (nxt[u] != nxt[v]){\n            if (down[u] < down[v]) std::swap(u,v);\n\
+    \            u = es[start[nxt[u]]];\n        }\n        return dep[u] < dep[v]\
+    \ ? u : v;\n    }\n    int jump(int from, int to, int d){\n        int l = lca(from,to);\n\
+    \        if (d <= dep[from] - dep[l]){\n            return la(from,d);\n     \
+    \   }\n        d -= dep[from] - dep[l];\n        if (d <= dep[to] - dep[l]){\n\
+    \            return la(to,dep[to]-dep[l]-d);\n        }\n        return -1;\n\
+    \    }\n    int dist(int u, int v){ return dep[lca(u,v)]*(-2) + dep[u] + dep[v];\
+    \ }\n    std::vector<int> path(int from, int to){\n        int l = lca(from,to);\n\
+    \        const int sizf = dep[from]-dep[l], sizt = dep[to]-dep[l];\n        std::vector<int>\
+    \ pf = {from}, pt;\n        pf.reserve(sizf+1); pt.reserve(sizt);\n        for\
+    \ (int i = 0; i < sizf; i++){\n            from = parent(from);\n            pf.push_back(from);\n\
+    \        }\n        for (int i = 0; i < sizt; i++){\n            pt.push_back(to);\n\
+    \            to = parent(to);\n        }\n        pf.insert(pf.end(),pt.rbegin(),pt.rend());\n\
+    \        return pf;\n    }\n    // dist, v1, v2\n    std::tuple<int,int,int> diameter(){\n\
+    \        int v1 = std::max_element(dep.begin(),dep.end()) - dep.begin();\n   \
+    \     std::vector<int> dist_from_v1(n,std::numeric_limits<int>::max());\n    \
+    \    std::queue<int> que;\n        que.push(v1);\n        dist_from_v1[v1] = 0;\n\
+    \        while (!que.empty()){\n            int p = que.front(); que.pop();\n\
+    \            for (int i = start[p]; i < start[p+1]; i++){\n                if\
+    \ (dist_from_v1[es[i]] > dist_from_v1[p]+1){\n                    dist_from_v1[es[i]]\
+    \ = dist_from_v1[p]+1;\n                    que.push(es[i]);\n               \
+    \ }\n            }\n        }\n        int v2 = max_element(dist_from_v1.begin(),dist_from_v1.end())\
+    \ - dist_from_v1.begin();\n        return std::make_tuple(dist_from_v1[v2],v1,v2);\n\
+    \    }\n    const auto operator[](int idx){ return std::ranges::subrange(es.begin()+start[idx],es.begin()+start[idx+1]);\
     \ }\n  private:\n    void build(){\n        std::vector<int> nes(2*(n-1)), fs\
     \ = start;\n        std::fill(start.begin(),start.end(),0);\n        for (int\
     \ i = 0; i < n-1; i++) start[es[i]+1]++, start[fs[i]+1]++;\n        for (int i\
@@ -170,8 +170,8 @@ data:
   isVerificationFile: true
   path: test/tree/Jump_on_Tree_hld.test.cpp
   requiredBy: []
-  timestamp: '2023-09-22 14:25:09+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-07-01 23:39:10+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/tree/Jump_on_Tree_hld.test.cpp
 layout: document

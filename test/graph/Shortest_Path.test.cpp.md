@@ -54,56 +54,57 @@ data:
     ;\nconst string NUM = \"0123456789\";\n\nvoid yes(){ cout << \"Yes\\n\"; }\nvoid\
     \ no(){ cout << \"No\\n\"; }\nvoid YES(){ cout << \"YES\\n\"; }\nvoid NO(){ cout\
     \ << \"NO\\n\"; }\nvoid yn(bool t){ t ? yes() : no(); }\nvoid YN(bool t){ t ?\
-    \ YES() : NO(); }\n\n} // namespace noya2\n#line 1 \"template/utils.hpp\"\nnamespace\
-    \ noya2{\n\nunsigned long long inner_binary_gcd(unsigned long long a, unsigned\
-    \ long long b){\n    if (a == 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\
-    \ a >>= n;\n    int m = __builtin_ctzll(b); b >>= m;\n    while (a != b) {\n \
-    \       int mm = __builtin_ctzll(a - b);\n        bool f = a > b;\n        unsigned\
-    \ long long c = f ? a : b;\n        b = f ? b : a;\n        a = (c - b) >> mm;\n\
-    \    }\n    return a << min(n, m);\n}\n\ntemplate<typename T> T gcd_fast(T a,\
-    \ T b){ return static_cast<T>(inner_binary_gcd(abs(a),abs(b))); }\n\nlong long\
-    \ sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long long x = sqrt(n);\n\
-    \    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x > n) x--;\n    return\
-    \ x;\n}\n\ntemplate<typename T> T floor_div(const T n, const T d) {\n    assert(d\
-    \ != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\n\
-    template<typename T> T ceil_div(const T n, const T d) {\n    assert(d != 0);\n\
-    \    return n / d + static_cast<T>((n ^ d) >= 0 && n % d != 0);\n}\n\ntemplate<typename\
-    \ T> void uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n    v.erase(unique(v.begin(),v.end()),v.end());\n\
-    }\n\ntemplate <typename T, typename U> inline bool chmin(T &x, U y) { return (y\
-    \ < x) ? (x = y, true) : false; }\n\ntemplate <typename T, typename U> inline\
-    \ bool chmax(T &x, U y) { return (x < y) ? (x = y, true) : false; }\n\ntemplate<typename\
-    \ T> inline bool range(T l, T x, T r){ return l <= x && x < r; }\n\n} // namespace\
-    \ noya2\n#line 8 \"template/template.hpp\"\n\n#define rep(i,n) for (int i = 0;\
-    \ i < (int)(n); i++)\n#define repp(i,m,n) for (int i = (m); i < (int)(n); i++)\n\
-    #define reb(i,n) for (int i = (int)(n-1); i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\
-    \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
-    using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
-    using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"graph/Graph_core.hpp\"\
-    \n\n#line 4 \"graph/Graph_core.hpp\"\n\nnamespace noya2 {\n\nstruct naiveGraph\
-    \ { // undirected unweighted tree\n    naiveGraph (int _n = 0) : n(_n){\n    \
-    \    es0.resize(n);\n        es1.resize(n);\n        _vis.resize(n,0);\n    }\n\
-    \    void add_edge(int u, int v, bool undirect = true, int id = -1){\n       \
-    \ es0[u].emplace_back(v);\n        es1[u].emplace_back(v,id);\n        if (undirect){\n\
-    \            es0[v].emplace_back(u);\n            es1[v].emplace_back(u,id);\n\
-    \        }\n    }\n    void input(int m, int _indexed = 1, bool undirect = true){\n\
-    \        rep(i,m){\n            int u, v; in(u,v);\n            u -= _indexed;\n\
-    \            v -= _indexed;\n            add_edge(u,v,undirect,i);\n        }\n\
-    \    }\n    bool yet(int v){ return _vis[v] == 0; }\n    void visit(int v) { _vis[v]++;\
-    \ }\n    void reset(int v = -1){ \n        if (v == -1) fill(all(_vis),0);\n \
-    \       else _vis[v] = 0;\n    }\n    const vector<int>& operator[](int idx) const\
-    \ { return es0[idx]; }\n    const vector<pair<int,int>>& operator()(int idx) const\
-    \ {return es1[idx]; }\n  private:\n    int n;\n    vector<vector<int>> es0;\n\
-    \    vector<vector<pair<int,int>>> es1;\n    vector<int> _vis;\n};\n\nstruct usefulGraph\
-    \ { // directed weighted graph\n    usefulGraph (int _n = 0) : n(_n){\n      \
-    \  es.resize(n);\n        _vis.resize(n,0);\n    }\n    void add_edge(int u, int\
-    \ v, bool undirect = true, ll cost = 1){\n        es[u].emplace_back(v,cost);\n\
-    \        if (undirect){\n            es[v].emplace_back(u,cost);\n        }\n\
-    \    }\n    void input(int m, int _indexed = 1, bool undirect = true){\n     \
-    \   rep(i,m){\n            int u, v; in(u,v);\n            ll cost; in(cost);\n\
-    \            u -= _indexed;\n            v -= _indexed;\n            add_edge(u,v,undirect,cost);\n\
-    \        }\n    }\n    bool yet(int v){ return _vis[v] == 0; }\n    void visit(int\
-    \ v) { _vis[v]++; }\n    void reset(int v = -1){ \n        if (v == -1) fill(all(_vis),0);\n\
+    \ YES() : NO(); }\n\n} // namespace noya2\n#line 2 \"template/utils.hpp\"\n\n\
+    #line 6 \"template/utils.hpp\"\n\nnamespace noya2{\n\nunsigned long long inner_binary_gcd(unsigned\
+    \ long long a, unsigned long long b){\n    if (a == 0 || b == 0) return a + b;\n\
+    \    int n = __builtin_ctzll(a); a >>= n;\n    int m = __builtin_ctzll(b); b >>=\
+    \ m;\n    while (a != b) {\n        int mm = __builtin_ctzll(a - b);\n       \
+    \ bool f = a > b;\n        unsigned long long c = f ? a : b;\n        b = f ?\
+    \ b : a;\n        a = (c - b) >> mm;\n    }\n    return a << std::min(n, m);\n\
+    }\n\ntemplate<typename T> T gcd_fast(T a, T b){ return static_cast<T>(inner_binary_gcd(std::abs(a),std::abs(b)));\
+    \ }\n\nlong long sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long\
+    \ long x = sqrt(n);\n    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x\
+    \ > n) x--;\n    return x;\n}\n\ntemplate<typename T> T floor_div(const T n, const\
+    \ T d) {\n    assert(d != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 &&\
+    \ n % d != 0);\n}\n\ntemplate<typename T> T ceil_div(const T n, const T d) {\n\
+    \    assert(d != 0);\n    return n / d + static_cast<T>((n ^ d) >= 0 && n % d\
+    \ != 0);\n}\n\ntemplate<typename T> void uniq(std::vector<T> &v){\n    std::sort(v.begin(),v.end());\n\
+    \    v.erase(unique(v.begin(),v.end()),v.end());\n}\n\ntemplate <typename T, typename\
+    \ U> inline bool chmin(T &x, U y) { return (y < x) ? (x = y, true) : false; }\n\
+    \ntemplate <typename T, typename U> inline bool chmax(T &x, U y) { return (x <\
+    \ y) ? (x = y, true) : false; }\n\ntemplate<typename T> inline bool range(T l,\
+    \ T x, T r){ return l <= x && x < r; }\n\n} // namespace noya2\n#line 8 \"template/template.hpp\"\
+    \n\n#define rep(i,n) for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for\
+    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1);\
+    \ i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\nusing ll = long long;\n\
+    using ld = long double;\nusing uint = unsigned int;\nusing ull = unsigned long\
+    \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
+    using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
+    */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"graph/Graph_core.hpp\"\n\n#line\
+    \ 4 \"graph/Graph_core.hpp\"\n\nnamespace noya2 {\n\nstruct naiveGraph { // undirected\
+    \ unweighted tree\n    naiveGraph (int _n = 0) : n(_n){\n        es0.resize(n);\n\
+    \        es1.resize(n);\n        _vis.resize(n,0);\n    }\n    void add_edge(int\
+    \ u, int v, bool undirect = true, int id = -1){\n        es0[u].emplace_back(v);\n\
+    \        es1[u].emplace_back(v,id);\n        if (undirect){\n            es0[v].emplace_back(u);\n\
+    \            es1[v].emplace_back(u,id);\n        }\n    }\n    void input(int\
+    \ m, int _indexed = 1, bool undirect = true){\n        rep(i,m){\n           \
+    \ int u, v; in(u,v);\n            u -= _indexed;\n            v -= _indexed;\n\
+    \            add_edge(u,v,undirect,i);\n        }\n    }\n    bool yet(int v){\
+    \ return _vis[v] == 0; }\n    void visit(int v) { _vis[v]++; }\n    void reset(int\
+    \ v = -1){ \n        if (v == -1) fill(all(_vis),0);\n        else _vis[v] = 0;\n\
+    \    }\n    const vector<int>& operator[](int idx) const { return es0[idx]; }\n\
+    \    const vector<pair<int,int>>& operator()(int idx) const {return es1[idx];\
+    \ }\n  private:\n    int n;\n    vector<vector<int>> es0;\n    vector<vector<pair<int,int>>>\
+    \ es1;\n    vector<int> _vis;\n};\n\nstruct usefulGraph { // directed weighted\
+    \ graph\n    usefulGraph (int _n = 0) : n(_n){\n        es.resize(n);\n      \
+    \  _vis.resize(n,0);\n    }\n    void add_edge(int u, int v, bool undirect = true,\
+    \ ll cost = 1){\n        es[u].emplace_back(v,cost);\n        if (undirect){\n\
+    \            es[v].emplace_back(u,cost);\n        }\n    }\n    void input(int\
+    \ m, int _indexed = 1, bool undirect = true){\n        rep(i,m){\n           \
+    \ int u, v; in(u,v);\n            ll cost; in(cost);\n            u -= _indexed;\n\
+    \            v -= _indexed;\n            add_edge(u,v,undirect,cost);\n      \
+    \  }\n    }\n    bool yet(int v){ return _vis[v] == 0; }\n    void visit(int v)\
+    \ { _vis[v]++; }\n    void reset(int v = -1){ \n        if (v == -1) fill(all(_vis),0);\n\
     \        else _vis[v] = 0;\n    }\n    vector<ll> dijkstra(int s){ // all edge\
     \ weight >= 0\n        vector<ll> dist(n,linf);\n        dist[s] = 0LL;\n    \
     \    priority_queue<pli,vector<pli>,greater<pli>> pque;\n        pque.push(pli(0,s));\n\
@@ -167,7 +168,7 @@ data:
   isVerificationFile: true
   path: test/graph/Shortest_Path.test.cpp
   requiredBy: []
-  timestamp: '2023-08-26 17:35:34+09:00'
+  timestamp: '2024-07-01 23:39:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Shortest_Path.test.cpp

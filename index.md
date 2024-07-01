@@ -18,7 +18,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/dynamic_segment_tree.hpp
       title: data_structure/dynamic_segment_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/fenwick_tree.hpp
       title: data_structure/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -45,7 +45,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/rollback_dsu.hpp
       title: data_structure/rollback_dsu.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -133,7 +133,7 @@ data:
     - icon: ':x:'
       path: graph/graph_query.hpp
       title: graph/graph_query.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/scc.hpp
       title: graph/scc.hpp
     - icon: ':x:'
@@ -141,7 +141,7 @@ data:
       title: graph/unweighted_type.hpp
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/binomial.hpp
       title: math/binomial.hpp
     - icon: ':warning:'
@@ -150,28 +150,28 @@ data:
     - icon: ':warning:'
       path: math/factorize.hpp
       title: math/factorize.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/floor_sum.hpp
       title: math/floor_sum.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/gcd_convolution.hpp
       title: math/gcd_convolution.hpp
     - icon: ':warning:'
       path: math/lagrange_interpolation.hpp
       title: Lagrange interpolation
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/lcm_convolution.hpp
       title: math/lcm_convolution.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/matrix.hpp
       title: math/matrix.hpp
     - icon: ':warning:'
       path: math/matrix_square.hpp
       title: math/matrix_square.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/prime.hpp
       title: math/prime.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/sieve.hpp
       title: math/sieve.hpp
     - icon: ':warning:'
@@ -194,7 +194,7 @@ data:
     - icon: ':warning:'
       path: misc/mex.hpp
       title: misc/mex.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: misc/mo_algorithm.hpp
       title: misc/mo_algorithm.hpp
     - icon: ':heavy_check_mark:'
@@ -247,30 +247,30 @@ data:
       title: template/utils.hpp
   - name: tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/Mo_on_Tree.hpp
       title: Mo on Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/RerootingDP.hpp
       title: Rerooting DP
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/heavy_light_decomposition.hpp
       title: "\u5168\u90E8\u8F09\u305B\u6728"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/simple_tree.hpp
       title: tree/simple_tree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/tree_query.hpp
       title: tree/tree_query.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/tree_query_weighted.hpp
       title: tree/tree_query_weighted.hpp
   - name: utility
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':warning:'
@@ -386,53 +386,53 @@ data:
     - icon: ':x:'
       path: test/graph/Shortest_Path2.test.cpp
       title: test/graph/Shortest_Path2.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/graph/Strongly_Connected_Components.test.cpp
       title: test/graph/Strongly_Connected_Components.test.cpp
   - name: test/math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/math/Determinant_of_Matrix.test.cpp
       title: test/math/Determinant_of_Matrix.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/math/Gcd_Convolution.test.cpp
       title: test/math/Gcd_Convolution.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/math/Lcm_Convolution.test.cpp
       title: test/math/Lcm_Convolution.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/math/Sum_of_Floor_of_Linear.test.cpp
       title: test/math/Sum_of_Floor_of_Linear.test.cpp
   - name: test/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Jump_on_Tree.test.cpp
       title: test/tree/Jump_on_Tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Jump_on_Tree_hld.test.cpp
       title: test/tree/Jump_on_Tree_hld.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Lowest_Common_Ancestor.test.cpp
       title: test/tree/Lowest_Common_Ancestor.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Rerooting_DP.test.cpp
       title: test/tree/Rerooting_DP.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Tree_Diameter.test.cpp
       title: test/tree/Tree_Diameter.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Tree_Diameter_hld.test.cpp
       title: test/tree/Tree_Diameter_hld.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Vertex_Add_Path_Sum.test.cpp
       title: test/tree/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/aoj_0489.test.cpp
       title: test/tree/aoj_0489.test.cpp
 layout: toppage

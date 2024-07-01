@@ -45,21 +45,22 @@ data:
     \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
     \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
     \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
-    \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n#line 1 \"template/utils.hpp\"\
-    \nnamespace noya2{\n\nunsigned long long inner_binary_gcd(unsigned long long a,\
+    \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n#line 2 \"template/utils.hpp\"\
+    \n\n#include <cmath>\n#line 5 \"template/utils.hpp\"\n#include <algorithm>\n\n\
+    namespace noya2{\n\nunsigned long long inner_binary_gcd(unsigned long long a,\
     \ unsigned long long b){\n    if (a == 0 || b == 0) return a + b;\n    int n =\
     \ __builtin_ctzll(a); a >>= n;\n    int m = __builtin_ctzll(b); b >>= m;\n   \
     \ while (a != b) {\n        int mm = __builtin_ctzll(a - b);\n        bool f =\
     \ a > b;\n        unsigned long long c = f ? a : b;\n        b = f ? b : a;\n\
-    \        a = (c - b) >> mm;\n    }\n    return a << min(n, m);\n}\n\ntemplate<typename\
-    \ T> T gcd_fast(T a, T b){ return static_cast<T>(inner_binary_gcd(abs(a),abs(b)));\
+    \        a = (c - b) >> mm;\n    }\n    return a << std::min(n, m);\n}\n\ntemplate<typename\
+    \ T> T gcd_fast(T a, T b){ return static_cast<T>(inner_binary_gcd(std::abs(a),std::abs(b)));\
     \ }\n\nlong long sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long\
     \ long x = sqrt(n);\n    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x\
     \ > n) x--;\n    return x;\n}\n\ntemplate<typename T> T floor_div(const T n, const\
     \ T d) {\n    assert(d != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 &&\
     \ n % d != 0);\n}\n\ntemplate<typename T> T ceil_div(const T n, const T d) {\n\
     \    assert(d != 0);\n    return n / d + static_cast<T>((n ^ d) >= 0 && n % d\
-    \ != 0);\n}\n\ntemplate<typename T> void uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n\
+    \ != 0);\n}\n\ntemplate<typename T> void uniq(std::vector<T> &v){\n    std::sort(v.begin(),v.end());\n\
     \    v.erase(unique(v.begin(),v.end()),v.end());\n}\n\ntemplate <typename T, typename\
     \ U> inline bool chmin(T &x, U y) { return (y < x) ? (x = y, true) : false; }\n\
     \ntemplate <typename T, typename U> inline bool chmax(T &x, U y) { return (x <\
@@ -67,8 +68,8 @@ data:
     \ T x, T r){ return l <= x && x < r; }\n\n} // namespace noya2\n#line 2 \"graph/unweighted_type.hpp\"\
     \n\nnamespace noya2 {\n\nstruct unweighted {};\n\n} // namespace noya2\n#line\
     \ 6 \"graph/graph_query.hpp\"\n\n#include <numeric>\n#line 9 \"graph/graph_query.hpp\"\
-    \n#include <queue>\n#include <deque>\n#include <algorithm>\n\nnamespace noya2\
-    \ {\n\ntemplate<typename Cost>\nstruct graph {\n    int n;\n    internal::csr<std::pair<int,Cost>>\
+    \n#include <queue>\n#include <deque>\n#line 12 \"graph/graph_query.hpp\"\n\nnamespace\
+    \ noya2 {\n\ntemplate<typename Cost>\nstruct graph {\n    int n;\n    internal::csr<std::pair<int,Cost>>\
     \ g;\n    Cost dist_inf = std::numeric_limits<Cost>::max() / 2;\n    graph (int\
     \ _n = 0) : n(_n), g(_n) {}\n    graph (int _n, int _m) : n(_n), g(_n,_m) {}\n\
     \    // \u6709\u5411\u8FBA\u3092\u8FFD\u52A0 (\u7121\u5411\u8FBA\u3067\u306F\u306A\
@@ -288,7 +289,7 @@ data:
   isVerificationFile: false
   path: graph/graph_query.hpp
   requiredBy: []
-  timestamp: '2024-07-01 23:29:22+09:00'
+  timestamp: '2024-07-01 23:39:10+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/graph/Shortest_Path2.test.cpp

@@ -8,10 +8,10 @@ data:
   - icon: ':x:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/heavy_light_decomposition.hpp
     title: "\u5168\u90E8\u8F09\u305B\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
   _extendedVerifiedWith:
@@ -21,10 +21,10 @@ data:
   - icon: ':x:'
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
   _isVerificationFailed: true

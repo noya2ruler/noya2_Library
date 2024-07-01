@@ -7,13 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps998244353/ntt998244353.hpp
     title: fps998244353/ntt998244353.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []

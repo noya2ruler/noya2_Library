@@ -23,7 +23,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/dynamic_segment_tree.hpp
     title: data_structure/dynamic_segment_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -89,19 +89,19 @@ data:
   - icon: ':warning:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/gcd_convolution.hpp
     title: math/gcd_convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/lcm_convolution.hpp
     title: math/lcm_convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/matrix.hpp
     title: math/matrix.hpp
   - icon: ':warning:'
     path: math/matrix_square.hpp
     title: math/matrix_square.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/sieve.hpp
     title: math/sieve.hpp
   - icon: ':warning:'
@@ -116,7 +116,7 @@ data:
   - icon: ':warning:'
     path: misc/mex.hpp
     title: misc/mex.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
   - icon: ':warning:'
@@ -128,22 +128,22 @@ data:
   - icon: ':warning:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/Mo_on_Tree.hpp
     title: Mo on Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/RerootingDP.hpp
     title: Rerooting DP
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/Tree_core.hpp
     title: tree/Tree_core.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/heavy_light_decomposition.hpp
     title: "\u5168\u90E8\u8F09\u305B\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/tree_query_weighted.hpp
     title: tree/tree_query_weighted.hpp
   - icon: ':warning:'
@@ -246,49 +246,49 @@ data:
   - icon: ':x:'
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Strongly_Connected_Components.test.cpp
     title: test/graph/Strongly_Connected_Components.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Gcd_Convolution.test.cpp
     title: test/math/Gcd_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Lcm_Convolution.test.cpp
     title: test/math/Lcm_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Sum_of_Floor_of_Linear.test.cpp
     title: test/math/Sum_of_Floor_of_Linear.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Jump_on_Tree_hld.test.cpp
     title: test/tree/Jump_on_Tree_hld.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Lowest_Common_Ancestor.test.cpp
     title: test/tree/Lowest_Common_Ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Rerooting_DP.test.cpp
     title: test/tree/Rerooting_DP.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Tree_Diameter_hld.test.cpp
     title: test/tree/Tree_Diameter_hld.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
   _isVerificationFailed: true
@@ -322,32 +322,33 @@ data:
     ;\nconst string NUM = \"0123456789\";\n\nvoid yes(){ cout << \"Yes\\n\"; }\nvoid\
     \ no(){ cout << \"No\\n\"; }\nvoid YES(){ cout << \"YES\\n\"; }\nvoid NO(){ cout\
     \ << \"NO\\n\"; }\nvoid yn(bool t){ t ? yes() : no(); }\nvoid YN(bool t){ t ?\
-    \ YES() : NO(); }\n\n} // namespace noya2\n#line 1 \"template/utils.hpp\"\nnamespace\
-    \ noya2{\n\nunsigned long long inner_binary_gcd(unsigned long long a, unsigned\
-    \ long long b){\n    if (a == 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a);\
-    \ a >>= n;\n    int m = __builtin_ctzll(b); b >>= m;\n    while (a != b) {\n \
-    \       int mm = __builtin_ctzll(a - b);\n        bool f = a > b;\n        unsigned\
-    \ long long c = f ? a : b;\n        b = f ? b : a;\n        a = (c - b) >> mm;\n\
-    \    }\n    return a << min(n, m);\n}\n\ntemplate<typename T> T gcd_fast(T a,\
-    \ T b){ return static_cast<T>(inner_binary_gcd(abs(a),abs(b))); }\n\nlong long\
-    \ sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long long x = sqrt(n);\n\
-    \    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x > n) x--;\n    return\
-    \ x;\n}\n\ntemplate<typename T> T floor_div(const T n, const T d) {\n    assert(d\
-    \ != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 && n % d != 0);\n}\n\n\
-    template<typename T> T ceil_div(const T n, const T d) {\n    assert(d != 0);\n\
-    \    return n / d + static_cast<T>((n ^ d) >= 0 && n % d != 0);\n}\n\ntemplate<typename\
-    \ T> void uniq(vector<T> &v){\n    sort(v.begin(),v.end());\n    v.erase(unique(v.begin(),v.end()),v.end());\n\
-    }\n\ntemplate <typename T, typename U> inline bool chmin(T &x, U y) { return (y\
-    \ < x) ? (x = y, true) : false; }\n\ntemplate <typename T, typename U> inline\
-    \ bool chmax(T &x, U y) { return (x < y) ? (x = y, true) : false; }\n\ntemplate<typename\
-    \ T> inline bool range(T l, T x, T r){ return l <= x && x < r; }\n\n} // namespace\
-    \ noya2\n#line 8 \"template/template.hpp\"\n\n#define rep(i,n) for (int i = 0;\
-    \ i < (int)(n); i++)\n#define repp(i,m,n) for (int i = (m); i < (int)(n); i++)\n\
-    #define reb(i,n) for (int i = (int)(n-1); i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\
-    \nusing ll = long long;\nusing ld = long double;\nusing uint = unsigned int;\n\
-    using ull = unsigned long long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\n\
-    using pil = pair<int,ll>;\nusing pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000\
-    ~ (. _________ . /)\u3000*/\n\n}\n\nusing namespace noya2;\n\n\n"
+    \ YES() : NO(); }\n\n} // namespace noya2\n#line 2 \"template/utils.hpp\"\n\n\
+    #line 6 \"template/utils.hpp\"\n\nnamespace noya2{\n\nunsigned long long inner_binary_gcd(unsigned\
+    \ long long a, unsigned long long b){\n    if (a == 0 || b == 0) return a + b;\n\
+    \    int n = __builtin_ctzll(a); a >>= n;\n    int m = __builtin_ctzll(b); b >>=\
+    \ m;\n    while (a != b) {\n        int mm = __builtin_ctzll(a - b);\n       \
+    \ bool f = a > b;\n        unsigned long long c = f ? a : b;\n        b = f ?\
+    \ b : a;\n        a = (c - b) >> mm;\n    }\n    return a << std::min(n, m);\n\
+    }\n\ntemplate<typename T> T gcd_fast(T a, T b){ return static_cast<T>(inner_binary_gcd(std::abs(a),std::abs(b)));\
+    \ }\n\nlong long sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long\
+    \ long x = sqrt(n);\n    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x\
+    \ > n) x--;\n    return x;\n}\n\ntemplate<typename T> T floor_div(const T n, const\
+    \ T d) {\n    assert(d != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 &&\
+    \ n % d != 0);\n}\n\ntemplate<typename T> T ceil_div(const T n, const T d) {\n\
+    \    assert(d != 0);\n    return n / d + static_cast<T>((n ^ d) >= 0 && n % d\
+    \ != 0);\n}\n\ntemplate<typename T> void uniq(std::vector<T> &v){\n    std::sort(v.begin(),v.end());\n\
+    \    v.erase(unique(v.begin(),v.end()),v.end());\n}\n\ntemplate <typename T, typename\
+    \ U> inline bool chmin(T &x, U y) { return (y < x) ? (x = y, true) : false; }\n\
+    \ntemplate <typename T, typename U> inline bool chmax(T &x, U y) { return (x <\
+    \ y) ? (x = y, true) : false; }\n\ntemplate<typename T> inline bool range(T l,\
+    \ T x, T r){ return l <= x && x < r; }\n\n} // namespace noya2\n#line 8 \"template/template.hpp\"\
+    \n\n#define rep(i,n) for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for\
+    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1);\
+    \ i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\nusing ll = long long;\n\
+    using ld = long double;\nusing uint = unsigned int;\nusing ull = unsigned long\
+    \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
+    using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
+    */\n\n}\n\nusing namespace noya2;\n\n\n"
   code: "#pragma once\nusing namespace std;\n\n#include<bits/stdc++.h>\n#include\"\
     inout_old.hpp\"\n#include\"const.hpp\"\n#include\"utils.hpp\"\n\n#define rep(i,n)\
     \ for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for (int i = (m); i\
@@ -410,7 +411,7 @@ data:
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp
   - string/rolling_hash.hpp
-  timestamp: '2023-08-26 17:35:34+09:00'
+  timestamp: '2024-07-01 23:39:10+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/aoj_dsl_1_b.test.cpp
