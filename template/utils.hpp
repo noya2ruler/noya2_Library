@@ -1,3 +1,9 @@
+#pragma once
+
+#include <cmath>
+#include <vector>
+#include <algorithm>
+
 namespace noya2{
 
 unsigned long long inner_binary_gcd(unsigned long long a, unsigned long long b){
@@ -11,10 +17,10 @@ unsigned long long inner_binary_gcd(unsigned long long a, unsigned long long b){
         b = f ? b : a;
         a = (c - b) >> mm;
     }
-    return a << min(n, m);
+    return a << std::min(n, m);
 }
 
-template<typename T> T gcd_fast(T a, T b){ return static_cast<T>(inner_binary_gcd(abs(a),abs(b))); }
+template<typename T> T gcd_fast(T a, T b){ return static_cast<T>(inner_binary_gcd(std::abs(a),std::abs(b))); }
 
 long long sqrt_fast(long long n) {
     if (n <= 0) return 0;
@@ -34,8 +40,8 @@ template<typename T> T ceil_div(const T n, const T d) {
     return n / d + static_cast<T>((n ^ d) >= 0 && n % d != 0);
 }
 
-template<typename T> void uniq(vector<T> &v){
-    sort(v.begin(),v.end());
+template<typename T> void uniq(std::vector<T> &v){
+    std::sort(v.begin(),v.end());
     v.erase(unique(v.begin(),v.end()),v.end());
 }
 
