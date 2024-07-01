@@ -77,9 +77,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/Graph_core.hpp
     title: graph/Graph_core.hpp
-  - icon: ':heavy_check_mark:'
-    path: graph/graph_query.hpp
-    title: graph/graph_query.hpp
   - icon: ':warning:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
@@ -122,7 +119,7 @@ data:
   - icon: ':warning:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
   - icon: ':heavy_check_mark:'
@@ -240,7 +237,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path.test.cpp
     title: test/graph/Shortest_Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
   - icon: ':heavy_check_mark:'
@@ -288,9 +285,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate\
@@ -374,13 +371,12 @@ data:
   - fps/ntt.hpp
   - fps/multipoint_evaluation.hpp
   - graph/Graph_core.hpp
-  - graph/graph_query.hpp
   - template/template.hpp
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-08-26 05:21:53+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/aoj_dsl_1_b.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp

@@ -77,7 +77,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/Graph_core.hpp
     title: graph/Graph_core.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
   - icon: ':warning:'
@@ -122,7 +122,7 @@ data:
   - icon: ':warning:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
   - icon: ':heavy_check_mark:'
@@ -240,7 +240,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path.test.cpp
     title: test/graph/Shortest_Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: test/graph/Shortest_Path2.test.cpp
+    title: test/graph/Shortest_Path2.test.cpp
+  - icon: ':x:'
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
   - icon: ':heavy_check_mark:'
@@ -288,9 +291,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/utils.hpp\"\nnamespace noya2{\n\nunsigned long\
@@ -385,7 +388,7 @@ data:
   - geometry/partition_by_circle.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-08-04 02:45:48+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/aoj_dsl_1_b.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
@@ -424,6 +427,7 @@ data:
   - test/fps/convolution.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
+  - test/graph/Shortest_Path2.test.cpp
   - test/graph/Shortest_Path2.test.cpp
   - test/graph/Shortest_Path.test.cpp
   - test/graph/Strongly_Connected_Components.test.cpp

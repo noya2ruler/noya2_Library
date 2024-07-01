@@ -9,7 +9,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/csr.hpp
       title: data_structure/csr.hpp
     - icon: ':heavy_check_mark:'
@@ -130,13 +130,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/Graph_core.hpp
       title: graph/Graph_core.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/graph_query.hpp
       title: graph/graph_query.hpp
     - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: graph/scc.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: graph/unweighted_type.hpp
       title: graph/unweighted_type.hpp
   - name: math
@@ -230,19 +230,19 @@ data:
       title: string/trie.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/const.hpp
       title: template/const.hpp
     - icon: ':warning:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/inout_old.hpp
       title: template/inout_old.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
@@ -383,7 +383,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Shortest_Path.test.cpp
       title: test/graph/Shortest_Path.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/graph/Shortest_Path2.test.cpp
       title: test/graph/Shortest_Path2.test.cpp
     - icon: ':heavy_check_mark:'
