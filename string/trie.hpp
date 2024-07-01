@@ -36,12 +36,10 @@ struct trie {
     void insert(const std::string &s){
         int cur = 0;
         for (const char c : s){
-            int a = c - 'a';
-            // assert(0 <= a && a < sigma);
-            if (nodes[cur][a] == -1){
-                nodes[cur][a] = add_leaf(cur);
+            if (nodes[cur][c] == -1){
+                nodes[cur][c] = add_leaf(cur);
             }
-            cur = nodes[cur][a];
+            cur = nodes[cur][c];
         }
         nodes[cur].exist += 1;
         while (cur != -1){
@@ -52,13 +50,11 @@ struct trie {
     void erase(const std::string &s){
         int cur = 0;
         for (const char c : s){
-            int a = c - 'a';
-            // assert(0 <= a && a < sigma);
-            if (nodes[cur][a] == -1){
+            if (nodes[cur][c] == -1){
                 // not found
                 return ;
             }
-            cur = nodes[cur][a];
+            cur = nodes[cur][c];
         }
         nodes[cur].exist -= 1;
         while (cur != -1){
@@ -77,13 +73,11 @@ struct trie {
     int find(const std::string &s){
         int cur = 0;
         for (const char c : s){
-            int a = c - 'a';
-            // assert(0 <= a && a < sigma);
-            if (nodes[cur][a] == -1){
+            if (nodes[cur][c] == -1){
                 // not found
                 return -1;
             }
-            cur = nodes[cur][a];
+            cur = nodes[cur][c];
         }
         return cur;
     }
