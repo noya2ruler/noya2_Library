@@ -136,6 +136,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: graph/scc.hpp
+    - icon: ':warning:'
+      path: graph/unweighted_type.hpp
+      title: graph/unweighted_type.hpp
   - name: math
     pages:
     - icon: ':heavy_check_mark:'

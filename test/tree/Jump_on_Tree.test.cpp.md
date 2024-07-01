@@ -88,24 +88,24 @@ data:
     \n\n#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#line 2 \"tree/simple_tree.hpp\"\
     \n\n#line 2 \"data_structure/csr.hpp\"\n\n#line 4 \"data_structure/csr.hpp\"\n\
     #include<ranges>\n#line 7 \"data_structure/csr.hpp\"\n\nnamespace noya2::internal\
-    \ {\n\ntemplate<class E>\nstruct csr final {\n    csr () {}\n    csr (int _n)\
-    \ : n(_n) {}\n    csr (int _n, int m) : n(_n){\n        start.reserve(m);\n  \
-    \      elist.reserve(m);\n    }\n    // ACL style constructor (do not have to\
-    \ call build)\n    csr (int _n, const std::vector<std::pair<int,E>> &idx_elem)\
-    \ : n(_n), start(_n + 2), elist(idx_elem.size()) {\n        for (auto &[i, e]\
-    \ : idx_elem){\n            start[i + 2]++;\n        }\n        for (int i = 1;\
-    \ i < n; i++){\n            start[i + 2] += start[i + 1];\n        }\n       \
-    \ for (auto &[i, e] : idx_elem){\n            elist[start[i + 1]++] = e;\n   \
-    \     }\n        prepared = true;\n    }\n    int add(int idx, E elem){\n    \
-    \    int eid = start.size();\n        start.emplace_back(idx);\n        elist.emplace_back(elem);\n\
-    \        return eid;\n    }\n    void build(){\n        if (prepared) return ;\n\
-    \        int m = start.size();\n        std::vector<E> nelist(m);\n        std::vector<int>\
-    \ nstart(n + 2, 0);\n        for (int i = 0; i < m; i++){\n            nstart[start[i]\
-    \ + 2]++;\n        }\n        for (int i = 1; i < n; i++){\n            nstart[i\
-    \ + 2] += nstart[i + 1];\n        }\n        for (int i = 0; i < m; i++){\n  \
-    \          nelist[nstart[start[i] + 1]++] = elist[i];\n        }\n        swap(elist,nelist);\n\
-    \        swap(start,nstart);\n        prepared = true;\n    }\n    const auto\
-    \ operator[](int idx) const {\n        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);\n\
+    \ {\n\ntemplate<class E>\nstruct csr {\n    csr () {}\n    csr (int _n) : n(_n)\
+    \ {}\n    csr (int _n, int m) : n(_n){\n        start.reserve(m);\n        elist.reserve(m);\n\
+    \    }\n    // ACL style constructor (do not have to call build)\n    csr (int\
+    \ _n, const std::vector<std::pair<int,E>> &idx_elem) : n(_n), start(_n + 2), elist(idx_elem.size())\
+    \ {\n        for (auto &[i, e] : idx_elem){\n            start[i + 2]++;\n   \
+    \     }\n        for (int i = 1; i < n; i++){\n            start[i + 2] += start[i\
+    \ + 1];\n        }\n        for (auto &[i, e] : idx_elem){\n            elist[start[i\
+    \ + 1]++] = e;\n        }\n        prepared = true;\n    }\n    int add(int idx,\
+    \ E elem){\n        int eid = start.size();\n        start.emplace_back(idx);\n\
+    \        elist.emplace_back(elem);\n        return eid;\n    }\n    void build(){\n\
+    \        if (prepared) return ;\n        int m = start.size();\n        std::vector<E>\
+    \ nelist(m);\n        std::vector<int> nstart(n + 2, 0);\n        for (int i =\
+    \ 0; i < m; i++){\n            nstart[start[i] + 2]++;\n        }\n        for\
+    \ (int i = 1; i < n; i++){\n            nstart[i + 2] += nstart[i + 1];\n    \
+    \    }\n        for (int i = 0; i < m; i++){\n            nelist[nstart[start[i]\
+    \ + 1]++] = elist[i];\n        }\n        swap(elist,nelist);\n        swap(start,nstart);\n\
+    \        prepared = true;\n    }\n    const auto operator[](int idx) const {\n\
+    \        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);\n\
     \    }\n    auto operator[](int idx){\n        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);\n\
     \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
     \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\

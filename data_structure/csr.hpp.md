@@ -34,10 +34,10 @@ data:
     links: []
   bundledCode: "#line 2 \"data_structure/csr.hpp\"\n\n#include<vector>\n#include<ranges>\n\
     #include<cassert>\n#include<utility>\n\nnamespace noya2::internal {\n\ntemplate<class\
-    \ E>\nstruct csr final {\n    csr () {}\n    csr (int _n) : n(_n) {}\n    csr\
-    \ (int _n, int m) : n(_n){\n        start.reserve(m);\n        elist.reserve(m);\n\
-    \    }\n    // ACL style constructor (do not have to call build)\n    csr (int\
-    \ _n, const std::vector<std::pair<int,E>> &idx_elem) : n(_n), start(_n + 2), elist(idx_elem.size())\
+    \ E>\nstruct csr {\n    csr () {}\n    csr (int _n) : n(_n) {}\n    csr (int _n,\
+    \ int m) : n(_n){\n        start.reserve(m);\n        elist.reserve(m);\n    }\n\
+    \    // ACL style constructor (do not have to call build)\n    csr (int _n, const\
+    \ std::vector<std::pair<int,E>> &idx_elem) : n(_n), start(_n + 2), elist(idx_elem.size())\
     \ {\n        for (auto &[i, e] : idx_elem){\n            start[i + 2]++;\n   \
     \     }\n        for (int i = 1; i < n; i++){\n            start[i + 2] += start[i\
     \ + 1];\n        }\n        for (auto &[i, e] : idx_elem){\n            elist[start[i\
@@ -59,16 +59,16 @@ data:
     \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
     \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n"
   code: "#pragma once\n\n#include<vector>\n#include<ranges>\n#include<cassert>\n#include<utility>\n\
-    \nnamespace noya2::internal {\n\ntemplate<class E>\nstruct csr final {\n    csr\
-    \ () {}\n    csr (int _n) : n(_n) {}\n    csr (int _n, int m) : n(_n){\n     \
-    \   start.reserve(m);\n        elist.reserve(m);\n    }\n    // ACL style constructor\
-    \ (do not have to call build)\n    csr (int _n, const std::vector<std::pair<int,E>>\
-    \ &idx_elem) : n(_n), start(_n + 2), elist(idx_elem.size()) {\n        for (auto\
-    \ &[i, e] : idx_elem){\n            start[i + 2]++;\n        }\n        for (int\
-    \ i = 1; i < n; i++){\n            start[i + 2] += start[i + 1];\n        }\n\
-    \        for (auto &[i, e] : idx_elem){\n            elist[start[i + 1]++] = e;\n\
-    \        }\n        prepared = true;\n    }\n    int add(int idx, E elem){\n \
-    \       int eid = start.size();\n        start.emplace_back(idx);\n        elist.emplace_back(elem);\n\
+    \nnamespace noya2::internal {\n\ntemplate<class E>\nstruct csr {\n    csr () {}\n\
+    \    csr (int _n) : n(_n) {}\n    csr (int _n, int m) : n(_n){\n        start.reserve(m);\n\
+    \        elist.reserve(m);\n    }\n    // ACL style constructor (do not have to\
+    \ call build)\n    csr (int _n, const std::vector<std::pair<int,E>> &idx_elem)\
+    \ : n(_n), start(_n + 2), elist(idx_elem.size()) {\n        for (auto &[i, e]\
+    \ : idx_elem){\n            start[i + 2]++;\n        }\n        for (int i = 1;\
+    \ i < n; i++){\n            start[i + 2] += start[i + 1];\n        }\n       \
+    \ for (auto &[i, e] : idx_elem){\n            elist[start[i + 1]++] = e;\n   \
+    \     }\n        prepared = true;\n    }\n    int add(int idx, E elem){\n    \
+    \    int eid = start.size();\n        start.emplace_back(idx);\n        elist.emplace_back(elem);\n\
     \        return eid;\n    }\n    void build(){\n        if (prepared) return ;\n\
     \        int m = start.size();\n        std::vector<E> nelist(m);\n        std::vector<int>\
     \ nstart(n + 2, 0);\n        for (int i = 0; i < m; i++){\n            nstart[start[i]\
@@ -91,7 +91,7 @@ data:
   - tree/heavy_light_decomposition.hpp
   - tree/simple_tree.hpp
   - graph/graph_query.hpp
-  timestamp: '2024-02-25 20:48:17+09:00'
+  timestamp: '2024-07-01 23:28:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Rectangle_Sum.test.cpp
