@@ -11,6 +11,7 @@ int main(){
         ll c; in(c);
         g.add_edge(u,v,c);
     }
+    g.build();
     auto dist = g.dijkstra(s);
     if (dist[t] == g.dist_inf){
         out(-1);
