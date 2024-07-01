@@ -8,7 +8,7 @@
 namespace noya2::internal {
 
 template<class E>
-struct csr final {
+struct csr {
     csr () {}
     csr (int _n) : n(_n) {}
     csr (int _n, int m) : n(_n){
