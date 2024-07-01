@@ -5,7 +5,7 @@
 
 int main(){
     int n, m, s, t; in(n,m,s,t);
-    Graph<ll> g(n,m);
+    graph<ll> g(n,m);
     rep(i,m){
         int u, v; in(u,v);
         ll c; in(c);

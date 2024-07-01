@@ -1,21 +1,27 @@
 #pragma once
 
-#include"../template/template.hpp"
 #include"../data_structure/csr.hpp"
+#include"../template/utils.hpp"
+#include"unweighted_type.hpp"
+
+#include <numeric>
+#include <utility>
+#include <queue>
+#include <deque>
+#include <algorithm>
 
 namespace noya2 {
 
 template<typename Cost>
-struct Graph {
-    int n, m;
-    internal::csr<pair<int,Cost>> g;
-    Cost dist_inf = numeric_limits<Cost>::max() / 2;
-    Graph (int n_ = 0) : n(n_), m(-1), g(n_) {}
-    Graph (int n_, int m_) : n(n_), m(m_), g(n_,m_) {}
+struct graph {
+    int n;
+    internal::csr<std::pair<int,Cost>> g;
+    Cost dist_inf = std::numeric_limits<Cost>::max() / 2;
+    graph (int _n = 0) : n(_n), g(_n) {}
+    graph (int _n, int _m) : n(_n), g(_n,_m) {}
     // 有向辺を追加 (無向辺ではないことに注意！)
     int add_edge(int u, int v, Cost cost = 1){
-        int id = g.add(u,pair<int,Cost>(v,cost));
-        if (id == m-1) build();
+        int id = g.add(u, {v,cost});
         return id;
     }
     void build(){
@@ -24,11 +30,11 @@ struct Graph {
     void set_inf(Cost new_inf){
         dist_inf = new_inf;
     }
-    vector<Cost> dijkstra(int s){
-        vector<Cost> dist(n,dist_inf);
+    std::vector<Cost> dijkstra(int s){
+        std::vector<Cost> dist(n,dist_inf);
         dist[s] = 0;
-        using P = pair<Cost,int>;
-        priority_queue<P,vector<P>,greater<P>> pque;
+        using P = std::pair<Cost,int>;
+        std::priority_queue<P,std::vector<P>,std::greater<P>> pque;
         pque.push(P(0,s));
         while (!pque.empty()){
             auto [d, v] = pque.top(); pque.pop();
@@ -41,10 +47,10 @@ struct Graph {
         }
         return dist;
     }
-    vector<int> reconstruct(int s, int t, const vector<Cost> &dist){
+    std::vector<int> reconstruct(int s, int t, const std::vector<Cost> &dist){
         if (dist[t] == dist_inf) return {};
-        vector<int> from(n,-1);
-        queue<int> que;
+        std::vector<int> from(n,-1);
+        std::queue<int> que;
         que.push(s);
         while (!que.empty()){
             int v = que.front(); que.pop();
@@ -55,18 +61,18 @@ struct Graph {
                 }
             }
         }
-        vector<int> ans = {t};
+        std::vector<int> ans = {t};
         while (t != s){
             t = from[t];
             ans.emplace_back(t);
         }
-        reverse(all(ans));
+        std::reverse(ans.begin(),ans.end());
         return ans;
     }
-    vector<Cost> bfs01(int s){
-        vector<Cost> dist(n,dist_inf);
+    std::vector<Cost> bfs01(int s){
+        std::vector<Cost> dist(n,dist_inf);
         dist[s] = 0;
-        deque<int> que;
+        std::deque<int> que;
         que.push_back(s);
         while (!que.empty()){
             int v = que.front(); que.pop_front();
@@ -79,10 +85,10 @@ struct Graph {
         }
         return dist;
     }
-    vector<Cost> bfs1(int s){
-        vector<Cost> dist(n,dist_inf);
+    std::vector<Cost> bfs1(int s){
+        std::vector<Cost> dist(n,dist_inf);
         dist[s] = 0;
-        queue<int> que;
+        std::queue<int> que;
         que.push(s);
         while (!que.empty()){
             int v = que.front(); que.pop();
@@ -94,9 +100,9 @@ struct Graph {
         }
         return dist;
     }
-    vector<Cost> bellman_ford(int s, bool &ng_cycle){
-        vector<Cost> dist(n,dist_inf);
-        vector<int> ng;
+    std::vector<Cost> bellman_ford(int s, bool &ng_cycle){
+        std::vector<Cost> dist(n,dist_inf);
+        std::vector<int> ng;
         dist[s] = 0;
         int tm = 0;
         while (tm < n){
@@ -128,16 +134,142 @@ struct Graph {
         }
         return dist;
     }
-    vector<vector<Cost>> warshall_floyd(){
-        vector<vector<Cost>> dist(n,vector<Cost>(n,dist_inf));
-        rep(v,n){
+    std::vector<std::vector<Cost>> warshall_floyd(){
+        std::vector<std::vector<Cost>> dist(n,std::vector<Cost>(n,dist_inf));
+        for (int v = 0; v < n; v++){
             dist[v][v] = 0;
             for (auto [u, c] : g[v]){
                 chmin(dist[v][u],c);
             }
         }
-        rep(k,n) rep(i,n) rep(j,n){
-            chmin(dist[i][j],dist[i][k]+dist[k][j]);
+        for (int k = 0; k < n; k++){
+            for (int i = 0; i < n; i++){
+                for (int j = 0; j < n; j++){
+                    chmin(dist[i][j],dist[i][k]+dist[k][j]);
+                }
+            }
+        }
+        return dist;
+    }
+    const auto operator[](int idx) const { return g[idx]; }
+    auto operator[](int idx) { return g[idx]; }
+};
+
+
+template<>
+struct graph<unweighted> {
+    int n;
+    internal::csr<int> g;
+    int dist_inf = std::numeric_limits<int>::max() / 2;
+    graph (int _n = 0) : n(_n), g(_n) {}
+    graph (int _n, int _m) : n(_n), g(_n,_m) {}
+    // 有向辺を追加 (無向辺ではないことに注意！)
+    int add_edge(int u, int v){
+        int id = g.add(u, v);
+        return id;
+    }
+    void build(){
+        g.build();
+    }
+    void set_inf(int new_inf){
+        dist_inf = new_inf;
+    }
+    std::vector<int> reconstruct(int s, int t, const std::vector<int> &dist){
+        if (dist[t] == dist_inf) return {};
+        std::vector<int> from(n,-1);
+        std::queue<int> que;
+        que.push(s);
+        while (!que.empty()){
+            int v = que.front(); que.pop();
+            for (auto u : g[v]){
+                if (from[u] == -1 && dist[u] == dist[v] + 1){
+                    from[u] = v;
+                    que.push(u);
+                }
+            }
+        }
+        std::vector<int> ans = {t};
+        while (t != s){
+            t = from[t];
+            ans.emplace_back(t);
+        }
+        std::reverse(ans.begin(),ans.end());
+        return ans;
+    }
+    std::vector<int> bfs(int s){
+        std::vector<int> dist(n,dist_inf);
+        dist[s] = 0;
+        std::queue<int> que;
+        que.push(s);
+        while (!que.empty()){
+            int v = que.front(); que.pop();
+            for (auto u : g[v]){
+                if (chmin(dist[u],dist[v]+1)){
+                    que.push(u);
+                }
+            }
+        }
+        return dist;
+    }
+    const auto operator[](int idx) const { return g[idx]; }
+    auto operator[](int idx) { return g[idx]; }
+};
+
+template<>
+struct graph<bool> {
+    int n;
+    internal::csr<std::pair<int,bool>> g;
+    int dist_inf = std::numeric_limits<int>::max() / 2;
+    graph (int _n = 0) : n(_n), g(_n) {}
+    graph (int _n, int _m) : n(_n), g(_n,_m) {}
+    // 有向辺を追加 (無向辺ではないことに注意！)
+    int add_edge(int u, int v, bool cost){
+        int id = g.add(u, {v, cost});
+        return id;
+    }
+    void build(){
+        g.build();
+    }
+    void set_inf(int new_inf){
+        dist_inf = new_inf;
+    }
+    std::vector<int> reconstruct(int s, int t, const std::vector<int> &dist){
+        if (dist[t] == dist_inf) return {};
+        std::vector<int> from(n,-1);
+        std::queue<int> que;
+        que.push(s);
+        while (!que.empty()){
+            int v = que.front(); que.pop();
+            for (auto [u, b] : g[v]){
+                int c = (int)b;
+                if (from[u] == -1 && dist[u] == dist[v] + c){
+                    from[u] = v;
+                    que.push(u);
+                }
+            }
+        }
+        std::vector<int> ans = {t};
+        while (t != s){
+            t = from[t];
+            ans.emplace_back(t);
+        }
+        std::reverse(ans.begin(),ans.end());
+        return ans;
+    }
+    std::vector<int> bfs01(int s){
+        std::vector<int> dist(n,dist_inf);
+        dist[s] = 0;
+        std::deque<int> que;
+        que.push_back(s);
+        while (!que.empty()){
+            int v = que.front(); que.pop_front();
+            for (auto [u, b] : g[v]){
+                int c = (int)b;
+                if (chmin(dist[u],dist[v]+c)){
+                    if (c == 0) que.push_front(u);
+                    else que.push_back(u);
+                }
+            }
         }
         return dist;
     }
