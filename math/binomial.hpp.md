@@ -60,15 +60,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
     title: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/binomial.hpp\"\n\n#include<vector>\nnamespace noya2\
@@ -137,7 +137,7 @@ data:
   - fps998244353/product_1_minus_x_pow_a.hpp
   - fps998244353/multipoint_evaluation.hpp
   timestamp: '2024-04-21 01:46:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp

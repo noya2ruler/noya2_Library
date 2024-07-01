@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Floor_of_Linear.test.cpp
     title: test/math/Sum_of_Floor_of_Linear.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/floor_sum.hpp\"\n\nnamespace noya2{\n\n// sum[ i in\
@@ -41,7 +41,7 @@ data:
   path: math/floor_sum.hpp
   requiredBy: []
   timestamp: '2023-10-17 23:11:50+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Sum_of_Floor_of_Linear.test.cpp
 documentation_of: math/floor_sum.hpp

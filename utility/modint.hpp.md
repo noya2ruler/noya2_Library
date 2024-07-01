@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
   _extendedRequiredBy:
@@ -90,24 +90,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
     title: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Gcd_Convolution.test.cpp
     title: test/math/Gcd_Convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Lcm_Convolution.test.cpp
     title: test/math/Lcm_Convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\n#include<utility>\n\
@@ -348,7 +348,7 @@ data:
   - fps998244353/ntt998244353.hpp
   - fps998244353/multipoint_evaluation.hpp
   timestamp: '2024-06-20 19:16:50+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp

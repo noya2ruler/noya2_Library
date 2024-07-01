@@ -9,7 +9,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/csr.hpp
       title: data_structure/csr.hpp
     - icon: ':heavy_check_mark:'
@@ -18,7 +18,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/dynamic_segment_tree.hpp
       title: data_structure/dynamic_segment_tree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/fenwick_tree.hpp
       title: data_structure/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -45,7 +45,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/rollback_dsu.hpp
       title: data_structure/rollback_dsu.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -130,18 +130,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/Graph_core.hpp
       title: graph/Graph_core.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/graph_query.hpp
       title: graph/graph_query.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: graph/scc.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/unweighted_type.hpp
       title: graph/unweighted_type.hpp
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: math/binomial.hpp
     - icon: ':warning:'
@@ -150,28 +150,28 @@ data:
     - icon: ':warning:'
       path: math/factorize.hpp
       title: math/factorize.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/floor_sum.hpp
       title: math/floor_sum.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/gcd_convolution.hpp
       title: math/gcd_convolution.hpp
     - icon: ':warning:'
       path: math/lagrange_interpolation.hpp
       title: Lagrange interpolation
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/lcm_convolution.hpp
       title: math/lcm_convolution.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
     - icon: ':warning:'
       path: math/matrix_square.hpp
       title: math/matrix_square.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/prime.hpp
       title: math/prime.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/sieve.hpp
       title: math/sieve.hpp
     - icon: ':warning:'
@@ -194,7 +194,7 @@ data:
     - icon: ':warning:'
       path: misc/mex.hpp
       title: misc/mex.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: misc/mo_algorithm.hpp
       title: misc/mo_algorithm.hpp
     - icon: ':heavy_check_mark:'
@@ -230,47 +230,47 @@ data:
       title: string/trie.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/const.hpp
       title: template/const.hpp
     - icon: ':warning:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/inout_old.hpp
       title: template/inout_old.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/Mo_on_Tree.hpp
       title: Mo on Tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/RerootingDP.hpp
       title: Rerooting DP
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: "\u5168\u90E8\u8F09\u305B\u6728"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/simple_tree.hpp
       title: tree/simple_tree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/tree_query.hpp
       title: tree/tree_query.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/tree_query_weighted.hpp
       title: tree/tree_query_weighted.hpp
   - name: utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':warning:'
@@ -383,56 +383,56 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/graph/Shortest_Path.test.cpp
       title: test/graph/Shortest_Path.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Shortest_Path2.test.cpp
       title: test/graph/Shortest_Path2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/graph/Strongly_Connected_Components.test.cpp
       title: test/graph/Strongly_Connected_Components.test.cpp
   - name: test/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Determinant_of_Matrix.test.cpp
       title: test/math/Determinant_of_Matrix.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Gcd_Convolution.test.cpp
       title: test/math/Gcd_Convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Lcm_Convolution.test.cpp
       title: test/math/Lcm_Convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Floor_of_Linear.test.cpp
       title: test/math/Sum_of_Floor_of_Linear.test.cpp
   - name: test/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Jump_on_Tree.test.cpp
       title: test/tree/Jump_on_Tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Jump_on_Tree_hld.test.cpp
       title: test/tree/Jump_on_Tree_hld.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Lowest_Common_Ancestor.test.cpp
       title: test/tree/Lowest_Common_Ancestor.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Rerooting_DP.test.cpp
       title: test/tree/Rerooting_DP.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Diameter.test.cpp
       title: test/tree/Tree_Diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Tree_Diameter_hld.test.cpp
       title: test/tree/Tree_Diameter_hld.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Vertex_Add_Path_Sum.test.cpp
       title: test/tree/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/aoj_0489.test.cpp
       title: test/tree/aoj_0489.test.cpp
 layout: toppage

@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/unweighted_type.hpp
     title: graph/unweighted_type.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/shortest_path
@@ -222,16 +222,16 @@ data:
     \ idx) { return g[idx]; }\n};\n\n} // namespace noya2\n#line 5 \"test/graph/Shortest_Path2.test.cpp\"\
     \n\nint main(){\n    int n, m, s, t; in(n,m,s,t);\n    graph<ll> g(n,m);\n   \
     \ rep(i,m){\n        int u, v; in(u,v);\n        ll c; in(c);\n        g.add_edge(u,v,c);\n\
-    \    }\n    auto dist = g.dijkstra(s);\n    if (dist[t] == g.dist_inf){\n    \
-    \    out(-1);\n        return 0;\n    }\n    auto ans = g.reconstruct(s,t,dist);\n\
+    \    }\n    g.build();\n    auto dist = g.dijkstra(s);\n    if (dist[t] == g.dist_inf){\n\
+    \        out(-1);\n        return 0;\n    }\n    auto ans = g.reconstruct(s,t,dist);\n\
     \    out(dist[t],ans.size()-1);\n    rep(i,ans.size()-1) out(ans[i],ans[i+1]);\n\
     }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include\"\
     ../../template/template.hpp\"\n#include\"../../graph/graph_query.hpp\"\n\nint\
     \ main(){\n    int n, m, s, t; in(n,m,s,t);\n    graph<ll> g(n,m);\n    rep(i,m){\n\
     \        int u, v; in(u,v);\n        ll c; in(c);\n        g.add_edge(u,v,c);\n\
-    \    }\n    auto dist = g.dijkstra(s);\n    if (dist[t] == g.dist_inf){\n    \
-    \    out(-1);\n        return 0;\n    }\n    auto ans = g.reconstruct(s,t,dist);\n\
+    \    }\n    g.build();\n    auto dist = g.dijkstra(s);\n    if (dist[t] == g.dist_inf){\n\
+    \        out(-1);\n        return 0;\n    }\n    auto ans = g.reconstruct(s,t,dist);\n\
     \    out(dist[t],ans.size()-1);\n    rep(i,ans.size()-1) out(ans[i],ans[i+1]);\n\
     }"
   dependsOn:
@@ -245,8 +245,8 @@ data:
   isVerificationFile: true
   path: test/graph/Shortest_Path2.test.cpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-07-02 00:44:26+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Shortest_Path2.test.cpp
 layout: document

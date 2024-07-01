@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "graph/unweighted_type.hpp"
@@ -42,7 +42,7 @@ data:
   requiredBy:
   - graph/graph_query.hpp
   timestamp: '2024-07-01 23:28:31+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Shortest_Path2.test.cpp
 documentation_of: graph/unweighted_type.hpp
