@@ -40,24 +40,25 @@ struct binomial {
         if (n1 < 0) return 0;
         return multinomial(sum+n1,div_prod*ifact(n1),tail...);
     }
-    static vector<mint> _fact, _ifact;
+    static inline std::vector<mint> _fact, _ifact;
     static void extend(int len = -1){
         if (_fact.empty()){
             _fact = _ifact = {1,1};
         }
         int siz = _fact.size();
         if (len == -1) len = siz * 2;
-        len = min<int>(len, mint::mod()-1);
+        len = (int)min<long long>(len, mint::mod() - 1);
         if (len < siz) return ;
         _fact.resize(len+1), _ifact.resize(len+1);
         for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;
         _ifact[len] = _fact[len].inv();
         for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i] * i;
     }
+    static void initialize(int len = 2){
+        _fact.clear();
+        _ifact.clear();
+        extend(len);
+    }
 };
-template<typename T>
-std::vector<T>binomial<T>::_fact = vector<T>(2,T(1));
-template<typename T>
-std::vector<T>binomial<T>::_ifact = vector<T>(2,T(1));
 
 } // namespace noya2
