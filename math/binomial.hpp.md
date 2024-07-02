@@ -88,15 +88,15 @@ data:
     \    template<class... Tail> static mint multinomial(const int& sum, const mint&\
     \ div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n\
     \        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static\
-    \ vector<mint> _fact, _ifact;\n    static void extend(int len = -1){\n       \
-    \ if (_fact.empty()){\n            _fact = _ifact = {1,1};\n        }\n      \
-    \  int siz = _fact.size();\n        if (len == -1) len = siz * 2;\n        len\
-    \ = min<int>(len, mint::mod()-1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
-    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
-    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
-    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename T>\nstd::vector<T>binomial<T>::_fact\
-    \ = vector<T>(2,T(1));\ntemplate<typename T>\nstd::vector<T>binomial<T>::_ifact\
-    \ = vector<T>(2,T(1));\n\n} // namespace noya2\n"
+    \ inline std::vector<mint> _fact, _ifact;\n    static void extend(int len = -1){\n\
+    \        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n        }\n\
+    \        int siz = _fact.size();\n        if (len == -1) len = siz * 2;\n    \
+    \    len = (int)min<long long>(len, mint::mod() - 1);\n        if (len < siz)\
+    \ return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n        for (int\
+    \ i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len] = _fact[len].inv();\n\
+    \        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n\
+    \    static void initialize(int len = 2){\n        _fact.clear();\n        _ifact.clear();\n\
+    \        extend(len);\n    }\n};\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include<vector>\nnamespace noya2 {\n\ntemplate<typename\
     \ mint>\nstruct binomial {\n    binomial(int len = 300000){ extend(len); }\n \
     \   static mint fact(int n){\n        if (n < 0) return 0;\n        while (n >=\
@@ -114,15 +114,15 @@ data:
     \    template<class... Tail> static mint multinomial(const int& sum, const mint&\
     \ div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n\
     \        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static\
-    \ vector<mint> _fact, _ifact;\n    static void extend(int len = -1){\n       \
-    \ if (_fact.empty()){\n            _fact = _ifact = {1,1};\n        }\n      \
-    \  int siz = _fact.size();\n        if (len == -1) len = siz * 2;\n        len\
-    \ = min<int>(len, mint::mod()-1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
-    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
-    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
-    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename T>\nstd::vector<T>binomial<T>::_fact\
-    \ = vector<T>(2,T(1));\ntemplate<typename T>\nstd::vector<T>binomial<T>::_ifact\
-    \ = vector<T>(2,T(1));\n\n} // namespace noya2"
+    \ inline std::vector<mint> _fact, _ifact;\n    static void extend(int len = -1){\n\
+    \        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n        }\n\
+    \        int siz = _fact.size();\n        if (len == -1) len = siz * 2;\n    \
+    \    len = (int)min<long long>(len, mint::mod() - 1);\n        if (len < siz)\
+    \ return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n        for (int\
+    \ i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len] = _fact[len].inv();\n\
+    \        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n\
+    \    static void initialize(int len = 2){\n        _fact.clear();\n        _ifact.clear();\n\
+    \        extend(len);\n    }\n};\n\n} // namespace noya2"
   dependsOn: []
   isVerificationFile: false
   path: math/binomial.hpp
@@ -136,7 +136,7 @@ data:
   - fps998244353/fps998244353.hpp
   - fps998244353/product_1_minus_x_pow_a.hpp
   - fps998244353/multipoint_evaluation.hpp
-  timestamp: '2024-04-21 01:46:27+09:00'
+  timestamp: '2024-07-03 01:34:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp

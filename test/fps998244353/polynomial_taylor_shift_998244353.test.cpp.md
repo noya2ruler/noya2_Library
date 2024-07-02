@@ -333,31 +333,30 @@ data:
     \ 0;\n        return fact(sum) * div_prod;\n    }\n    template<class... Tail>\
     \ static mint multinomial(const int& sum, const mint& div_prod, const int& n1,\
     \ const Tail&... tail){\n        if (n1 < 0) return 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n\
-    \    }\n    static vector<mint> _fact, _ifact;\n    static void extend(int len\
-    \ = -1){\n        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n \
-    \       }\n        int siz = _fact.size();\n        if (len == -1) len = siz *\
-    \ 2;\n        len = min<int>(len, mint::mod()-1);\n        if (len < siz) return\
-    \ ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n        for (int i =\
-    \ siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len] = _fact[len].inv();\n\
-    \        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n\
-    };\ntemplate<typename T>\nstd::vector<T>binomial<T>::_fact = vector<T>(2,T(1));\n\
-    template<typename T>\nstd::vector<T>binomial<T>::_ifact = vector<T>(2,T(1));\n\
-    \n} // namespace noya2\n#line 7 \"fps998244353/fps998244353.hpp\"\n\nnamespace\
-    \ noya2 {\n\n// Formal Power Series for modint998244353\nstruct fps998244353 :\
-    \ std::vector<modint998244353> {\n    using mint = modint998244353;\n    using\
-    \ std::vector<mint>::vector;\n    using std::vector<mint>::operator=;\n    using\
-    \ fps = fps998244353;\n    static inline ntt998244353 ntt_;\n    static inline\
-    \ binomial<mint> bnm;\n\n    fps998244353 (const std::vector<mint> &init){\n \
-    \       (*this) = init;\n    }\n\n    void shrink(){\n        while(!(this->empty())\
-    \ && this->back().val() == 0){\n            this->pop_back();\n        }\n   \
-    \ }\n\n    fps &operator*= (const mint &r){\n        for (auto &x : *this) x *=\
-    \ r;\n        return *this;\n    }\n    fps &operator/= (const mint &r){\n   \
-    \     (*this) *= r.inv();\n        return *this;\n    }\n\n    fps &operator<<=\
-    \ (const int &d){\n        this->insert(this->begin(), d, mint(0));\n        return\
-    \ *this;\n    }\n    fps &operator>>= (const int &d){\n        if ((int)(this->size())\
-    \ <= d) this->clear();\n        else this->erase(this->begin(),this->begin() +\
-    \ d);\n        return *this;\n    }\n\n    fps &operator+= (const fps &r){\n \
-    \       if (this->size() < r.size()) this->resize(r.size());\n        for (int\
+    \    }\n    static inline std::vector<mint> _fact, _ifact;\n    static void extend(int\
+    \ len = -1){\n        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n\
+    \        }\n        int siz = _fact.size();\n        if (len == -1) len = siz\
+    \ * 2;\n        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len\
+    \ < siz) return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n      \
+    \  for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len]\
+    \ = _fact[len].inv();\n        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i]\
+    \ * i;\n    }\n    static void initialize(int len = 2){\n        _fact.clear();\n\
+    \        _ifact.clear();\n        extend(len);\n    }\n};\n\n} // namespace noya2\n\
+    #line 7 \"fps998244353/fps998244353.hpp\"\n\nnamespace noya2 {\n\n// Formal Power\
+    \ Series for modint998244353\nstruct fps998244353 : std::vector<modint998244353>\
+    \ {\n    using mint = modint998244353;\n    using std::vector<mint>::vector;\n\
+    \    using std::vector<mint>::operator=;\n    using fps = fps998244353;\n    static\
+    \ inline ntt998244353 ntt_;\n    static inline binomial<mint> bnm;\n\n    fps998244353\
+    \ (const std::vector<mint> &init){\n        (*this) = init;\n    }\n\n    void\
+    \ shrink(){\n        while(!(this->empty()) && this->back().val() == 0){\n   \
+    \         this->pop_back();\n        }\n    }\n\n    fps &operator*= (const mint\
+    \ &r){\n        for (auto &x : *this) x *= r;\n        return *this;\n    }\n\
+    \    fps &operator/= (const mint &r){\n        (*this) *= r.inv();\n        return\
+    \ *this;\n    }\n\n    fps &operator<<= (const int &d){\n        this->insert(this->begin(),\
+    \ d, mint(0));\n        return *this;\n    }\n    fps &operator>>= (const int\
+    \ &d){\n        if ((int)(this->size()) <= d) this->clear();\n        else this->erase(this->begin(),this->begin()\
+    \ + d);\n        return *this;\n    }\n\n    fps &operator+= (const fps &r){\n\
+    \        if (this->size() < r.size()) this->resize(r.size());\n        for (int\
     \ i = 0; auto x : r){\n            (*this)[i++] += x;\n        }\n        return\
     \ *this;\n    }\n    fps &operator-= (const fps &r){\n        if (this->size()\
     \ < r.size()) this->resize(r.size());\n        for (int i = 0; auto x : r){\n\
@@ -465,7 +464,7 @@ data:
   isVerificationFile: true
   path: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2024-07-03 01:34:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp

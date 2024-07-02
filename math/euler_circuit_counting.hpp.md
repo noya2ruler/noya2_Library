@@ -171,15 +171,15 @@ data:
     \    template<class... Tail> static mint multinomial(const int& sum, const mint&\
     \ div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n\
     \        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static\
-    \ vector<mint> _fact, _ifact;\n    static void extend(int len = -1){\n       \
-    \ if (_fact.empty()){\n            _fact = _ifact = {1,1};\n        }\n      \
-    \  int siz = _fact.size();\n        if (len == -1) len = siz * 2;\n        len\
-    \ = min<int>(len, mint::mod()-1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
-    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
-    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
-    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename T>\nstd::vector<T>binomial<T>::_fact\
-    \ = vector<T>(2,T(1));\ntemplate<typename T>\nstd::vector<T>binomial<T>::_ifact\
-    \ = vector<T>(2,T(1));\n\n} // namespace noya2\n#line 5 \"math/euler_circuit_counting.hpp\"\
+    \ inline std::vector<mint> _fact, _ifact;\n    static void extend(int len = -1){\n\
+    \        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n        }\n\
+    \        int siz = _fact.size();\n        if (len == -1) len = siz * 2;\n    \
+    \    len = (int)min<long long>(len, mint::mod() - 1);\n        if (len < siz)\
+    \ return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n        for (int\
+    \ i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len] = _fact[len].inv();\n\
+    \        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n\
+    \    static void initialize(int len = 2){\n        _fact.clear();\n        _ifact.clear();\n\
+    \        extend(len);\n    }\n};\n\n} // namespace noya2\n#line 5 \"math/euler_circuit_counting.hpp\"\
     \n\nnamespace noya2 {\n\n// BEST theorem\n// https://en.wikipedia.org/wiki/BEST_theorem\n\
     template<typename T>\nT euler_circuit_counting(int n, vector<tuple<int,int,ll>>\
     \ es){\n    // i_deg == o_deg\n    vector<ll> deg(n,0);\n    for (auto [u, v,\
@@ -232,7 +232,7 @@ data:
   isVerificationFile: false
   path: math/euler_circuit_counting.hpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2024-07-03 01:34:14+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/euler_circuit_counting.hpp
