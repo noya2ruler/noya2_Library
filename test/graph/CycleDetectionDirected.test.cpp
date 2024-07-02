@@ -9,11 +9,12 @@ int main(){
     auto res = cycle_detection_directed(n,es);
     if (!res){
         out(-1);
-        return 0;
     }
-    auto cycle = res.value();
-    out(cycle.size());
-    for (auto i : cycle){
-        out(i);
+    else {
+        auto cycle = res.value();
+        out(cycle.size());
+        for (auto i : cycle){
+            out(i);
+        }
     }
 }
