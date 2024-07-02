@@ -130,7 +130,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/Graph_core.hpp
       title: graph/Graph_core.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/cycle_detection.hpp
       title: graph/cycle_detection.hpp
     - icon: ':heavy_check_mark:'
@@ -383,6 +383,9 @@ data:
       title: test/geometry/aoj1198.test.cpp
   - name: test/graph
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/graph/CycleDetectionDirected.test.cpp
+      title: test/graph/CycleDetectionDirected.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/graph/Shortest_Path.test.cpp
       title: test/graph/Shortest_Path.test.cpp

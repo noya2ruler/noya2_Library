@@ -235,6 +235,9 @@ data:
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/CycleDetectionDirected.test.cpp
+    title: test/graph/CycleDetectionDirected.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path.test.cpp
     title: test/graph/Shortest_Path.test.cpp
   - icon: ':heavy_check_mark:'
@@ -463,6 +466,7 @@ data:
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
   - test/graph/Shortest_Path2.test.cpp
   - test/graph/Shortest_Path.test.cpp
+  - test/graph/CycleDetectionDirected.test.cpp
   - test/graph/Strongly_Connected_Components.test.cpp
   - test/fps998244353/convolution_998244353.test.cpp
   - test/fps998244353/multipoint_evaluation_998244353.test.cpp

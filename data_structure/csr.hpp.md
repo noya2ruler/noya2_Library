@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/offline_rectangle_sum.hpp
     title: data_structure/offline_rectangle_sum.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/cycle_detection.hpp
     title: graph/cycle_detection.hpp
   - icon: ':heavy_check_mark:'
@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Rectangle_Sum.test.cpp
     title: test/data_structure/Rectangle_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/graph/CycleDetectionDirected.test.cpp
+    title: test/graph/CycleDetectionDirected.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
@@ -102,6 +105,7 @@ data:
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
   - test/graph/Shortest_Path2.test.cpp
+  - test/graph/CycleDetectionDirected.test.cpp
 documentation_of: data_structure/csr.hpp
 layout: document
 redirect_from:
