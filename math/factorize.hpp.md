@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: math/prime_64bit.hpp
+    title: math/prime_64bit.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -179,7 +182,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/factorize.hpp
-  requiredBy: []
+  requiredBy:
+  - math/prime_64bit.hpp
   timestamp: '2024-04-02 13:39:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
