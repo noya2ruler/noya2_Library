@@ -38,6 +38,7 @@
 "test/math/Determinant_of_Matrix.test.cpp": "2024-07-01 23:39:10 +0900",
 "test/math/Gcd_Convolution.test.cpp": "2024-07-01 23:39:10 +0900",
 "test/math/Lcm_Convolution.test.cpp": "2024-07-01 23:39:10 +0900",
+"test/math/PrimitiveRoot.test.cpp": "2024-07-03 00:54:22 +0900",
 "test/math/Sum_of_Floor_of_Linear.test.cpp": "2024-07-01 23:39:10 +0900",
 "test/tree/Jump_on_Tree.test.cpp": "2024-07-01 23:39:10 +0900",
 "test/tree/Jump_on_Tree_hld.test.cpp": "2024-07-01 23:39:10 +0900",
