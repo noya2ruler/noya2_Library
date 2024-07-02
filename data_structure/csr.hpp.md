@@ -5,6 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/offline_rectangle_sum.hpp
     title: data_structure/offline_rectangle_sum.hpp
+  - icon: ':warning:'
+    path: graph/cycle_detection.hpp
+    title: graph/cycle_detection.hpp
   - icon: ':heavy_check_mark:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
@@ -91,6 +94,7 @@ data:
   - tree/heavy_light_decomposition.hpp
   - tree/simple_tree.hpp
   - graph/graph_query.hpp
+  - graph/cycle_detection.hpp
   timestamp: '2024-07-01 23:28:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

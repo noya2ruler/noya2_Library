@@ -130,6 +130,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/Graph_core.hpp
       title: graph/Graph_core.hpp
+    - icon: ':warning:'
+      path: graph/cycle_detection.hpp
+      title: graph/cycle_detection.hpp
     - icon: ':heavy_check_mark:'
       path: graph/graph_query.hpp
       title: graph/graph_query.hpp
