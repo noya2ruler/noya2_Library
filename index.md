@@ -6,7 +6,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/binary_indexed_tree.hpp
       title: data_structure/binary_indexed_tree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/binary_trie.hpp
       title: data_structure/binary_trie.hpp
     - icon: ':heavy_check_mark:'
@@ -321,6 +321,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Segment_Add_Get_Min.test.cpp
       title: test/data_structure/Segment_Add_Get_Min.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/data_structure/SetXorMin.test.cpp
+      title: test/data_structure/SetXorMin.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Static_RMQ.test.cpp
       title: test/data_structure/Static_RMQ.test.cpp

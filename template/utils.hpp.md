@@ -5,7 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/binary_trie.hpp
     title: data_structure/binary_trie.hpp
   - icon: ':heavy_check_mark:'
@@ -180,6 +180,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Segment_Add_Get_Min.test.cpp
     title: test/data_structure/Segment_Add_Get_Min.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/data_structure/SetXorMin.test.cpp
+    title: test/data_structure/SetXorMin.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_RMQ.test.cpp
     title: test/data_structure/Static_RMQ.test.cpp
@@ -399,6 +402,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/aoj_dsl_1_b.test.cpp
+  - test/data_structure/SetXorMin.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Static_RMQ.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
