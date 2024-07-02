@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/prime_64bit.hpp
     title: math/prime_64bit.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/PrimitiveRoot.test.cpp
+    title: test/math/PrimitiveRoot.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://judge.yosupo.jp/submission/189742
@@ -185,8 +188,9 @@ data:
   requiredBy:
   - math/prime_64bit.hpp
   timestamp: '2024-04-02 13:39:51+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/math/PrimitiveRoot.test.cpp
 documentation_of: math/factorize.hpp
 layout: document
 redirect_from:

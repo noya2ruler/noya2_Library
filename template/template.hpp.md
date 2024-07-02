@@ -14,6 +14,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
+  - icon: ':warning:'
+    path: data_structure/binary_trie.hpp
+    title: data_structure/binary_trie.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
@@ -268,6 +271,9 @@ data:
     path: test/math/Lcm_Convolution.test.cpp
     title: test/math/Lcm_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/PrimitiveRoot.test.cpp
+    title: test/math/PrimitiveRoot.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Floor_of_Linear.test.cpp
     title: test/math/Sum_of_Floor_of_Linear.test.cpp
   - icon: ':heavy_check_mark:'
@@ -380,6 +386,7 @@ data:
   - data_structure/range_tree.hpp
   - data_structure/rollback_dsu.hpp
   - data_structure/lazy_segment_tree.hpp
+  - data_structure/binary_trie.hpp
   - data_structure/potentialized_dsu.hpp
   - data_structure/range_parallel_dsu.hpp
   - misc/inversion.hpp
@@ -436,6 +443,7 @@ data:
   - test/data_structure/aoj1068_segtree2d.test.cpp
   - test/math/Lcm_Convolution.test.cpp
   - test/math/Gcd_Convolution.test.cpp
+  - test/math/PrimitiveRoot.test.cpp
   - test/math/Determinant_of_Matrix.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Sum_of_Floor_of_Linear.test.cpp

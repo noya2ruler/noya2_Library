@@ -6,6 +6,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/binary_indexed_tree.hpp
       title: data_structure/binary_indexed_tree.hpp
+    - icon: ':warning:'
+      path: data_structure/binary_trie.hpp
+      title: data_structure/binary_trie.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
@@ -150,7 +153,7 @@ data:
     - icon: ':warning:'
       path: math/euler_circuit_counting.hpp
       title: math/euler_circuit_counting.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/factorize.hpp
       title: math/factorize.hpp
     - icon: ':heavy_check_mark:'
@@ -174,7 +177,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/prime.hpp
       title: math/prime.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/prime_64bit.hpp
       title: math/prime_64bit.hpp
     - icon: ':heavy_check_mark:'
@@ -415,6 +418,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Lcm_Convolution.test.cpp
       title: test/math/Lcm_Convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/PrimitiveRoot.test.cpp
+      title: test/math/PrimitiveRoot.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Floor_of_Linear.test.cpp
       title: test/math/Sum_of_Floor_of_Linear.test.cpp
