@@ -38,6 +38,9 @@ struct simple_tree {
     auto operator[](int v){
         return g[v];
     }
+    int size() const {
+        return g.n;
+    }
 };
 
 } // namespace noya2
