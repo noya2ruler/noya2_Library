@@ -31,6 +31,7 @@ struct graph {
         dist_inf = new_inf;
     }
     std::vector<Cost> dijkstra(int s){
+        g.build();
         std::vector<Cost> dist(n,dist_inf);
         dist[s] = 0;
         using P = std::pair<Cost,int>;
@@ -49,6 +50,7 @@ struct graph {
     }
     std::vector<int> reconstruct(int s, int t, const std::vector<Cost> &dist){
         if (dist[t] == dist_inf) return {};
+        g.build();
         std::vector<int> from(n,-1);
         std::queue<int> que;
         que.push(s);
@@ -70,6 +72,7 @@ struct graph {
         return ans;
     }
     std::vector<Cost> bfs01(int s){
+        g.build();
         std::vector<Cost> dist(n,dist_inf);
         dist[s] = 0;
         std::deque<int> que;
@@ -86,6 +89,7 @@ struct graph {
         return dist;
     }
     std::vector<Cost> bfs1(int s){
+        g.build();
         std::vector<Cost> dist(n,dist_inf);
         dist[s] = 0;
         std::queue<int> que;
@@ -101,6 +105,7 @@ struct graph {
         return dist;
     }
     std::vector<Cost> bellman_ford(int s, bool &ng_cycle){
+        g.build();
         std::vector<Cost> dist(n,dist_inf);
         std::vector<int> ng;
         dist[s] = 0;
@@ -135,6 +140,7 @@ struct graph {
         return dist;
     }
     std::vector<std::vector<Cost>> warshall_floyd(){
+        g.build();
         std::vector<std::vector<Cost>> dist(n,std::vector<Cost>(n,dist_inf));
         for (int v = 0; v < n; v++){
             dist[v][v] = 0;
@@ -176,6 +182,7 @@ struct graph<unweighted> {
     }
     std::vector<int> reconstruct(int s, int t, const std::vector<int> &dist){
         if (dist[t] == dist_inf) return {};
+        g.build();
         std::vector<int> from(n,-1);
         std::queue<int> que;
         que.push(s);
@@ -197,6 +204,7 @@ struct graph<unweighted> {
         return ans;
     }
     std::vector<int> bfs(int s){
+        g.build();
         std::vector<int> dist(n,dist_inf);
         dist[s] = 0;
         std::queue<int> que;
@@ -235,6 +243,7 @@ struct graph<bool> {
     }
     std::vector<int> reconstruct(int s, int t, const std::vector<int> &dist){
         if (dist[t] == dist_inf) return {};
+        g.build();
         std::vector<int> from(n,-1);
         std::queue<int> que;
         que.push(s);
@@ -257,6 +266,7 @@ struct graph<bool> {
         return ans;
     }
     std::vector<int> bfs01(int s){
+        g.build();
         std::vector<int> dist(n,dist_inf);
         dist[s] = 0;
         std::deque<int> que;
