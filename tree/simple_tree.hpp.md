@@ -122,7 +122,8 @@ data:
     \ = 0; i < g.n - 1; i++){\n            int v; cin >> v;\n            v -= indexed;\n\
     \            add_edge(i + 1, v);\n        }\n    }\n    const auto operator[](int\
     \ v) const {\n        return g[v];\n    }\n    auto operator[](int v){\n     \
-    \   return g[v];\n    }\n};\n\n} // namespace noya2\n"
+    \   return g[v];\n    }\n    int size() const {\n        return g.n;\n    }\n\
+    };\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include\"../template/template.hpp\"\n#include\"../data_structure/csr.hpp\"\
     \n\nnamespace noya2 {\n\nstruct simple_tree {\n    internal::csr<int> g;\n   \
     \ simple_tree () {}\n    simple_tree (int _n) : g(_n, (_n - 1)*2) {\n        if\
@@ -135,7 +136,8 @@ data:
     \ = 0; i < g.n - 1; i++){\n            int v; cin >> v;\n            v -= indexed;\n\
     \            add_edge(i + 1, v);\n        }\n    }\n    const auto operator[](int\
     \ v) const {\n        return g[v];\n    }\n    auto operator[](int v){\n     \
-    \   return g[v];\n    }\n};\n\n} // namespace noya2"
+    \   return g[v];\n    }\n    int size() const {\n        return g.n;\n    }\n\
+    };\n\n} // namespace noya2"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
@@ -146,7 +148,7 @@ data:
   path: tree/simple_tree.hpp
   requiredBy:
   - tree/heavy_light_decomposition.hpp
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2024-07-04 18:49:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Jump_on_Tree.test.cpp

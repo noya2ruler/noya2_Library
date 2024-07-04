@@ -13,7 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: misc/random_tree.hpp
+    title: misc/random_tree.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -96,7 +99,8 @@ data:
   - template/utils.hpp
   isVerificationFile: false
   path: misc/rng.hpp
-  requiredBy: []
+  requiredBy:
+  - misc/random_tree.hpp
   timestamp: '2024-07-01 23:39:10+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

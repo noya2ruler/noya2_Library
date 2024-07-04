@@ -124,8 +124,9 @@ data:
     \ = 0; i < g.n - 1; i++){\n            int v; cin >> v;\n            v -= indexed;\n\
     \            add_edge(i + 1, v);\n        }\n    }\n    const auto operator[](int\
     \ v) const {\n        return g[v];\n    }\n    auto operator[](int v){\n     \
-    \   return g[v];\n    }\n};\n\n} // namespace noya2\n#line 4 \"tree/heavy_light_decomposition.hpp\"\
-    \n\nnamespace noya2 {\n\nstruct hld_tree {\n    internal::csr<int> g;\n    hld_tree\
+    \   return g[v];\n    }\n    int size() const {\n        return g.n;\n    }\n\
+    };\n\n} // namespace noya2\n#line 4 \"tree/heavy_light_decomposition.hpp\"\n\n\
+    namespace noya2 {\n\nstruct hld_tree {\n    internal::csr<int> g;\n    hld_tree\
     \ () {}\n    hld_tree (int _n, int _root = 0) : g(_n,(_n - 1)*2), n(_n), root(_root)\
     \ {\n        if (_n == 1){\n            build();\n        }\n    }\n    hld_tree\
     \ (simple_tree _g, int _root = 0) : g(_g.g), n(_g.g.n), root(_root){\n       \
@@ -269,7 +270,7 @@ data:
   isVerificationFile: true
   path: test/tree/Jump_on_Tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2024-07-04 18:49:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Jump_on_Tree.test.cpp

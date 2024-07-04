@@ -77,48 +77,50 @@ data:
     \ cost = 1){\n        int id = g.add(u, {v,cost});\n        return id;\n    }\n\
     \    void build(){\n        g.build();\n    }\n    void set_inf(Cost new_inf){\n\
     \        dist_inf = new_inf;\n    }\n    std::vector<Cost> dijkstra(int s){\n\
-    \        std::vector<Cost> dist(n,dist_inf);\n        dist[s] = 0;\n        using\
-    \ P = std::pair<Cost,int>;\n        std::priority_queue<P,std::vector<P>,std::greater<P>>\
+    \        g.build();\n        std::vector<Cost> dist(n,dist_inf);\n        dist[s]\
+    \ = 0;\n        using P = std::pair<Cost,int>;\n        std::priority_queue<P,std::vector<P>,std::greater<P>>\
     \ pque;\n        pque.push(P(0,s));\n        while (!pque.empty()){\n        \
     \    auto [d, v] = pque.top(); pque.pop();\n            if (dist[v] < d) continue;\n\
     \            for (auto [u, c] : g[v]){\n                if (chmin(dist[u],d+c)){\n\
     \                    pque.push(P(dist[u],u));\n                }\n           \
     \ }\n        }\n        return dist;\n    }\n    std::vector<int> reconstruct(int\
     \ s, int t, const std::vector<Cost> &dist){\n        if (dist[t] == dist_inf)\
-    \ return {};\n        std::vector<int> from(n,-1);\n        std::queue<int> que;\n\
-    \        que.push(s);\n        while (!que.empty()){\n            int v = que.front();\
-    \ que.pop();\n            for (auto [u, c] : g[v]){\n                if (from[u]\
-    \ == -1 && dist[u] == dist[v] + c){\n                    from[u] = v;\n      \
-    \              que.push(u);\n                }\n            }\n        }\n   \
-    \     std::vector<int> ans = {t};\n        while (t != s){\n            t = from[t];\n\
-    \            ans.emplace_back(t);\n        }\n        std::reverse(ans.begin(),ans.end());\n\
-    \        return ans;\n    }\n    std::vector<Cost> bfs01(int s){\n        std::vector<Cost>\
+    \ return {};\n        g.build();\n        std::vector<int> from(n,-1);\n     \
+    \   std::queue<int> que;\n        que.push(s);\n        while (!que.empty()){\n\
+    \            int v = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n\
+    \                if (from[u] == -1 && dist[u] == dist[v] + c){\n             \
+    \       from[u] = v;\n                    que.push(u);\n                }\n  \
+    \          }\n        }\n        std::vector<int> ans = {t};\n        while (t\
+    \ != s){\n            t = from[t];\n            ans.emplace_back(t);\n       \
+    \ }\n        std::reverse(ans.begin(),ans.end());\n        return ans;\n    }\n\
+    \    std::vector<Cost> bfs01(int s){\n        g.build();\n        std::vector<Cost>\
     \ dist(n,dist_inf);\n        dist[s] = 0;\n        std::deque<int> que;\n    \
     \    que.push_back(s);\n        while (!que.empty()){\n            int v = que.front();\
     \ que.pop_front();\n            for (auto [u, c] : g[v]){\n                if\
     \ (chmin(dist[u],dist[v]+c)){\n                    if (c == 0) que.push_front(u);\n\
     \                    else que.push_back(u);\n                }\n            }\n\
     \        }\n        return dist;\n    }\n    std::vector<Cost> bfs1(int s){\n\
-    \        std::vector<Cost> dist(n,dist_inf);\n        dist[s] = 0;\n        std::queue<int>\
-    \ que;\n        que.push(s);\n        while (!que.empty()){\n            int v\
-    \ = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n         \
-    \       if (chmin(dist[u],dist[v]+c)){\n                    que.push(u);\n   \
-    \             }\n            }\n        }\n        return dist;\n    }\n    std::vector<Cost>\
-    \ bellman_ford(int s, bool &ng_cycle){\n        std::vector<Cost> dist(n,dist_inf);\n\
-    \        std::vector<int> ng;\n        dist[s] = 0;\n        int tm = 0;\n   \
-    \     while (tm < n){\n            bool finish = true;\n            for (int v\
-    \ = 0; v < n; v++){\n                if (dist[v] == dist_inf) continue;\n    \
-    \            for (auto [u, c] : g[v]){\n                    if (chmin(dist[u],dist[v]+c)){\n\
-    \                        finish = false;\n                        if (tm == n-1)\
-    \ ng.emplace_back(u);\n                    }\n                }\n            }\n\
-    \            if (finish) break;\n            tm++;\n        }\n        ng_cycle\
-    \ = (tm == n);\n        if (ng_cycle){\n            for (auto v : ng) dist[v]\
-    \ = -dist_inf;\n            tm = n;\n            while (tm--){\n             \
-    \   for (int v = 0; v < n; v++){\n                    if (dist[v] != -dist_inf)\
-    \ continue;\n                    for (auto [u, c] : g[v]){\n                 \
-    \       dist[u] = -dist_inf;\n                    }\n                }\n     \
-    \       }\n        }\n        return dist;\n    }\n    std::vector<std::vector<Cost>>\
-    \ warshall_floyd(){\n        std::vector<std::vector<Cost>> dist(n,std::vector<Cost>(n,dist_inf));\n\
+    \        g.build();\n        std::vector<Cost> dist(n,dist_inf);\n        dist[s]\
+    \ = 0;\n        std::queue<int> que;\n        que.push(s);\n        while (!que.empty()){\n\
+    \            int v = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n\
+    \                if (chmin(dist[u],dist[v]+c)){\n                    que.push(u);\n\
+    \                }\n            }\n        }\n        return dist;\n    }\n  \
+    \  std::vector<Cost> bellman_ford(int s, bool &ng_cycle){\n        g.build();\n\
+    \        std::vector<Cost> dist(n,dist_inf);\n        std::vector<int> ng;\n \
+    \       dist[s] = 0;\n        int tm = 0;\n        while (tm < n){\n         \
+    \   bool finish = true;\n            for (int v = 0; v < n; v++){\n          \
+    \      if (dist[v] == dist_inf) continue;\n                for (auto [u, c] :\
+    \ g[v]){\n                    if (chmin(dist[u],dist[v]+c)){\n               \
+    \         finish = false;\n                        if (tm == n-1) ng.emplace_back(u);\n\
+    \                    }\n                }\n            }\n            if (finish)\
+    \ break;\n            tm++;\n        }\n        ng_cycle = (tm == n);\n      \
+    \  if (ng_cycle){\n            for (auto v : ng) dist[v] = -dist_inf;\n      \
+    \      tm = n;\n            while (tm--){\n                for (int v = 0; v <\
+    \ n; v++){\n                    if (dist[v] != -dist_inf) continue;\n        \
+    \            for (auto [u, c] : g[v]){\n                        dist[u] = -dist_inf;\n\
+    \                    }\n                }\n            }\n        }\n        return\
+    \ dist;\n    }\n    std::vector<std::vector<Cost>> warshall_floyd(){\n       \
+    \ g.build();\n        std::vector<std::vector<Cost>> dist(n,std::vector<Cost>(n,dist_inf));\n\
     \        for (int v = 0; v < n; v++){\n            dist[v][v] = 0;\n         \
     \   for (auto [u, c] : g[v]){\n                chmin(dist[v][u],c);\n        \
     \    }\n        }\n        for (int k = 0; k < n; k++){\n            for (int\
@@ -134,18 +136,18 @@ data:
     \        int id = g.add(u, v);\n        return id;\n    }\n    void build(){\n\
     \        g.build();\n    }\n    void set_inf(int new_inf){\n        dist_inf =\
     \ new_inf;\n    }\n    std::vector<int> reconstruct(int s, int t, const std::vector<int>\
-    \ &dist){\n        if (dist[t] == dist_inf) return {};\n        std::vector<int>\
-    \ from(n,-1);\n        std::queue<int> que;\n        que.push(s);\n        while\
-    \ (!que.empty()){\n            int v = que.front(); que.pop();\n            for\
-    \ (auto u : g[v]){\n                if (from[u] == -1 && dist[u] == dist[v] +\
-    \ 1){\n                    from[u] = v;\n                    que.push(u);\n  \
-    \              }\n            }\n        }\n        std::vector<int> ans = {t};\n\
+    \ &dist){\n        if (dist[t] == dist_inf) return {};\n        g.build();\n \
+    \       std::vector<int> from(n,-1);\n        std::queue<int> que;\n        que.push(s);\n\
+    \        while (!que.empty()){\n            int v = que.front(); que.pop();\n\
+    \            for (auto u : g[v]){\n                if (from[u] == -1 && dist[u]\
+    \ == dist[v] + 1){\n                    from[u] = v;\n                    que.push(u);\n\
+    \                }\n            }\n        }\n        std::vector<int> ans = {t};\n\
     \        while (t != s){\n            t = from[t];\n            ans.emplace_back(t);\n\
     \        }\n        std::reverse(ans.begin(),ans.end());\n        return ans;\n\
-    \    }\n    std::vector<int> bfs(int s){\n        std::vector<int> dist(n,dist_inf);\n\
-    \        dist[s] = 0;\n        std::queue<int> que;\n        que.push(s);\n  \
-    \      while (!que.empty()){\n            int v = que.front(); que.pop();\n  \
-    \          for (auto u : g[v]){\n                if (chmin(dist[u],dist[v]+1)){\n\
+    \    }\n    std::vector<int> bfs(int s){\n        g.build();\n        std::vector<int>\
+    \ dist(n,dist_inf);\n        dist[s] = 0;\n        std::queue<int> que;\n    \
+    \    que.push(s);\n        while (!que.empty()){\n            int v = que.front();\
+    \ que.pop();\n            for (auto u : g[v]){\n                if (chmin(dist[u],dist[v]+1)){\n\
     \                    que.push(u);\n                }\n            }\n        }\n\
     \        return dist;\n    }\n    const auto operator[](int idx) const { return\
     \ g[idx]; }\n    auto operator[](int idx) { return g[idx]; }\n};\n\ntemplate<>\n\
@@ -157,15 +159,16 @@ data:
     \        int id = g.add(u, {v, cost});\n        return id;\n    }\n    void build(){\n\
     \        g.build();\n    }\n    void set_inf(int new_inf){\n        dist_inf =\
     \ new_inf;\n    }\n    std::vector<int> reconstruct(int s, int t, const std::vector<int>\
-    \ &dist){\n        if (dist[t] == dist_inf) return {};\n        std::vector<int>\
-    \ from(n,-1);\n        std::queue<int> que;\n        que.push(s);\n        while\
-    \ (!que.empty()){\n            int v = que.front(); que.pop();\n            for\
-    \ (auto [u, b] : g[v]){\n                int c = (int)b;\n                if (from[u]\
-    \ == -1 && dist[u] == dist[v] + c){\n                    from[u] = v;\n      \
-    \              que.push(u);\n                }\n            }\n        }\n   \
-    \     std::vector<int> ans = {t};\n        while (t != s){\n            t = from[t];\n\
-    \            ans.emplace_back(t);\n        }\n        std::reverse(ans.begin(),ans.end());\n\
-    \        return ans;\n    }\n    std::vector<int> bfs01(int s){\n        std::vector<int>\
+    \ &dist){\n        if (dist[t] == dist_inf) return {};\n        g.build();\n \
+    \       std::vector<int> from(n,-1);\n        std::queue<int> que;\n        que.push(s);\n\
+    \        while (!que.empty()){\n            int v = que.front(); que.pop();\n\
+    \            for (auto [u, b] : g[v]){\n                int c = (int)b;\n    \
+    \            if (from[u] == -1 && dist[u] == dist[v] + c){\n                 \
+    \   from[u] = v;\n                    que.push(u);\n                }\n      \
+    \      }\n        }\n        std::vector<int> ans = {t};\n        while (t !=\
+    \ s){\n            t = from[t];\n            ans.emplace_back(t);\n        }\n\
+    \        std::reverse(ans.begin(),ans.end());\n        return ans;\n    }\n  \
+    \  std::vector<int> bfs01(int s){\n        g.build();\n        std::vector<int>\
     \ dist(n,dist_inf);\n        dist[s] = 0;\n        std::deque<int> que;\n    \
     \    que.push_back(s);\n        while (!que.empty()){\n            int v = que.front();\
     \ que.pop_front();\n            for (auto [u, b] : g[v]){\n                int\
@@ -185,48 +188,50 @@ data:
     \ cost = 1){\n        int id = g.add(u, {v,cost});\n        return id;\n    }\n\
     \    void build(){\n        g.build();\n    }\n    void set_inf(Cost new_inf){\n\
     \        dist_inf = new_inf;\n    }\n    std::vector<Cost> dijkstra(int s){\n\
-    \        std::vector<Cost> dist(n,dist_inf);\n        dist[s] = 0;\n        using\
-    \ P = std::pair<Cost,int>;\n        std::priority_queue<P,std::vector<P>,std::greater<P>>\
+    \        g.build();\n        std::vector<Cost> dist(n,dist_inf);\n        dist[s]\
+    \ = 0;\n        using P = std::pair<Cost,int>;\n        std::priority_queue<P,std::vector<P>,std::greater<P>>\
     \ pque;\n        pque.push(P(0,s));\n        while (!pque.empty()){\n        \
     \    auto [d, v] = pque.top(); pque.pop();\n            if (dist[v] < d) continue;\n\
     \            for (auto [u, c] : g[v]){\n                if (chmin(dist[u],d+c)){\n\
     \                    pque.push(P(dist[u],u));\n                }\n           \
     \ }\n        }\n        return dist;\n    }\n    std::vector<int> reconstruct(int\
     \ s, int t, const std::vector<Cost> &dist){\n        if (dist[t] == dist_inf)\
-    \ return {};\n        std::vector<int> from(n,-1);\n        std::queue<int> que;\n\
-    \        que.push(s);\n        while (!que.empty()){\n            int v = que.front();\
-    \ que.pop();\n            for (auto [u, c] : g[v]){\n                if (from[u]\
-    \ == -1 && dist[u] == dist[v] + c){\n                    from[u] = v;\n      \
-    \              que.push(u);\n                }\n            }\n        }\n   \
-    \     std::vector<int> ans = {t};\n        while (t != s){\n            t = from[t];\n\
-    \            ans.emplace_back(t);\n        }\n        std::reverse(ans.begin(),ans.end());\n\
-    \        return ans;\n    }\n    std::vector<Cost> bfs01(int s){\n        std::vector<Cost>\
+    \ return {};\n        g.build();\n        std::vector<int> from(n,-1);\n     \
+    \   std::queue<int> que;\n        que.push(s);\n        while (!que.empty()){\n\
+    \            int v = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n\
+    \                if (from[u] == -1 && dist[u] == dist[v] + c){\n             \
+    \       from[u] = v;\n                    que.push(u);\n                }\n  \
+    \          }\n        }\n        std::vector<int> ans = {t};\n        while (t\
+    \ != s){\n            t = from[t];\n            ans.emplace_back(t);\n       \
+    \ }\n        std::reverse(ans.begin(),ans.end());\n        return ans;\n    }\n\
+    \    std::vector<Cost> bfs01(int s){\n        g.build();\n        std::vector<Cost>\
     \ dist(n,dist_inf);\n        dist[s] = 0;\n        std::deque<int> que;\n    \
     \    que.push_back(s);\n        while (!que.empty()){\n            int v = que.front();\
     \ que.pop_front();\n            for (auto [u, c] : g[v]){\n                if\
     \ (chmin(dist[u],dist[v]+c)){\n                    if (c == 0) que.push_front(u);\n\
     \                    else que.push_back(u);\n                }\n            }\n\
     \        }\n        return dist;\n    }\n    std::vector<Cost> bfs1(int s){\n\
-    \        std::vector<Cost> dist(n,dist_inf);\n        dist[s] = 0;\n        std::queue<int>\
-    \ que;\n        que.push(s);\n        while (!que.empty()){\n            int v\
-    \ = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n         \
-    \       if (chmin(dist[u],dist[v]+c)){\n                    que.push(u);\n   \
-    \             }\n            }\n        }\n        return dist;\n    }\n    std::vector<Cost>\
-    \ bellman_ford(int s, bool &ng_cycle){\n        std::vector<Cost> dist(n,dist_inf);\n\
-    \        std::vector<int> ng;\n        dist[s] = 0;\n        int tm = 0;\n   \
-    \     while (tm < n){\n            bool finish = true;\n            for (int v\
-    \ = 0; v < n; v++){\n                if (dist[v] == dist_inf) continue;\n    \
-    \            for (auto [u, c] : g[v]){\n                    if (chmin(dist[u],dist[v]+c)){\n\
-    \                        finish = false;\n                        if (tm == n-1)\
-    \ ng.emplace_back(u);\n                    }\n                }\n            }\n\
-    \            if (finish) break;\n            tm++;\n        }\n        ng_cycle\
-    \ = (tm == n);\n        if (ng_cycle){\n            for (auto v : ng) dist[v]\
-    \ = -dist_inf;\n            tm = n;\n            while (tm--){\n             \
-    \   for (int v = 0; v < n; v++){\n                    if (dist[v] != -dist_inf)\
-    \ continue;\n                    for (auto [u, c] : g[v]){\n                 \
-    \       dist[u] = -dist_inf;\n                    }\n                }\n     \
-    \       }\n        }\n        return dist;\n    }\n    std::vector<std::vector<Cost>>\
-    \ warshall_floyd(){\n        std::vector<std::vector<Cost>> dist(n,std::vector<Cost>(n,dist_inf));\n\
+    \        g.build();\n        std::vector<Cost> dist(n,dist_inf);\n        dist[s]\
+    \ = 0;\n        std::queue<int> que;\n        que.push(s);\n        while (!que.empty()){\n\
+    \            int v = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n\
+    \                if (chmin(dist[u],dist[v]+c)){\n                    que.push(u);\n\
+    \                }\n            }\n        }\n        return dist;\n    }\n  \
+    \  std::vector<Cost> bellman_ford(int s, bool &ng_cycle){\n        g.build();\n\
+    \        std::vector<Cost> dist(n,dist_inf);\n        std::vector<int> ng;\n \
+    \       dist[s] = 0;\n        int tm = 0;\n        while (tm < n){\n         \
+    \   bool finish = true;\n            for (int v = 0; v < n; v++){\n          \
+    \      if (dist[v] == dist_inf) continue;\n                for (auto [u, c] :\
+    \ g[v]){\n                    if (chmin(dist[u],dist[v]+c)){\n               \
+    \         finish = false;\n                        if (tm == n-1) ng.emplace_back(u);\n\
+    \                    }\n                }\n            }\n            if (finish)\
+    \ break;\n            tm++;\n        }\n        ng_cycle = (tm == n);\n      \
+    \  if (ng_cycle){\n            for (auto v : ng) dist[v] = -dist_inf;\n      \
+    \      tm = n;\n            while (tm--){\n                for (int v = 0; v <\
+    \ n; v++){\n                    if (dist[v] != -dist_inf) continue;\n        \
+    \            for (auto [u, c] : g[v]){\n                        dist[u] = -dist_inf;\n\
+    \                    }\n                }\n            }\n        }\n        return\
+    \ dist;\n    }\n    std::vector<std::vector<Cost>> warshall_floyd(){\n       \
+    \ g.build();\n        std::vector<std::vector<Cost>> dist(n,std::vector<Cost>(n,dist_inf));\n\
     \        for (int v = 0; v < n; v++){\n            dist[v][v] = 0;\n         \
     \   for (auto [u, c] : g[v]){\n                chmin(dist[v][u],c);\n        \
     \    }\n        }\n        for (int k = 0; k < n; k++){\n            for (int\
@@ -242,18 +247,18 @@ data:
     \        int id = g.add(u, v);\n        return id;\n    }\n    void build(){\n\
     \        g.build();\n    }\n    void set_inf(int new_inf){\n        dist_inf =\
     \ new_inf;\n    }\n    std::vector<int> reconstruct(int s, int t, const std::vector<int>\
-    \ &dist){\n        if (dist[t] == dist_inf) return {};\n        std::vector<int>\
-    \ from(n,-1);\n        std::queue<int> que;\n        que.push(s);\n        while\
-    \ (!que.empty()){\n            int v = que.front(); que.pop();\n            for\
-    \ (auto u : g[v]){\n                if (from[u] == -1 && dist[u] == dist[v] +\
-    \ 1){\n                    from[u] = v;\n                    que.push(u);\n  \
-    \              }\n            }\n        }\n        std::vector<int> ans = {t};\n\
+    \ &dist){\n        if (dist[t] == dist_inf) return {};\n        g.build();\n \
+    \       std::vector<int> from(n,-1);\n        std::queue<int> que;\n        que.push(s);\n\
+    \        while (!que.empty()){\n            int v = que.front(); que.pop();\n\
+    \            for (auto u : g[v]){\n                if (from[u] == -1 && dist[u]\
+    \ == dist[v] + 1){\n                    from[u] = v;\n                    que.push(u);\n\
+    \                }\n            }\n        }\n        std::vector<int> ans = {t};\n\
     \        while (t != s){\n            t = from[t];\n            ans.emplace_back(t);\n\
     \        }\n        std::reverse(ans.begin(),ans.end());\n        return ans;\n\
-    \    }\n    std::vector<int> bfs(int s){\n        std::vector<int> dist(n,dist_inf);\n\
-    \        dist[s] = 0;\n        std::queue<int> que;\n        que.push(s);\n  \
-    \      while (!que.empty()){\n            int v = que.front(); que.pop();\n  \
-    \          for (auto u : g[v]){\n                if (chmin(dist[u],dist[v]+1)){\n\
+    \    }\n    std::vector<int> bfs(int s){\n        g.build();\n        std::vector<int>\
+    \ dist(n,dist_inf);\n        dist[s] = 0;\n        std::queue<int> que;\n    \
+    \    que.push(s);\n        while (!que.empty()){\n            int v = que.front();\
+    \ que.pop();\n            for (auto u : g[v]){\n                if (chmin(dist[u],dist[v]+1)){\n\
     \                    que.push(u);\n                }\n            }\n        }\n\
     \        return dist;\n    }\n    const auto operator[](int idx) const { return\
     \ g[idx]; }\n    auto operator[](int idx) { return g[idx]; }\n};\n\ntemplate<>\n\
@@ -265,15 +270,16 @@ data:
     \        int id = g.add(u, {v, cost});\n        return id;\n    }\n    void build(){\n\
     \        g.build();\n    }\n    void set_inf(int new_inf){\n        dist_inf =\
     \ new_inf;\n    }\n    std::vector<int> reconstruct(int s, int t, const std::vector<int>\
-    \ &dist){\n        if (dist[t] == dist_inf) return {};\n        std::vector<int>\
-    \ from(n,-1);\n        std::queue<int> que;\n        que.push(s);\n        while\
-    \ (!que.empty()){\n            int v = que.front(); que.pop();\n            for\
-    \ (auto [u, b] : g[v]){\n                int c = (int)b;\n                if (from[u]\
-    \ == -1 && dist[u] == dist[v] + c){\n                    from[u] = v;\n      \
-    \              que.push(u);\n                }\n            }\n        }\n   \
-    \     std::vector<int> ans = {t};\n        while (t != s){\n            t = from[t];\n\
-    \            ans.emplace_back(t);\n        }\n        std::reverse(ans.begin(),ans.end());\n\
-    \        return ans;\n    }\n    std::vector<int> bfs01(int s){\n        std::vector<int>\
+    \ &dist){\n        if (dist[t] == dist_inf) return {};\n        g.build();\n \
+    \       std::vector<int> from(n,-1);\n        std::queue<int> que;\n        que.push(s);\n\
+    \        while (!que.empty()){\n            int v = que.front(); que.pop();\n\
+    \            for (auto [u, b] : g[v]){\n                int c = (int)b;\n    \
+    \            if (from[u] == -1 && dist[u] == dist[v] + c){\n                 \
+    \   from[u] = v;\n                    que.push(u);\n                }\n      \
+    \      }\n        }\n        std::vector<int> ans = {t};\n        while (t !=\
+    \ s){\n            t = from[t];\n            ans.emplace_back(t);\n        }\n\
+    \        std::reverse(ans.begin(),ans.end());\n        return ans;\n    }\n  \
+    \  std::vector<int> bfs01(int s){\n        g.build();\n        std::vector<int>\
     \ dist(n,dist_inf);\n        dist[s] = 0;\n        std::deque<int> que;\n    \
     \    que.push_back(s);\n        while (!que.empty()){\n            int v = que.front();\
     \ que.pop_front();\n            for (auto [u, b] : g[v]){\n                int\
@@ -289,7 +295,7 @@ data:
   isVerificationFile: false
   path: graph/graph_query.hpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2024-07-04 18:50:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Shortest_Path2.test.cpp
