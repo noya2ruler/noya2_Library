@@ -1,73 +1,106 @@
 #pragma once
 
-#include"../template/template.hpp"
+#include "modint.hpp"
 
-struct modint61 {
-    static constexpr bool is_modint = true;
-    static constexpr ll mod = (1LL << 61) - 1;
-    ll val;
-    constexpr modint61(const ll x = 0) : val(x) {
-        while (val < 0) val += mod;
-        while (val >= mod) val -= mod;
+namespace noya2 {
+
+template<>
+struct static_modint<-61> {
+    static constexpr unsigned long long mod(){
+        return m;
     }
-    bool operator<(const modint61& other) const {
-        return val < other.val;
-    } // To use std::map
-    bool operator==(const modint61& p) const { return val == p.val; }
-    bool operator!=(const modint61& p) const { return val != p.val; }
-    modint61& operator+=(const modint61& p) {
-        if ((val += p.val) >= mod) val -= mod;
+    static constexpr unsigned long long cal_mod(unsigned long long x){
+        unsigned long long xu = x >> 61;
+        unsigned long long xd = x & MASK61;
+        unsigned long long res = xu + xd;
+        if (res >= m) res -= m;
+        return res;
+    }
+    constexpr static_modint() : _v(0) {}
+    constexpr static_modint(long long x){
+        while (x < 0) x += m;
+        while (x >= (long long)m) x -= m;
+        _v = x;
+    }
+    constexpr static_modint(unsigned long long x){
+        while (x >= m) x -= m;
+        _v = x;
+    }
+    using modint61 = static_modint;
+    constexpr modint61 &operator+=(const modint61 &p){
+        _v += p._v;
+        if (_v >= m) _v -= m;
         return *this;
     }
-    modint61& operator-=(const modint61& p) {
-        if ((val += mod - p.val) >= mod) val -= mod;
+    constexpr modint61 &operator-=(const modint61 &p){
+        _v += m - p._v;
+        if (_v >= m) _v -= m;
         return *this;
     }
-    modint61& operator*=(const modint61& p) {
-        ll a = val, b = p.val;
-        const ll MASK30 = (1LL << 30) - 1;
-        const ll MASK31 = (1LL << 31) - 1;
-        const ll MASK61 = (1LL << 61) - 1;
-        ll au = a >> 31, ad = a & MASK31;
-        ll bu = b >> 31, bd = b & MASK31;
-        ll x = ad * bu + au * bd;
-        ll xu = x >> 30, xd = x & MASK30;
-        x = au * bu * 2 + xu + (xd << 31) + ad * bd;
-        xu = x >> 61, xd = x & MASK61;
-        x = xu + xd;
-        if (x >= MASK61) x -= MASK61;
-        val = x;
+    constexpr modint61 &operator*=(const modint61 &p){
+        unsigned long long a = _v, b = p._v;
+        unsigned long long au = a >> 31, ad = a & MASK31;
+        unsigned long long bu = b >> 31, bd = b & MASK31;
+        unsigned long long mid = ad * bu + au * bd;
+        unsigned long long midu = mid >> 30, midd = mid & MASK30;
+        _v = cal_mod(au * bu * 2 + midu + (midd << 31) + ad * bd);
         return *this;
     }
-    modint61 operator-() const { return modint61(get_mod() - val); }
-    modint61& operator/=(const modint61& p) {
+    constexpr modint61 &operator/=(const modint61 &p){
         *this *= p.inv();
         return *this;
     }
-    modint61 operator+(const modint61& p) const { return modint61(*this) += p; }
-    modint61 operator-(const modint61& p) const { return modint61(*this) -= p; }
-    modint61 operator*(const modint61& p) const { return modint61(*this) *= p; }
-    modint61 operator/(const modint61& p) const { return modint61(*this) /= p; }
-
-    modint61 inv() const {
-        ll a = val, b = mod, u = 1, v = 0, t;
-        while (b > 0) {
-            t = a / b;
-            swap(a -= t * b, b), swap(u -= t * v, v);
+    friend constexpr modint61 operator+(const modint61 &lhs, const modint61 &rhs){
+        return modint61(lhs) += rhs;
+    }
+    friend constexpr modint61 operator-(const modint61 &lhs, const modint61 &rhs){
+        return modint61(lhs) -= rhs;
+    }
+    friend constexpr modint61 operator*(const modint61 &lhs, const modint61 &rhs){
+        return modint61(lhs) *= rhs;
+    }
+    friend constexpr modint61 operator/(const modint61 &lhs, const modint61 &rhs){
+        return modint61(lhs) /= rhs;
+    }
+    constexpr modint61 operator+() const {
+        return *this;
+    }
+    constexpr modint61 operator-() const {
+        return modint61() - *this;
+    }
+    constexpr modint61 inv() const {
+        unsigned long long a = _v, b = m, u = 1, v = 0;
+        while (b > 0){
+            unsigned long long t = a / b;
+            std::swap(a -= t * b, b);
+            std::swap(u -= t * v, v);
         }
         return modint61(u);
     }
-    modint61 pow(ll n) const {
-        modint61 ret(1), mul(val);
-        while (n > 0) {
-            if (n & 1) ret = ret * mul;
-            mul = mul * mul;
+    constexpr modint61 pow(long long n) const {
+        modint61 ret(1ULL), mul(_v);
+        while (n != 0){
+            if (n & 1) ret *= mul;
+            mul *= mul;
             n >>= 1;
         }
         return ret;
     }
-    static constexpr ll get_mod() { return mod; }
-    friend std::ostream &operator<<(std::ostream &os, const modint61& p) {
-        return os << p.val;
+    friend std::ostream &operator<<(std::ostream &os, const modint61 &p){
+        return os << p._v;
     }
+    constexpr unsigned long long val() const {
+        return _v;
+    }
+    constexpr auto operator<=>(const modint61 &) const = default;
+    
+  private:
+    unsigned long long _v;
+    static constexpr unsigned long long m = (1ULL << 61) - 1;
+    static constexpr unsigned long long MASK30 = (1ULL << 30) - 1;
+    static constexpr unsigned long long MASK31 = (1ULL << 31) - 1;
+    static constexpr unsigned long long MASK61 = (1ULL << 61) - 1;
 };
+using modint61 = static_modint<-61>;
+
+} // namespace noya2
