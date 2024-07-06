@@ -1,44 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/centroid_decomposition.hpp
     title: tree/centroid_decomposition.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint4724.hpp
     title: utility/modint4724.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
@@ -477,8 +477,8 @@ data:
     \        };\n        fps sum, sq;\n        for (int v : g[ctr]){\n           \
     \ if (done[v]) continue;\n            dfs(dfs,v,ctr,1);\n            sum += f;\n\
     \            sq += f*f;\n            f = {};\n        }\n        ans += (sum*sum\
-    \ - sq) / 2;\n        ans += sum;\n        done[ctr] = true;\n    }\n    ans.erase(ans.begin());\n\
-    \    out(ans);\n}\n"
+    \ - sq) / 2;\n        ans += sum;\n        done[ctr] = true;\n    }\n    ans.resize(n);\n\
+    \    ans.erase(ans.begin());\n    out(ans);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/frequency_table_of_tree_distance\"\
     \n\n#include\"../../template/template.hpp\"\n#include\"../../tree/simple_tree.hpp\"\
     \n#include\"../../tree/centroid_decomposition.hpp\"\n#include\"../../utility/modint4724.hpp\"\
@@ -539,7 +539,8 @@ data:
     \     for (int v : g[ctr]){\n            if (done[v]) continue;\n            dfs(dfs,v,ctr,1);\n\
     \            sum += f;\n            sq += f*f;\n            f = {};\n        }\n\
     \        ans += (sum*sum - sq) / 2;\n        ans += sum;\n        done[ctr] =\
-    \ true;\n    }\n    ans.erase(ans.begin());\n    out(ans);\n}"
+    \ true;\n    }\n    ans.resize(n);\n    ans.erase(ans.begin());\n    out(ans);\n\
+    }"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
@@ -555,8 +556,8 @@ data:
   isVerificationFile: true
   path: test/tree/FrequencyTableofTreeDistance.test.cpp
   requiredBy: []
-  timestamp: '2024-07-06 19:06:25+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-07-06 19:14:35+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/FrequencyTableofTreeDistance.test.cpp
 layout: document

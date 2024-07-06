@@ -44,7 +44,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/rollback_dsu.hpp
     title: data_structure/rollback_dsu.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
   - icon: ':warning:'
@@ -122,7 +122,7 @@ data:
   - icon: ':warning:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
   - icon: ':heavy_check_mark:'
@@ -137,7 +137,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: "\u5168\u90E8\u8F09\u305B\u6728"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -270,7 +270,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Floor_of_Linear.test.cpp
     title: test/math/Sum_of_Floor_of_Linear.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
   - icon: ':heavy_check_mark:'
@@ -297,9 +297,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate\
@@ -388,7 +388,7 @@ data:
   - geometry/partition_by_circle.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-08-26 05:21:53+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/aoj_dsl_1_b.test.cpp
   - test/data_structure/SetXorMin.test.cpp

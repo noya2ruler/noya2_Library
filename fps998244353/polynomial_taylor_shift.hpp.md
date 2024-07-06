@@ -10,10 +10,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
