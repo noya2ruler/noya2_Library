@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #include"../math/prime.hpp"
 
 namespace noya2{
@@ -30,13 +32,13 @@ struct static_modint {
         return x;
     }
     constexpr static_modint() : _v(0) {}
-    template<signed_integral T>
+    template<std::signed_integral T>
     constexpr static_modint(T v){
         long long x = (long long)(v % (long long)(umod()));
         if (x < 0) x += umod();
         _v = (unsigned int)(x);
     }
-    template<unsigned_integral T>
+    template<std::unsigned_integral T>
     constexpr static_modint(T v){
         _v = (unsigned int)(v % umod());
     }
@@ -72,7 +74,7 @@ struct static_modint {
         return *this;
     }
     constexpr mint& operator*=(const mint& rhs) {
-        ull z = _v;
+        unsigned long long z = _v;
         z *= rhs._v;
         _v = (uint)(z % umod());
         return *this;
@@ -80,7 +82,7 @@ struct static_modint {
     constexpr mint& operator/=(const mint& rhs) { return *this = *this * rhs.inv(); }
     constexpr mint operator+() const { return *this; }
     constexpr mint operator-() const { return mint() - *this; }
-    constexpr mint pow(ll n) const {
+    constexpr mint pow(long long n) const {
         assert(0 <= n);
         mint x = *this, r = 1;
         while (n) {
@@ -149,13 +151,13 @@ template <int id> struct dynamic_modint {
     }
 
     dynamic_modint() : _v(0) {}
-    template<signed_integral T>
+    template<std::signed_integral T>
     dynamic_modint(T v){
         long long x = (long long)(v % (long long)(umod()));
         if (x < 0) x += umod();
         _v = (unsigned int)(x);
     }
-    template<unsigned_integral T>
+    template<std::unsigned_integral T>
     dynamic_modint(T v){
         _v = (unsigned int)(v % umod());
     }
