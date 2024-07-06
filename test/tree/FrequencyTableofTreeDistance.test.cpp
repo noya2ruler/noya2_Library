@@ -145,6 +145,7 @@ int main(){
         ans += sum;
         done[ctr] = true;
     }
+    ans.resize(n);
     ans.erase(ans.begin());
     out(ans);
 }
