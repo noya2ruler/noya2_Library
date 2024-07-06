@@ -149,9 +149,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/tree_query_weighted.hpp
     title: tree/tree_query_weighted.hpp
-  - icon: ':warning:'
-    path: utility/modint61.hpp
-    title: utility/modint61.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
@@ -377,7 +374,6 @@ data:
   isVerificationFile: false
   path: template/template.hpp
   requiredBy:
-  - utility/modint61.hpp
   - data_structure/li_chao_tree.hpp
   - data_structure/fenwick_tree.hpp
   - data_structure/offline_dynamic_connectivity.hpp

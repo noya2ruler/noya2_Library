@@ -41,6 +41,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
+  - icon: ':warning:'
+    path: utility/modint61.hpp
+    title: utility/modint61.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Point_Set_Range_Composite.test.cpp
@@ -182,6 +185,7 @@ data:
   isVerificationFile: false
   path: math/prime.hpp
   requiredBy:
+  - utility/modint61.hpp
   - utility/modint.hpp
   - fps/fps_modint.hpp
   - fps/fps_ntt.hpp
