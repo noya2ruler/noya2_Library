@@ -42,6 +42,9 @@ data:
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':warning:'
+    path: utility/modint4724.hpp
+    title: utility/modint4724.hpp
+  - icon: ':warning:'
     path: utility/modint61.hpp
     title: utility/modint61.hpp
   _extendedVerifiedWith:
@@ -187,6 +190,7 @@ data:
   requiredBy:
   - utility/modint61.hpp
   - utility/modint.hpp
+  - utility/modint4724.hpp
   - fps/fps_modint.hpp
   - fps/fps_ntt.hpp
   - fps/sample_point_shift.hpp

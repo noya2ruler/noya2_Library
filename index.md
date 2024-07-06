@@ -283,6 +283,9 @@ data:
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':warning:'
+      path: utility/modint4724.hpp
+      title: utility/modint4724.hpp
+    - icon: ':warning:'
       path: utility/modint61.hpp
       title: utility/modint61.hpp
     - icon: ':warning:'
