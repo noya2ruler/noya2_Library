@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -48,9 +48,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps/convolution.test.cpp
     title: test/fps/convolution.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/tree/FrequencyTableofTreeDistance.test.cpp
+    title: test/tree/FrequencyTableofTreeDistance.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/formal_power_series.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -251,8 +254,9 @@ data:
   - fps/fps_atcoder.hpp
   - fps/multipoint_evaluation.hpp
   timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/tree/FrequencyTableofTreeDistance.test.cpp
   - test/fps/Convolution1000000007.test.cpp
   - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   - test/fps/convolution.test.cpp

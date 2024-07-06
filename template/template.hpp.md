@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -53,7 +53,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/rollback_dsu.hpp
     title: data_structure/rollback_dsu.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
   - icon: ':warning:'
@@ -143,7 +143,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: "\u5168\u90E8\u8F09\u305B\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -276,6 +276,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Floor_of_Linear.test.cpp
     title: test/math/Sum_of_Floor_of_Linear.test.cpp
+  - icon: ':x:'
+    path: test/tree/FrequencyTableofTreeDistance.test.cpp
+    title: test/tree/FrequencyTableofTreeDistance.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
@@ -300,9 +303,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
@@ -421,7 +424,7 @@ data:
   - geometry/partition_by_circle.hpp
   - string/rolling_hash.hpp
   timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/aoj_dsl_1_b.test.cpp
   - test/data_structure/SetXorMin.test.cpp
@@ -451,6 +454,7 @@ data:
   - test/tree/Tree_Diameter.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Tree_Diameter_hld.test.cpp
+  - test/tree/FrequencyTableofTreeDistance.test.cpp
   - test/tree/Lowest_Common_Ancestor.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
   - test/tree/Rerooting_DP.test.cpp

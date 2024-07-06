@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -21,15 +21,18 @@ data:
     path: tree/heavy_light_decomposition.hpp
     title: "\u5168\u90E8\u8F09\u305B\u6728"
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/tree/FrequencyTableofTreeDistance.test.cpp
+    title: test/tree/FrequencyTableofTreeDistance.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/simple_tree.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -149,9 +152,10 @@ data:
   requiredBy:
   - tree/heavy_light_decomposition.hpp
   timestamp: '2024-07-04 18:49:55+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/FrequencyTableofTreeDistance.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
 documentation_of: tree/simple_tree.hpp
 layout: document

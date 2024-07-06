@@ -38,10 +38,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps998244353/sample_point_shift.hpp
     title: fps998244353/sample_point_shift.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: utility/modint4724.hpp
     title: utility/modint4724.hpp
   - icon: ':warning:'
@@ -111,9 +111,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Lcm_Convolution.test.cpp
     title: test/math/Lcm_Convolution.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/tree/FrequencyTableofTreeDistance.test.cpp
+    title: test/tree/FrequencyTableofTreeDistance.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/prime.hpp\"\n\n#include<utility>\nnamespace noya2 {\n\
@@ -204,7 +207,7 @@ data:
   - fps998244353/ntt998244353.hpp
   - fps998244353/multipoint_evaluation.hpp
   timestamp: '2024-04-22 12:03:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
@@ -215,6 +218,7 @@ data:
   - test/math/Determinant_of_Matrix.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - test/tree/FrequencyTableofTreeDistance.test.cpp
   - test/fps/Convolution1000000007.test.cpp
   - test/fps/convolution_relaxed_convolution.test.cpp
   - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp

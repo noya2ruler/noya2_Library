@@ -14,7 +14,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: "\u5168\u90E8\u8F09\u305B\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
   _extendedVerifiedWith:
@@ -27,15 +27,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
+  - icon: ':x:'
+    path: test/tree/FrequencyTableofTreeDistance.test.cpp
+    title: test/tree/FrequencyTableofTreeDistance.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/csr.hpp\"\n\n#include<vector>\n#include<ranges>\n\
@@ -99,10 +102,11 @@ data:
   - graph/graph_query.hpp
   - graph/cycle_detection.hpp
   timestamp: '2024-07-01 23:28:44+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/Rectangle_Sum.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/FrequencyTableofTreeDistance.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
   - test/graph/Shortest_Path2.test.cpp
   - test/graph/CycleDetectionDirected.test.cpp
