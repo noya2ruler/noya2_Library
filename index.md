@@ -235,8 +235,14 @@ data:
       path: string/rolling_hash.hpp
       title: string/rolling_hash.hpp
     - icon: ':warning:'
+      path: string/suffix_array.hpp
+      title: string/suffix_array.hpp
+    - icon: ':warning:'
       path: string/trie.hpp
       title: string/trie.hpp
+    - icon: ':warning:'
+      path: string/z_algorithm.hpp
+      title: string/z_algorithm.hpp
   - name: template
     pages:
     - icon: ':heavy_check_mark:'

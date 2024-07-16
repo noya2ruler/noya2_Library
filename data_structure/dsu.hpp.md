@@ -141,14 +141,14 @@ data:
   isVerificationFile: false
   path: data_structure/dsu.hpp
   requiredBy:
-  - data_structure/range_parallel_dsu.hpp
   - geometry/partition_by_circle.hpp
+  - data_structure/range_parallel_dsu.hpp
   timestamp: '2024-07-01 23:39:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/geometry/aoj1198.test.cpp
   - test/data_structure/Unionfind.test.cpp
   - test/data_structure/RangeParallelUnionfind.test.cpp
-  - test/geometry/aoj1198.test.cpp
 documentation_of: data_structure/dsu.hpp
 layout: document
 redirect_from:
