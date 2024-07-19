@@ -25,6 +25,9 @@ data:
     path: test/graph/CycleDetectionDirected.test.cpp
     title: test/graph/CycleDetectionDirected.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/Shortest_Path.test.cpp
+    title: test/graph/Shortest_Path.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
   - icon: ':heavy_check_mark:'
@@ -109,6 +112,7 @@ data:
   - test/tree/FrequencyTableofTreeDistance.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
   - test/graph/CycleDetectionDirected.test.cpp
+  - test/graph/Shortest_Path.test.cpp
   - test/graph/Shortest_Path2.test.cpp
 documentation_of: data_structure/csr.hpp
 layout: document

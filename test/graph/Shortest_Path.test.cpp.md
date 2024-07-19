@@ -2,8 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: graph/Graph_core.hpp
-    title: graph/Graph_core.hpp
+    path: data_structure/csr.hpp
+    title: data_structure/csr.hpp
+  - icon: ':heavy_check_mark:'
+    path: graph/graph_query.hpp
+    title: graph/graph_query.hpp
+  - icon: ':heavy_check_mark:'
+    path: graph/unweighted_type.hpp
+    title: graph/unweighted_type.hpp
   - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
@@ -80,83 +86,172 @@ data:
     using ld = long double;\nusing uint = unsigned int;\nusing ull = unsigned long\
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
-    */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"graph/Graph_core.hpp\"\n\n#line\
-    \ 4 \"graph/Graph_core.hpp\"\n\nnamespace noya2 {\n\nstruct naiveGraph { // undirected\
-    \ unweighted tree\n    naiveGraph (int _n = 0) : n(_n){\n        es0.resize(n);\n\
-    \        es1.resize(n);\n        _vis.resize(n,0);\n    }\n    void add_edge(int\
-    \ u, int v, bool undirect = true, int id = -1){\n        es0[u].emplace_back(v);\n\
-    \        es1[u].emplace_back(v,id);\n        if (undirect){\n            es0[v].emplace_back(u);\n\
-    \            es1[v].emplace_back(u,id);\n        }\n    }\n    void input(int\
-    \ m, int _indexed = 1, bool undirect = true){\n        rep(i,m){\n           \
-    \ int u, v; in(u,v);\n            u -= _indexed;\n            v -= _indexed;\n\
-    \            add_edge(u,v,undirect,i);\n        }\n    }\n    bool yet(int v){\
-    \ return _vis[v] == 0; }\n    void visit(int v) { _vis[v]++; }\n    void reset(int\
-    \ v = -1){ \n        if (v == -1) fill(all(_vis),0);\n        else _vis[v] = 0;\n\
-    \    }\n    const vector<int>& operator[](int idx) const { return es0[idx]; }\n\
-    \    const vector<pair<int,int>>& operator()(int idx) const {return es1[idx];\
-    \ }\n  private:\n    int n;\n    vector<vector<int>> es0;\n    vector<vector<pair<int,int>>>\
-    \ es1;\n    vector<int> _vis;\n};\n\nstruct usefulGraph { // directed weighted\
-    \ graph\n    usefulGraph (int _n = 0) : n(_n){\n        es.resize(n);\n      \
-    \  _vis.resize(n,0);\n    }\n    void add_edge(int u, int v, bool undirect = true,\
-    \ ll cost = 1){\n        es[u].emplace_back(v,cost);\n        if (undirect){\n\
-    \            es[v].emplace_back(u,cost);\n        }\n    }\n    void input(int\
-    \ m, int _indexed = 1, bool undirect = true){\n        rep(i,m){\n           \
-    \ int u, v; in(u,v);\n            ll cost; in(cost);\n            u -= _indexed;\n\
-    \            v -= _indexed;\n            add_edge(u,v,undirect,cost);\n      \
-    \  }\n    }\n    bool yet(int v){ return _vis[v] == 0; }\n    void visit(int v)\
-    \ { _vis[v]++; }\n    void reset(int v = -1){ \n        if (v == -1) fill(all(_vis),0);\n\
-    \        else _vis[v] = 0;\n    }\n    vector<ll> dijkstra(int s){ // all edge\
-    \ weight >= 0\n        vector<ll> dist(n,linf);\n        dist[s] = 0LL;\n    \
-    \    priority_queue<pli,vector<pli>,greater<pli>> pque;\n        pque.push(pli(0,s));\n\
-    \        while (!pque.empty()){\n            auto [d, f] = pque.top(); pque.pop();\n\
-    \            if (dist[f] < d) continue;\n            for (auto [t, cost] : es[f]){\n\
-    \                if (chmin(dist[t],d+cost)){\n                    pque.push(pli(dist[t],t));\n\
+    */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"graph/graph_query.hpp\"\n\n#line\
+    \ 2 \"data_structure/csr.hpp\"\n\n#line 4 \"data_structure/csr.hpp\"\n#include<ranges>\n\
+    #line 7 \"data_structure/csr.hpp\"\n\nnamespace noya2::internal {\n\ntemplate<class\
+    \ E>\nstruct csr {\n    csr () {}\n    csr (int _n) : n(_n) {}\n    csr (int _n,\
+    \ int m) : n(_n){\n        start.reserve(m);\n        elist.reserve(m);\n    }\n\
+    \    // ACL style constructor (do not have to call build)\n    csr (int _n, const\
+    \ std::vector<std::pair<int,E>> &idx_elem) : n(_n), start(_n + 2), elist(idx_elem.size())\
+    \ {\n        for (auto &[i, e] : idx_elem){\n            start[i + 2]++;\n   \
+    \     }\n        for (int i = 1; i < n; i++){\n            start[i + 2] += start[i\
+    \ + 1];\n        }\n        for (auto &[i, e] : idx_elem){\n            elist[start[i\
+    \ + 1]++] = e;\n        }\n        prepared = true;\n    }\n    int add(int idx,\
+    \ E elem){\n        int eid = start.size();\n        start.emplace_back(idx);\n\
+    \        elist.emplace_back(elem);\n        return eid;\n    }\n    void build(){\n\
+    \        if (prepared) return ;\n        int m = start.size();\n        std::vector<E>\
+    \ nelist(m);\n        std::vector<int> nstart(n + 2, 0);\n        for (int i =\
+    \ 0; i < m; i++){\n            nstart[start[i] + 2]++;\n        }\n        for\
+    \ (int i = 1; i < n; i++){\n            nstart[i + 2] += nstart[i + 1];\n    \
+    \    }\n        for (int i = 0; i < m; i++){\n            nelist[nstart[start[i]\
+    \ + 1]++] = elist[i];\n        }\n        swap(elist,nelist);\n        swap(start,nstart);\n\
+    \        prepared = true;\n    }\n    const auto operator[](int idx) const {\n\
+    \        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);\n\
+    \    }\n    auto operator[](int idx){\n        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);\n\
+    \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
+    \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
+    \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
+    \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
+    \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n#line 2 \"graph/unweighted_type.hpp\"\
+    \n\nnamespace noya2 {\n\nstruct unweighted {};\n\n} // namespace noya2\n#line\
+    \ 6 \"graph/graph_query.hpp\"\n\n#line 12 \"graph/graph_query.hpp\"\n\nnamespace\
+    \ noya2 {\n\ntemplate<typename Cost>\nstruct graph {\n    int n;\n    internal::csr<std::pair<int,Cost>>\
+    \ g;\n    Cost dist_inf = std::numeric_limits<Cost>::max() / 2;\n    graph (int\
+    \ _n = 0) : n(_n), g(_n) {}\n    graph (int _n, int _m) : n(_n), g(_n,_m) {}\n\
+    \    // \u6709\u5411\u8FBA\u3092\u8FFD\u52A0 (\u7121\u5411\u8FBA\u3067\u306F\u306A\
+    \u3044\u3053\u3068\u306B\u6CE8\u610F\uFF01)\n    int add_edge(int u, int v, Cost\
+    \ cost = 1){\n        int id = g.add(u, {v,cost});\n        return id;\n    }\n\
+    \    template<bool directed>\n    static graph input(int _n, int _m, int indexed\
+    \ = 1){\n        if constexpr (directed){\n            graph g(_n, _m*2);\n  \
+    \          for (int i = 0; i < _m; i++){\n                int u, v; std::cin >>\
+    \ u >> v;\n                u -= indexed, v -= indexed;\n                Cost c;\
+    \ std::cin >> c;\n                g.add_edge(u, v, c);\n                g.add_edge(v,\
+    \ u, c);\n            }\n            g.build();\n            return g;\n     \
+    \   }\n        else {\n            graph g(_n, _m);\n            for (int i =\
+    \ 0; i < _m; i++){\n                int u, v; std::cin >> u >> v;\n          \
+    \      u -= indexed, v -= indexed;\n                Cost c; std::cin >> c;\n \
+    \               g.add_edge(u, v, c);\n            }\n            g.build();\n\
+    \            return g;\n        }\n    }\n    void build(){\n        g.build();\n\
+    \    }\n    void set_inf(Cost new_inf){\n        dist_inf = new_inf;\n    }\n\
+    \    std::vector<Cost> dijkstra(int s){\n        g.build();\n        std::vector<Cost>\
+    \ dist(n,dist_inf);\n        dist[s] = 0;\n        using P = std::pair<Cost,int>;\n\
+    \        std::priority_queue<P,std::vector<P>,std::greater<P>> pque;\n       \
+    \ pque.push(P(0,s));\n        while (!pque.empty()){\n            auto [d, v]\
+    \ = pque.top(); pque.pop();\n            if (dist[v] < d) continue;\n        \
+    \    for (auto [u, c] : g[v]){\n                if (chmin(dist[u],d+c)){\n   \
+    \                 pque.push(P(dist[u],u));\n                }\n            }\n\
+    \        }\n        return dist;\n    }\n    std::vector<int> reconstruct(int\
+    \ s, int t, const std::vector<Cost> &dist){\n        if (dist[t] == dist_inf)\
+    \ return {};\n        g.build();\n        std::vector<int> from(n,-1);\n     \
+    \   std::queue<int> que;\n        que.push(s);\n        while (!que.empty()){\n\
+    \            int v = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n\
+    \                if (from[u] == -1 && dist[u] == dist[v] + c){\n             \
+    \       from[u] = v;\n                    que.push(u);\n                }\n  \
+    \          }\n        }\n        std::vector<int> ans = {t};\n        while (t\
+    \ != s){\n            t = from[t];\n            ans.emplace_back(t);\n       \
+    \ }\n        std::reverse(ans.begin(),ans.end());\n        return ans;\n    }\n\
+    \    std::vector<Cost> bfs01(int s){\n        g.build();\n        std::vector<Cost>\
+    \ dist(n,dist_inf);\n        dist[s] = 0;\n        std::deque<int> que;\n    \
+    \    que.push_back(s);\n        while (!que.empty()){\n            int v = que.front();\
+    \ que.pop_front();\n            for (auto [u, c] : g[v]){\n                if\
+    \ (chmin(dist[u],dist[v]+c)){\n                    if (c == 0) que.push_front(u);\n\
+    \                    else que.push_back(u);\n                }\n            }\n\
+    \        }\n        return dist;\n    }\n    std::vector<Cost> bfs1(int s){\n\
+    \        g.build();\n        std::vector<Cost> dist(n,dist_inf);\n        dist[s]\
+    \ = 0;\n        std::queue<int> que;\n        que.push(s);\n        while (!que.empty()){\n\
+    \            int v = que.front(); que.pop();\n            for (auto [u, c] : g[v]){\n\
+    \                if (chmin(dist[u],dist[v]+c)){\n                    que.push(u);\n\
     \                }\n            }\n        }\n        return dist;\n    }\n  \
-    \  vector<int> reconstruct(int s, int t, const vector<ll> &dist){\n        if\
-    \ (dist[t] == linf) return {};\n        vector<int> froms(n,-1);\n        queue<int>\
-    \ que;\n        que.push(s);\n        froms[s] = s;\n        while (!que.empty()){\n\
-    \            int v = que.front(); que.pop();\n            for (auto [u, cost]\
-    \ : es[v]){\n                if (froms[u] == -1 && dist[v] + cost == dist[u]){\n\
-    \                    froms[u] = v;\n                    que.push(u);\n       \
-    \         }\n            }\n        }\n        vector<int> ans = {t};\n      \
-    \  while (t != s){\n            t = froms[t];\n            ans.emplace_back(t);\n\
-    \        }\n        reverse(all(ans));\n        return ans;\n    }\n    vector<ll>\
-    \ bfs01(int s){ // all edge weight = 0 or 1\n        vector<ll> dist(n,linf);\n\
-    \        dist[s] = 0;\n        deque<int> que;\n        que.push_back(s);\n  \
-    \      while (!que.empty()){\n            auto f = que.front(); que.pop_front();\n\
-    \            for (auto [t, cost] : es[f]){\n                if (chmin(dist[t],dist[f]+cost)){\n\
-    \                    if (cost == 0) que.push_front(t);\n                    else\
-    \ que.push_back(t);\n                }\n            }\n        }\n        return\
-    \ dist;\n    }\n    vector<ll> bellman_ford(int s, bool &ng_cycle){\n        vector<ll>\
-    \ dist(n,linf);\n        vector<int> ng;\n        dist[s] = 0;\n        int tm\
-    \ = 0;\n        while (tm < n){\n            bool finish = true;\n           \
-    \ for (int f = 0; f < n; f++){\n                if (dist[f] == linf) continue;\n\
-    \                for (auto [t, cost] : es[f]){\n                    if (chmin(dist[t],dist[f]+cost)){\n\
-    \                        finish = false;\n                        if (tm == n-1)\
-    \ ng.emplace_back(t);\n                    }\n                }\n            }\n\
-    \            if (finish) break;\n            tm++;\n        }\n        ng_cycle\
-    \ = (tm == n);\n        if (ng_cycle){\n            for (auto v : ng) dist[v]\
-    \ = -linf;\n            tm = n;\n            while (tm--){\n                for\
-    \ (int f = 0; f < n; f++){\n                    if (dist[f] != -linf) continue;\n\
-    \                    for (auto e : es[f]){\n                        dist[e.first]\
-    \ = -linf;\n                    }\n                }\n            }\n        }\n\
-    \        return dist;\n    }\n    vector<vector<ll>> warshall_floyd(){\n     \
-    \   vector<vector<ll>> res(n,vector<ll>(n,linf));\n        rep(i,n){\n       \
-    \     res[i][i] = 0;\n            for (auto [t, cost] : es[i]){\n            \
-    \    chmin(res[i][t],cost);\n            }\n        }\n        rep(k,n) rep(i,n)\
-    \ rep(j,n){\n            chmin(res[i][j],res[i][k]+res[k][j]);\n        }\n  \
-    \      return res;\n    }\n    const vector<pair<int,ll>>& operator[](int idx)\
-    \ const { return es[idx]; }\n  private:\n    int n;\n    vector<vector<pair<int,ll>>>\
-    \ es;\n    vector<int> _vis;\n};\n\n} // namespace noya2\n#line 5 \"test/graph/Shortest_Path.test.cpp\"\
-    \n\nint main(){\n    int n, m, s, t; in(n,m,s,t);\n    usefulGraph g(n);\n   \
-    \ g.input(m,0,false);\n    auto dist = g.dijkstra(s);\n    if (dist[t] == linf){\n\
-    \        out(-1);\n        return 0;\n    }\n    auto ans = g.reconstruct(s,t,dist);\n\
+    \  std::vector<Cost> bellman_ford(int s, bool &ng_cycle){\n        g.build();\n\
+    \        std::vector<Cost> dist(n,dist_inf);\n        std::vector<int> ng;\n \
+    \       dist[s] = 0;\n        int tm = 0;\n        while (tm < n){\n         \
+    \   bool finish = true;\n            for (int v = 0; v < n; v++){\n          \
+    \      if (dist[v] == dist_inf) continue;\n                for (auto [u, c] :\
+    \ g[v]){\n                    if (chmin(dist[u],dist[v]+c)){\n               \
+    \         finish = false;\n                        if (tm == n-1) ng.emplace_back(u);\n\
+    \                    }\n                }\n            }\n            if (finish)\
+    \ break;\n            tm++;\n        }\n        ng_cycle = (tm == n);\n      \
+    \  if (ng_cycle){\n            for (auto v : ng) dist[v] = -dist_inf;\n      \
+    \      tm = n;\n            while (tm--){\n                for (int v = 0; v <\
+    \ n; v++){\n                    if (dist[v] != -dist_inf) continue;\n        \
+    \            for (auto [u, c] : g[v]){\n                        dist[u] = -dist_inf;\n\
+    \                    }\n                }\n            }\n        }\n        return\
+    \ dist;\n    }\n    std::vector<std::vector<Cost>> warshall_floyd(){\n       \
+    \ g.build();\n        std::vector<std::vector<Cost>> dist(n,std::vector<Cost>(n,dist_inf));\n\
+    \        for (int v = 0; v < n; v++){\n            dist[v][v] = 0;\n         \
+    \   for (auto [u, c] : g[v]){\n                chmin(dist[v][u],c);\n        \
+    \    }\n        }\n        for (int k = 0; k < n; k++){\n            for (int\
+    \ i = 0; i < n; i++){\n                for (int j = 0; j < n; j++){\n        \
+    \            chmin(dist[i][j],dist[i][k]+dist[k][j]);\n                }\n   \
+    \         }\n        }\n        return dist;\n    }\n    const auto operator[](int\
+    \ idx) const { return g[idx]; }\n    auto operator[](int idx) { return g[idx];\
+    \ }\n};\n\n\ntemplate<>\nstruct graph<unweighted> {\n    int n;\n    internal::csr<int>\
+    \ g;\n    int dist_inf = std::numeric_limits<int>::max() / 2;\n    graph (int\
+    \ _n = 0) : n(_n), g(_n) {}\n    graph (int _n, int _m) : n(_n), g(_n,_m) {}\n\
+    \    // \u6709\u5411\u8FBA\u3092\u8FFD\u52A0 (\u7121\u5411\u8FBA\u3067\u306F\u306A\
+    \u3044\u3053\u3068\u306B\u6CE8\u610F\uFF01)\n    int add_edge(int u, int v){\n\
+    \        int id = g.add(u, v);\n        return id;\n    }\n    template<bool directed>\n\
+    \    static graph input(int _n, int _m, int indexed = 1){\n        if constexpr\
+    \ (directed){\n            graph g(_n, _m*2);\n            for (int i = 0; i <\
+    \ _m; i++){\n                int u, v; std::cin >> u >> v;\n                u\
+    \ -= indexed, v -= indexed;\n                g.add_edge(u, v);\n             \
+    \   g.add_edge(v, u);\n            }\n            g.build();\n            return\
+    \ g;\n        }\n        else {\n            graph g(_n, _m);\n            for\
+    \ (int i = 0; i < _m; i++){\n                int u, v; std::cin >> u >> v;\n \
+    \               u -= indexed, v -= indexed;\n                g.add_edge(u, v);\n\
+    \            }\n            g.build();\n            return g;\n        }\n   \
+    \ }\n    void build(){\n        g.build();\n    }\n    void set_inf(int new_inf){\n\
+    \        dist_inf = new_inf;\n    }\n    std::vector<int> reconstruct(int s, int\
+    \ t, const std::vector<int> &dist){\n        if (dist[t] == dist_inf) return {};\n\
+    \        g.build();\n        std::vector<int> from(n,-1);\n        std::queue<int>\
+    \ que;\n        que.push(s);\n        while (!que.empty()){\n            int v\
+    \ = que.front(); que.pop();\n            for (auto u : g[v]){\n              \
+    \  if (from[u] == -1 && dist[u] == dist[v] + 1){\n                    from[u]\
+    \ = v;\n                    que.push(u);\n                }\n            }\n \
+    \       }\n        std::vector<int> ans = {t};\n        while (t != s){\n    \
+    \        t = from[t];\n            ans.emplace_back(t);\n        }\n        std::reverse(ans.begin(),ans.end());\n\
+    \        return ans;\n    }\n    std::vector<int> bfs(int s){\n        g.build();\n\
+    \        std::vector<int> dist(n,dist_inf);\n        dist[s] = 0;\n        std::queue<int>\
+    \ que;\n        que.push(s);\n        while (!que.empty()){\n            int v\
+    \ = que.front(); que.pop();\n            for (auto u : g[v]){\n              \
+    \  if (chmin(dist[u],dist[v]+1)){\n                    que.push(u);\n        \
+    \        }\n            }\n        }\n        return dist;\n    }\n    const auto\
+    \ operator[](int idx) const { return g[idx]; }\n    auto operator[](int idx) {\
+    \ return g[idx]; }\n};\n\ntemplate<>\nstruct graph<bool> {\n    int n;\n    internal::csr<std::pair<int,bool>>\
+    \ g;\n    int dist_inf = std::numeric_limits<int>::max() / 2;\n    graph (int\
+    \ _n = 0) : n(_n), g(_n) {}\n    graph (int _n, int _m) : n(_n), g(_n,_m) {}\n\
+    \    // \u6709\u5411\u8FBA\u3092\u8FFD\u52A0 (\u7121\u5411\u8FBA\u3067\u306F\u306A\
+    \u3044\u3053\u3068\u306B\u6CE8\u610F\uFF01)\n    int add_edge(int u, int v, bool\
+    \ cost){\n        int id = g.add(u, {v, cost});\n        return id;\n    }\n \
+    \   void build(){\n        g.build();\n    }\n    void set_inf(int new_inf){\n\
+    \        dist_inf = new_inf;\n    }\n    std::vector<int> reconstruct(int s, int\
+    \ t, const std::vector<int> &dist){\n        if (dist[t] == dist_inf) return {};\n\
+    \        g.build();\n        std::vector<int> from(n,-1);\n        std::queue<int>\
+    \ que;\n        que.push(s);\n        while (!que.empty()){\n            int v\
+    \ = que.front(); que.pop();\n            for (auto [u, b] : g[v]){\n         \
+    \       int c = (int)b;\n                if (from[u] == -1 && dist[u] == dist[v]\
+    \ + c){\n                    from[u] = v;\n                    que.push(u);\n\
+    \                }\n            }\n        }\n        std::vector<int> ans = {t};\n\
+    \        while (t != s){\n            t = from[t];\n            ans.emplace_back(t);\n\
+    \        }\n        std::reverse(ans.begin(),ans.end());\n        return ans;\n\
+    \    }\n    std::vector<int> bfs01(int s){\n        g.build();\n        std::vector<int>\
+    \ dist(n,dist_inf);\n        dist[s] = 0;\n        std::deque<int> que;\n    \
+    \    que.push_back(s);\n        while (!que.empty()){\n            int v = que.front();\
+    \ que.pop_front();\n            for (auto [u, b] : g[v]){\n                int\
+    \ c = (int)b;\n                if (chmin(dist[u],dist[v]+c)){\n              \
+    \      if (c == 0) que.push_front(u);\n                    else que.push_back(u);\n\
+    \                }\n            }\n        }\n        return dist;\n    }\n  \
+    \  const auto operator[](int idx) const { return g[idx]; }\n    auto operator[](int\
+    \ idx) { return g[idx]; }\n};\n\n} // namespace noya2\n#line 5 \"test/graph/Shortest_Path.test.cpp\"\
+    \n\nint main(){\n    int n, m, s, t; in(n,m,s,t);\n    auto g = graph<ll>::input<false>(n,\
+    \ m, 0);\n    auto dist = g.dijkstra(s);\n    if (dist[t] == g.dist_inf){\n  \
+    \      out(-1);\n        return 0;\n    }\n    auto ans = g.reconstruct(s,t,dist);\n\
     \    out(dist[t],ans.size()-1);\n    rep(i,ans.size()-1) out(ans[i],ans[i+1]);\n\
     }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n\n#include\"\
-    template/template.hpp\"\n#include\"graph/Graph_core.hpp\"\n\nint main(){\n   \
-    \ int n, m, s, t; in(n,m,s,t);\n    usefulGraph g(n);\n    g.input(m,0,false);\n\
-    \    auto dist = g.dijkstra(s);\n    if (dist[t] == linf){\n        out(-1);\n\
+    template/template.hpp\"\n#include\"graph/graph_query.hpp\"\n\nint main(){\n  \
+    \  int n, m, s, t; in(n,m,s,t);\n    auto g = graph<ll>::input<false>(n, m, 0);\n\
+    \    auto dist = g.dijkstra(s);\n    if (dist[t] == g.dist_inf){\n        out(-1);\n\
     \        return 0;\n    }\n    auto ans = g.reconstruct(s,t,dist);\n    out(dist[t],ans.size()-1);\n\
     \    rep(i,ans.size()-1) out(ans[i],ans[i+1]);\n}"
   dependsOn:
@@ -164,11 +259,13 @@ data:
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
-  - graph/Graph_core.hpp
+  - graph/graph_query.hpp
+  - data_structure/csr.hpp
+  - graph/unweighted_type.hpp
   isVerificationFile: true
   path: test/graph/Shortest_Path.test.cpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2024-07-20 01:03:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Shortest_Path.test.cpp

@@ -131,9 +131,6 @@ data:
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
-      path: graph/Graph_core.hpp
-      title: graph/Graph_core.hpp
-    - icon: ':heavy_check_mark:'
       path: graph/cycle_detection.hpp
       title: graph/cycle_detection.hpp
     - icon: ':heavy_check_mark:'

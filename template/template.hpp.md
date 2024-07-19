@@ -86,9 +86,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/partition_by_circle.hpp
     title: geometry/partition_by_circle.hpp
-  - icon: ':heavy_check_mark:'
-    path: graph/Graph_core.hpp
-    title: graph/Graph_core.hpp
   - icon: ':warning:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
@@ -422,7 +419,6 @@ data:
   - tree/RerootingDP.hpp
   - tree/Tree_core.hpp
   - tree/Mo_on_Tree.hpp
-  - graph/Graph_core.hpp
   timestamp: '2024-07-01 23:39:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
