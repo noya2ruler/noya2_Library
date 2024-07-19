@@ -121,15 +121,26 @@ data:
     \    // \u6709\u5411\u8FBA\u3092\u8FFD\u52A0 (\u7121\u5411\u8FBA\u3067\u306F\u306A\
     \u3044\u3053\u3068\u306B\u6CE8\u610F\uFF01)\n    int add_edge(int u, int v, Cost\
     \ cost = 1){\n        int id = g.add(u, {v,cost});\n        return id;\n    }\n\
-    \    void build(){\n        g.build();\n    }\n    void set_inf(Cost new_inf){\n\
-    \        dist_inf = new_inf;\n    }\n    std::vector<Cost> dijkstra(int s){\n\
-    \        g.build();\n        std::vector<Cost> dist(n,dist_inf);\n        dist[s]\
-    \ = 0;\n        using P = std::pair<Cost,int>;\n        std::priority_queue<P,std::vector<P>,std::greater<P>>\
-    \ pque;\n        pque.push(P(0,s));\n        while (!pque.empty()){\n        \
-    \    auto [d, v] = pque.top(); pque.pop();\n            if (dist[v] < d) continue;\n\
-    \            for (auto [u, c] : g[v]){\n                if (chmin(dist[u],d+c)){\n\
-    \                    pque.push(P(dist[u],u));\n                }\n           \
-    \ }\n        }\n        return dist;\n    }\n    std::vector<int> reconstruct(int\
+    \    template<bool directed>\n    static graph input(int _n, int _m, int indexed\
+    \ = 1){\n        if constexpr (directed){\n            graph g(_n, _m*2);\n  \
+    \          for (int i = 0; i < _m; i++){\n                int u, v; std::cin >>\
+    \ u >> v;\n                u -= indexed, v -= indexed;\n                Cost c;\
+    \ std::cin >> c;\n                g.add_edge(u, v, c);\n                g.add_edge(v,\
+    \ u, c);\n            }\n            g.build();\n            return g;\n     \
+    \   }\n        else {\n            graph g(_n, _m);\n            for (int i =\
+    \ 0; i < _m; i++){\n                int u, v; std::cin >> u >> v;\n          \
+    \      u -= indexed, v -= indexed;\n                Cost c; std::cin >> c;\n \
+    \               g.add_edge(u, v, c);\n            }\n            g.build();\n\
+    \            return g;\n        }\n    }\n    void build(){\n        g.build();\n\
+    \    }\n    void set_inf(Cost new_inf){\n        dist_inf = new_inf;\n    }\n\
+    \    std::vector<Cost> dijkstra(int s){\n        g.build();\n        std::vector<Cost>\
+    \ dist(n,dist_inf);\n        dist[s] = 0;\n        using P = std::pair<Cost,int>;\n\
+    \        std::priority_queue<P,std::vector<P>,std::greater<P>> pque;\n       \
+    \ pque.push(P(0,s));\n        while (!pque.empty()){\n            auto [d, v]\
+    \ = pque.top(); pque.pop();\n            if (dist[v] < d) continue;\n        \
+    \    for (auto [u, c] : g[v]){\n                if (chmin(dist[u],d+c)){\n   \
+    \                 pque.push(P(dist[u],u));\n                }\n            }\n\
+    \        }\n        return dist;\n    }\n    std::vector<int> reconstruct(int\
     \ s, int t, const std::vector<Cost> &dist){\n        if (dist[t] == dist_inf)\
     \ return {};\n        g.build();\n        std::vector<int> from(n,-1);\n     \
     \   std::queue<int> que;\n        que.push(s);\n        while (!que.empty()){\n\
@@ -179,42 +190,51 @@ data:
     \ _n = 0) : n(_n), g(_n) {}\n    graph (int _n, int _m) : n(_n), g(_n,_m) {}\n\
     \    // \u6709\u5411\u8FBA\u3092\u8FFD\u52A0 (\u7121\u5411\u8FBA\u3067\u306F\u306A\
     \u3044\u3053\u3068\u306B\u6CE8\u610F\uFF01)\n    int add_edge(int u, int v){\n\
-    \        int id = g.add(u, v);\n        return id;\n    }\n    void build(){\n\
-    \        g.build();\n    }\n    void set_inf(int new_inf){\n        dist_inf =\
-    \ new_inf;\n    }\n    std::vector<int> reconstruct(int s, int t, const std::vector<int>\
-    \ &dist){\n        if (dist[t] == dist_inf) return {};\n        g.build();\n \
-    \       std::vector<int> from(n,-1);\n        std::queue<int> que;\n        que.push(s);\n\
-    \        while (!que.empty()){\n            int v = que.front(); que.pop();\n\
-    \            for (auto u : g[v]){\n                if (from[u] == -1 && dist[u]\
-    \ == dist[v] + 1){\n                    from[u] = v;\n                    que.push(u);\n\
+    \        int id = g.add(u, v);\n        return id;\n    }\n    template<bool directed>\n\
+    \    static graph input(int _n, int _m, int indexed = 1){\n        if constexpr\
+    \ (directed){\n            graph g(_n, _m*2);\n            for (int i = 0; i <\
+    \ _m; i++){\n                int u, v; std::cin >> u >> v;\n                u\
+    \ -= indexed, v -= indexed;\n                g.add_edge(u, v);\n             \
+    \   g.add_edge(v, u);\n            }\n            g.build();\n            return\
+    \ g;\n        }\n        else {\n            graph g(_n, _m);\n            for\
+    \ (int i = 0; i < _m; i++){\n                int u, v; std::cin >> u >> v;\n \
+    \               u -= indexed, v -= indexed;\n                g.add_edge(u, v);\n\
+    \            }\n            g.build();\n            return g;\n        }\n   \
+    \ }\n    void build(){\n        g.build();\n    }\n    void set_inf(int new_inf){\n\
+    \        dist_inf = new_inf;\n    }\n    std::vector<int> reconstruct(int s, int\
+    \ t, const std::vector<int> &dist){\n        if (dist[t] == dist_inf) return {};\n\
+    \        g.build();\n        std::vector<int> from(n,-1);\n        std::queue<int>\
+    \ que;\n        que.push(s);\n        while (!que.empty()){\n            int v\
+    \ = que.front(); que.pop();\n            for (auto u : g[v]){\n              \
+    \  if (from[u] == -1 && dist[u] == dist[v] + 1){\n                    from[u]\
+    \ = v;\n                    que.push(u);\n                }\n            }\n \
+    \       }\n        std::vector<int> ans = {t};\n        while (t != s){\n    \
+    \        t = from[t];\n            ans.emplace_back(t);\n        }\n        std::reverse(ans.begin(),ans.end());\n\
+    \        return ans;\n    }\n    std::vector<int> bfs(int s){\n        g.build();\n\
+    \        std::vector<int> dist(n,dist_inf);\n        dist[s] = 0;\n        std::queue<int>\
+    \ que;\n        que.push(s);\n        while (!que.empty()){\n            int v\
+    \ = que.front(); que.pop();\n            for (auto u : g[v]){\n              \
+    \  if (chmin(dist[u],dist[v]+1)){\n                    que.push(u);\n        \
+    \        }\n            }\n        }\n        return dist;\n    }\n    const auto\
+    \ operator[](int idx) const { return g[idx]; }\n    auto operator[](int idx) {\
+    \ return g[idx]; }\n};\n\ntemplate<>\nstruct graph<bool> {\n    int n;\n    internal::csr<std::pair<int,bool>>\
+    \ g;\n    int dist_inf = std::numeric_limits<int>::max() / 2;\n    graph (int\
+    \ _n = 0) : n(_n), g(_n) {}\n    graph (int _n, int _m) : n(_n), g(_n,_m) {}\n\
+    \    // \u6709\u5411\u8FBA\u3092\u8FFD\u52A0 (\u7121\u5411\u8FBA\u3067\u306F\u306A\
+    \u3044\u3053\u3068\u306B\u6CE8\u610F\uFF01)\n    int add_edge(int u, int v, bool\
+    \ cost){\n        int id = g.add(u, {v, cost});\n        return id;\n    }\n \
+    \   void build(){\n        g.build();\n    }\n    void set_inf(int new_inf){\n\
+    \        dist_inf = new_inf;\n    }\n    std::vector<int> reconstruct(int s, int\
+    \ t, const std::vector<int> &dist){\n        if (dist[t] == dist_inf) return {};\n\
+    \        g.build();\n        std::vector<int> from(n,-1);\n        std::queue<int>\
+    \ que;\n        que.push(s);\n        while (!que.empty()){\n            int v\
+    \ = que.front(); que.pop();\n            for (auto [u, b] : g[v]){\n         \
+    \       int c = (int)b;\n                if (from[u] == -1 && dist[u] == dist[v]\
+    \ + c){\n                    from[u] = v;\n                    que.push(u);\n\
     \                }\n            }\n        }\n        std::vector<int> ans = {t};\n\
     \        while (t != s){\n            t = from[t];\n            ans.emplace_back(t);\n\
     \        }\n        std::reverse(ans.begin(),ans.end());\n        return ans;\n\
-    \    }\n    std::vector<int> bfs(int s){\n        g.build();\n        std::vector<int>\
-    \ dist(n,dist_inf);\n        dist[s] = 0;\n        std::queue<int> que;\n    \
-    \    que.push(s);\n        while (!que.empty()){\n            int v = que.front();\
-    \ que.pop();\n            for (auto u : g[v]){\n                if (chmin(dist[u],dist[v]+1)){\n\
-    \                    que.push(u);\n                }\n            }\n        }\n\
-    \        return dist;\n    }\n    const auto operator[](int idx) const { return\
-    \ g[idx]; }\n    auto operator[](int idx) { return g[idx]; }\n};\n\ntemplate<>\n\
-    struct graph<bool> {\n    int n;\n    internal::csr<std::pair<int,bool>> g;\n\
-    \    int dist_inf = std::numeric_limits<int>::max() / 2;\n    graph (int _n =\
-    \ 0) : n(_n), g(_n) {}\n    graph (int _n, int _m) : n(_n), g(_n,_m) {}\n    //\
-    \ \u6709\u5411\u8FBA\u3092\u8FFD\u52A0 (\u7121\u5411\u8FBA\u3067\u306F\u306A\u3044\
-    \u3053\u3068\u306B\u6CE8\u610F\uFF01)\n    int add_edge(int u, int v, bool cost){\n\
-    \        int id = g.add(u, {v, cost});\n        return id;\n    }\n    void build(){\n\
-    \        g.build();\n    }\n    void set_inf(int new_inf){\n        dist_inf =\
-    \ new_inf;\n    }\n    std::vector<int> reconstruct(int s, int t, const std::vector<int>\
-    \ &dist){\n        if (dist[t] == dist_inf) return {};\n        g.build();\n \
-    \       std::vector<int> from(n,-1);\n        std::queue<int> que;\n        que.push(s);\n\
-    \        while (!que.empty()){\n            int v = que.front(); que.pop();\n\
-    \            for (auto [u, b] : g[v]){\n                int c = (int)b;\n    \
-    \            if (from[u] == -1 && dist[u] == dist[v] + c){\n                 \
-    \   from[u] = v;\n                    que.push(u);\n                }\n      \
-    \      }\n        }\n        std::vector<int> ans = {t};\n        while (t !=\
-    \ s){\n            t = from[t];\n            ans.emplace_back(t);\n        }\n\
-    \        std::reverse(ans.begin(),ans.end());\n        return ans;\n    }\n  \
-    \  std::vector<int> bfs01(int s){\n        g.build();\n        std::vector<int>\
+    \    }\n    std::vector<int> bfs01(int s){\n        g.build();\n        std::vector<int>\
     \ dist(n,dist_inf);\n        dist[s] = 0;\n        std::deque<int> que;\n    \
     \    que.push_back(s);\n        while (!que.empty()){\n            int v = que.front();\
     \ que.pop_front();\n            for (auto [u, b] : g[v]){\n                int\
@@ -248,7 +268,7 @@ data:
   isVerificationFile: true
   path: test/graph/Shortest_Path2.test.cpp
   requiredBy: []
-  timestamp: '2024-07-04 18:50:09+09:00'
+  timestamp: '2024-07-20 01:02:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Shortest_Path2.test.cpp
