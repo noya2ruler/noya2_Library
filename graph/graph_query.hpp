@@ -24,6 +24,32 @@ struct graph {
         int id = g.add(u, {v,cost});
         return id;
     }
+    template<bool directed>
+    static graph input(int _n, int _m, int indexed = 1){
+        if constexpr (directed){
+            graph g(_n, _m*2);
+            for (int i = 0; i < _m; i++){
+                int u, v; std::cin >> u >> v;
+                u -= indexed, v -= indexed;
+                Cost c; std::cin >> c;
+                g.add_edge(u, v, c);
+                g.add_edge(v, u, c);
+            }
+            g.build();
+            return g;
+        }
+        else {
+            graph g(_n, _m);
+            for (int i = 0; i < _m; i++){
+                int u, v; std::cin >> u >> v;
+                u -= indexed, v -= indexed;
+                Cost c; std::cin >> c;
+                g.add_edge(u, v, c);
+            }
+            g.build();
+            return g;
+        }
+    }
     void build(){
         g.build();
     }
@@ -173,6 +199,30 @@ struct graph<unweighted> {
     int add_edge(int u, int v){
         int id = g.add(u, v);
         return id;
+    }
+    template<bool directed>
+    static graph input(int _n, int _m, int indexed = 1){
+        if constexpr (directed){
+            graph g(_n, _m*2);
+            for (int i = 0; i < _m; i++){
+                int u, v; std::cin >> u >> v;
+                u -= indexed, v -= indexed;
+                g.add_edge(u, v);
+                g.add_edge(v, u);
+            }
+            g.build();
+            return g;
+        }
+        else {
+            graph g(_n, _m);
+            for (int i = 0; i < _m; i++){
+                int u, v; std::cin >> u >> v;
+                u -= indexed, v -= indexed;
+                g.add_edge(u, v);
+            }
+            g.build();
+            return g;
+        }
     }
     void build(){
         g.build();
