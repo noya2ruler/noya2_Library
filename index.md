@@ -231,7 +231,7 @@ data:
     - icon: ':warning:'
       path: string/rolling_hash.hpp
       title: string/rolling_hash.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: string/suffix_array.hpp
       title: string/suffix_array.hpp
     - icon: ':warning:'
@@ -442,6 +442,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Floor_of_Linear.test.cpp
       title: test/math/Sum_of_Floor_of_Linear.test.cpp
+  - name: test/string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/string/SuffixArray.test.cpp
+      title: test/string/SuffixArray.test.cpp
   - name: test/tree
     pages:
     - icon: ':heavy_check_mark:'

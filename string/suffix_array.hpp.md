@@ -5,10 +5,13 @@ data:
   - icon: ':warning:'
     path: string/suffix_array_search.hpp
     title: string/suffix_array_search.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/string/SuffixArray.test.cpp
+    title: test/string/SuffixArray.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/suffix_array.hpp\"\n\n#include <algorithm>\n#include\
@@ -193,8 +196,9 @@ data:
   requiredBy:
   - string/suffix_array_search.hpp
   timestamp: '2024-07-16 15:04:29+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/string/SuffixArray.test.cpp
 documentation_of: string/suffix_array.hpp
 layout: document
 redirect_from:

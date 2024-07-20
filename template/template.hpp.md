@@ -274,6 +274,9 @@ data:
     path: test/math/Sum_of_Floor_of_Linear.test.cpp
     title: test/math/Sum_of_Floor_of_Linear.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/SuffixArray.test.cpp
+    title: test/string/SuffixArray.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
   - icon: ':heavy_check_mark:'
@@ -454,6 +457,7 @@ data:
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   - test/fps/convolution.test.cpp
+  - test/string/SuffixArray.test.cpp
   - test/tree/Jump_on_Tree_hld.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
   - test/tree/aoj_0489.test.cpp
