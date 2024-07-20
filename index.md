@@ -235,6 +235,9 @@ data:
       path: string/suffix_array.hpp
       title: string/suffix_array.hpp
     - icon: ':warning:'
+      path: string/suffix_array_search.hpp
+      title: string/suffix_array_search.hpp
+    - icon: ':warning:'
       path: string/trie.hpp
       title: string/trie.hpp
     - icon: ':warning:'

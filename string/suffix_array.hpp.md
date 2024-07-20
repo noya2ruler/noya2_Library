@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: string/suffix_array_search.hpp
+    title: string/suffix_array_search.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -187,7 +190,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: string/suffix_array.hpp
-  requiredBy: []
+  requiredBy:
+  - string/suffix_array_search.hpp
   timestamp: '2024-07-16 15:04:29+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
