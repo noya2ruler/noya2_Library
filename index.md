@@ -197,7 +197,7 @@ data:
     - icon: ':warning:'
       path: misc/inversion.hpp
       title: misc/inversion.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: misc/longest_increasing_subsequence.hpp
       title: misc/longest_increasing_subsequence.hpp
     - icon: ':warning:'
@@ -445,6 +445,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Floor_of_Linear.test.cpp
       title: test/math/Sum_of_Floor_of_Linear.test.cpp
+  - name: test/misc
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/misc/LongestIncreasingSubsequence.test.cpp
+      title: test/misc/LongestIncreasingSubsequence.test.cpp
   - name: test/string
     pages:
     - icon: ':heavy_check_mark:'

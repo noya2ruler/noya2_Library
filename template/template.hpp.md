@@ -274,6 +274,9 @@ data:
     path: test/math/Sum_of_Floor_of_Linear.test.cpp
     title: test/math/Sum_of_Floor_of_Linear.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/misc/LongestIncreasingSubsequence.test.cpp
+    title: test/misc/LongestIncreasingSubsequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/string/SuffixArray.test.cpp
     title: test/string/SuffixArray.test.cpp
   - icon: ':heavy_check_mark:'
@@ -426,6 +429,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/aoj1198.test.cpp
+  - test/misc/LongestIncreasingSubsequence.test.cpp
   - test/data_structure/aoj1068_segtree2d.test.cpp
   - test/data_structure/yuki_1077.test.cpp
   - test/data_structure/Line_Add_Get_Min.test.cpp
