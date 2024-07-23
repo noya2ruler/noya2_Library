@@ -198,6 +198,9 @@ data:
       path: misc/inversion.hpp
       title: misc/inversion.hpp
     - icon: ':warning:'
+      path: misc/longest_increasing_subsequence.hpp
+      title: misc/longest_increasing_subsequence.hpp
+    - icon: ':warning:'
       path: misc/mex.hpp
       title: misc/mex.hpp
     - icon: ':heavy_check_mark:'
