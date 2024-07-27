@@ -341,8 +341,8 @@ data:
   timestamp: '2024-07-20 01:02:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Shortest_Path.test.cpp
   - test/graph/Shortest_Path2.test.cpp
+  - test/graph/Shortest_Path.test.cpp
 documentation_of: graph/graph_query.hpp
 layout: document
 redirect_from:

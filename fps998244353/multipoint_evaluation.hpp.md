@@ -425,8 +425,8 @@ data:
   timestamp: '2024-07-06 18:42:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
   - test/fps998244353/multipoint_evaluation_998244353.test.cpp
+  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
 documentation_of: fps998244353/multipoint_evaluation.hpp
 layout: document
 redirect_from:
