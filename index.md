@@ -147,7 +147,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: math/binomial.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/euler_circuit_counting.hpp
       title: math/euler_circuit_counting.hpp
     - icon: ':heavy_check_mark:'
@@ -180,7 +180,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/sieve.hpp
       title: math/sieve.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/spanning_tree_counting.hpp
       title: math/spanning_tree_counting.hpp
   - name: misc
@@ -430,6 +430,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/CountingEulerianCircuits.test.cpp
+      title: test/math/CountingEulerianCircuits.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Determinant_of_Matrix.test.cpp
       title: test/math/Determinant_of_Matrix.test.cpp

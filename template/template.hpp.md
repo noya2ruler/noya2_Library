@@ -250,6 +250,9 @@ data:
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/CountingEulerianCircuits.test.cpp
+    title: test/math/CountingEulerianCircuits.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
@@ -443,6 +446,7 @@ data:
   - test/math/Sum_of_Floor_of_Linear.test.cpp
   - test/math/PrimitiveRoot.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/CountingEulerianCircuits.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
   - test/math/Gcd_Convolution.test.cpp
   - test/math/Lcm_Convolution.test.cpp

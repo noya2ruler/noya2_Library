@@ -5,13 +5,16 @@ data:
     path: math/matrix.hpp
     title: math/matrix.hpp
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/CountingEulerianCircuits.test.cpp
+    title: test/math/CountingEulerianCircuits.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/spanning_tree_counting.hpp\"\n\n#line 2 \"math/matrix.hpp\"\
@@ -139,8 +142,9 @@ data:
   requiredBy:
   - math/euler_circuit_counting.hpp
   timestamp: '2024-07-28 02:09:14+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/math/CountingEulerianCircuits.test.cpp
 documentation_of: math/spanning_tree_counting.hpp
 layout: document
 redirect_from:

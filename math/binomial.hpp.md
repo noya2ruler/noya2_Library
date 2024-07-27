@@ -23,7 +23,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps998244353/sample_point_shift.hpp
     title: fps998244353/sample_point_shift.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
   - icon: ':warning:'
@@ -66,6 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/CountingEulerianCircuits.test.cpp
+    title: test/math/CountingEulerianCircuits.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -140,6 +143,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/CountingEulerianCircuits.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
   - test/fps/convolution.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp

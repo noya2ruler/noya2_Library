@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/spanning_tree_counting.hpp
     title: math/spanning_tree_counting.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/CountingEulerianCircuits.test.cpp
+    title: test/math/CountingEulerianCircuits.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
@@ -217,6 +220,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Determinant_of_Matrix.test.cpp
+  - test/math/CountingEulerianCircuits.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:
