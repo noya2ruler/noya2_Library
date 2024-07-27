@@ -92,9 +92,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/lcm_convolution.hpp
     title: math/lcm_convolution.hpp
-  - icon: ':warning:'
-    path: math/matrix_square.hpp
-    title: math/matrix_square.hpp
   - icon: ':heavy_check_mark:'
     path: math/sieve.hpp
     title: math/sieve.hpp
@@ -395,7 +392,6 @@ data:
   - misc/QMC.hpp
   - misc/random_tree.hpp
   - math/sieve.hpp
-  - math/matrix_square.hpp
   - math/gcd_convolution.hpp
   - math/lcm_convolution.hpp
   - string/rolling_hash.hpp
