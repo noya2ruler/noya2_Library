@@ -8,26 +8,26 @@ namespace noya2 {
 // BEST theorem
 // https://en.wikipedia.org/wiki/BEST_theorem
 template<typename T>
-T euler_circuit_counting(int n, vector<tuple<int,int,ll>> es){
+T euler_circuit_counting(int n, const std::vector<std::tuple<int, int, long long>> &es){
     // i_deg == o_deg
-    vector<ll> deg(n,0);
+    std::vector<long long> deg(n,0);
     for (auto [u, v, c] : es){
         deg[u] -= c;
         deg[v] += c;
     }
-    rep(i,n) if (deg[i] != 0) return T(0);
+    for (int i = 0; i < n; i++) if (deg[i] != 0) return T(0);
     // edges are connected
     int m = es.size();
-    vector<bool> vis(n,false);
-    vector<vector<int>> g(n);
-    rep(i,m){
-        auto [u, v, c] = es[i];
+    std::vector<bool> vis(n,false);
+    std::vector<std::vector<int>> g(n);
+    for (auto [u, v, c] : es){
+        if (c == 0) continue;
         g[u].emplace_back(v);
         g[v].emplace_back(u);
     }
-    rep(s,n){
+    for (int s = 0; s < n; s++){
         if (g[s].empty()) continue;
-        queue<int> que;
+        std::queue<int> que;
         que.push(s);
         vis[s] = true;
         while (!que.empty()){
@@ -45,22 +45,22 @@ T euler_circuit_counting(int n, vector<tuple<int,int,ll>> es){
         if (!vis[u]) return T(0);
     }
     // directed spanning tree counting
-    vector<int> ids(n);
+    std::vector<int> ids(n);
     int nonzero = 0;
-    rep(v,n){
+    for (int v = 0; v < n; v++){
         if (!g[v].empty()){
             ids[v] = nonzero++;
         }
     }
-    vector<tuple<int,int,T>> nes(m);
-    rep(i,m){
+    std::vector<std::tuple<int, int, T>> nes(m);
+    for (int i = 0; i < m; i++){
         auto [u, v, c] = es[i];
         nes[i] = {ids[u],ids[v],c};
         deg[v] += c;
     }
     binomial<T> bnm;
     T ans = directed_spanning_tree_counting(nonzero,nes);
-    rep(i,n){
+    for (int i = 0; i < n; i++){
         if (deg[i] > 0){
             ans *= bnm.fact(deg[i]-1);
         }

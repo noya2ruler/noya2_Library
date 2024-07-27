@@ -8,10 +8,10 @@ using mint = modint998244353;
 
 int main(){
     int n; in(n);
-    Matrix<mint> mat(n);
+    matrix<mint> mat(n,n);
     rep(i,n) rep(j,n){
         ll x; in(x);
         mat[i][j] = x;
     }
-    out(mat.determinant());
+    out(determinant(mat));
 }

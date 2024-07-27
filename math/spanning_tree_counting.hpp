@@ -5,8 +5,8 @@
 namespace noya2 {
 
 template<typename T>
-T directed_spanning_tree_counting(int n, vector<tuple<int,int,T>> es){
-    Matrix<T> mat(n-1);
+T directed_spanning_tree_counting(int n, const std::vector<std::tuple<int,int,T>> &es){
+    matrix<T> mat(n-1,n-1);
     for (auto [u, v, c] : es){
         if (u < n-1 && v < n-1){
             mat[u][v] -= c;
@@ -15,12 +15,12 @@ T directed_spanning_tree_counting(int n, vector<tuple<int,int,T>> es){
             mat[v][v] += c;
         }
     }
-    return mat.determinant();
+    return determinant(mat);
 }
 
 template<typename T>
-T undirected_spanning_tree_counting(int n, vector<tuple<int,int,T>> es){
-    Matrix<T> mat(n-1);
+T undirected_spanning_tree_counting(int n, const std::vector<std::tuple<int,int,T>> &es){
+    matrix<T> mat(n-1,n-1);
     for (auto [u, v, c] : es){
         if (u < n-1 && v < n-1){
             mat[u][v] -= c;
@@ -33,7 +33,7 @@ T undirected_spanning_tree_counting(int n, vector<tuple<int,int,T>> es){
             mat[u][u] += c;
         }
     }
-    return mat.determinant();
+    return determinant(mat);
 }
 
 } // namespace noya2
