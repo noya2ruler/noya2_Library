@@ -2,31 +2,31 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/offline_rectangle_sum.hpp
     title: data_structure/offline_rectangle_sum.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/potentialized_dsu.hpp
     title: data_structure/potentialized_dsu.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
     title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Rectangle_Sum.test.cpp
     title: test/data_structure/Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Static_Range_Inversions_Query.test.cpp
     title: test/data_structure/Static_Range_Inversions_Query.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/aoj_dsl_1_b.test.cpp
     title: test/data_structure/aoj_dsl_1_b.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/concepts.hpp\"\n\n#include<concepts>\n\nnamespace noya2\
@@ -51,7 +51,7 @@ data:
   - data_structure/potentialized_dsu.hpp
   - data_structure/binary_indexed_tree.hpp
   timestamp: '2023-11-13 11:52:58+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/Rectangle_Sum.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp

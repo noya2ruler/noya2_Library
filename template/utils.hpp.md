@@ -2,13 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/binary_trie.hpp
     title: data_structure/binary_trie.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
   - icon: ':heavy_check_mark:'
@@ -23,13 +23,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/li_chao_tree.hpp
     title: data_structure/li_chao_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/offline_rectangle_sum.hpp
     title: data_structure/offline_rectangle_sum.hpp
-  - icon: ':heavy_check_mark:'
-    path: data_structure/potentialized_dsu.hpp
-    title: data_structure/potentialized_dsu.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -86,7 +83,7 @@ data:
   - icon: ':warning:'
     path: misc/mex.hpp
     title: misc/mex.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
   - icon: ':warning:'
@@ -98,7 +95,7 @@ data:
   - icon: ':warning:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
   - icon: ':heavy_check_mark:'
@@ -129,7 +126,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/PointAddRangeSum.test.cpp
     title: test/data_structure/PointAddRangeSum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
     title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -144,7 +141,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Rectangle_Sum.test.cpp
     title: test/data_structure/Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -156,7 +153,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_RMQ.test.cpp
     title: test/data_structure/Static_RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Static_Range_Inversions_Query.test.cpp
     title: test/data_structure/Static_Range_Inversions_Query.test.cpp
   - icon: ':heavy_check_mark:'
@@ -282,9 +279,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/utils.hpp\"\n\n#include <cmath>\n#include <vector>\n\
@@ -334,7 +331,6 @@ data:
   - graph/graph_query.hpp
   - data_structure/lazy_segment_tree.hpp
   - data_structure/offline_rectangle_sum.hpp
-  - data_structure/potentialized_dsu.hpp
   - data_structure/range_tree.hpp
   - data_structure/dynamic_segment_tree.hpp
   - data_structure/binary_trie.hpp
@@ -371,7 +367,7 @@ data:
   - tree/heavy_light_decomposition.hpp
   - tree/RerootingDP.hpp
   timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/graph/Shortest_Path2.test.cpp
   - test/graph/Strongly_Connected_Components.test.cpp

@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/concepts.hpp
     title: misc/concepts.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/monoids.hpp
     title: misc/monoids.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
@@ -132,17 +132,17 @@ data:
     \ ps;\n    compress<Idx> xs;\n    vector<compress<Idx>> ys;\n    vector<DS> ds;\n\
     };\n\n} // namespace noya2\n#line 2 \"data_structure/binary_indexed_tree.hpp\"\
     \n\n#line 2 \"misc/monoids.hpp\"\n\n#line 4 \"misc/monoids.hpp\"\n\nnamespace\
-    \ noya2{\n\ntemplate<typename T>\nstruct Max_monoid {\n    using value_type =\
+    \ noya2{\n\ntemplate<typename T>\nstruct max_monoid {\n    using value_type =\
     \ T;\n    static constexpr T op(const T &a, const T &b){ return max(a,b); }\n\
     \    static constexpr T e(){ return std::numeric_limits<T>::min(); }\n    static\
     \ constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename T>\nstruct\
-    \ Min_monoid {\n    using value_type = T;\n    static constexpr T op(const T &a,\
+    \ min_monoid {\n    using value_type = T;\n    static constexpr T op(const T &a,\
     \ const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
     \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
-    \ T>\nstruct Plus_group {\n    using value_type = T;\n    static constexpr T op(const\
+    \ T>\nstruct plus_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a + b; }\n    static constexpr T e(){ return T(0);\
     \ }\n    static constexpr T inv(const T &a){ return -a; }\n};\ntemplate<typename\
-    \ T>\nstruct Xor_group {\n    using value_type = T;\n    static constexpr T op(const\
+    \ T>\nstruct xor_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a ^ b; }\n    static constexpr T e(){ return T(0);\
     \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n    \n} // namespace\
     \ noya2\n#line 2 \"misc/concepts.hpp\"\n\n#include<concepts>\n\nnamespace noya2\
@@ -205,8 +205,8 @@ data:
   isVerificationFile: true
   path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-07-28 16:42:39+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
 layout: document

@@ -4,22 +4,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/potentialized_dsu.hpp
     title: data_structure/potentialized_dsu.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/concepts.hpp
     title: misc/concepts.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/monoids.hpp
     title: misc/monoids.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
@@ -87,71 +87,81 @@ data:
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
     */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/potentialized_dsu.hpp\"\
-    \n\n#line 2 \"misc/monoids.hpp\"\n\n#line 4 \"misc/monoids.hpp\"\n\nnamespace\
-    \ noya2{\n\ntemplate<typename T>\nstruct Max_monoid {\n    using value_type =\
-    \ T;\n    static constexpr T op(const T &a, const T &b){ return max(a,b); }\n\
-    \    static constexpr T e(){ return std::numeric_limits<T>::min(); }\n    static\
-    \ constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename T>\nstruct\
-    \ Min_monoid {\n    using value_type = T;\n    static constexpr T op(const T &a,\
-    \ const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
-    \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
-    \ T>\nstruct Plus_group {\n    using value_type = T;\n    static constexpr T op(const\
-    \ T &a, const T &b){ return a + b; }\n    static constexpr T e(){ return T(0);\
-    \ }\n    static constexpr T inv(const T &a){ return -a; }\n};\ntemplate<typename\
-    \ T>\nstruct Xor_group {\n    using value_type = T;\n    static constexpr T op(const\
-    \ T &a, const T &b){ return a ^ b; }\n    static constexpr T e(){ return T(0);\
-    \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n    \n} // namespace\
-    \ noya2\n#line 2 \"misc/concepts.hpp\"\n\n#include<concepts>\n\nnamespace noya2\
-    \ {\n\ntemplate<class monoid>\nconcept Monoid = requires {\n    typename monoid::value_type;\n\
-    \    {monoid::op(declval<typename monoid::value_type>(),declval<typename monoid::value_type>())}\
-    \ -> std::same_as<typename monoid::value_type>;\n    {monoid::e()} -> std::same_as<typename\
-    \ monoid::value_type>;\n};\n\ntemplate<class group>\nconcept Group = requires\
-    \ {\n    requires Monoid<group>;\n    {group::inv(declval<typename group::value_type>())}\
-    \ -> std::same_as<typename group::value_type>;\n};\n\n} // namespace noya2\n#line\
-    \ 6 \"data_structure/potentialized_dsu.hpp\"\n\nnamespace noya2 {\n\ntemplate<Group\
-    \ G>\nstruct potentialized_dsu {\n    using T = typename G::value_type;\n    potentialized_dsu\
-    \ (int n_ = 0) : n(n_), parent_or_size(n_,-1) {\n        auto ee = G::e();\n \
-    \       pot.resize(n,ee);\n    }\n    int merge(int u, int v, T d){\n        int\
-    \ x = leader(u), y = leader(v);\n        if (x == y){\n            if (diff(u,v)\
-    \ == d) return x;\n            else return -1;\n        }\n        d = G::op(G::op(potential(u),d),G::inv(potential(v)));\n\
+    \n\n#line 6 \"data_structure/potentialized_dsu.hpp\"\n\n#line 2 \"misc/concepts.hpp\"\
+    \n\n#include<concepts>\n\nnamespace noya2 {\n\ntemplate<class monoid>\nconcept\
+    \ Monoid = requires {\n    typename monoid::value_type;\n    {monoid::op(declval<typename\
+    \ monoid::value_type>(),declval<typename monoid::value_type>())} -> std::same_as<typename\
+    \ monoid::value_type>;\n    {monoid::e()} -> std::same_as<typename monoid::value_type>;\n\
+    };\n\ntemplate<class group>\nconcept Group = requires {\n    requires Monoid<group>;\n\
+    \    {group::inv(declval<typename group::value_type>())} -> std::same_as<typename\
+    \ group::value_type>;\n};\n\n} // namespace noya2\n#line 8 \"data_structure/potentialized_dsu.hpp\"\
+    \n\nnamespace noya2 {\n\ntemplate<Group G>\nstruct potentialized_dsu {\n    using\
+    \ T = typename G::value_type;\n    potentialized_dsu (int n = 0) : _n(n), parent_or_size(n,-1),\
+    \ pot(n, G::e()) {}\n    int merge(int u, int v, T d){\n        int x = leader(u),\
+    \ y = leader(v);\n        if (x == y){\n            if (diff(u,v) == d) return\
+    \ x;\n            else return -1;\n        }\n        d = G::op(G::op(potential(u),d),G::inv(potential(v)));\n\
     \        if (-parent_or_size[x] < -parent_or_size[y]){\n            d = G::inv(d);\n\
-    \            swap(x,y);\n        }\n        parent_or_size[x] += parent_or_size[y];\n\
+    \            std::swap(x,y);\n        }\n        parent_or_size[x] += parent_or_size[y];\n\
     \        parent_or_size[y] = x;\n        pot[y] = d;\n        return x;\n    }\n\
-    \    int leader(int v){\n        assert(0 <= v && v < n);\n        if (parent_or_size[v]\
+    \    int leader(int v){\n        assert(0 <= v && v < _n);\n        if (parent_or_size[v]\
     \ < 0) return v;\n        int l = leader(parent_or_size[v]);\n        pot[v] =\
     \ G::op(pot[v],pot[parent_or_size[v]]);\n        return parent_or_size[v] = l;\n\
     \    }\n    bool same(int u, int v){\n        return leader(u) == leader(v);\n\
     \    }\n    int size(int v){\n        return -parent_or_size[leader(v)];\n   \
     \ }\n    T potential(int v){\n        leader(v);\n        return pot[v];\n   \
     \ }\n    T diff(int u, int v){\n        return G::op(G::inv(potential(u)),potential(v));\n\
-    \    }\n    int n;\n    vector<int> parent_or_size;\n    vector<T> pot;\n};\n\n\
-    } // namespace noya2\n#line 5 \"test/data_structure/aoj_dsl_1_b.test.cpp\"\n\n\
-    int main(){\n    int n, q; in(n,q);\n    potentialized_dsu<Plus_group<ll>> d(n);\n\
-    \    while (q--){\n        int t; in(t);\n        if (t == 0){\n            int\
-    \ u, v; in(u,v);\n            ll w; in(w);\n            d.merge(u,v,w);\n    \
-    \    }\n        else {\n            int u, v; in(u,v);\n            if (d.same(u,v)){\n\
-    \                out(d.diff(u,v));\n            }\n            else {\n      \
-    \          out('?');\n            }\n        }\n    }\n}\n"
+    \    }\n    std::vector<std::vector<int>> groups() {\n        std::vector<int>\
+    \ leader_buf(_n), group_size(_n);\n        for (int i = 0; i < _n; i++) {\n  \
+    \          leader_buf[i] = leader(i);\n            group_size[leader_buf[i]]++;\n\
+    \        }\n        std::vector<std::vector<int>> result(_n);\n        for (int\
+    \ i = 0; i < _n; i++) {\n            result[i].reserve(group_size[i]);\n     \
+    \   }\n        for (int i = 0; i < _n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
+    \        }\n        result.erase(\n            std::remove_if(result.begin(),\
+    \ result.end(),\n                           [&](const std::vector<int>& v) { return\
+    \ v.empty(); }),\n            result.end());\n        return result;\n    }\n\
+    \  private:\n    int _n;\n    std::vector<int> parent_or_size;\n    std::vector<T>\
+    \ pot;\n};\n\n} // namespace noya2\n#line 2 \"misc/monoids.hpp\"\n\n#line 4 \"\
+    misc/monoids.hpp\"\n\nnamespace noya2{\n\ntemplate<typename T>\nstruct max_monoid\
+    \ {\n    using value_type = T;\n    static constexpr T op(const T &a, const T\
+    \ &b){ return max(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::min();\
+    \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
+    \ T>\nstruct min_monoid {\n    using value_type = T;\n    static constexpr T op(const\
+    \ T &a, const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
+    \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
+    \ T>\nstruct plus_group {\n    using value_type = T;\n    static constexpr T op(const\
+    \ T &a, const T &b){ return a + b; }\n    static constexpr T e(){ return T(0);\
+    \ }\n    static constexpr T inv(const T &a){ return -a; }\n};\ntemplate<typename\
+    \ T>\nstruct xor_group {\n    using value_type = T;\n    static constexpr T op(const\
+    \ T &a, const T &b){ return a ^ b; }\n    static constexpr T e(){ return T(0);\
+    \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n    \n} // namespace\
+    \ noya2\n#line 6 \"test/data_structure/aoj_dsl_1_b.test.cpp\"\n\nint main(){\n\
+    \    int n, q; in(n,q);\n    potentialized_dsu<plus_group<ll>> d(n);\n    while\
+    \ (q--){\n        int t; in(t);\n        if (t == 0){\n            int u, v; in(u,v);\n\
+    \            ll w; in(w);\n            d.merge(u,v,w);\n        }\n        else\
+    \ {\n            int u, v; in(u,v);\n            if (d.same(u,v)){\n         \
+    \       out(d.diff(u,v));\n            }\n            else {\n               \
+    \ out('?');\n            }\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B&lang=ja\"\
     \n\n#include\"../../template/template.hpp\"\n#include\"../../data_structure/potentialized_dsu.hpp\"\
-    \n\nint main(){\n    int n, q; in(n,q);\n    potentialized_dsu<Plus_group<ll>>\
-    \ d(n);\n    while (q--){\n        int t; in(t);\n        if (t == 0){\n     \
-    \       int u, v; in(u,v);\n            ll w; in(w);\n            d.merge(u,v,w);\n\
-    \        }\n        else {\n            int u, v; in(u,v);\n            if (d.same(u,v)){\n\
-    \                out(d.diff(u,v));\n            }\n            else {\n      \
-    \          out('?');\n            }\n        }\n    }\n}"
+    \n#include\"../../misc/monoids.hpp\"\n\nint main(){\n    int n, q; in(n,q);\n\
+    \    potentialized_dsu<plus_group<ll>> d(n);\n    while (q--){\n        int t;\
+    \ in(t);\n        if (t == 0){\n            int u, v; in(u,v);\n            ll\
+    \ w; in(w);\n            d.merge(u,v,w);\n        }\n        else {\n        \
+    \    int u, v; in(u,v);\n            if (d.same(u,v)){\n                out(d.diff(u,v));\n\
+    \            }\n            else {\n                out('?');\n            }\n\
+    \        }\n    }\n}"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
   - data_structure/potentialized_dsu.hpp
-  - misc/monoids.hpp
   - misc/concepts.hpp
+  - misc/monoids.hpp
   isVerificationFile: true
   path: test/data_structure/aoj_dsl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2024-07-28 16:42:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/aoj_dsl_1_b.test.cpp

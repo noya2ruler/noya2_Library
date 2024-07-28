@@ -2,59 +2,56 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/offline_rectangle_sum.hpp
     title: data_structure/offline_rectangle_sum.hpp
-  - icon: ':heavy_check_mark:'
-    path: data_structure/potentialized_dsu.hpp
-    title: data_structure/potentialized_dsu.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
     title: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Rectangle_Sum.test.cpp
     title: test/data_structure/Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Static_Range_Inversions_Query.test.cpp
     title: test/data_structure/Static_Range_Inversions_Query.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/data_structure/aoj_dsl_1_b.test.cpp
     title: test/data_structure/aoj_dsl_1_b.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/monoids.hpp\"\n\n#include<limits>\n\nnamespace noya2{\n\
-    \ntemplate<typename T>\nstruct Max_monoid {\n    using value_type = T;\n    static\
+    \ntemplate<typename T>\nstruct max_monoid {\n    using value_type = T;\n    static\
     \ constexpr T op(const T &a, const T &b){ return max(a,b); }\n    static constexpr\
     \ T e(){ return std::numeric_limits<T>::min(); }\n    static constexpr T inv(const\
-    \ T &a){ return e(); }\n};\ntemplate<typename T>\nstruct Min_monoid {\n    using\
+    \ T &a){ return e(); }\n};\ntemplate<typename T>\nstruct min_monoid {\n    using\
     \ value_type = T;\n    static constexpr T op(const T &a, const T &b){ return min(a,b);\
     \ }\n    static constexpr T e(){ return std::numeric_limits<T>::max(); }\n   \
     \ static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename T>\n\
-    struct Plus_group {\n    using value_type = T;\n    static constexpr T op(const\
+    struct plus_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a + b; }\n    static constexpr T e(){ return T(0);\
     \ }\n    static constexpr T inv(const T &a){ return -a; }\n};\ntemplate<typename\
-    \ T>\nstruct Xor_group {\n    using value_type = T;\n    static constexpr T op(const\
+    \ T>\nstruct xor_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a ^ b; }\n    static constexpr T e(){ return T(0);\
     \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n    \n} // namespace\
     \ noya2\n"
   code: "#pragma once\n\n#include<limits>\n\nnamespace noya2{\n\ntemplate<typename\
-    \ T>\nstruct Max_monoid {\n    using value_type = T;\n    static constexpr T op(const\
+    \ T>\nstruct max_monoid {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return max(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::min();\
     \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
-    \ T>\nstruct Min_monoid {\n    using value_type = T;\n    static constexpr T op(const\
+    \ T>\nstruct min_monoid {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
     \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
-    \ T>\nstruct Plus_group {\n    using value_type = T;\n    static constexpr T op(const\
+    \ T>\nstruct plus_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a + b; }\n    static constexpr T e(){ return T(0);\
     \ }\n    static constexpr T inv(const T &a){ return -a; }\n};\ntemplate<typename\
-    \ T>\nstruct Xor_group {\n    using value_type = T;\n    static constexpr T op(const\
+    \ T>\nstruct xor_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a ^ b; }\n    static constexpr T e(){ return T(0);\
     \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n    \n} // namespace\
     \ noya2\n"
@@ -63,10 +60,9 @@ data:
   path: misc/monoids.hpp
   requiredBy:
   - data_structure/offline_rectangle_sum.hpp
-  - data_structure/potentialized_dsu.hpp
   - data_structure/binary_indexed_tree.hpp
-  timestamp: '2023-08-31 21:58:46+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-07-28 16:42:39+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/data_structure/Rectangle_Sum.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp

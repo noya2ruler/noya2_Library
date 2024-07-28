@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data_structure/offline_rectangle_sum.hpp
     title: data_structure/offline_rectangle_sum.hpp
   - icon: ':heavy_check_mark:'
@@ -18,7 +18,7 @@ data:
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Rectangle_Sum.test.cpp
     title: test/data_structure/Rectangle_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -39,9 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/csr.hpp\"\n\n#include<vector>\n#include<ranges>\n\
@@ -105,7 +105,7 @@ data:
   - tree/simple_tree.hpp
   - tree/heavy_light_decomposition.hpp
   timestamp: '2024-07-01 23:28:44+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/graph/Shortest_Path2.test.cpp
   - test/graph/CycleDetectionDirected.test.cpp
