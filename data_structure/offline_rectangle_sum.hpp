@@ -1,11 +1,12 @@
 #pragma once
 
-#include"data_structure/binary_indexed_tree.hpp"
-#include"data_structure/csr.hpp"
+#include"../data_structure/binary_indexed_tree.hpp"
+#include"../data_structure/csr.hpp"
+#include"../misc/monoids.hpp"
 
 namespace noya2 {
 
-template<Group G = Plus_group<ll>>
+template<Group G = plus_group<ll>>
 struct offline_rectangle_sum {
     using T = typename G::value_type;
     int h, w, query_id;

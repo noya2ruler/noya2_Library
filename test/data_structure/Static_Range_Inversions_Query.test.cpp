@@ -4,6 +4,7 @@
 #include"../../data_structure/compress.hpp"
 #include"../../data_structure/binary_indexed_tree.hpp"
 #include"../../misc/mo_algorithm.hpp"
+#include"../../misc/monoids.hpp"
 
 int main(){
     int n, q; in(n,q);
@@ -15,7 +16,7 @@ int main(){
         int l, r; in(l,r);
         mo.insert(l,r);
     }
-    BIT_Plus<ll> bit(n);
+    binary_indexed_tree<plus_group<ll>> bit(n);
     ll cur = 0;
     auto addl = [&](int i){
         cur += bit.prod(0,a[i]);

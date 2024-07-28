@@ -2,17 +2,23 @@
 
 #include"../data_structure/rollback_dsu.hpp"
 
+#include <vector>
+#include <utility>
+#include <cassert>
+
 namespace noya2 {
 
 struct offline_dynamic_connectivity : rollback_dsu {
     using rollback_dsu::operator=;
-    offline_dynamic_connectivity (int n_ = 0, unsigned int t_max = 0, size_t reserve_edge = 0) : n(n_) {
+    offline_dynamic_connectivity () {}
+    offline_dynamic_connectivity (int _n, unsigned int t_max, size_t reserve_edge = 0) : n(_n) {
         sz = bit_ceil(t_max);
         ids.resize(sz*2);
         *this = rollback_dsu(n);
         edges.reserve(reserve_edge);
         inner_clock = -1;
     }
+    // for time interval [l, r), connect u, v
     void add_edge(int l, int r, int u, int v){
         assert(0 <= l && l <= r && r <= sz);
         assert(0 <= u && u < n && 0 <= v && v < n);
@@ -32,6 +38,7 @@ struct offline_dynamic_connectivity : rollback_dsu {
             inner_clock <<= 1;
         }
     }
+    // leap to time t, change this dsu
     void set(int t){
         assert(0 <= t && t < sz && inner_clock != -1);
         t += sz;
@@ -59,8 +66,8 @@ struct offline_dynamic_connectivity : rollback_dsu {
         while (ctr--) this->rollback();
     }
     int n, sz, inner_clock;
-    vector<vector<int>> ids;
-    vector<pair<int,int>> edges;
+    std::vector<std::vector<int>> ids;
+    std::vector<std::pair<int,int>> edges;
 };
 
 } // namespace noya2

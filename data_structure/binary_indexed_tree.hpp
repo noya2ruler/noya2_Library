@@ -1,21 +1,23 @@
 #pragma once
 
 #include"../template/template.hpp"
-#include"../misc/monoids.hpp"
 #include"../misc/concepts.hpp"
 
 namespace noya2{
 
-template <Group G> struct BinaryIndexedTree {
+template <Group G>
+struct binary_indexed_tree {
     using T = typename G::value_type;
-    BinaryIndexedTree(int n_ = 0) : n(n_), d(std::vector<T>(n_ + 1, G::e())) {}
+    binary_indexed_tree (int _n = 0) : n(_n), d(_n + 1, G::e()) {}
     void add(int i, T val) {
         for (int x = i+1; x <= n; x += x & -x) {
             d[x] = G::op(d[x],val);
         }
     }
-    T prod(int l, int r = -1) {
-        if (r == -1) return prefix_prod(l);
+    T prod(int r){
+        return prefix_prod(r);
+    }
+    T prod(int l, int r) {
         return G::op(G::inv(prefix_prod(l)),prefix_prod(r));
     }
     T get(int i){
@@ -36,7 +38,5 @@ template <Group G> struct BinaryIndexedTree {
         return ret;
     }
 };
-template<typename T> using BIT_Plus = BinaryIndexedTree<Plus_group<T>>;
-template<typename T> using BIT_Xor = BinaryIndexedTree<Xor_group<T>>;
 
 } // namespace noya2

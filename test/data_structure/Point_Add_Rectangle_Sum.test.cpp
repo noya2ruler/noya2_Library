@@ -3,11 +3,12 @@
 #include"../../template/template.hpp"
 #include"../../data_structure/range_tree.hpp"
 #include"../../data_structure/binary_indexed_tree.hpp"
+#include"../../misc/monoids.hpp"
 
 int main(){
     int n, q; in(n,q);
     vector<array<int,5>> queries(n+q);
-    range_tree<Plus_group<ll>,BinaryIndexedTree,int> rt;
+    range_tree<plus_group<ll>,binary_indexed_tree,int> rt;
     rep(i,n+q){
         if (i < n){
             int x, y, w; in(x,y,w);
