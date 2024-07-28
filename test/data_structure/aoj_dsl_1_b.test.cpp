@@ -2,10 +2,11 @@
 
 #include"../../template/template.hpp"
 #include"../../data_structure/potentialized_dsu.hpp"
+#include"../../misc/monoids.hpp"
 
 int main(){
     int n, q; in(n,q);
-    potentialized_dsu<Plus_group<ll>> d(n);
+    potentialized_dsu<plus_group<ll>> d(n);
     while (q--){
         int t; in(t);
         if (t == 0){
