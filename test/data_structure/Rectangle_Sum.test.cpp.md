@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
   - icon: ':question:'
@@ -96,7 +96,51 @@ data:
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
     */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/offline_rectangle_sum.hpp\"\
-    \n\n#line 2 \"data_structure/binary_indexed_tree.hpp\"\n\n#line 2 \"misc/monoids.hpp\"\
+    \n\n#line 2 \"data_structure/binary_indexed_tree.hpp\"\n\n#line 2 \"misc/concepts.hpp\"\
+    \n\n#include<concepts>\n\nnamespace noya2 {\n\ntemplate<class monoid>\nconcept\
+    \ Monoid = requires {\n    typename monoid::value_type;\n    {monoid::op(declval<typename\
+    \ monoid::value_type>(),declval<typename monoid::value_type>())} -> std::same_as<typename\
+    \ monoid::value_type>;\n    {monoid::e()} -> std::same_as<typename monoid::value_type>;\n\
+    };\n\ntemplate<class group>\nconcept Group = requires {\n    requires Monoid<group>;\n\
+    \    {group::inv(declval<typename group::value_type>())} -> std::same_as<typename\
+    \ group::value_type>;\n};\n\n} // namespace noya2\n#line 5 \"data_structure/binary_indexed_tree.hpp\"\
+    \n\nnamespace noya2{\n\ntemplate <Group G>\nstruct binary_indexed_tree {\n   \
+    \ using T = typename G::value_type;\n    binary_indexed_tree (int _n = 0) : n(_n),\
+    \ d(_n + 1, G::e()) {}\n    void add(int i, T val) {\n        for (int x = i+1;\
+    \ x <= n; x += x & -x) {\n            d[x] = G::op(d[x],val);\n        }\n   \
+    \ }\n    T prod(int r){\n        return prefix_prod(r);\n    }\n    T prod(int\
+    \ l, int r) {\n        return G::op(G::inv(prefix_prod(l)),prefix_prod(r));\n\
+    \    }\n    T get(int i){\n        return prod(i,i+1);\n    }\n    void set(int\
+    \ i, T val){\n        add(i,G::op(G::inv(get(i)),val));\n    }\n  private:\n \
+    \   int n;\n    std::vector<T> d;\n    T prefix_prod(int i) {\n        assert(0\
+    \ <= i && i <= n);\n        T ret = G::e();\n        for (int x = i; x > 0; x\
+    \ -= x & -x) {\n            ret = G::op(ret,d[x]);\n        }\n        return\
+    \ ret;\n    }\n};\n\n} // namespace noya2\n#line 2 \"data_structure/csr.hpp\"\n\
+    \n#line 4 \"data_structure/csr.hpp\"\n#include<ranges>\n#line 7 \"data_structure/csr.hpp\"\
+    \n\nnamespace noya2::internal {\n\ntemplate<class E>\nstruct csr {\n    csr ()\
+    \ {}\n    csr (int _n) : n(_n) {}\n    csr (int _n, int m) : n(_n){\n        start.reserve(m);\n\
+    \        elist.reserve(m);\n    }\n    // ACL style constructor (do not have to\
+    \ call build)\n    csr (int _n, const std::vector<std::pair<int,E>> &idx_elem)\
+    \ : n(_n), start(_n + 2), elist(idx_elem.size()) {\n        for (auto &[i, e]\
+    \ : idx_elem){\n            start[i + 2]++;\n        }\n        for (int i = 1;\
+    \ i < n; i++){\n            start[i + 2] += start[i + 1];\n        }\n       \
+    \ for (auto &[i, e] : idx_elem){\n            elist[start[i + 1]++] = e;\n   \
+    \     }\n        prepared = true;\n    }\n    int add(int idx, E elem){\n    \
+    \    int eid = start.size();\n        start.emplace_back(idx);\n        elist.emplace_back(elem);\n\
+    \        return eid;\n    }\n    void build(){\n        if (prepared) return ;\n\
+    \        int m = start.size();\n        std::vector<E> nelist(m);\n        std::vector<int>\
+    \ nstart(n + 2, 0);\n        for (int i = 0; i < m; i++){\n            nstart[start[i]\
+    \ + 2]++;\n        }\n        for (int i = 1; i < n; i++){\n            nstart[i\
+    \ + 2] += nstart[i + 1];\n        }\n        for (int i = 0; i < m; i++){\n  \
+    \          nelist[nstart[start[i] + 1]++] = elist[i];\n        }\n        swap(elist,nelist);\n\
+    \        swap(start,nstart);\n        prepared = true;\n    }\n    const auto\
+    \ operator[](int idx) const {\n        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);\n\
+    \    }\n    auto operator[](int idx){\n        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);\n\
+    \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
+    \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
+    \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
+    \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
+    \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n#line 2 \"misc/monoids.hpp\"\
     \n\n#line 4 \"misc/monoids.hpp\"\n\nnamespace noya2{\n\ntemplate<typename T>\n\
     struct max_monoid {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return max(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::min();\
@@ -110,54 +154,9 @@ data:
     \ T>\nstruct xor_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a ^ b; }\n    static constexpr T e(){ return T(0);\
     \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n    \n} // namespace\
-    \ noya2\n#line 2 \"misc/concepts.hpp\"\n\n#include<concepts>\n\nnamespace noya2\
-    \ {\n\ntemplate<class monoid>\nconcept Monoid = requires {\n    typename monoid::value_type;\n\
-    \    {monoid::op(declval<typename monoid::value_type>(),declval<typename monoid::value_type>())}\
-    \ -> std::same_as<typename monoid::value_type>;\n    {monoid::e()} -> std::same_as<typename\
-    \ monoid::value_type>;\n};\n\ntemplate<class group>\nconcept Group = requires\
-    \ {\n    requires Monoid<group>;\n    {group::inv(declval<typename group::value_type>())}\
-    \ -> std::same_as<typename group::value_type>;\n};\n\n} // namespace noya2\n#line\
-    \ 6 \"data_structure/binary_indexed_tree.hpp\"\n\nnamespace noya2{\n\ntemplate\
-    \ <Group G> struct BinaryIndexedTree {\n    using T = typename G::value_type;\n\
-    \    BinaryIndexedTree(int n_ = 0) : n(n_), d(std::vector<T>(n_ + 1, G::e()))\
-    \ {}\n    void add(int i, T val) {\n        for (int x = i+1; x <= n; x += x &\
-    \ -x) {\n            d[x] = G::op(d[x],val);\n        }\n    }\n    T prod(int\
-    \ l, int r = -1) {\n        if (r == -1) return prefix_prod(l);\n        return\
-    \ G::op(G::inv(prefix_prod(l)),prefix_prod(r));\n    }\n    T get(int i){\n  \
-    \      return prod(i,i+1);\n    }\n    void set(int i, T val){\n        add(i,G::op(G::inv(get(i)),val));\n\
-    \    }\n  private:\n    int n;\n    std::vector<T> d;\n    T prefix_prod(int i)\
-    \ {\n        assert(0 <= i && i <= n);\n        T ret = G::e();\n        for (int\
-    \ x = i; x > 0; x -= x & -x) {\n            ret = G::op(ret,d[x]);\n        }\n\
-    \        return ret;\n    }\n};\ntemplate<typename T> using BIT_Plus = BinaryIndexedTree<Plus_group<T>>;\n\
-    template<typename T> using BIT_Xor = BinaryIndexedTree<Xor_group<T>>;\n\n} //\
-    \ namespace noya2\n#line 2 \"data_structure/csr.hpp\"\n\n#line 4 \"data_structure/csr.hpp\"\
-    \n#include<ranges>\n#line 7 \"data_structure/csr.hpp\"\n\nnamespace noya2::internal\
-    \ {\n\ntemplate<class E>\nstruct csr {\n    csr () {}\n    csr (int _n) : n(_n)\
-    \ {}\n    csr (int _n, int m) : n(_n){\n        start.reserve(m);\n        elist.reserve(m);\n\
-    \    }\n    // ACL style constructor (do not have to call build)\n    csr (int\
-    \ _n, const std::vector<std::pair<int,E>> &idx_elem) : n(_n), start(_n + 2), elist(idx_elem.size())\
-    \ {\n        for (auto &[i, e] : idx_elem){\n            start[i + 2]++;\n   \
-    \     }\n        for (int i = 1; i < n; i++){\n            start[i + 2] += start[i\
-    \ + 1];\n        }\n        for (auto &[i, e] : idx_elem){\n            elist[start[i\
-    \ + 1]++] = e;\n        }\n        prepared = true;\n    }\n    int add(int idx,\
-    \ E elem){\n        int eid = start.size();\n        start.emplace_back(idx);\n\
-    \        elist.emplace_back(elem);\n        return eid;\n    }\n    void build(){\n\
-    \        if (prepared) return ;\n        int m = start.size();\n        std::vector<E>\
-    \ nelist(m);\n        std::vector<int> nstart(n + 2, 0);\n        for (int i =\
-    \ 0; i < m; i++){\n            nstart[start[i] + 2]++;\n        }\n        for\
-    \ (int i = 1; i < n; i++){\n            nstart[i + 2] += nstart[i + 1];\n    \
-    \    }\n        for (int i = 0; i < m; i++){\n            nelist[nstart[start[i]\
-    \ + 1]++] = elist[i];\n        }\n        swap(elist,nelist);\n        swap(start,nstart);\n\
-    \        prepared = true;\n    }\n    const auto operator[](int idx) const {\n\
-    \        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);\n\
-    \    }\n    auto operator[](int idx){\n        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);\n\
-    \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
-    \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
-    \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
-    \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
-    \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n#line 5 \"data_structure/offline_rectangle_sum.hpp\"\
-    \n\nnamespace noya2 {\n\ntemplate<Group G = Plus_group<ll>>\nstruct offline_rectangle_sum\
-    \ {\n    using T = typename G::value_type;\n    int h, w, query_id;\n    internal::csr<pair<int,T>>\
+    \ noya2\n#line 6 \"data_structure/offline_rectangle_sum.hpp\"\n\nnamespace noya2\
+    \ {\n\ntemplate<Group G = plus_group<ll>>\nstruct offline_rectangle_sum {\n  \
+    \  using T = typename G::value_type;\n    int h, w, query_id;\n    internal::csr<pair<int,T>>\
     \ elems;\n    internal::csr<tuple<int,int,int>> queries;\n    offline_rectangle_sum\
     \ () {}\n    offline_rectangle_sum (int h_, int w_) : h(h_), w(w_), query_id(0),\
     \ elems(h_), queries(h_+1) {}\n    offline_rectangle_sum (int h_, int w_, int\
@@ -219,14 +218,14 @@ data:
   - template/utils.hpp
   - data_structure/offline_rectangle_sum.hpp
   - data_structure/binary_indexed_tree.hpp
-  - misc/monoids.hpp
   - misc/concepts.hpp
   - data_structure/csr.hpp
+  - misc/monoids.hpp
   - data_structure/compress.hpp
   isVerificationFile: true
   path: test/data_structure/Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 16:42:39+09:00'
+  timestamp: '2024-07-28 17:00:49+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/data_structure/Rectangle_Sum.test.cpp

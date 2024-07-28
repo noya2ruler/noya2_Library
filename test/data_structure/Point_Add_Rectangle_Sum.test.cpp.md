@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
   - icon: ':question:'
@@ -30,9 +30,9 @@ data:
     title: template/utils.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
@@ -131,13 +131,31 @@ data:
     \        }\n        return res;\n    }\n    int siz;\n    vector<pair<Idx,Idx>>\
     \ ps;\n    compress<Idx> xs;\n    vector<compress<Idx>> ys;\n    vector<DS> ds;\n\
     };\n\n} // namespace noya2\n#line 2 \"data_structure/binary_indexed_tree.hpp\"\
-    \n\n#line 2 \"misc/monoids.hpp\"\n\n#line 4 \"misc/monoids.hpp\"\n\nnamespace\
-    \ noya2{\n\ntemplate<typename T>\nstruct max_monoid {\n    using value_type =\
-    \ T;\n    static constexpr T op(const T &a, const T &b){ return max(a,b); }\n\
-    \    static constexpr T e(){ return std::numeric_limits<T>::min(); }\n    static\
-    \ constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename T>\nstruct\
-    \ min_monoid {\n    using value_type = T;\n    static constexpr T op(const T &a,\
-    \ const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
+    \n\n#line 2 \"misc/concepts.hpp\"\n\n#include<concepts>\n\nnamespace noya2 {\n\
+    \ntemplate<class monoid>\nconcept Monoid = requires {\n    typename monoid::value_type;\n\
+    \    {monoid::op(declval<typename monoid::value_type>(),declval<typename monoid::value_type>())}\
+    \ -> std::same_as<typename monoid::value_type>;\n    {monoid::e()} -> std::same_as<typename\
+    \ monoid::value_type>;\n};\n\ntemplate<class group>\nconcept Group = requires\
+    \ {\n    requires Monoid<group>;\n    {group::inv(declval<typename group::value_type>())}\
+    \ -> std::same_as<typename group::value_type>;\n};\n\n} // namespace noya2\n#line\
+    \ 5 \"data_structure/binary_indexed_tree.hpp\"\n\nnamespace noya2{\n\ntemplate\
+    \ <Group G>\nstruct binary_indexed_tree {\n    using T = typename G::value_type;\n\
+    \    binary_indexed_tree (int _n = 0) : n(_n), d(_n + 1, G::e()) {}\n    void\
+    \ add(int i, T val) {\n        for (int x = i+1; x <= n; x += x & -x) {\n    \
+    \        d[x] = G::op(d[x],val);\n        }\n    }\n    T prod(int r){\n     \
+    \   return prefix_prod(r);\n    }\n    T prod(int l, int r) {\n        return\
+    \ G::op(G::inv(prefix_prod(l)),prefix_prod(r));\n    }\n    T get(int i){\n  \
+    \      return prod(i,i+1);\n    }\n    void set(int i, T val){\n        add(i,G::op(G::inv(get(i)),val));\n\
+    \    }\n  private:\n    int n;\n    std::vector<T> d;\n    T prefix_prod(int i)\
+    \ {\n        assert(0 <= i && i <= n);\n        T ret = G::e();\n        for (int\
+    \ x = i; x > 0; x -= x & -x) {\n            ret = G::op(ret,d[x]);\n        }\n\
+    \        return ret;\n    }\n};\n\n} // namespace noya2\n#line 2 \"misc/monoids.hpp\"\
+    \n\n#line 4 \"misc/monoids.hpp\"\n\nnamespace noya2{\n\ntemplate<typename T>\n\
+    struct max_monoid {\n    using value_type = T;\n    static constexpr T op(const\
+    \ T &a, const T &b){ return max(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::min();\
+    \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
+    \ T>\nstruct min_monoid {\n    using value_type = T;\n    static constexpr T op(const\
+    \ T &a, const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
     \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
     \ T>\nstruct plus_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a + b; }\n    static constexpr T e(){ return T(0);\
@@ -145,30 +163,10 @@ data:
     \ T>\nstruct xor_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a ^ b; }\n    static constexpr T e(){ return T(0);\
     \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n    \n} // namespace\
-    \ noya2\n#line 2 \"misc/concepts.hpp\"\n\n#include<concepts>\n\nnamespace noya2\
-    \ {\n\ntemplate<class monoid>\nconcept Monoid = requires {\n    typename monoid::value_type;\n\
-    \    {monoid::op(declval<typename monoid::value_type>(),declval<typename monoid::value_type>())}\
-    \ -> std::same_as<typename monoid::value_type>;\n    {monoid::e()} -> std::same_as<typename\
-    \ monoid::value_type>;\n};\n\ntemplate<class group>\nconcept Group = requires\
-    \ {\n    requires Monoid<group>;\n    {group::inv(declval<typename group::value_type>())}\
-    \ -> std::same_as<typename group::value_type>;\n};\n\n} // namespace noya2\n#line\
-    \ 6 \"data_structure/binary_indexed_tree.hpp\"\n\nnamespace noya2{\n\ntemplate\
-    \ <Group G> struct BinaryIndexedTree {\n    using T = typename G::value_type;\n\
-    \    BinaryIndexedTree(int n_ = 0) : n(n_), d(std::vector<T>(n_ + 1, G::e()))\
-    \ {}\n    void add(int i, T val) {\n        for (int x = i+1; x <= n; x += x &\
-    \ -x) {\n            d[x] = G::op(d[x],val);\n        }\n    }\n    T prod(int\
-    \ l, int r = -1) {\n        if (r == -1) return prefix_prod(l);\n        return\
-    \ G::op(G::inv(prefix_prod(l)),prefix_prod(r));\n    }\n    T get(int i){\n  \
-    \      return prod(i,i+1);\n    }\n    void set(int i, T val){\n        add(i,G::op(G::inv(get(i)),val));\n\
-    \    }\n  private:\n    int n;\n    std::vector<T> d;\n    T prefix_prod(int i)\
-    \ {\n        assert(0 <= i && i <= n);\n        T ret = G::e();\n        for (int\
-    \ x = i; x > 0; x -= x & -x) {\n            ret = G::op(ret,d[x]);\n        }\n\
-    \        return ret;\n    }\n};\ntemplate<typename T> using BIT_Plus = BinaryIndexedTree<Plus_group<T>>;\n\
-    template<typename T> using BIT_Xor = BinaryIndexedTree<Xor_group<T>>;\n\n} //\
-    \ namespace noya2\n#line 6 \"test/data_structure/Point_Add_Rectangle_Sum.test.cpp\"\
-    \n\nint main(){\n    int n, q; in(n,q);\n    vector<array<int,5>> queries(n+q);\n\
-    \    range_tree<Plus_group<ll>,BinaryIndexedTree,int> rt;\n    rep(i,n+q){\n \
-    \       if (i < n){\n            int x, y, w; in(x,y,w);\n            queries[i]\
+    \ noya2\n#line 7 \"test/data_structure/Point_Add_Rectangle_Sum.test.cpp\"\n\n\
+    int main(){\n    int n, q; in(n,q);\n    vector<array<int,5>> queries(n+q);\n\
+    \    range_tree<plus_group<ll>,binary_indexed_tree,int> rt;\n    rep(i,n+q){\n\
+    \        if (i < n){\n            int x, y, w; in(x,y,w);\n            queries[i]\
     \ = {0,x,y,w,0};\n            rt.join(x,y);\n            continue;\n        }\n\
     \        int t; in(t);\n        if (t == 0){\n            int x, y, w; in(x,y,w);\n\
     \            queries[i] = {t,x,y,w,0};\n            rt.join(x,y);\n        }\n\
@@ -180,18 +178,19 @@ data:
     \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\
     \n\n#include\"../../template/template.hpp\"\n#include\"../../data_structure/range_tree.hpp\"\
-    \n#include\"../../data_structure/binary_indexed_tree.hpp\"\n\nint main(){\n  \
-    \  int n, q; in(n,q);\n    vector<array<int,5>> queries(n+q);\n    range_tree<Plus_group<ll>,BinaryIndexedTree,int>\
-    \ rt;\n    rep(i,n+q){\n        if (i < n){\n            int x, y, w; in(x,y,w);\n\
-    \            queries[i] = {0,x,y,w,0};\n            rt.join(x,y);\n          \
-    \  continue;\n        }\n        int t; in(t);\n        if (t == 0){\n       \
-    \     int x, y, w; in(x,y,w);\n            queries[i] = {t,x,y,w,0};\n       \
-    \     rt.join(x,y);\n        }\n        if (t == 1){\n            int l, d, r,\
-    \ u; in(l,d,r,u);\n            queries[i] = {t,l,d,r,u};\n        }\n    }\n \
-    \   rt.build();\n    rep(i,n+q){\n        if (queries[i][0] == 0){\n         \
-    \   auto [t, x, y, w, o] = queries[i];\n            rt.set(x,y,rt.get(x,y)+w);\n\
-    \        }\n        if (queries[i][0] == 1){\n            auto [t, l, d, r, u]\
-    \ = queries[i];\n            out(rt.prod(l,r,d,u));\n        }\n    }\n}"
+    \n#include\"../../data_structure/binary_indexed_tree.hpp\"\n#include\"../../misc/monoids.hpp\"\
+    \n\nint main(){\n    int n, q; in(n,q);\n    vector<array<int,5>> queries(n+q);\n\
+    \    range_tree<plus_group<ll>,binary_indexed_tree,int> rt;\n    rep(i,n+q){\n\
+    \        if (i < n){\n            int x, y, w; in(x,y,w);\n            queries[i]\
+    \ = {0,x,y,w,0};\n            rt.join(x,y);\n            continue;\n        }\n\
+    \        int t; in(t);\n        if (t == 0){\n            int x, y, w; in(x,y,w);\n\
+    \            queries[i] = {t,x,y,w,0};\n            rt.join(x,y);\n        }\n\
+    \        if (t == 1){\n            int l, d, r, u; in(l,d,r,u);\n            queries[i]\
+    \ = {t,l,d,r,u};\n        }\n    }\n    rt.build();\n    rep(i,n+q){\n       \
+    \ if (queries[i][0] == 0){\n            auto [t, x, y, w, o] = queries[i];\n \
+    \           rt.set(x,y,rt.get(x,y)+w);\n        }\n        if (queries[i][0] ==\
+    \ 1){\n            auto [t, l, d, r, u] = queries[i];\n            out(rt.prod(l,r,d,u));\n\
+    \        }\n    }\n}"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
@@ -200,13 +199,13 @@ data:
   - data_structure/range_tree.hpp
   - data_structure/compress.hpp
   - data_structure/binary_indexed_tree.hpp
-  - misc/monoids.hpp
   - misc/concepts.hpp
+  - misc/monoids.hpp
   isVerificationFile: true
   path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 16:42:39+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-07-28 17:00:49+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
 layout: document
