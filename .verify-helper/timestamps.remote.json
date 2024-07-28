@@ -7,6 +7,7 @@
 "test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp": "2024-07-06 18:42:04 +0900",
 "test/data_structure/RangeParallelUnionfind.test.cpp": "2024-07-28 16:18:08 +0900",
 "test/data_structure/Range_Affine_Range_Sum.test.cpp": "2024-07-06 18:42:04 +0900",
+"test/data_structure/Rectangle_Sum.test.cpp": "2024-07-28 17:05:19 +0900",
 "test/data_structure/Segment_Add_Get_Min.test.cpp": "2024-07-01 23:39:10 +0900",
 "test/data_structure/SetXorMin.test.cpp": "2024-07-03 00:58:52 +0900",
 "test/data_structure/Static_RMQ.test.cpp": "2024-07-01 23:39:10 +0900",
