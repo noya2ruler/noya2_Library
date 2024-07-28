@@ -174,19 +174,22 @@ data:
     \ }\n            if (x == h) break;\n            for (auto [y, e] : elems[x]){\n\
     \                fen.add(y,e);\n            }\n        }\n        return ans;\n\
     \    }\n};\n\n} // namespace noya2\n#line 5 \"test/data_structure/Rectangle_Sum.test.cpp\"\
-    \n\n#line 2 \"data_structure/compress.hpp\"\n\n#line 4 \"data_structure/compress.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<typename T> struct compress {\n    vector<T>\
-    \ raws;\n    compress(const vector<T> &raws_ = {}) : raws(raws_){ build(); }\n\
+    \n\n#line 2 \"data_structure/compress.hpp\"\n\n#line 5 \"data_structure/compress.hpp\"\
+    \n\nnamespace noya2{\n\ntemplate<typename T>\nstruct compress {\n    std::vector<T>\
+    \ raws;\n    compress () {}\n    compress (const vector<T> &_raws) : raws(_raws){\
+    \ build(); }\n    void build(){\n        std::sort(raws.begin(), raws.end());\n\
+    \        raws.erase(std::unique(raws.begin(), raws.end()), raws.end());\n    }\n\
     \    int id(const T &raw){ return lb(raw); }\n    T raw(const int &id){ return\
-    \ raws[id]; }\n    void build(){ uniq(raws); }\n    void add(const T &raw){ raws.push_back(raw);\
-    \ }\n    size_t size(){ return raws.size(); }\n    int lb(const T &raw){ return\
-    \ lower_bound(all(raws),raw) - raws.begin(); }\n    int ub(const T &raw){ return\
-    \ upper_bound(all(raws),raw) - raws.begin(); }\n    bool contains(const T &raw){\n\
-    \        int jd = lb(raw);\n        if (jd < (int)size()) return raws[jd] == raw;\n\
-    \        return false;\n    }\n    int contains_id(const T &raw){\n        int\
-    \ jd = lb(raw);\n        if (jd < (int)size() && raws[jd] == raw) return jd;\n\
-    \        return -1;\n    }\n};\n\n} // namespace noya2\n#line 7 \"test/data_structure/Rectangle_Sum.test.cpp\"\
-    \n\nint main(){\n    int n, q; in(n,q);\n    compress<int> cpx, cpy;\n    vector<tuple<int,int,ll>>\
+    \ raws[id]; }\n    void add(const T &raw){ raws.emplace_back(raw); }\n    void\
+    \ reserve(size_t sz){ raws.reserve(sz); }\n    size_t size(){ return raws.size();\
+    \ }\n    int lb(const T &raw){ return lower_bound(all(raws),raw) - raws.begin();\
+    \ }\n    int ub(const T &raw){ return upper_bound(all(raws),raw) - raws.begin();\
+    \ }\n    bool contains(const T &raw){\n        int jd = lb(raw);\n        if (jd\
+    \ < (int)size()) return raws[jd] == raw;\n        return false;\n    }\n    int\
+    \ contains_id(const T &raw){\n        int jd = lb(raw);\n        if (jd < (int)size()\
+    \ && raws[jd] == raw) return jd;\n        return -1;\n    }\n};\n\n} // namespace\
+    \ noya2\n#line 7 \"test/data_structure/Rectangle_Sum.test.cpp\"\n\nint main(){\n\
+    \    int n, q; in(n,q);\n    compress<int> cpx, cpy;\n    vector<tuple<int,int,ll>>\
     \ a(n);\n    rep(i,n){\n        int x, y, w; in(x,y,w);\n        a[i] = tuple<int,int,ll>(x,y,w);\n\
     \        cpx.add(x);\n        cpy.add(y);\n    }\n    vector<tuple<int,int,int,int>>\
     \ queries(q);\n    rep(i,q){\n        int lx, ly, rx, ry; in(lx,ly,rx,ry);\n \
@@ -225,7 +228,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 17:05:19+09:00'
+  timestamp: '2024-07-28 17:15:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Rectangle_Sum.test.cpp

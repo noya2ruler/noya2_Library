@@ -80,12 +80,14 @@ data:
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
     */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/compress.hpp\"\
-    \n\n#line 4 \"data_structure/compress.hpp\"\n\nnamespace noya2{\n\ntemplate<typename\
-    \ T> struct compress {\n    vector<T> raws;\n    compress(const vector<T> &raws_\
-    \ = {}) : raws(raws_){ build(); }\n    int id(const T &raw){ return lb(raw); }\n\
-    \    T raw(const int &id){ return raws[id]; }\n    void build(){ uniq(raws); }\n\
-    \    void add(const T &raw){ raws.push_back(raw); }\n    size_t size(){ return\
-    \ raws.size(); }\n    int lb(const T &raw){ return lower_bound(all(raws),raw)\
+    \n\n#line 5 \"data_structure/compress.hpp\"\n\nnamespace noya2{\n\ntemplate<typename\
+    \ T>\nstruct compress {\n    std::vector<T> raws;\n    compress () {}\n    compress\
+    \ (const vector<T> &_raws) : raws(_raws){ build(); }\n    void build(){\n    \
+    \    std::sort(raws.begin(), raws.end());\n        raws.erase(std::unique(raws.begin(),\
+    \ raws.end()), raws.end());\n    }\n    int id(const T &raw){ return lb(raw);\
+    \ }\n    T raw(const int &id){ return raws[id]; }\n    void add(const T &raw){\
+    \ raws.emplace_back(raw); }\n    void reserve(size_t sz){ raws.reserve(sz); }\n\
+    \    size_t size(){ return raws.size(); }\n    int lb(const T &raw){ return lower_bound(all(raws),raw)\
     \ - raws.begin(); }\n    int ub(const T &raw){ return upper_bound(all(raws),raw)\
     \ - raws.begin(); }\n    bool contains(const T &raw){\n        int jd = lb(raw);\n\
     \        if (jd < (int)size()) return raws[jd] == raw;\n        return false;\n\
@@ -154,7 +156,7 @@ data:
   isVerificationFile: false
   path: data_structure/range_tree.hpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2024-07-28 17:15:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp

@@ -93,33 +93,36 @@ data:
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
     */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/range_tree.hpp\"\
-    \n\n#line 2 \"data_structure/compress.hpp\"\n\n#line 4 \"data_structure/compress.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<typename T> struct compress {\n    vector<T>\
-    \ raws;\n    compress(const vector<T> &raws_ = {}) : raws(raws_){ build(); }\n\
+    \n\n#line 2 \"data_structure/compress.hpp\"\n\n#line 5 \"data_structure/compress.hpp\"\
+    \n\nnamespace noya2{\n\ntemplate<typename T>\nstruct compress {\n    std::vector<T>\
+    \ raws;\n    compress () {}\n    compress (const vector<T> &_raws) : raws(_raws){\
+    \ build(); }\n    void build(){\n        std::sort(raws.begin(), raws.end());\n\
+    \        raws.erase(std::unique(raws.begin(), raws.end()), raws.end());\n    }\n\
     \    int id(const T &raw){ return lb(raw); }\n    T raw(const int &id){ return\
-    \ raws[id]; }\n    void build(){ uniq(raws); }\n    void add(const T &raw){ raws.push_back(raw);\
-    \ }\n    size_t size(){ return raws.size(); }\n    int lb(const T &raw){ return\
-    \ lower_bound(all(raws),raw) - raws.begin(); }\n    int ub(const T &raw){ return\
-    \ upper_bound(all(raws),raw) - raws.begin(); }\n    bool contains(const T &raw){\n\
-    \        int jd = lb(raw);\n        if (jd < (int)size()) return raws[jd] == raw;\n\
-    \        return false;\n    }\n    int contains_id(const T &raw){\n        int\
-    \ jd = lb(raw);\n        if (jd < (int)size() && raws[jd] == raw) return jd;\n\
-    \        return -1;\n    }\n};\n\n} // namespace noya2\n#line 5 \"data_structure/range_tree.hpp\"\
-    \n\nnamespace noya2 {\n\ntemplate<class M, template<class MM> class data_structure,\
-    \ typename Idx = ll>\nstruct range_tree {\n    using DS = data_structure<M>;\n\
-    \    using T = typename M::value_type;\n    void join(Idx x, Idx y){ ps.emplace_back(x,y);\
-    \ }\n    void build(){\n        for (auto &[x, y] : ps) xs.add(x);\n        xs.build();\n\
-    \        //siz = bit_ceil(xs.size());\n        siz = 1; while (siz < (int)(xs.size()))\
-    \ siz <<= 1;\n        ys.resize(siz*2);\n        for (auto &[x, y] : ps){\n  \
-    \          int xid = xs.id(x) + siz;\n            ys[xid].add(y);\n          \
-    \  while (xid > 1){\n                xid >>= 1;\n                ys[xid].add(y);\n\
-    \            }\n        }\n        for (int i = 0; i < 2*siz; i++){\n        \
-    \    ys[i].build();\n            ds.emplace_back(ys[i].size());\n        }\n \
-    \   }\n    void set(Idx p, Idx q, T val){\n        int i = xs.id(p) + siz;\n \
-    \       ds[i].set(ys[i].id(q),val);\n        while (i > 1){\n            i >>=\
-    \ 1;\n            T lr = M::e();\n            int i0 = ys[2*i+0].contains_id(q),\
-    \ i1 = ys[2*i+1].contains_id(q);\n            if (i0 != -1) lr = M::op(lr, ds[2*i+0].get(i0));\n\
-    \            if (i1 != -1) lr = M::op(lr, ds[2*i+1].get(i1));\n            ds[i].set(ys[i].id(q),lr);\n\
+    \ raws[id]; }\n    void add(const T &raw){ raws.emplace_back(raw); }\n    void\
+    \ reserve(size_t sz){ raws.reserve(sz); }\n    size_t size(){ return raws.size();\
+    \ }\n    int lb(const T &raw){ return lower_bound(all(raws),raw) - raws.begin();\
+    \ }\n    int ub(const T &raw){ return upper_bound(all(raws),raw) - raws.begin();\
+    \ }\n    bool contains(const T &raw){\n        int jd = lb(raw);\n        if (jd\
+    \ < (int)size()) return raws[jd] == raw;\n        return false;\n    }\n    int\
+    \ contains_id(const T &raw){\n        int jd = lb(raw);\n        if (jd < (int)size()\
+    \ && raws[jd] == raw) return jd;\n        return -1;\n    }\n};\n\n} // namespace\
+    \ noya2\n#line 5 \"data_structure/range_tree.hpp\"\n\nnamespace noya2 {\n\ntemplate<class\
+    \ M, template<class MM> class data_structure, typename Idx = ll>\nstruct range_tree\
+    \ {\n    using DS = data_structure<M>;\n    using T = typename M::value_type;\n\
+    \    void join(Idx x, Idx y){ ps.emplace_back(x,y); }\n    void build(){\n   \
+    \     for (auto &[x, y] : ps) xs.add(x);\n        xs.build();\n        //siz =\
+    \ bit_ceil(xs.size());\n        siz = 1; while (siz < (int)(xs.size())) siz <<=\
+    \ 1;\n        ys.resize(siz*2);\n        for (auto &[x, y] : ps){\n          \
+    \  int xid = xs.id(x) + siz;\n            ys[xid].add(y);\n            while (xid\
+    \ > 1){\n                xid >>= 1;\n                ys[xid].add(y);\n       \
+    \     }\n        }\n        for (int i = 0; i < 2*siz; i++){\n            ys[i].build();\n\
+    \            ds.emplace_back(ys[i].size());\n        }\n    }\n    void set(Idx\
+    \ p, Idx q, T val){\n        int i = xs.id(p) + siz;\n        ds[i].set(ys[i].id(q),val);\n\
+    \        while (i > 1){\n            i >>= 1;\n            T lr = M::e();\n  \
+    \          int i0 = ys[2*i+0].contains_id(q), i1 = ys[2*i+1].contains_id(q);\n\
+    \            if (i0 != -1) lr = M::op(lr, ds[2*i+0].get(i0));\n            if\
+    \ (i1 != -1) lr = M::op(lr, ds[2*i+1].get(i1));\n            ds[i].set(ys[i].id(q),lr);\n\
     \        }\n    }\n    T get(Idx p, Idx q){\n        int ip = xs.contains_id(p);\n\
     \        if (ip == -1) return M::e();\n        int i = ip + siz;\n        int\
     \ iq = ys[i].contains_id(q);\n        if (iq == -1) return M::e();\n        return\
@@ -204,7 +207,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 17:00:49+09:00'
+  timestamp: '2024-07-28 17:15:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Point_Add_Rectangle_Sum.test.cpp

@@ -18,9 +18,6 @@ data:
     path: data_structure/binary_trie.hpp
     title: data_structure/binary_trie.hpp
   - icon: ':heavy_check_mark:'
-    path: data_structure/compress.hpp
-    title: data_structure/compress.hpp
-  - icon: ':heavy_check_mark:'
     path: data_structure/dynamic_segment_tree.hpp
     title: data_structure/dynamic_segment_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -363,7 +360,6 @@ data:
   - data_structure/binary_trie.hpp
   - data_structure/li_chao_tree.hpp
   - data_structure/binary_indexed_tree.hpp
-  - data_structure/compress.hpp
   - data_structure/fenwick_tree.hpp
   - misc/mex.hpp
   - misc/mo_algorithm.hpp
