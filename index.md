@@ -3,16 +3,16 @@ data:
   libraryCategories:
   - name: data_structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/binary_indexed_tree.hpp
       title: data_structure/binary_indexed_tree.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/binary_trie.hpp
       title: data_structure/binary_trie.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/csr.hpp
       title: data_structure/csr.hpp
     - icon: ':heavy_check_mark:'
@@ -33,7 +33,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/offline_dynamic_connectivity.hpp
       title: data_structure/offline_dynamic_connectivity.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data_structure/offline_rectangle_sum.hpp
       title: data_structure/offline_rectangle_sum.hpp
     - icon: ':heavy_check_mark:'
@@ -185,7 +185,7 @@ data:
     - icon: ':warning:'
       path: misc/QMC.hpp
       title: misc/QMC.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: misc/concepts.hpp
       title: misc/concepts.hpp
     - icon: ':warning:'
@@ -203,7 +203,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/mo_algorithm.hpp
       title: misc/mo_algorithm.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: misc/monoids.hpp
       title: misc/monoids.hpp
     - icon: ':warning:'
@@ -245,19 +245,19 @@ data:
       title: string/z_algorithm.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/const.hpp
       title: template/const.hpp
     - icon: ':warning:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/inout_old.hpp
       title: template/inout_old.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
@@ -330,7 +330,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/data_structure/Range_Affine_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/Rectangle_Sum.test.cpp
       title: test/data_structure/Rectangle_Sum.test.cpp
     - icon: ':heavy_check_mark:'

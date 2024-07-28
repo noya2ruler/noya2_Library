@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/binary_indexed_tree.hpp
     title: data_structure/binary_indexed_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/concepts.hpp
     title: misc/concepts.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/monoids.hpp
     title: misc/monoids.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/Rectangle_Sum.test.cpp
     title: test/data_structure/Rectangle_Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/offline_rectangle_sum.hpp\"\n\n#line 2 \"\
@@ -159,7 +159,7 @@ data:
     \    }\n    void add_query(int lx, int rx, int ly, int ry){\n        queries.add(lx,tuple<int,int,int>(ly,ry,-1-query_id));\n\
     \        queries.add(rx,tuple<int,int,int>(ly,ry,query_id));\n        query_id++;\n\
     \    }\n    vector<T> run(){\n        elems.build();\n        queries.build();\n\
-    \        BinaryIndexedTree<G> fen(w);\n        vector<T> ans(query_id,G::e());\n\
+    \        binary_indexed_tree<G> fen(w);\n        vector<T> ans(query_id,G::e());\n\
     \        for (int x = 0; ; x++){\n            for (auto [ly, ry, qid] : queries[x]){\n\
     \                if (qid >= 0){\n                    ans[qid] = G::op(ans[qid],fen.prod(ly,ry));\n\
     \                }\n                else {\n                    ans[-1-qid] =\
@@ -180,7 +180,7 @@ data:
     \    }\n    void add_query(int lx, int rx, int ly, int ry){\n        queries.add(lx,tuple<int,int,int>(ly,ry,-1-query_id));\n\
     \        queries.add(rx,tuple<int,int,int>(ly,ry,query_id));\n        query_id++;\n\
     \    }\n    vector<T> run(){\n        elems.build();\n        queries.build();\n\
-    \        BinaryIndexedTree<G> fen(w);\n        vector<T> ans(query_id,G::e());\n\
+    \        binary_indexed_tree<G> fen(w);\n        vector<T> ans(query_id,G::e());\n\
     \        for (int x = 0; ; x++){\n            for (auto [ly, ry, qid] : queries[x]){\n\
     \                if (qid >= 0){\n                    ans[qid] = G::op(ans[qid],fen.prod(ly,ry));\n\
     \                }\n                else {\n                    ans[-1-qid] =\
@@ -200,8 +200,8 @@ data:
   isVerificationFile: false
   path: data_structure/offline_rectangle_sum.hpp
   requiredBy: []
-  timestamp: '2024-07-28 17:00:49+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-07-28 17:05:19+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Rectangle_Sum.test.cpp
 documentation_of: data_structure/offline_rectangle_sum.hpp
