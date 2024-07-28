@@ -81,7 +81,7 @@ data:
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
     */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/dsu.hpp\"\n\n\
-    #line 4 \"data_structure/dsu.hpp\"\n\nnamespace noya2{\n\nstruct dsu {\n  public:\n\
+    #line 6 \"data_structure/dsu.hpp\"\n\nnamespace noya2{\n\nstruct dsu {\n  public:\n\
     \    dsu() : _n(0) {}\n    dsu(int n) : _n(n), parent_or_size(n, -1) {}\n\n  \
     \  int merge(int a, int b) {\n        assert(0 <= a && a < _n);\n        assert(0\
     \ <= b && b < _n);\n        int x = leader(a), y = leader(b);\n        if (x ==\
@@ -122,7 +122,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Unionfind.test.cpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2024-07-28 16:18:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Unionfind.test.cpp

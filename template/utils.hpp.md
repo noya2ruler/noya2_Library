@@ -12,9 +12,6 @@ data:
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
   - icon: ':heavy_check_mark:'
-    path: data_structure/dsu.hpp
-    title: data_structure/dsu.hpp
-  - icon: ':heavy_check_mark:'
     path: data_structure/dynamic_segment_tree.hpp
     title: data_structure/dynamic_segment_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -32,9 +29,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/potentialized_dsu.hpp
     title: data_structure/potentialized_dsu.hpp
-  - icon: ':heavy_check_mark:'
-    path: data_structure/range_parallel_dsu.hpp
-    title: data_structure/range_parallel_dsu.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
@@ -341,13 +335,11 @@ data:
   - data_structure/lazy_segment_tree.hpp
   - data_structure/offline_rectangle_sum.hpp
   - data_structure/potentialized_dsu.hpp
-  - data_structure/range_parallel_dsu.hpp
   - data_structure/range_tree.hpp
   - data_structure/dynamic_segment_tree.hpp
   - data_structure/binary_trie.hpp
   - data_structure/li_chao_tree.hpp
   - data_structure/binary_indexed_tree.hpp
-  - data_structure/dsu.hpp
   - data_structure/compress.hpp
   - data_structure/fenwick_tree.hpp
   - misc/mex.hpp

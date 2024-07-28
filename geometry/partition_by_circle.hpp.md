@@ -94,7 +94,7 @@ data:
     \ return -2;\n        if (sgn(dot(a - b, c - b)) < 0) return 2;\n    }\n    return\
     \ cross_sgn;\n}\n\nvec rot90(const vec &a) {\n    return {-a.imag(), a.real()};\n\
     }\n\nvec rot(const vec &a, ld rad) {\n    return a * vec(cosl(rad), sinl(rad));\n\
-    }\n\n\n}  // namespace lib\n#line 2 \"data_structure/dsu.hpp\"\n\n#line 4 \"data_structure/dsu.hpp\"\
+    }\n\n\n}  // namespace lib\n#line 2 \"data_structure/dsu.hpp\"\n\n#line 6 \"data_structure/dsu.hpp\"\
     \n\nnamespace noya2{\n\nstruct dsu {\n  public:\n    dsu() : _n(0) {}\n    dsu(int\
     \ n) : _n(n), parent_or_size(n, -1) {}\n\n    int merge(int a, int b) {\n    \
     \    assert(0 <= a && a < _n);\n        assert(0 <= b && b < _n);\n        int\
@@ -296,7 +296,7 @@ data:
   isVerificationFile: false
   path: geometry/partition_by_circle.hpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2024-07-28 16:18:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/geometry/aoj1198.test.cpp
