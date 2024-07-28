@@ -1,6 +1,8 @@
 #pragma once
 
-#include"../template/template.hpp"
+#include <vector>
+#include <cassert>
+#include <algorithm>
 
 namespace noya2{
 
