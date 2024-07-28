@@ -1,11 +1,14 @@
 #pragma once
 
-#include"../template/template.hpp"
+#include <vector>
+#include <stack>
+#include <utility>
+#include <cassert>
 
 namespace noya2 {
 
 struct rollback_dsu {
-    rollback_dsu (int n_ = 0) : n(n_), par_or_siz(n_,-1) {};
+    rollback_dsu (int _n = 0) : n(_n), par_or_siz(_n,-1) {}
     int leader(int v){
         assert(0 <= v && v < n);
         if (par_or_siz[v] < 0) return v;
@@ -20,7 +23,7 @@ struct rollback_dsu {
         logs.push(make_pair(u,par_or_siz[u]));
         logs.push(make_pair(v,par_or_siz[v]));
         if (u == v) return u;
-        if (-par_or_siz[u] < -par_or_siz[v]) swap(u,v);
+        if (-par_or_siz[u] < -par_or_siz[v]) std::swap(u,v);
         par_or_siz[u] += par_or_siz[v];
         par_or_siz[v] = u;
         return u;
@@ -34,8 +37,8 @@ struct rollback_dsu {
     }
   private:
     int n;
-    vector<int> par_or_siz;
-    stack<pair<int,int>> logs;
+    std::vector<int> par_or_siz;
+    std::stack<std::pair<int,int>> logs;
 };
 
 } // namespace noya2
