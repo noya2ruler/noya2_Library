@@ -36,9 +36,6 @@ data:
     path: data_structure/li_chao_tree.hpp
     title: data_structure/li_chao_tree.hpp
   - icon: ':heavy_check_mark:'
-    path: data_structure/offline_dynamic_connectivity.hpp
-    title: data_structure/offline_dynamic_connectivity.hpp
-  - icon: ':heavy_check_mark:'
     path: data_structure/offline_rectangle_sum.hpp
     title: data_structure/offline_rectangle_sum.hpp
   - icon: ':heavy_check_mark:'
@@ -50,9 +47,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
-  - icon: ':heavy_check_mark:'
-    path: data_structure/rollback_dsu.hpp
-    title: data_structure/rollback_dsu.hpp
   - icon: ':heavy_check_mark:'
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
@@ -376,12 +370,10 @@ data:
   - data_structure/potentialized_dsu.hpp
   - data_structure/range_parallel_dsu.hpp
   - data_structure/range_tree.hpp
-  - data_structure/rollback_dsu.hpp
   - data_structure/dynamic_segment_tree.hpp
   - data_structure/binary_trie.hpp
   - data_structure/li_chao_tree.hpp
   - data_structure/binary_indexed_tree.hpp
-  - data_structure/offline_dynamic_connectivity.hpp
   - data_structure/dsu.hpp
   - data_structure/compress.hpp
   - data_structure/fenwick_tree.hpp
