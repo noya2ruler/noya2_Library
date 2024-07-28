@@ -27,7 +27,7 @@ struct offline_rectangle_sum {
     vector<T> run(){
         elems.build();
         queries.build();
-        BinaryIndexedTree<G> fen(w);
+        binary_indexed_tree<G> fen(w);
         vector<T> ans(query_id,G::e());
         for (int x = 0; ; x++){
             for (auto [ly, ry, qid] : queries[x]){
