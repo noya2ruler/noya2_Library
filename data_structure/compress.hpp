@@ -1,16 +1,23 @@
 #pragma once
 
-#include"../template/template.hpp"
+#include <vector>
+#include <algorithm>
 
 namespace noya2{
 
-template<typename T> struct compress {
-    vector<T> raws;
-    compress(const vector<T> &raws_ = {}) : raws(raws_){ build(); }
+template<typename T>
+struct compress {
+    std::vector<T> raws;
+    compress () {}
+    compress (const vector<T> &_raws) : raws(_raws){ build(); }
+    void build(){
+        std::sort(raws.begin(), raws.end());
+        raws.erase(std::unique(raws.begin(), raws.end()), raws.end());
+    }
     int id(const T &raw){ return lb(raw); }
     T raw(const int &id){ return raws[id]; }
-    void build(){ uniq(raws); }
-    void add(const T &raw){ raws.push_back(raw); }
+    void add(const T &raw){ raws.emplace_back(raw); }
+    void reserve(size_t sz){ raws.reserve(sz); }
     size_t size(){ return raws.size(); }
     int lb(const T &raw){ return lower_bound(all(raws),raw) - raws.begin(); }
     int ub(const T &raw){ return upper_bound(all(raws),raw) - raws.begin(); }
