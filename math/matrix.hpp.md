@@ -214,13 +214,13 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy:
-  - math/spanning_tree_counting.hpp
   - math/euler_circuit_counting.hpp
+  - math/spanning_tree_counting.hpp
   timestamp: '2024-07-28 02:09:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Determinant_of_Matrix.test.cpp
   - test/math/CountingEulerianCircuits.test.cpp
+  - test/math/Determinant_of_Matrix.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:
