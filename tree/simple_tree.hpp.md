@@ -155,8 +155,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/FrequencyTableofTreeDistance.test.cpp
-  - test/tree/Vertex_Add_Path_Sum.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/Vertex_Add_Path_Sum.test.cpp
 documentation_of: tree/simple_tree.hpp
 layout: document
 redirect_from:

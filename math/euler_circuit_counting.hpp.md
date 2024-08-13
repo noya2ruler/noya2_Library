@@ -63,15 +63,19 @@ data:
     \          }\n        }\n        return os;\n    }\n    friend std::istream &operator>>(std::istream\
     \ &is, matrix &mat){\n        for (int i = 0; i < mat.h; i++){\n            for\
     \ (int j = 0; j < mat.w; j++){\n                is >> mat[i][j];\n           \
-    \ }\n        }\n        return is;\n    }\n};\n\ntemplate<typename T>\nstruct\
-    \ matrix<T,-1uz> {\n    int h, w;\n    std::vector<T> m;\n    matrix () {}\n \
-    \   matrix (int _h) : matrix(_h,_h) {}\n    matrix (int _h, int _w) : h(_h), w(_w),\
-    \ m(_h*_w) {}\n    matrix (int _h, int _w, const std::vector<T> &_m) : h(_h),\
-    \ w(_w), m(_m) {\n        assert((int)_m.size() == _h*_w);\n    }\n    matrix\
-    \ (const std::vector<std::vector<T>> &_m){\n        h = _m.size();\n        assert(h\
-    \ >= 1);\n        w = _m[0].size();\n        for (int i = 0; i < h; i++) for (int\
-    \ j = 0; j < w; j++){\n            m[idx(i,j)] = _m[i][j];\n        }\n    }\n\
-    \    auto operator[](int i) const {\n        return std::ranges::subrange(m.begin()+i*w,m.begin()+(i+1)*w);\n\
+    \ }\n        }\n        return is;\n    }\n    friend bool operator==(const matrix\
+    \ &a, const matrix &b){\n        for (int i = 0; i < a.h; i++){\n            for\
+    \ (int j = 0; j < a.w; j++){\n                if (a[i][j] != b[i][j]){\n     \
+    \               return false;\n                }\n            }\n        }\n \
+    \       return true;\n    }\n};\n\ntemplate<typename T>\nstruct matrix<T,-1uz>\
+    \ {\n    int h, w;\n    std::vector<T> m;\n    matrix () {}\n    matrix (int _h)\
+    \ : matrix(_h,_h) {}\n    matrix (int _h, int _w) : h(_h), w(_w), m(_h*_w) {}\n\
+    \    matrix (int _h, int _w, const std::vector<T> &_m) : h(_h), w(_w), m(_m) {\n\
+    \        assert((int)_m.size() == _h*_w);\n    }\n    matrix (const std::vector<std::vector<T>>\
+    \ &_m){\n        h = _m.size();\n        assert(h >= 1);\n        w = _m[0].size();\n\
+    \        for (int i = 0; i < h; i++) for (int j = 0; j < w; j++){\n          \
+    \  m[idx(i,j)] = _m[i][j];\n        }\n    }\n    auto operator[](int i) const\
+    \ {\n        return std::ranges::subrange(m.begin()+i*w,m.begin()+(i+1)*w);\n\
     \    }\n    auto operator[](int i){\n        return std::ranges::subrange(m.begin()+i*w,m.begin()+(i+1)*w);\n\
     \    }\n    matrix &operator+= (const matrix &r){\n        for (int i = 0; i <\
     \ h; ++i){\n            for (int j = 0; j < w; ++j){\n                m[idx(i,j)]\
@@ -208,7 +212,7 @@ data:
   isVerificationFile: false
   path: math/euler_circuit_counting.hpp
   requiredBy: []
-  timestamp: '2024-07-28 02:09:14+09:00'
+  timestamp: '2024-08-13 15:38:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/CountingEulerianCircuits.test.cpp
