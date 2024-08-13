@@ -12,16 +12,17 @@ template<Group G>
 struct potentialized_dsu {
     using T = typename G::value_type;
     potentialized_dsu (int n = 0) : _n(n), parent_or_size(n,-1), pot(n, G::e()) {}
+    // p[u] = op(p[v], d), u is higher than v by d
     int merge(int u, int v, T d){
         int x = leader(u), y = leader(v);
         if (x == y){
-            if (diff(u,v) == d) return x;
+            if (diff(u, v) == d) return x;
             else return -1;
         }
-        d = G::op(G::op(potential(u),d),G::inv(potential(v)));
+        d = G::op(potential(u), G::inv(G::op(potential(v), d)));
         if (-parent_or_size[x] < -parent_or_size[y]){
             d = G::inv(d);
-            std::swap(x,y);
+            std::swap(x, y);
         }
         parent_or_size[x] += parent_or_size[y];
         parent_or_size[y] = x;
@@ -32,7 +33,7 @@ struct potentialized_dsu {
         assert(0 <= v && v < _n);
         if (parent_or_size[v] < 0) return v;
         int l = leader(parent_or_size[v]);
-        pot[v] = G::op(pot[v],pot[parent_or_size[v]]);
+        pot[v] = G::op(pot[parent_or_size[v]], pot[v]);
         return parent_or_size[v] = l;
     }
     bool same(int u, int v){
@@ -45,8 +46,10 @@ struct potentialized_dsu {
         leader(v);
         return pot[v];
     }
+    // p[u] = op(p[v], d)
+    // d = op(inv(p[v]), p[u])
     T diff(int u, int v){
-        return G::op(G::inv(potential(u)),potential(v));
+        return G::op(G::inv(potential(v)), potential(u));
     }
     std::vector<std::vector<int>> groups() {
         std::vector<int> leader_buf(_n), group_size(_n);
