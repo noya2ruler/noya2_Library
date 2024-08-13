@@ -109,6 +109,16 @@ struct matrix {
         }
         return is;
     }
+    friend bool operator==(const matrix &a, const matrix &b){
+        for (int i = 0; i < a.h; i++){
+            for (int j = 0; j < a.w; j++){
+                if (a[i][j] != b[i][j]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 };
 
 template<typename T>
