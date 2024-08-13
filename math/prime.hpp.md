@@ -61,6 +61,9 @@ data:
     path: test/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
+    title: test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/fps/Convolution1000000007.test.cpp
     title: test/fps/Convolution1000000007.test.cpp
   - icon: ':heavy_check_mark:'
@@ -229,6 +232,7 @@ data:
   - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
   - test/fps/convolution.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp

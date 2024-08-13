@@ -160,6 +160,9 @@ data:
     path: test/data_structure/Unionfind.test.cpp
     title: test/data_structure/Unionfind.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
+    title: test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/data_structure/aoj1068_segtree2d.test.cpp
     title: test/data_structure/aoj1068_segtree2d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -434,6 +437,7 @@ data:
   - test/data_structure/Rectangle_Sum.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
   - test/data_structure/aoj_2235.test.cpp
+  - test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
   - test/data_structure/SetXorMin.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
   - test/data_structure/aoj_dsl_1_b.test.cpp

@@ -349,6 +349,9 @@ data:
       path: test/data_structure/Unionfind.test.cpp
       title: test/data_structure/Unionfind.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
+      title: test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/data_structure/aoj1068_segtree2d.test.cpp
       title: test/data_structure/aoj1068_segtree2d.test.cpp
     - icon: ':heavy_check_mark:'

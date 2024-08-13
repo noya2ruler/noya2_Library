@@ -10,6 +10,9 @@ data:
     title: math/spanning_tree_counting.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
+    title: test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/CountingEulerianCircuits.test.cpp
     title: test/math/CountingEulerianCircuits.test.cpp
   - icon: ':heavy_check_mark:'
@@ -229,6 +232,7 @@ data:
   verifiedWith:
   - test/math/CountingEulerianCircuits.test.cpp
   - test/math/Determinant_of_Matrix.test.cpp
+  - test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:
