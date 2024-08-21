@@ -224,11 +224,6 @@ data:
     - icon: ':warning:'
       path: misc/timer.hpp
       title: misc/timer.hpp
-  - name: potentialized_dsu
-    pages:
-    - icon: ':warning:'
-      path: potentialized_dsu/potentialized_dsu.hpp
-      title: potentialized_dsu/potentialized_dsu.hpp
   - name: string
     pages:
     - icon: ':warning:'
