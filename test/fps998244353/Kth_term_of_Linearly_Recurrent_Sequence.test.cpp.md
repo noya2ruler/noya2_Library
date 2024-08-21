@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: fps998244353/bostan_mori.hpp
+    title: fps998244353/bostan_mori.hpp
+  - icon: ':heavy_check_mark:'
     path: fps998244353/fps998244353.hpp
     title: fps998244353/fps998244353.hpp
   - icon: ':heavy_check_mark:'
@@ -17,65 +20,131 @@ data:
     path: math/prime.hpp
     title: math/prime.hpp
   - icon: ':heavy_check_mark:'
+    path: template/const.hpp
+    title: template/const.hpp
+  - icon: ':heavy_check_mark:'
+    path: template/inout_old.hpp
+    title: template/inout_old.hpp
+  - icon: ':heavy_check_mark:'
+    path: template/template.hpp
+    title: template/template.hpp
+  - icon: ':heavy_check_mark:'
+    path: template/utils.hpp
+    title: template/utils.hpp
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
-    title: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"fps998244353/polynomial_taylor_shift.hpp\"\n\n#line 2 \"\
-    fps998244353/fps998244353.hpp\"\n\n#line 2 \"utility/modint.hpp\"\n\n#include\
-    \ <iostream>\n\n#line 2 \"math/prime.hpp\"\n\n#include<utility>\nnamespace noya2\
-    \ {\n\nconstexpr long long safe_mod(long long x, long long m) {\n    x %= m;\n\
-    \    if (x < 0) x += m;\n    return x;\n}\n\nconstexpr long long pow_mod_constexpr(long\
-    \ long x, long long n, int m) {\n    if (m == 1) return 0;\n    unsigned int _m\
-    \ = (unsigned int)(m);\n    unsigned long long r = 1;\n    unsigned long long\
-    \ y = safe_mod(x, m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n\
-    \        y = (y * y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr\
-    \ bool is_prime_constexpr(int n) {\n    if (n <= 1) return false;\n    if (n ==\
-    \ 2 || n == 7 || n == 61) return true;\n    if (n % 2 == 0) return false;\n  \
-    \  long long d = n - 1;\n    while (d % 2 == 0) d /= 2;\n    constexpr long long\
-    \ bases[3] = {2, 7, 61};\n    for (long long a : bases) {\n        long long t\
-    \ = d;\n        long long y = pow_mod_constexpr(a, t, n);\n        while (t !=\
-    \ n - 1 && y != 1 && y != n - 1) {\n            y = y * y % n;\n            t\
-    \ <<= 1;\n        }\n        if (y != n - 1 && t % 2 == 0) {\n            return\
-    \ false;\n        }\n    }\n    return true;\n}\ntemplate <int n> constexpr bool\
-    \ is_prime_flag = is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long\
-    \ long> inv_gcd(long long a, long long b) {\n    a = safe_mod(a, b);\n    if (a\
-    \ == 0) return {b, 0};\n    long long s = b, t = a;\n    long long m0 = 0, m1\
-    \ = 1;\n    while (t) {\n        long long u = s / t;\n        s -= t * u;\n \
-    \       m0 -= m1 * u; \n        auto tmp = s;\n        s = t;\n        t = tmp;\n\
-    \        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n    }\n    if (m0 < 0)\
-    \ m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int primitive_root_constexpr(int\
-    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
-    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
-    \ return 3;\n    int divs[20] = {};\n    divs[0] = 2;\n    int cnt = 1;\n    int\
-    \ x = (m - 1) / 2;\n    while (x % 2 == 0) x /= 2;\n    for (int i = 3; (long\
-    \ long)(i)*i <= x; i += 2) {\n        if (x % i == 0) {\n            divs[cnt++]\
-    \ = i;\n            while (x % i == 0) {\n                x /= i;\n          \
-    \  }\n        }\n    }\n    if (x > 1) {\n        divs[cnt++] = x;\n    }\n  \
-    \  for (int g = 2;; g++) {\n        bool ok = true;\n        for (int i = 0; i\
-    \ < cnt; i++) {\n            if (pow_mod_constexpr(g, (m - 1) / divs[i], m) ==\
-    \ 1) {\n                ok = false;\n                break;\n            }\n \
-    \       }\n        if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int\
-    \ primitive_root_flag = primitive_root_constexpr(m);\n\n} // namespace noya2\n\
-    #line 6 \"utility/modint.hpp\"\n\nnamespace noya2{\n\nstruct barrett {\n    unsigned\
-    \ int _m;\n    unsigned long long im;\n    explicit barrett(unsigned int m) :\
-    \ _m(m), im((unsigned long long)(-1) / m + 1) {}\n    unsigned int umod() const\
-    \ { return _m; }\n    unsigned int mul(unsigned int a, unsigned int b) const {\n\
-    \        unsigned long long z = a;\n        z *= b;\n        unsigned long long\
-    \ x = (unsigned long long)((__uint128_t(z) * im) >> 64);\n        unsigned int\
-    \ v = (unsigned int)(z - x * _m);\n        if (_m <= v) v += _m;\n        return\
-    \ v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint {\n    using mint =\
-    \ static_modint;\n  public:\n    static constexpr int mod() { return m; }\n  \
-    \  static mint raw(int v) {\n        mint x;\n        x._v = v;\n        return\
-    \ x;\n    }\n    constexpr static_modint() : _v(0) {}\n    template<std::signed_integral\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence
+    links:
+    - https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence
+  bundledCode: "#line 1 \"test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence\"\
+    \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
+    #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
+    \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
+    \ << p.first << \" \" << p.second;\n    return os;\n}\ntemplate <typename T, typename\
+    \ U>\nistream &operator>>(istream &is, pair<T, U> &p){\n    is >> p.first >> p.second;\n\
+    \    return is;\n}\n\ntemplate <typename T>\nostream &operator<<(ostream &os,\
+    \ const vector<T> &v){\n    int s = (int)v.size();\n    for (int i = 0; i < s;\
+    \ i++) os << (i ? \" \" : \"\") << v[i];\n    return os;\n}\ntemplate <typename\
+    \ T>\nistream &operator>>(istream &is, vector<T> &v){\n    for (auto &x : v) is\
+    \ >> x;\n    return is;\n}\n\nvoid in() {}\ntemplate <typename T, class... U>\n\
+    void in(T &t, U &...u){\n    cin >> t;\n    in(u...);\n}\n\nvoid out() { cout\
+    \ << \"\\n\"; }\ntemplate <typename T, class... U, char sep = ' '>\nvoid out(const\
+    \ T &t, const U &...u){\n    cout << t;\n    if (sizeof...(u)) cout << sep;\n\
+    \    out(u...);\n}\n\ntemplate<typename T>\nvoid out(const vector<vector<T>> &vv){\n\
+    \    int s = (int)vv.size();\n    for (int i = 0; i < s; i++) out(vv[i]);\n}\n\
+    \nstruct IoSetup {\n    IoSetup(){\n        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n\
+    \        cout << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n\
+    \    }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
+    \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
+    \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
+    \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
+    \ vector<int> dx = {0,1,0,-1,1,1,-1,-1};\nconst vector<int> dy = {1,0,-1,0,1,-1,-1,1};\n\
+    const string ALP = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\";\nconst string alp = \"abcdefghijklmnopqrstuvwxyz\"\
+    ;\nconst string NUM = \"0123456789\";\n\nvoid yes(){ cout << \"Yes\\n\"; }\nvoid\
+    \ no(){ cout << \"No\\n\"; }\nvoid YES(){ cout << \"YES\\n\"; }\nvoid NO(){ cout\
+    \ << \"NO\\n\"; }\nvoid yn(bool t){ t ? yes() : no(); }\nvoid YN(bool t){ t ?\
+    \ YES() : NO(); }\n\n} // namespace noya2\n#line 2 \"template/utils.hpp\"\n\n\
+    #line 6 \"template/utils.hpp\"\n\nnamespace noya2{\n\nunsigned long long inner_binary_gcd(unsigned\
+    \ long long a, unsigned long long b){\n    if (a == 0 || b == 0) return a + b;\n\
+    \    int n = __builtin_ctzll(a); a >>= n;\n    int m = __builtin_ctzll(b); b >>=\
+    \ m;\n    while (a != b) {\n        int mm = __builtin_ctzll(a - b);\n       \
+    \ bool f = a > b;\n        unsigned long long c = f ? a : b;\n        b = f ?\
+    \ b : a;\n        a = (c - b) >> mm;\n    }\n    return a << std::min(n, m);\n\
+    }\n\ntemplate<typename T> T gcd_fast(T a, T b){ return static_cast<T>(inner_binary_gcd(std::abs(a),std::abs(b)));\
+    \ }\n\nlong long sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long\
+    \ long x = sqrt(n);\n    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x\
+    \ > n) x--;\n    return x;\n}\n\ntemplate<typename T> T floor_div(const T n, const\
+    \ T d) {\n    assert(d != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 &&\
+    \ n % d != 0);\n}\n\ntemplate<typename T> T ceil_div(const T n, const T d) {\n\
+    \    assert(d != 0);\n    return n / d + static_cast<T>((n ^ d) >= 0 && n % d\
+    \ != 0);\n}\n\ntemplate<typename T> void uniq(std::vector<T> &v){\n    std::sort(v.begin(),v.end());\n\
+    \    v.erase(unique(v.begin(),v.end()),v.end());\n}\n\ntemplate <typename T, typename\
+    \ U> inline bool chmin(T &x, U y) { return (y < x) ? (x = y, true) : false; }\n\
+    \ntemplate <typename T, typename U> inline bool chmax(T &x, U y) { return (x <\
+    \ y) ? (x = y, true) : false; }\n\ntemplate<typename T> inline bool range(T l,\
+    \ T x, T r){ return l <= x && x < r; }\n\n} // namespace noya2\n#line 8 \"template/template.hpp\"\
+    \n\n#define rep(i,n) for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for\
+    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1);\
+    \ i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\nusing ll = long long;\n\
+    using ld = long double;\nusing uint = unsigned int;\nusing ull = unsigned long\
+    \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
+    using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
+    */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"fps998244353/bostan_mori.hpp\"\
+    \n\n#line 2 \"fps998244353/fps998244353.hpp\"\n\n#line 2 \"utility/modint.hpp\"\
+    \n\n#line 4 \"utility/modint.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"\
+    math/prime.hpp\"\nnamespace noya2 {\n\nconstexpr long long safe_mod(long long\
+    \ x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n}\n\n\
+    constexpr long long pow_mod_constexpr(long long x, long long n, int m) {\n   \
+    \ if (m == 1) return 0;\n    unsigned int _m = (unsigned int)(m);\n    unsigned\
+    \ long long r = 1;\n    unsigned long long y = safe_mod(x, m);\n    while (n)\
+    \ {\n        if (n & 1) r = (r * y) % _m;\n        y = (y * y) % _m;\n       \
+    \ n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int n)\
+    \ {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
+    \ true;\n    if (n % 2 == 0) return false;\n    long long d = n - 1;\n    while\
+    \ (d % 2 == 0) d /= 2;\n    constexpr long long bases[3] = {2, 7, 61};\n    for\
+    \ (long long a : bases) {\n        long long t = d;\n        long long y = pow_mod_constexpr(a,\
+    \ t, n);\n        while (t != n - 1 && y != 1 && y != n - 1) {\n            y\
+    \ = y * y % n;\n            t <<= 1;\n        }\n        if (y != n - 1 && t %\
+    \ 2 == 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\
+    template <int n> constexpr bool is_prime_flag = is_prime_constexpr(n);\n\nconstexpr\
+    \ std::pair<long long, long long> inv_gcd(long long a, long long b) {\n    a =\
+    \ safe_mod(a, b);\n    if (a == 0) return {b, 0};\n    long long s = b, t = a;\n\
+    \    long long m0 = 0, m1 = 1;\n    while (t) {\n        long long u = s / t;\n\
+    \        s -= t * u;\n        m0 -= m1 * u; \n        auto tmp = s;\n        s\
+    \ = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n\
+    \    }\n    if (m0 < 0) m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int\
+    \ primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n    if (m == 167772161)\
+    \ return 3;\n    if (m == 469762049) return 3;\n    if (m == 754974721) return\
+    \ 11;\n    if (m == 998244353) return 3;\n    int divs[20] = {};\n    divs[0]\
+    \ = 2;\n    int cnt = 1;\n    int x = (m - 1) / 2;\n    while (x % 2 == 0) x /=\
+    \ 2;\n    for (int i = 3; (long long)(i)*i <= x; i += 2) {\n        if (x % i\
+    \ == 0) {\n            divs[cnt++] = i;\n            while (x % i == 0) {\n  \
+    \              x /= i;\n            }\n        }\n    }\n    if (x > 1) {\n  \
+    \      divs[cnt++] = x;\n    }\n    for (int g = 2;; g++) {\n        bool ok =\
+    \ true;\n        for (int i = 0; i < cnt; i++) {\n            if (pow_mod_constexpr(g,\
+    \ (m - 1) / divs[i], m) == 1) {\n                ok = false;\n               \
+    \ break;\n            }\n        }\n        if (ok) return g;\n    }\n}\ntemplate\
+    \ <int m> constexpr int primitive_root_flag = primitive_root_constexpr(m);\n\n\
+    } // namespace noya2\n#line 6 \"utility/modint.hpp\"\n\nnamespace noya2{\n\nstruct\
+    \ barrett {\n    unsigned int _m;\n    unsigned long long im;\n    explicit barrett(unsigned\
+    \ int m) : _m(m), im((unsigned long long)(-1) / m + 1) {}\n    unsigned int umod()\
+    \ const { return _m; }\n    unsigned int mul(unsigned int a, unsigned int b) const\
+    \ {\n        unsigned long long z = a;\n        z *= b;\n        unsigned long\
+    \ long x = (unsigned long long)((__uint128_t(z) * im) >> 64);\n        unsigned\
+    \ int v = (unsigned int)(z - x * _m);\n        if (_m <= v) v += _m;\n       \
+    \ return v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint {\n    using\
+    \ mint = static_modint;\n  public:\n    static constexpr int mod() { return m;\
+    \ }\n    static mint raw(int v) {\n        mint x;\n        x._v = v;\n      \
+    \  return x;\n    }\n    constexpr static_modint() : _v(0) {}\n    template<std::signed_integral\
     \ T>\n    constexpr static_modint(T v){\n        long long x = (long long)(v %\
     \ (long long)(umod()));\n        if (x < 0) x += umod();\n        _v = (unsigned\
     \ int)(x);\n    }\n    template<std::unsigned_integral T>\n    constexpr static_modint(T\
@@ -159,9 +228,9 @@ data:
     \ T>\nconcept Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n\
     \    a.pow(declval<int>());\n};\n\n} // namespace noya2\n#line 4 \"fps998244353/fps998244353.hpp\"\
     \n\n#line 2 \"fps998244353/ntt998244353.hpp\"\n\n#line 2 \"fps998244353/modint998244353.hpp\"\
-    \n\n#include <cassert>\n\n#line 6 \"fps998244353/modint998244353.hpp\"\n\nnamespace\
-    \ noya2 {\n\ntemplate <>\nstruct static_modint<998244353> {\n    using mint =\
-    \ static_modint;\n  public:\n    static constexpr int mod() { return 998244353;\
+    \n\n#line 4 \"fps998244353/modint998244353.hpp\"\n\n#line 6 \"fps998244353/modint998244353.hpp\"\
+    \n\nnamespace noya2 {\n\ntemplate <>\nstruct static_modint<998244353> {\n    using\
+    \ mint = static_modint;\n  public:\n    static constexpr int mod() { return 998244353;\
     \ }\n    static mint raw(int v) {\n        mint x;\n        x._v = v;\n      \
     \  return x;\n    }\n    constexpr static_modint() : _v(0) {}\n    template<std::signed_integral\
     \ T>\n    constexpr static_modint(T v){\n        long long x = (long long)(v %\
@@ -202,41 +271,40 @@ data:
     \ static constexpr int primitive_root_constexpr_v = 3;\n  private:\n    static\
     \ constexpr unsigned int umod() { return 998244353u; }\n    static constexpr bool\
     \ prime = true;\n};\n\n} // namespace noya2\n#line 4 \"fps998244353/ntt998244353.hpp\"\
-    \n\n#line 6 \"fps998244353/ntt998244353.hpp\"\n#include <vector>\n\nnamespace\
-    \ noya2 {\n\nnamespace internal {\n\nconstexpr int FFT_MAX = 23;\nconstexpr unsigned\
-    \ FFT_ROOTS[FFT_MAX + 1] = {1U, 998244352U, 911660635U, 372528824U, 929031873U,\
-    \ 452798380U, 922799308U, 781712469U, 476477967U, 166035806U, 258648936U, 584193783U,\
-    \ 63912897U, 350007156U, 666702199U, 968855178U, 629671588U, 24514907U, 996173970U,\
-    \ 363395222U, 565042129U, 733596141U, 267099868U, 15311432U};\nconstexpr unsigned\
-    \ INV_FFT_ROOTS[FFT_MAX + 1] = {1U, 998244352U, 86583718U, 509520358U, 337190230U,\
-    \ 87557064U, 609441965U, 135236158U, 304459705U, 685443576U, 381598368U, 335559352U,\
-    \ 129292727U, 358024708U, 814576206U, 708402881U, 283043518U, 3707709U, 121392023U,\
-    \ 704923114U, 950391366U, 428961804U, 382752275U, 469870224U};\nconstexpr unsigned\
-    \ FFT_RATIOS[FFT_MAX] = {911660635U, 509520358U, 369330050U, 332049552U, 983190778U,\
-    \ 123842337U, 238493703U, 975955924U, 603855026U, 856644456U, 131300601U, 842657263U,\
-    \ 730768835U, 942482514U, 806263778U, 151565301U, 510815449U, 503497456U, 743006876U,\
-    \ 741047443U, 56250497U, 867605899U};\nconstexpr unsigned INV_FFT_RATIOS[FFT_MAX]\
-    \ = {86583718U, 372528824U, 373294451U, 645684063U, 112220581U, 692852209U, 155456985U,\
-    \ 797128860U, 90816748U, 860285882U, 927414960U, 354738543U, 109331171U, 293255632U,\
-    \ 535113200U, 308540755U, 121186627U, 608385704U, 438932459U, 359477183U, 824071951U,\
-    \ 103369235U};\n\n} // namespace noya2::internal\n\nstruct ntt998244353 {\n  \
-    \  using mint = modint998244353;\n    static constexpr unsigned MO = modint998244353::mod();\n\
-    \    static constexpr unsigned MO2 = MO * 2;\n    static void ntt(mint *as, int\
-    \ n){\n        int m = n;\n        if (m >>= 1){\n            for (int i = 0;\
-    \ i < m; i++){\n                const unsigned x = as[i + m]._v;\n           \
-    \     as[i + m]._v = as[i]._v + MO - x;\n                as[i]._v += x;\n    \
-    \        }\n        }\n        if (m >>= 1){\n            mint prod = 1;\n   \
-    \         for (int h = 0, i0 = 0; i0 < n; i0 += (m << 1)){\n                for\
-    \ (int i = i0; i < i0 + m; i++){\n                    const unsigned x = (prod\
-    \ * as[i + m])._v;\n                    as[i + m]._v = as[i]._v + MO - x;\n  \
-    \                  as[i]._v += x;\n                }\n                prod *=\
-    \ mint::raw(internal::FFT_RATIOS[__builtin_ctz(++h)]);\n            }\n      \
-    \  }\n        for (; m; ){\n            if (m >>= 1){\n                mint prod\
-    \ = 1;\n                for (int h = 0, i0 = 0; i0 < n; i0 += (m << 1)){\n   \
-    \                 for (int i = i0; i < i0 + m; i++){\n                       \
-    \ const unsigned x = (prod * as[i + m])._v;\n                        as[i + m]._v\
-    \ = as[i]._v + MO - x;\n                        as[i]._v += x;\n             \
-    \       }\n                    prod *= mint::raw(internal::FFT_RATIOS[__builtin_ctz(++h)]);\n\
+    \n\n#line 7 \"fps998244353/ntt998244353.hpp\"\n\nnamespace noya2 {\n\nnamespace\
+    \ internal {\n\nconstexpr int FFT_MAX = 23;\nconstexpr unsigned FFT_ROOTS[FFT_MAX\
+    \ + 1] = {1U, 998244352U, 911660635U, 372528824U, 929031873U, 452798380U, 922799308U,\
+    \ 781712469U, 476477967U, 166035806U, 258648936U, 584193783U, 63912897U, 350007156U,\
+    \ 666702199U, 968855178U, 629671588U, 24514907U, 996173970U, 363395222U, 565042129U,\
+    \ 733596141U, 267099868U, 15311432U};\nconstexpr unsigned INV_FFT_ROOTS[FFT_MAX\
+    \ + 1] = {1U, 998244352U, 86583718U, 509520358U, 337190230U, 87557064U, 609441965U,\
+    \ 135236158U, 304459705U, 685443576U, 381598368U, 335559352U, 129292727U, 358024708U,\
+    \ 814576206U, 708402881U, 283043518U, 3707709U, 121392023U, 704923114U, 950391366U,\
+    \ 428961804U, 382752275U, 469870224U};\nconstexpr unsigned FFT_RATIOS[FFT_MAX]\
+    \ = {911660635U, 509520358U, 369330050U, 332049552U, 983190778U, 123842337U, 238493703U,\
+    \ 975955924U, 603855026U, 856644456U, 131300601U, 842657263U, 730768835U, 942482514U,\
+    \ 806263778U, 151565301U, 510815449U, 503497456U, 743006876U, 741047443U, 56250497U,\
+    \ 867605899U};\nconstexpr unsigned INV_FFT_RATIOS[FFT_MAX] = {86583718U, 372528824U,\
+    \ 373294451U, 645684063U, 112220581U, 692852209U, 155456985U, 797128860U, 90816748U,\
+    \ 860285882U, 927414960U, 354738543U, 109331171U, 293255632U, 535113200U, 308540755U,\
+    \ 121186627U, 608385704U, 438932459U, 359477183U, 824071951U, 103369235U};\n\n\
+    } // namespace noya2::internal\n\nstruct ntt998244353 {\n    using mint = modint998244353;\n\
+    \    static constexpr unsigned MO = modint998244353::mod();\n    static constexpr\
+    \ unsigned MO2 = MO * 2;\n    static void ntt(mint *as, int n){\n        int m\
+    \ = n;\n        if (m >>= 1){\n            for (int i = 0; i < m; i++){\n    \
+    \            const unsigned x = as[i + m]._v;\n                as[i + m]._v =\
+    \ as[i]._v + MO - x;\n                as[i]._v += x;\n            }\n        }\n\
+    \        if (m >>= 1){\n            mint prod = 1;\n            for (int h = 0,\
+    \ i0 = 0; i0 < n; i0 += (m << 1)){\n                for (int i = i0; i < i0 +\
+    \ m; i++){\n                    const unsigned x = (prod * as[i + m])._v;\n  \
+    \                  as[i + m]._v = as[i]._v + MO - x;\n                    as[i]._v\
+    \ += x;\n                }\n                prod *= mint::raw(internal::FFT_RATIOS[__builtin_ctz(++h)]);\n\
+    \            }\n        }\n        for (; m; ){\n            if (m >>= 1){\n \
+    \               mint prod = 1;\n                for (int h = 0, i0 = 0; i0 < n;\
+    \ i0 += (m << 1)){\n                    for (int i = i0; i < i0 + m; i++){\n \
+    \                       const unsigned x = (prod * as[i + m])._v;\n          \
+    \              as[i + m]._v = as[i]._v + MO - x;\n                        as[i]._v\
+    \ += x;\n                    }\n                    prod *= mint::raw(internal::FFT_RATIOS[__builtin_ctz(++h)]);\n\
     \                }\n            }\n            if (m >>= 1){\n               \
     \ mint prod = 1;\n                for (int h = 0, i0 = 0; i0 < n; i0 += (m <<\
     \ 1)){\n                    for (int i = i0; i < i0 + m; i++){\n             \
@@ -429,37 +497,95 @@ data:
     \        rem.shrink();\n        return rem;\n    }\n    std::pair<fps,fps> remquo(fps\
     \ r) const {\n        r.shrink();\n        fps quo = quotient(r);\n        fps\
     \ rem(*this);\n        rem -= quo * r;\n        rem.shrink();\n        return\
-    \ {rem, quo};\n    }\n};\n\n} // namespace noya2\n#line 4 \"fps998244353/polynomial_taylor_shift.hpp\"\
-    \n\nnamespace noya2 {\n\n\nfps998244353 polynomial_taylor_shift(fps998244353 f,\
-    \ modint998244353 a){\n    binomial<modint998244353> bnm;\n    int n = f.size();\n\
-    \    rep(i,n) f[i] *= bnm.fact(i);\n    std::reverse(all(f));\n    fps998244353\
-    \ g(n,1);\n    for (int i = 1; i < n; i++) g[i] = g[i-1] * a * bnm.inv(i);\n \
-    \   f *= g;\n    f.resize(n);\n    std::reverse(f.begin(),f.end());\n    rep(i,n)\
-    \ f[i] *= bnm.ifact(i);\n    return f;\n}\n\n} // namespace \n"
-  code: "#pragma once\n\n#include\"fps998244353.hpp\"\n\nnamespace noya2 {\n\n\nfps998244353\
-    \ polynomial_taylor_shift(fps998244353 f, modint998244353 a){\n    binomial<modint998244353>\
-    \ bnm;\n    int n = f.size();\n    rep(i,n) f[i] *= bnm.fact(i);\n    std::reverse(all(f));\n\
-    \    fps998244353 g(n,1);\n    for (int i = 1; i < n; i++) g[i] = g[i-1] * a *\
-    \ bnm.inv(i);\n    f *= g;\n    f.resize(n);\n    std::reverse(f.begin(),f.end());\n\
-    \    rep(i,n) f[i] *= bnm.ifact(i);\n    return f;\n}\n\n} // namespace "
+    \ {rem, quo};\n    }\n};\n\n} // namespace noya2\n#line 4 \"fps998244353/bostan_mori.hpp\"\
+    \n\nnamespace noya2 {\n\nmodint998244353 bostan_mori(fps998244353 p, fps998244353\
+    \ q, long long k){\n    using mint = modint998244353;\n    assert(!q.empty() &&\
+    \ q[0] != 0);\n    if (k < 0){\n        return 0;\n    }\n    int n = std::bit_ceil(std::max(p.size(),\
+    \ q.size()));\n    int h = std::countr_zero((unsigned int)(n));\n    p.resize(n\
+    \ * 2, 0);\n    q.resize(n * 2, 0);\n    mint ie = mint::raw(internal::INV_FFT_ROOTS[h\
+    \ + 1]);\n    mint i2 = mint::raw((mint::mod() + 1) >> 1);\n    fps998244353 es(n,\
+    \ i2);\n    for (int i = h - 1; i >= 0; i--){\n        for (int j = 0; j < n;\
+    \ j++){\n            if (j >> i & 1){\n                es[j] *= ie;\n        \
+    \    }\n        }\n        ie *= ie;\n    }\n    p.ntt();\n    q.ntt();\n\n  \
+    \  while (k){\n        for (int i = 0; i < n; i++){\n            p[i * 2] *= q[i\
+    \ * 2 + 1];\n            p[i * 2 + 1] *= q[i * 2];\n            q[i * 2] = q[i\
+    \ * 2 + 1] = q[i * 2] * q[i * 2 + 1];\n        }\n        p.ntt_pick_parity(k\
+    \ & 1);\n        q.ntt_pick_parity(0);\n        k >>= 1;\n        if (k == 0)\
+    \ break;\n        p.ntt_doubling();\n        q.ntt_doubling();\n    }\n    mint\
+    \ sp = 0, sq = 0;\n    for (int i = 0; i < n; i++){\n        sp += p[i];\n   \
+    \     sq += q[i];\n    }\n    return sp / sq;\n}\n\nmodint998244353 kth_term_linear(fps998244353\
+    \ a, fps998244353 c, long long k){\n    assert(a.size() + 1uz == c.size());\n\
+    \    size_t d = a.size();\n    a *= c;\n    a.resize(d);\n    return bostan_mori(a,\
+    \ c, k);\n}\n\nfps998244353 bostan_mori(fps998244353 f, const fps998244353 &g,\
+    \ long long L, long long R){\n    assert(0 <= L && L <= R);\n    \n    int n =\
+    \ f.size(), m = g.size() - 1;\n    if (n == 0) return fps998244353(R - L);\n \
+    \   if (L == R) return fps998244353{};\n\n    assert(g[0].val() != 0u);\n    auto\
+    \ g0_inv = g[0].inv();\n\n    if (n > R){\n        n = (int)R;\n        f.resize(n);\n\
+    \    }\n\n    if (m == 0){\n        fps998244353 ans(R - L);\n        for (long\
+    \ long i = 0; i < n - L; i++){\n            ans[i] = f[i + L] * g0_inv;\n    \
+    \    }\n        return ans;\n    }\n\n    // bit_ceil(R) = 2^K\n    int K = 64\
+    \ - std::countl_zero((unsigned long long)(R - 1));\n\n    if (K == 0){\n     \
+    \   // L = 0, R = 1\n        return fps998244353{f[0] * g0_inv};\n    }\n\n  \
+    \  std::vector q(K, fps998244353(m + 1));\n    for (int i = 0; i <= m; i++){\n\
+    \        q[0][i] = g[i] * g0_inv;\n    }\n\n    std::vector<long long> d_min(K\
+    \ + 1), d_max(K + 1);\n    d_min[0] = std::max(L - n + 1, 0LL);\n    d_max[0]\
+    \ = R - 1;\n    \n\n    for (int k = 1; k <= K - 1; k++){\n        auto q_pos(q[k\
+    \ - 1]);\n        for (int i = 1; i <= m; i += 2){\n            q[k - 1][i] =\
+    \ -q[k - 1][i];\n        }\n        auto qk_dbl = q_pos * q[k - 1];\n        for\
+    \ (int i = 0; i <= m; i++){\n            q[k][i] = qk_dbl[i * 2];\n        }\n\
+    \        auto tmp = d_min[k - 1] - 1 - m;\n        d_min[k] = (tmp >= 0LL ? tmp/2\
+    \ + 1 : 0LL);\n        d_max[k] = d_max[k - 1] / 2;\n    }\n\n    for (int i =\
+    \ 1; i <= m; i += 2){\n        q[K - 1][i] = -q[K - 1][i];\n    }\n    \n    const\
+    \ auto inv2 = binomial<modint998244353>::inv(2);\n    modint998244353 inv2_pow[31];\n\
+    \    inv2_pow[0] = modint998244353::raw(1);\n    for (int i = 0; i < 30; i++){\n\
+    \        inv2_pow[i + 1] = inv2_pow[i] * inv2;\n    }\n\n    fps998244353 p{1};\n\
+    \    for (int k = K-1; k >= 0; k--){\n        int B = 64 - std::countl_zero((unsigned\
+    \ long long)(m + std::max(2 * d_max[k + 1] - d_min[k], 0LL)));\n        int W\
+    \ = 1 << B;\n\n        fps998244353 p_dbl(W);\n        for (int i = 0; i < (int)(p.size());\
+    \ i++){\n            p_dbl[i * 2] = p[i];\n        }\n\n        q[k].resize(W);\n\
+    \n        p_dbl.ntt();\n        q[k].ntt();\n        for (int i = 0; i < W; i++){\n\
+    \            p_dbl[i] *= q[k][i];\n        }\n        p_dbl.intt();\n\n      \
+    \  p.resize(d_max[k] - d_min[k] + 1);\n        int i_min = (int)(std::max(-(d_min[k]\
+    \ - 2 * d_min[k + 1]), 0LL));\n        int i_max = (int)(std::min<long long>(d_max[k]\
+    \ - d_min[k], (p_dbl).size() - 1 - (d_min[k] - 2 * d_min[k + 1])));\n        for\
+    \ (int i = i_min; i <= i_max; i++){\n            p[i] = p_dbl[i + d_min[k] - 2\
+    \ * d_min[k + 1]] * inv2_pow[B];\n        }\n    }\n\n    int B = 64 - std::countl_zero((unsigned\
+    \ long long)(n - 1 + d_max[0] - L));\n    int W = 1 << B;\n\n    f.resize(W);\n\
+    \    p.resize(W);\n\n    f.ntt();\n    p.ntt();\n    for (int i = 0; i < W; i++){\n\
+    \        f[i] *= p[i];\n    }\n    f.intt();\n\n    g0_inv *= inv2_pow[B];\n \
+    \   fps998244353 ans(R - L);\n    for (long long i = 0; i < R - L; i++){\n   \
+    \     ans[i] = f[i + L - d_min[0]] * g0_inv;\n    }\n\n    return ans;\n}\n\n\
+    } // namespace noya2\n#line 5 \"test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp\"\
+    \n\nint main(){\n    int d; in(d);\n    ll k; in(k);\n    fps998244353 a(d), c(d);\
+    \ in(a, c);\n    c.insert(c.begin(), -1);\n    out(kth_term_linear(a, c, k));\n\
+    }\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence\"\
+    \n\n#include\"../../template/template.hpp\"\n#include\"../../fps998244353/bostan_mori.hpp\"\
+    \n\nint main(){\n    int d; in(d);\n    ll k; in(k);\n    fps998244353 a(d), c(d);\
+    \ in(a, c);\n    c.insert(c.begin(), -1);\n    out(kth_term_linear(a, c, k));\n\
+    }"
   dependsOn:
+  - template/template.hpp
+  - template/inout_old.hpp
+  - template/const.hpp
+  - template/utils.hpp
+  - fps998244353/bostan_mori.hpp
   - fps998244353/fps998244353.hpp
   - utility/modint.hpp
   - math/prime.hpp
   - fps998244353/ntt998244353.hpp
   - fps998244353/modint998244353.hpp
   - math/binomial.hpp
-  isVerificationFile: false
-  path: fps998244353/polynomial_taylor_shift.hpp
+  isVerificationFile: true
+  path: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   requiredBy: []
-  timestamp: '2024-08-21 17:31:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
-documentation_of: fps998244353/polynomial_taylor_shift.hpp
+  timestamp: '2024-08-21 17:31:22+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
 layout: document
 redirect_from:
-- /library/fps998244353/polynomial_taylor_shift.hpp
-- /library/fps998244353/polynomial_taylor_shift.hpp.html
-title: fps998244353/polynomial_taylor_shift.hpp
+- /verify/test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+- /verify/test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp.html
+title: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
 ---

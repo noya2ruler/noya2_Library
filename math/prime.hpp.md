@@ -21,9 +21,12 @@ data:
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
   - icon: ':heavy_check_mark:'
+    path: fps998244353/bostan_mori.hpp
+    title: fps998244353/bostan_mori.hpp
+  - icon: ':heavy_check_mark:'
     path: fps998244353/fps998244353.hpp
     title: fps998244353/fps998244353.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: fps998244353/modint998244353.hpp
     title: fps998244353/modint998244353.hpp
   - icon: ':heavy_check_mark:'
@@ -87,6 +90,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
     title: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/fps998244353/convolution_998244353.test.cpp
     title: test/fps998244353/convolution_998244353.test.cpp
@@ -205,6 +211,7 @@ data:
   - fps998244353/product_1_minus_x_pow_a.hpp
   - fps998244353/sample_point_shift.hpp
   - fps998244353/ntt998244353.hpp
+  - fps998244353/bostan_mori.hpp
   - fps998244353/modint998244353.hpp
   - fps998244353/multipoint_evaluation.hpp
   - utility/modint4724.hpp
@@ -225,6 +232,7 @@ data:
   - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
   - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+  - test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/fps998244353/multipoint_evaluation_998244353.test.cpp
   - test/math/Gcd_Convolution.test.cpp
   - test/math/CountingEulerianCircuits.test.cpp

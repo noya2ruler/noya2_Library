@@ -22,60 +22,59 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
-    title: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
+    path: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"fps998244353/polynomial_taylor_shift.hpp\"\n\n#line 2 \"\
-    fps998244353/fps998244353.hpp\"\n\n#line 2 \"utility/modint.hpp\"\n\n#include\
-    \ <iostream>\n\n#line 2 \"math/prime.hpp\"\n\n#include<utility>\nnamespace noya2\
-    \ {\n\nconstexpr long long safe_mod(long long x, long long m) {\n    x %= m;\n\
-    \    if (x < 0) x += m;\n    return x;\n}\n\nconstexpr long long pow_mod_constexpr(long\
-    \ long x, long long n, int m) {\n    if (m == 1) return 0;\n    unsigned int _m\
-    \ = (unsigned int)(m);\n    unsigned long long r = 1;\n    unsigned long long\
-    \ y = safe_mod(x, m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n\
-    \        y = (y * y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr\
-    \ bool is_prime_constexpr(int n) {\n    if (n <= 1) return false;\n    if (n ==\
-    \ 2 || n == 7 || n == 61) return true;\n    if (n % 2 == 0) return false;\n  \
-    \  long long d = n - 1;\n    while (d % 2 == 0) d /= 2;\n    constexpr long long\
-    \ bases[3] = {2, 7, 61};\n    for (long long a : bases) {\n        long long t\
-    \ = d;\n        long long y = pow_mod_constexpr(a, t, n);\n        while (t !=\
-    \ n - 1 && y != 1 && y != n - 1) {\n            y = y * y % n;\n            t\
-    \ <<= 1;\n        }\n        if (y != n - 1 && t % 2 == 0) {\n            return\
-    \ false;\n        }\n    }\n    return true;\n}\ntemplate <int n> constexpr bool\
-    \ is_prime_flag = is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long\
-    \ long> inv_gcd(long long a, long long b) {\n    a = safe_mod(a, b);\n    if (a\
-    \ == 0) return {b, 0};\n    long long s = b, t = a;\n    long long m0 = 0, m1\
-    \ = 1;\n    while (t) {\n        long long u = s / t;\n        s -= t * u;\n \
-    \       m0 -= m1 * u; \n        auto tmp = s;\n        s = t;\n        t = tmp;\n\
-    \        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n    }\n    if (m0 < 0)\
-    \ m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int primitive_root_constexpr(int\
-    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
-    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
-    \ return 3;\n    int divs[20] = {};\n    divs[0] = 2;\n    int cnt = 1;\n    int\
-    \ x = (m - 1) / 2;\n    while (x % 2 == 0) x /= 2;\n    for (int i = 3; (long\
-    \ long)(i)*i <= x; i += 2) {\n        if (x % i == 0) {\n            divs[cnt++]\
-    \ = i;\n            while (x % i == 0) {\n                x /= i;\n          \
-    \  }\n        }\n    }\n    if (x > 1) {\n        divs[cnt++] = x;\n    }\n  \
-    \  for (int g = 2;; g++) {\n        bool ok = true;\n        for (int i = 0; i\
-    \ < cnt; i++) {\n            if (pow_mod_constexpr(g, (m - 1) / divs[i], m) ==\
-    \ 1) {\n                ok = false;\n                break;\n            }\n \
-    \       }\n        if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int\
-    \ primitive_root_flag = primitive_root_constexpr(m);\n\n} // namespace noya2\n\
-    #line 6 \"utility/modint.hpp\"\n\nnamespace noya2{\n\nstruct barrett {\n    unsigned\
-    \ int _m;\n    unsigned long long im;\n    explicit barrett(unsigned int m) :\
-    \ _m(m), im((unsigned long long)(-1) / m + 1) {}\n    unsigned int umod() const\
-    \ { return _m; }\n    unsigned int mul(unsigned int a, unsigned int b) const {\n\
-    \        unsigned long long z = a;\n        z *= b;\n        unsigned long long\
-    \ x = (unsigned long long)((__uint128_t(z) * im) >> 64);\n        unsigned int\
-    \ v = (unsigned int)(z - x * _m);\n        if (_m <= v) v += _m;\n        return\
-    \ v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint {\n    using mint =\
-    \ static_modint;\n  public:\n    static constexpr int mod() { return m; }\n  \
-    \  static mint raw(int v) {\n        mint x;\n        x._v = v;\n        return\
-    \ x;\n    }\n    constexpr static_modint() : _v(0) {}\n    template<std::signed_integral\
+  bundledCode: "#line 2 \"fps998244353/bostan_mori.hpp\"\n\n#line 2 \"fps998244353/fps998244353.hpp\"\
+    \n\n#line 2 \"utility/modint.hpp\"\n\n#include <iostream>\n\n#line 2 \"math/prime.hpp\"\
+    \n\n#include<utility>\nnamespace noya2 {\n\nconstexpr long long safe_mod(long\
+    \ long x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n\
+    }\n\nconstexpr long long pow_mod_constexpr(long long x, long long n, int m) {\n\
+    \    if (m == 1) return 0;\n    unsigned int _m = (unsigned int)(m);\n    unsigned\
+    \ long long r = 1;\n    unsigned long long y = safe_mod(x, m);\n    while (n)\
+    \ {\n        if (n & 1) r = (r * y) % _m;\n        y = (y * y) % _m;\n       \
+    \ n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int n)\
+    \ {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
+    \ true;\n    if (n % 2 == 0) return false;\n    long long d = n - 1;\n    while\
+    \ (d % 2 == 0) d /= 2;\n    constexpr long long bases[3] = {2, 7, 61};\n    for\
+    \ (long long a : bases) {\n        long long t = d;\n        long long y = pow_mod_constexpr(a,\
+    \ t, n);\n        while (t != n - 1 && y != 1 && y != n - 1) {\n            y\
+    \ = y * y % n;\n            t <<= 1;\n        }\n        if (y != n - 1 && t %\
+    \ 2 == 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\
+    template <int n> constexpr bool is_prime_flag = is_prime_constexpr(n);\n\nconstexpr\
+    \ std::pair<long long, long long> inv_gcd(long long a, long long b) {\n    a =\
+    \ safe_mod(a, b);\n    if (a == 0) return {b, 0};\n    long long s = b, t = a;\n\
+    \    long long m0 = 0, m1 = 1;\n    while (t) {\n        long long u = s / t;\n\
+    \        s -= t * u;\n        m0 -= m1 * u; \n        auto tmp = s;\n        s\
+    \ = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n\
+    \    }\n    if (m0 < 0) m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int\
+    \ primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n    if (m == 167772161)\
+    \ return 3;\n    if (m == 469762049) return 3;\n    if (m == 754974721) return\
+    \ 11;\n    if (m == 998244353) return 3;\n    int divs[20] = {};\n    divs[0]\
+    \ = 2;\n    int cnt = 1;\n    int x = (m - 1) / 2;\n    while (x % 2 == 0) x /=\
+    \ 2;\n    for (int i = 3; (long long)(i)*i <= x; i += 2) {\n        if (x % i\
+    \ == 0) {\n            divs[cnt++] = i;\n            while (x % i == 0) {\n  \
+    \              x /= i;\n            }\n        }\n    }\n    if (x > 1) {\n  \
+    \      divs[cnt++] = x;\n    }\n    for (int g = 2;; g++) {\n        bool ok =\
+    \ true;\n        for (int i = 0; i < cnt; i++) {\n            if (pow_mod_constexpr(g,\
+    \ (m - 1) / divs[i], m) == 1) {\n                ok = false;\n               \
+    \ break;\n            }\n        }\n        if (ok) return g;\n    }\n}\ntemplate\
+    \ <int m> constexpr int primitive_root_flag = primitive_root_constexpr(m);\n\n\
+    } // namespace noya2\n#line 6 \"utility/modint.hpp\"\n\nnamespace noya2{\n\nstruct\
+    \ barrett {\n    unsigned int _m;\n    unsigned long long im;\n    explicit barrett(unsigned\
+    \ int m) : _m(m), im((unsigned long long)(-1) / m + 1) {}\n    unsigned int umod()\
+    \ const { return _m; }\n    unsigned int mul(unsigned int a, unsigned int b) const\
+    \ {\n        unsigned long long z = a;\n        z *= b;\n        unsigned long\
+    \ long x = (unsigned long long)((__uint128_t(z) * im) >> 64);\n        unsigned\
+    \ int v = (unsigned int)(z - x * _m);\n        if (_m <= v) v += _m;\n       \
+    \ return v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint {\n    using\
+    \ mint = static_modint;\n  public:\n    static constexpr int mod() { return m;\
+    \ }\n    static mint raw(int v) {\n        mint x;\n        x._v = v;\n      \
+    \  return x;\n    }\n    constexpr static_modint() : _v(0) {}\n    template<std::signed_integral\
     \ T>\n    constexpr static_modint(T v){\n        long long x = (long long)(v %\
     \ (long long)(umod()));\n        if (x < 0) x += umod();\n        _v = (unsigned\
     \ int)(x);\n    }\n    template<std::unsigned_integral T>\n    constexpr static_modint(T\
@@ -429,19 +428,124 @@ data:
     \        rem.shrink();\n        return rem;\n    }\n    std::pair<fps,fps> remquo(fps\
     \ r) const {\n        r.shrink();\n        fps quo = quotient(r);\n        fps\
     \ rem(*this);\n        rem -= quo * r;\n        rem.shrink();\n        return\
-    \ {rem, quo};\n    }\n};\n\n} // namespace noya2\n#line 4 \"fps998244353/polynomial_taylor_shift.hpp\"\
-    \n\nnamespace noya2 {\n\n\nfps998244353 polynomial_taylor_shift(fps998244353 f,\
-    \ modint998244353 a){\n    binomial<modint998244353> bnm;\n    int n = f.size();\n\
-    \    rep(i,n) f[i] *= bnm.fact(i);\n    std::reverse(all(f));\n    fps998244353\
-    \ g(n,1);\n    for (int i = 1; i < n; i++) g[i] = g[i-1] * a * bnm.inv(i);\n \
-    \   f *= g;\n    f.resize(n);\n    std::reverse(f.begin(),f.end());\n    rep(i,n)\
-    \ f[i] *= bnm.ifact(i);\n    return f;\n}\n\n} // namespace \n"
-  code: "#pragma once\n\n#include\"fps998244353.hpp\"\n\nnamespace noya2 {\n\n\nfps998244353\
-    \ polynomial_taylor_shift(fps998244353 f, modint998244353 a){\n    binomial<modint998244353>\
-    \ bnm;\n    int n = f.size();\n    rep(i,n) f[i] *= bnm.fact(i);\n    std::reverse(all(f));\n\
-    \    fps998244353 g(n,1);\n    for (int i = 1; i < n; i++) g[i] = g[i-1] * a *\
-    \ bnm.inv(i);\n    f *= g;\n    f.resize(n);\n    std::reverse(f.begin(),f.end());\n\
-    \    rep(i,n) f[i] *= bnm.ifact(i);\n    return f;\n}\n\n} // namespace "
+    \ {rem, quo};\n    }\n};\n\n} // namespace noya2\n#line 4 \"fps998244353/bostan_mori.hpp\"\
+    \n\nnamespace noya2 {\n\nmodint998244353 bostan_mori(fps998244353 p, fps998244353\
+    \ q, long long k){\n    using mint = modint998244353;\n    assert(!q.empty() &&\
+    \ q[0] != 0);\n    if (k < 0){\n        return 0;\n    }\n    int n = std::bit_ceil(std::max(p.size(),\
+    \ q.size()));\n    int h = std::countr_zero((unsigned int)(n));\n    p.resize(n\
+    \ * 2, 0);\n    q.resize(n * 2, 0);\n    mint ie = mint::raw(internal::INV_FFT_ROOTS[h\
+    \ + 1]);\n    mint i2 = mint::raw((mint::mod() + 1) >> 1);\n    fps998244353 es(n,\
+    \ i2);\n    for (int i = h - 1; i >= 0; i--){\n        for (int j = 0; j < n;\
+    \ j++){\n            if (j >> i & 1){\n                es[j] *= ie;\n        \
+    \    }\n        }\n        ie *= ie;\n    }\n    p.ntt();\n    q.ntt();\n\n  \
+    \  while (k){\n        for (int i = 0; i < n; i++){\n            p[i * 2] *= q[i\
+    \ * 2 + 1];\n            p[i * 2 + 1] *= q[i * 2];\n            q[i * 2] = q[i\
+    \ * 2 + 1] = q[i * 2] * q[i * 2 + 1];\n        }\n        p.ntt_pick_parity(k\
+    \ & 1);\n        q.ntt_pick_parity(0);\n        k >>= 1;\n        if (k == 0)\
+    \ break;\n        p.ntt_doubling();\n        q.ntt_doubling();\n    }\n    mint\
+    \ sp = 0, sq = 0;\n    for (int i = 0; i < n; i++){\n        sp += p[i];\n   \
+    \     sq += q[i];\n    }\n    return sp / sq;\n}\n\nmodint998244353 kth_term_linear(fps998244353\
+    \ a, fps998244353 c, long long k){\n    assert(a.size() + 1uz == c.size());\n\
+    \    size_t d = a.size();\n    a *= c;\n    a.resize(d);\n    return bostan_mori(a,\
+    \ c, k);\n}\n\nfps998244353 bostan_mori(fps998244353 f, const fps998244353 &g,\
+    \ long long L, long long R){\n    assert(0 <= L && L <= R);\n    \n    int n =\
+    \ f.size(), m = g.size() - 1;\n    if (n == 0) return fps998244353(R - L);\n \
+    \   if (L == R) return fps998244353{};\n\n    assert(g[0].val() != 0u);\n    auto\
+    \ g0_inv = g[0].inv();\n\n    if (n > R){\n        n = (int)R;\n        f.resize(n);\n\
+    \    }\n\n    if (m == 0){\n        fps998244353 ans(R - L);\n        for (long\
+    \ long i = 0; i < n - L; i++){\n            ans[i] = f[i + L] * g0_inv;\n    \
+    \    }\n        return ans;\n    }\n\n    // bit_ceil(R) = 2^K\n    int K = 64\
+    \ - std::countl_zero((unsigned long long)(R - 1));\n\n    if (K == 0){\n     \
+    \   // L = 0, R = 1\n        return fps998244353{f[0] * g0_inv};\n    }\n\n  \
+    \  std::vector q(K, fps998244353(m + 1));\n    for (int i = 0; i <= m; i++){\n\
+    \        q[0][i] = g[i] * g0_inv;\n    }\n\n    std::vector<long long> d_min(K\
+    \ + 1), d_max(K + 1);\n    d_min[0] = std::max(L - n + 1, 0LL);\n    d_max[0]\
+    \ = R - 1;\n    \n\n    for (int k = 1; k <= K - 1; k++){\n        auto q_pos(q[k\
+    \ - 1]);\n        for (int i = 1; i <= m; i += 2){\n            q[k - 1][i] =\
+    \ -q[k - 1][i];\n        }\n        auto qk_dbl = q_pos * q[k - 1];\n        for\
+    \ (int i = 0; i <= m; i++){\n            q[k][i] = qk_dbl[i * 2];\n        }\n\
+    \        auto tmp = d_min[k - 1] - 1 - m;\n        d_min[k] = (tmp >= 0LL ? tmp/2\
+    \ + 1 : 0LL);\n        d_max[k] = d_max[k - 1] / 2;\n    }\n\n    for (int i =\
+    \ 1; i <= m; i += 2){\n        q[K - 1][i] = -q[K - 1][i];\n    }\n    \n    const\
+    \ auto inv2 = binomial<modint998244353>::inv(2);\n    modint998244353 inv2_pow[31];\n\
+    \    inv2_pow[0] = modint998244353::raw(1);\n    for (int i = 0; i < 30; i++){\n\
+    \        inv2_pow[i + 1] = inv2_pow[i] * inv2;\n    }\n\n    fps998244353 p{1};\n\
+    \    for (int k = K-1; k >= 0; k--){\n        int B = 64 - std::countl_zero((unsigned\
+    \ long long)(m + std::max(2 * d_max[k + 1] - d_min[k], 0LL)));\n        int W\
+    \ = 1 << B;\n\n        fps998244353 p_dbl(W);\n        for (int i = 0; i < (int)(p.size());\
+    \ i++){\n            p_dbl[i * 2] = p[i];\n        }\n\n        q[k].resize(W);\n\
+    \n        p_dbl.ntt();\n        q[k].ntt();\n        for (int i = 0; i < W; i++){\n\
+    \            p_dbl[i] *= q[k][i];\n        }\n        p_dbl.intt();\n\n      \
+    \  p.resize(d_max[k] - d_min[k] + 1);\n        int i_min = (int)(std::max(-(d_min[k]\
+    \ - 2 * d_min[k + 1]), 0LL));\n        int i_max = (int)(std::min<long long>(d_max[k]\
+    \ - d_min[k], (p_dbl).size() - 1 - (d_min[k] - 2 * d_min[k + 1])));\n        for\
+    \ (int i = i_min; i <= i_max; i++){\n            p[i] = p_dbl[i + d_min[k] - 2\
+    \ * d_min[k + 1]] * inv2_pow[B];\n        }\n    }\n\n    int B = 64 - std::countl_zero((unsigned\
+    \ long long)(n - 1 + d_max[0] - L));\n    int W = 1 << B;\n\n    f.resize(W);\n\
+    \    p.resize(W);\n\n    f.ntt();\n    p.ntt();\n    for (int i = 0; i < W; i++){\n\
+    \        f[i] *= p[i];\n    }\n    f.intt();\n\n    g0_inv *= inv2_pow[B];\n \
+    \   fps998244353 ans(R - L);\n    for (long long i = 0; i < R - L; i++){\n   \
+    \     ans[i] = f[i + L - d_min[0]] * g0_inv;\n    }\n\n    return ans;\n}\n\n\
+    } // namespace noya2\n"
+  code: "#pragma once\n\n#include\"fps998244353.hpp\"\n\nnamespace noya2 {\n\nmodint998244353\
+    \ bostan_mori(fps998244353 p, fps998244353 q, long long k){\n    using mint =\
+    \ modint998244353;\n    assert(!q.empty() && q[0] != 0);\n    if (k < 0){\n  \
+    \      return 0;\n    }\n    int n = std::bit_ceil(std::max(p.size(), q.size()));\n\
+    \    int h = std::countr_zero((unsigned int)(n));\n    p.resize(n * 2, 0);\n \
+    \   q.resize(n * 2, 0);\n    mint ie = mint::raw(internal::INV_FFT_ROOTS[h + 1]);\n\
+    \    mint i2 = mint::raw((mint::mod() + 1) >> 1);\n    fps998244353 es(n, i2);\n\
+    \    for (int i = h - 1; i >= 0; i--){\n        for (int j = 0; j < n; j++){\n\
+    \            if (j >> i & 1){\n                es[j] *= ie;\n            }\n \
+    \       }\n        ie *= ie;\n    }\n    p.ntt();\n    q.ntt();\n\n    while (k){\n\
+    \        for (int i = 0; i < n; i++){\n            p[i * 2] *= q[i * 2 + 1];\n\
+    \            p[i * 2 + 1] *= q[i * 2];\n            q[i * 2] = q[i * 2 + 1] =\
+    \ q[i * 2] * q[i * 2 + 1];\n        }\n        p.ntt_pick_parity(k & 1);\n   \
+    \     q.ntt_pick_parity(0);\n        k >>= 1;\n        if (k == 0) break;\n  \
+    \      p.ntt_doubling();\n        q.ntt_doubling();\n    }\n    mint sp = 0, sq\
+    \ = 0;\n    for (int i = 0; i < n; i++){\n        sp += p[i];\n        sq += q[i];\n\
+    \    }\n    return sp / sq;\n}\n\nmodint998244353 kth_term_linear(fps998244353\
+    \ a, fps998244353 c, long long k){\n    assert(a.size() + 1uz == c.size());\n\
+    \    size_t d = a.size();\n    a *= c;\n    a.resize(d);\n    return bostan_mori(a,\
+    \ c, k);\n}\n\nfps998244353 bostan_mori(fps998244353 f, const fps998244353 &g,\
+    \ long long L, long long R){\n    assert(0 <= L && L <= R);\n    \n    int n =\
+    \ f.size(), m = g.size() - 1;\n    if (n == 0) return fps998244353(R - L);\n \
+    \   if (L == R) return fps998244353{};\n\n    assert(g[0].val() != 0u);\n    auto\
+    \ g0_inv = g[0].inv();\n\n    if (n > R){\n        n = (int)R;\n        f.resize(n);\n\
+    \    }\n\n    if (m == 0){\n        fps998244353 ans(R - L);\n        for (long\
+    \ long i = 0; i < n - L; i++){\n            ans[i] = f[i + L] * g0_inv;\n    \
+    \    }\n        return ans;\n    }\n\n    // bit_ceil(R) = 2^K\n    int K = 64\
+    \ - std::countl_zero((unsigned long long)(R - 1));\n\n    if (K == 0){\n     \
+    \   // L = 0, R = 1\n        return fps998244353{f[0] * g0_inv};\n    }\n\n  \
+    \  std::vector q(K, fps998244353(m + 1));\n    for (int i = 0; i <= m; i++){\n\
+    \        q[0][i] = g[i] * g0_inv;\n    }\n\n    std::vector<long long> d_min(K\
+    \ + 1), d_max(K + 1);\n    d_min[0] = std::max(L - n + 1, 0LL);\n    d_max[0]\
+    \ = R - 1;\n    \n\n    for (int k = 1; k <= K - 1; k++){\n        auto q_pos(q[k\
+    \ - 1]);\n        for (int i = 1; i <= m; i += 2){\n            q[k - 1][i] =\
+    \ -q[k - 1][i];\n        }\n        auto qk_dbl = q_pos * q[k - 1];\n        for\
+    \ (int i = 0; i <= m; i++){\n            q[k][i] = qk_dbl[i * 2];\n        }\n\
+    \        auto tmp = d_min[k - 1] - 1 - m;\n        d_min[k] = (tmp >= 0LL ? tmp/2\
+    \ + 1 : 0LL);\n        d_max[k] = d_max[k - 1] / 2;\n    }\n\n    for (int i =\
+    \ 1; i <= m; i += 2){\n        q[K - 1][i] = -q[K - 1][i];\n    }\n    \n    const\
+    \ auto inv2 = binomial<modint998244353>::inv(2);\n    modint998244353 inv2_pow[31];\n\
+    \    inv2_pow[0] = modint998244353::raw(1);\n    for (int i = 0; i < 30; i++){\n\
+    \        inv2_pow[i + 1] = inv2_pow[i] * inv2;\n    }\n\n    fps998244353 p{1};\n\
+    \    for (int k = K-1; k >= 0; k--){\n        int B = 64 - std::countl_zero((unsigned\
+    \ long long)(m + std::max(2 * d_max[k + 1] - d_min[k], 0LL)));\n        int W\
+    \ = 1 << B;\n\n        fps998244353 p_dbl(W);\n        for (int i = 0; i < (int)(p.size());\
+    \ i++){\n            p_dbl[i * 2] = p[i];\n        }\n\n        q[k].resize(W);\n\
+    \n        p_dbl.ntt();\n        q[k].ntt();\n        for (int i = 0; i < W; i++){\n\
+    \            p_dbl[i] *= q[k][i];\n        }\n        p_dbl.intt();\n\n      \
+    \  p.resize(d_max[k] - d_min[k] + 1);\n        int i_min = (int)(std::max(-(d_min[k]\
+    \ - 2 * d_min[k + 1]), 0LL));\n        int i_max = (int)(std::min<long long>(d_max[k]\
+    \ - d_min[k], (p_dbl).size() - 1 - (d_min[k] - 2 * d_min[k + 1])));\n        for\
+    \ (int i = i_min; i <= i_max; i++){\n            p[i] = p_dbl[i + d_min[k] - 2\
+    \ * d_min[k + 1]] * inv2_pow[B];\n        }\n    }\n\n    int B = 64 - std::countl_zero((unsigned\
+    \ long long)(n - 1 + d_max[0] - L));\n    int W = 1 << B;\n\n    f.resize(W);\n\
+    \    p.resize(W);\n\n    f.ntt();\n    p.ntt();\n    for (int i = 0; i < W; i++){\n\
+    \        f[i] *= p[i];\n    }\n    f.intt();\n\n    g0_inv *= inv2_pow[B];\n \
+    \   fps998244353 ans(R - L);\n    for (long long i = 0; i < R - L; i++){\n   \
+    \     ans[i] = f[i + L - d_min[0]] * g0_inv;\n    }\n\n    return ans;\n}\n\n\
+    } // namespace noya2"
   dependsOn:
   - fps998244353/fps998244353.hpp
   - utility/modint.hpp
@@ -450,16 +554,16 @@ data:
   - fps998244353/modint998244353.hpp
   - math/binomial.hpp
   isVerificationFile: false
-  path: fps998244353/polynomial_taylor_shift.hpp
+  path: fps998244353/bostan_mori.hpp
   requiredBy: []
-  timestamp: '2024-08-21 17:31:04+09:00'
+  timestamp: '2024-08-21 17:31:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
-documentation_of: fps998244353/polynomial_taylor_shift.hpp
+  - test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+documentation_of: fps998244353/bostan_mori.hpp
 layout: document
 redirect_from:
-- /library/fps998244353/polynomial_taylor_shift.hpp
-- /library/fps998244353/polynomial_taylor_shift.hpp.html
-title: fps998244353/polynomial_taylor_shift.hpp
+- /library/fps998244353/bostan_mori.hpp
+- /library/fps998244353/bostan_mori.hpp.html
+title: fps998244353/bostan_mori.hpp
 ---

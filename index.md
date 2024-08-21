@@ -98,9 +98,12 @@ data:
   - name: fps998244353
     pages:
     - icon: ':heavy_check_mark:'
+      path: fps998244353/bostan_mori.hpp
+      title: fps998244353/bostan_mori.hpp
+    - icon: ':heavy_check_mark:'
       path: fps998244353/fps998244353.hpp
       title: fps998244353/fps998244353.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: fps998244353/modint998244353.hpp
       title: fps998244353/modint998244353.hpp
     - icon: ':heavy_check_mark:'
@@ -391,6 +394,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
       title: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+      title: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/fps998244353/convolution_998244353.test.cpp
       title: test/fps998244353/convolution_998244353.test.cpp

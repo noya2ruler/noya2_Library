@@ -196,6 +196,9 @@ data:
     path: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
     title: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/fps998244353/convolution_998244353.test.cpp
     title: test/fps998244353/convolution_998244353.test.cpp
   - icon: ':heavy_check_mark:'
@@ -413,6 +416,7 @@ data:
   - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
   - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+  - test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/fps998244353/multipoint_evaluation_998244353.test.cpp
   - test/math/Gcd_Convolution.test.cpp
   - test/math/CountingEulerianCircuits.test.cpp
