@@ -13,7 +13,6 @@ struct fps998244353 : std::vector<modint998244353> {
     using std::vector<mint>::vector;
     using std::vector<mint>::operator=;
     using fps = fps998244353;
-    static inline ntt998244353 ntt_;
     static inline binomial<mint> bnm;
 
     fps998244353 (const std::vector<mint> &init){
@@ -64,7 +63,7 @@ struct fps998244353 : std::vector<modint998244353> {
             this->clear();
             return *this;
         }
-        (*this) = ntt_.multiply(*this, r);
+        (*this) = ntt998244353::multiply(*this, r);
         return *this;
     }
 
@@ -138,7 +137,7 @@ struct fps998244353 : std::vector<modint998244353> {
             f.resize(siz*2), g.resize(siz*2);
             f.ntt(), g.ntt();
             for (int i = 0; i < siz*2; i++) f[i] *= g[i];
-            ntt_.intt(f);
+            f.intt();
             f.erase(f.begin(),f.begin()+siz);
             f.resize(siz*2);
             f.ntt();
@@ -202,15 +201,25 @@ struct fps998244353 : std::vector<modint998244353> {
     }
 
     void ntt(){
-        return ntt_.ntt(*this);
+        ntt998244353::ntt(*this);
     }
     // NOT /= len
     void intt(){
-        ntt_.intt(*this);
+        ntt998244353::intt(*this);
     }
     // already /= len
     void intt_div(){
-        return ntt_.intt_div(*this);
+        ntt998244353::intt_div(*this);
+    }
+    //  input : ntt( f[0, 2^n) )
+    // output : ntt( f[0, 2^n) ++ zero_padding[0, 2^n) )
+    void ntt_doubling(){
+        ntt998244353::ntt_doubling(*this);
+    }
+    //  input : ntt( f[0, 2^n) )
+    // output : ntt( g[0, 2^{n-1}) ), g[i] = f[i * 2 + odd]
+    void ntt_pick_parity(int odd){
+        ntt998244353::ntt_pick_parity(*this, odd);
     }
     fps quotient(fps r) const {
         r.shrink();

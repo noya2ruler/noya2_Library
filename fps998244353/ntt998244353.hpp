@@ -1,6 +1,6 @@
 #pragma once
 
-#include "utility/modint.hpp"
+#include "modint998244353.hpp"
 
 #include <cassert>
 #include <vector>
@@ -25,102 +25,102 @@ struct ntt998244353 {
         int m = n;
         if (m >>= 1){
             for (int i = 0; i < m; i++){
-                const unsigned x = as[i + m].val();
-                as[i + m] = mint::raw(as[i].val() + MO - x);
-                as[i] = mint::raw(as[i].val() + x);
+                const unsigned x = as[i + m]._v;
+                as[i + m]._v = as[i]._v + MO - x;
+                as[i]._v += x;
             }
         }
         if (m >>= 1){
-            mint prod = mint::raw(1);
+            mint prod = 1;
             for (int h = 0, i0 = 0; i0 < n; i0 += (m << 1)){
                 for (int i = i0; i < i0 + m; i++){
-                    const unsigned x = (prod * as[i + m]).val();
-                    as[i + m] = mint::raw(as[i].val() + MO - x);
-                    as[i] = mint::raw(as[i].val() + x);
+                    const unsigned x = (prod * as[i + m])._v;
+                    as[i + m]._v = as[i]._v + MO - x;
+                    as[i]._v += x;
                 }
                 prod *= mint::raw(internal::FFT_RATIOS[__builtin_ctz(++h)]);
             }
         }
         for (; m; ){
             if (m >>= 1){
-                mint prod = mint::raw(1);
+                mint prod = 1;
                 for (int h = 0, i0 = 0; i0 < n; i0 += (m << 1)){
                     for (int i = i0; i < i0 + m; i++){
-                        const unsigned x = (prod * as[i + m]).val();
-                        as[i + m] = mint::raw(as[i].val() + MO - x);
-                        as[i] = mint::raw(as[i].val() + x);
+                        const unsigned x = (prod * as[i + m])._v;
+                        as[i + m]._v = as[i]._v + MO - x;
+                        as[i]._v += x;
                     }
                     prod *= mint::raw(internal::FFT_RATIOS[__builtin_ctz(++h)]);
                 }
             }
             if (m >>= 1){
-                mint prod = mint::raw(1);
-                for (int h = 0, i0 = 0; i0 < n; i0 += (m << 1)) {
-                    for (int i = i0; i < i0 + m; i++) {
-                        const unsigned x = (prod * as[i + m]).val();
-                        as[i] = mint::raw((as[i].val() >= MO2) ? (as[i].val() - MO2) : as[i].val());
-                        as[i + m] = mint::raw(as[i].val() + MO - x);
-                        as[i] = mint::raw(as[i].val() + x);
+                mint prod = 1;
+                for (int h = 0, i0 = 0; i0 < n; i0 += (m << 1)){
+                    for (int i = i0; i < i0 + m; i++){
+                        const unsigned x = (prod * as[i + m])._v;
+                        as[i]._v = (as[i]._v >= MO2 ? as[i]._v - MO2 : as[i]._v);
+                        as[i + m]._v = as[i]._v + MO - x;
+                        as[i]._v += x;
                     }
                     prod *= mint::raw(internal::FFT_RATIOS[__builtin_ctz(++h)]);
                 }
             }
         }
         for (int i = 0; i < n; i++){
-            as[i] = mint::raw((as[i].val() >= MO2) ? as[i].val() - MO2 : as[i].val());
-            as[i] = mint::raw((as[i].val() >= MO) ? as[i].val() - MO : as[i].val());
+            as[i]._v = (as[i]._v >= MO2 ? as[i]._v - MO2 : as[i]._v);
+            as[i]._v = (as[i]._v >= MO ? as[i]._v - MO : as[i]._v);
         }
     }
     static void intt(mint *as, int n){
         int m = 1;
         if (m < (n >> 1)){
-            mint prod = mint::raw(1);
+            mint prod = 1;
             for (int h = 0, i0 = 0; i0 < n; i0 += (m << 1)){
                 for (int i = i0; i < i0 + m; i++){
-                    const unsigned long long y = as[i].val() + MO - as[i + m].val();
-                    as[i] = mint::raw(as[i].val() + as[i + m].val());
-                    as[i + m] = mint::raw(prod.val() * y % MO);
+                    const unsigned long long y = as[i]._v + MO - as[i + m]._v;
+                    as[i]._v += as[i + m]._v;
+                    as[i + m]._v = prod._v * y % MO;
                 }
                 prod *= mint::raw(internal::INV_FFT_RATIOS[__builtin_ctz(++h)]);
             }
             m <<= 1;
         }
         for (; m < (n >> 1); m <<= 1){
-            mint prod = mint::raw(1);
-            for (int h = 0, i0 = 0; i0 < n; i0 += (m << 1)) {
-                for (int i = i0; i < i0 + (m >> 1); ++i) {
-                    const unsigned long long y = as[i].val() + MO2 - as[i + m].val();
-                    as[i] = mint::raw(as[i].val() + as[i + m].val());
-                    as[i] = mint::raw((as[i].val() >= MO2) ? (as[i].val() - MO2) : as[i].val());
-                    as[i + m] = mint::raw(prod.val() * y % MO);
+            mint prod = 1;
+            for (int h = 0, i0 = 0; i0 < n; i0 += (m << 1)){
+                for (int i = i0; i < i0 + (m >> 1); i++){
+                    const unsigned long long y = as[i]._v + MO2 - as[i + m]._v;
+                    as[i]._v += as[i + m]._v;
+                    as[i]._v = (as[i]._v >= MO2 ? as[i]._v - MO2 : as[i]._v);
+                    as[i + m]._v = prod._v * y % MO;
                 }
-                for (int i = i0 + (m >> 1); i < i0 + m; ++i) {
-                    const unsigned long long y = as[i].val() + MO - as[i + m].val();
-                    as[i] = mint::raw(as[i].val() + as[i + m].val());
-                    as[i + m] = mint::raw(prod.val() * y % MO);
+                for (int i = i0 + (m >> 1); i < i0 + m; i++){
+                    const unsigned long long y = as[i]._v + MO - as[i + m]._v;
+                    as[i]._v += as[i + m]._v;
+                    as[i + m]._v = prod._v * y % MO;
                 }
                 prod *= mint::raw(internal::INV_FFT_RATIOS[__builtin_ctz(++h)]);
             }
         }
         if (m < n){
             for (int i = 0; i < m; i++){
-                const unsigned y = as[i].val() + MO2 - as[i + m].val();
-                as[i] = mint::raw(as[i].val() + as[i + m].val());
-                as[i + m] = mint::raw(y);
+                const unsigned y = as[i]._v + MO2 - as[i + m]._v;
+                as[i]._v += as[i + m]._v;
+                as[i + m]._v = y;
             }
         }
         for (int i = 0; i < n; i++){
-            as[i] = mint::raw((as[i].val() >= MO2) ? as[i].val() - MO2 : as[i].val());
-            as[i] = mint::raw((as[i].val() >= MO) ? as[i].val() - MO : as[i].val());
+            as[i]._v = (as[i]._v >= MO2 ? as[i]._v - MO2 : as[i]._v);
+            as[i]._v = (as[i]._v >= MO ? as[i]._v - MO : as[i]._v);
         }
     }
-    void ntt(std::vector<mint> &as){
+    static void ntt(std::vector<mint> &as){
         ntt(as.data(), as.size());
     }
-    void intt(std::vector<mint> &as){
+    static void intt(std::vector<mint> &as){
         intt(as.data(), as.size());
     }
-    void intt_div(std::vector<mint> &as){
+    static void intt_div(std::vector<mint> &as){
         intt(as);
         int n = as.size();
         const mint inv_n = mint::raw(n).inv();
@@ -128,7 +128,7 @@ struct ntt998244353 {
             as[i] *= inv_n;
         }
     }
-    std::vector<mint> multiply(std::vector<mint> as, std::vector<mint> bs){
+    static std::vector<mint> multiply(std::vector<mint> as, std::vector<mint> bs){
         if (as.empty() || bs.empty()) return {};
         const int len = as.size() + bs.size() - 1u;
         if (std::min(as.size(), bs.size()) <= 40u){
@@ -161,6 +161,44 @@ struct ntt998244353 {
         intt_div(as);
         as.resize(len);
         return as;
+    }
+    static void ntt_doubling(std::vector<mint> &as){
+        auto bs = as;
+        intt(bs);
+        mint e = mint::raw(internal::FFT_ROOTS[std::countr_zero(as.size()) + 1]);
+        mint iv = mint::raw(as.size()).inv();
+        for (auto &x : bs){
+            x *= iv;
+            iv *= e;
+        }
+        ntt(bs);
+        as.insert(as.end(), bs.begin(), bs.end());
+    }
+    static void ntt_pick_parity(std::vector<mint> &f, int odd){
+        int n = f.size() / 2;
+        mint i2 = mint::raw((mint::mod() + 1) >> 1);
+        if (odd == 0){
+            for (int i = 0; i < n; i++){
+                f[i] = (f[i * 2] + f[i * 2 + 1]) * i2;
+            }
+            f.resize(n);
+            return ;
+        }
+        mint ie = mint::raw(internal::INV_FFT_ROOTS[std::countr_zero(f.size())]);
+        std::vector<mint> es = {i2};
+        while ((int)(es.size()) != n){
+            std::vector<mint> nes(es.size() * 2u);
+            for (int i = 0; i < (int)(es.size()); i++){
+                nes[i * 2 + 0] = es[i];
+                nes[i * 2 + 1] = es[i] * ie;
+            }
+            ie *= ie;
+            std::swap(es, nes);
+        }
+        for (int i = 0; i < n; i++){
+            f[i] = (f[i * 2] - f[i * 2 + 1]) * es[i];
+        }
+        f.resize(n);
     }
 };
 
