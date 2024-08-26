@@ -16,6 +16,10 @@ struct hld_tree {
         build();
     }
 
+    size_t size() const {
+        return g.n;
+    }
+
     void add_edge(int u, int v){
         g.add(u, v);
         int id = g.add(v, u);
