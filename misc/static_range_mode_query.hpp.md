@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/misc/StaticRangeModeQuery.test.cpp
+    title: test/misc/StaticRangeModeQuery.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/static_range_mode_query.hpp\"\n\n#include <vector>\n\
@@ -76,8 +79,9 @@ data:
   path: misc/static_range_mode_query.hpp
   requiredBy: []
   timestamp: '2024-09-20 13:52:15+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/misc/StaticRangeModeQuery.test.cpp
 documentation_of: misc/static_range_mode_query.hpp
 layout: document
 redirect_from:

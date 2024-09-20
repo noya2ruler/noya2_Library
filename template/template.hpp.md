@@ -256,6 +256,9 @@ data:
     path: test/misc/LongestIncreasingSubsequence.test.cpp
     title: test/misc/LongestIncreasingSubsequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/misc/StaticRangeModeQuery.test.cpp
+    title: test/misc/StaticRangeModeQuery.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/string/SuffixArray.test.cpp
     title: test/string/SuffixArray.test.cpp
   - icon: ':heavy_check_mark:'
@@ -437,6 +440,7 @@ data:
   - test/math/Gcd_Convolution.test.cpp
   - test/math/Sum_of_Floor_of_Linear.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - test/misc/StaticRangeModeQuery.test.cpp
   - test/misc/LongestIncreasingSubsequence.test.cpp
   - test/tree/Tree_Diameter_hld.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp

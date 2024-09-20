@@ -218,7 +218,7 @@ data:
     - icon: ':warning:'
       path: misc/rng.hpp
       title: misc/rng.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: misc/static_range_mode_query.hpp
       title: misc/static_range_mode_query.hpp
     - icon: ':warning:'
@@ -460,6 +460,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/misc/LongestIncreasingSubsequence.test.cpp
       title: test/misc/LongestIncreasingSubsequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/misc/StaticRangeModeQuery.test.cpp
+      title: test/misc/StaticRangeModeQuery.test.cpp
   - name: test/string
     pages:
     - icon: ':heavy_check_mark:'

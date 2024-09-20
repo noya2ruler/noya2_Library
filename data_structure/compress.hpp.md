@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Inversions_Query.test.cpp
     title: test/data_structure/Static_Range_Inversions_Query.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/misc/StaticRangeModeQuery.test.cpp
+    title: test/misc/StaticRangeModeQuery.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -60,6 +63,7 @@ data:
   - test/data_structure/Static_Range_Inversions_Query.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - test/data_structure/Rectangle_Sum.test.cpp
+  - test/misc/StaticRangeModeQuery.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
 redirect_from:
