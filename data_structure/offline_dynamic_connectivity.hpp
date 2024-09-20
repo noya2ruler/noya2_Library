@@ -33,8 +33,9 @@ struct offline_dynamic_connectivity : rollback_dsu {
     }
     void build(){
         inner_clock = 1;
-        while (inner_clock != sz){
+        while (true){
             add_block(inner_clock);
+            if (inner_clock == sz) break;
             inner_clock <<= 1;
         }
     }
