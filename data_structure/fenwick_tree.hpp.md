@@ -114,8 +114,8 @@ data:
   timestamp: '2024-07-01 23:39:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/Vertex_Add_Path_Sum.test.cpp
   - test/data_structure/PointAddRangeSum.test.cpp
+  - test/tree/Vertex_Add_Path_Sum.test.cpp
 documentation_of: data_structure/fenwick_tree.hpp
 layout: document
 redirect_from:

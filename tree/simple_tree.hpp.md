@@ -154,9 +154,9 @@ data:
   timestamp: '2024-07-04 18:49:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/FrequencyTableofTreeDistance.test.cpp
-  - test/tree/Jump_on_Tree.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/FrequencyTableofTreeDistance.test.cpp
 documentation_of: tree/simple_tree.hpp
 layout: document
 redirect_from:

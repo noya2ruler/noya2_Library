@@ -219,6 +219,9 @@ data:
       path: misc/rng.hpp
       title: misc/rng.hpp
     - icon: ':warning:'
+      path: misc/static_range_mode_query.hpp
+      title: misc/static_range_mode_query.hpp
+    - icon: ':warning:'
       path: misc/subset_sum.hpp
       title: misc/subset_sum.hpp
     - icon: ':warning:'
