@@ -42,20 +42,20 @@ data:
     \ (l < r){\n            if (l & 1) ids[l++].push_back(edge_id);\n            if\
     \ (r & 1) ids[--r].push_back(edge_id);\n            l >>= 1, r >>= 1;\n      \
     \  }\n        edges.emplace_back(u,v);\n    }\n    void build(){\n        inner_clock\
-    \ = 1;\n        while (inner_clock != sz){\n            add_block(inner_clock);\n\
-    \            inner_clock <<= 1;\n        }\n    }\n    // leap to time t, change\
-    \ this dsu\n    void set(int t){\n        assert(0 <= t && t < sz && inner_clock\
-    \ != -1);\n        t += sz;\n        if (inner_clock == t) return ;\n        int\
-    \ k = 32 - countl_zero((unsigned int)(inner_clock ^ t));\n        for (int i =\
-    \ 0; i < k; i++){\n            del_block(inner_clock);\n            inner_clock\
-    \ >>= 1;\n        }\n        for (int i = k-1; i >= 0; i--){\n            inner_clock\
-    \ <<= 1;\n            if (t >> i & 1) inner_clock++;\n            add_block(inner_clock);\n\
-    \        }\n        inner_clock = t;\n    }\n  private:\n    void add_block(int\
-    \ i){\n        for (auto &id : ids[i]){\n            this->merge(edges[id].first,edges[id].second);\n\
-    \        }\n    }\n    void del_block(int i){\n        int ctr = ids[i].size();\n\
-    \        while (ctr--) this->rollback();\n    }\n    int n, sz, inner_clock;\n\
-    \    std::vector<std::vector<int>> ids;\n    std::vector<std::pair<int,int>> edges;\n\
-    };\n\n} // namespace noya2\n"
+    \ = 1;\n        while (true){\n            add_block(inner_clock);\n         \
+    \   if (inner_clock == sz) break;\n            inner_clock <<= 1;\n        }\n\
+    \    }\n    // leap to time t, change this dsu\n    void set(int t){\n       \
+    \ assert(0 <= t && t < sz && inner_clock != -1);\n        t += sz;\n        if\
+    \ (inner_clock == t) return ;\n        int k = 32 - countl_zero((unsigned int)(inner_clock\
+    \ ^ t));\n        for (int i = 0; i < k; i++){\n            del_block(inner_clock);\n\
+    \            inner_clock >>= 1;\n        }\n        for (int i = k-1; i >= 0;\
+    \ i--){\n            inner_clock <<= 1;\n            if (t >> i & 1) inner_clock++;\n\
+    \            add_block(inner_clock);\n        }\n        inner_clock = t;\n  \
+    \  }\n  private:\n    void add_block(int i){\n        for (auto &id : ids[i]){\n\
+    \            this->merge(edges[id].first,edges[id].second);\n        }\n    }\n\
+    \    void del_block(int i){\n        int ctr = ids[i].size();\n        while (ctr--)\
+    \ this->rollback();\n    }\n    int n, sz, inner_clock;\n    std::vector<std::vector<int>>\
+    \ ids;\n    std::vector<std::pair<int,int>> edges;\n};\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include\"../data_structure/rollback_dsu.hpp\"\n\n#include\
     \ <vector>\n#include <utility>\n#include <cassert>\n\nnamespace noya2 {\n\nstruct\
     \ offline_dynamic_connectivity : rollback_dsu {\n    using rollback_dsu::operator=;\n\
@@ -69,26 +69,26 @@ data:
     \ (l < r){\n            if (l & 1) ids[l++].push_back(edge_id);\n            if\
     \ (r & 1) ids[--r].push_back(edge_id);\n            l >>= 1, r >>= 1;\n      \
     \  }\n        edges.emplace_back(u,v);\n    }\n    void build(){\n        inner_clock\
-    \ = 1;\n        while (inner_clock != sz){\n            add_block(inner_clock);\n\
-    \            inner_clock <<= 1;\n        }\n    }\n    // leap to time t, change\
-    \ this dsu\n    void set(int t){\n        assert(0 <= t && t < sz && inner_clock\
-    \ != -1);\n        t += sz;\n        if (inner_clock == t) return ;\n        int\
-    \ k = 32 - countl_zero((unsigned int)(inner_clock ^ t));\n        for (int i =\
-    \ 0; i < k; i++){\n            del_block(inner_clock);\n            inner_clock\
-    \ >>= 1;\n        }\n        for (int i = k-1; i >= 0; i--){\n            inner_clock\
-    \ <<= 1;\n            if (t >> i & 1) inner_clock++;\n            add_block(inner_clock);\n\
-    \        }\n        inner_clock = t;\n    }\n  private:\n    void add_block(int\
-    \ i){\n        for (auto &id : ids[i]){\n            this->merge(edges[id].first,edges[id].second);\n\
-    \        }\n    }\n    void del_block(int i){\n        int ctr = ids[i].size();\n\
-    \        while (ctr--) this->rollback();\n    }\n    int n, sz, inner_clock;\n\
-    \    std::vector<std::vector<int>> ids;\n    std::vector<std::pair<int,int>> edges;\n\
-    };\n\n} // namespace noya2"
+    \ = 1;\n        while (true){\n            add_block(inner_clock);\n         \
+    \   if (inner_clock == sz) break;\n            inner_clock <<= 1;\n        }\n\
+    \    }\n    // leap to time t, change this dsu\n    void set(int t){\n       \
+    \ assert(0 <= t && t < sz && inner_clock != -1);\n        t += sz;\n        if\
+    \ (inner_clock == t) return ;\n        int k = 32 - countl_zero((unsigned int)(inner_clock\
+    \ ^ t));\n        for (int i = 0; i < k; i++){\n            del_block(inner_clock);\n\
+    \            inner_clock >>= 1;\n        }\n        for (int i = k-1; i >= 0;\
+    \ i--){\n            inner_clock <<= 1;\n            if (t >> i & 1) inner_clock++;\n\
+    \            add_block(inner_clock);\n        }\n        inner_clock = t;\n  \
+    \  }\n  private:\n    void add_block(int i){\n        for (auto &id : ids[i]){\n\
+    \            this->merge(edges[id].first,edges[id].second);\n        }\n    }\n\
+    \    void del_block(int i){\n        int ctr = ids[i].size();\n        while (ctr--)\
+    \ this->rollback();\n    }\n    int n, sz, inner_clock;\n    std::vector<std::vector<int>>\
+    \ ids;\n    std::vector<std::pair<int,int>> edges;\n};\n\n} // namespace noya2"
   dependsOn:
   - data_structure/rollback_dsu.hpp
   isVerificationFile: false
   path: data_structure/offline_dynamic_connectivity.hpp
   requiredBy: []
-  timestamp: '2024-07-28 17:00:49+09:00'
+  timestamp: '2024-09-20 17:32:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/aoj_2235.test.cpp
