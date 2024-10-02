@@ -1,89 +1,91 @@
 #pragma once
 
-#include "../template/template.hpp"
+#include <vector>
+#include <utility>
+#include <ranges>
 
 namespace noya2 {
 
-template <class E, class V, E (*merge)(E, E), E (*e)(), E (*put_edge)(V, int), V (*put_vertex)(E, int)>
-struct RerootingDP {
-    struct edge {
-        int to, idx, xdi;
+// g[from] contains outgoing edges (to, edgeid(from, to))
+// (E, op, e) is commutative monoid
+// ~edgeid(from, to) == edgeid(to, from)
+// return calculator of dp(r, v)
+template<class V, class E>
+auto rerootingdp(auto op, E e, auto put_edge, auto put_vertex, const std::vector<std::vector<std::pair<int, int>>> &g, int root = 0){
+    struct dp {
+        // dp(r, v) : root is r, dp of subtree v
+        // ans[v]  = dp(v, v)
+        // from[v] = dp(v, par(v))
+        // to[v]   = dp(par(v), v)
+        // from[root] and to[root] is undefined
+        std::vector<V> ans, from, to;
+        std::vector<int> down, up;
+        std::vector<std::vector<int>> childs;
+        bool is_in_subtree(int r, int v){
+            return down[r] < down[v] && up[v] <= up[r];
+        }
+        V operator()(int r, int v){
+            if (r == v) return ans[v];
+            if (!is_in_subtree(v, r)) return to[v];
+            int le = 0, ri = childs[v].size();
+            while (ri - le > 1){
+                int md = (le + ri) / 2;
+                if (down[childs[v][md]] <= down[r]){
+                    le = md;
+                }
+                else {
+                    ri = md;
+                }
+            }
+            return from[childs[v][le]];
+        }
     };
-    RerootingDP(int _n = 0) : n(_n) {
-        es.resize(n);
-    }
-    void add_edge(int u, int v, int idx1, int idx2) {
-        es[u].push_back({v, idx1, idx2});
-        es[v].push_back({u, idx2, idx1});
-    }
-    vector<V> build(int v = 0) {
-        root = v;
-        outs.resize(n);
-        subdp.resize(n);
-        in.resize(n), up.resize(n);
-        int tnow = 0;
-        dfs(root, -1, tnow);
-        return subdp;
-    }
-    vector<V> reroot() {
-        reverse_edge.resize(n);
-        reverse_edge[root] = e();
-        reverse_dp.resize(n);
-        answers.resize(n);
-        bfs(root);
-        return answers;
-    }
-    V get(int r, int v) {
-        if (r == v) return answers[r];
-        if (!(in[v] < in[r] && up[r] <= up[v])) return subdp[v];
-        int le = 0, ri = outs[v].size();
-        while (ri - le > 1) {
-            int md = (le + ri) / 2;
-            if (in[es[v][md].to] <= in[r])
-                le = md;
-            else
-                ri = md;
+    int n = g.size();
+    std::vector<E> from(n, e), to(n, e);
+    std::vector<V> dp_to(n);
+    std::vector<std::vector<int>> childs(n);
+    std::vector<int> down(n), up(n);
+    int t = 0;
+    auto dfs = [&](auto sfs, int v, int f) -> void {
+        down[v] = t++;
+        childs[v].reserve(g[v].size());
+        for (auto [c, eid] : g[v]){
+            if (c == f) continue;
+            childs[v].emplace_back(c);
+            sfs(sfs, c, v);
+            dp_to[c] = put_vertex(to[c], c);
+            to[c] = put_edge(dp_to[c], eid);
+            to[v] = op(to[v], to[c]);
         }
-        return reverse_dp[es[v][le].to];
-    }
-    const vector<edge> &operator[](int idx) const {
-        return es[idx];
-    }
-
-  private:
-    int n, root;
-    vector<vector<edge>> es;
-    vector<vector<E>> outs;
-    vector<E> reverse_edge;
-    vector<V> subdp, reverse_dp, answers;
-    vector<int> in, up;
-    void dfs(int v, int p, int &t) {
-        E val = e();
-        in[v] = t++;
-        for (auto &u : es[v]) {
-            if (u.to == p && u.to != es[v].back().to) swap(u, es[v].back());
-            if (u.to == p) continue;
-            dfs(u.to, v, t);
-            E nval = put_edge(subdp[u.to], u.idx);
-            outs[v].emplace_back(nval);
-            val = merge(val, nval);
-        }
-        subdp[v] = put_vertex(val, v);
         up[v] = t;
-    }
-    void bfs(int v) {
-        int siz = outs[v].size();
-        vector<E> lui(siz + 1), rui(siz + 1);
-        lui[0] = e(), rui[siz] = e();
-        for (int i = 0; i < siz; i++) lui[i + 1] = merge(lui[i], outs[v][i]);
-        for (int i = siz - 1; i >= 0; i--) rui[i] = merge(outs[v][i], rui[i + 1]);
-        for (int i = 0; i < siz; i++) {
-            reverse_dp[es[v][i].to] = put_vertex(merge(merge(lui[i], rui[i + 1]), reverse_edge[v]), v);
-            reverse_edge[es[v][i].to] = put_edge(reverse_dp[es[v][i].to], es[v][i].xdi);
-            bfs(es[v][i].to);
+    };
+    dfs(dfs, root, -1);
+    std::vector<V> dp_ans(n), dp_from(n);
+    std::vector<E> inner(n);
+    auto bfs = [&](auto sfs, int v, int f) -> void {
+        int sz = g[v].size();
+        inner[sz] = e;
+        int i = sz-1;
+        for (auto [c, eid] : g[v] | std::views::reverse){
+            if (c == f) continue;
+            inner[i] = op(inner[i+1], to[c]);
+            i--;
         }
-        answers[v] = put_vertex(merge(lui[siz], reverse_edge[v]), v);
-    }
-};
+        dp_ans[v] = put_vertex(op(inner[++i], from[v]), v);
+        E rui = e;
+        for (auto [c, eid] : g[v]){
+            if (c == f) continue;
+            dp_from[c] = put_vertex(op(op(rui, inner[++i]), from[v]), v);
+            from[c] = put_edge(dp_from[c], ~eid);
+            rui = op(rui, to[c]);
+        }
+        for (auto [c, eid] : g[v]){
+            if (c == f) continue;
+            sfs(sfs, c, v);
+        }
+    };
+    bfs(bfs, root, -1);
+    return dp{dp_ans, dp_from, dp_to, down, up, childs};
+}
 
 }  // namespace noya2
