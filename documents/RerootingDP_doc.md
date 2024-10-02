@@ -86,7 +86,7 @@ V dprv = dp(r, v);
 
 AC code of https://atcoder.jp/contests/dp/tasks/dp_v
 
-submission https://atcoder.jp/contests/dp/submissions/57270169
+submission https://atcoder.jp/contests/dp/submissions/58347464
 
 ``` cpp
 #include<bits/stdc++.h>
@@ -112,9 +112,9 @@ int main(){
     auto putv = [&](mint a, int){
         return a;
     };
-    auto calc = rerootingdp<mint,mint>(op,1,pute,putv,g);
+    auto dp = rerootingdp<mint,mint>(op,1,pute,putv,g);
     for (int v = 0; v < n; v++){
-        std::cout << calc.dp(v, v).val() << '\n';
+        std::cout << dp(v, v).val() << '\n';
     }
 }
 ```
