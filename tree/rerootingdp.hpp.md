@@ -150,11 +150,11 @@ auto dp = rerootingdp<V, E>(op, e, put_edge, put_vertex, g, root = 0);
 
 を定義する必要があります。
 
-正確な言い方ではないですが、 `op,put_edge,put_vertex` は関数のように振る舞うことができれば良いです。具体的には、次のようなものを指定できます。
+正確な言い方ではないですが、 `op, put_edge, put_vertex` は関数のように振る舞うことができれば良いです。具体的には、次のようなものを指定できます。
 
 - グローバルに定義した関数（関数ポインタ）
 - ラムダ式
-- 関数オブジェクト（ `oprator()` を実装している ）
+- 関数オブジェクト（ `operator()` を実装している ）
 
 #### 制約
 
@@ -165,7 +165,7 @@ auto dp = rerootingdp<V, E>(op, e, put_edge, put_vertex, g, root = 0);
 
 ### 返り値
 
-返り値の型は `rerooting_dp<V, E>` 内で定義される `dp` です。 `auto` で受け取ってください。
+返り値の型は `rerootingdp<V, E>` 内で定義される `dp` です。 `auto` で受け取ってください。
 
 `dp` は木DPの結果を返す関数オブジェクトとして機能します。`dp(r, v)` として、疑似コード中の `dfs(r, r)` を計算する過程で `dfs(r, v, parv)` として返る値を得ることができます。
 
