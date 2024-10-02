@@ -1,6 +1,6 @@
 ---
 title: Rerooting DP
-documentation_of: //tree/RerootingDP.hpp
+documentation_of: //tree/rerootingdp.hpp
 ---
 
 ## RerootingDP
