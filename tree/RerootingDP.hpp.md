@@ -1,163 +1,94 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: template/const.hpp
-    title: template/const.hpp
-  - icon: ':heavy_check_mark:'
-    path: template/inout_old.hpp
-    title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
-    path: template/template.hpp
-    title: template/template.hpp
-  - icon: ':heavy_check_mark:'
-    path: template/utils.hpp
-    title: template/utils.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Rerooting_DP.test.cpp
-    title: test/tree/Rerooting_DP.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"tree/RerootingDP.hpp\"\n\n#line 2 \"template/template.hpp\"\
-    \nusing namespace std;\n\n#include<bits/stdc++.h>\n#line 1 \"template/inout_old.hpp\"\
-    \nnamespace noya2 {\n\ntemplate <typename T, typename U>\nostream &operator<<(ostream\
-    \ &os, const pair<T, U> &p){\n    os << p.first << \" \" << p.second;\n    return\
-    \ os;\n}\ntemplate <typename T, typename U>\nistream &operator>>(istream &is,\
-    \ pair<T, U> &p){\n    is >> p.first >> p.second;\n    return is;\n}\n\ntemplate\
-    \ <typename T>\nostream &operator<<(ostream &os, const vector<T> &v){\n    int\
-    \ s = (int)v.size();\n    for (int i = 0; i < s; i++) os << (i ? \" \" : \"\"\
-    ) << v[i];\n    return os;\n}\ntemplate <typename T>\nistream &operator>>(istream\
-    \ &is, vector<T> &v){\n    for (auto &x : v) is >> x;\n    return is;\n}\n\nvoid\
-    \ in() {}\ntemplate <typename T, class... U>\nvoid in(T &t, U &...u){\n    cin\
-    \ >> t;\n    in(u...);\n}\n\nvoid out() { cout << \"\\n\"; }\ntemplate <typename\
-    \ T, class... U, char sep = ' '>\nvoid out(const T &t, const U &...u){\n    cout\
-    \ << t;\n    if (sizeof...(u)) cout << sep;\n    out(u...);\n}\n\ntemplate<typename\
-    \ T>\nvoid out(const vector<vector<T>> &vv){\n    int s = (int)vv.size();\n  \
-    \  for (int i = 0; i < s; i++) out(vv[i]);\n}\n\nstruct IoSetup {\n    IoSetup(){\n\
-    \        cin.tie(nullptr);\n        ios::sync_with_stdio(false);\n        cout\
-    \ << fixed << setprecision(15);\n        cerr << fixed << setprecision(7);\n \
-    \   }\n} iosetup_noya2;\n\n} // namespace noya2\n#line 1 \"template/const.hpp\"\
-    \nnamespace noya2{\n\nconst int iinf = 1'000'000'007;\nconst long long linf =\
-    \ 2'000'000'000'000'000'000LL;\nconst long long mod998 =  998244353;\nconst long\
-    \ long mod107 = 1000000007;\nconst long double pi = 3.14159265358979323;\nconst\
-    \ vector<int> dx = {0,1,0,-1,1,1,-1,-1};\nconst vector<int> dy = {1,0,-1,0,1,-1,-1,1};\n\
-    const string ALP = \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\";\nconst string alp = \"abcdefghijklmnopqrstuvwxyz\"\
-    ;\nconst string NUM = \"0123456789\";\n\nvoid yes(){ cout << \"Yes\\n\"; }\nvoid\
-    \ no(){ cout << \"No\\n\"; }\nvoid YES(){ cout << \"YES\\n\"; }\nvoid NO(){ cout\
-    \ << \"NO\\n\"; }\nvoid yn(bool t){ t ? yes() : no(); }\nvoid YN(bool t){ t ?\
-    \ YES() : NO(); }\n\n} // namespace noya2\n#line 2 \"template/utils.hpp\"\n\n\
-    #line 6 \"template/utils.hpp\"\n\nnamespace noya2{\n\nunsigned long long inner_binary_gcd(unsigned\
-    \ long long a, unsigned long long b){\n    if (a == 0 || b == 0) return a + b;\n\
-    \    int n = __builtin_ctzll(a); a >>= n;\n    int m = __builtin_ctzll(b); b >>=\
-    \ m;\n    while (a != b) {\n        int mm = __builtin_ctzll(a - b);\n       \
-    \ bool f = a > b;\n        unsigned long long c = f ? a : b;\n        b = f ?\
-    \ b : a;\n        a = (c - b) >> mm;\n    }\n    return a << std::min(n, m);\n\
-    }\n\ntemplate<typename T> T gcd_fast(T a, T b){ return static_cast<T>(inner_binary_gcd(std::abs(a),std::abs(b)));\
-    \ }\n\nlong long sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long\
-    \ long x = sqrt(n);\n    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x\
-    \ > n) x--;\n    return x;\n}\n\ntemplate<typename T> T floor_div(const T n, const\
-    \ T d) {\n    assert(d != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 &&\
-    \ n % d != 0);\n}\n\ntemplate<typename T> T ceil_div(const T n, const T d) {\n\
-    \    assert(d != 0);\n    return n / d + static_cast<T>((n ^ d) >= 0 && n % d\
-    \ != 0);\n}\n\ntemplate<typename T> void uniq(std::vector<T> &v){\n    std::sort(v.begin(),v.end());\n\
-    \    v.erase(unique(v.begin(),v.end()),v.end());\n}\n\ntemplate <typename T, typename\
-    \ U> inline bool chmin(T &x, U y) { return (y < x) ? (x = y, true) : false; }\n\
-    \ntemplate <typename T, typename U> inline bool chmax(T &x, U y) { return (x <\
-    \ y) ? (x = y, true) : false; }\n\ntemplate<typename T> inline bool range(T l,\
-    \ T x, T r){ return l <= x && x < r; }\n\n} // namespace noya2\n#line 8 \"template/template.hpp\"\
-    \n\n#define rep(i,n) for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for\
-    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1);\
-    \ i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\nusing ll = long long;\n\
-    using ld = long double;\nusing uint = unsigned int;\nusing ull = unsigned long\
-    \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
-    using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
-    */\n\n}\n\nusing namespace noya2;\n\n\n#line 4 \"tree/RerootingDP.hpp\"\n\nnamespace\
-    \ noya2 {\n\ntemplate <class E, class V, E (*merge)(E, E), E (*e)(), E (*put_edge)(V,\
-    \ int), V (*put_vertex)(E, int)>\nstruct RerootingDP {\n    struct edge {\n  \
-    \      int to, idx, xdi;\n    };\n    RerootingDP(int _n = 0) : n(_n) {\n    \
-    \    es.resize(n);\n    }\n    void add_edge(int u, int v, int idx1, int idx2)\
-    \ {\n        es[u].push_back({v, idx1, idx2});\n        es[v].push_back({u, idx2,\
-    \ idx1});\n    }\n    vector<V> build(int v = 0) {\n        root = v;\n      \
-    \  outs.resize(n);\n        subdp.resize(n);\n        in.resize(n), up.resize(n);\n\
-    \        int tnow = 0;\n        dfs(root, -1, tnow);\n        return subdp;\n\
-    \    }\n    vector<V> reroot() {\n        reverse_edge.resize(n);\n        reverse_edge[root]\
-    \ = e();\n        reverse_dp.resize(n);\n        answers.resize(n);\n        bfs(root);\n\
-    \        return answers;\n    }\n    V get(int r, int v) {\n        if (r == v)\
-    \ return answers[r];\n        if (!(in[v] < in[r] && up[r] <= up[v])) return subdp[v];\n\
-    \        int le = 0, ri = outs[v].size();\n        while (ri - le > 1) {\n   \
-    \         int md = (le + ri) / 2;\n            if (in[es[v][md].to] <= in[r])\n\
-    \                le = md;\n            else\n                ri = md;\n      \
-    \  }\n        return reverse_dp[es[v][le].to];\n    }\n    const vector<edge>\
-    \ &operator[](int idx) const {\n        return es[idx];\n    }\n\n  private:\n\
-    \    int n, root;\n    vector<vector<edge>> es;\n    vector<vector<E>> outs;\n\
-    \    vector<E> reverse_edge;\n    vector<V> subdp, reverse_dp, answers;\n    vector<int>\
-    \ in, up;\n    void dfs(int v, int p, int &t) {\n        E val = e();\n      \
-    \  in[v] = t++;\n        for (auto &u : es[v]) {\n            if (u.to == p &&\
-    \ u.to != es[v].back().to) swap(u, es[v].back());\n            if (u.to == p)\
-    \ continue;\n            dfs(u.to, v, t);\n            E nval = put_edge(subdp[u.to],\
-    \ u.idx);\n            outs[v].emplace_back(nval);\n            val = merge(val,\
-    \ nval);\n        }\n        subdp[v] = put_vertex(val, v);\n        up[v] = t;\n\
-    \    }\n    void bfs(int v) {\n        int siz = outs[v].size();\n        vector<E>\
-    \ lui(siz + 1), rui(siz + 1);\n        lui[0] = e(), rui[siz] = e();\n       \
-    \ for (int i = 0; i < siz; i++) lui[i + 1] = merge(lui[i], outs[v][i]);\n    \
-    \    for (int i = siz - 1; i >= 0; i--) rui[i] = merge(outs[v][i], rui[i + 1]);\n\
-    \        for (int i = 0; i < siz; i++) {\n            reverse_dp[es[v][i].to]\
-    \ = put_vertex(merge(merge(lui[i], rui[i + 1]), reverse_edge[v]), v);\n      \
-    \      reverse_edge[es[v][i].to] = put_edge(reverse_dp[es[v][i].to], es[v][i].xdi);\n\
-    \            bfs(es[v][i].to);\n        }\n        answers[v] = put_vertex(merge(lui[siz],\
-    \ reverse_edge[v]), v);\n    }\n};\n\n}  // namespace noya2\n"
-  code: "#pragma once\n\n#include \"../template/template.hpp\"\n\nnamespace noya2\
-    \ {\n\ntemplate <class E, class V, E (*merge)(E, E), E (*e)(), E (*put_edge)(V,\
-    \ int), V (*put_vertex)(E, int)>\nstruct RerootingDP {\n    struct edge {\n  \
-    \      int to, idx, xdi;\n    };\n    RerootingDP(int _n = 0) : n(_n) {\n    \
-    \    es.resize(n);\n    }\n    void add_edge(int u, int v, int idx1, int idx2)\
-    \ {\n        es[u].push_back({v, idx1, idx2});\n        es[v].push_back({u, idx2,\
-    \ idx1});\n    }\n    vector<V> build(int v = 0) {\n        root = v;\n      \
-    \  outs.resize(n);\n        subdp.resize(n);\n        in.resize(n), up.resize(n);\n\
-    \        int tnow = 0;\n        dfs(root, -1, tnow);\n        return subdp;\n\
-    \    }\n    vector<V> reroot() {\n        reverse_edge.resize(n);\n        reverse_edge[root]\
-    \ = e();\n        reverse_dp.resize(n);\n        answers.resize(n);\n        bfs(root);\n\
-    \        return answers;\n    }\n    V get(int r, int v) {\n        if (r == v)\
-    \ return answers[r];\n        if (!(in[v] < in[r] && up[r] <= up[v])) return subdp[v];\n\
-    \        int le = 0, ri = outs[v].size();\n        while (ri - le > 1) {\n   \
-    \         int md = (le + ri) / 2;\n            if (in[es[v][md].to] <= in[r])\n\
-    \                le = md;\n            else\n                ri = md;\n      \
-    \  }\n        return reverse_dp[es[v][le].to];\n    }\n    const vector<edge>\
-    \ &operator[](int idx) const {\n        return es[idx];\n    }\n\n  private:\n\
-    \    int n, root;\n    vector<vector<edge>> es;\n    vector<vector<E>> outs;\n\
-    \    vector<E> reverse_edge;\n    vector<V> subdp, reverse_dp, answers;\n    vector<int>\
-    \ in, up;\n    void dfs(int v, int p, int &t) {\n        E val = e();\n      \
-    \  in[v] = t++;\n        for (auto &u : es[v]) {\n            if (u.to == p &&\
-    \ u.to != es[v].back().to) swap(u, es[v].back());\n            if (u.to == p)\
-    \ continue;\n            dfs(u.to, v, t);\n            E nval = put_edge(subdp[u.to],\
-    \ u.idx);\n            outs[v].emplace_back(nval);\n            val = merge(val,\
-    \ nval);\n        }\n        subdp[v] = put_vertex(val, v);\n        up[v] = t;\n\
-    \    }\n    void bfs(int v) {\n        int siz = outs[v].size();\n        vector<E>\
-    \ lui(siz + 1), rui(siz + 1);\n        lui[0] = e(), rui[siz] = e();\n       \
-    \ for (int i = 0; i < siz; i++) lui[i + 1] = merge(lui[i], outs[v][i]);\n    \
-    \    for (int i = siz - 1; i >= 0; i--) rui[i] = merge(outs[v][i], rui[i + 1]);\n\
-    \        for (int i = 0; i < siz; i++) {\n            reverse_dp[es[v][i].to]\
-    \ = put_vertex(merge(merge(lui[i], rui[i + 1]), reverse_edge[v]), v);\n      \
-    \      reverse_edge[es[v][i].to] = put_edge(reverse_dp[es[v][i].to], es[v][i].xdi);\n\
-    \            bfs(es[v][i].to);\n        }\n        answers[v] = put_vertex(merge(lui[siz],\
-    \ reverse_edge[v]), v);\n    }\n};\n\n}  // namespace noya2\n"
-  dependsOn:
-  - template/template.hpp
-  - template/inout_old.hpp
-  - template/const.hpp
-  - template/utils.hpp
+  bundledCode: "#line 2 \"tree/RerootingDP.hpp\"\n\n#include <vector>\n#include <utility>\n\
+    #include <ranges>\n\nnamespace noya2 {\n\n// g[from] contains outgoing edges (to,\
+    \ edgeid(from, to))\n// (E, op, e) is commutative monoid\n// ~edgeid(from, to)\
+    \ == edgeid(to, from)\n// return calculator of dp(r, v)\ntemplate<class V, class\
+    \ E>\nauto rerootingdp(auto op, E e, auto put_edge, auto put_vertex, const std::vector<std::vector<std::pair<int,\
+    \ int>>> &g, int root = 0){\n    struct dp {\n        // dp(r, v) : root is r,\
+    \ dp of subtree v\n        // ans[v]  = dp(v, v)\n        // from[v] = dp(v, par(v))\n\
+    \        // to[v]   = dp(par(v), v)\n        // from[root] and to[root] is undefined\n\
+    \        std::vector<V> ans, from, to;\n        std::vector<int> down, up;\n \
+    \       std::vector<std::vector<int>> childs;\n        bool is_in_subtree(int\
+    \ r, int v){\n            return down[r] < down[v] && up[v] <= up[r];\n      \
+    \  }\n        V operator()(int r, int v){\n            if (r == v) return ans[v];\n\
+    \            if (!is_in_subtree(v, r)) return to[v];\n            int le = 0,\
+    \ ri = childs[v].size();\n            while (ri - le > 1){\n                int\
+    \ md = (le + ri) / 2;\n                if (down[childs[v][md]] <= down[r]){\n\
+    \                    le = md;\n                }\n                else {\n   \
+    \                 ri = md;\n                }\n            }\n            return\
+    \ from[childs[v][le]];\n        }\n    };\n    int n = g.size();\n    std::vector<E>\
+    \ from(n, e), to(n, e);\n    std::vector<V> dp_to(n);\n    std::vector<std::vector<int>>\
+    \ childs(n);\n    std::vector<int> down(n), up(n);\n    int t = 0;\n    auto dfs\
+    \ = [&](auto sfs, int v, int f) -> void {\n        down[v] = t++;\n        childs[v].reserve(g[v].size());\n\
+    \        for (auto [c, eid] : g[v]){\n            if (c == f) continue;\n    \
+    \        childs[v].emplace_back(c);\n            sfs(sfs, c, v);\n           \
+    \ dp_to[c] = put_vertex(to[c], c);\n            to[c] = put_edge(dp_to[c], eid);\n\
+    \            to[v] = op(to[v], to[c]);\n        }\n        up[v] = t;\n    };\n\
+    \    dfs(dfs, root, -1);\n    std::vector<V> dp_ans(n), dp_from(n);\n    std::vector<E>\
+    \ inner(n);\n    auto bfs = [&](auto sfs, int v, int f) -> void {\n        int\
+    \ sz = g[v].size();\n        inner[sz] = e;\n        int i = sz-1;\n        for\
+    \ (auto [c, eid] : g[v] | std::views::reverse){\n            if (c == f) continue;\n\
+    \            inner[i] = op(inner[i+1], to[c]);\n            i--;\n        }\n\
+    \        dp_ans[v] = put_vertex(op(inner[++i], from[v]), v);\n        E rui =\
+    \ e;\n        for (auto [c, eid] : g[v]){\n            if (c == f) continue;\n\
+    \            dp_from[c] = put_vertex(op(op(rui, inner[++i]), from[v]), v);\n \
+    \           from[c] = put_edge(dp_from[c], ~eid);\n            rui = op(rui, to[c]);\n\
+    \        }\n        for (auto [c, eid] : g[v]){\n            if (c == f) continue;\n\
+    \            sfs(sfs, c, v);\n        }\n    };\n    bfs(bfs, root, -1);\n   \
+    \ return dp{dp_ans, dp_from, dp_to, down, up, childs};\n}\n\n}  // namespace noya2\n"
+  code: "#pragma once\n\n#include <vector>\n#include <utility>\n#include <ranges>\n\
+    \nnamespace noya2 {\n\n// g[from] contains outgoing edges (to, edgeid(from, to))\n\
+    // (E, op, e) is commutative monoid\n// ~edgeid(from, to) == edgeid(to, from)\n\
+    // return calculator of dp(r, v)\ntemplate<class V, class E>\nauto rerootingdp(auto\
+    \ op, E e, auto put_edge, auto put_vertex, const std::vector<std::vector<std::pair<int,\
+    \ int>>> &g, int root = 0){\n    struct dp {\n        // dp(r, v) : root is r,\
+    \ dp of subtree v\n        // ans[v]  = dp(v, v)\n        // from[v] = dp(v, par(v))\n\
+    \        // to[v]   = dp(par(v), v)\n        // from[root] and to[root] is undefined\n\
+    \        std::vector<V> ans, from, to;\n        std::vector<int> down, up;\n \
+    \       std::vector<std::vector<int>> childs;\n        bool is_in_subtree(int\
+    \ r, int v){\n            return down[r] < down[v] && up[v] <= up[r];\n      \
+    \  }\n        V operator()(int r, int v){\n            if (r == v) return ans[v];\n\
+    \            if (!is_in_subtree(v, r)) return to[v];\n            int le = 0,\
+    \ ri = childs[v].size();\n            while (ri - le > 1){\n                int\
+    \ md = (le + ri) / 2;\n                if (down[childs[v][md]] <= down[r]){\n\
+    \                    le = md;\n                }\n                else {\n   \
+    \                 ri = md;\n                }\n            }\n            return\
+    \ from[childs[v][le]];\n        }\n    };\n    int n = g.size();\n    std::vector<E>\
+    \ from(n, e), to(n, e);\n    std::vector<V> dp_to(n);\n    std::vector<std::vector<int>>\
+    \ childs(n);\n    std::vector<int> down(n), up(n);\n    int t = 0;\n    auto dfs\
+    \ = [&](auto sfs, int v, int f) -> void {\n        down[v] = t++;\n        childs[v].reserve(g[v].size());\n\
+    \        for (auto [c, eid] : g[v]){\n            if (c == f) continue;\n    \
+    \        childs[v].emplace_back(c);\n            sfs(sfs, c, v);\n           \
+    \ dp_to[c] = put_vertex(to[c], c);\n            to[c] = put_edge(dp_to[c], eid);\n\
+    \            to[v] = op(to[v], to[c]);\n        }\n        up[v] = t;\n    };\n\
+    \    dfs(dfs, root, -1);\n    std::vector<V> dp_ans(n), dp_from(n);\n    std::vector<E>\
+    \ inner(n);\n    auto bfs = [&](auto sfs, int v, int f) -> void {\n        int\
+    \ sz = g[v].size();\n        inner[sz] = e;\n        int i = sz-1;\n        for\
+    \ (auto [c, eid] : g[v] | std::views::reverse){\n            if (c == f) continue;\n\
+    \            inner[i] = op(inner[i+1], to[c]);\n            i--;\n        }\n\
+    \        dp_ans[v] = put_vertex(op(inner[++i], from[v]), v);\n        E rui =\
+    \ e;\n        for (auto [c, eid] : g[v]){\n            if (c == f) continue;\n\
+    \            dp_from[c] = put_vertex(op(op(rui, inner[++i]), from[v]), v);\n \
+    \           from[c] = put_edge(dp_from[c], ~eid);\n            rui = op(rui, to[c]);\n\
+    \        }\n        for (auto [c, eid] : g[v]){\n            if (c == f) continue;\n\
+    \            sfs(sfs, c, v);\n        }\n    };\n    bfs(bfs, root, -1);\n   \
+    \ return dp{dp_ans, dp_from, dp_to, down, up, childs};\n}\n\n}  // namespace noya2\n"
+  dependsOn: []
   isVerificationFile: false
   path: tree/RerootingDP.hpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/tree/Rerooting_DP.test.cpp
+  timestamp: '2024-10-02 20:01:43+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: tree/RerootingDP.hpp
 layout: document
 title: Rerooting DP
@@ -167,162 +98,119 @@ title: Rerooting DP
 
 木に対して全方位木DPを行います。次の問題を解きます。
 
-> 頂点 $0,1,\dots,n-1$ からなる $n$ 頂点の木 $T$ が与えられます。
-> 有向グラフ $G=(\mathbb{V},\mathbb{E})$ は以下を満たします。
-> - $\mathbb{V}=\lbrace 0,1,\dots, n-1 \rbrace$ である。
-> - $\mathbb{E}\subset \mathbb{V}\times \mathbb{V}$ である。辺 $(a,b)$ は頂点 $a$ から頂点 $b$ への**有向辺**。 $T$ において頂点 $a,b$ の間に辺が張られているとき, またそのときに限り $(a,b),(b,a)\in \mathbb{E}$ である。
+> 頂点 $0,1,\dots,n-1$ からなる $n$ 頂点の木 $T$ が与えられます。木の辺は双方向に有向辺が張られていると考え、辺には識別番号がついているものとします。**ただし、実装の簡単のため、辺の識別番号を `i` とするとき逆辺にの識別番号は `~i` であるとします。**
 > 
-> また、各有向辺には整数値の番号が割り当てられていて、 $\mathrm{idx}:\mathbb{E}\to \mathbb{Z}$ によって定められます。ここで $\mathbb{E}_\mathrm{idx}=\lbrace \mathrm{idx}(e)\ \mid\ e\in \mathbb{E} \rbrace$ としておきます。
+> 木の入力を受け取る C++ 疑似コード を以下に示します。
+> ```cpp
+> int n; std::cin >> n;
+> std::vector<std::vector<std::pair<int, int>>> g(n);
+> for (int i = 0; i < n-1; i++){
+>     int u, v; std::cin >> u >> v;
+>     g[u].emplace_back(v, i);
+>     g[v].emplace_back(u, ~i);
+> }
+> ```
+>
+> 計算対象のデータの値の集合を $V$ 、マージのための中間データの値の集合を $E$ とします。また、頂点番号の集合を $\mathbb{V}$ 、識別番号の集合を $\mathbb{I}$ とします。
 > 
-> **可換**モノイド $(E,\oplus : E\times E\to E,e\in E)$ と集合 $V$ および $\mathrm{put \_ edge}:V\times \mathbb{E}_\mathrm{idx}\to E,\ \mathrm{put \_ vertex}:E\times \mathbb{V}\to V$ が与えられます。次の擬似コードに従って計算される値 <code>dfs(0,0), dfs(1,1),...,dfs(n-1,n-1)</code> を求めてください。ただし、頂点 $r$ を根と見たときの頂点 $v$ の子の頂点の集合を $\mathrm{child}(r,v)$ とします。
->```
->V dfs(vertex r, vertex v){
->    E prod = e();
->    for ( (v, c) in E, c in child(r,v) ){
->        prod = merge(prod, put_edge(dfs(r,c),idx(v,c)));
->    }
->    return put_vertex(prod, v);
->}
->```
+> **可換**モノイド $(E,\text{op} : E\times E\to E,e\in E)$ と集合 $V$ および $\mathrm{put \_ edge}:V\times \mathbb{I}\to E,\ \mathrm{put \_ vertex}:E\times \mathbb{V}\to V$ が与えられます。次の C++ 擬似コードに従って計算される値 <code>dfs(0, 0), dfs(1, 1),...,dfs(n-1, n-1)</code> を求めてください。
+> ```cpp
+> V dfs(int r, int v, int parv = -1){
+>     E prod = e;
+>     for (auto [c, i] : g[v]){
+>         if (c == parv) continue;
+>         prod = op(prod, put_edge(dfs(r, c, v), i));
+>     }
+>     return put_vertex(prod, v);
+> }
+> ```
 
 この問題を時間計算量 $\mathrm{O}(n)$ で解くことができます。
 
 また、このライブラリはオラクルとして <code>merge, e, put_edge, put_vertex</code> を使用しますが、これらが定数時間で動くものと仮定したときの計算量を記述します。オラクル内部の計算量が $\mathrm{O}(f(n))$ である場合はすべての計算量が $\mathrm{O}(f(n))$ 倍となります。
 
-### コンストラクタ
+### 関数
 
 ```
-RerootingDP<E, V, merge, e, put_edge, put_vertex> g(int n);
+auto dp = rerootingdp<V, E>(op, e, put_edge, put_vertex, g, root = 0);
 ```
 
-- 可換モノイドの型 <code>E</code>
-- DPの値の型 <code>V</code>
-- $\oplus : E\times E\to E$ を計算する関数 <code>E merge(E a, E b)</code>
-- $e$ を返す関数 <code>E e()</code>
-- 辺番号 $i$ の辺を付加する関数 <code>E put_edge(V x, int i)</code>
-- 頂点番号 $v$ の頂点を付加する関数 <code>V put_vertex(E x, int v)</code>
+- 計算対象のデータの値の型 `V`
+- 中間データの値の型（可換モノイドの型）`E`
+- $\text{op} : E\times E\to E$ を計算する関数 `E op(E a, E b)`
+- モノイドの単位元である型 `E` の値 `e`
+- 識別番号 $i$ の辺を付加する関数 `E put_edge(V x, int i)`
+- 頂点番号 $v$ の頂点を付加する関数 `V put_vertex(E x, int v)`
+- 木を有向グラフで表した二次元配列 `std::vector<std::vector<std::pair<int, int>>> g`
+- 木を根付き木にするときの根 `int root = 0` （デフォルトで $0$ ）
 
 を定義する必要があります。
 
-- 頂点数 <code>n</code> の木を作る準備をします。<code>n</code> 頂点 $0$ 辺のグラフを作ります。
-- デフォルトでは <code>n = 0</code> です。
-  
+正確な言い方ではないですが、 `op,put_edge,put_vertex` は関数のように振る舞うことができれば良いです。具体的には、次のようなものを指定できます。
+
+- グローバルに定義した関数（関数ポインタ）
+- ラムダ式
+- 関数オブジェクト（ `oprator()` を実装している ）
+
 #### 制約
 
-- $0\le n\le 10^8$
+- $1\le n\le 10^8$ ( assert が入っているわけではありません)
 
 #### 計算量
 - $\mathrm{O}(n)$
 
-### add_edge
+### 返り値
 
-```
-void g.add_edge(int u, int v, int idx1, int idx2)
-```
+返り値の型は `rerooting_dp<V, E>` 内で定義される `dp` です。 `auto` で受け取ってください。
 
-- 頂点 <code>u</code> から頂点 <code>v</code> への辺番号が <code>idx1</code> である辺を追加します。
-- 頂点 <code>v</code> から頂点 <code>u</code> への辺番号が <code>idx2</code> である辺を追加します。
-  
-#### 制約
+`dp` は木DPの結果を返す関数オブジェクトとして機能します。`dp(r, v)` として、疑似コード中の `dfs(r, r)` を計算する過程で `dfs(r, v, parv)` として返る値を得ることができます。
 
-- $0\le u,v\lt n$
-- ちょうど $n-1$ 回 <code>add_edge</code> を呼んでできるグラフは連結（どの $2$ 頂点間にもパスが存在する）であり、その後 <code>add_edge</code> は呼ばれない。
-
-#### 計算量
-
-- ならし $\mathrm{O}(1)$
-
-### build
-
-```
-vector<V> g.build(int r)
+```cpp
+auto dp = rerootingdp<V, E>(op, e, put_edge, put_vertex, g);
+V dprv = dp(r, v);
 ```
 
-- 長さ $n$ の配列 <code>subdp</code> を返します。<code>subdp[v]</code> は上述した問題における <code>dfs(r,r)</code> を計算する過程で `dfs` が返す値 `dfs(r,v)` です。
-- 頂点 `r` を根とする木DPのすべての結果を取得することができます。
-  
-#### 制約
+すなわち、 `dp` は $r$ を根としたときの部分木 $v$ の木DPの値を返す関数です。この関数は $v$ の次数を $d$ として $\mathrm{O}(\log d)$ 時間で動作します。ただし $r=v$ のときは $\Theta(1)$ 時間で動作します。
 
-- <code>build</code> を呼ぶ前にちょうど $n-1$ 回 <code>add_edge</code> を呼んでいる。
-- <code>build</code> は $1$ 回までしか呼ばれない。
-
-#### 計算量
-
-- $\mathrm{O}(n)$
-
-### reroot
-
-```
-vector<V> g.reroot()
-```
-
-- 長さ $n$ の配列 <code>answers</code> を返します。<code>answers[v]</code> は上述した問題における <code>dfs(v,v)</code> です。
-  
-#### 制約
-
-- <code>reroot</code> を呼ぶ前にちょうど $1$ 回 <code>bulid</code> を呼んでいる。
-- <code>reroot</code> は $1$ 回までしか呼ばれない。
-
-#### 計算量
-
-- $\mathrm{O}(n)$
-  
-### get
-
-```
-V get g.get(int r, int v)
-```
-
-- 上述した問題における <code>dfs(r,r)</code> を計算する過程で `dfs` が返す値 `dfs(r,v)` を返します。
-- 頂点 `r` を根とする木DPをしたときの頂点 `v` の部分木に対するDPの値を得ることができます。
-
-#### 制約
-
-- `get` を呼ぶ前にちょうど $1$ 回 `reroot` を呼んでいる。
-
-#### 計算量
-
-- $\mathrm{O}(\log n)$
   
 ### 使用例
 
 AC code of https://atcoder.jp/contests/dp/tasks/dp_v
 
-submission https://atcoder.jp/contests/dp/submissions/36003936
+submission https://atcoder.jp/contests/dp/submissions/57270169
 
 ``` cpp
 #include<bits/stdc++.h>
 #include<atcoder/modint>
-using namespace std;
-using mint = atcoder::modint;
-
-#include"RerootingDP"
-
-mint merge(mint a, mint b){
-    return a * b;
-}
-mint e(){
-    return mint(1);
-}
-mint put_edge(mint v, int i){
-    return v + 1;
-}
-mint put_vertex(mint e, int v){
-    return e;
-}
+#include"rerootingdp.hpp"
 
 int main(){
-    int n, m; cin >> n >> m;
+    int n, m; std::cin >> n >> m;
+    using mint = atcoder::modint;
     mint::set_mod(m);
-    RerootingDP<mint,mint,merge,e,put_edge,put_vertex> g(n);
+    std::vector<std::vector<std::pair<int,int>>> g(n);
     for (int i = 0; i < n-1; i++){
-        int u, v; cin >> u >> v;
-        g.add_edge(u-1,v-1,i,i);
+        int u, v; std::cin >> u >> v; u--, v--;
+        g[u].emplace_back(v, i);
+        g[v].emplace_back(u, ~i);
     }
-    g.build();
-    for (auto ans : g.reroot()) cout << ans.val() << endl;
+    auto op = [&](mint a, mint b){
+        return a * b;
+    };
+    auto pute = [&](mint a, int){
+        return a + 1;
+    };
+    auto putv = [&](mint a, int){
+        return a;
+    };
+    auto calc = rerootingdp<mint,mint>(op,1,pute,putv,g);
+    for (int v = 0; v < n; v++){
+        std::cout << calc.dp(v, v).val() << '\n';
+    }
 }
 ```
+
+計算結果が木の形状のみに依存し、特に頂点や辺の重みを考慮しないものである場合、 `put_edge` や `put_vertex` の番号を表す引数は使用しないことになります。その場合でも引数として受け取るようにする必要がありますが、使わないことを明示する場合は、実装例のように型のみを書いて変数名を書かないという方法があります。
 
 ## 設計の意図
 
@@ -339,5 +227,3 @@ $$
 - $\displaystyle f(u,v)=\mathrm{put \_ vertex}\left(\bigoplus_{c\in \mathrm{child}(u,v)} \mathrm{put \_ edge}(f(v,c),\mathrm{idx}(v,c)) ,\ v\right)$
 
 ライブラリ内で辺に重み <code>E e</code> 、頂点に重み <code>V v</code> を持つような設計もあり得ると思ったのですが、できるだけライブラリの外側で問題依存パートを扱いたいのと、 <code>put_vertex</code> には単位元のようなものを要求しないため初期値の設定に困ったので、頂点・辺番号を引数に渡す関数を要求するライブラリの設計にしました。
-
-(追記) 全方位木DPが扱える根付き木は全域木だけではなく、$3n-2$ 個ある全ての根付き部分木である。その全ての部分木に対応するDPの結果を返す `get` を実装した。

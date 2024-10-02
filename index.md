@@ -269,7 +269,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/Mo_on_Tree.hpp
       title: Mo on Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: tree/RerootingDP.hpp
       title: Rerooting DP
     - icon: ':heavy_check_mark:'
@@ -482,7 +482,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Lowest_Common_Ancestor.test.cpp
       title: test/tree/Lowest_Common_Ancestor.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Rerooting_DP.test.cpp
       title: test/tree/Rerooting_DP.test.cpp
     - icon: ':heavy_check_mark:'
