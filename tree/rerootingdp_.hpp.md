@@ -8,7 +8,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"tree/RerootingDP.hpp\"\n\n#include <vector>\n#include <utility>\n\
+  bundledCode: "#line 2 \"tree/rerootingdp_.hpp\"\n\n#include <vector>\n#include <utility>\n\
     #include <ranges>\n\nnamespace noya2 {\n\n// g[from] contains outgoing edges (to,\
     \ edgeid(from, to))\n// (E, op, e) is commutative monoid\n// ~edgeid(from, to)\
     \ == edgeid(to, from)\n// return calculator of dp(r, v)\ntemplate<class V, class\
@@ -81,18 +81,18 @@ data:
     \           from[c] = put_edge(dp_from[c], ~eid);\n            rui = op(rui, to[c]);\n\
     \        }\n        for (auto [c, eid] : g[v]){\n            if (c == f) continue;\n\
     \            sfs(sfs, c, v);\n        }\n    };\n    bfs(bfs, root, -1);\n   \
-    \ return dp{dp_ans, dp_from, dp_to, down, up, childs};\n}\n\n}  // namespace noya2\n"
+    \ return dp{dp_ans, dp_from, dp_to, down, up, childs};\n}\n\n}  // namespace noya2"
   dependsOn: []
   isVerificationFile: false
-  path: tree/RerootingDP.hpp
+  path: tree/rerootingdp_.hpp
   requiredBy: []
-  timestamp: '2024-10-02 20:01:43+09:00'
+  timestamp: '2024-10-02 20:20:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: tree/RerootingDP.hpp
+documentation_of: tree/rerootingdp_.hpp
 layout: document
 redirect_from:
-- /library/tree/RerootingDP.hpp
-- /library/tree/RerootingDP.hpp.html
-title: tree/RerootingDP.hpp
+- /library/tree/rerootingdp_.hpp
+- /library/tree/rerootingdp_.hpp.html
+title: tree/rerootingdp_.hpp
 ---
