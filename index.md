@@ -278,9 +278,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
       title: "\u5168\u90E8\u8F09\u305B\u6728"
-    - icon: ':warning:'
-      path: tree/rerootingdp_.hpp
-      title: tree/rerootingdp_.hpp
+    - icon: ':heavy_check_mark:'
+      path: tree/rerootingdp.hpp
+      title: Rerooting DP
     - icon: ':heavy_check_mark:'
       path: tree/simple_tree.hpp
       title: tree/simple_tree.hpp
@@ -482,7 +482,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Lowest_Common_Ancestor.test.cpp
       title: test/tree/Lowest_Common_Ancestor.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Rerooting_DP.test.cpp
       title: test/tree/Rerooting_DP.test.cpp
     - icon: ':heavy_check_mark:'

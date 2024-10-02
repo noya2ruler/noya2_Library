@@ -265,6 +265,9 @@ data:
     path: test/tree/Lowest_Common_Ancestor.test.cpp
     title: test/tree/Lowest_Common_Ancestor.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/Rerooting_DP.test.cpp
+    title: test/tree/Rerooting_DP.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter.test.cpp
     title: test/tree/Tree_Diameter.test.cpp
   - icon: ':heavy_check_mark:'
@@ -448,6 +451,7 @@ data:
   - test/tree/Tree_Diameter_hld.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/Rerooting_DP.test.cpp
   - test/tree/Jump_on_Tree_hld.test.cpp
   - test/tree/Lowest_Common_Ancestor.test.cpp
   - test/tree/FrequencyTableofTreeDistance.test.cpp
