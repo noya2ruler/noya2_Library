@@ -36,7 +36,7 @@ documentation_of: //tree/rerootingdp.hpp
 
 この問題を時間計算量 $\mathrm{O}(n)$ で解くことができます。
 
-また、このライブラリはオラクルとして <code>merge, e, put_edge, put_vertex</code> を使用しますが、これらが定数時間で動くものと仮定したときの計算量を記述します。オラクル内部の計算量が $\mathrm{O}(f(n))$ である場合はすべての計算量が $\mathrm{O}(f(n))$ 倍となります。
+また、このライブラリはオラクルとして `op, put_edge, put_vertex` を使用しますが、これらが定数時間で動くものと仮定したときの計算量を記述します。オラクル内部の計算量が $\mathrm{O}(f(n))$ である場合はすべての計算量が $\mathrm{O}(f(n))$ 倍となります。
 
 ### 関数
 
