@@ -271,7 +271,7 @@ data:
       title: Mo on Tree
     - icon: ':warning:'
       path: tree/RerootingDP.hpp
-      title: Rerooting DP
+      title: tree/RerootingDP.hpp
     - icon: ':heavy_check_mark:'
       path: tree/Tree_core.hpp
       title: tree/Tree_core.hpp
