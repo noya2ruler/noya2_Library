@@ -235,6 +235,9 @@ data:
     path: test/math/CountingEulerianCircuits.test.cpp
     title: test/math/CountingEulerianCircuits.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/CountingPrimes.test.cpp
+    title: test/math/CountingPrimes.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
@@ -428,6 +431,7 @@ data:
   - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - test/fps998244353/convolution_998244353.test.cpp
   - test/fps998244353/multipoint_evaluation_998244353.test.cpp
+  - test/math/CountingPrimes.test.cpp
   - test/math/Determinant_of_Matrix.test.cpp
   - test/math/CountingEulerianCircuits.test.cpp
   - test/math/Lcm_Convolution.test.cpp

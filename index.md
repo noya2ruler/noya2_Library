@@ -180,7 +180,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/prime_64bit.hpp
       title: math/prime_64bit.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/prime_count.hpp
       title: math/prime_count.hpp
     - icon: ':heavy_check_mark:'
@@ -443,6 +443,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/CountingEulerianCircuits.test.cpp
       title: test/math/CountingEulerianCircuits.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/CountingPrimes.test.cpp
+      title: test/math/CountingPrimes.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Determinant_of_Matrix.test.cpp
       title: test/math/Determinant_of_Matrix.test.cpp
