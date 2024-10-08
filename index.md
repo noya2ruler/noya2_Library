@@ -174,6 +174,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
+    - icon: ':warning:'
+      path: math/multiplicative_function.hpp
+      title: math/multiplicative_function.hpp
     - icon: ':heavy_check_mark:'
       path: math/prime.hpp
       title: math/prime.hpp
