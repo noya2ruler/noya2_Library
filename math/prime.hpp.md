@@ -127,6 +127,9 @@ data:
     path: test/math/Lcm_Convolution.test.cpp
     title: test/math/Lcm_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/SumofMultiplicativeFunction.test.cpp
+    title: test/math/SumofMultiplicativeFunction.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
   _isVerificationFailed: false
@@ -244,6 +247,7 @@ data:
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Gcd_Convolution.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - test/math/SumofMultiplicativeFunction.test.cpp
   - test/tree/FrequencyTableofTreeDistance.test.cpp
   - test/fps/convolution.test.cpp
   - test/fps/Convolution1000000007.test.cpp

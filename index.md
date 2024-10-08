@@ -174,7 +174,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/multiplicative_function.hpp
       title: math/multiplicative_function.hpp
     - icon: ':heavy_check_mark:'
@@ -464,6 +464,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Floor_of_Linear.test.cpp
       title: test/math/Sum_of_Floor_of_Linear.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/SumofMultiplicativeFunction.test.cpp
+      title: test/math/SumofMultiplicativeFunction.test.cpp
   - name: test/misc
     pages:
     - icon: ':heavy_check_mark:'

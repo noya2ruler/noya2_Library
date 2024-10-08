@@ -253,6 +253,9 @@ data:
     path: test/math/Sum_of_Floor_of_Linear.test.cpp
     title: test/math/Sum_of_Floor_of_Linear.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/SumofMultiplicativeFunction.test.cpp
+    title: test/math/SumofMultiplicativeFunction.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/misc/LongestIncreasingSubsequence.test.cpp
     title: test/misc/LongestIncreasingSubsequence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -440,6 +443,7 @@ data:
   - test/math/Gcd_Convolution.test.cpp
   - test/math/Sum_of_Floor_of_Linear.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - test/math/SumofMultiplicativeFunction.test.cpp
   - test/misc/StaticRangeModeQuery.test.cpp
   - test/misc/LongestIncreasingSubsequence.test.cpp
   - test/tree/Tree_Diameter_hld.test.cpp
