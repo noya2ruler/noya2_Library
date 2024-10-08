@@ -180,6 +180,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/prime_64bit.hpp
       title: math/prime_64bit.hpp
+    - icon: ':warning:'
+      path: math/prime_count.hpp
+      title: math/prime_count.hpp
     - icon: ':heavy_check_mark:'
       path: math/sieve.hpp
       title: math/sieve.hpp
