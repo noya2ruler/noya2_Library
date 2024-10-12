@@ -116,7 +116,7 @@ data:
     \n\nnamespace noya2 {\n\nstruct unweighted {};\n\n} // namespace noya2\n#line\
     \ 6 \"graph/graph_query.hpp\"\n\n#line 12 \"graph/graph_query.hpp\"\n\nnamespace\
     \ noya2 {\n\ntemplate<typename Cost>\nstruct graph {\n    int n;\n    internal::csr<std::pair<int,Cost>>\
-    \ g;\n    Cost dist_inf = std::numeric_limits<Cost>::max() / 2;\n    graph (int\
+    \ g;\n    Cost dist_inf = std::numeric_limits<Cost>::max() / 3;\n    graph (int\
     \ _n = 0) : n(_n), g(_n) {}\n    graph (int _n, int _m) : n(_n), g(_n,_m) {}\n\
     \    // \u6709\u5411\u8FBA\u3092\u8FFD\u52A0 (\u7121\u5411\u8FBA\u3067\u306F\u306A\
     \u3044\u3053\u3068\u306B\u6CE8\u610F\uFF01)\n    int add_edge(int u, int v, Cost\
@@ -268,7 +268,7 @@ data:
   isVerificationFile: true
   path: test/graph/Shortest_Path2.test.cpp
   requiredBy: []
-  timestamp: '2024-07-20 01:02:12+09:00'
+  timestamp: '2024-10-13 00:19:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Shortest_Path2.test.cpp
