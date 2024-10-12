@@ -16,7 +16,7 @@ template<typename Cost>
 struct graph {
     int n;
     internal::csr<std::pair<int,Cost>> g;
-    Cost dist_inf = std::numeric_limits<Cost>::max() / 2;
+    Cost dist_inf = std::numeric_limits<Cost>::max() / 3;
     graph (int _n = 0) : n(_n), g(_n) {}
     graph (int _n, int _m) : n(_n), g(_n,_m) {}
     // 有向辺を追加 (無向辺ではないことに注意！)
