@@ -11,7 +11,7 @@ int op(int a, int b){
 int main(){
     int n, q; in(n,q);
     vector<int> a(n); in(a);
-    SparseTable<int,op> spt(a);
+    sparse_table<int,op> spt(a);
     while (q--){
         int l, r; cin >> l >> r;
         out(spt.get(l,r));

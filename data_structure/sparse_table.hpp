@@ -6,10 +6,10 @@
 namespace noya2{
 
 template<class S, S (*op)(S, S)>
-struct SparseTable{
+struct sparse_table {
     std::vector<std::vector<S>> table;
-    SparseTable () {}
-    SparseTable (const std::vector<S> &vec){
+    sparse_table () {}
+    sparse_table (const std::vector<S> &vec){
         int n = vec.size(), n2 = 0;
         while ((1<<n2) < n) n2++;
         table.resize(n2+1);
@@ -28,7 +28,7 @@ struct SparseTable{
     }
     // 単位元を要求しないので if (l >= r) return e() みたいなことをしていない、注意すること！！
     S get(int l, int r){
-        assert(r - l > 0);
+        assert(0 <= l && l < r && r <= (int)(table[0].size()));
         int lgs = 31 - __builtin_clz((unsigned int)(r-l));
         return op(table[lgs][l], table[lgs][r - (1 << lgs)]);
     }
