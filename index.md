@@ -197,6 +197,9 @@ data:
     - icon: ':warning:'
       path: misc/QMC.hpp
       title: misc/QMC.hpp
+    - icon: ':warning:'
+      path: misc/clamper.hpp
+      title: misc/clamper.hpp
     - icon: ':heavy_check_mark:'
       path: misc/concepts.hpp
       title: misc/concepts.hpp
