@@ -142,6 +142,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/graph_query.hpp
       title: graph/graph_query.hpp
+    - icon: ':warning:'
+      path: graph/grid.hpp
+      title: graph/grid.hpp
     - icon: ':heavy_check_mark:'
       path: graph/scc.hpp
       title: graph/scc.hpp
