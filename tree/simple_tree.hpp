@@ -1,7 +1,7 @@
 #pragma once
 
-#include"../template/template.hpp"
-#include"../data_structure/csr.hpp"
+#include <iostream>
+#include "../data_structure/csr.hpp"
 
 namespace noya2 {
 
@@ -38,8 +38,8 @@ struct simple_tree {
     auto operator[](int v){
         return g[v];
     }
-    int size() const {
-        return g.n;
+    size_t size() const {
+        return g.size();
     }
 };
 
