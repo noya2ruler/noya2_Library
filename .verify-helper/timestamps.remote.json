@@ -49,13 +49,10 @@
 "test/misc/LongestIncreasingSubsequence.test.cpp": "2024-07-23 15:26:05 +0900",
 "test/misc/StaticRangeModeQuery.test.cpp": "2024-09-20 13:54:30 +0900",
 "test/string/SuffixArray.test.cpp": "2024-07-20 18:15:07 +0900",
-"test/tree/FrequencyTableofTreeDistance.test.cpp": "2024-07-06 19:14:35 +0900",
-"test/tree/Jump_on_Tree.test.cpp": "2024-08-26 17:43:27 +0900",
 "test/tree/Jump_on_Tree_hld.test.cpp": "2024-07-01 23:39:10 +0900",
 "test/tree/Lowest_Common_Ancestor.test.cpp": "2024-07-01 23:39:10 +0900",
 "test/tree/Rerooting_DP.test.cpp": "2024-10-02 20:21:40 +0900",
 "test/tree/Tree_Diameter.test.cpp": "2024-07-01 23:39:10 +0900",
 "test/tree/Tree_Diameter_hld.test.cpp": "2024-07-01 23:39:10 +0900",
-"test/tree/Vertex_Add_Path_Sum.test.cpp": "2024-08-26 17:43:27 +0900",
 "test/tree/aoj_0489.test.cpp": "2024-07-01 23:39:10 +0900"
 }
