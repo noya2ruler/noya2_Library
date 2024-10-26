@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
   _extendedRequiredBy: []

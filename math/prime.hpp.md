@@ -44,10 +44,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps998244353/sample_point_shift.hpp
     title: fps998244353/sample_point_shift.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: utility/modint4724.hpp
     title: utility/modint4724.hpp
   - icon: ':warning:'
@@ -129,12 +129,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/SumofMultiplicativeFunction.test.cpp
     title: test/math/SumofMultiplicativeFunction.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/prime.hpp\"\n\n#include<utility>\nnamespace noya2 {\n\
@@ -227,7 +227,7 @@ data:
   - fps/fps_modint.hpp
   - fps/relaxed_convolution.hpp
   timestamp: '2024-04-22 12:03:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/CountingEulerianCircuits.test.cpp
   - test/math/SumofMultiplicativeFunction.test.cpp

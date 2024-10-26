@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -20,7 +20,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/dynamic_segment_tree.hpp
     title: data_structure/dynamic_segment_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -35,7 +35,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/range_tree.hpp
     title: data_structure/range_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
   - icon: ':warning:'
@@ -104,12 +104,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: tree/Tree_core.hpp
     title: tree/Tree_core.hpp
-  - icon: ':heavy_check_mark:'
-    path: tree/heavy_light_decomposition.hpp
-    title: "\u5168\u90E8\u8F09\u305B\u6728"
-  - icon: ':heavy_check_mark:'
-    path: tree/simple_tree.hpp
-    title: tree/simple_tree.hpp
   - icon: ':heavy_check_mark:'
     path: tree/tree_query_weighted.hpp
     title: tree/tree_query_weighted.hpp
@@ -264,10 +258,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/string/SuffixArray.test.cpp
     title: test/string/SuffixArray.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -285,15 +279,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter_hld.test.cpp
     title: test/tree/Tree_Diameter_hld.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
@@ -381,8 +375,6 @@ data:
   - string/rolling_hash.hpp
   - tree/tree_query_weighted.hpp
   - tree/Mo_on_Tree.hpp
-  - tree/simple_tree.hpp
-  - tree/heavy_light_decomposition.hpp
   - tree/Tree_core.hpp
   - misc/rng.hpp
   - misc/mo_algorithm.hpp
@@ -400,7 +392,7 @@ data:
   - fps/formal_power_series.hpp
   - fps/relaxed_convolution.hpp
   timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/CountingEulerianCircuits.test.cpp
   - test/math/SumofMultiplicativeFunction.test.cpp

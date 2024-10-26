@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/heavy_light_decomposition.hpp
     title: "\u5168\u90E8\u8F09\u305B\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
@@ -137,9 +137,9 @@ data:
     \ = 0; i < g.n - 1; i++){\n            int v; cin >> v;\n            v -= indexed;\n\
     \            add_edge(i + 1, v);\n        }\n    }\n    const auto operator[](int\
     \ v) const {\n        return g[v];\n    }\n    auto operator[](int v){\n     \
-    \   return g[v];\n    }\n    int size() const {\n        return g.n;\n    }\n\
-    };\n\n} // namespace noya2\n#line 4 \"tree/heavy_light_decomposition.hpp\"\n\n\
-    namespace noya2 {\n\nstruct hld_tree {\n    internal::csr<int> g;\n    hld_tree\
+    \   return g[v];\n    }\n    size_t size() const {\n        return g.size();\n\
+    \    }\n};\n\n} // namespace noya2\n#line 4 \"tree/heavy_light_decomposition.hpp\"\
+    \n\nnamespace noya2 {\n\nstruct hld_tree {\n    internal::csr<int> g;\n    hld_tree\
     \ () {}\n    hld_tree (int _n, int _root = 0) : g(_n,(_n - 1)*2), n(_n), root(_root)\
     \ {\n        if (_n == 1){\n            build();\n        }\n    }\n    hld_tree\
     \ (simple_tree _g, int _root = 0) : g(_g.g), n(_g.g.n), root(_root){\n       \
@@ -294,8 +294,8 @@ data:
   isVerificationFile: true
   path: test/tree/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-08-26 17:43:27+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-10-26 14:00:05+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/tree/Vertex_Add_Path_Sum.test.cpp
 layout: document

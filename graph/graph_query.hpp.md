@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
   - icon: ':heavy_check_mark:'
     path: graph/unweighted_type.hpp
     title: graph/unweighted_type.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
