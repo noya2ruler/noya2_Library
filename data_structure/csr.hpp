@@ -64,6 +64,9 @@ struct csr {
     auto operator()(int idx, int l, int r){
         return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);
     }
+    size_t size() const {
+        return n;
+    }
     int n;
     std::vector<int> start;
     std::vector<E> elist;
