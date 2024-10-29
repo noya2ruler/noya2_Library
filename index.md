@@ -201,6 +201,9 @@ data:
   - name: misc
     pages:
     - icon: ':warning:'
+      path: misc/O1onTree.hpp
+      title: misc/O1onTree.hpp
+    - icon: ':warning:'
       path: misc/QMC.hpp
       title: misc/QMC.hpp
     - icon: ':warning:'
