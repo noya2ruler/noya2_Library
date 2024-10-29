@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
   - icon: ':heavy_check_mark:'
     path: graph/cycle_detection.hpp
     title: graph/cycle_detection.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
@@ -108,24 +108,25 @@ data:
     \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
     \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
     \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
-    \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
-    \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n#line 9 \"graph/cycle_detection.hpp\"\
-    \n\nnamespace noya2 {\n\nstd::optional<std::vector<int>> cycle_detection_directed(int\
-    \ n, const std::vector<std::pair<int,int>> &es){\n    internal::csr<std::pair<int,int>>\
-    \ g(n,es.size());\n    for (int i = 0; auto [u, v] : es){\n        g.add(u,std::pair<int,int>(v,\
-    \ i));\n        i++;\n    }\n    g.build();\n    std::vector<bool> seen(n,false),\
-    \ done(n,false);\n    std::vector<int> cycle;\n    // -1:over,-2:done\n    auto\
-    \ dfs = [&](auto sfs, int v, int pid) -> int {\n        if (seen[v]) return v;\n\
-    \        if (done[v]) return -1;\n        seen[v] = true;\n        for (auto &[to,\
-    \ eid] : g[v]) if (eid != pid){\n            int nxt = sfs(sfs, to, eid);\n  \
-    \          if (nxt != -1){\n                if (nxt == -2) return -2;\n      \
-    \          cycle.emplace_back(eid);\n                if (nxt == v) return -2;\n\
-    \                return nxt;\n            }\n        }\n        seen[v] = false;\n\
-    \        done[v] = true;\n        return -1;\n    };\n    for (int i = 0; i <\
-    \ n; i++){\n        if (dfs(dfs, i, -1) == -2){\n            std::reverse(cycle.begin(),\
-    \ cycle.end());\n            return cycle;\n        }\n    }\n    return std::nullopt;\n\
-    }\n\n} // namespace noya2\n#line 5 \"test/graph/CycleDetectionDirected.test.cpp\"\
-    \n\nint main(){\n    int n, m; in(n,m);\n    vector<pii> es(m); in(es);\n    auto\
+    \    }\n    size_t size() const {\n        return n;\n    }\n    int n;\n    std::vector<int>\
+    \ start;\n    std::vector<E> elist;\n    bool prepared = false;\n};\n\n} // namespace\
+    \ noya2::internal\n#line 9 \"graph/cycle_detection.hpp\"\n\nnamespace noya2 {\n\
+    \nstd::optional<std::vector<int>> cycle_detection_directed(int n, const std::vector<std::pair<int,int>>\
+    \ &es){\n    internal::csr<std::pair<int,int>> g(n,es.size());\n    for (int i\
+    \ = 0; auto [u, v] : es){\n        g.add(u,std::pair<int,int>(v, i));\n      \
+    \  i++;\n    }\n    g.build();\n    std::vector<bool> seen(n,false), done(n,false);\n\
+    \    std::vector<int> cycle;\n    // -1:over,-2:done\n    auto dfs = [&](auto\
+    \ sfs, int v, int pid) -> int {\n        if (seen[v]) return v;\n        if (done[v])\
+    \ return -1;\n        seen[v] = true;\n        for (auto &[to, eid] : g[v]) if\
+    \ (eid != pid){\n            int nxt = sfs(sfs, to, eid);\n            if (nxt\
+    \ != -1){\n                if (nxt == -2) return -2;\n                cycle.emplace_back(eid);\n\
+    \                if (nxt == v) return -2;\n                return nxt;\n     \
+    \       }\n        }\n        seen[v] = false;\n        done[v] = true;\n    \
+    \    return -1;\n    };\n    for (int i = 0; i < n; i++){\n        if (dfs(dfs,\
+    \ i, -1) == -2){\n            std::reverse(cycle.begin(), cycle.end());\n    \
+    \        return cycle;\n        }\n    }\n    return std::nullopt;\n}\n\n} //\
+    \ namespace noya2\n#line 5 \"test/graph/CycleDetectionDirected.test.cpp\"\n\n\
+    int main(){\n    int n, m; in(n,m);\n    vector<pii> es(m); in(es);\n    auto\
     \ res = cycle_detection_directed(n,es);\n    if (!res){\n        out(-1);\n  \
     \  }\n    else {\n        auto cycle = res.value();\n        out(cycle.size());\n\
     \        for (auto i : cycle){\n            out(i);\n        }\n    }\n}\n"
@@ -145,7 +146,7 @@ data:
   isVerificationFile: true
   path: test/graph/CycleDetectionDirected.test.cpp
   requiredBy: []
-  timestamp: '2024-07-02 21:59:57+09:00'
+  timestamp: '2024-10-30 04:43:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/CycleDetectionDirected.test.cpp

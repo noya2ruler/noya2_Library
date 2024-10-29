@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
   _extendedRequiredBy: []
@@ -40,23 +40,24 @@ data:
     \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
     \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
     \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
-    \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
-    \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n#line 9 \"graph/cycle_detection.hpp\"\
-    \n\nnamespace noya2 {\n\nstd::optional<std::vector<int>> cycle_detection_directed(int\
-    \ n, const std::vector<std::pair<int,int>> &es){\n    internal::csr<std::pair<int,int>>\
-    \ g(n,es.size());\n    for (int i = 0; auto [u, v] : es){\n        g.add(u,std::pair<int,int>(v,\
-    \ i));\n        i++;\n    }\n    g.build();\n    std::vector<bool> seen(n,false),\
-    \ done(n,false);\n    std::vector<int> cycle;\n    // -1:over,-2:done\n    auto\
-    \ dfs = [&](auto sfs, int v, int pid) -> int {\n        if (seen[v]) return v;\n\
-    \        if (done[v]) return -1;\n        seen[v] = true;\n        for (auto &[to,\
-    \ eid] : g[v]) if (eid != pid){\n            int nxt = sfs(sfs, to, eid);\n  \
-    \          if (nxt != -1){\n                if (nxt == -2) return -2;\n      \
-    \          cycle.emplace_back(eid);\n                if (nxt == v) return -2;\n\
-    \                return nxt;\n            }\n        }\n        seen[v] = false;\n\
-    \        done[v] = true;\n        return -1;\n    };\n    for (int i = 0; i <\
-    \ n; i++){\n        if (dfs(dfs, i, -1) == -2){\n            std::reverse(cycle.begin(),\
-    \ cycle.end());\n            return cycle;\n        }\n    }\n    return std::nullopt;\n\
-    }\n\n} // namespace noya2\n"
+    \    }\n    size_t size() const {\n        return n;\n    }\n    int n;\n    std::vector<int>\
+    \ start;\n    std::vector<E> elist;\n    bool prepared = false;\n};\n\n} // namespace\
+    \ noya2::internal\n#line 9 \"graph/cycle_detection.hpp\"\n\nnamespace noya2 {\n\
+    \nstd::optional<std::vector<int>> cycle_detection_directed(int n, const std::vector<std::pair<int,int>>\
+    \ &es){\n    internal::csr<std::pair<int,int>> g(n,es.size());\n    for (int i\
+    \ = 0; auto [u, v] : es){\n        g.add(u,std::pair<int,int>(v, i));\n      \
+    \  i++;\n    }\n    g.build();\n    std::vector<bool> seen(n,false), done(n,false);\n\
+    \    std::vector<int> cycle;\n    // -1:over,-2:done\n    auto dfs = [&](auto\
+    \ sfs, int v, int pid) -> int {\n        if (seen[v]) return v;\n        if (done[v])\
+    \ return -1;\n        seen[v] = true;\n        for (auto &[to, eid] : g[v]) if\
+    \ (eid != pid){\n            int nxt = sfs(sfs, to, eid);\n            if (nxt\
+    \ != -1){\n                if (nxt == -2) return -2;\n                cycle.emplace_back(eid);\n\
+    \                if (nxt == v) return -2;\n                return nxt;\n     \
+    \       }\n        }\n        seen[v] = false;\n        done[v] = true;\n    \
+    \    return -1;\n    };\n    for (int i = 0; i < n; i++){\n        if (dfs(dfs,\
+    \ i, -1) == -2){\n            std::reverse(cycle.begin(), cycle.end());\n    \
+    \        return cycle;\n        }\n    }\n    return std::nullopt;\n}\n\n} //\
+    \ namespace noya2\n"
   code: "#pragma once\n\n#include <optional>\n#include <vector>\n#include <utility>\n\
     #include <algorithm>\n\n#include\"data_structure/csr.hpp\"\n\nnamespace noya2\
     \ {\n\nstd::optional<std::vector<int>> cycle_detection_directed(int n, const std::vector<std::pair<int,int>>\
@@ -79,7 +80,7 @@ data:
   isVerificationFile: false
   path: graph/cycle_detection.hpp
   requiredBy: []
-  timestamp: '2024-07-02 16:43:23+09:00'
+  timestamp: '2024-10-30 04:43:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/CycleDetectionDirected.test.cpp

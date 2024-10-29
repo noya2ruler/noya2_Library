@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/compress.hpp
     title: data_structure/compress.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
   - icon: ':heavy_check_mark:'
@@ -19,16 +19,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: misc/monoids.hpp
     title: misc/monoids.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
@@ -139,14 +139,15 @@ data:
     \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
     \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
     \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
-    \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
-    \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n#line 2 \"misc/monoids.hpp\"\
-    \n\n#line 4 \"misc/monoids.hpp\"\n\nnamespace noya2{\n\ntemplate<typename T>\n\
-    struct max_monoid {\n    using value_type = T;\n    static constexpr T op(const\
-    \ T &a, const T &b){ return max(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::min();\
-    \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
-    \ T>\nstruct min_monoid {\n    using value_type = T;\n    static constexpr T op(const\
-    \ T &a, const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
+    \    }\n    size_t size() const {\n        return n;\n    }\n    int n;\n    std::vector<int>\
+    \ start;\n    std::vector<E> elist;\n    bool prepared = false;\n};\n\n} // namespace\
+    \ noya2::internal\n#line 2 \"misc/monoids.hpp\"\n\n#line 4 \"misc/monoids.hpp\"\
+    \n\nnamespace noya2{\n\ntemplate<typename T>\nstruct max_monoid {\n    using value_type\
+    \ = T;\n    static constexpr T op(const T &a, const T &b){ return max(a,b); }\n\
+    \    static constexpr T e(){ return std::numeric_limits<T>::min(); }\n    static\
+    \ constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename T>\nstruct\
+    \ min_monoid {\n    using value_type = T;\n    static constexpr T op(const T &a,\
+    \ const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
     \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
     \ T>\nstruct plus_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a + b; }\n    static constexpr T e(){ return T(0);\
@@ -228,7 +229,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 17:15:59+09:00'
+  timestamp: '2024-10-30 04:43:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Rectangle_Sum.test.cpp

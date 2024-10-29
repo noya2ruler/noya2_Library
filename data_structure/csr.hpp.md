@@ -11,10 +11,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: "\u5168\u90E8\u8F09\u305B\u6728"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
   _extendedVerifiedWith:
@@ -30,18 +30,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/csr.hpp\"\n\n#include<vector>\n#include<ranges>\n\
@@ -68,8 +68,9 @@ data:
     \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
     \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
     \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
-    \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
-    \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n"
+    \    }\n    size_t size() const {\n        return n;\n    }\n    int n;\n    std::vector<int>\
+    \ start;\n    std::vector<E> elist;\n    bool prepared = false;\n};\n\n} // namespace\
+    \ noya2::internal\n"
   code: "#pragma once\n\n#include<vector>\n#include<ranges>\n#include<cassert>\n#include<utility>\n\
     \nnamespace noya2::internal {\n\ntemplate<class E>\nstruct csr {\n    csr () {}\n\
     \    csr (int _n) : n(_n) {}\n    csr (int _n, int m) : n(_n){\n        start.reserve(m);\n\
@@ -93,8 +94,9 @@ data:
     \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
     \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
     \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
-    \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
-    \   bool prepared = false;\n};\n\n} // namespace noya2::internal"
+    \    }\n    size_t size() const {\n        return n;\n    }\n    int n;\n    std::vector<int>\
+    \ start;\n    std::vector<E> elist;\n    bool prepared = false;\n};\n\n} // namespace\
+    \ noya2::internal"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/csr.hpp
@@ -104,8 +106,8 @@ data:
   - graph/cycle_detection.hpp
   - tree/simple_tree.hpp
   - tree/heavy_light_decomposition.hpp
-  timestamp: '2024-07-01 23:28:44+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2024-10-30 04:43:18+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Rectangle_Sum.test.cpp
   - test/graph/CycleDetectionDirected.test.cpp

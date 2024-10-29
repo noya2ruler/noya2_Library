@@ -1,44 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/centroid_decomposition.hpp
     title: tree/centroid_decomposition.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint4724.hpp
     title: utility/modint4724.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/frequency_table_of_tree_distance
@@ -123,106 +123,107 @@ data:
     \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
     \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
     \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
-    \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
-    \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n#line 5 \"tree/simple_tree.hpp\"\
-    \n\nnamespace noya2 {\n\nstruct simple_tree {\n    internal::csr<int> g;\n   \
-    \ simple_tree () {}\n    simple_tree (int _n) : g(_n, (_n - 1)*2) {\n        if\
-    \ (_n == 1){\n            g.build();\n        }\n    }\n    void add_edge(int\
-    \ u, int v){\n        g.add(u, v);\n        int id = g.add(v, u);\n        if\
-    \ (id + 1 == (g.n - 1)*2) g.build();\n    }\n    void input(int indexed = 1){\n\
-    \        for (int i = 0; i < g.n - 1; i++){\n            int u, v; cin >> u >>\
-    \ v;\n            u -= indexed, v -= indexed;\n            add_edge(u, v);\n \
-    \       }\n    }\n    void input_parents(int indexed = 1){\n        for (int i\
-    \ = 0; i < g.n - 1; i++){\n            int v; cin >> v;\n            v -= indexed;\n\
-    \            add_edge(i + 1, v);\n        }\n    }\n    const auto operator[](int\
-    \ v) const {\n        return g[v];\n    }\n    auto operator[](int v){\n     \
-    \   return g[v];\n    }\n    size_t size() const {\n        return g.size();\n\
-    \    }\n};\n\n} // namespace noya2\n#line 2 \"tree/centroid_decomposition.hpp\"\
-    \n\n#line 4 \"tree/centroid_decomposition.hpp\"\n\nnamespace noya2 {\n\nstd::vector<int>\
-    \ centroid_decomposition(const auto &g){\n    int n = g.size();\n    if (n ==\
-    \ 0){\n        return {};\n    }\n    std::vector<int> sub(n), order;\n    order.reserve(n);\n\
-    \    auto subtree = [&](auto sfs, int v, int f) -> void {\n        sub[v] = 1;\n\
-    \        for (int u : g[v]){\n            if (u == f) continue;\n            sfs(sfs,\
-    \ u, v);\n            sub[v] += sub[u];\n        }\n    };\n    subtree(subtree,0,-1);\n\
-    \    auto fixed_root = [&](auto self, int root, int par, int cur_size) -> void\
-    \ {\n        auto dfs = [&](auto sfs, int v, int f, int sz) -> int {\n       \
-    \     int heavy = 0, child = -1;\n            for (int u : g[v]){\n          \
-    \      if (u == f) continue;\n                if (heavy < sub[u]){\n         \
-    \           heavy = sub[u];\n                    child = u;\n                }\n\
-    \            }\n            if (heavy > sz/2){\n                int ret = sfs(sfs,\
-    \ child, v, sz);\n                sub[v] -= ret;\n                return ret;\n\
-    \            }\n            else {\n                order.emplace_back(v);\n \
-    \               for (int u : g[v]){\n                    if (u == f) continue;\n\
-    \                    self(self, u, v, sub[u]);\n                }\n          \
-    \      int ret = sub[v];\n                sub[v] = 0;\n                return\
-    \ ret;\n            }\n        };\n        while (cur_size > 0){\n           \
-    \ cur_size -= dfs(dfs, root, par, cur_size);\n        }\n    };\n    fixed_root(fixed_root,\
-    \ 0, -1, n);\n    return order;\n}\n\nstd::vector<int> centroid_decomposition_tree(const\
-    \ auto &g){\n    int n = g.size();\n    if (n == 0){\n        return {};\n   \
-    \ }\n    std::vector<int> sub(n), par_tree(n);\n    auto subtree = [&](auto sfs,\
-    \ int v, int f) -> void {\n        sub[v] = 1;\n        for (int u : g[v]){\n\
-    \            if (u == f) continue;\n            sfs(sfs, u, v);\n            sub[v]\
+    \    }\n    size_t size() const {\n        return n;\n    }\n    int n;\n    std::vector<int>\
+    \ start;\n    std::vector<E> elist;\n    bool prepared = false;\n};\n\n} // namespace\
+    \ noya2::internal\n#line 5 \"tree/simple_tree.hpp\"\n\nnamespace noya2 {\n\nstruct\
+    \ simple_tree {\n    internal::csr<int> g;\n    simple_tree () {}\n    simple_tree\
+    \ (int _n) : g(_n, (_n - 1)*2) {\n        if (_n == 1){\n            g.build();\n\
+    \        }\n    }\n    void add_edge(int u, int v){\n        g.add(u, v);\n  \
+    \      int id = g.add(v, u);\n        if (id + 1 == (g.n - 1)*2) g.build();\n\
+    \    }\n    void input(int indexed = 1){\n        for (int i = 0; i < g.n - 1;\
+    \ i++){\n            int u, v; cin >> u >> v;\n            u -= indexed, v -=\
+    \ indexed;\n            add_edge(u, v);\n        }\n    }\n    void input_parents(int\
+    \ indexed = 1){\n        for (int i = 0; i < g.n - 1; i++){\n            int v;\
+    \ cin >> v;\n            v -= indexed;\n            add_edge(i + 1, v);\n    \
+    \    }\n    }\n    const auto operator[](int v) const {\n        return g[v];\n\
+    \    }\n    auto operator[](int v){\n        return g[v];\n    }\n    size_t size()\
+    \ const {\n        return g.size();\n    }\n};\n\n} // namespace noya2\n#line\
+    \ 2 \"tree/centroid_decomposition.hpp\"\n\n#line 4 \"tree/centroid_decomposition.hpp\"\
+    \n\nnamespace noya2 {\n\nstd::vector<int> centroid_decomposition(const auto &g){\n\
+    \    int n = g.size();\n    if (n == 0){\n        return {};\n    }\n    std::vector<int>\
+    \ sub(n), order;\n    order.reserve(n);\n    auto subtree = [&](auto sfs, int\
+    \ v, int f) -> void {\n        sub[v] = 1;\n        for (int u : g[v]){\n    \
+    \        if (u == f) continue;\n            sfs(sfs, u, v);\n            sub[v]\
     \ += sub[u];\n        }\n    };\n    subtree(subtree,0,-1);\n    auto fixed_root\
-    \ = [&](auto self, int root, int par, int cur_size, int cpre) -> void {\n    \
-    \    auto dfs = [&](auto sfs, int v, int f, int sz) -> int {\n            int\
-    \ heavy = 0, child = -1;\n            for (int u : g[v]){\n                if\
-    \ (u == f) continue;\n                if (heavy < sub[u]){\n                 \
-    \   heavy = sub[u];\n                    child = u;\n                }\n     \
-    \       }\n            if (heavy > sz/2){\n                int ret = sfs(sfs,\
-    \ child, v, sz);\n                sub[v] -= ret;\n                return ret;\n\
-    \            }\n            else {\n                par_tree[v] = cpre;\n    \
-    \            for (int u : g[v]){\n                    if (u == f) continue;\n\
-    \                    self(self, u, v, sub[u], v);\n                }\n       \
-    \         int ret = sub[v];\n                cpre = v;\n                sub[v]\
-    \ = 0;\n                return ret;\n            }\n        };\n        while\
-    \ (cur_size > 0){\n            cur_size -= dfs(dfs, root, par, cur_size);\n  \
-    \      }\n    };\n    fixed_root(fixed_root, 0, -1, n, -1);\n    return par_tree;\n\
-    }\n\n} // namespace noya2\n#line 2 \"utility/modint4724.hpp\"\n\n#line 2 \"utility/modint.hpp\"\
-    \n\n#line 4 \"utility/modint.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"\
-    math/prime.hpp\"\nnamespace noya2 {\n\nconstexpr long long safe_mod(long long\
-    \ x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n}\n\n\
-    constexpr long long pow_mod_constexpr(long long x, long long n, int m) {\n   \
-    \ if (m == 1) return 0;\n    unsigned int _m = (unsigned int)(m);\n    unsigned\
-    \ long long r = 1;\n    unsigned long long y = safe_mod(x, m);\n    while (n)\
-    \ {\n        if (n & 1) r = (r * y) % _m;\n        y = (y * y) % _m;\n       \
-    \ n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int n)\
-    \ {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
-    \ true;\n    if (n % 2 == 0) return false;\n    long long d = n - 1;\n    while\
-    \ (d % 2 == 0) d /= 2;\n    constexpr long long bases[3] = {2, 7, 61};\n    for\
-    \ (long long a : bases) {\n        long long t = d;\n        long long y = pow_mod_constexpr(a,\
-    \ t, n);\n        while (t != n - 1 && y != 1 && y != n - 1) {\n            y\
-    \ = y * y % n;\n            t <<= 1;\n        }\n        if (y != n - 1 && t %\
-    \ 2 == 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\
-    template <int n> constexpr bool is_prime_flag = is_prime_constexpr(n);\n\nconstexpr\
-    \ std::pair<long long, long long> inv_gcd(long long a, long long b) {\n    a =\
-    \ safe_mod(a, b);\n    if (a == 0) return {b, 0};\n    long long s = b, t = a;\n\
-    \    long long m0 = 0, m1 = 1;\n    while (t) {\n        long long u = s / t;\n\
-    \        s -= t * u;\n        m0 -= m1 * u; \n        auto tmp = s;\n        s\
-    \ = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n\
-    \    }\n    if (m0 < 0) m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int\
-    \ primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n    if (m == 167772161)\
-    \ return 3;\n    if (m == 469762049) return 3;\n    if (m == 754974721) return\
-    \ 11;\n    if (m == 998244353) return 3;\n    int divs[20] = {};\n    divs[0]\
-    \ = 2;\n    int cnt = 1;\n    int x = (m - 1) / 2;\n    while (x % 2 == 0) x /=\
-    \ 2;\n    for (int i = 3; (long long)(i)*i <= x; i += 2) {\n        if (x % i\
-    \ == 0) {\n            divs[cnt++] = i;\n            while (x % i == 0) {\n  \
-    \              x /= i;\n            }\n        }\n    }\n    if (x > 1) {\n  \
-    \      divs[cnt++] = x;\n    }\n    for (int g = 2;; g++) {\n        bool ok =\
-    \ true;\n        for (int i = 0; i < cnt; i++) {\n            if (pow_mod_constexpr(g,\
-    \ (m - 1) / divs[i], m) == 1) {\n                ok = false;\n               \
-    \ break;\n            }\n        }\n        if (ok) return g;\n    }\n}\ntemplate\
-    \ <int m> constexpr int primitive_root_flag = primitive_root_constexpr(m);\n\n\
-    } // namespace noya2\n#line 6 \"utility/modint.hpp\"\n\nnamespace noya2{\n\nstruct\
-    \ barrett {\n    unsigned int _m;\n    unsigned long long im;\n    explicit barrett(unsigned\
-    \ int m) : _m(m), im((unsigned long long)(-1) / m + 1) {}\n    unsigned int umod()\
-    \ const { return _m; }\n    unsigned int mul(unsigned int a, unsigned int b) const\
-    \ {\n        unsigned long long z = a;\n        z *= b;\n        unsigned long\
-    \ long x = (unsigned long long)((__uint128_t(z) * im) >> 64);\n        unsigned\
-    \ int v = (unsigned int)(z - x * _m);\n        if (_m <= v) v += _m;\n       \
-    \ return v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint {\n    using\
-    \ mint = static_modint;\n  public:\n    static constexpr int mod() { return m;\
-    \ }\n    static mint raw(int v) {\n        mint x;\n        x._v = v;\n      \
-    \  return x;\n    }\n    constexpr static_modint() : _v(0) {}\n    template<std::signed_integral\
+    \ = [&](auto self, int root, int par, int cur_size) -> void {\n        auto dfs\
+    \ = [&](auto sfs, int v, int f, int sz) -> int {\n            int heavy = 0, child\
+    \ = -1;\n            for (int u : g[v]){\n                if (u == f) continue;\n\
+    \                if (heavy < sub[u]){\n                    heavy = sub[u];\n \
+    \                   child = u;\n                }\n            }\n           \
+    \ if (heavy > sz/2){\n                int ret = sfs(sfs, child, v, sz);\n    \
+    \            sub[v] -= ret;\n                return ret;\n            }\n    \
+    \        else {\n                order.emplace_back(v);\n                for (int\
+    \ u : g[v]){\n                    if (u == f) continue;\n                    self(self,\
+    \ u, v, sub[u]);\n                }\n                int ret = sub[v];\n     \
+    \           sub[v] = 0;\n                return ret;\n            }\n        };\n\
+    \        while (cur_size > 0){\n            cur_size -= dfs(dfs, root, par, cur_size);\n\
+    \        }\n    };\n    fixed_root(fixed_root, 0, -1, n);\n    return order;\n\
+    }\n\nstd::vector<int> centroid_decomposition_tree(const auto &g){\n    int n =\
+    \ g.size();\n    if (n == 0){\n        return {};\n    }\n    std::vector<int>\
+    \ sub(n), par_tree(n);\n    auto subtree = [&](auto sfs, int v, int f) -> void\
+    \ {\n        sub[v] = 1;\n        for (int u : g[v]){\n            if (u == f)\
+    \ continue;\n            sfs(sfs, u, v);\n            sub[v] += sub[u];\n    \
+    \    }\n    };\n    subtree(subtree,0,-1);\n    auto fixed_root = [&](auto self,\
+    \ int root, int par, int cur_size, int cpre) -> void {\n        auto dfs = [&](auto\
+    \ sfs, int v, int f, int sz) -> int {\n            int heavy = 0, child = -1;\n\
+    \            for (int u : g[v]){\n                if (u == f) continue;\n    \
+    \            if (heavy < sub[u]){\n                    heavy = sub[u];\n     \
+    \               child = u;\n                }\n            }\n            if (heavy\
+    \ > sz/2){\n                int ret = sfs(sfs, child, v, sz);\n              \
+    \  sub[v] -= ret;\n                return ret;\n            }\n            else\
+    \ {\n                par_tree[v] = cpre;\n                for (int u : g[v]){\n\
+    \                    if (u == f) continue;\n                    self(self, u,\
+    \ v, sub[u], v);\n                }\n                int ret = sub[v];\n     \
+    \           cpre = v;\n                sub[v] = 0;\n                return ret;\n\
+    \            }\n        };\n        while (cur_size > 0){\n            cur_size\
+    \ -= dfs(dfs, root, par, cur_size);\n        }\n    };\n    fixed_root(fixed_root,\
+    \ 0, -1, n, -1);\n    return par_tree;\n}\n\n} // namespace noya2\n#line 2 \"\
+    utility/modint4724.hpp\"\n\n#line 2 \"utility/modint.hpp\"\n\n#line 4 \"utility/modint.hpp\"\
+    \n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\nnamespace noya2\
+    \ {\n\nconstexpr long long safe_mod(long long x, long long m) {\n    x %= m;\n\
+    \    if (x < 0) x += m;\n    return x;\n}\n\nconstexpr long long pow_mod_constexpr(long\
+    \ long x, long long n, int m) {\n    if (m == 1) return 0;\n    unsigned int _m\
+    \ = (unsigned int)(m);\n    unsigned long long r = 1;\n    unsigned long long\
+    \ y = safe_mod(x, m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n\
+    \        y = (y * y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr\
+    \ bool is_prime_constexpr(int n) {\n    if (n <= 1) return false;\n    if (n ==\
+    \ 2 || n == 7 || n == 61) return true;\n    if (n % 2 == 0) return false;\n  \
+    \  long long d = n - 1;\n    while (d % 2 == 0) d /= 2;\n    constexpr long long\
+    \ bases[3] = {2, 7, 61};\n    for (long long a : bases) {\n        long long t\
+    \ = d;\n        long long y = pow_mod_constexpr(a, t, n);\n        while (t !=\
+    \ n - 1 && y != 1 && y != n - 1) {\n            y = y * y % n;\n            t\
+    \ <<= 1;\n        }\n        if (y != n - 1 && t % 2 == 0) {\n            return\
+    \ false;\n        }\n    }\n    return true;\n}\ntemplate <int n> constexpr bool\
+    \ is_prime_flag = is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long\
+    \ long> inv_gcd(long long a, long long b) {\n    a = safe_mod(a, b);\n    if (a\
+    \ == 0) return {b, 0};\n    long long s = b, t = a;\n    long long m0 = 0, m1\
+    \ = 1;\n    while (t) {\n        long long u = s / t;\n        s -= t * u;\n \
+    \       m0 -= m1 * u; \n        auto tmp = s;\n        s = t;\n        t = tmp;\n\
+    \        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n    }\n    if (m0 < 0)\
+    \ m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int primitive_root_constexpr(int\
+    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
+    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
+    \ return 3;\n    int divs[20] = {};\n    divs[0] = 2;\n    int cnt = 1;\n    int\
+    \ x = (m - 1) / 2;\n    while (x % 2 == 0) x /= 2;\n    for (int i = 3; (long\
+    \ long)(i)*i <= x; i += 2) {\n        if (x % i == 0) {\n            divs[cnt++]\
+    \ = i;\n            while (x % i == 0) {\n                x /= i;\n          \
+    \  }\n        }\n    }\n    if (x > 1) {\n        divs[cnt++] = x;\n    }\n  \
+    \  for (int g = 2;; g++) {\n        bool ok = true;\n        for (int i = 0; i\
+    \ < cnt; i++) {\n            if (pow_mod_constexpr(g, (m - 1) / divs[i], m) ==\
+    \ 1) {\n                ok = false;\n                break;\n            }\n \
+    \       }\n        if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int\
+    \ primitive_root_flag = primitive_root_constexpr(m);\n\n} // namespace noya2\n\
+    #line 6 \"utility/modint.hpp\"\n\nnamespace noya2{\n\nstruct barrett {\n    unsigned\
+    \ int _m;\n    unsigned long long im;\n    explicit barrett(unsigned int m) :\
+    \ _m(m), im((unsigned long long)(-1) / m + 1) {}\n    unsigned int umod() const\
+    \ { return _m; }\n    unsigned int mul(unsigned int a, unsigned int b) const {\n\
+    \        unsigned long long z = a;\n        z *= b;\n        unsigned long long\
+    \ x = (unsigned long long)((__uint128_t(z) * im) >> 64);\n        unsigned int\
+    \ v = (unsigned int)(z - x * _m);\n        if (_m <= v) v += _m;\n        return\
+    \ v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint {\n    using mint =\
+    \ static_modint;\n  public:\n    static constexpr int mod() { return m; }\n  \
+    \  static mint raw(int v) {\n        mint x;\n        x._v = v;\n        return\
+    \ x;\n    }\n    constexpr static_modint() : _v(0) {}\n    template<std::signed_integral\
     \ T>\n    constexpr static_modint(T v){\n        long long x = (long long)(v %\
     \ (long long)(umod()));\n        if (x < 0) x += umod();\n        _v = (unsigned\
     \ int)(x);\n    }\n    template<std::unsigned_integral T>\n    constexpr static_modint(T\
@@ -556,8 +557,8 @@ data:
   isVerificationFile: true
   path: test/tree/FrequencyTableofTreeDistance.test.cpp
   requiredBy: []
-  timestamp: '2024-10-26 14:00:05+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-10-30 04:43:18+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/FrequencyTableofTreeDistance.test.cpp
 layout: document

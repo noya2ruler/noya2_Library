@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
   - icon: ':heavy_check_mark:'
     path: graph/unweighted_type.hpp
     title: graph/unweighted_type.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
@@ -47,19 +47,20 @@ data:
     \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
     \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
     \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
-    \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
-    \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n#line 2 \"template/utils.hpp\"\
-    \n\n#include <cmath>\n#line 5 \"template/utils.hpp\"\n#include <algorithm>\n\n\
-    namespace noya2{\n\nunsigned long long inner_binary_gcd(unsigned long long a,\
-    \ unsigned long long b){\n    if (a == 0 || b == 0) return a + b;\n    int n =\
-    \ __builtin_ctzll(a); a >>= n;\n    int m = __builtin_ctzll(b); b >>= m;\n   \
-    \ while (a != b) {\n        int mm = __builtin_ctzll(a - b);\n        bool f =\
-    \ a > b;\n        unsigned long long c = f ? a : b;\n        b = f ? b : a;\n\
-    \        a = (c - b) >> mm;\n    }\n    return a << std::min(n, m);\n}\n\ntemplate<typename\
-    \ T> T gcd_fast(T a, T b){ return static_cast<T>(inner_binary_gcd(std::abs(a),std::abs(b)));\
-    \ }\n\nlong long sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long\
-    \ long x = sqrt(n);\n    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x\
-    \ > n) x--;\n    return x;\n}\n\ntemplate<typename T> T floor_div(const T n, const\
+    \    }\n    size_t size() const {\n        return n;\n    }\n    int n;\n    std::vector<int>\
+    \ start;\n    std::vector<E> elist;\n    bool prepared = false;\n};\n\n} // namespace\
+    \ noya2::internal\n#line 2 \"template/utils.hpp\"\n\n#include <cmath>\n#line 5\
+    \ \"template/utils.hpp\"\n#include <algorithm>\n\nnamespace noya2{\n\nunsigned\
+    \ long long inner_binary_gcd(unsigned long long a, unsigned long long b){\n  \
+    \  if (a == 0 || b == 0) return a + b;\n    int n = __builtin_ctzll(a); a >>=\
+    \ n;\n    int m = __builtin_ctzll(b); b >>= m;\n    while (a != b) {\n       \
+    \ int mm = __builtin_ctzll(a - b);\n        bool f = a > b;\n        unsigned\
+    \ long long c = f ? a : b;\n        b = f ? b : a;\n        a = (c - b) >> mm;\n\
+    \    }\n    return a << std::min(n, m);\n}\n\ntemplate<typename T> T gcd_fast(T\
+    \ a, T b){ return static_cast<T>(inner_binary_gcd(std::abs(a),std::abs(b))); }\n\
+    \nlong long sqrt_fast(long long n) {\n    if (n <= 0) return 0;\n    long long\
+    \ x = sqrt(n);\n    while ((x + 1) * (x + 1) <= n) x++;\n    while (x * x > n)\
+    \ x--;\n    return x;\n}\n\ntemplate<typename T> T floor_div(const T n, const\
     \ T d) {\n    assert(d != 0);\n    return n / d - static_cast<T>((n ^ d) < 0 &&\
     \ n % d != 0);\n}\n\ntemplate<typename T> T ceil_div(const T n, const T d) {\n\
     \    assert(d != 0);\n    return n / d + static_cast<T>((n ^ d) >= 0 && n % d\
@@ -338,7 +339,7 @@ data:
   isVerificationFile: false
   path: graph/graph_query.hpp
   requiredBy: []
-  timestamp: '2024-10-13 00:19:57+09:00'
+  timestamp: '2024-10-30 04:43:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Shortest_Path.test.cpp

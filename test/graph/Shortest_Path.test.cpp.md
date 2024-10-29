@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
   - icon: ':heavy_check_mark:'
@@ -10,16 +10,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/unweighted_type.hpp
     title: graph/unweighted_type.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
@@ -111,14 +111,15 @@ data:
     \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
     \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
     \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
-    \    }\n    int n;\n    std::vector<int> start;\n    std::vector<E> elist;\n \
-    \   bool prepared = false;\n};\n\n} // namespace noya2::internal\n#line 2 \"graph/unweighted_type.hpp\"\
-    \n\nnamespace noya2 {\n\nstruct unweighted {};\n\n} // namespace noya2\n#line\
-    \ 6 \"graph/graph_query.hpp\"\n\n#line 12 \"graph/graph_query.hpp\"\n\nnamespace\
-    \ noya2 {\n\ntemplate<typename Cost>\nstruct graph {\n    int n;\n    internal::csr<std::pair<int,Cost>>\
-    \ g;\n    Cost dist_inf = std::numeric_limits<Cost>::max() / 3;\n    graph (int\
-    \ _n = 0) : n(_n), g(_n) {}\n    graph (int _n, int _m) : n(_n), g(_n,_m) {}\n\
-    \    // \u6709\u5411\u8FBA\u3092\u8FFD\u52A0 (\u7121\u5411\u8FBA\u3067\u306F\u306A\
+    \    }\n    size_t size() const {\n        return n;\n    }\n    int n;\n    std::vector<int>\
+    \ start;\n    std::vector<E> elist;\n    bool prepared = false;\n};\n\n} // namespace\
+    \ noya2::internal\n#line 2 \"graph/unweighted_type.hpp\"\n\nnamespace noya2 {\n\
+    \nstruct unweighted {};\n\n} // namespace noya2\n#line 6 \"graph/graph_query.hpp\"\
+    \n\n#line 12 \"graph/graph_query.hpp\"\n\nnamespace noya2 {\n\ntemplate<typename\
+    \ Cost>\nstruct graph {\n    int n;\n    internal::csr<std::pair<int,Cost>> g;\n\
+    \    Cost dist_inf = std::numeric_limits<Cost>::max() / 3;\n    graph (int _n\
+    \ = 0) : n(_n), g(_n) {}\n    graph (int _n, int _m) : n(_n), g(_n,_m) {}\n  \
+    \  // \u6709\u5411\u8FBA\u3092\u8FFD\u52A0 (\u7121\u5411\u8FBA\u3067\u306F\u306A\
     \u3044\u3053\u3068\u306B\u6CE8\u610F\uFF01)\n    int add_edge(int u, int v, Cost\
     \ cost = 1){\n        int id = g.add(u, {v,cost});\n        return id;\n    }\n\
     \    template<bool directed>\n    static graph input(int _n, int _m, int indexed\
@@ -265,7 +266,7 @@ data:
   isVerificationFile: true
   path: test/graph/Shortest_Path.test.cpp
   requiredBy: []
-  timestamp: '2024-10-13 00:19:57+09:00'
+  timestamp: '2024-10-30 04:43:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Shortest_Path.test.cpp
