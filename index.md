@@ -251,8 +251,14 @@ data:
       path: string/dynamic_rolling_hash.hpp
       title: string/dynamic_rolling_hash.hpp
     - icon: ':warning:'
+      path: string/eertree.hpp
+      title: string/eertree.hpp
+    - icon: ':warning:'
       path: string/rolling_hash.hpp
       title: string/rolling_hash.hpp
+    - icon: ':warning:'
+      path: string/run_enumerate.hpp
+      title: string/run_enumerate.hpp
     - icon: ':heavy_check_mark:'
       path: string/suffix_array.hpp
       title: string/suffix_array.hpp

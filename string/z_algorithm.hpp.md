@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: string/run_enumerate.hpp
+    title: string/run_enumerate.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -37,7 +40,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: string/z_algorithm.hpp
-  requiredBy: []
+  requiredBy:
+  - string/run_enumerate.hpp
   timestamp: '2024-07-16 15:04:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
