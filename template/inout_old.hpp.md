@@ -259,6 +259,9 @@ data:
     path: test/string/SuffixArray.test.cpp
     title: test/string/SuffixArray.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/Z_Algorithm.test.cpp
+    title: test/string/Z_Algorithm.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
   - icon: ':heavy_check_mark:'
@@ -402,6 +405,7 @@ data:
   - test/data_structure/SetXorMin.test.cpp
   - test/geometry/aoj1198.test.cpp
   - test/string/SuffixArray.test.cpp
+  - test/string/Z_Algorithm.test.cpp
   - test/string/Eertree.test.cpp
   - test/string/RunEnumerate.test.cpp
   - test/graph/CycleDetectionDirected.test.cpp

@@ -504,6 +504,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/string/SuffixArray.test.cpp
       title: test/string/SuffixArray.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/string/Z_Algorithm.test.cpp
+      title: test/string/Z_Algorithm.test.cpp
   - name: test/tree
     pages:
     - icon: ':heavy_check_mark:'

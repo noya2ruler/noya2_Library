@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/string/RunEnumerate.test.cpp
     title: test/string/RunEnumerate.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/string/Z_Algorithm.test.cpp
+    title: test/string/Z_Algorithm.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -48,6 +51,7 @@ data:
   timestamp: '2024-07-16 15:04:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/string/Z_Algorithm.test.cpp
   - test/string/RunEnumerate.test.cpp
 documentation_of: string/z_algorithm.hpp
 layout: document
