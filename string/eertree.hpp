@@ -22,9 +22,6 @@ struct eertree {
         int length;
         child ch;
         explicit node (int _suffix_link, int _length) : suffix_link(_suffix_link), length(_length), ch(leaf) {}
-        friend ostream &operator<<(ostream &os, const node &p){
-            return os << "suffix link : " << p.suffix_link << " length : " << p.length;
-        }
     };
     int cursor = 1;
     std::vector<node> nodes;
@@ -66,7 +63,7 @@ struct eertree {
         }
         nodes[cursor].ch[c] = ncursor;
         nodes.emplace_back(nsuffix_link, nlength);
-        auto ret = make_tuple(ncursor, cursor, nsuffix_link);
+        auto ret = std::make_tuple(ncursor, cursor, nsuffix_link);
         cursor = ncursor;
         return ret;
     }
