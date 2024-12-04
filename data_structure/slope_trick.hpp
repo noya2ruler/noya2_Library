@@ -11,7 +11,7 @@ namespace noya2{
 template< typename T >
 struct slope_trick {
  
-    const T INF = std::numeric_limits< T >::max() / 3;
+    static constexpr T INF = std::numeric_limits< T >::max() / 3;
  
     T min_f;
     std::priority_queue<T,std::vector<T>,std::less<>> L;
