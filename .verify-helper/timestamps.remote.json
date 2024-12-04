@@ -51,6 +51,7 @@
 "test/string/Eertree.test.cpp": "2024-12-04 14:23:29 +0900",
 "test/string/RunEnumerate.test.cpp": "2024-12-04 14:23:33 +0900",
 "test/string/SuffixArray.test.cpp": "2024-07-20 18:15:07 +0900",
+"test/string/Z_Algorithm.test.cpp": "2024-12-04 14:32:21 +0900",
 "test/tree/FrequencyTableofTreeDistance.test.cpp": "2024-10-30 04:43:18 +0900",
 "test/tree/Jump_on_Tree.test.cpp": "2024-10-30 04:43:18 +0900",
 "test/tree/Jump_on_Tree_hld.test.cpp": "2024-07-01 23:39:10 +0900",
