@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: string/z_algorithm.hpp
     title: string/z_algorithm.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/string/RunEnumerate.test.cpp
+    title: test/string/RunEnumerate.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/run_enumerate.hpp\"\n\n#include <vector>\n#include\
@@ -103,8 +106,9 @@ data:
   path: string/run_enumerate.hpp
   requiredBy: []
   timestamp: '2024-12-04 14:23:08+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/string/RunEnumerate.test.cpp
 documentation_of: string/run_enumerate.hpp
 layout: document
 redirect_from:

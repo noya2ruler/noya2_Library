@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/string/Eertree.test.cpp
+    title: test/string/Eertree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/eertree.hpp\"\n\n#include <vector>\n#include <tuple>\n\
@@ -73,8 +76,9 @@ data:
   path: string/eertree.hpp
   requiredBy: []
   timestamp: '2024-12-04 14:23:00+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/string/Eertree.test.cpp
 documentation_of: string/eertree.hpp
 layout: document
 redirect_from:

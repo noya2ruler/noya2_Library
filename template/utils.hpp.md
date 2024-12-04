@@ -253,6 +253,12 @@ data:
     path: test/misc/StaticRangeModeQuery.test.cpp
     title: test/misc/StaticRangeModeQuery.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/Eertree.test.cpp
+    title: test/string/Eertree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/string/RunEnumerate.test.cpp
+    title: test/string/RunEnumerate.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/string/SuffixArray.test.cpp
     title: test/string/SuffixArray.test.cpp
   - icon: ':heavy_check_mark:'
@@ -406,6 +412,8 @@ data:
   - test/data_structure/SetXorMin.test.cpp
   - test/geometry/aoj1198.test.cpp
   - test/string/SuffixArray.test.cpp
+  - test/string/Eertree.test.cpp
+  - test/string/RunEnumerate.test.cpp
   - test/graph/CycleDetectionDirected.test.cpp
   - test/graph/Shortest_Path.test.cpp
   - test/graph/Strongly_Connected_Components.test.cpp

@@ -250,13 +250,13 @@ data:
     - icon: ':warning:'
       path: string/dynamic_rolling_hash.hpp
       title: string/dynamic_rolling_hash.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: string/eertree.hpp
       title: string/eertree.hpp
     - icon: ':warning:'
       path: string/rolling_hash.hpp
       title: string/rolling_hash.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: string/run_enumerate.hpp
       title: string/run_enumerate.hpp
     - icon: ':heavy_check_mark:'
@@ -268,7 +268,7 @@ data:
     - icon: ':warning:'
       path: string/trie.hpp
       title: string/trie.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: string/z_algorithm.hpp
       title: string/z_algorithm.hpp
   - name: template
@@ -495,6 +495,12 @@ data:
       title: test/misc/StaticRangeModeQuery.test.cpp
   - name: test/string
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/string/Eertree.test.cpp
+      title: test/string/Eertree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/string/RunEnumerate.test.cpp
+      title: test/string/RunEnumerate.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/string/SuffixArray.test.cpp
       title: test/string/SuffixArray.test.cpp
