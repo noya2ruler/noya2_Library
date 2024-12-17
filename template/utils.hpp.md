@@ -78,6 +78,9 @@ data:
     path: misc/inversion.hpp
     title: misc/inversion.hpp
   - icon: ':warning:'
+    path: misc/local_minimum.hpp
+    title: misc/local_minimum.hpp
+  - icon: ':warning:'
     path: misc/mex.hpp
     title: misc/mex.hpp
   - icon: ':heavy_check_mark:'
@@ -362,6 +365,7 @@ data:
   - misc/rng.hpp
   - misc/mo_algorithm.hpp
   - misc/QMC.hpp
+  - misc/local_minimum.hpp
   - misc/inversion.hpp
   - misc/mex.hpp
   - misc/random_tree.hpp

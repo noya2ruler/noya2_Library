@@ -218,6 +218,9 @@ data:
     - icon: ':warning:'
       path: misc/inversion.hpp
       title: misc/inversion.hpp
+    - icon: ':warning:'
+      path: misc/local_minimum.hpp
+      title: misc/local_minimum.hpp
     - icon: ':heavy_check_mark:'
       path: misc/longest_increasing_subsequence.hpp
       title: misc/longest_increasing_subsequence.hpp
