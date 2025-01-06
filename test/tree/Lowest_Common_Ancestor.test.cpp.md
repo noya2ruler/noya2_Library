@@ -174,28 +174,30 @@ data:
     \        if (v == root) return -1;\n        return (nxt[v] < 0 ? ~nxt[v] : tour[down[v]\
     \ - 1]);\n    }\n\n    // visiting time in euler tour\n    // usage : seg.set(index(v),\
     \ X[v])\n    int index(int vertex) const {\n        return down[vertex];\n   \
-    \ }\n\n    // subtree size of v\n    int subtree_size(int v) const {\n       \
-    \ return sub[v];\n    }\n\n    // prod in subtree v : seg.prod(subtree_l(v), subtree_r(v))\n\
-    \    int subtree_l(int v) const {\n        return down[v];\n    }\n    int subtree_r(int\
-    \ v) const {\n        return down[v] + sub[v];\n    }\n\n    // v is in subtree\
-    \ r\n    bool is_in_subtree(int r, int v) const {\n        return subtree_l(r)\
-    \ <= subtree_l(v) && subtree_r(v) <= subtree_r(r);\n    }\n    \n    // distance\
-    \ table from s\n    std::vector<int> dist_table(int s) const {\n        std::vector<int>\
-    \ table(n, -1);\n        table[s] = 0;\n        while (s != root){\n         \
-    \   table[parent(s)] = table[s] + 1;\n            s = parent(s);\n        }\n\
-    \        for (int v : tour){\n            if (table[v] == -1){\n             \
-    \   table[v] = table[parent(v)] + 1;\n            }\n        }\n        return\
-    \ table;\n    }\n\n    // dist, v1, v2\n    std::tuple<int, int, int> diameter()\
-    \ const {\n        std::vector<int> dep = dist_table(root);\n        int v1 =\
-    \ std::ranges::max_element(dep) - dep.begin();\n        std::vector<int> fromv1\
-    \ = dist_table(v1);\n        int v2 = std::ranges::max_element(fromv1) - fromv1.begin();\n\
-    \        return {fromv1[v2], v1, v2};\n    }\n\n    // vertex array {from, ...,\
-    \ to}\n    std::vector<int> path(int from, int to) const {\n        int d = dist(from,\
-    \ to);\n        std::vector<int> _path(d + 1);\n        int front = 0, back =\
-    \ d;\n        while (from != to){\n            if (down[from] > down[to]){\n \
-    \               _path[front++] = from;\n                from = parent(from);\n\
-    \            }\n            else {\n                _path[back--] = to;\n    \
-    \            to = parent(to);\n            }\n        }\n        _path[front]\
+    \ }\n    // usage : seg.set(index_edge(e.u, e.v), e.val)\n    int index(int vertex1,\
+    \ int vertex2) const {\n        return std::max(down[vertex1], down[vertex2]);\n\
+    \    }\n\n    // subtree size of v\n    int subtree_size(int v) const {\n    \
+    \    return sub[v];\n    }\n\n    // prod in subtree v : seg.prod(subtree_l(v),\
+    \ subtree_r(v))\n    int subtree_l(int v) const {\n        return down[v];\n \
+    \   }\n    int subtree_r(int v) const {\n        return down[v] + sub[v];\n  \
+    \  }\n\n    // v is in subtree r\n    bool is_in_subtree(int r, int v) const {\n\
+    \        return subtree_l(r) <= subtree_l(v) && subtree_r(v) <= subtree_r(r);\n\
+    \    }\n    \n    // distance table from s\n    std::vector<int> dist_table(int\
+    \ s) const {\n        std::vector<int> table(n, -1);\n        table[s] = 0;\n\
+    \        while (s != root){\n            table[parent(s)] = table[s] + 1;\n  \
+    \          s = parent(s);\n        }\n        for (int v : tour){\n          \
+    \  if (table[v] == -1){\n                table[v] = table[parent(v)] + 1;\n  \
+    \          }\n        }\n        return table;\n    }\n\n    // dist, v1, v2\n\
+    \    std::tuple<int, int, int> diameter() const {\n        std::vector<int> dep\
+    \ = dist_table(root);\n        int v1 = std::ranges::max_element(dep) - dep.begin();\n\
+    \        std::vector<int> fromv1 = dist_table(v1);\n        int v2 = std::ranges::max_element(fromv1)\
+    \ - fromv1.begin();\n        return {fromv1[v2], v1, v2};\n    }\n\n    // vertex\
+    \ array {from, ..., to}\n    std::vector<int> path(int from, int to) const {\n\
+    \        int d = dist(from, to);\n        std::vector<int> _path(d + 1);\n   \
+    \     int front = 0, back = d;\n        while (from != to){\n            if (down[from]\
+    \ > down[to]){\n                _path[front++] = from;\n                from =\
+    \ parent(from);\n            }\n            else {\n                _path[back--]\
+    \ = to;\n                to = parent(to);\n            }\n        }\n        _path[front]\
     \ = from;\n        return _path;\n    }\n\n    // path decomposition and query\
     \ (vertex weighted)\n    // if l < r, decsending order tour[l, r)\n    // if l\
     \ > r, acsending order tour(l, r]\n    template<bool vertex = true>\n    void\
@@ -287,7 +289,7 @@ data:
   isVerificationFile: true
   path: test/tree/Lowest_Common_Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2025-01-07 02:07:35+09:00'
+  timestamp: '2025-01-07 02:50:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Lowest_Common_Ancestor.test.cpp
