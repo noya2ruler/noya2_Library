@@ -182,6 +182,10 @@ struct hld_tree {
     int index(int vertex) const {
         return down[vertex];
     }
+    // usage : seg.set(index_edge(e.u, e.v), e.val)
+    int index(int vertex1, int vertex2) const {
+        return std::max(down[vertex1], down[vertex2]);
+    }
 
     // subtree size of v
     int subtree_size(int v) const {
