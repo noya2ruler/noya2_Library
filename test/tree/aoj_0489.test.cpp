@@ -2,7 +2,7 @@
 
 #include"../../template/template.hpp"
 #include"../../tree/Mo_on_Tree.hpp"
-#include"../../tree/Tree_core.hpp"
+#include"../../tree/heavy_light_decomposition.hpp"
 #include"../../data_structure/segment_tree.hpp"
 
 const int geta = 1'000'000;
@@ -40,14 +40,13 @@ int main(){
         m = querys.size();
     }
     MoTree_vertex<int> mo(n,a);
-    usefulTree g(n);
+    hld_tree g(n);
     for (auto &[u, v] : es){
         u--, v--;
         mo.add_edge(u,v);
         g.add_edge(u,v);
     }
     mo.build(querys.size());
-    g.build();
     for (auto [u, v, k] : querys){
         mo.insert(u,v,g.lca(u,v));
     }
