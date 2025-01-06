@@ -7,9 +7,9 @@
 int main(){
     int n, q; in(n,q);
     hld_tree g(n);
-    g.input(0);
+    g.input_edges<0>();
     while (q--){
-        int u, v, d; cin >> u >> v >> d;
+        int u, v, d; in(u,v,d);
         out(g.jump(u,v,d));
     }
 }

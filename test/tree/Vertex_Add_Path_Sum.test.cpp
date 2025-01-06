@@ -8,7 +8,7 @@ int main(){
     int n, q; in(n,q);
     vector<ll> a(n); in(a);
     hld_tree g(n);
-    g.input(0);
+    g.input_edges<0>();
     fenwick_tree<ll> fen(n);
     rep(v,n) fen.add(g.index(v),a[v]);
     while (q--){
@@ -21,9 +21,10 @@ int main(){
             int u, v; in(u,v);
             ll ans = 0;
             auto prod = [&](int l, int r){
+                if (l > r) swap(l,r);
                 ans += fen.sum(l,r);
             };
-            g.path_query(u,v,true,prod);
+            g.path_query(u,v,prod);
             out(ans);
         }
     }
