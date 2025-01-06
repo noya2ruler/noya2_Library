@@ -528,6 +528,9 @@ data:
       path: test/tree/Tree_Diameter_hld.test.cpp
       title: test/tree/Tree_Diameter_hld.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/tree/VertexSetPathComposite.test.cpp
+      title: test/tree/VertexSetPathComposite.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/tree/Vertex_Add_Path_Sum.test.cpp
       title: test/tree/Vertex_Add_Path_Sum.test.cpp
     - icon: ':heavy_check_mark:'

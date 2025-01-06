@@ -132,6 +132,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/VertexSetPathComposite.test.cpp
+    title: test/tree/VertexSetPathComposite.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -400,6 +403,7 @@ data:
   - test/data_structure/RangeParallelUnionfind.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/tree/VertexSetPathComposite.test.cpp
   - test/tree/FrequencyTableofTreeDistance.test.cpp
   - test/fps/Convolution1000000007.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
