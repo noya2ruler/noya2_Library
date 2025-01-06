@@ -98,7 +98,7 @@ data:
   - icon: ':warning:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: tree/Mo_on_Tree.hpp
     title: Mo on Tree
   - icon: ':heavy_check_mark:'
@@ -285,6 +285,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/aoj_0489.test.cpp
+    title: test/tree/aoj_0489.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -440,6 +443,7 @@ data:
   - test/graph/Shortest_Path2.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/aoj_0489.test.cpp
   - test/tree/Tree_Diameter_hld.test.cpp
   - test/tree/Lowest_Common_Ancestor.test.cpp
   - test/tree/FrequencyTableofTreeDistance.test.cpp
