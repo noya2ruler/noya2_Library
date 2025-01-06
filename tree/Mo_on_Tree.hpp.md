@@ -17,13 +17,10 @@ data:
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/tree/aoj_0489.test.cpp
-    title: test/tree/aoj_0489.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links:
     - https://atcoder.jp/contests/pakencamp-2022-day1/submissions/43052952
@@ -192,9 +189,8 @@ data:
   path: tree/Mo_on_Tree.hpp
   requiredBy: []
   timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/tree/aoj_0489.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: tree/Mo_on_Tree.hpp
 layout: document
 title: Mo on Tree

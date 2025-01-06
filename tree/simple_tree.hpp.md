@@ -4,20 +4,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: tree/heavy_light_decomposition.hpp
-    title: "\u5168\u90E8\u8F09\u305B\u6728"
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Jump_on_Tree.test.cpp
-    title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Vertex_Add_Path_Sum.test.cpp
-    title: test/tree/Vertex_Add_Path_Sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -80,13 +71,10 @@ data:
   - data_structure/csr.hpp
   isVerificationFile: false
   path: tree/simple_tree.hpp
-  requiredBy:
-  - tree/heavy_light_decomposition.hpp
+  requiredBy: []
   timestamp: '2024-10-30 04:43:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/Vertex_Add_Path_Sum.test.cpp
-  - test/tree/Jump_on_Tree.test.cpp
   - test/tree/FrequencyTableofTreeDistance.test.cpp
 documentation_of: tree/simple_tree.hpp
 layout: document

@@ -13,7 +13,7 @@ data:
     title: graph/graph_query.hpp
   - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
-    title: "\u5168\u90E8\u8F09\u305B\u6728"
+    title: Heavy Light Decomposition
   - icon: ':heavy_check_mark:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
@@ -36,6 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/tree/Lowest_Common_Ancestor.test.cpp
+    title: test/tree/Lowest_Common_Ancestor.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
@@ -115,6 +118,7 @@ data:
   - test/graph/Shortest_Path2.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/Lowest_Common_Ancestor.test.cpp
   - test/tree/FrequencyTableofTreeDistance.test.cpp
 documentation_of: data_structure/csr.hpp
 layout: document

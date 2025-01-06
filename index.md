@@ -293,18 +293,15 @@ data:
       title: template/utils.hpp
   - name: tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: tree/Mo_on_Tree.hpp
       title: Mo on Tree
-    - icon: ':heavy_check_mark:'
-      path: tree/Tree_core.hpp
-      title: tree/Tree_core.hpp
     - icon: ':heavy_check_mark:'
       path: tree/centroid_decomposition.hpp
       title: tree/centroid_decomposition.hpp
     - icon: ':heavy_check_mark:'
       path: tree/heavy_light_decomposition.hpp
-      title: "\u5168\u90E8\u8F09\u305B\u6728"
+      title: Heavy Light Decomposition
     - icon: ':heavy_check_mark:'
       path: tree/rerootingdp.hpp
       title: Rerooting DP
@@ -527,7 +524,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Rerooting_DP.test.cpp
       title: test/tree/Rerooting_DP.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Tree_Diameter.test.cpp
       title: test/tree/Tree_Diameter.test.cpp
     - icon: ':heavy_check_mark:'
@@ -536,7 +533,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Vertex_Add_Path_Sum.test.cpp
       title: test/tree/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/aoj_0489.test.cpp
       title: test/tree/aoj_0489.test.cpp
 layout: toppage
