@@ -326,6 +326,17 @@ struct hld_tree {
 		return childs[v];
 	}
 
+    // hld_tree g;
+    // euler tour order : `for (int v : g)`
+    // with range_adaptor : `for (int v : g | std::views::reverse)`
+    // bottom-up DP : `for (int v : g | std::views::drop(1) | std::views::reverse){ update dp[g.parent(v)] by dp[v] }`
+    auto begin() const {
+        return tour.begin();
+    }
+    auto end() const {
+        return tour.end();
+    }
+
   private:
     // nxt[v] : parent of v, nxt[0] == -1
     void build_from_parents(){
