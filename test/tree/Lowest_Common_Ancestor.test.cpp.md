@@ -228,42 +228,47 @@ data:
     \ - 1);\n\t\tfor (int v = 0; v < n; v++){\n\t\t\tif (v == root) continue;\n\t\t\
     \tchilds.add(parent(v), v);\n\t\t}\n\t\tchilds.build();\n\t}\n\tconst auto operator()(int\
     \ v) const {\n\t\treturn childs[v];\n\t}\n\tauto operator()(int v){\n\t\treturn\
-    \ childs[v];\n\t}\n\n  private:\n    // nxt[v] : parent of v, nxt[0] == -1\n \
-    \   void build_from_parents(){\n        for (int u = n - 1; u >= 1; u--){\n  \
-    \          int v = nxt[u];\n            sub[v] += sub[u];\n            down[v]\
-    \ = std::max(down[v], sub[u]);\n        }\n        for (int u = n - 1; u >= 1;\
-    \ u--){\n            int v = nxt[u];\n            if (down[v] == sub[u]){\n  \
-    \              sub[u] = ~sub[u];\n                down[v] = ~down[v];\n      \
-    \      }\n        }\n\n        sub[0] = ~down[0] + 1;\n        down[0] = 0;\n\
-    \        for (int u = 1; u < n; u++){\n            int v = nxt[u];\n         \
-    \   int nsub = ~down[u] + 1;\n            if (sub[u] < 0){\n                down[u]\
-    \ = down[v] + 1;\n                nxt[u] = (nxt[v] < 0 ? v : nxt[v]);\n      \
-    \      }\n            else {\n                down[u] = down[v] + sub[v];\n  \
-    \              sub[v] += sub[u];\n                nxt[u] = ~v;\n            }\n\
-    \            sub[u] = nsub;\n        }\n\n        for (int u = 0; u < n; u++){\n\
-    \            tour[down[u]] = u;\n        }\n    }\n\n    // down[v] : degree of\
-    \ v\n    // nxt[v] : xor prod of neighbor of v\n    void build_from_edges(){\n\
-    \        // use tour as queue\n        int back = 0;\n        for (int u = 0;\
-    \ u < n; u++){\n            if (u != root && down[u] == 1){\n                tour[back++]\
-    \ = u;\n            }\n        }\n        for (int front = 0; front < n - 1; front++){\n\
-    \            int u = tour[front];\n            down[u] = -1;\n            int\
-    \ v = nxt[u]; // parent of v\n            nxt[v] ^= u;\n            if (--down[v]\
-    \ == 1 && v != root){\n                tour[back++] = v;\n            }\n    \
-    \    }\n        // check : now, tour is reverse of topological order\n\n     \
-    \   tour.pop_back();\n\n        // check : now, down[*] <= 1\n        for (int\
-    \ u : tour){\n            int v = nxt[u];\n            // subtree size (initialized\
-    \ (1,1,...,1))\n            sub[v] += sub[u];\n            // heaviest subtree\
-    \ of its child\n            down[v] = std::max(down[v], sub[u]);\n        }\n\
-    \        for (int u : tour){\n            int v = nxt[u];\n            // whether\
-    \ u is not the top of heavy path\n            if (down[v] == sub[u]){\n      \
-    \          sub[u] = ~sub[u];\n                down[v] = ~down[v];\n          \
-    \  }\n        }\n\n        // after appearing v as u (or v == root), \n      \
-    \  // down[v] is the visiting time of euler tour\n        // nxt[v] is the lowest\
-    \ vertex of heavy path which contains v\n        //   (if v itself, nxt[v] is\
-    \ ~(parent of v))\n        // sub[v] + down[v] is the light child's starting time\
-    \ of euler tour\n        // note : heavy child's visiting time of euler tour is\
-    \ (the time of its parent) + 1\n        sub[root] = ~down[root] + 1;\n       \
-    \ down[root] = 0;\n        nxt[root] = -1;\n        for (int u : tour | std::views::reverse){\n\
+    \ childs[v];\n\t}\n\n    // hld_tree g;\n    // euler tour order : `for (int v\
+    \ : g)`\n    // with range_adaptor : `for (int v : g | std::views::reverse)`\n\
+    \    // bottom-up DP : `for (int v : g | std::views::drop(1) | std::views::reverse){\
+    \ update dp[g.parent(v)] by dp[v] }`\n    auto begin() const {\n        return\
+    \ tour.begin();\n    }\n    auto end() const {\n        return tour.end();\n \
+    \   }\n\n  private:\n    // nxt[v] : parent of v, nxt[0] == -1\n    void build_from_parents(){\n\
+    \        for (int u = n - 1; u >= 1; u--){\n            int v = nxt[u];\n    \
+    \        sub[v] += sub[u];\n            down[v] = std::max(down[v], sub[u]);\n\
+    \        }\n        for (int u = n - 1; u >= 1; u--){\n            int v = nxt[u];\n\
+    \            if (down[v] == sub[u]){\n                sub[u] = ~sub[u];\n    \
+    \            down[v] = ~down[v];\n            }\n        }\n\n        sub[0] =\
+    \ ~down[0] + 1;\n        down[0] = 0;\n        for (int u = 1; u < n; u++){\n\
+    \            int v = nxt[u];\n            int nsub = ~down[u] + 1;\n         \
+    \   if (sub[u] < 0){\n                down[u] = down[v] + 1;\n               \
+    \ nxt[u] = (nxt[v] < 0 ? v : nxt[v]);\n            }\n            else {\n   \
+    \             down[u] = down[v] + sub[v];\n                sub[v] += sub[u];\n\
+    \                nxt[u] = ~v;\n            }\n            sub[u] = nsub;\n   \
+    \     }\n\n        for (int u = 0; u < n; u++){\n            tour[down[u]] = u;\n\
+    \        }\n    }\n\n    // down[v] : degree of v\n    // nxt[v] : xor prod of\
+    \ neighbor of v\n    void build_from_edges(){\n        // use tour as queue\n\
+    \        int back = 0;\n        for (int u = 0; u < n; u++){\n            if (u\
+    \ != root && down[u] == 1){\n                tour[back++] = u;\n            }\n\
+    \        }\n        for (int front = 0; front < n - 1; front++){\n           \
+    \ int u = tour[front];\n            down[u] = -1;\n            int v = nxt[u];\
+    \ // parent of v\n            nxt[v] ^= u;\n            if (--down[v] == 1 &&\
+    \ v != root){\n                tour[back++] = v;\n            }\n        }\n \
+    \       // check : now, tour is reverse of topological order\n\n        tour.pop_back();\n\
+    \n        // check : now, down[*] <= 1\n        for (int u : tour){\n        \
+    \    int v = nxt[u];\n            // subtree size (initialized (1,1,...,1))\n\
+    \            sub[v] += sub[u];\n            // heaviest subtree of its child\n\
+    \            down[v] = std::max(down[v], sub[u]);\n        }\n        for (int\
+    \ u : tour){\n            int v = nxt[u];\n            // whether u is not the\
+    \ top of heavy path\n            if (down[v] == sub[u]){\n                sub[u]\
+    \ = ~sub[u];\n                down[v] = ~down[v];\n            }\n        }\n\n\
+    \        // after appearing v as u (or v == root), \n        // down[v] is the\
+    \ visiting time of euler tour\n        // nxt[v] is the lowest vertex of heavy\
+    \ path which contains v\n        //   (if v itself, nxt[v] is ~(parent of v))\n\
+    \        // sub[v] + down[v] is the light child's starting time of euler tour\n\
+    \        // note : heavy child's visiting time of euler tour is (the time of its\
+    \ parent) + 1\n        sub[root] = ~down[root] + 1;\n        down[root] = 0;\n\
+    \        nxt[root] = -1;\n        for (int u : tour | std::views::reverse){\n\
     \            int v = nxt[u];\n            int nsub = ~down[u] + 1;\n         \
     \   // heavy child\n            if (sub[u] < 0){\n                down[u] = down[v]\
     \ + 1;\n                nxt[u] = (nxt[v] < 0 ? v : nxt[v]);\n            }\n \
@@ -289,7 +294,7 @@ data:
   isVerificationFile: true
   path: test/tree/Lowest_Common_Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2025-01-07 02:50:50+09:00'
+  timestamp: '2025-01-07 23:16:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Lowest_Common_Ancestor.test.cpp
