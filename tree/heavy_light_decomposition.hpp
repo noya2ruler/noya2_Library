@@ -7,14 +7,14 @@
 #include <cassert>
 #include <utility>
 
-#include "data_structure/csr.hpp"
+// #include "data_structure/csr.hpp"
 
 namespace noya2 {
 
 struct hld_tree {
     int n, root;
     std::vector<int> down, nxt, sub, tour;
-	noya2::internal::csr<int> childs;
+	// noya2::internal::csr<int> childs;
 
     // default constructor (nop)
     hld_tree () {}
@@ -88,6 +88,10 @@ struct hld_tree {
         if (++tour[0] == n - 1){
             build_from_edges();
         }
+    }
+
+    size_t size() const {
+        return n;
     }
 
     // top vertex of heavy path which contains v
@@ -310,7 +314,9 @@ struct hld_tree {
         return {par, vs};
 	}
 
-	// build csr for using operator[], operator()
+/*  CSR
+
+	// build csr for using operator()
 	void build_csr(){
 		childs = noya2::internal::csr<int>(n, n - 1);
 		for (int v = 0; v < n; v++){
@@ -325,6 +331,7 @@ struct hld_tree {
 	auto operator()(int v){
 		return childs[v];
 	}
+*/
 
     // hld_tree g;
     // euler tour order : `for (int v : g)`
