@@ -12,9 +12,6 @@ data:
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
   - icon: ':heavy_check_mark:'
-    path: tree/heavy_light_decomposition.hpp
-    title: Heavy Light Decomposition
-  - icon: ':heavy_check_mark:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
   _extendedVerifiedWith:
@@ -33,21 +30,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Jump_on_Tree.test.cpp
-    title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Lowest_Common_Ancestor.test.cpp
-    title: test/tree/Lowest_Common_Ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/VertexSetPathComposite.test.cpp
-    title: test/tree/VertexSetPathComposite.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/Vertex_Add_Path_Sum.test.cpp
-    title: test/tree/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/tree/aoj_0489.test.cpp
-    title: test/tree/aoj_0489.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -114,7 +96,6 @@ data:
   - graph/graph_query.hpp
   - graph/cycle_detection.hpp
   - tree/simple_tree.hpp
-  - tree/heavy_light_decomposition.hpp
   timestamp: '2024-10-30 04:43:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -122,11 +103,6 @@ data:
   - test/graph/CycleDetectionDirected.test.cpp
   - test/graph/Shortest_Path.test.cpp
   - test/graph/Shortest_Path2.test.cpp
-  - test/tree/VertexSetPathComposite.test.cpp
-  - test/tree/Vertex_Add_Path_Sum.test.cpp
-  - test/tree/Jump_on_Tree.test.cpp
-  - test/tree/aoj_0489.test.cpp
-  - test/tree/Lowest_Common_Ancestor.test.cpp
   - test/tree/FrequencyTableofTreeDistance.test.cpp
 documentation_of: data_structure/csr.hpp
 layout: document

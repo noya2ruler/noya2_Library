@@ -1,9 +1,6 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: data_structure/csr.hpp
-    title: data_structure/csr.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -28,34 +25,9 @@ data:
     links: []
   bundledCode: "#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#include <vector>\n\
     #include <algorithm>\n#include <stack>\n#include <ranges>\n#include <cassert>\n\
-    #include <utility>\n\n#line 2 \"data_structure/csr.hpp\"\n\n#line 7 \"data_structure/csr.hpp\"\
-    \n\nnamespace noya2::internal {\n\ntemplate<class E>\nstruct csr {\n    csr ()\
-    \ {}\n    csr (int _n) : n(_n) {}\n    csr (int _n, int m) : n(_n){\n        start.reserve(m);\n\
-    \        elist.reserve(m);\n    }\n    // ACL style constructor (do not have to\
-    \ call build)\n    csr (int _n, const std::vector<std::pair<int,E>> &idx_elem)\
-    \ : n(_n), start(_n + 2), elist(idx_elem.size()) {\n        for (auto &[i, e]\
-    \ : idx_elem){\n            start[i + 2]++;\n        }\n        for (int i = 1;\
-    \ i < n; i++){\n            start[i + 2] += start[i + 1];\n        }\n       \
-    \ for (auto &[i, e] : idx_elem){\n            elist[start[i + 1]++] = e;\n   \
-    \     }\n        prepared = true;\n    }\n    int add(int idx, E elem){\n    \
-    \    int eid = start.size();\n        start.emplace_back(idx);\n        elist.emplace_back(elem);\n\
-    \        return eid;\n    }\n    void build(){\n        if (prepared) return ;\n\
-    \        int m = start.size();\n        std::vector<E> nelist(m);\n        std::vector<int>\
-    \ nstart(n + 2, 0);\n        for (int i = 0; i < m; i++){\n            nstart[start[i]\
-    \ + 2]++;\n        }\n        for (int i = 1; i < n; i++){\n            nstart[i\
-    \ + 2] += nstart[i + 1];\n        }\n        for (int i = 0; i < m; i++){\n  \
-    \          nelist[nstart[start[i] + 1]++] = elist[i];\n        }\n        swap(elist,nelist);\n\
-    \        swap(start,nstart);\n        prepared = true;\n    }\n    const auto\
-    \ operator[](int idx) const {\n        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);\n\
-    \    }\n    auto operator[](int idx){\n        return std::ranges::subrange(elist.begin()+start[idx],elist.begin()+start[idx+1]);\n\
-    \    }\n    const auto operator()(int idx, int l, int r) const {\n        return\
-    \ std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
-    \    }\n    auto operator()(int idx, int l, int r){\n        return std::ranges::subrange(elist.begin()+start[idx]+l,elist.begin()+start[idx]+r);\n\
-    \    }\n    size_t size() const {\n        return n;\n    }\n    int n;\n    std::vector<int>\
-    \ start;\n    std::vector<E> elist;\n    bool prepared = false;\n};\n\n} // namespace\
-    \ noya2::internal\n#line 11 \"tree/heavy_light_decomposition.hpp\"\n\nnamespace\
-    \ noya2 {\n\nstruct hld_tree {\n    int n, root;\n    std::vector<int> down, nxt,\
-    \ sub, tour;\n\tnoya2::internal::csr<int> childs;\n\n    // default constructor\
+    #include <utility>\n\n// #include \"data_structure/csr.hpp\"\n\nnamespace noya2\
+    \ {\n\nstruct hld_tree {\n    int n, root;\n    std::vector<int> down, nxt, sub,\
+    \ tour;\n\t// noya2::internal::csr<int> childs;\n\n    // default constructor\
     \ (nop)\n    hld_tree () {}\n\n    // tree with _n node\n    // after construct,\
     \ call input_edges / input_parents / add_edge _n - 1 times\n    hld_tree (int\
     \ _n, int _root = 0) : n(_n), root(_root), down(n), nxt(n), sub(n, 1), tour(n)\
@@ -82,34 +54,35 @@ data:
     \    }\n\n    void add_edge(int u, int v){\n        down[u]++;\n        down[v]++;\n\
     \        nxt[u] ^= v;\n        nxt[v] ^= u;\n        // use tour[0] as counter\n\
     \        if (++tour[0] == n - 1){\n            build_from_edges();\n        }\n\
-    \    }\n\n    // top vertex of heavy path which contains v\n    int leader(int\
-    \ v) const {\n        return nxt[v] < 0 ? v : nxt[v];\n    }\n\n    // level ancestor\n\
-    \    // ret is ancestor of v, dist(ret, v) == d\n    // if d > depth(v), return\
-    \ -1\n    int la(int v, int d) const {\n        while (v != -1){\n           \
-    \ int u = leader(v);\n            if (down[v] - d >= down[u]){\n             \
-    \   v = tour[down[v] - d];\n                break;\n            }\n          \
-    \  d -= down[v] - down[u] + 1;\n            v = (u == root ? -1 : ~nxt[u]);\n\
-    \        }\n        return v;\n    }\n\n    // lowest common ancestor of u and\
-    \ v\n    int lca(int u, int v) const {\n        int du = down[u], dv = down[v];\n\
-    \        if (du > dv){\n            std::swap(du, dv);\n            std::swap(u,\
-    \ v);\n        }\n        if (dv < du + sub[u]){\n            return u;\n    \
-    \    }\n        while (du < dv){\n            v = ~nxt[leader(v)];\n         \
-    \   dv = down[v];\n        }\n        return v;\n    }\n\n    // distance from\
-    \ u to v\n    int dist(int u, int v) const {\n        int _dist = 0;\n       \
-    \ while (leader(u) != leader(v)){\n            if (down[u] > down[v]) std::swap(u,\
-    \ v);\n            _dist += down[v] - down[leader(v)] + 1;\n            v = ~nxt[leader(v)];\n\
-    \        }\n        _dist += std::abs(down[u] - down[v]);\n        return _dist;\n\
-    \    }\n\n    // d times move from to its neighbor (direction of to)\n    // if\
-    \ d > dist(from, to), return -1\n    int jump(int from, int to, int d) const {\n\
-    \        int _from = from, _to = to;\n        int dist_from_lca = 0, dist_to_lca\
-    \ = 0;\n        while (leader(_from) != leader(_to)){\n            if (down[_from]\
-    \ > down[_to]){\n                dist_from_lca += down[_from] - down[leader(_from)]\
-    \ + 1;\n                _from = ~nxt[leader(_from)];\n            }\n        \
-    \    else {\n                dist_to_lca += down[_to] - down[leader(_to)] + 1;\n\
-    \                _to = ~nxt[leader(_to)];\n            }\n        }\n        if\
-    \ (down[_from] > down[_to]){\n            dist_from_lca += down[_from] - down[_to];\n\
-    \        }\n        else {\n            dist_to_lca += down[_to] - down[_from];\n\
-    \        }\n        if (d <= dist_from_lca){\n            return la(from, d);\n\
+    \    }\n\n    size_t size() const {\n        return n;\n    }\n\n    // top vertex\
+    \ of heavy path which contains v\n    int leader(int v) const {\n        return\
+    \ nxt[v] < 0 ? v : nxt[v];\n    }\n\n    // level ancestor\n    // ret is ancestor\
+    \ of v, dist(ret, v) == d\n    // if d > depth(v), return -1\n    int la(int v,\
+    \ int d) const {\n        while (v != -1){\n            int u = leader(v);\n \
+    \           if (down[v] - d >= down[u]){\n                v = tour[down[v] - d];\n\
+    \                break;\n            }\n            d -= down[v] - down[u] + 1;\n\
+    \            v = (u == root ? -1 : ~nxt[u]);\n        }\n        return v;\n \
+    \   }\n\n    // lowest common ancestor of u and v\n    int lca(int u, int v) const\
+    \ {\n        int du = down[u], dv = down[v];\n        if (du > dv){\n        \
+    \    std::swap(du, dv);\n            std::swap(u, v);\n        }\n        if (dv\
+    \ < du + sub[u]){\n            return u;\n        }\n        while (du < dv){\n\
+    \            v = ~nxt[leader(v)];\n            dv = down[v];\n        }\n    \
+    \    return v;\n    }\n\n    // distance from u to v\n    int dist(int u, int\
+    \ v) const {\n        int _dist = 0;\n        while (leader(u) != leader(v)){\n\
+    \            if (down[u] > down[v]) std::swap(u, v);\n            _dist += down[v]\
+    \ - down[leader(v)] + 1;\n            v = ~nxt[leader(v)];\n        }\n      \
+    \  _dist += std::abs(down[u] - down[v]);\n        return _dist;\n    }\n\n   \
+    \ // d times move from to its neighbor (direction of to)\n    // if d > dist(from,\
+    \ to), return -1\n    int jump(int from, int to, int d) const {\n        int _from\
+    \ = from, _to = to;\n        int dist_from_lca = 0, dist_to_lca = 0;\n       \
+    \ while (leader(_from) != leader(_to)){\n            if (down[_from] > down[_to]){\n\
+    \                dist_from_lca += down[_from] - down[leader(_from)] + 1;\n   \
+    \             _from = ~nxt[leader(_from)];\n            }\n            else {\n\
+    \                dist_to_lca += down[_to] - down[leader(_to)] + 1;\n         \
+    \       _to = ~nxt[leader(_to)];\n            }\n        }\n        if (down[_from]\
+    \ > down[_to]){\n            dist_from_lca += down[_from] - down[_to];\n     \
+    \   }\n        else {\n            dist_to_lca += down[_to] - down[_from];\n \
+    \       }\n        if (d <= dist_from_lca){\n            return la(from, d);\n\
     \        }\n        d -= dist_from_lca;\n        if (d <= dist_to_lca){\n    \
     \        return la(to, dist_to_lca - d);\n        }\n        return -1;\n    }\n\
     \n    // parent of v (if v is root, return -1)\n    int parent(int v) const {\n\
@@ -165,13 +138,13 @@ data:
     \ st;\n        std::vector<int> par(sz);\n        par[0] = -1;\n        st.push(0);\n\
     \        for (int i = 1; i < sz; i++){\n            while (!is_in_subtree(vs[st.top()],\
     \ vs[i])) st.pop();\n            par[i] = st.top();\n            st.push(i);\n\
-    \        }\n        return {par, vs};\n\t}\n\n\t// build csr for using operator[],\
+    \        }\n        return {par, vs};\n\t}\n\n/*  CSR\n\n\t// build csr for using\
     \ operator()\n\tvoid build_csr(){\n\t\tchilds = noya2::internal::csr<int>(n, n\
     \ - 1);\n\t\tfor (int v = 0; v < n; v++){\n\t\t\tif (v == root) continue;\n\t\t\
     \tchilds.add(parent(v), v);\n\t\t}\n\t\tchilds.build();\n\t}\n\tconst auto operator()(int\
     \ v) const {\n\t\treturn childs[v];\n\t}\n\tauto operator()(int v){\n\t\treturn\
-    \ childs[v];\n\t}\n\n    // hld_tree g;\n    // euler tour order : `for (int v\
-    \ : g)`\n    // with range_adaptor : `for (int v : g | std::views::reverse)`\n\
+    \ childs[v];\n\t}\n*/\n\n    // hld_tree g;\n    // euler tour order : `for (int\
+    \ v : g)`\n    // with range_adaptor : `for (int v : g | std::views::reverse)`\n\
     \    // bottom-up DP : `for (int v : g | std::views::drop(1) | std::views::reverse){\
     \ update dp[g.parent(v)] by dp[v] }`\n    auto begin() const {\n        return\
     \ tour.begin();\n    }\n    auto end() const {\n        return tour.end();\n \
@@ -221,9 +194,9 @@ data:
     \ n; u++){\n            tour[down[u]] = u;\n        }\n    }\n};\n\n} // namespace\
     \ noya2\n"
   code: "#pragma once\n\n#include <vector>\n#include <algorithm>\n#include <stack>\n\
-    #include <ranges>\n#include <cassert>\n#include <utility>\n\n#include \"data_structure/csr.hpp\"\
+    #include <ranges>\n#include <cassert>\n#include <utility>\n\n// #include \"data_structure/csr.hpp\"\
     \n\nnamespace noya2 {\n\nstruct hld_tree {\n    int n, root;\n    std::vector<int>\
-    \ down, nxt, sub, tour;\n\tnoya2::internal::csr<int> childs;\n\n    // default\
+    \ down, nxt, sub, tour;\n\t// noya2::internal::csr<int> childs;\n\n    // default\
     \ constructor (nop)\n    hld_tree () {}\n\n    // tree with _n node\n    // after\
     \ construct, call input_edges / input_parents / add_edge _n - 1 times\n    hld_tree\
     \ (int _n, int _root = 0) : n(_n), root(_root), down(n), nxt(n), sub(n, 1), tour(n)\
@@ -250,34 +223,35 @@ data:
     \    }\n\n    void add_edge(int u, int v){\n        down[u]++;\n        down[v]++;\n\
     \        nxt[u] ^= v;\n        nxt[v] ^= u;\n        // use tour[0] as counter\n\
     \        if (++tour[0] == n - 1){\n            build_from_edges();\n        }\n\
-    \    }\n\n    // top vertex of heavy path which contains v\n    int leader(int\
-    \ v) const {\n        return nxt[v] < 0 ? v : nxt[v];\n    }\n\n    // level ancestor\n\
-    \    // ret is ancestor of v, dist(ret, v) == d\n    // if d > depth(v), return\
-    \ -1\n    int la(int v, int d) const {\n        while (v != -1){\n           \
-    \ int u = leader(v);\n            if (down[v] - d >= down[u]){\n             \
-    \   v = tour[down[v] - d];\n                break;\n            }\n          \
-    \  d -= down[v] - down[u] + 1;\n            v = (u == root ? -1 : ~nxt[u]);\n\
-    \        }\n        return v;\n    }\n\n    // lowest common ancestor of u and\
-    \ v\n    int lca(int u, int v) const {\n        int du = down[u], dv = down[v];\n\
-    \        if (du > dv){\n            std::swap(du, dv);\n            std::swap(u,\
-    \ v);\n        }\n        if (dv < du + sub[u]){\n            return u;\n    \
-    \    }\n        while (du < dv){\n            v = ~nxt[leader(v)];\n         \
-    \   dv = down[v];\n        }\n        return v;\n    }\n\n    // distance from\
-    \ u to v\n    int dist(int u, int v) const {\n        int _dist = 0;\n       \
-    \ while (leader(u) != leader(v)){\n            if (down[u] > down[v]) std::swap(u,\
-    \ v);\n            _dist += down[v] - down[leader(v)] + 1;\n            v = ~nxt[leader(v)];\n\
-    \        }\n        _dist += std::abs(down[u] - down[v]);\n        return _dist;\n\
-    \    }\n\n    // d times move from to its neighbor (direction of to)\n    // if\
-    \ d > dist(from, to), return -1\n    int jump(int from, int to, int d) const {\n\
-    \        int _from = from, _to = to;\n        int dist_from_lca = 0, dist_to_lca\
-    \ = 0;\n        while (leader(_from) != leader(_to)){\n            if (down[_from]\
-    \ > down[_to]){\n                dist_from_lca += down[_from] - down[leader(_from)]\
-    \ + 1;\n                _from = ~nxt[leader(_from)];\n            }\n        \
-    \    else {\n                dist_to_lca += down[_to] - down[leader(_to)] + 1;\n\
-    \                _to = ~nxt[leader(_to)];\n            }\n        }\n        if\
-    \ (down[_from] > down[_to]){\n            dist_from_lca += down[_from] - down[_to];\n\
-    \        }\n        else {\n            dist_to_lca += down[_to] - down[_from];\n\
-    \        }\n        if (d <= dist_from_lca){\n            return la(from, d);\n\
+    \    }\n\n    size_t size() const {\n        return n;\n    }\n\n    // top vertex\
+    \ of heavy path which contains v\n    int leader(int v) const {\n        return\
+    \ nxt[v] < 0 ? v : nxt[v];\n    }\n\n    // level ancestor\n    // ret is ancestor\
+    \ of v, dist(ret, v) == d\n    // if d > depth(v), return -1\n    int la(int v,\
+    \ int d) const {\n        while (v != -1){\n            int u = leader(v);\n \
+    \           if (down[v] - d >= down[u]){\n                v = tour[down[v] - d];\n\
+    \                break;\n            }\n            d -= down[v] - down[u] + 1;\n\
+    \            v = (u == root ? -1 : ~nxt[u]);\n        }\n        return v;\n \
+    \   }\n\n    // lowest common ancestor of u and v\n    int lca(int u, int v) const\
+    \ {\n        int du = down[u], dv = down[v];\n        if (du > dv){\n        \
+    \    std::swap(du, dv);\n            std::swap(u, v);\n        }\n        if (dv\
+    \ < du + sub[u]){\n            return u;\n        }\n        while (du < dv){\n\
+    \            v = ~nxt[leader(v)];\n            dv = down[v];\n        }\n    \
+    \    return v;\n    }\n\n    // distance from u to v\n    int dist(int u, int\
+    \ v) const {\n        int _dist = 0;\n        while (leader(u) != leader(v)){\n\
+    \            if (down[u] > down[v]) std::swap(u, v);\n            _dist += down[v]\
+    \ - down[leader(v)] + 1;\n            v = ~nxt[leader(v)];\n        }\n      \
+    \  _dist += std::abs(down[u] - down[v]);\n        return _dist;\n    }\n\n   \
+    \ // d times move from to its neighbor (direction of to)\n    // if d > dist(from,\
+    \ to), return -1\n    int jump(int from, int to, int d) const {\n        int _from\
+    \ = from, _to = to;\n        int dist_from_lca = 0, dist_to_lca = 0;\n       \
+    \ while (leader(_from) != leader(_to)){\n            if (down[_from] > down[_to]){\n\
+    \                dist_from_lca += down[_from] - down[leader(_from)] + 1;\n   \
+    \             _from = ~nxt[leader(_from)];\n            }\n            else {\n\
+    \                dist_to_lca += down[_to] - down[leader(_to)] + 1;\n         \
+    \       _to = ~nxt[leader(_to)];\n            }\n        }\n        if (down[_from]\
+    \ > down[_to]){\n            dist_from_lca += down[_from] - down[_to];\n     \
+    \   }\n        else {\n            dist_to_lca += down[_to] - down[_from];\n \
+    \       }\n        if (d <= dist_from_lca){\n            return la(from, d);\n\
     \        }\n        d -= dist_from_lca;\n        if (d <= dist_to_lca){\n    \
     \        return la(to, dist_to_lca - d);\n        }\n        return -1;\n    }\n\
     \n    // parent of v (if v is root, return -1)\n    int parent(int v) const {\n\
@@ -333,13 +307,13 @@ data:
     \ st;\n        std::vector<int> par(sz);\n        par[0] = -1;\n        st.push(0);\n\
     \        for (int i = 1; i < sz; i++){\n            while (!is_in_subtree(vs[st.top()],\
     \ vs[i])) st.pop();\n            par[i] = st.top();\n            st.push(i);\n\
-    \        }\n        return {par, vs};\n\t}\n\n\t// build csr for using operator[],\
+    \        }\n        return {par, vs};\n\t}\n\n/*  CSR\n\n\t// build csr for using\
     \ operator()\n\tvoid build_csr(){\n\t\tchilds = noya2::internal::csr<int>(n, n\
     \ - 1);\n\t\tfor (int v = 0; v < n; v++){\n\t\t\tif (v == root) continue;\n\t\t\
     \tchilds.add(parent(v), v);\n\t\t}\n\t\tchilds.build();\n\t}\n\tconst auto operator()(int\
     \ v) const {\n\t\treturn childs[v];\n\t}\n\tauto operator()(int v){\n\t\treturn\
-    \ childs[v];\n\t}\n\n    // hld_tree g;\n    // euler tour order : `for (int v\
-    \ : g)`\n    // with range_adaptor : `for (int v : g | std::views::reverse)`\n\
+    \ childs[v];\n\t}\n*/\n\n    // hld_tree g;\n    // euler tour order : `for (int\
+    \ v : g)`\n    // with range_adaptor : `for (int v : g | std::views::reverse)`\n\
     \    // bottom-up DP : `for (int v : g | std::views::drop(1) | std::views::reverse){\
     \ update dp[g.parent(v)] by dp[v] }`\n    auto begin() const {\n        return\
     \ tour.begin();\n    }\n    auto end() const {\n        return tour.end();\n \
@@ -388,12 +362,11 @@ data:
     \ permutation of down\n        tour.push_back(0);\n        for (int u = 0; u <\
     \ n; u++){\n            tour[down[u]] = u;\n        }\n    }\n};\n\n} // namespace\
     \ noya2"
-  dependsOn:
-  - data_structure/csr.hpp
+  dependsOn: []
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2025-01-07 23:16:09+09:00'
+  timestamp: '2025-01-09 04:05:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/VertexSetPathComposite.test.cpp
