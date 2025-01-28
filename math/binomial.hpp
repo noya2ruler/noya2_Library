@@ -27,6 +27,9 @@ struct binomial {
         if (!(0 <= r && r <= n)) return 0;
         return fact(n) * ifact(n-r);
     }
+    static mint catalan(int n){
+        return C(n * 2, n) * inv(n + 1);
+    }
     inline mint operator()(int n, int r) { return C(n, r); }
     template<class... Cnts>
     static mint M(const Cnts&... cnts){
