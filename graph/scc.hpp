@@ -82,8 +82,7 @@ struct scc_graph {
         }
         return groups;
     }
-
-  private:
+    
     int _n;
     struct edge {
         int to;
