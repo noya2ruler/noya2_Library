@@ -113,13 +113,12 @@ data:
     \ groups(ids.first);\n        for (int i = 0; i < group_num; i++) {\n        \
     \    groups[i].reserve(counts[i]);\n        }\n        for (int i = 0; i < _n;\
     \ i++) {\n            groups[ids.second[i]].push_back(i);\n        }\n       \
-    \ return groups;\n    }\n\n  private:\n    int _n;\n    struct edge {\n      \
-    \  int to;\n    };\n    std::vector<std::pair<int, edge>> edges;\n};\n\n} // namespace\
-    \ noya2\n#line 5 \"test/graph/Strongly_Connected_Components.test.cpp\"\n\nint\
-    \ main(){\n    int n, m; in(n,m);\n    scc_graph g(n);\n    rep(i,m){\n      \
-    \  int u, v; in(u,v);\n        g.add_edge(u,v);\n    }\n    auto ans = g.scc();\n\
-    \    out(ans.size());\n    for (auto &v : ans){\n        out(v.size(),v);\n  \
-    \  }\n}\n"
+    \ return groups;\n    }\n    \n    int _n;\n    struct edge {\n        int to;\n\
+    \    };\n    std::vector<std::pair<int, edge>> edges;\n};\n\n} // namespace noya2\n\
+    #line 5 \"test/graph/Strongly_Connected_Components.test.cpp\"\n\nint main(){\n\
+    \    int n, m; in(n,m);\n    scc_graph g(n);\n    rep(i,m){\n        int u, v;\
+    \ in(u,v);\n        g.add_edge(u,v);\n    }\n    auto ans = g.scc();\n    out(ans.size());\n\
+    \    for (auto &v : ans){\n        out(v.size(),v);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\n\n#include\"../../template/template.hpp\"\
     \n#include\"../../graph/scc.hpp\"\n\nint main(){\n    int n, m; in(n,m);\n   \
     \ scc_graph g(n);\n    rep(i,m){\n        int u, v; in(u,v);\n        g.add_edge(u,v);\n\
@@ -134,7 +133,7 @@ data:
   isVerificationFile: true
   path: test/graph/Strongly_Connected_Components.test.cpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2025-01-28 23:59:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/graph/Strongly_Connected_Components.test.cpp

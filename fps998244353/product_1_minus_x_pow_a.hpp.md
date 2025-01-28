@@ -311,7 +311,8 @@ data:
     \ ifact(n) * fact(n-1);\n    }\n    static mint C(int n, int r){\n        if (!(0\
     \ <= r && r <= n)) return 0;\n        return fact(n) * ifact(r) * ifact(n-r);\n\
     \    }\n    static mint P(int n, int r){\n        if (!(0 <= r && r <= n)) return\
-    \ 0;\n        return fact(n) * ifact(n-r);\n    }\n    inline mint operator()(int\
+    \ 0;\n        return fact(n) * ifact(n-r);\n    }\n    static mint catalan(int\
+    \ n){\n        return C(n * 2, n) * inv(n + 1);\n    }\n    inline mint operator()(int\
     \ n, int r) { return C(n, r); }\n    template<class... Cnts>\n    static mint\
     \ M(const Cnts&... cnts){\n        return multinomial(0,1,cnts...);\n    }\n \
     \   static void initialize(int len = 2){\n        _fact.clear();\n        _ifact.clear();\n\
@@ -454,7 +455,7 @@ data:
   isVerificationFile: false
   path: fps998244353/product_1_minus_x_pow_a.hpp
   requiredBy: []
-  timestamp: '2024-08-21 17:31:04+09:00'
+  timestamp: '2025-01-28 23:59:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: fps998244353/product_1_minus_x_pow_a.hpp

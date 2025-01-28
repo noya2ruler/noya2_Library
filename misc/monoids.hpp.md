@@ -60,10 +60,10 @@ data:
   timestamp: '2024-07-28 16:42:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   - test/data_structure/Rectangle_Sum.test.cpp
-  - test/data_structure/aoj_dsl_1_b.test.cpp
   - test/data_structure/Static_Range_Inversions_Query.test.cpp
+  - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+  - test/data_structure/aoj_dsl_1_b.test.cpp
 documentation_of: misc/monoids.hpp
 layout: document
 redirect_from:

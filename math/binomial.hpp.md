@@ -90,15 +90,17 @@ data:
     \ C(int n, int r){\n        if (!(0 <= r && r <= n)) return 0;\n        return\
     \ fact(n) * ifact(r) * ifact(n-r);\n    }\n    static mint P(int n, int r){\n\
     \        if (!(0 <= r && r <= n)) return 0;\n        return fact(n) * ifact(n-r);\n\
-    \    }\n    inline mint operator()(int n, int r) { return C(n, r); }\n    template<class...\
-    \ Cnts>\n    static mint M(const Cnts&... cnts){\n        return multinomial(0,1,cnts...);\n\
-    \    }\n    static void initialize(int len = 2){\n        _fact.clear();\n   \
-    \     _ifact.clear();\n        extend(len);\n    }\n  private:\n    static mint\
-    \ multinomial(const int& sum, const mint& div_prod){\n        if (sum < 0) return\
-    \ 0;\n        return fact(sum) * div_prod;\n    }\n    template<class... Tail>\n\
-    \    static mint multinomial(const int& sum, const mint& div_prod, const int&\
-    \ n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n\
-    \    }\n    static inline std::vector<mint> _fact, _ifact;\n    static void extend(int\
+    \    }\n    static mint catalan(int n){\n        return C(n * 2, n) * inv(n +\
+    \ 1);\n    }\n    inline mint operator()(int n, int r) { return C(n, r); }\n \
+    \   template<class... Cnts>\n    static mint M(const Cnts&... cnts){\n       \
+    \ return multinomial(0,1,cnts...);\n    }\n    static void initialize(int len\
+    \ = 2){\n        _fact.clear();\n        _ifact.clear();\n        extend(len);\n\
+    \    }\n  private:\n    static mint multinomial(const int& sum, const mint& div_prod){\n\
+    \        if (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n\
+    \    template<class... Tail>\n    static mint multinomial(const int& sum, const\
+    \ mint& div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return\
+    \ 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n\
+    \    static inline std::vector<mint> _fact, _ifact;\n    static void extend(int\
     \ len = -1){\n        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n\
     \        }\n        int siz = _fact.size();\n        if (len == -1) len = siz\
     \ * 2;\n        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len\
@@ -115,7 +117,8 @@ data:
     \       return ifact(n) * fact(n-1);\n    }\n    static mint C(int n, int r){\n\
     \        if (!(0 <= r && r <= n)) return 0;\n        return fact(n) * ifact(r)\
     \ * ifact(n-r);\n    }\n    static mint P(int n, int r){\n        if (!(0 <= r\
-    \ && r <= n)) return 0;\n        return fact(n) * ifact(n-r);\n    }\n    inline\
+    \ && r <= n)) return 0;\n        return fact(n) * ifact(n-r);\n    }\n    static\
+    \ mint catalan(int n){\n        return C(n * 2, n) * inv(n + 1);\n    }\n    inline\
     \ mint operator()(int n, int r) { return C(n, r); }\n    template<class... Cnts>\n\
     \    static mint M(const Cnts&... cnts){\n        return multinomial(0,1,cnts...);\n\
     \    }\n    static void initialize(int len = 2){\n        _fact.clear();\n   \
@@ -138,31 +141,31 @@ data:
   requiredBy:
   - math/lagrange_interpolation.hpp
   - math/euler_circuit_counting.hpp
-  - fps998244353/sample_point_shift.hpp
-  - fps998244353/bostan_mori.hpp
-  - fps998244353/polynomial_taylor_shift.hpp
-  - fps998244353/multipoint_evaluation.hpp
-  - fps998244353/fps998244353.hpp
-  - fps998244353/product_1_minus_x_pow_a.hpp
   - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
-  timestamp: '2024-07-03 11:54:46+09:00'
+  - fps998244353/bostan_mori.hpp
+  - fps998244353/fps998244353.hpp
+  - fps998244353/multipoint_evaluation.hpp
+  - fps998244353/product_1_minus_x_pow_a.hpp
+  - fps998244353/sample_point_shift.hpp
+  - fps998244353/polynomial_taylor_shift.hpp
+  timestamp: '2025-01-28 23:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/CountingEulerianCircuits.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/fps/convolution.test.cpp
+  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
+  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/fps/Inv_of_Formal_Power_Series.test.cpp
+  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
   - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
   - test/fps998244353/multipoint_evaluation_998244353.test.cpp
   - test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
-  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
   - test/fps998244353/convolution_998244353.test.cpp
-  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
   - test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/fps/Inv_of_Formal_Power_Series.test.cpp
-  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
-  - test/fps/convolution.test.cpp
 documentation_of: math/binomial.hpp
 layout: document
 redirect_from:

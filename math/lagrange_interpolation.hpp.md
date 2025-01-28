@@ -22,9 +22,10 @@ data:
     \    }\n    static mint C(int n, int r){\n        if (!(0 <= r && r <= n)) return\
     \ 0;\n        return fact(n) * ifact(r) * ifact(n-r);\n    }\n    static mint\
     \ P(int n, int r){\n        if (!(0 <= r && r <= n)) return 0;\n        return\
-    \ fact(n) * ifact(n-r);\n    }\n    inline mint operator()(int n, int r) { return\
-    \ C(n, r); }\n    template<class... Cnts>\n    static mint M(const Cnts&... cnts){\n\
-    \        return multinomial(0,1,cnts...);\n    }\n    static void initialize(int\
+    \ fact(n) * ifact(n-r);\n    }\n    static mint catalan(int n){\n        return\
+    \ C(n * 2, n) * inv(n + 1);\n    }\n    inline mint operator()(int n, int r) {\
+    \ return C(n, r); }\n    template<class... Cnts>\n    static mint M(const Cnts&...\
+    \ cnts){\n        return multinomial(0,1,cnts...);\n    }\n    static void initialize(int\
     \ len = 2){\n        _fact.clear();\n        _ifact.clear();\n        extend(len);\n\
     \    }\n  private:\n    static mint multinomial(const int& sum, const mint& div_prod){\n\
     \        if (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n\
@@ -69,7 +70,7 @@ data:
   isVerificationFile: false
   path: math/lagrange_interpolation.hpp
   requiredBy: []
-  timestamp: '2024-07-03 11:54:46+09:00'
+  timestamp: '2025-01-28 23:59:05+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/lagrange_interpolation.hpp

@@ -43,9 +43,9 @@ data:
     \ counts[x]++;\n        std::vector<std::vector<int>> groups(ids.first);\n   \
     \     for (int i = 0; i < group_num; i++) {\n            groups[i].reserve(counts[i]);\n\
     \        }\n        for (int i = 0; i < _n; i++) {\n            groups[ids.second[i]].push_back(i);\n\
-    \        }\n        return groups;\n    }\n\n  private:\n    int _n;\n    struct\
-    \ edge {\n        int to;\n    };\n    std::vector<std::pair<int, edge>> edges;\n\
-    };\n\n} // namespace noya2\n"
+    \        }\n        return groups;\n    }\n    \n    int _n;\n    struct edge\
+    \ {\n        int to;\n    };\n    std::vector<std::pair<int, edge>> edges;\n};\n\
+    \n} // namespace noya2\n"
   code: "#pragma once\n\n#include<vector>\n\nnamespace noya2{\n\ntemplate <class E>\
     \ struct internal_csr {\n    std::vector<int> start;\n    std::vector<E> elist;\n\
     \    explicit internal_csr(int n, const std::vector<std::pair<int, E>>& edges)\n\
@@ -78,14 +78,14 @@ data:
     \ counts[x]++;\n        std::vector<std::vector<int>> groups(ids.first);\n   \
     \     for (int i = 0; i < group_num; i++) {\n            groups[i].reserve(counts[i]);\n\
     \        }\n        for (int i = 0; i < _n; i++) {\n            groups[ids.second[i]].push_back(i);\n\
-    \        }\n        return groups;\n    }\n\n  private:\n    int _n;\n    struct\
-    \ edge {\n        int to;\n    };\n    std::vector<std::pair<int, edge>> edges;\n\
-    };\n\n} // namespace noya2"
+    \        }\n        return groups;\n    }\n    \n    int _n;\n    struct edge\
+    \ {\n        int to;\n    };\n    std::vector<std::pair<int, edge>> edges;\n};\n\
+    \n} // namespace noya2"
   dependsOn: []
   isVerificationFile: false
   path: graph/scc.hpp
   requiredBy: []
-  timestamp: '2024-01-14 20:54:45+09:00'
+  timestamp: '2025-01-28 23:59:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/Strongly_Connected_Components.test.cpp
