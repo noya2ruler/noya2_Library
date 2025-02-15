@@ -7,7 +7,7 @@
 namespace noya2 {
 
 // ALPHABET = {'a','b',...,'a'+sigma-1}
-template<int sigma = 26>
+template<int sigma = 26, char start = 'a'>
 struct trie {
     using child = std::array<int,sigma>;
     static constexpr child makeleaf(){
@@ -22,11 +22,11 @@ struct trie {
         int exist; // trie includes {exist} strings which end with this node
         int size; // trie includes {size} strings which exist under(or itself) this node
         int operator[](const char &c) const {
-            int a = c - 'a';
+            int a = c - start;
             return this->ch[a];
         }
         int &operator[](const char &c){
-            int a = c - 'a';
+            int a = c - start;
             return this->ch[a];
         }
     };
