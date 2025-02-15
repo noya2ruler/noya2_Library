@@ -102,8 +102,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/tree/VertexSetPathComposite.test.cpp
   - test/tree/aoj_0489.test.cpp
+  - test/tree/VertexSetPathComposite.test.cpp
 documentation_of: data_structure/segment_tree.hpp
 layout: document
 redirect_from:

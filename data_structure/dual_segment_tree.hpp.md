@@ -15,7 +15,7 @@ data:
     \ {\n  private:\n    void all_apply(int i, F f) {\n        d[i] = composition(f,\
     \ d[i]);\n    }\n\n    void push(int i) {\n        assert(i < sz);\n        all_apply(2\
     \ * i, d[i]);\n        all_apply(2 * i + 1, d[i]);\n        d[i] = id();\n   \
-    \ }\n\n  public:\n    dual_segtree(int n) : dual_segtree(std::vector<F>(n, id()))\
+    \ }\n\n  public:\n    dual_segtree(int _n) : dual_segtree(std::vector<F>(_n, id()))\
     \ {}\n\n    dual_segtree(const std::vector<F> &a) : n(a.size()), sz(std::bit_ceil(a.size()))\
     \ {\n        lg2 = std::countr_zero<unsigned int>(sz);\n        d.assign(2 * sz,\
     \ id());\n        for (int i : std::views::iota(sz, sz + n)) {\n            d[i]\
@@ -36,7 +36,7 @@ data:
     \ {\n  private:\n    void all_apply(int i, F f) {\n        d[i] = composition(f,\
     \ d[i]);\n    }\n\n    void push(int i) {\n        assert(i < sz);\n        all_apply(2\
     \ * i, d[i]);\n        all_apply(2 * i + 1, d[i]);\n        d[i] = id();\n   \
-    \ }\n\n  public:\n    dual_segtree(int n) : dual_segtree(std::vector<F>(n, id()))\
+    \ }\n\n  public:\n    dual_segtree(int _n) : dual_segtree(std::vector<F>(_n, id()))\
     \ {}\n\n    dual_segtree(const std::vector<F> &a) : n(a.size()), sz(std::bit_ceil(a.size()))\
     \ {\n        lg2 = std::countr_zero<unsigned int>(sz);\n        d.assign(2 * sz,\
     \ id());\n        for (int i : std::views::iota(sz, sz + n)) {\n            d[i]\
@@ -55,7 +55,7 @@ data:
   isVerificationFile: false
   path: data_structure/dual_segment_tree.hpp
   requiredBy: []
-  timestamp: '2024-10-23 01:07:22+09:00'
+  timestamp: '2025-02-15 20:53:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/dual_segment_tree.hpp
