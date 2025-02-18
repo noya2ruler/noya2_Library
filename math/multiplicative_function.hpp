@@ -27,6 +27,7 @@ struct mf_prefix_sum {
     long long M, sq, s;
     std::vector<int> p;
     int ps;
+    mf_prefix_sum () {}
     mf_prefix_sum(long long m) : M(m) {
         assert(m <= 1e15);
         sq = std::sqrt(M);
