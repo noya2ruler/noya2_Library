@@ -239,6 +239,9 @@ data:
     - icon: ':warning:'
       path: misc/rng.hpp
       title: misc/rng.hpp
+    - icon: ':warning:'
+      path: misc/rolling_hash_monoid.hpp
+      title: misc/rolling_hash_monoid.hpp
     - icon: ':heavy_check_mark:'
       path: misc/static_range_mode_query.hpp
       title: misc/static_range_mode_query.hpp

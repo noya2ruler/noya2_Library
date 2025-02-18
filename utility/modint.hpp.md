@@ -47,6 +47,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps998244353/sample_point_shift.hpp
     title: fps998244353/sample_point_shift.hpp
+  - icon: ':warning:'
+    path: misc/rolling_hash_monoid.hpp
+    title: misc/rolling_hash_monoid.hpp
   - icon: ':heavy_check_mark:'
     path: utility/modint4724.hpp
     title: utility/modint4724.hpp
@@ -373,6 +376,7 @@ data:
   - fps998244353/fps998244353.hpp
   - fps998244353/product_1_minus_x_pow_a.hpp
   - fps998244353/multipoint_evaluation.hpp
+  - misc/rolling_hash_monoid.hpp
   - utility/modint4724.hpp
   - utility/modint61.hpp
   - fps/sample_point_shift.hpp
