@@ -156,8 +156,11 @@ data:
     \ }\n    static constexpr T inv(const T &a){ return -a; }\n};\ntemplate<typename\
     \ T>\nstruct xor_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a ^ b; }\n    static constexpr T e(){ return T(0);\
-    \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n    \n} // namespace\
-    \ noya2\n#line 8 \"test/data_structure/Static_Range_Inversions_Query.test.cpp\"\
+    \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n\ntemplate<class\
+    \ S, auto _op, auto _e>\nstruct monoid {\n    using value_type = S;\n    static\
+    \ constexpr value_type op(value_type a, value_type b){\n        return _op(a,\
+    \ b);\n    }\n    static constexpr value_type e(){\n        return _e();\n   \
+    \ }\n};\n  \n} // namespace noya2\n#line 8 \"test/data_structure/Static_Range_Inversions_Query.test.cpp\"\
     \n\nint main(){\n    int n, q; in(n,q);\n    vector<int> a(n); in(a);\n    compress<int>\
     \ cp(a);\n    rep(i,n) a[i] = cp.id(a[i]);\n    Mo mo(n,q);\n    rep(i,q){\n \
     \       int l, r; in(l,r);\n        mo.insert(l,r);\n    }\n    binary_indexed_tree<plus_group<ll>>\
@@ -196,7 +199,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Static_Range_Inversions_Query.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 17:15:59+09:00'
+  timestamp: '2025-02-22 20:23:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Static_Range_Inversions_Query.test.cpp

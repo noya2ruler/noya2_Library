@@ -134,14 +134,17 @@ data:
     \ }\n    static constexpr T inv(const T &a){ return -a; }\n};\ntemplate<typename\
     \ T>\nstruct xor_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a ^ b; }\n    static constexpr T e(){ return T(0);\
-    \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n    \n} // namespace\
-    \ noya2\n#line 6 \"test/data_structure/aoj_dsl_1_b.test.cpp\"\n\nint main(){\n\
-    \    int n, q; in(n,q);\n    potentialized_dsu<plus_group<ll>> d(n);\n    while\
-    \ (q--){\n        int t; in(t);\n        if (t == 0){\n            int u, v; in(u,v);\n\
-    \            ll w; in(w);\n            d.merge(u,v,w);\n        }\n        else\
-    \ {\n            int u, v; in(u,v);\n            if (d.same(u,v)){\n         \
-    \       out(d.diff(u,v));\n            }\n            else {\n               \
-    \ out('?');\n            }\n        }\n    }\n}\n"
+    \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n\ntemplate<class\
+    \ S, auto _op, auto _e>\nstruct monoid {\n    using value_type = S;\n    static\
+    \ constexpr value_type op(value_type a, value_type b){\n        return _op(a,\
+    \ b);\n    }\n    static constexpr value_type e(){\n        return _e();\n   \
+    \ }\n};\n  \n} // namespace noya2\n#line 6 \"test/data_structure/aoj_dsl_1_b.test.cpp\"\
+    \n\nint main(){\n    int n, q; in(n,q);\n    potentialized_dsu<plus_group<ll>>\
+    \ d(n);\n    while (q--){\n        int t; in(t);\n        if (t == 0){\n     \
+    \       int u, v; in(u,v);\n            ll w; in(w);\n            d.merge(u,v,w);\n\
+    \        }\n        else {\n            int u, v; in(u,v);\n            if (d.same(u,v)){\n\
+    \                out(d.diff(u,v));\n            }\n            else {\n      \
+    \          out('?');\n            }\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_B&lang=ja\"\
     \n\n#include\"../../template/template.hpp\"\n#include\"../../data_structure/potentialized_dsu.hpp\"\
     \n#include\"../../misc/monoids.hpp\"\n\nint main(){\n    int n, q; in(n,q);\n\
@@ -162,7 +165,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/aoj_dsl_1_b.test.cpp
   requiredBy: []
-  timestamp: '2024-08-13 15:38:35+09:00'
+  timestamp: '2025-02-22 20:23:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/aoj_dsl_1_b.test.cpp

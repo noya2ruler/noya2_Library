@@ -154,10 +154,13 @@ data:
     \ }\n    static constexpr T inv(const T &a){ return -a; }\n};\ntemplate<typename\
     \ T>\nstruct xor_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a ^ b; }\n    static constexpr T e(){ return T(0);\
-    \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n    \n} // namespace\
-    \ noya2\n#line 6 \"data_structure/offline_rectangle_sum.hpp\"\n\nnamespace noya2\
-    \ {\n\ntemplate<Group G = plus_group<ll>>\nstruct offline_rectangle_sum {\n  \
-    \  using T = typename G::value_type;\n    int h, w, query_id;\n    internal::csr<pair<int,T>>\
+    \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n\ntemplate<class\
+    \ S, auto _op, auto _e>\nstruct monoid {\n    using value_type = S;\n    static\
+    \ constexpr value_type op(value_type a, value_type b){\n        return _op(a,\
+    \ b);\n    }\n    static constexpr value_type e(){\n        return _e();\n   \
+    \ }\n};\n  \n} // namespace noya2\n#line 6 \"data_structure/offline_rectangle_sum.hpp\"\
+    \n\nnamespace noya2 {\n\ntemplate<Group G = plus_group<ll>>\nstruct offline_rectangle_sum\
+    \ {\n    using T = typename G::value_type;\n    int h, w, query_id;\n    internal::csr<pair<int,T>>\
     \ elems;\n    internal::csr<tuple<int,int,int>> queries;\n    offline_rectangle_sum\
     \ () {}\n    offline_rectangle_sum (int h_, int w_) : h(h_), w(w_), query_id(0),\
     \ elems(h_), queries(h_+1) {}\n    offline_rectangle_sum (int h_, int w_, int\
@@ -229,7 +232,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-10-30 04:43:18+09:00'
+  timestamp: '2025-02-22 20:23:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Rectangle_Sum.test.cpp

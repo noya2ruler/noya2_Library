@@ -165,9 +165,12 @@ data:
     \ }\n    static constexpr T inv(const T &a){ return -a; }\n};\ntemplate<typename\
     \ T>\nstruct xor_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a ^ b; }\n    static constexpr T e(){ return T(0);\
-    \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n    \n} // namespace\
-    \ noya2\n#line 7 \"test/data_structure/Point_Add_Rectangle_Sum.test.cpp\"\n\n\
-    int main(){\n    int n, q; in(n,q);\n    vector<array<int,5>> queries(n+q);\n\
+    \ }\n    static constexpr T inv(const T &a){ return a; }\n};\n\ntemplate<class\
+    \ S, auto _op, auto _e>\nstruct monoid {\n    using value_type = S;\n    static\
+    \ constexpr value_type op(value_type a, value_type b){\n        return _op(a,\
+    \ b);\n    }\n    static constexpr value_type e(){\n        return _e();\n   \
+    \ }\n};\n  \n} // namespace noya2\n#line 7 \"test/data_structure/Point_Add_Rectangle_Sum.test.cpp\"\
+    \n\nint main(){\n    int n, q; in(n,q);\n    vector<array<int,5>> queries(n+q);\n\
     \    range_tree<plus_group<ll>,binary_indexed_tree,int> rt;\n    rep(i,n+q){\n\
     \        if (i < n){\n            int x, y, w; in(x,y,w);\n            queries[i]\
     \ = {0,x,y,w,0};\n            rt.join(x,y);\n            continue;\n        }\n\
@@ -207,7 +210,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Point_Add_Rectangle_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-07-28 17:15:59+09:00'
+  timestamp: '2025-02-22 20:23:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Point_Add_Rectangle_Sum.test.cpp

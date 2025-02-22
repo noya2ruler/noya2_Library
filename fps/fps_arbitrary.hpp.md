@@ -141,19 +141,23 @@ data:
     \ && (*this)[0] == T(1));\n        if (d == -1) d = (*this).size();\n        return\
     \ (this->diff() * this->inv(d)).pre(d - 1).integral();\n    }\n};\n\n} // namespace\
     \ noya2\n#line 4 \"fps/fps_arbitrary.hpp\"\n\nnamespace noya2{\n\ntemplate<typename\
-    \ T>\nstruct fps_arbitrary{\n    static vector<T> multiply(const vector<T> &a,\
-    \ const vector<T> &b){\n        if (a.empty() || b.empty()) return {};\n     \
-    \   vector<T> res((int)(a.size() + b.size())-1,T(0));\n        rep(i,a.size())\
-    \ rep(j,b.size()) res[i+j] += a[i] * b[j];\n        return res;\n    }\n};\ntemplate<typename\
-    \ T> using fps = FormalPowerSeries<T,fps_arbitrary<T>>;\n\n} // namespace noya2\n\
-    \n"
-  code: "#pragma once\n\n#include\"formal_power_series.hpp\"\n\nnamespace noya2{\n\
-    \ntemplate<typename T>\nstruct fps_arbitrary{\n    static vector<T> multiply(const\
+    \ T>\nstruct fps_arbitrary{\n    using value_type = T;\n    static vector<T> multiply(const\
     \ vector<T> &a, const vector<T> &b){\n        if (a.empty() || b.empty()) return\
     \ {};\n        vector<T> res((int)(a.size() + b.size())-1,T(0));\n        rep(i,a.size())\
-    \ rep(j,b.size()) res[i+j] += a[i] * b[j];\n        return res;\n    }\n};\ntemplate<typename\
-    \ T> using fps = FormalPowerSeries<T,fps_arbitrary<T>>;\n\n} // namespace noya2\n\
-    \n"
+    \ rep(j,b.size()) res[i+j] += a[i] * b[j];\n        return res;\n    }\n    static\
+    \ vector<T> inv(const vector<T> &a, int d = -1){\n        abort();\n    }\n  \
+    \  static vector<T> integral(const vector<T> &a){\n        abort();\n    }\n};\n\
+    template<typename T> using fps = FormalPowerSeries<fps_arbitrary<T>>;\n\n} //\
+    \ namespace noya2\n\n"
+  code: "#pragma once\n\n#include\"formal_power_series.hpp\"\n\nnamespace noya2{\n\
+    \ntemplate<typename T>\nstruct fps_arbitrary{\n    using value_type = T;\n   \
+    \ static vector<T> multiply(const vector<T> &a, const vector<T> &b){\n       \
+    \ if (a.empty() || b.empty()) return {};\n        vector<T> res((int)(a.size()\
+    \ + b.size())-1,T(0));\n        rep(i,a.size()) rep(j,b.size()) res[i+j] += a[i]\
+    \ * b[j];\n        return res;\n    }\n    static vector<T> inv(const vector<T>\
+    \ &a, int d = -1){\n        abort();\n    }\n    static vector<T> integral(const\
+    \ vector<T> &a){\n        abort();\n    }\n};\ntemplate<typename T> using fps\
+    \ = FormalPowerSeries<fps_arbitrary<T>>;\n\n} // namespace noya2\n\n"
   dependsOn:
   - fps/formal_power_series.hpp
   - template/template.hpp
@@ -163,7 +167,7 @@ data:
   isVerificationFile: false
   path: fps/fps_arbitrary.hpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2025-02-22 20:23:23+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: fps/fps_arbitrary.hpp
