@@ -32,5 +32,16 @@ struct xor_group {
     static constexpr T e(){ return T(0); }
     static constexpr T inv(const T &a){ return a; }
 };
-    
+
+template<class S, auto _op, auto _e>
+struct monoid {
+    using value_type = S;
+    static constexpr value_type op(value_type a, value_type b){
+        return _op(a, b);
+    }
+    static constexpr value_type e(){
+        return _e();
+    }
+};
+  
 } // namespace noya2
