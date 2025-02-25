@@ -16,22 +16,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -159,8 +159,8 @@ data:
     \ _v -= umod();\n        return *this;\n    }\n    constexpr mint& operator-=(const\
     \ mint& rhs) {\n        _v -= rhs._v;\n        if (_v >= umod()) _v += umod();\n\
     \        return *this;\n    }\n    constexpr mint& operator*=(const mint& rhs)\
-    \ {\n        unsigned long long z = _v;\n        z *= rhs._v;\n        _v = (uint)(z\
-    \ % umod());\n        return *this;\n    }\n    constexpr mint& operator/=(const\
+    \ {\n        unsigned long long z = _v;\n        z *= rhs._v;\n        _v = (unsigned\
+    \ int)(z % umod());\n        return *this;\n    }\n    constexpr mint& operator/=(const\
     \ mint& rhs) { return *this = *this * rhs.inv(); }\n    constexpr mint operator+()\
     \ const { return *this; }\n    constexpr mint operator-() const { return mint()\
     \ - *this; }\n    constexpr mint pow(long long n) const {\n        assert(0 <=\
@@ -192,42 +192,43 @@ data:
     \ long x = (long long)(v % (long long)(umod()));\n        if (x < 0) x += umod();\n\
     \        _v = (unsigned int)(x);\n    }\n    template<std::unsigned_integral T>\n\
     \    dynamic_modint(T v){\n        _v = (unsigned int)(v % umod());\n    }\n \
-    \   uint val() const { return _v; }\n    mint& operator++() {\n        _v++;\n\
-    \        if (_v == umod()) _v = 0;\n        return *this;\n    }\n    mint& operator--()\
-    \ {\n        if (_v == 0) _v = umod();\n        _v--;\n        return *this;\n\
-    \    }\n    mint operator++(int) {\n        mint result = *this;\n        ++*this;\n\
-    \        return result;\n    }\n    mint operator--(int) {\n        mint result\
-    \ = *this;\n        --*this;\n        return result;\n    }\n    mint& operator+=(const\
-    \ mint& rhs) {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n\
-    \        return *this;\n    }\n    mint& operator-=(const mint& rhs) {\n     \
-    \   _v += mod() - rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
-    \ *this;\n    }\n    mint& operator*=(const mint& rhs) {\n        _v = bt.mul(_v,\
-    \ rhs._v);\n        return *this;\n    }\n    mint& operator/=(const mint& rhs)\
-    \ { return *this = *this * rhs.inv(); }\n    mint operator+() const { return *this;\
-    \ }\n    mint operator-() const { return mint() - *this; }\n    mint pow(long\
-    \ long n) const {\n        assert(0 <= n);\n        mint x = *this, r = 1;\n \
-    \       while (n) {\n            if (n & 1) r *= x;\n            x *= x;\n   \
-    \         n >>= 1;\n        }\n        return r;\n    }\n    mint inv() const\
-    \ {\n        auto eg = noya2::inv_gcd(_v, mod());\n        assert(eg.first ==\
-    \ 1);\n        return eg.second;\n    }\n    friend mint operator+(const mint&\
-    \ lhs, const mint& rhs) {\n        return mint(lhs) += rhs;\n    }\n    friend\
-    \ mint operator-(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
-    \ -= rhs;\n    }\n    friend mint operator*(const mint& lhs, const mint& rhs)\
-    \ {\n        return mint(lhs) *= rhs;\n    }\n    friend mint operator/(const\
-    \ mint& lhs, const mint& rhs) {\n        return mint(lhs) /= rhs;\n    }\n   \
-    \ friend bool operator==(const mint& lhs, const mint& rhs) {\n        return lhs._v\
-    \ == rhs._v;\n    }\n    friend bool operator!=(const mint& lhs, const mint& rhs)\
-    \ {\n        return lhs._v != rhs._v;\n    }\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const mint& p) {\n        return os << p.val();\n    }\n    friend std::istream\
-    \ &operator>>(std::istream &is, mint &a) {\n        long long t; is >> t;\n  \
-    \      a = mint(t);\n        return (is);\n    }\n\n  private:\n    unsigned int\
-    \ _v;\n    static barrett bt;\n    static unsigned int umod() { return bt.umod();\
-    \ }\n};\ntemplate <int id> noya2::barrett dynamic_modint<id>::bt(998244353);\n\
-    \nusing modint998244353 = static_modint<998244353>;\nusing modint1000000007 =\
-    \ static_modint<1000000007>;\nusing modint = dynamic_modint<-1>;\n\ntemplate<typename\
-    \ T>\nconcept Modint = requires (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n\
-    \    a.pow(declval<int>());\n};\n\n} // namespace noya2\n#line 4 \"fps998244353/fps998244353.hpp\"\
-    \n\n#line 2 \"fps998244353/ntt998244353.hpp\"\n\n#line 2 \"fps998244353/modint998244353.hpp\"\
+    \   unsigned int val() const { return _v; }\n    mint& operator++() {\n      \
+    \  _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n    }\n  \
+    \  mint& operator--() {\n        if (_v == 0) _v = umod();\n        _v--;\n  \
+    \      return *this;\n    }\n    mint operator++(int) {\n        mint result =\
+    \ *this;\n        ++*this;\n        return result;\n    }\n    mint operator--(int)\
+    \ {\n        mint result = *this;\n        --*this;\n        return result;\n\
+    \    }\n    mint& operator+=(const mint& rhs) {\n        _v += rhs._v;\n     \
+    \   if (_v >= umod()) _v -= umod();\n        return *this;\n    }\n    mint& operator-=(const\
+    \ mint& rhs) {\n        _v += mod() - rhs._v;\n        if (_v >= umod()) _v -=\
+    \ umod();\n        return *this;\n    }\n    mint& operator*=(const mint& rhs)\
+    \ {\n        _v = bt.mul(_v, rhs._v);\n        return *this;\n    }\n    mint&\
+    \ operator/=(const mint& rhs) { return *this = *this * rhs.inv(); }\n    mint\
+    \ operator+() const { return *this; }\n    mint operator-() const { return mint()\
+    \ - *this; }\n    mint pow(long long n) const {\n        assert(0 <= n);\n   \
+    \     mint x = *this, r = 1;\n        while (n) {\n            if (n & 1) r *=\
+    \ x;\n            x *= x;\n            n >>= 1;\n        }\n        return r;\n\
+    \    }\n    mint inv() const {\n        auto eg = noya2::inv_gcd(_v, mod());\n\
+    \        assert(eg.first == 1);\n        return eg.second;\n    }\n    friend\
+    \ mint operator+(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
+    \ += rhs;\n    }\n    friend mint operator-(const mint& lhs, const mint& rhs)\
+    \ {\n        return mint(lhs) -= rhs;\n    }\n    friend mint operator*(const\
+    \ mint& lhs, const mint& rhs) {\n        return mint(lhs) *= rhs;\n    }\n   \
+    \ friend mint operator/(const mint& lhs, const mint& rhs) {\n        return mint(lhs)\
+    \ /= rhs;\n    }\n    friend bool operator==(const mint& lhs, const mint& rhs)\
+    \ {\n        return lhs._v == rhs._v;\n    }\n    friend bool operator!=(const\
+    \ mint& lhs, const mint& rhs) {\n        return lhs._v != rhs._v;\n    }\n   \
+    \ friend std::ostream &operator<<(std::ostream &os, const mint& p) {\n       \
+    \ return os << p.val();\n    }\n    friend std::istream &operator>>(std::istream\
+    \ &is, mint &a) {\n        long long t; is >> t;\n        a = mint(t);\n     \
+    \   return (is);\n    }\n\n  private:\n    unsigned int _v;\n    static barrett\
+    \ bt;\n    static unsigned int umod() { return bt.umod(); }\n};\ntemplate <int\
+    \ id> noya2::barrett dynamic_modint<id>::bt(998244353);\n\nusing modint998244353\
+    \ = static_modint<998244353>;\nusing modint1000000007 = static_modint<1000000007>;\n\
+    using modint = dynamic_modint<-1>;\n\ntemplate<typename T>\nconcept Modint = requires\
+    \ (T &a){\n    T::mod();\n    a.inv();\n    a.val();\n    a.pow(declval<int>());\n\
+    };\n\n} // namespace noya2\n#line 4 \"fps998244353/fps998244353.hpp\"\n\n#line\
+    \ 2 \"fps998244353/ntt998244353.hpp\"\n\n#line 2 \"fps998244353/modint998244353.hpp\"\
     \n\n#line 4 \"fps998244353/modint998244353.hpp\"\n\n#line 6 \"fps998244353/modint998244353.hpp\"\
     \n\nnamespace noya2 {\n\ntemplate <>\nstruct static_modint<998244353> {\n    using\
     \ mint = static_modint;\n  public:\n    static constexpr int mod() { return 998244353;\
@@ -580,7 +581,7 @@ data:
   isVerificationFile: true
   path: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   requiredBy: []
-  timestamp: '2025-01-28 23:59:05+09:00'
+  timestamp: '2025-02-26 00:46:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
