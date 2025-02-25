@@ -76,7 +76,7 @@ struct static_modint {
     constexpr mint& operator*=(const mint& rhs) {
         unsigned long long z = _v;
         z *= rhs._v;
-        _v = (uint)(z % umod());
+        _v = (unsigned int)(z % umod());
         return *this;
     }
     constexpr mint& operator/=(const mint& rhs) { return *this = *this * rhs.inv(); }
@@ -161,7 +161,7 @@ template <int id> struct dynamic_modint {
     dynamic_modint(T v){
         _v = (unsigned int)(v % umod());
     }
-    uint val() const { return _v; }
+    unsigned int val() const { return _v; }
     mint& operator++() {
         _v++;
         if (_v == umod()) _v = 0;
