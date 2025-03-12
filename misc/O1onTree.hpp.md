@@ -55,17 +55,17 @@ data:
     \ -1);\n    auto leader = [&](int aa){\n        auto dfs = [&](auto sfs, int v){\n\
     \            if (uf[v] < 0) return v;\n            return uf[v] = sfs(sfs,uf[v]);\n\
     \        };\n        return dfs(dfs,aa);\n    };\n    using dat = std::pair<T,\
-    \ long long>;\n    std::priority_queue<dat> pque;\n    for (int i = 1; i < n;\
-    \ i++){\n        pque.push({a[i], i});\n    }\n    const long long mask = (1LL\
-    \ << 32) - 1;\n    const int time_max = (1 << 30);\n    std::vector<int> latest(n,0);\n\
-    \    std::vector<int> poped_time(n);\n    poped_time[0] = 0;\n    int idx = 1;\n\
-    \    while (!pque.empty()){\n        auto [xc, tc] = pque.top(); pque.pop();\n\
-    \        if (latest[tc & mask] > (tc >> 32)) continue;\n        int c = (tc &\
-    \ mask);\n        latest[c] = time_max;\n        int p = leader(par[c]);\n   \
-    \     uf[c] = p;\n        a[p] = T::op(a[p], xc);\n        if (p != 0){\n    \
-    \        latest[p]++;\n            pque.push({a[p], ((long long)(latest[p]) <<\
-    \ 32) | p});\n        }\n        poped_time[c] = idx++;\n    }\n    if constexpr\
-    \ (!get_order){\n        return a[0];\n    }\n    std::vector<std::vector<int>>\
+    \ long long>;\n    std::priority_queue<dat, std::vector<dat>, std::greater<dat>>\
+    \ pque;\n    for (int i = 1; i < n; i++){\n        pque.push({a[i], i});\n   \
+    \ }\n    const long long mask = (1LL << 32) - 1;\n    const int time_max = (1\
+    \ << 30);\n    std::vector<int> latest(n,0);\n    std::vector<int> poped_time(n);\n\
+    \    poped_time[0] = 0;\n    int idx = 1;\n    while (!pque.empty()){\n      \
+    \  auto [xc, tc] = pque.top(); pque.pop();\n        if (latest[tc & mask] > (tc\
+    \ >> 32)) continue;\n        int c = (tc & mask);\n        latest[c] = time_max;\n\
+    \        int p = leader(par[c]);\n        uf[c] = p;\n        a[p] = T::op(a[p],\
+    \ xc);\n        if (p != 0){\n            latest[p]++;\n            pque.push({a[p],\
+    \ ((long long)(latest[p]) << 32) | p});\n        }\n        poped_time[c] = idx++;\n\
+    \    }\n    if constexpr (!get_order){\n        return a[0];\n    }\n    std::vector<std::vector<int>>\
     \ childs(n);\n    for (int v = 1; v < n; v++){\n        childs[par[v]].emplace_back(v);\n\
     \    }\n    std::priority_queue<long long, std::vector<long long>, std::greater<long\
     \ long>> tvs;\n    auto val = [&](int v) -> long long {\n        return ((long\
@@ -121,17 +121,17 @@ data:
     \ -1);\n    auto leader = [&](int aa){\n        auto dfs = [&](auto sfs, int v){\n\
     \            if (uf[v] < 0) return v;\n            return uf[v] = sfs(sfs,uf[v]);\n\
     \        };\n        return dfs(dfs,aa);\n    };\n    using dat = std::pair<T,\
-    \ long long>;\n    std::priority_queue<dat> pque;\n    for (int i = 1; i < n;\
-    \ i++){\n        pque.push({a[i], i});\n    }\n    const long long mask = (1LL\
-    \ << 32) - 1;\n    const int time_max = (1 << 30);\n    std::vector<int> latest(n,0);\n\
-    \    std::vector<int> poped_time(n);\n    poped_time[0] = 0;\n    int idx = 1;\n\
-    \    while (!pque.empty()){\n        auto [xc, tc] = pque.top(); pque.pop();\n\
-    \        if (latest[tc & mask] > (tc >> 32)) continue;\n        int c = (tc &\
-    \ mask);\n        latest[c] = time_max;\n        int p = leader(par[c]);\n   \
-    \     uf[c] = p;\n        a[p] = T::op(a[p], xc);\n        if (p != 0){\n    \
-    \        latest[p]++;\n            pque.push({a[p], ((long long)(latest[p]) <<\
-    \ 32) | p});\n        }\n        poped_time[c] = idx++;\n    }\n    if constexpr\
-    \ (!get_order){\n        return a[0];\n    }\n    std::vector<std::vector<int>>\
+    \ long long>;\n    std::priority_queue<dat, std::vector<dat>, std::greater<dat>>\
+    \ pque;\n    for (int i = 1; i < n; i++){\n        pque.push({a[i], i});\n   \
+    \ }\n    const long long mask = (1LL << 32) - 1;\n    const int time_max = (1\
+    \ << 30);\n    std::vector<int> latest(n,0);\n    std::vector<int> poped_time(n);\n\
+    \    poped_time[0] = 0;\n    int idx = 1;\n    while (!pque.empty()){\n      \
+    \  auto [xc, tc] = pque.top(); pque.pop();\n        if (latest[tc & mask] > (tc\
+    \ >> 32)) continue;\n        int c = (tc & mask);\n        latest[c] = time_max;\n\
+    \        int p = leader(par[c]);\n        uf[c] = p;\n        a[p] = T::op(a[p],\
+    \ xc);\n        if (p != 0){\n            latest[p]++;\n            pque.push({a[p],\
+    \ ((long long)(latest[p]) << 32) | p});\n        }\n        poped_time[c] = idx++;\n\
+    \    }\n    if constexpr (!get_order){\n        return a[0];\n    }\n    std::vector<std::vector<int>>\
     \ childs(n);\n    for (int v = 1; v < n; v++){\n        childs[par[v]].emplace_back(v);\n\
     \    }\n    std::priority_queue<long long, std::vector<long long>, std::greater<long\
     \ long>> tvs;\n    auto val = [&](int v) -> long long {\n        return ((long\
@@ -144,7 +144,7 @@ data:
   isVerificationFile: false
   path: misc/O1onTree.hpp
   requiredBy: []
-  timestamp: '2024-10-30 04:35:18+09:00'
+  timestamp: '2025-03-12 22:52:08+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: misc/O1onTree.hpp
