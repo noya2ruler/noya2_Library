@@ -123,7 +123,7 @@ std::conditional_t<get_order, std::vector<int>, T> O1onTree(int n, const std::ve
         return dfs(dfs,aa);
     };
     using dat = std::pair<T, long long>;
-    std::priority_queue<dat> pque;
+    std::priority_queue<dat, std::vector<dat>, std::greater<dat>> pque;
     for (int i = 1; i < n; i++){
         pque.push({a[i], i});
     }
