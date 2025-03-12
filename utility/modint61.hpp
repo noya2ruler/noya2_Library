@@ -17,12 +17,14 @@ struct static_modint<-61> {
         return res;
     }
     constexpr static_modint() : _v(0) {}
-    constexpr static_modint(long long x){
+    template<std::signed_integral T>
+    constexpr static_modint(T x){
         while (x < 0) x += m;
         while (x >= (long long)m) x -= m;
         _v = x;
     }
-    constexpr static_modint(unsigned long long x){
+    template<std::unsigned_integral T>
+    constexpr static_modint(T x){
         while (x >= m) x -= m;
         _v = x;
     }
@@ -69,12 +71,14 @@ struct static_modint<-61> {
         return modint61() - *this;
     }
     constexpr modint61 inv() const {
-        unsigned long long a = _v, b = m, u = 1, v = 0;
+        long long a = _v, b = m, u = 1, v = 0;
         while (b > 0){
-            unsigned long long t = a / b;
+            long long t = a / b;
             std::swap(a -= t * b, b);
             std::swap(u -= t * v, v);
         }
+        if (u < 0) u += m / a;
+        assert(a == 1);
         return modint61(u);
     }
     constexpr modint61 pow(long long n) const {
