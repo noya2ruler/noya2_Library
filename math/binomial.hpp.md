@@ -139,33 +139,33 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
-  - fps998244353/sample_point_shift.hpp
-  - fps998244353/polynomial_taylor_shift.hpp
-  - fps998244353/bostan_mori.hpp
-  - fps998244353/fps998244353.hpp
-  - fps998244353/product_1_minus_x_pow_a.hpp
-  - fps998244353/multipoint_evaluation.hpp
-  - math/euler_circuit_counting.hpp
   - math/lagrange_interpolation.hpp
+  - math/euler_circuit_counting.hpp
+  - fps998244353/sample_point_shift.hpp
+  - fps998244353/multipoint_evaluation.hpp
+  - fps998244353/fps998244353.hpp
+  - fps998244353/bostan_mori.hpp
+  - fps998244353/polynomial_taylor_shift.hpp
+  - fps998244353/product_1_minus_x_pow_a.hpp
   - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
   timestamp: '2025-01-28 23:59:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
-  - test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
-  - test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
-  - test/fps998244353/multipoint_evaluation_998244353.test.cpp
-  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
-  - test/fps998244353/convolution_998244353.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/math/CountingEulerianCircuits.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - test/math/CountingEulerianCircuits.test.cpp
+  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
+  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+  - test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
+  - test/fps998244353/convolution_998244353.test.cpp
+  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+  - test/fps998244353/multipoint_evaluation_998244353.test.cpp
+  - test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
   - test/fps/convolution.test.cpp
-  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
 documentation_of: math/binomial.hpp
 layout: document
 redirect_from:

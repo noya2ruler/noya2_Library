@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -248,20 +248,20 @@ data:
   path: fps/formal_power_series.hpp
   requiredBy:
   - fps/sample_point_shift.hpp
+  - fps/multipoint_evaluation.hpp
   - fps/fps_ntt.hpp
   - fps/fps_atcoder.hpp
   - fps/fps_modint.hpp
   - fps/fps_arbitrary.hpp
-  - fps/multipoint_evaluation.hpp
   timestamp: '2024-07-01 23:39:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/tree/FrequencyTableofTreeDistance.test.cpp
+  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
   - test/fps/convolution.test.cpp
-  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/fps/Convolution1000000007.test.cpp
-  - test/tree/FrequencyTableofTreeDistance.test.cpp
 documentation_of: fps/formal_power_series.hpp
 layout: document
 redirect_from:

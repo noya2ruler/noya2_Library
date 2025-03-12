@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
   _extendedRequiredBy:
@@ -135,12 +135,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/VertexSetPathComposite.test.cpp
     title: test/tree/VertexSetPathComposite.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint.hpp\"\n\n#include <iostream>\n\n#line 2 \"\
@@ -370,53 +370,53 @@ data:
   isVerificationFile: false
   path: utility/modint.hpp
   requiredBy:
-  - fps998244353/sample_point_shift.hpp
-  - fps998244353/modint998244353.hpp
-  - fps998244353/polynomial_taylor_shift.hpp
-  - fps998244353/ntt998244353.hpp
-  - fps998244353/bostan_mori.hpp
-  - fps998244353/fps998244353.hpp
-  - fps998244353/product_1_minus_x_pow_a.hpp
-  - fps998244353/multipoint_evaluation.hpp
   - misc/rolling_hash_monoid.hpp
-  - utility/modint4724.hpp
+  - fps998244353/sample_point_shift.hpp
+  - fps998244353/multipoint_evaluation.hpp
+  - fps998244353/ntt998244353.hpp
+  - fps998244353/modint998244353.hpp
+  - fps998244353/fps998244353.hpp
+  - fps998244353/bostan_mori.hpp
+  - fps998244353/polynomial_taylor_shift.hpp
+  - fps998244353/product_1_minus_x_pow_a.hpp
   - utility/modint61.hpp
+  - utility/modint4724.hpp
   - fps/sample_point_shift.hpp
+  - fps/multipoint_evaluation.hpp
   - fps/fps_ntt.hpp
-  - fps/ntt.hpp
   - fps/fps_modint.hpp
   - fps/relaxed_convolution.hpp
-  - fps/multipoint_evaluation.hpp
+  - fps/ntt.hpp
   timestamp: '2025-02-26 00:46:12+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
-  - test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
-  - test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
-  - test/fps998244353/multipoint_evaluation_998244353.test.cpp
-  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
-  - test/fps998244353/convolution_998244353.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/tree/FrequencyTableofTreeDistance.test.cpp
+  - test/tree/VertexSetPathComposite.test.cpp
   - test/math/Lcm_Convolution.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Gcd_Convolution.test.cpp
-  - test/math/SumofMultiplicativeFunction.test.cpp
-  - test/math/Determinant_of_Matrix.test.cpp
-  - test/math/CountingEulerianCircuits.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
-  - test/fps/Inv_of_Formal_Power_Series.test.cpp
-  - test/fps/convolution.test.cpp
-  - test/fps/convolution_relaxed_convolution.test.cpp
-  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/fps/Convolution1000000007.test.cpp
+  - test/math/SumofMultiplicativeFunction.test.cpp
+  - test/math/CountingEulerianCircuits.test.cpp
+  - test/math/Determinant_of_Matrix.test.cpp
+  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
+  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+  - test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
+  - test/fps998244353/convolution_998244353.test.cpp
+  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+  - test/fps998244353/multipoint_evaluation_998244353.test.cpp
+  - test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
   - test/data_structure/RangeParallelUnionfind.test.cpp
-  - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
   - test/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/tree/FrequencyTableofTreeDistance.test.cpp
-  - test/tree/VertexSetPathComposite.test.cpp
+  - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
+  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/fps/convolution_relaxed_convolution.test.cpp
+  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
+  - test/fps/Inv_of_Formal_Power_Series.test.cpp
+  - test/fps/convolution.test.cpp
+  - test/fps/Convolution1000000007.test.cpp
 documentation_of: utility/modint.hpp
 layout: document
 redirect_from:

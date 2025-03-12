@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data_structure/segment_tree.hpp
     title: data_structure/segment_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
@@ -425,10 +425,10 @@ data:
     \        return 0;\n    }\n\n  private:\n    int _n, size, log;\n    std::vector<S>\
     \ d;\n\n    void update(int k) { d[k] = op(d[2 * k], d[2 * k + 1]); }\n};\n\n\
     } // namespace noya2\n#line 7 \"test/tree/VertexSetPathComposite.test.cpp\"\n\n\
-    using mint = modint998244353;\nusing ar = array<mint,3>;\n\nar op(ar a, ar b){\n\
-    \    return {a[0] * b[0], b[0] * a[1] + b[1], a[0] * b[2] + a[2]};\n}\nar e(){\n\
-    \    return {1, 0, 0};\n}\nar flip(ar a){\n    std::swap(a[1],a[2]);\n    return\
-    \ a;\n}\n\nint main(){\n    int n, q; cin >> n >> q;\n    std::vector<std::pair<int,\
+    using mint = modint998244353;\nusing ar = std::array<mint,3>;\n\nar op(ar a, ar\
+    \ b){\n    return {a[0] * b[0], b[0] * a[1] + b[1], a[0] * b[2] + a[2]};\n}\n\
+    ar e(){\n    return {1, 0, 0};\n}\nar flip(ar a){\n    std::swap(a[1],a[2]);\n\
+    \    return a;\n}\n\nint main(){\n    int n, q; cin >> n >> q;\n    std::vector<std::pair<int,\
     \ int>> ab(n);\n    for (int i = 0; i < n; i++){\n        cin >> ab[i].first >>\
     \ ab[i].second;\n    }\n    hld_tree g(n);\n    g.input_edges<0>();\n    segtree<ar,op,e>\
     \ seg([&]{\n        std::vector<ar> a(n);\n        for (int u = 0; u < n; u++){\n\
@@ -446,9 +446,9 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_set_path_composite\"\
     \n\n#include\"../../template/template.hpp\"\n#include\"../../tree/heavy_light_decomposition.hpp\"\
     \n#include\"../../utility/modint.hpp\"\n#include\"../../data_structure/segment_tree.hpp\"\
-    \n\nusing mint = modint998244353;\nusing ar = array<mint,3>;\n\nar op(ar a, ar\
-    \ b){\n    return {a[0] * b[0], b[0] * a[1] + b[1], a[0] * b[2] + a[2]};\n}\n\
-    ar e(){\n    return {1, 0, 0};\n}\nar flip(ar a){\n    std::swap(a[1],a[2]);\n\
+    \n\nusing mint = modint998244353;\nusing ar = std::array<mint,3>;\n\nar op(ar\
+    \ a, ar b){\n    return {a[0] * b[0], b[0] * a[1] + b[1], a[0] * b[2] + a[2]};\n\
+    }\nar e(){\n    return {1, 0, 0};\n}\nar flip(ar a){\n    std::swap(a[1],a[2]);\n\
     \    return a;\n}\n\nint main(){\n    int n, q; cin >> n >> q;\n    std::vector<std::pair<int,\
     \ int>> ab(n);\n    for (int i = 0; i < n; i++){\n        cin >> ab[i].first >>\
     \ ab[i].second;\n    }\n    hld_tree g(n);\n    g.input_edges<0>();\n    segtree<ar,op,e>\
@@ -476,8 +476,8 @@ data:
   isVerificationFile: true
   path: test/tree/VertexSetPathComposite.test.cpp
   requiredBy: []
-  timestamp: '2025-02-26 00:46:12+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-03-12 13:06:42+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/VertexSetPathComposite.test.cpp
 layout: document

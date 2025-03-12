@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   - icon: ':warning:'
@@ -151,50 +151,52 @@ data:
     \ long cal_mod(unsigned long long x){\n        unsigned long long xu = x >> 61;\n\
     \        unsigned long long xd = x & MASK61;\n        unsigned long long res =\
     \ xu + xd;\n        if (res >= m) res -= m;\n        return res;\n    }\n    constexpr\
-    \ static_modint() : _v(0) {}\n    constexpr static_modint(long long x){\n    \
-    \    while (x < 0) x += m;\n        while (x >= (long long)m) x -= m;\n      \
-    \  _v = x;\n    }\n    constexpr static_modint(unsigned long long x){\n      \
-    \  while (x >= m) x -= m;\n        _v = x;\n    }\n    using modint61 = static_modint;\n\
-    \    constexpr modint61 &operator+=(const modint61 &p){\n        _v += p._v;\n\
-    \        if (_v >= m) _v -= m;\n        return *this;\n    }\n    constexpr modint61\
-    \ &operator-=(const modint61 &p){\n        _v += m - p._v;\n        if (_v >=\
-    \ m) _v -= m;\n        return *this;\n    }\n    constexpr modint61 &operator*=(const\
-    \ modint61 &p){\n        unsigned long long a = _v, b = p._v;\n        unsigned\
-    \ long long au = a >> 31, ad = a & MASK31;\n        unsigned long long bu = b\
-    \ >> 31, bd = b & MASK31;\n        unsigned long long mid = ad * bu + au * bd;\n\
-    \        unsigned long long midu = mid >> 30, midd = mid & MASK30;\n        _v\
-    \ = cal_mod(au * bu * 2 + midu + (midd << 31) + ad * bd);\n        return *this;\n\
-    \    }\n    constexpr modint61 &operator/=(const modint61 &p){\n        *this\
-    \ *= p.inv();\n        return *this;\n    }\n    friend constexpr modint61 operator+(const\
-    \ modint61 &lhs, const modint61 &rhs){\n        return modint61(lhs) += rhs;\n\
-    \    }\n    friend constexpr modint61 operator-(const modint61 &lhs, const modint61\
-    \ &rhs){\n        return modint61(lhs) -= rhs;\n    }\n    friend constexpr modint61\
-    \ operator*(const modint61 &lhs, const modint61 &rhs){\n        return modint61(lhs)\
-    \ *= rhs;\n    }\n    friend constexpr modint61 operator/(const modint61 &lhs,\
-    \ const modint61 &rhs){\n        return modint61(lhs) /= rhs;\n    }\n    constexpr\
-    \ modint61 operator+() const {\n        return *this;\n    }\n    constexpr modint61\
-    \ operator-() const {\n        return modint61() - *this;\n    }\n    constexpr\
-    \ modint61 inv() const {\n        unsigned long long a = _v, b = m, u = 1, v =\
-    \ 0;\n        while (b > 0){\n            unsigned long long t = a / b;\n    \
-    \        std::swap(a -= t * b, b);\n            std::swap(u -= t * v, v);\n  \
-    \      }\n        return modint61(u);\n    }\n    constexpr modint61 pow(long\
-    \ long n) const {\n        modint61 ret(1ULL), mul(_v);\n        while (n != 0){\n\
-    \            if (n & 1) ret *= mul;\n            mul *= mul;\n            n >>=\
-    \ 1;\n        }\n        return ret;\n    }\n    friend std::ostream &operator<<(std::ostream\
-    \ &os, const modint61 &p){\n        return os << p._v;\n    }\n    constexpr unsigned\
-    \ long long val() const {\n        return _v;\n    }\n    constexpr auto operator<=>(const\
-    \ modint61 &) const = default;\n    \n  private:\n    unsigned long long _v;\n\
-    \    static constexpr unsigned long long m = (1ULL << 61) - 1;\n    static constexpr\
-    \ unsigned long long MASK30 = (1ULL << 30) - 1;\n    static constexpr unsigned\
-    \ long long MASK31 = (1ULL << 31) - 1;\n    static constexpr unsigned long long\
-    \ MASK61 = (1ULL << 61) - 1;\n};\nusing modint61 = static_modint<-61>;\n\n} //\
-    \ namespace noya2\n#line 4 \"misc/rolling_hash_monoid.hpp\"\n\nnamespace noya2\
-    \ {\n\nstruct roriha_group {\n    struct value_type {\n        modint61 h, base_pow;\n\
-    \    };\n    static constexpr value_type op(value_type a, value_type b){\n   \
-    \     return {a.h + a.base_pow * b.h, a.base_pow * b.base_pow};\n    }\n    static\
-    \ constexpr value_type e(){\n        return {0LL, 1LL};\n    }\n    static constexpr\
-    \ value_type inv(value_type a){\n        auto iv = a.base_pow.inv();\n       \
-    \ return {-a.h * iv, iv};\n    }\n};\n\n} // namespace noya2\n"
+    \ static_modint() : _v(0) {}\n    template<std::signed_integral T>\n    constexpr\
+    \ static_modint(T x){\n        while (x < 0) x += m;\n        while (x >= (long\
+    \ long)m) x -= m;\n        _v = x;\n    }\n    template<std::unsigned_integral\
+    \ T>\n    constexpr static_modint(T x){\n        while (x >= m) x -= m;\n    \
+    \    _v = x;\n    }\n    using modint61 = static_modint;\n    constexpr modint61\
+    \ &operator+=(const modint61 &p){\n        _v += p._v;\n        if (_v >= m) _v\
+    \ -= m;\n        return *this;\n    }\n    constexpr modint61 &operator-=(const\
+    \ modint61 &p){\n        _v += m - p._v;\n        if (_v >= m) _v -= m;\n    \
+    \    return *this;\n    }\n    constexpr modint61 &operator*=(const modint61 &p){\n\
+    \        unsigned long long a = _v, b = p._v;\n        unsigned long long au =\
+    \ a >> 31, ad = a & MASK31;\n        unsigned long long bu = b >> 31, bd = b &\
+    \ MASK31;\n        unsigned long long mid = ad * bu + au * bd;\n        unsigned\
+    \ long long midu = mid >> 30, midd = mid & MASK30;\n        _v = cal_mod(au *\
+    \ bu * 2 + midu + (midd << 31) + ad * bd);\n        return *this;\n    }\n   \
+    \ constexpr modint61 &operator/=(const modint61 &p){\n        *this *= p.inv();\n\
+    \        return *this;\n    }\n    friend constexpr modint61 operator+(const modint61\
+    \ &lhs, const modint61 &rhs){\n        return modint61(lhs) += rhs;\n    }\n \
+    \   friend constexpr modint61 operator-(const modint61 &lhs, const modint61 &rhs){\n\
+    \        return modint61(lhs) -= rhs;\n    }\n    friend constexpr modint61 operator*(const\
+    \ modint61 &lhs, const modint61 &rhs){\n        return modint61(lhs) *= rhs;\n\
+    \    }\n    friend constexpr modint61 operator/(const modint61 &lhs, const modint61\
+    \ &rhs){\n        return modint61(lhs) /= rhs;\n    }\n    constexpr modint61\
+    \ operator+() const {\n        return *this;\n    }\n    constexpr modint61 operator-()\
+    \ const {\n        return modint61() - *this;\n    }\n    constexpr modint61 inv()\
+    \ const {\n        long long a = _v, b = m, u = 1, v = 0;\n        while (b >\
+    \ 0){\n            long long t = a / b;\n            std::swap(a -= t * b, b);\n\
+    \            std::swap(u -= t * v, v);\n        }\n        if (u < 0) u += m /\
+    \ a;\n        assert(a == 1);\n        return modint61(u);\n    }\n    constexpr\
+    \ modint61 pow(long long n) const {\n        modint61 ret(1ULL), mul(_v);\n  \
+    \      while (n != 0){\n            if (n & 1) ret *= mul;\n            mul *=\
+    \ mul;\n            n >>= 1;\n        }\n        return ret;\n    }\n    friend\
+    \ std::ostream &operator<<(std::ostream &os, const modint61 &p){\n        return\
+    \ os << p._v;\n    }\n    constexpr unsigned long long val() const {\n       \
+    \ return _v;\n    }\n    constexpr auto operator<=>(const modint61 &) const =\
+    \ default;\n    \n  private:\n    unsigned long long _v;\n    static constexpr\
+    \ unsigned long long m = (1ULL << 61) - 1;\n    static constexpr unsigned long\
+    \ long MASK30 = (1ULL << 30) - 1;\n    static constexpr unsigned long long MASK31\
+    \ = (1ULL << 31) - 1;\n    static constexpr unsigned long long MASK61 = (1ULL\
+    \ << 61) - 1;\n};\nusing modint61 = static_modint<-61>;\n\n} // namespace noya2\n\
+    #line 4 \"misc/rolling_hash_monoid.hpp\"\n\nnamespace noya2 {\n\nstruct roriha_group\
+    \ {\n    struct value_type {\n        modint61 h, base_pow;\n    };\n    static\
+    \ constexpr value_type op(value_type a, value_type b){\n        return {a.h +\
+    \ a.base_pow * b.h, a.base_pow * b.base_pow};\n    }\n    static constexpr value_type\
+    \ e(){\n        return {0LL, 1LL};\n    }\n    static constexpr value_type inv(value_type\
+    \ a){\n        auto iv = a.base_pow.inv();\n        return {-a.h * iv, iv};\n\
+    \    }\n};\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include\"utility/modint61.hpp\"\n\nnamespace noya2 {\n\n\
     struct roriha_group {\n    struct value_type {\n        modint61 h, base_pow;\n\
     \    };\n    static constexpr value_type op(value_type a, value_type b){\n   \
@@ -209,7 +211,7 @@ data:
   isVerificationFile: false
   path: misc/rolling_hash_monoid.hpp
   requiredBy: []
-  timestamp: '2025-02-26 00:46:12+09:00'
+  timestamp: '2025-03-12 13:06:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: misc/rolling_hash_monoid.hpp

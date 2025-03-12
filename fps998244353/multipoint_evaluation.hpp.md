@@ -13,10 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -488,8 +488,8 @@ data:
   timestamp: '2025-02-26 00:46:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/fps998244353/multipoint_evaluation_998244353.test.cpp
   - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+  - test/fps998244353/multipoint_evaluation_998244353.test.cpp
 documentation_of: fps998244353/multipoint_evaluation.hpp
 layout: document
 redirect_from:

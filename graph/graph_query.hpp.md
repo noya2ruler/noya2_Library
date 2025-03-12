@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/unweighted_type.hpp
     title: graph/unweighted_type.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
@@ -342,8 +342,8 @@ data:
   timestamp: '2024-10-30 04:43:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Shortest_Path2.test.cpp
   - test/graph/Shortest_Path.test.cpp
+  - test/graph/Shortest_Path2.test.cpp
 documentation_of: graph/graph_query.hpp
 layout: document
 redirect_from:
