@@ -6,7 +6,7 @@
 #include"../../data_structure/segment_tree.hpp"
 
 using mint = modint998244353;
-using ar = array<mint,3>;
+using ar = std::array<mint,3>;
 
 ar op(ar a, ar b){
     return {a[0] * b[0], b[0] * a[1] + b[1], a[0] * b[2] + a[2]};
