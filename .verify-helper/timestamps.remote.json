@@ -53,6 +53,7 @@
 "test/string/RunEnumerate.test.cpp": "2024-12-04 14:23:33 +0900",
 "test/string/SuffixArray.test.cpp": "2024-07-20 18:15:07 +0900",
 "test/string/Z_Algorithm.test.cpp": "2024-12-04 14:32:21 +0900",
+"test/tree/CartesianTree.test.cpp": "2025-03-21 01:28:28 +0900",
 "test/tree/FrequencyTableofTreeDistance.test.cpp": "2025-02-26 00:46:12 +0900",
 "test/tree/Jump_on_Tree.test.cpp": "2025-01-09 04:05:33 +0900",
 "test/tree/Jump_on_Tree_hld.test.cpp": "2024-07-01 23:39:10 +0900",
