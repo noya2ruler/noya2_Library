@@ -250,6 +250,9 @@ data:
     path: test/misc/LongestIncreasingSubsequence.test.cpp
     title: test/misc/LongestIncreasingSubsequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/misc/RootedTreeTopologicalOrderwithMinimumInversions.test.cpp
+    title: test/misc/RootedTreeTopologicalOrderwithMinimumInversions.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/misc/StaticRangeModeQuery.test.cpp
     title: test/misc/StaticRangeModeQuery.test.cpp
   - icon: ':heavy_check_mark:'
@@ -396,6 +399,7 @@ data:
   - test/math/SumofMultiplicativeFunction.test.cpp
   - test/math/CountingEulerianCircuits.test.cpp
   - test/math/Determinant_of_Matrix.test.cpp
+  - test/misc/RootedTreeTopologicalOrderwithMinimumInversions.test.cpp
   - test/misc/LongestIncreasingSubsequence.test.cpp
   - test/misc/StaticRangeModeQuery.test.cpp
   - test/string/Eertree.test.cpp

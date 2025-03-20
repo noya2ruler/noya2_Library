@@ -200,7 +200,7 @@ data:
       title: math/spanning_tree_counting.hpp
   - name: misc
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: misc/O1onTree.hpp
       title: misc/O1onTree.hpp
     - icon: ':warning:'
@@ -299,6 +299,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/Mo_on_Tree.hpp
       title: Mo on Tree
+    - icon: ':warning:'
+      path: tree/cartesian_tree.hpp
+      title: tree/cartesian_tree.hpp
     - icon: ':heavy_check_mark:'
       path: tree/centroid_decomposition.hpp
       title: tree/centroid_decomposition.hpp
@@ -493,6 +496,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/misc/LongestIncreasingSubsequence.test.cpp
       title: test/misc/LongestIncreasingSubsequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/misc/RootedTreeTopologicalOrderwithMinimumInversions.test.cpp
+      title: test/misc/RootedTreeTopologicalOrderwithMinimumInversions.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/misc/StaticRangeModeQuery.test.cpp
       title: test/misc/StaticRangeModeQuery.test.cpp
