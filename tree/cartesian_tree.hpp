@@ -4,6 +4,7 @@
 #include <functional>
 #include <stack>
 #include <utility>
+#include <cassert>
 
 namespace noya2 {
 
@@ -12,6 +13,7 @@ template<typename T, class comp = std::less<T>>
 std::pair<int, std::vector<int>> cartesian_tree(std::vector<T> a){
     comp cp;
     int n = a.size();
+    assert(n >= 1);
     std::stack<int, std::vector<int>> st;
     st.push(0);
     std::vector<int> par(n);
