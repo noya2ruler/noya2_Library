@@ -299,7 +299,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/Mo_on_Tree.hpp
       title: Mo on Tree
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: tree/cartesian_tree.hpp
       title: tree/cartesian_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -518,6 +518,9 @@ data:
       title: test/string/Z_Algorithm.test.cpp
   - name: test/tree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/tree/CartesianTree.test.cpp
+      title: test/tree/CartesianTree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/tree/FrequencyTableofTreeDistance.test.cpp
       title: test/tree/FrequencyTableofTreeDistance.test.cpp

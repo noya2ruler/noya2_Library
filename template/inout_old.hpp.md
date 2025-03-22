@@ -262,6 +262,9 @@ data:
     path: test/string/Z_Algorithm.test.cpp
     title: test/string/Z_Algorithm.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/tree/CartesianTree.test.cpp
+    title: test/tree/CartesianTree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
   - icon: ':heavy_check_mark:'
@@ -374,6 +377,7 @@ data:
   - test/tree/Jump_on_Tree_hld.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
   - test/tree/VertexSetPathComposite.test.cpp
+  - test/tree/CartesianTree.test.cpp
   - test/tree/Lowest_Common_Ancestor.test.cpp
   - test/math/PrimitiveRoot.test.cpp
   - test/math/CountingPrimes.test.cpp
