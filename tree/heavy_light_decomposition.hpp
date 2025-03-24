@@ -21,7 +21,7 @@ struct hld_tree {
 
     // tree with _n node
     // after construct, call input_edges / input_parents / add_edge _n - 1 times
-    hld_tree (int _n, int _root = 0) : n(_n), root(_root), down(n), nxt(n), sub(n, 1), tour(n) {
+    hld_tree (int _n, int _root = 0) : n(_n), root(_root), down(n, -1), nxt(n), sub(n, 1), tour(n) {
         if (n == 1){
             nxt[0] = -1;
             down[0] = -1;
