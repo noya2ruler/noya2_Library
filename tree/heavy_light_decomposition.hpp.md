@@ -3,24 +3,24 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/tree/Lowest_Common_Ancestor.test.cpp
     title: test/tree/Lowest_Common_Ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/VertexSetPathComposite.test.cpp
     title: test/tree/VertexSetPathComposite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#include <vector>\n\
@@ -30,7 +30,7 @@ data:
     \ tour;\n\t// noya2::internal::csr<int> childs;\n\n    // default constructor\
     \ (nop)\n    hld_tree () {}\n\n    // tree with _n node\n    // after construct,\
     \ call input_edges / input_parents / add_edge _n - 1 times\n    hld_tree (int\
-    \ _n, int _root = 0) : n(_n), root(_root), down(n), nxt(n), sub(n, 1), tour(n)\
+    \ _n, int _root = 0) : n(_n), root(_root), down(n, -1), nxt(n), sub(n, 1), tour(n)\
     \ {\n        if (n == 1){\n            nxt[0] = -1;\n            down[0] = -1;\n\
     \            build_from_parents();\n        }\n    }\n\n    // par[i] < i, par[0]\
     \ == -1\n    hld_tree (const std::vector<int> &par) : n(par.size()), root(0),\
@@ -199,11 +199,11 @@ data:
     \ down, nxt, sub, tour;\n\t// noya2::internal::csr<int> childs;\n\n    // default\
     \ constructor (nop)\n    hld_tree () {}\n\n    // tree with _n node\n    // after\
     \ construct, call input_edges / input_parents / add_edge _n - 1 times\n    hld_tree\
-    \ (int _n, int _root = 0) : n(_n), root(_root), down(n), nxt(n), sub(n, 1), tour(n)\
-    \ {\n        if (n == 1){\n            nxt[0] = -1;\n            down[0] = -1;\n\
-    \            build_from_parents();\n        }\n    }\n\n    // par[i] < i, par[0]\
-    \ == -1\n    hld_tree (const std::vector<int> &par) : n(par.size()), root(0),\
-    \ down(n, -1), nxt(par), sub(n, 1), tour(n){\n        build_from_parents();\n\
+    \ (int _n, int _root = 0) : n(_n), root(_root), down(n, -1), nxt(n), sub(n, 1),\
+    \ tour(n) {\n        if (n == 1){\n            nxt[0] = -1;\n            down[0]\
+    \ = -1;\n            build_from_parents();\n        }\n    }\n\n    // par[i]\
+    \ < i, par[0] == -1\n    hld_tree (const std::vector<int> &par) : n(par.size()),\
+    \ root(0), down(n, -1), nxt(par), sub(n, 1), tour(n){\n        build_from_parents();\n\
     \    }\n\n    // par[i] < i, par[0] == -1\n    hld_tree (std::vector<int> &&par)\
     \ : n(par.size()), root(0), down(n, -1), sub(n, 1), tour(n) {\n        nxt.swap(par);\n\
     \        build_from_parents();\n    }\n\n    // distinct unweighted undirected\
@@ -366,8 +366,8 @@ data:
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2025-01-09 04:05:33+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-03-24 22:43:17+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/tree/aoj_0489.test.cpp
   - test/tree/Jump_on_Tree.test.cpp

@@ -11,7 +11,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/dynamic_segment_tree.hpp
     title: data_structure/dynamic_segment_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/fenwick_tree.hpp
     title: data_structure/fenwick_tree.hpp
   - icon: ':heavy_check_mark:'
@@ -83,7 +83,7 @@ data:
   - icon: ':warning:'
     path: misc/mex.hpp
     title: misc/mex.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
   - icon: ':warning:'
@@ -95,10 +95,10 @@ data:
   - icon: ':warning:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/Mo_on_Tree.hpp
     title: Mo on Tree
   - icon: ':heavy_check_mark:'
@@ -273,7 +273,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -288,18 +288,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Tree_Diameter_hld.test.cpp
     title: test/tree/Tree_Diameter_hld.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/VertexSetPathComposite.test.cpp
     title: test/tree/VertexSetPathComposite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/utils.hpp\"\n\n#include <cmath>\n#include <vector>\n\
@@ -381,7 +381,7 @@ data:
   - fps/relaxed_convolution.hpp
   - fps/ntt.hpp
   timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/tree/aoj_0489.test.cpp
   - test/tree/FrequencyTableofTreeDistance.test.cpp

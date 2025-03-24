@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/prime.hpp
     title: math/prime.hpp
   _extendedRequiredBy:
@@ -135,12 +135,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/VertexSetPathComposite.test.cpp
     title: test/tree/VertexSetPathComposite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"utility/modint.hpp\"\n\n#include <iostream>\n\n#line 2 \"\
@@ -388,7 +388,7 @@ data:
   - fps/relaxed_convolution.hpp
   - fps/ntt.hpp
   timestamp: '2025-02-26 00:46:12+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/tree/FrequencyTableofTreeDistance.test.cpp
   - test/tree/VertexSetPathComposite.test.cpp

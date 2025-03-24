@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: tree/heavy_light_decomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
@@ -87,11 +87,11 @@ data:
     \ down, nxt, sub, tour;\n\t// noya2::internal::csr<int> childs;\n\n    // default\
     \ constructor (nop)\n    hld_tree () {}\n\n    // tree with _n node\n    // after\
     \ construct, call input_edges / input_parents / add_edge _n - 1 times\n    hld_tree\
-    \ (int _n, int _root = 0) : n(_n), root(_root), down(n), nxt(n), sub(n, 1), tour(n)\
-    \ {\n        if (n == 1){\n            nxt[0] = -1;\n            down[0] = -1;\n\
-    \            build_from_parents();\n        }\n    }\n\n    // par[i] < i, par[0]\
-    \ == -1\n    hld_tree (const std::vector<int> &par) : n(par.size()), root(0),\
-    \ down(n, -1), nxt(par), sub(n, 1), tour(n){\n        build_from_parents();\n\
+    \ (int _n, int _root = 0) : n(_n), root(_root), down(n, -1), nxt(n), sub(n, 1),\
+    \ tour(n) {\n        if (n == 1){\n            nxt[0] = -1;\n            down[0]\
+    \ = -1;\n            build_from_parents();\n        }\n    }\n\n    // par[i]\
+    \ < i, par[0] == -1\n    hld_tree (const std::vector<int> &par) : n(par.size()),\
+    \ root(0), down(n, -1), nxt(par), sub(n, 1), tour(n){\n        build_from_parents();\n\
     \    }\n\n    // par[i] < i, par[0] == -1\n    hld_tree (std::vector<int> &&par)\
     \ : n(par.size()), root(0), down(n, -1), sub(n, 1), tour(n) {\n        nxt.swap(par);\n\
     \        build_from_parents();\n    }\n\n    // distinct unweighted undirected\
@@ -265,7 +265,7 @@ data:
   isVerificationFile: true
   path: test/tree/Lowest_Common_Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2025-01-09 04:05:33+09:00'
+  timestamp: '2025-03-24 22:43:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Lowest_Common_Ancestor.test.cpp
