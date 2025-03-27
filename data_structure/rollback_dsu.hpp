@@ -8,7 +8,9 @@
 namespace noya2 {
 
 struct rollback_dsu {
-    rollback_dsu (int _n = 0) : n(_n), par_or_siz(_n,-1) {}
+    rollback_dsu (int _n = 0) : n(_n), par_or_siz(_n,-1) {
+        cc = n;
+    }
     int leader(int v){
         assert(0 <= v && v < n);
         if (par_or_siz[v] < 0) return v;
@@ -22,21 +24,27 @@ struct rollback_dsu {
         v = leader(v);
         logs.push(make_pair(u,par_or_siz[u]));
         logs.push(make_pair(v,par_or_siz[v]));
+        logs.push(make_pair(cc, -1));
         if (u == v) return u;
         if (-par_or_siz[u] < -par_or_siz[v]) std::swap(u,v);
         par_or_siz[u] += par_or_siz[v];
         par_or_siz[v] = u;
+        cc--;
         return u;
     }
     int size(int v){
         return -par_or_siz[leader(v)];
     }
+    int num_of_cc() const {
+        return cc;
+    }
     void rollback(){
+        cc = logs.top().first; logs.pop();
         par_or_siz[logs.top().first] = logs.top().second; logs.pop();
         par_or_siz[logs.top().first] = logs.top().second; logs.pop();
     }
   private:
-    int n;
+    int n, cc;
     std::vector<int> par_or_siz;
     std::stack<std::pair<int,int>> logs;
 };
