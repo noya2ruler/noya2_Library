@@ -17,39 +17,43 @@ data:
   bundledCode: "#line 2 \"data_structure/rollback_dsu.hpp\"\n\n#include <vector>\n\
     #include <stack>\n#include <utility>\n#include <cassert>\n\nnamespace noya2 {\n\
     \nstruct rollback_dsu {\n    rollback_dsu (int _n = 0) : n(_n), par_or_siz(_n,-1)\
-    \ {}\n    int leader(int v){\n        assert(0 <= v && v < n);\n        if (par_or_siz[v]\
-    \ < 0) return v;\n        return leader(par_or_siz[v]);\n    }\n    bool same(int\
-    \ u, int v){\n        return leader(u) == leader(v);\n    }\n    int merge(int\
-    \ u, int v){\n        u = leader(u);\n        v = leader(v);\n        logs.push(make_pair(u,par_or_siz[u]));\n\
-    \        logs.push(make_pair(v,par_or_siz[v]));\n        if (u == v) return u;\n\
-    \        if (-par_or_siz[u] < -par_or_siz[v]) std::swap(u,v);\n        par_or_siz[u]\
-    \ += par_or_siz[v];\n        par_or_siz[v] = u;\n        return u;\n    }\n  \
-    \  int size(int v){\n        return -par_or_siz[leader(v)];\n    }\n    void rollback(){\n\
-    \        par_or_siz[logs.top().first] = logs.top().second; logs.pop();\n     \
-    \   par_or_siz[logs.top().first] = logs.top().second; logs.pop();\n    }\n  private:\n\
-    \    int n;\n    std::vector<int> par_or_siz;\n    std::stack<std::pair<int,int>>\
-    \ logs;\n};\n\n} // namespace noya2\n"
+    \ {\n        cc = n;\n    }\n    int leader(int v){\n        assert(0 <= v &&\
+    \ v < n);\n        if (par_or_siz[v] < 0) return v;\n        return leader(par_or_siz[v]);\n\
+    \    }\n    bool same(int u, int v){\n        return leader(u) == leader(v);\n\
+    \    }\n    int merge(int u, int v){\n        u = leader(u);\n        v = leader(v);\n\
+    \        logs.push(make_pair(u,par_or_siz[u]));\n        logs.push(make_pair(v,par_or_siz[v]));\n\
+    \        logs.push(make_pair(cc, -1));\n        if (u == v) return u;\n      \
+    \  if (-par_or_siz[u] < -par_or_siz[v]) std::swap(u,v);\n        par_or_siz[u]\
+    \ += par_or_siz[v];\n        par_or_siz[v] = u;\n        cc--;\n        return\
+    \ u;\n    }\n    int size(int v){\n        return -par_or_siz[leader(v)];\n  \
+    \  }\n    int num_of_cc() const {\n        return cc;\n    }\n    void rollback(){\n\
+    \        cc = logs.top().first; logs.pop();\n        par_or_siz[logs.top().first]\
+    \ = logs.top().second; logs.pop();\n        par_or_siz[logs.top().first] = logs.top().second;\
+    \ logs.pop();\n    }\n  private:\n    int n, cc;\n    std::vector<int> par_or_siz;\n\
+    \    std::stack<std::pair<int,int>> logs;\n};\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include <vector>\n#include <stack>\n#include <utility>\n\
     #include <cassert>\n\nnamespace noya2 {\n\nstruct rollback_dsu {\n    rollback_dsu\
-    \ (int _n = 0) : n(_n), par_or_siz(_n,-1) {}\n    int leader(int v){\n       \
-    \ assert(0 <= v && v < n);\n        if (par_or_siz[v] < 0) return v;\n       \
-    \ return leader(par_or_siz[v]);\n    }\n    bool same(int u, int v){\n       \
-    \ return leader(u) == leader(v);\n    }\n    int merge(int u, int v){\n      \
-    \  u = leader(u);\n        v = leader(v);\n        logs.push(make_pair(u,par_or_siz[u]));\n\
-    \        logs.push(make_pair(v,par_or_siz[v]));\n        if (u == v) return u;\n\
-    \        if (-par_or_siz[u] < -par_or_siz[v]) std::swap(u,v);\n        par_or_siz[u]\
-    \ += par_or_siz[v];\n        par_or_siz[v] = u;\n        return u;\n    }\n  \
-    \  int size(int v){\n        return -par_or_siz[leader(v)];\n    }\n    void rollback(){\n\
+    \ (int _n = 0) : n(_n), par_or_siz(_n,-1) {\n        cc = n;\n    }\n    int leader(int\
+    \ v){\n        assert(0 <= v && v < n);\n        if (par_or_siz[v] < 0) return\
+    \ v;\n        return leader(par_or_siz[v]);\n    }\n    bool same(int u, int v){\n\
+    \        return leader(u) == leader(v);\n    }\n    int merge(int u, int v){\n\
+    \        u = leader(u);\n        v = leader(v);\n        logs.push(make_pair(u,par_or_siz[u]));\n\
+    \        logs.push(make_pair(v,par_or_siz[v]));\n        logs.push(make_pair(cc,\
+    \ -1));\n        if (u == v) return u;\n        if (-par_or_siz[u] < -par_or_siz[v])\
+    \ std::swap(u,v);\n        par_or_siz[u] += par_or_siz[v];\n        par_or_siz[v]\
+    \ = u;\n        cc--;\n        return u;\n    }\n    int size(int v){\n      \
+    \  return -par_or_siz[leader(v)];\n    }\n    int num_of_cc() const {\n      \
+    \  return cc;\n    }\n    void rollback(){\n        cc = logs.top().first; logs.pop();\n\
     \        par_or_siz[logs.top().first] = logs.top().second; logs.pop();\n     \
     \   par_or_siz[logs.top().first] = logs.top().second; logs.pop();\n    }\n  private:\n\
-    \    int n;\n    std::vector<int> par_or_siz;\n    std::stack<std::pair<int,int>>\
+    \    int n, cc;\n    std::vector<int> par_or_siz;\n    std::stack<std::pair<int,int>>\
     \ logs;\n};\n\n} // namespace noya2"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/rollback_dsu.hpp
   requiredBy:
   - data_structure/offline_dynamic_connectivity.hpp
-  timestamp: '2024-07-28 13:57:54+09:00'
+  timestamp: '2025-03-27 18:59:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/aoj_2235.test.cpp
