@@ -38,6 +38,8 @@ struct binomial {
     static void initialize(int len = 2){
         _fact.clear();
         _ifact.clear();
+        _fact = {1,1};
+        _ifact = {1,1};
         extend(len);
     }
   private:
@@ -50,11 +52,8 @@ struct binomial {
         if (n1 < 0) return 0;
         return multinomial(sum+n1,div_prod*ifact(n1),tail...);
     }
-    static inline std::vector<mint> _fact, _ifact;
+    static std::vector<mint> _fact, _ifact;
     static void extend(int len = -1){
-        if (_fact.empty()){
-            _fact = _ifact = {1,1};
-        }
         int siz = _fact.size();
         if (len == -1) len = siz * 2;
         len = (int)min<long long>(len, mint::mod() - 1);
@@ -65,5 +64,7 @@ struct binomial {
         for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i] * i;
     }
 };
+template<typename mint> std::vector<mint> noya2::binomial<mint>::_fact = {1,1};
+template<typename mint> std::vector<mint> noya2::binomial<mint>::_ifact = {1,1};
 
 } // namespace noya2
