@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: math/binomial.hpp
   _extendedRequiredBy: []
@@ -26,20 +26,21 @@ data:
     \ C(n * 2, n) * inv(n + 1);\n    }\n    inline mint operator()(int n, int r) {\
     \ return C(n, r); }\n    template<class... Cnts>\n    static mint M(const Cnts&...\
     \ cnts){\n        return multinomial(0,1,cnts...);\n    }\n    static void initialize(int\
-    \ len = 2){\n        _fact.clear();\n        _ifact.clear();\n        extend(len);\n\
-    \    }\n  private:\n    static mint multinomial(const int& sum, const mint& div_prod){\n\
-    \        if (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n\
-    \    template<class... Tail>\n    static mint multinomial(const int& sum, const\
-    \ mint& div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return\
-    \ 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n\
-    \    static inline std::vector<mint> _fact, _ifact;\n    static void extend(int\
-    \ len = -1){\n        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n\
-    \        }\n        int siz = _fact.size();\n        if (len == -1) len = siz\
-    \ * 2;\n        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len\
-    \ < siz) return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n      \
-    \  for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len]\
-    \ = _fact[len].inv();\n        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i]\
-    \ * i;\n    }\n};\n\n} // namespace noya2\n#line 4 \"math/lagrange_interpolation.hpp\"\
+    \ len = 2){\n        _fact.clear();\n        _ifact.clear();\n        _fact =\
+    \ {1,1};\n        _ifact = {1,1};\n        extend(len);\n    }\n  private:\n \
+    \   static mint multinomial(const int& sum, const mint& div_prod){\n        if\
+    \ (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n    template<class...\
+    \ Tail>\n    static mint multinomial(const int& sum, const mint& div_prod, const\
+    \ int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n        return\
+    \ multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static std::vector<mint>\
+    \ _fact, _ifact;\n    static void extend(int len = -1){\n        int siz = _fact.size();\n\
+    \        if (len == -1) len = siz * 2;\n        len = (int)min<long long>(len,\
+    \ mint::mod() - 1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
+    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
+    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
+    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename mint> std::vector<mint>\
+    \ noya2::binomial<mint>::_fact = {1,1};\ntemplate<typename mint> std::vector<mint>\
+    \ noya2::binomial<mint>::_ifact = {1,1};\n\n} // namespace noya2\n#line 4 \"math/lagrange_interpolation.hpp\"\
     \n\nnamespace noya2 {\n\n/**\n * @brief Lagrange interpolation\n * @note y is\
     \ at most n-degree polynomial of x\n * \n * @tparam mint (use noya2::binomial<mint>::ifact(int))\n\
     \ * @param y value of y(0), y(1), ... y(n)\n * @param x specific value of x\n\
@@ -70,7 +71,7 @@ data:
   isVerificationFile: false
   path: math/lagrange_interpolation.hpp
   requiredBy: []
-  timestamp: '2025-01-28 23:59:05+09:00'
+  timestamp: '2025-04-03 03:38:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/lagrange_interpolation.hpp

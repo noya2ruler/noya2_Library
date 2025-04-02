@@ -4,25 +4,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -295,20 +295,21 @@ data:
     \ C(n * 2, n) * inv(n + 1);\n    }\n    inline mint operator()(int n, int r) {\
     \ return C(n, r); }\n    template<class... Cnts>\n    static mint M(const Cnts&...\
     \ cnts){\n        return multinomial(0,1,cnts...);\n    }\n    static void initialize(int\
-    \ len = 2){\n        _fact.clear();\n        _ifact.clear();\n        extend(len);\n\
-    \    }\n  private:\n    static mint multinomial(const int& sum, const mint& div_prod){\n\
-    \        if (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n\
-    \    template<class... Tail>\n    static mint multinomial(const int& sum, const\
-    \ mint& div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return\
-    \ 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n\
-    \    static inline std::vector<mint> _fact, _ifact;\n    static void extend(int\
-    \ len = -1){\n        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n\
-    \        }\n        int siz = _fact.size();\n        if (len == -1) len = siz\
-    \ * 2;\n        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len\
-    \ < siz) return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n      \
-    \  for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len]\
-    \ = _fact[len].inv();\n        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i]\
-    \ * i;\n    }\n};\n\n} // namespace noya2\n#line 7 \"fps/sample_point_shift.hpp\"\
+    \ len = 2){\n        _fact.clear();\n        _ifact.clear();\n        _fact =\
+    \ {1,1};\n        _ifact = {1,1};\n        extend(len);\n    }\n  private:\n \
+    \   static mint multinomial(const int& sum, const mint& div_prod){\n        if\
+    \ (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n    template<class...\
+    \ Tail>\n    static mint multinomial(const int& sum, const mint& div_prod, const\
+    \ int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n        return\
+    \ multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static std::vector<mint>\
+    \ _fact, _ifact;\n    static void extend(int len = -1){\n        int siz = _fact.size();\n\
+    \        if (len == -1) len = siz * 2;\n        len = (int)min<long long>(len,\
+    \ mint::mod() - 1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
+    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
+    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
+    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename mint> std::vector<mint>\
+    \ noya2::binomial<mint>::_fact = {1,1};\ntemplate<typename mint> std::vector<mint>\
+    \ noya2::binomial<mint>::_ifact = {1,1};\n\n} // namespace noya2\n#line 7 \"fps/sample_point_shift.hpp\"\
     \n\nnamespace noya2{\n\ntemplate<Fps_Info Info>\nrequires Modint<typename Info::value_type>\n\
     FormalPowerSeries<Info> sample_point_shift(FormalPowerSeries<Info> y, typename\
     \ Info::value_type t, int m){\n    using fps = FormalPowerSeries<Info>;\n    using\
@@ -365,7 +366,7 @@ data:
   isVerificationFile: false
   path: fps/sample_point_shift.hpp
   requiredBy: []
-  timestamp: '2025-02-26 00:46:12+09:00'
+  timestamp: '2025-04-03 03:38:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp

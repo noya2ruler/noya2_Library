@@ -2,25 +2,25 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/spanning_tree_counting.hpp
     title: math/spanning_tree_counting.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
     title: test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/CountingEulerianCircuits.test.cpp
     title: test/math/CountingEulerianCircuits.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Determinant_of_Matrix.test.cpp
     title: test/math/Determinant_of_Matrix.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/matrix.hpp\"\n\n#include <vector>\n#include <array>\n\
@@ -228,7 +228,7 @@ data:
   - math/euler_circuit_counting.hpp
   - math/spanning_tree_counting.hpp
   timestamp: '2024-08-13 15:38:50+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/CountingEulerianCircuits.test.cpp
   - test/math/Determinant_of_Matrix.test.cpp

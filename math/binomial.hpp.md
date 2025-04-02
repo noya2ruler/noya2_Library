@@ -8,25 +8,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps998244353/bostan_mori.hpp
     title: fps998244353/bostan_mori.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps998244353/fps998244353.hpp
     title: fps998244353/fps998244353.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps998244353/multipoint_evaluation.hpp
     title: fps998244353/multipoint_evaluation.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps998244353/polynomial_taylor_shift.hpp
     title: fps998244353/polynomial_taylor_shift.hpp
   - icon: ':warning:'
     path: fps998244353/product_1_minus_x_pow_a.hpp
     title: fps998244353/product_1_minus_x_pow_a.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps998244353/sample_point_shift.hpp
     title: fps998244353/sample_point_shift.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
   - icon: ':warning:'
@@ -45,39 +45,39 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps/convolution.test.cpp
     title: test/fps/convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
     title: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/convolution_998244353.test.cpp
     title: test/fps998244353/convolution_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/multipoint_evaluation_998244353.test.cpp
     title: test/fps998244353/multipoint_evaluation_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
     title: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
     title: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
     title: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/CountingEulerianCircuits.test.cpp
     title: test/math/CountingEulerianCircuits.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/binomial.hpp\"\n\n#include<vector>\nnamespace noya2\
@@ -94,20 +94,21 @@ data:
     \ 1);\n    }\n    inline mint operator()(int n, int r) { return C(n, r); }\n \
     \   template<class... Cnts>\n    static mint M(const Cnts&... cnts){\n       \
     \ return multinomial(0,1,cnts...);\n    }\n    static void initialize(int len\
-    \ = 2){\n        _fact.clear();\n        _ifact.clear();\n        extend(len);\n\
-    \    }\n  private:\n    static mint multinomial(const int& sum, const mint& div_prod){\n\
-    \        if (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n\
-    \    template<class... Tail>\n    static mint multinomial(const int& sum, const\
-    \ mint& div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return\
-    \ 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n\
-    \    static inline std::vector<mint> _fact, _ifact;\n    static void extend(int\
-    \ len = -1){\n        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n\
-    \        }\n        int siz = _fact.size();\n        if (len == -1) len = siz\
-    \ * 2;\n        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len\
-    \ < siz) return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n      \
-    \  for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len]\
-    \ = _fact[len].inv();\n        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i]\
-    \ * i;\n    }\n};\n\n} // namespace noya2\n"
+    \ = 2){\n        _fact.clear();\n        _ifact.clear();\n        _fact = {1,1};\n\
+    \        _ifact = {1,1};\n        extend(len);\n    }\n  private:\n    static\
+    \ mint multinomial(const int& sum, const mint& div_prod){\n        if (sum < 0)\
+    \ return 0;\n        return fact(sum) * div_prod;\n    }\n    template<class...\
+    \ Tail>\n    static mint multinomial(const int& sum, const mint& div_prod, const\
+    \ int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n        return\
+    \ multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static std::vector<mint>\
+    \ _fact, _ifact;\n    static void extend(int len = -1){\n        int siz = _fact.size();\n\
+    \        if (len == -1) len = siz * 2;\n        len = (int)min<long long>(len,\
+    \ mint::mod() - 1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
+    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
+    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
+    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename mint> std::vector<mint>\
+    \ noya2::binomial<mint>::_fact = {1,1};\ntemplate<typename mint> std::vector<mint>\
+    \ noya2::binomial<mint>::_ifact = {1,1};\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include<vector>\nnamespace noya2 {\n\ntemplate<typename\
     \ mint>\nstruct binomial {\n    binomial(int len = 300000){ extend(len); }\n \
     \   static mint fact(int n){\n        if (n < 0) return 0;\n        while (n >=\
@@ -122,19 +123,21 @@ data:
     \ mint operator()(int n, int r) { return C(n, r); }\n    template<class... Cnts>\n\
     \    static mint M(const Cnts&... cnts){\n        return multinomial(0,1,cnts...);\n\
     \    }\n    static void initialize(int len = 2){\n        _fact.clear();\n   \
-    \     _ifact.clear();\n        extend(len);\n    }\n  private:\n    static mint\
-    \ multinomial(const int& sum, const mint& div_prod){\n        if (sum < 0) return\
-    \ 0;\n        return fact(sum) * div_prod;\n    }\n    template<class... Tail>\n\
-    \    static mint multinomial(const int& sum, const mint& div_prod, const int&\
-    \ n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n\
-    \    }\n    static inline std::vector<mint> _fact, _ifact;\n    static void extend(int\
-    \ len = -1){\n        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n\
-    \        }\n        int siz = _fact.size();\n        if (len == -1) len = siz\
+    \     _ifact.clear();\n        _fact = {1,1};\n        _ifact = {1,1};\n     \
+    \   extend(len);\n    }\n  private:\n    static mint multinomial(const int& sum,\
+    \ const mint& div_prod){\n        if (sum < 0) return 0;\n        return fact(sum)\
+    \ * div_prod;\n    }\n    template<class... Tail>\n    static mint multinomial(const\
+    \ int& sum, const mint& div_prod, const int& n1, const Tail&... tail){\n     \
+    \   if (n1 < 0) return 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n\
+    \    }\n    static std::vector<mint> _fact, _ifact;\n    static void extend(int\
+    \ len = -1){\n        int siz = _fact.size();\n        if (len == -1) len = siz\
     \ * 2;\n        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len\
     \ < siz) return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n      \
     \  for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len]\
     \ = _fact[len].inv();\n        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i]\
-    \ * i;\n    }\n};\n\n} // namespace noya2"
+    \ * i;\n    }\n};\ntemplate<typename mint> std::vector<mint> noya2::binomial<mint>::_fact\
+    \ = {1,1};\ntemplate<typename mint> std::vector<mint> noya2::binomial<mint>::_ifact\
+    \ = {1,1};\n\n} // namespace noya2"
   dependsOn: []
   isVerificationFile: false
   path: math/binomial.hpp
@@ -149,8 +152,8 @@ data:
   - fps998244353/product_1_minus_x_pow_a.hpp
   - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
-  timestamp: '2025-01-28 23:59:05+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-04-03 03:38:42+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp

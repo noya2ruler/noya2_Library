@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
@@ -228,20 +228,21 @@ data:
     \ C(n * 2, n) * inv(n + 1);\n    }\n    inline mint operator()(int n, int r) {\
     \ return C(n, r); }\n    template<class... Cnts>\n    static mint M(const Cnts&...\
     \ cnts){\n        return multinomial(0,1,cnts...);\n    }\n    static void initialize(int\
-    \ len = 2){\n        _fact.clear();\n        _ifact.clear();\n        extend(len);\n\
-    \    }\n  private:\n    static mint multinomial(const int& sum, const mint& div_prod){\n\
-    \        if (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n\
-    \    template<class... Tail>\n    static mint multinomial(const int& sum, const\
-    \ mint& div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return\
-    \ 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n\
-    \    static inline std::vector<mint> _fact, _ifact;\n    static void extend(int\
-    \ len = -1){\n        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n\
-    \        }\n        int siz = _fact.size();\n        if (len == -1) len = siz\
-    \ * 2;\n        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len\
-    \ < siz) return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n      \
-    \  for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len]\
-    \ = _fact[len].inv();\n        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i]\
-    \ * i;\n    }\n};\n\n} // namespace noya2\n#line 6 \"test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp\"\
+    \ len = 2){\n        _fact.clear();\n        _ifact.clear();\n        _fact =\
+    \ {1,1};\n        _ifact = {1,1};\n        extend(len);\n    }\n  private:\n \
+    \   static mint multinomial(const int& sum, const mint& div_prod){\n        if\
+    \ (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n    template<class...\
+    \ Tail>\n    static mint multinomial(const int& sum, const mint& div_prod, const\
+    \ int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n        return\
+    \ multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static std::vector<mint>\
+    \ _fact, _ifact;\n    static void extend(int len = -1){\n        int siz = _fact.size();\n\
+    \        if (len == -1) len = siz * 2;\n        len = (int)min<long long>(len,\
+    \ mint::mod() - 1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
+    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
+    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
+    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename mint> std::vector<mint>\
+    \ noya2::binomial<mint>::_fact = {1,1};\ntemplate<typename mint> std::vector<mint>\
+    \ noya2::binomial<mint>::_ifact = {1,1};\n\n} // namespace noya2\n#line 6 \"test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp\"\
     \n\nint main(){\n    int t, m; in(t,m);\n    modint::set_mod(m);\n    while (t--){\n\
     \        int n, k; in(n,k);\n        out(binomial<modint>::C(n,k).val());\n  \
     \  }\n}\n"
@@ -261,8 +262,8 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
   requiredBy: []
-  timestamp: '2025-02-26 00:46:12+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-04-03 03:38:42+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
 layout: document

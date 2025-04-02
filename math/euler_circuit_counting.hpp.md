@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/spanning_tree_counting.hpp
     title: math/spanning_tree_counting.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/CountingEulerianCircuits.test.cpp
     title: test/math/CountingEulerianCircuits.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://en.wikipedia.org/wiki/BEST_theorem
@@ -146,20 +146,22 @@ data:
     \ n, int r) { return C(n, r); }\n    template<class... Cnts>\n    static mint\
     \ M(const Cnts&... cnts){\n        return multinomial(0,1,cnts...);\n    }\n \
     \   static void initialize(int len = 2){\n        _fact.clear();\n        _ifact.clear();\n\
-    \        extend(len);\n    }\n  private:\n    static mint multinomial(const int&\
-    \ sum, const mint& div_prod){\n        if (sum < 0) return 0;\n        return\
-    \ fact(sum) * div_prod;\n    }\n    template<class... Tail>\n    static mint multinomial(const\
-    \ int& sum, const mint& div_prod, const int& n1, const Tail&... tail){\n     \
-    \   if (n1 < 0) return 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n\
-    \    }\n    static inline std::vector<mint> _fact, _ifact;\n    static void extend(int\
-    \ len = -1){\n        if (_fact.empty()){\n            _fact = _ifact = {1,1};\n\
-    \        }\n        int siz = _fact.size();\n        if (len == -1) len = siz\
-    \ * 2;\n        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len\
-    \ < siz) return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n      \
-    \  for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len]\
-    \ = _fact[len].inv();\n        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i]\
-    \ * i;\n    }\n};\n\n} // namespace noya2\n#line 5 \"math/euler_circuit_counting.hpp\"\
-    \n\nnamespace noya2 {\n\n// BEST theorem\n// https://en.wikipedia.org/wiki/BEST_theorem\n\
+    \        _fact = {1,1};\n        _ifact = {1,1};\n        extend(len);\n    }\n\
+    \  private:\n    static mint multinomial(const int& sum, const mint& div_prod){\n\
+    \        if (sum < 0) return 0;\n        return fact(sum) * div_prod;\n    }\n\
+    \    template<class... Tail>\n    static mint multinomial(const int& sum, const\
+    \ mint& div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return\
+    \ 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n\
+    \    static std::vector<mint> _fact, _ifact;\n    static void extend(int len =\
+    \ -1){\n        int siz = _fact.size();\n        if (len == -1) len = siz * 2;\n\
+    \        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len < siz)\
+    \ return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n        for (int\
+    \ i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len] = _fact[len].inv();\n\
+    \        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n\
+    };\ntemplate<typename mint> std::vector<mint> noya2::binomial<mint>::_fact = {1,1};\n\
+    template<typename mint> std::vector<mint> noya2::binomial<mint>::_ifact = {1,1};\n\
+    \n} // namespace noya2\n#line 5 \"math/euler_circuit_counting.hpp\"\n\nnamespace\
+    \ noya2 {\n\n// BEST theorem\n// https://en.wikipedia.org/wiki/BEST_theorem\n\
     template<typename T>\nT euler_circuit_counting(int n, const std::vector<std::tuple<int,\
     \ int, long long>> &es){\n    // i_deg == o_deg\n    std::vector<long long> deg(n,0);\n\
     \    for (auto [u, v, c] : es){\n        deg[u] -= c;\n        deg[v] += c;\n\
@@ -213,8 +215,8 @@ data:
   isVerificationFile: false
   path: math/euler_circuit_counting.hpp
   requiredBy: []
-  timestamp: '2025-01-28 23:59:05+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-04-03 03:38:42+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/math/CountingEulerianCircuits.test.cpp
 documentation_of: math/euler_circuit_counting.hpp
