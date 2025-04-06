@@ -100,28 +100,28 @@ data:
       title: fps/sample_point_shift.hpp
   - name: fps998244353
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps998244353/bostan_mori.hpp
       title: fps998244353/bostan_mori.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps998244353/fps998244353.hpp
       title: fps998244353/fps998244353.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps998244353/modint998244353.hpp
       title: fps998244353/modint998244353.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps998244353/multipoint_evaluation.hpp
       title: fps998244353/multipoint_evaluation.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps998244353/ntt998244353.hpp
       title: fps998244353/ntt998244353.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps998244353/polynomial_taylor_shift.hpp
       title: fps998244353/polynomial_taylor_shift.hpp
     - icon: ':warning:'
       path: fps998244353/product_1_minus_x_pow_a.hpp
       title: fps998244353/product_1_minus_x_pow_a.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: fps998244353/sample_point_shift.hpp
       title: fps998244353/sample_point_shift.hpp
   - name: geometry
@@ -156,10 +156,10 @@ data:
       title: graph/unweighted_type.hpp
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: math/binomial.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/euler_circuit_counting.hpp
       title: math/euler_circuit_counting.hpp
     - icon: ':heavy_check_mark:'
@@ -177,13 +177,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/lcm_convolution.hpp
       title: math/lcm_convolution.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
     - icon: ':heavy_check_mark:'
       path: math/multiplicative_function.hpp
       title: math/multiplicative_function.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/prime.hpp
       title: math/prime.hpp
     - icon: ':heavy_check_mark:'
@@ -195,7 +195,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/sieve.hpp
       title: math/sieve.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/spanning_tree_counting.hpp
       title: math/spanning_tree_counting.hpp
   - name: misc
@@ -279,19 +279,19 @@ data:
       title: string/z_algorithm.hpp
   - name: template
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/const.hpp
       title: template/const.hpp
     - icon: ':warning:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/inout_old.hpp
       title: template/inout_old.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
@@ -322,7 +322,7 @@ data:
       title: tree/tree_query_weighted.hpp
   - name: utility
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: utility/modint.hpp
       title: utility/modint.hpp
     - icon: ':heavy_check_mark:'
@@ -419,25 +419,25 @@ data:
       title: test/fps/convolution_relaxed_convolution.test.cpp
   - name: test/fps998244353
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
       title: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
       title: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/fps998244353/convolution_998244353.test.cpp
       title: test/fps998244353/convolution_998244353.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/fps998244353/multipoint_evaluation_998244353.test.cpp
       title: test/fps998244353/multipoint_evaluation_998244353.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
       title: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
       title: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
       title: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
   - name: test/geometry
@@ -461,13 +461,13 @@ data:
       title: test/graph/Strongly_Connected_Components.test.cpp
   - name: test/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/math/CountingEulerianCircuits.test.cpp
       title: test/math/CountingEulerianCircuits.test.cpp
     - icon: ':heavy_check_mark:'

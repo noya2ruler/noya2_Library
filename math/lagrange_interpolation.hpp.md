@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
   _extendedRequiredBy: []
@@ -34,25 +34,28 @@ data:
     \ int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n        return\
     \ multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static std::vector<mint>\
     \ _fact, _ifact;\n    static void extend(int len = -1){\n        int siz = _fact.size();\n\
-    \        if (len == -1) len = siz * 2;\n        len = (int)min<long long>(len,\
-    \ mint::mod() - 1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
-    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
-    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
-    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename mint> std::vector<mint>\
-    \ noya2::binomial<mint>::_fact = {1,1};\ntemplate<typename mint> std::vector<mint>\
-    \ noya2::binomial<mint>::_ifact = {1,1};\n\n} // namespace noya2\n#line 4 \"math/lagrange_interpolation.hpp\"\
-    \n\nnamespace noya2 {\n\n/**\n * @brief Lagrange interpolation\n * @note y is\
-    \ at most n-degree polynomial of x\n * \n * @tparam mint (use noya2::binomial<mint>::ifact(int))\n\
-    \ * @param y value of y(0), y(1), ... y(n)\n * @param x specific value of x\n\
-    \ * @return mint y(x)\n */\ntemplate<typename mint>\nmint lagrange_interpolation(const\
-    \ std::vector<mint> &y, mint x){\n    if (x.val() < y.size()){\n        return\
-    \ y[x.val()];\n    }\n    int n = y.size() - 1;\n    std::vector<mint> lui(n+1,1),\
-    \ rui(n+1,1);\n    mint a = x;\n    for (int i = 0; i < n; i++){\n        lui[i+1]\
-    \ = lui[i] * a;\n        a -= 1;\n    }\n    for (int i = n-1; i >= 0; i--){\n\
-    \        rui[i] = rui[i+1] * a;\n        a += 1;\n    }\n    mint ans = 0;\n \
-    \   binomial<mint> bnm;\n    for (int i = 0; i <= n; i++){\n        mint tmp =\
-    \ y[i] * lui[i] * rui[i] * bnm.ifact(i) * bnm.ifact(n-i);\n        ans += ((n-i)\
-    \ & 1) ? -tmp : tmp;\n    }\n    return ans;\n}\n\n} // namespace noya2\n"
+    \        if (siz == 0){\n            _fact = {1,1};\n            _ifact = {1,1};\n\
+    \            siz = _fact.size();\n        }\n        if (len == -1) len = siz\
+    \ * 2;\n        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len\
+    \ < siz) return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n      \
+    \  for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        assert(_fact[len].val()\
+    \ != 0);\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i\
+    \ > siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename mint>\
+    \ std::vector<mint> noya2::binomial<mint>::_fact = {1,1};\ntemplate<typename mint>\
+    \ std::vector<mint> noya2::binomial<mint>::_ifact = {1,1};\n\n} // namespace noya2\n\
+    #line 4 \"math/lagrange_interpolation.hpp\"\n\nnamespace noya2 {\n\n/**\n * @brief\
+    \ Lagrange interpolation\n * @note y is at most n-degree polynomial of x\n * \n\
+    \ * @tparam mint (use noya2::binomial<mint>::ifact(int))\n * @param y value of\
+    \ y(0), y(1), ... y(n)\n * @param x specific value of x\n * @return mint y(x)\n\
+    \ */\ntemplate<typename mint>\nmint lagrange_interpolation(const std::vector<mint>\
+    \ &y, mint x){\n    if (x.val() < y.size()){\n        return y[x.val()];\n   \
+    \ }\n    int n = y.size() - 1;\n    std::vector<mint> lui(n+1,1), rui(n+1,1);\n\
+    \    mint a = x;\n    for (int i = 0; i < n; i++){\n        lui[i+1] = lui[i]\
+    \ * a;\n        a -= 1;\n    }\n    for (int i = n-1; i >= 0; i--){\n        rui[i]\
+    \ = rui[i+1] * a;\n        a += 1;\n    }\n    mint ans = 0;\n    binomial<mint>\
+    \ bnm;\n    for (int i = 0; i <= n; i++){\n        mint tmp = y[i] * lui[i] *\
+    \ rui[i] * bnm.ifact(i) * bnm.ifact(n-i);\n        ans += ((n-i) & 1) ? -tmp :\
+    \ tmp;\n    }\n    return ans;\n}\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include\"binomial.hpp\"\n\nnamespace noya2 {\n\n/**\n *\
     \ @brief Lagrange interpolation\n * @note y is at most n-degree polynomial of\
     \ x\n * \n * @tparam mint (use noya2::binomial<mint>::ifact(int))\n * @param y\
@@ -71,7 +74,7 @@ data:
   isVerificationFile: false
   path: math/lagrange_interpolation.hpp
   requiredBy: []
-  timestamp: '2025-04-03 03:38:42+09:00'
+  timestamp: '2025-04-07 03:15:38+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/lagrange_interpolation.hpp

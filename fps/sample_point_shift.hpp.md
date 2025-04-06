@@ -4,25 +4,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/formal_power_series.hpp
     title: fps/formal_power_series.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -303,20 +303,22 @@ data:
     \ int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n        return\
     \ multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static std::vector<mint>\
     \ _fact, _ifact;\n    static void extend(int len = -1){\n        int siz = _fact.size();\n\
-    \        if (len == -1) len = siz * 2;\n        len = (int)min<long long>(len,\
-    \ mint::mod() - 1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
-    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
-    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
-    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename mint> std::vector<mint>\
-    \ noya2::binomial<mint>::_fact = {1,1};\ntemplate<typename mint> std::vector<mint>\
-    \ noya2::binomial<mint>::_ifact = {1,1};\n\n} // namespace noya2\n#line 7 \"fps/sample_point_shift.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<Fps_Info Info>\nrequires Modint<typename Info::value_type>\n\
-    FormalPowerSeries<Info> sample_point_shift(FormalPowerSeries<Info> y, typename\
-    \ Info::value_type t, int m){\n    using fps = FormalPowerSeries<Info>;\n    using\
-    \ mint = typename Info::value_type;\n    ll T = t.val();\n    int k = (int)(y.size())\
-    \ - 1;\n    if (T <= k){\n        fps ret(m);\n        int ptr = 0;\n        for\
-    \ (ll i = T; i <= k && ptr < m; i++){\n            ret[ptr++] = y[i];\n      \
-    \  }\n        if (k+1 < T+m){\n            auto suf = sample_point_shift(y,k+1,m-ptr);\n\
+    \        if (siz == 0){\n            _fact = {1,1};\n            _ifact = {1,1};\n\
+    \            siz = _fact.size();\n        }\n        if (len == -1) len = siz\
+    \ * 2;\n        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len\
+    \ < siz) return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n      \
+    \  for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        assert(_fact[len].val()\
+    \ != 0);\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i\
+    \ > siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename mint>\
+    \ std::vector<mint> noya2::binomial<mint>::_fact = {1,1};\ntemplate<typename mint>\
+    \ std::vector<mint> noya2::binomial<mint>::_ifact = {1,1};\n\n} // namespace noya2\n\
+    #line 7 \"fps/sample_point_shift.hpp\"\n\nnamespace noya2{\n\ntemplate<Fps_Info\
+    \ Info>\nrequires Modint<typename Info::value_type>\nFormalPowerSeries<Info> sample_point_shift(FormalPowerSeries<Info>\
+    \ y, typename Info::value_type t, int m){\n    using fps = FormalPowerSeries<Info>;\n\
+    \    using mint = typename Info::value_type;\n    ll T = t.val();\n    int k =\
+    \ (int)(y.size()) - 1;\n    if (T <= k){\n        fps ret(m);\n        int ptr\
+    \ = 0;\n        for (ll i = T; i <= k && ptr < m; i++){\n            ret[ptr++]\
+    \ = y[i];\n        }\n        if (k+1 < T+m){\n            auto suf = sample_point_shift(y,k+1,m-ptr);\n\
     \            for (int i = k+1; i < T+m; i++){\n                ret[ptr++] = suf[i-(k+1)];\n\
     \            }\n        }\n        return ret;\n    }\n    if (T+m > mint::mod()){\n\
     \        auto pref = sample_point_shift(y,T,mint::mod()-T);\n        auto suf\
@@ -366,7 +368,7 @@ data:
   isVerificationFile: false
   path: fps/sample_point_shift.hpp
   requiredBy: []
-  timestamp: '2025-04-03 03:38:42+09:00'
+  timestamp: '2025-04-07 03:15:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp

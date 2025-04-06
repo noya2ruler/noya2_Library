@@ -7,25 +7,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/ntt.hpp
     title: fps/ntt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
@@ -186,58 +186,61 @@ data:
     \ int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n        return\
     \ multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static std::vector<mint>\
     \ _fact, _ifact;\n    static void extend(int len = -1){\n        int siz = _fact.size();\n\
-    \        if (len == -1) len = siz * 2;\n        len = (int)min<long long>(len,\
-    \ mint::mod() - 1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
-    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
-    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
-    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename mint> std::vector<mint>\
-    \ noya2::binomial<mint>::_fact = {1,1};\ntemplate<typename mint> std::vector<mint>\
-    \ noya2::binomial<mint>::_ifact = {1,1};\n\n} // namespace noya2\n#line 2 \"fps/ntt.hpp\"\
-    \n\n#line 2 \"utility/modint.hpp\"\n\n#line 4 \"utility/modint.hpp\"\n\n#line\
-    \ 2 \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\nnamespace noya2 {\n\nconstexpr\
-    \ long long safe_mod(long long x, long long m) {\n    x %= m;\n    if (x < 0)\
-    \ x += m;\n    return x;\n}\n\nconstexpr long long pow_mod_constexpr(long long\
-    \ x, long long n, int m) {\n    if (m == 1) return 0;\n    unsigned int _m = (unsigned\
-    \ int)(m);\n    unsigned long long r = 1;\n    unsigned long long y = safe_mod(x,\
-    \ m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n        y = (y *\
-    \ y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int\
-    \ n) {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
-    \ true;\n    if (n % 2 == 0) return false;\n    long long d = n - 1;\n    while\
-    \ (d % 2 == 0) d /= 2;\n    constexpr long long bases[3] = {2, 7, 61};\n    for\
-    \ (long long a : bases) {\n        long long t = d;\n        long long y = pow_mod_constexpr(a,\
-    \ t, n);\n        while (t != n - 1 && y != 1 && y != n - 1) {\n            y\
-    \ = y * y % n;\n            t <<= 1;\n        }\n        if (y != n - 1 && t %\
-    \ 2 == 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\
-    template <int n> constexpr bool is_prime_flag = is_prime_constexpr(n);\n\nconstexpr\
-    \ std::pair<long long, long long> inv_gcd(long long a, long long b) {\n    a =\
-    \ safe_mod(a, b);\n    if (a == 0) return {b, 0};\n    long long s = b, t = a;\n\
-    \    long long m0 = 0, m1 = 1;\n    while (t) {\n        long long u = s / t;\n\
-    \        s -= t * u;\n        m0 -= m1 * u; \n        auto tmp = s;\n        s\
-    \ = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n\
-    \    }\n    if (m0 < 0) m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int\
-    \ primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n    if (m == 167772161)\
-    \ return 3;\n    if (m == 469762049) return 3;\n    if (m == 754974721) return\
-    \ 11;\n    if (m == 998244353) return 3;\n    int divs[20] = {};\n    divs[0]\
-    \ = 2;\n    int cnt = 1;\n    int x = (m - 1) / 2;\n    while (x % 2 == 0) x /=\
-    \ 2;\n    for (int i = 3; (long long)(i)*i <= x; i += 2) {\n        if (x % i\
-    \ == 0) {\n            divs[cnt++] = i;\n            while (x % i == 0) {\n  \
-    \              x /= i;\n            }\n        }\n    }\n    if (x > 1) {\n  \
-    \      divs[cnt++] = x;\n    }\n    for (int g = 2;; g++) {\n        bool ok =\
-    \ true;\n        for (int i = 0; i < cnt; i++) {\n            if (pow_mod_constexpr(g,\
-    \ (m - 1) / divs[i], m) == 1) {\n                ok = false;\n               \
-    \ break;\n            }\n        }\n        if (ok) return g;\n    }\n}\ntemplate\
-    \ <int m> constexpr int primitive_root_flag = primitive_root_constexpr(m);\n\n\
-    } // namespace noya2\n#line 6 \"utility/modint.hpp\"\n\nnamespace noya2{\n\nstruct\
-    \ barrett {\n    unsigned int _m;\n    unsigned long long im;\n    explicit barrett(unsigned\
-    \ int m) : _m(m), im((unsigned long long)(-1) / m + 1) {}\n    unsigned int umod()\
-    \ const { return _m; }\n    unsigned int mul(unsigned int a, unsigned int b) const\
-    \ {\n        unsigned long long z = a;\n        z *= b;\n        unsigned long\
-    \ long x = (unsigned long long)((__uint128_t(z) * im) >> 64);\n        unsigned\
-    \ int v = (unsigned int)(z - x * _m);\n        if (_m <= v) v += _m;\n       \
-    \ return v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint {\n    using\
-    \ mint = static_modint;\n  public:\n    static constexpr int mod() { return m;\
-    \ }\n    static mint raw(int v) {\n        mint x;\n        x._v = v;\n      \
-    \  return x;\n    }\n    constexpr static_modint() : _v(0) {}\n    template<std::signed_integral\
+    \        if (siz == 0){\n            _fact = {1,1};\n            _ifact = {1,1};\n\
+    \            siz = _fact.size();\n        }\n        if (len == -1) len = siz\
+    \ * 2;\n        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len\
+    \ < siz) return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n      \
+    \  for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        assert(_fact[len].val()\
+    \ != 0);\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i\
+    \ > siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename mint>\
+    \ std::vector<mint> noya2::binomial<mint>::_fact = {1,1};\ntemplate<typename mint>\
+    \ std::vector<mint> noya2::binomial<mint>::_ifact = {1,1};\n\n} // namespace noya2\n\
+    #line 2 \"fps/ntt.hpp\"\n\n#line 2 \"utility/modint.hpp\"\n\n#line 4 \"utility/modint.hpp\"\
+    \n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\nnamespace noya2\
+    \ {\n\nconstexpr long long safe_mod(long long x, long long m) {\n    x %= m;\n\
+    \    if (x < 0) x += m;\n    return x;\n}\n\nconstexpr long long pow_mod_constexpr(long\
+    \ long x, long long n, int m) {\n    if (m == 1) return 0;\n    unsigned int _m\
+    \ = (unsigned int)(m);\n    unsigned long long r = 1;\n    unsigned long long\
+    \ y = safe_mod(x, m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n\
+    \        y = (y * y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr\
+    \ bool is_prime_constexpr(int n) {\n    if (n <= 1) return false;\n    if (n ==\
+    \ 2 || n == 7 || n == 61) return true;\n    if (n % 2 == 0) return false;\n  \
+    \  long long d = n - 1;\n    while (d % 2 == 0) d /= 2;\n    constexpr long long\
+    \ bases[3] = {2, 7, 61};\n    for (long long a : bases) {\n        long long t\
+    \ = d;\n        long long y = pow_mod_constexpr(a, t, n);\n        while (t !=\
+    \ n - 1 && y != 1 && y != n - 1) {\n            y = y * y % n;\n            t\
+    \ <<= 1;\n        }\n        if (y != n - 1 && t % 2 == 0) {\n            return\
+    \ false;\n        }\n    }\n    return true;\n}\ntemplate <int n> constexpr bool\
+    \ is_prime_flag = is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long\
+    \ long> inv_gcd(long long a, long long b) {\n    a = safe_mod(a, b);\n    if (a\
+    \ == 0) return {b, 0};\n    long long s = b, t = a;\n    long long m0 = 0, m1\
+    \ = 1;\n    while (t) {\n        long long u = s / t;\n        s -= t * u;\n \
+    \       m0 -= m1 * u; \n        auto tmp = s;\n        s = t;\n        t = tmp;\n\
+    \        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n    }\n    if (m0 < 0)\
+    \ m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int primitive_root_constexpr(int\
+    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
+    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
+    \ return 3;\n    int divs[20] = {};\n    divs[0] = 2;\n    int cnt = 1;\n    int\
+    \ x = (m - 1) / 2;\n    while (x % 2 == 0) x /= 2;\n    for (int i = 3; (long\
+    \ long)(i)*i <= x; i += 2) {\n        if (x % i == 0) {\n            divs[cnt++]\
+    \ = i;\n            while (x % i == 0) {\n                x /= i;\n          \
+    \  }\n        }\n    }\n    if (x > 1) {\n        divs[cnt++] = x;\n    }\n  \
+    \  for (int g = 2;; g++) {\n        bool ok = true;\n        for (int i = 0; i\
+    \ < cnt; i++) {\n            if (pow_mod_constexpr(g, (m - 1) / divs[i], m) ==\
+    \ 1) {\n                ok = false;\n                break;\n            }\n \
+    \       }\n        if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int\
+    \ primitive_root_flag = primitive_root_constexpr(m);\n\n} // namespace noya2\n\
+    #line 6 \"utility/modint.hpp\"\n\nnamespace noya2{\n\nstruct barrett {\n    unsigned\
+    \ int _m;\n    unsigned long long im;\n    explicit barrett(unsigned int m) :\
+    \ _m(m), im((unsigned long long)(-1) / m + 1) {}\n    unsigned int umod() const\
+    \ { return _m; }\n    unsigned int mul(unsigned int a, unsigned int b) const {\n\
+    \        unsigned long long z = a;\n        z *= b;\n        unsigned long long\
+    \ x = (unsigned long long)((__uint128_t(z) * im) >> 64);\n        unsigned int\
+    \ v = (unsigned int)(z - x * _m);\n        if (_m <= v) v += _m;\n        return\
+    \ v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint {\n    using mint =\
+    \ static_modint;\n  public:\n    static constexpr int mod() { return m; }\n  \
+    \  static mint raw(int v) {\n        mint x;\n        x._v = v;\n        return\
+    \ x;\n    }\n    constexpr static_modint() : _v(0) {}\n    template<std::signed_integral\
     \ T>\n    constexpr static_modint(T v){\n        long long x = (long long)(v %\
     \ (long long)(umod()));\n        if (x < 0) x += umod();\n        _v = (unsigned\
     \ int)(x);\n    }\n    template<std::unsigned_integral T>\n    constexpr static_modint(T\
@@ -450,7 +453,7 @@ data:
   isVerificationFile: false
   path: fps/fps_ntt.hpp
   requiredBy: []
-  timestamp: '2025-04-03 03:38:42+09:00'
+  timestamp: '2025-04-07 03:15:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp

@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
@@ -236,16 +236,18 @@ data:
     \ int& n1, const Tail&... tail){\n        if (n1 < 0) return 0;\n        return\
     \ multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n    static std::vector<mint>\
     \ _fact, _ifact;\n    static void extend(int len = -1){\n        int siz = _fact.size();\n\
-    \        if (len == -1) len = siz * 2;\n        len = (int)min<long long>(len,\
-    \ mint::mod() - 1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
-    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
-    \ * i;\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i >\
-    \ siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename mint> std::vector<mint>\
-    \ noya2::binomial<mint>::_fact = {1,1};\ntemplate<typename mint> std::vector<mint>\
-    \ noya2::binomial<mint>::_ifact = {1,1};\n\n} // namespace noya2\n#line 6 \"test/math/Binomial_Coefficient_Prime_Mod.test.cpp\"\
-    \n\nint main(){\n    int t, m; in(t,m);\n    modint::set_mod(m);\n    while (t--){\n\
-    \        int n, k; in(n,k);\n        out(binomial<modint>::C(n,k).val());\n  \
-    \  }\n}\n"
+    \        if (siz == 0){\n            _fact = {1,1};\n            _ifact = {1,1};\n\
+    \            siz = _fact.size();\n        }\n        if (len == -1) len = siz\
+    \ * 2;\n        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len\
+    \ < siz) return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n      \
+    \  for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        assert(_fact[len].val()\
+    \ != 0);\n        _ifact[len] = _fact[len].inv();\n        for (int i = len; i\
+    \ > siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n};\ntemplate<typename mint>\
+    \ std::vector<mint> noya2::binomial<mint>::_fact = {1,1};\ntemplate<typename mint>\
+    \ std::vector<mint> noya2::binomial<mint>::_ifact = {1,1};\n\n} // namespace noya2\n\
+    #line 6 \"test/math/Binomial_Coefficient_Prime_Mod.test.cpp\"\n\nint main(){\n\
+    \    int t, m; in(t,m);\n    modint::set_mod(m);\n    while (t--){\n        int\
+    \ n, k; in(n,k);\n        out(binomial<modint>::C(n,k).val());\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
     \n\n#include\"../../template/template.hpp\"\n#include\"../../utility/modint.hpp\"\
     \n#include\"../../math/binomial.hpp\"\n\nint main(){\n    int t, m; in(t,m);\n\
@@ -262,8 +264,8 @@ data:
   isVerificationFile: true
   path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
   requiredBy: []
-  timestamp: '2025-04-03 03:38:42+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-04-07 03:15:38+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 layout: document

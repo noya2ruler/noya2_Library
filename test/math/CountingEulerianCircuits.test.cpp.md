@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/spanning_tree_counting.hpp
     title: math/spanning_tree_counting.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/counting_eulerian_circuits
@@ -228,10 +228,12 @@ data:
     \ mint& div_prod, const int& n1, const Tail&... tail){\n        if (n1 < 0) return\
     \ 0;\n        return multinomial(sum+n1,div_prod*ifact(n1),tail...);\n    }\n\
     \    static std::vector<mint> _fact, _ifact;\n    static void extend(int len =\
-    \ -1){\n        int siz = _fact.size();\n        if (len == -1) len = siz * 2;\n\
-    \        len = (int)min<long long>(len, mint::mod() - 1);\n        if (len < siz)\
-    \ return ;\n        _fact.resize(len+1), _ifact.resize(len+1);\n        for (int\
-    \ i = siz; i <= len; i++) _fact[i] = _fact[i-1] * i;\n        _ifact[len] = _fact[len].inv();\n\
+    \ -1){\n        int siz = _fact.size();\n        if (siz == 0){\n            _fact\
+    \ = {1,1};\n            _ifact = {1,1};\n            siz = _fact.size();\n   \
+    \     }\n        if (len == -1) len = siz * 2;\n        len = (int)min<long long>(len,\
+    \ mint::mod() - 1);\n        if (len < siz) return ;\n        _fact.resize(len+1),\
+    \ _ifact.resize(len+1);\n        for (int i = siz; i <= len; i++) _fact[i] = _fact[i-1]\
+    \ * i;\n        assert(_fact[len].val() != 0);\n        _ifact[len] = _fact[len].inv();\n\
     \        for (int i = len; i > siz; i--) _ifact[i-1] = _ifact[i] * i;\n    }\n\
     };\ntemplate<typename mint> std::vector<mint> noya2::binomial<mint>::_fact = {1,1};\n\
     template<typename mint> std::vector<mint> noya2::binomial<mint>::_ifact = {1,1};\n\
@@ -410,8 +412,8 @@ data:
   isVerificationFile: true
   path: test/math/CountingEulerianCircuits.test.cpp
   requiredBy: []
-  timestamp: '2025-04-03 03:38:42+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-04-07 03:15:38+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/CountingEulerianCircuits.test.cpp
 layout: document
