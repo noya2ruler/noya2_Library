@@ -98,27 +98,28 @@ data:
     \        long long mul = p;\n        while (true){\n            for (int i = 0;\
     \ i < len; i++){\n                ans.emplace_back(ans[i]*mul);\n            }\n\
     \            if (--e == 0) break;\n            mul *= p;\n        }\n    }\n \
-    \   return ans;\n}\n\n} // namespace noya2\n#line 7 \"math/prime_64bit.hpp\"\n\
-    \nnamespace noya2::internal64bit {\n\ntemplate<typename T>\nconstexpr T safe_mod(T\
-    \ a, T p){\n    a %= p;\n    if constexpr (std::is_signed_v<T> || std::is_same_v<T,\
-    \ __int128_t>){\n        if (a < 0) a += p;\n    }\n    return a;\n}\n\ntemplate<typename\
-    \ T, typename U>\nconstexpr T pow_mod_constexpr(T x, U n, T p){\n    if (p ==\
-    \ 1) return 0;\n    x = safe_mod(x, p);\n    T ret = 1;\n    while (n != 0){\n\
-    \        if (n % 2 == 1){\n            ret = U(ret) * x % p;\n        }\n    \
-    \    x = U(x) * x % p;\n        n /= 2;\n    }\n    return ret;\n}\n\n// return\
-    \ {g, y}\n//   g = gcd(x, p), y * x == 1 (mod p/g)\ntemplate<typename T>\nconstexpr\
-    \ std::pair<T, T> inv_gcd(T x, T p){\n    x = safe_mod(x, p);\n    if (x == 0)\
-    \ return {p, 0};\n    T s = p, t = x;\n    T m0 = 0, m1 = 1;\n    while (t !=\
-    \ 0){\n        T q = s / t;\n        s -= t * q;\n        m0 -= m1 * q;\n    \
-    \    std::swap(s, t);\n        std::swap(m0, m1);\n    }\n    if (m0 < 0) m0 +=\
-    \ p / s;\n    return {s, m0};\n}\n\n// p must be prime\nlong long primitive_root_ll(long\
-    \ long p){\n    if (p == 2) return 1;\n    auto fs = fast_factorize::factorize(p\
-    \ - 1);\n    fs.erase(std::unique(fs.begin(), fs.end()), fs.end());\n    for (long\
-    \ long g = 2; ; g++){\n        bool ok = true;\n        for (auto &f : fs){\n\
-    \            if (pow_mod_constexpr<long long, __int128_t>(g, (p - 1) / f, p) ==\
-    \ 1){\n                ok = false;\n                break;\n            }\n  \
-    \      }\n        if (ok) return g;\n    }\n    exit(1);\n}\n\n} // namespace\
-    \ noya2\n"
+    \   return ans;\n}\n\nbool is_prime(long long n){\n    if (n <= 1) return false;\n\
+    \    return fast_factorize::is_prime(n);\n}\n\n} // namespace noya2\n#line 7 \"\
+    math/prime_64bit.hpp\"\n\nnamespace noya2::internal64bit {\n\ntemplate<typename\
+    \ T>\nconstexpr T safe_mod(T a, T p){\n    a %= p;\n    if constexpr (std::is_signed_v<T>\
+    \ || std::is_same_v<T, __int128_t>){\n        if (a < 0) a += p;\n    }\n    return\
+    \ a;\n}\n\ntemplate<typename T, typename U>\nconstexpr T pow_mod_constexpr(T x,\
+    \ U n, T p){\n    if (p == 1) return 0;\n    x = safe_mod(x, p);\n    T ret =\
+    \ 1;\n    while (n != 0){\n        if (n % 2 == 1){\n            ret = U(ret)\
+    \ * x % p;\n        }\n        x = U(x) * x % p;\n        n /= 2;\n    }\n   \
+    \ return ret;\n}\n\n// return {g, y}\n//   g = gcd(x, p), y * x == 1 (mod p/g)\n\
+    template<typename T>\nconstexpr std::pair<T, T> inv_gcd(T x, T p){\n    x = safe_mod(x,\
+    \ p);\n    if (x == 0) return {p, 0};\n    T s = p, t = x;\n    T m0 = 0, m1 =\
+    \ 1;\n    while (t != 0){\n        T q = s / t;\n        s -= t * q;\n       \
+    \ m0 -= m1 * q;\n        std::swap(s, t);\n        std::swap(m0, m1);\n    }\n\
+    \    if (m0 < 0) m0 += p / s;\n    return {s, m0};\n}\n\n// p must be prime\n\
+    long long primitive_root_ll(long long p){\n    if (p == 2) return 1;\n    auto\
+    \ fs = fast_factorize::factorize(p - 1);\n    fs.erase(std::unique(fs.begin(),\
+    \ fs.end()), fs.end());\n    for (long long g = 2; ; g++){\n        bool ok =\
+    \ true;\n        for (auto &f : fs){\n            if (pow_mod_constexpr<long long,\
+    \ __int128_t>(g, (p - 1) / f, p) == 1){\n                ok = false;\n       \
+    \         break;\n            }\n        }\n        if (ok) return g;\n    }\n\
+    \    exit(1);\n}\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include <type_traits>\n#include <utility>\n#include <algorithm>\n\
     #include \"factorize.hpp\"\n\nnamespace noya2::internal64bit {\n\ntemplate<typename\
     \ T>\nconstexpr T safe_mod(T a, T p){\n    a %= p;\n    if constexpr (std::is_signed_v<T>\
@@ -145,7 +146,7 @@ data:
   isVerificationFile: false
   path: math/prime_64bit.hpp
   requiredBy: []
-  timestamp: '2024-07-03 00:53:53+09:00'
+  timestamp: '2025-04-09 05:05:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/PrimitiveRoot.test.cpp

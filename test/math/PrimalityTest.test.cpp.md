@@ -5,9 +5,6 @@ data:
     path: math/factorize.hpp
     title: math/factorize.hpp
   - icon: ':heavy_check_mark:'
-    path: math/prime_64bit.hpp
-    title: math/prime_64bit.hpp
-  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
   - icon: ':heavy_check_mark:'
@@ -26,10 +23,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/primitive_root
+    PROBLEM: https://judge.yosupo.jp/problem/primality_test
     links:
-    - https://judge.yosupo.jp/problem/primitive_root
-  bundledCode: "#line 1 \"test/math/PrimitiveRoot.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\
+    - https://judge.yosupo.jp/problem/primality_test
+  bundledCode: "#line 1 \"test/math/PrimalityTest.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/primality_test\"\
     \n\n#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
     #line 1 \"template/inout_old.hpp\"\nnamespace noya2 {\n\ntemplate <typename T,\
     \ typename U>\nostream &operator<<(ostream &os, const pair<T, U> &p){\n    os\
@@ -82,16 +79,15 @@ data:
     using ld = long double;\nusing uint = unsigned int;\nusing ull = unsigned long\
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
-    */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"math/prime_64bit.hpp\"\n\n#include\
-    \ <type_traits>\n#line 2 \"math/factorize.hpp\"\n\n#line 6 \"math/factorize.hpp\"\
-    \n#include <initializer_list>\n#line 10 \"math/factorize.hpp\"\n\nnamespace fast_factorize\
-    \ {\n\n/*\n    See : https://judge.yosupo.jp/submission/189742\n*/\n\n// ----\
-    \ gcd ----\n\nuint64_t gcd_stein_impl( uint64_t x, uint64_t y ) {\n    if( x ==\
-    \ y ) { return x; }\n    const uint64_t a = y - x;\n    const uint64_t b = x -\
-    \ y;\n    const int n = __builtin_ctzll( b );\n    const uint64_t s = x < y ?\
-    \ a : b;\n    const uint64_t t = x < y ? x : y;\n    return gcd_stein_impl( s\
-    \ >> n, t );\n}\n\nuint64_t gcd_stein( uint64_t x, uint64_t y ) {\n    if( x ==\
-    \ 0 ) { return y; }\n    if( y == 0 ) { return x; }\n    const int n = __builtin_ctzll(\
+    */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"math/factorize.hpp\"\n\n#line\
+    \ 6 \"math/factorize.hpp\"\n#include <initializer_list>\n#line 10 \"math/factorize.hpp\"\
+    \n\nnamespace fast_factorize {\n\n/*\n    See : https://judge.yosupo.jp/submission/189742\n\
+    */\n\n// ---- gcd ----\n\nuint64_t gcd_stein_impl( uint64_t x, uint64_t y ) {\n\
+    \    if( x == y ) { return x; }\n    const uint64_t a = y - x;\n    const uint64_t\
+    \ b = x - y;\n    const int n = __builtin_ctzll( b );\n    const uint64_t s =\
+    \ x < y ? a : b;\n    const uint64_t t = x < y ? x : y;\n    return gcd_stein_impl(\
+    \ s >> n, t );\n}\n\nuint64_t gcd_stein( uint64_t x, uint64_t y ) {\n    if( x\
+    \ == 0 ) { return y; }\n    if( y == 0 ) { return x; }\n    const int n = __builtin_ctzll(\
     \ x );\n    const int m = __builtin_ctzll( y );\n    return gcd_stein_impl( x\
     \ >> n, y >> m ) << ( n < m ? n : m );\n}\n\n// ---- is_prime ----\n\nuint64_t\
     \ mod_pow( uint64_t x, uint64_t y, uint64_t mod ) {\n    uint64_t ret = 1;\n \
@@ -166,52 +162,29 @@ data:
     \ i < len; i++){\n                ans.emplace_back(ans[i]*mul);\n            }\n\
     \            if (--e == 0) break;\n            mul *= p;\n        }\n    }\n \
     \   return ans;\n}\n\nbool is_prime(long long n){\n    if (n <= 1) return false;\n\
-    \    return fast_factorize::is_prime(n);\n}\n\n} // namespace noya2\n#line 7 \"\
-    math/prime_64bit.hpp\"\n\nnamespace noya2::internal64bit {\n\ntemplate<typename\
-    \ T>\nconstexpr T safe_mod(T a, T p){\n    a %= p;\n    if constexpr (std::is_signed_v<T>\
-    \ || std::is_same_v<T, __int128_t>){\n        if (a < 0) a += p;\n    }\n    return\
-    \ a;\n}\n\ntemplate<typename T, typename U>\nconstexpr T pow_mod_constexpr(T x,\
-    \ U n, T p){\n    if (p == 1) return 0;\n    x = safe_mod(x, p);\n    T ret =\
-    \ 1;\n    while (n != 0){\n        if (n % 2 == 1){\n            ret = U(ret)\
-    \ * x % p;\n        }\n        x = U(x) * x % p;\n        n /= 2;\n    }\n   \
-    \ return ret;\n}\n\n// return {g, y}\n//   g = gcd(x, p), y * x == 1 (mod p/g)\n\
-    template<typename T>\nconstexpr std::pair<T, T> inv_gcd(T x, T p){\n    x = safe_mod(x,\
-    \ p);\n    if (x == 0) return {p, 0};\n    T s = p, t = x;\n    T m0 = 0, m1 =\
-    \ 1;\n    while (t != 0){\n        T q = s / t;\n        s -= t * q;\n       \
-    \ m0 -= m1 * q;\n        std::swap(s, t);\n        std::swap(m0, m1);\n    }\n\
-    \    if (m0 < 0) m0 += p / s;\n    return {s, m0};\n}\n\n// p must be prime\n\
-    long long primitive_root_ll(long long p){\n    if (p == 2) return 1;\n    auto\
-    \ fs = fast_factorize::factorize(p - 1);\n    fs.erase(std::unique(fs.begin(),\
-    \ fs.end()), fs.end());\n    for (long long g = 2; ; g++){\n        bool ok =\
-    \ true;\n        for (auto &f : fs){\n            if (pow_mod_constexpr<long long,\
-    \ __int128_t>(g, (p - 1) / f, p) == 1){\n                ok = false;\n       \
-    \         break;\n            }\n        }\n        if (ok) return g;\n    }\n\
-    \    exit(1);\n}\n\n} // namespace noya2\n#line 5 \"test/math/PrimitiveRoot.test.cpp\"\
-    \n\nvoid solve(){\n    ll p; in(p);\n    out(internal64bit::primitive_root_ll(p));\n\
-    }\n\nint main(){\n    int q; in(q);\n    while (q--){\n        solve();\n    }\n\
-    }\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n\n#include\"\
-    ../../template/template.hpp\"\n#include\"../../math/prime_64bit.hpp\"\n\nvoid\
-    \ solve(){\n    ll p; in(p);\n    out(internal64bit::primitive_root_ll(p));\n\
-    }\n\nint main(){\n    int q; in(q);\n    while (q--){\n        solve();\n    }\n\
-    }"
+    \    return fast_factorize::is_prime(n);\n}\n\n} // namespace noya2\n#line 5 \"\
+    test/math/PrimalityTest.test.cpp\"\n\nint main(){\n    int q; in(q);\n    while\
+    \ (q--){\n        ll n; in(n);\n        yn(is_prime(n));\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/primality_test\"\n\n#include\"\
+    ../../template/template.hpp\"\n#include\"../../math/factorize.hpp\"\n\nint main(){\n\
+    \    int q; in(q);\n    while (q--){\n        ll n; in(n);\n        yn(is_prime(n));\n\
+    \    }\n}"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
   - template/const.hpp
   - template/utils.hpp
-  - math/prime_64bit.hpp
   - math/factorize.hpp
   isVerificationFile: true
-  path: test/math/PrimitiveRoot.test.cpp
+  path: test/math/PrimalityTest.test.cpp
   requiredBy: []
-  timestamp: '2025-04-09 05:05:46+09:00'
+  timestamp: '2025-04-09 05:06:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/math/PrimitiveRoot.test.cpp
+documentation_of: test/math/PrimalityTest.test.cpp
 layout: document
 redirect_from:
-- /verify/test/math/PrimitiveRoot.test.cpp
-- /verify/test/math/PrimitiveRoot.test.cpp.html
-title: test/math/PrimitiveRoot.test.cpp
+- /verify/test/math/PrimalityTest.test.cpp
+- /verify/test/math/PrimalityTest.test.cpp.html
+title: test/math/PrimalityTest.test.cpp
 ---

@@ -7,6 +7,9 @@ data:
     title: math/prime_64bit.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/math/PrimalityTest.test.cpp
+    title: test/math/PrimalityTest.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/PrimitiveRoot.test.cpp
     title: test/math/PrimitiveRoot.test.cpp
   _isVerificationFailed: false
@@ -98,7 +101,8 @@ data:
     \        long long mul = p;\n        while (true){\n            for (int i = 0;\
     \ i < len; i++){\n                ans.emplace_back(ans[i]*mul);\n            }\n\
     \            if (--e == 0) break;\n            mul *= p;\n        }\n    }\n \
-    \   return ans;\n}\n\n} // namespace noya2\n"
+    \   return ans;\n}\n\nbool is_prime(long long n){\n    if (n <= 1) return false;\n\
+    \    return fast_factorize::is_prime(n);\n}\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include <stddef.h>\n#include <stdint.h>\n#include <algorithm>\n\
     #include <initializer_list>\n#include <iostream>\n#include <vector>\n#include\
     \ <utility>\n\nnamespace fast_factorize {\n\n/*\n    See : https://judge.yosupo.jp/submission/189742\n\
@@ -181,16 +185,18 @@ data:
     \        long long mul = p;\n        while (true){\n            for (int i = 0;\
     \ i < len; i++){\n                ans.emplace_back(ans[i]*mul);\n            }\n\
     \            if (--e == 0) break;\n            mul *= p;\n        }\n    }\n \
-    \   return ans;\n}\n\n} // namespace noya2\n"
+    \   return ans;\n}\n\nbool is_prime(long long n){\n    if (n <= 1) return false;\n\
+    \    return fast_factorize::is_prime(n);\n}\n\n} // namespace noya2\n"
   dependsOn: []
   isVerificationFile: false
   path: math/factorize.hpp
   requiredBy:
   - math/prime_64bit.hpp
-  timestamp: '2024-04-02 13:39:51+09:00'
+  timestamp: '2025-04-09 05:05:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/PrimitiveRoot.test.cpp
+  - test/math/PrimalityTest.test.cpp
 documentation_of: math/factorize.hpp
 layout: document
 redirect_from:

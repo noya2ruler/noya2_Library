@@ -232,6 +232,9 @@ data:
     path: test/math/Lcm_Convolution.test.cpp
     title: test/math/Lcm_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/PrimalityTest.test.cpp
+    title: test/math/PrimalityTest.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/PrimitiveRoot.test.cpp
     title: test/math/PrimitiveRoot.test.cpp
   - icon: ':heavy_check_mark:'
@@ -388,6 +391,7 @@ data:
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
   - test/math/SumofMultiplicativeFunction.test.cpp
   - test/math/CountingEulerianCircuits.test.cpp
+  - test/math/PrimalityTest.test.cpp
   - test/math/Determinant_of_Matrix.test.cpp
   - test/misc/RootedTreeTopologicalOrderwithMinimumInversions.test.cpp
   - test/misc/LongestIncreasingSubsequence.test.cpp

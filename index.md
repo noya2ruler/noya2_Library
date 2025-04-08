@@ -483,6 +483,9 @@ data:
       path: test/math/Lcm_Convolution.test.cpp
       title: test/math/Lcm_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/math/PrimalityTest.test.cpp
+      title: test/math/PrimalityTest.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/math/PrimitiveRoot.test.cpp
       title: test/math/PrimitiveRoot.test.cpp
     - icon: ':heavy_check_mark:'
