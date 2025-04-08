@@ -235,4 +235,9 @@ std::vector<long long> divisors(const std::vector<std::pair<long long, int>> &pe
     return ans;
 }
 
+bool is_prime(long long n){
+    if (n <= 1) return false;
+    return fast_factorize::is_prime(n);
+}
+
 } // namespace noya2
