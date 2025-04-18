@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
+  - icon: ':warning:'
+    path: misc/segment_divide_conquer.hpp
+    title: misc/segment_divide_conquer.hpp
   - icon: ':heavy_check_mark:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
@@ -93,6 +96,7 @@ data:
   path: data_structure/csr.hpp
   requiredBy:
   - tree/simple_tree.hpp
+  - misc/segment_divide_conquer.hpp
   - graph/graph_query.hpp
   - graph/cycle_detection.hpp
   - data_structure/offline_rectangle_sum.hpp
