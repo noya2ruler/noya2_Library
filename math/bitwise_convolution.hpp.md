@@ -2,10 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/math/BitwiseAndConvolution.test.cpp
+    title: test/math/BitwiseAndConvolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/BitwiseXorConvolution.test.cpp
+    title: test/math/BitwiseXorConvolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/SubsetConvolution.test.cpp
+    title: test/math/SubsetConvolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/bitwise_convolution.hpp\"\n\n#include <vector>\n#include\
@@ -128,8 +137,11 @@ data:
   path: math/bitwise_convolution.hpp
   requiredBy: []
   timestamp: '2025-04-26 02:07:01+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/math/SubsetConvolution.test.cpp
+  - test/math/BitwiseXorConvolution.test.cpp
+  - test/math/BitwiseAndConvolution.test.cpp
 documentation_of: math/bitwise_convolution.hpp
 layout: document
 redirect_from:

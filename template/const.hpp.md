@@ -217,6 +217,12 @@ data:
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/BitwiseAndConvolution.test.cpp
+    title: test/math/BitwiseAndConvolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/BitwiseXorConvolution.test.cpp
+    title: test/math/BitwiseXorConvolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/CountingEulerianCircuits.test.cpp
     title: test/math/CountingEulerianCircuits.test.cpp
   - icon: ':heavy_check_mark:'
@@ -237,6 +243,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/math/PrimitiveRoot.test.cpp
     title: test/math/PrimitiveRoot.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/math/SubsetConvolution.test.cpp
+    title: test/math/SubsetConvolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/math/Sum_of_Floor_of_Linear.test.cpp
     title: test/math/Sum_of_Floor_of_Linear.test.cpp
@@ -468,6 +477,7 @@ data:
   - test/data_structure/Point_Set_Range_Composite.test.cpp
   - test/math/CountingEulerianCircuits.test.cpp
   - test/math/Determinant_of_Matrix.test.cpp
+  - test/math/SubsetConvolution.test.cpp
   - test/math/Gcd_Convolution.test.cpp
   - test/math/Sum_of_Floor_of_Linear.test.cpp
   - test/math/CountingPrimes.test.cpp
@@ -476,6 +486,8 @@ data:
   - test/math/Lcm_Convolution.test.cpp
   - test/math/PrimalityTest.test.cpp
   - test/math/SumofMultiplicativeFunction.test.cpp
+  - test/math/BitwiseXorConvolution.test.cpp
+  - test/math/BitwiseAndConvolution.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
   - test/fps/convolution_relaxed_convolution.test.cpp
   - test/fps/convolution.test.cpp

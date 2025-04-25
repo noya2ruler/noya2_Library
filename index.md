@@ -159,7 +159,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: math/binomial.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/bitwise_convolution.hpp
       title: math/bitwise_convolution.hpp
     - icon: ':heavy_check_mark:'
@@ -474,6 +474,12 @@ data:
       path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
       title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/math/BitwiseAndConvolution.test.cpp
+      title: test/math/BitwiseAndConvolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/BitwiseXorConvolution.test.cpp
+      title: test/math/BitwiseXorConvolution.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/math/CountingEulerianCircuits.test.cpp
       title: test/math/CountingEulerianCircuits.test.cpp
     - icon: ':heavy_check_mark:'
@@ -494,6 +500,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/PrimitiveRoot.test.cpp
       title: test/math/PrimitiveRoot.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/SubsetConvolution.test.cpp
+      title: test/math/SubsetConvolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/Sum_of_Floor_of_Linear.test.cpp
       title: test/math/Sum_of_Floor_of_Linear.test.cpp
