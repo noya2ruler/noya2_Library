@@ -159,6 +159,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: math/binomial.hpp
+    - icon: ':warning:'
+      path: math/bitwise_convolution.hpp
+      title: math/bitwise_convolution.hpp
     - icon: ':heavy_check_mark:'
       path: math/euler_circuit_counting.hpp
       title: math/euler_circuit_counting.hpp
