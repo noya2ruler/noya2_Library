@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: data_structure/bipartite_dsu.hpp
+    title: data_structure/bipartite_dsu.hpp
   - icon: ':heavy_check_mark:'
     path: data_structure/range_parallel_dsu.hpp
     title: data_structure/range_parallel_dsu.hpp
@@ -78,6 +81,7 @@ data:
   path: data_structure/dsu.hpp
   requiredBy:
   - geometry/partition_by_circle.hpp
+  - data_structure/bipartite_dsu.hpp
   - data_structure/range_parallel_dsu.hpp
   timestamp: '2025-04-29 17:55:46+09:00'
   verificationStatus: LIBRARY_ALL_AC

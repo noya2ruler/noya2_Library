@@ -9,6 +9,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/binary_trie.hpp
       title: data_structure/binary_trie.hpp
+    - icon: ':warning:'
+      path: data_structure/bipartite_dsu.hpp
+      title: data_structure/bipartite_dsu.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/compress.hpp
       title: data_structure/compress.hpp
@@ -48,6 +51,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/range_tree.hpp
       title: data_structure/range_tree.hpp
+    - icon: ':warning:'
+      path: data_structure/rollback_bipartite_dsu.hpp
+      title: data_structure/rollback_bipartite_dsu.hpp
     - icon: ':heavy_check_mark:'
       path: data_structure/rollback_dsu.hpp
       title: data_structure/rollback_dsu.hpp

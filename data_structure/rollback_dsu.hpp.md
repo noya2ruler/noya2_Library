@@ -5,6 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/offline_dynamic_connectivity.hpp
     title: data_structure/offline_dynamic_connectivity.hpp
+  - icon: ':warning:'
+    path: data_structure/rollback_bipartite_dsu.hpp
+    title: data_structure/rollback_bipartite_dsu.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/aoj_2235.test.cpp
@@ -52,6 +55,7 @@ data:
   isVerificationFile: false
   path: data_structure/rollback_dsu.hpp
   requiredBy:
+  - data_structure/rollback_bipartite_dsu.hpp
   - data_structure/offline_dynamic_connectivity.hpp
   timestamp: '2025-04-29 17:55:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
