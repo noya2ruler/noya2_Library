@@ -8,8 +8,8 @@ namespace noya2{
 
 struct dsu {
   public:
-    dsu() : _n(0) {}
-    dsu(int n) : _n(n), parent_or_size(n, -1) {}
+    dsu() : _n(0), _cc(0) {}
+    dsu(int n) : _n(n), _cc(n), parent_or_size(n, -1) {}
 
     int merge(int a, int b) {
         assert(0 <= a && a < _n);
@@ -19,6 +19,7 @@ struct dsu {
         if (-parent_or_size[x] < -parent_or_size[y]) std::swap(x, y);
         parent_or_size[x] += parent_or_size[y];
         parent_or_size[y] = x;
+        _cc--;
         return x;
     }
 
@@ -59,8 +60,12 @@ struct dsu {
         return result;
     }
 
+    int group_count() const {
+        return _cc;
+    }
+
   private:
-    int _n;
+    int _n, _cc;
     // root node: -1 * component size
     // otherwise: parent
     std::vector<int> parent_or_size;
