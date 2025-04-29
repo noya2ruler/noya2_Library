@@ -20,25 +20,26 @@ data:
     \         return this->ch[a];\n        }\n        int &operator[](const char &c){\n\
     \            int a = c - start;\n            return this->ch[a];\n        }\n\
     \    };\n    static constexpr node nullnode{-2,leaf,0,0};\n    std::vector<node>\
-    \ nodes;\n    trie () : nodes(1,node{-1,leaf,0,0}) {}\n    void insert(const std::string\
+    \ nodes;\n    trie () : nodes(1,node{-1,leaf,0,0}) {}\n    int insert(const std::string\
     \ &s){\n        int cur = 0;\n        for (const char c : s){\n            if\
     \ (nodes[cur][c] == -1){\n                nodes[cur][c] = add_leaf(cur);\n   \
-    \         }\n            cur = nodes[cur][c];\n        }\n        nodes[cur].exist\
-    \ += 1;\n        while (cur != -1){\n            update(cur);\n            cur\
-    \ = nodes[cur].par;\n        }\n    }\n    void erase(const std::string &s){\n\
-    \        int cur = 0;\n        for (const char c : s){\n            if (nodes[cur][c]\
-    \ == -1){\n                // not found\n                return ;\n          \
-    \  }\n            cur = nodes[cur][c];\n        }\n        nodes[cur].exist -=\
-    \ 1;\n        while (cur != -1){\n            update(cur);\n            cur =\
-    \ nodes[cur].par;\n        }\n    }\n    int size(int nid) const {\n        if\
-    \ (nid == -1) return 0;\n        return nodes[nid].size;\n    }\n    node operator[](int\
-    \ nid){\n        // assert(0 <= nid && nid < (int)(nodes.size()));\n        return\
-    \ nodes[nid];\n    }\n    int find(const std::string &s){\n        int cur = 0;\n\
-    \        for (const char c : s){\n            if (nodes[cur][c] == -1){\n    \
-    \            // not found\n                return -1;\n            }\n       \
-    \     cur = nodes[cur][c];\n        }\n        return cur;\n    }\n    bool contains(const\
-    \ std::string &s){\n        return find(s) != -1;\n    }\n  private:\n    int\
-    \ add_leaf(int par){\n        int index = nodes.size();\n        nodes.push_back(node{par,leaf,0,0});\n\
+    \         }\n            cur = nodes[cur][c];\n        }\n        int ret = cur;\n\
+    \        nodes[cur].exist += 1;\n        while (cur != -1){\n            update(cur);\n\
+    \            cur = nodes[cur].par;\n        }\n        return ret;\n    }\n  \
+    \  void erase(const std::string &s){\n        int cur = 0;\n        for (const\
+    \ char c : s){\n            if (nodes[cur][c] == -1){\n                // not\
+    \ found\n                return ;\n            }\n            cur = nodes[cur][c];\n\
+    \        }\n        nodes[cur].exist -= 1;\n        while (cur != -1){\n     \
+    \       update(cur);\n            cur = nodes[cur].par;\n        }\n    }\n  \
+    \  int size(int nid) const {\n        if (nid == -1) return 0;\n        return\
+    \ nodes[nid].size;\n    }\n    node operator[](int nid){\n        // assert(0\
+    \ <= nid && nid < (int)(nodes.size()));\n        return nodes[nid];\n    }\n \
+    \   int find(const std::string &s){\n        int cur = 0;\n        for (const\
+    \ char c : s){\n            if (nodes[cur][c] == -1){\n                // not\
+    \ found\n                return -1;\n            }\n            cur = nodes[cur][c];\n\
+    \        }\n        return cur;\n    }\n    bool contains(const std::string &s){\n\
+    \        return find(s) != -1;\n    }\n  private:\n    int add_leaf(int par){\n\
+    \        int index = nodes.size();\n        nodes.push_back(node{par,leaf,0,0});\n\
     \        return index;\n    }\n    void update(int nid){\n        int res = nodes[nid].exist;\n\
     \        for (int cid : nodes[nid].ch){\n            res += size(cid);\n     \
     \   }\n        nodes[nid].size = res;\n    }\n};\n\n} // namespace noya2\n"
@@ -54,25 +55,26 @@ data:
     \         return this->ch[a];\n        }\n        int &operator[](const char &c){\n\
     \            int a = c - start;\n            return this->ch[a];\n        }\n\
     \    };\n    static constexpr node nullnode{-2,leaf,0,0};\n    std::vector<node>\
-    \ nodes;\n    trie () : nodes(1,node{-1,leaf,0,0}) {}\n    void insert(const std::string\
+    \ nodes;\n    trie () : nodes(1,node{-1,leaf,0,0}) {}\n    int insert(const std::string\
     \ &s){\n        int cur = 0;\n        for (const char c : s){\n            if\
     \ (nodes[cur][c] == -1){\n                nodes[cur][c] = add_leaf(cur);\n   \
-    \         }\n            cur = nodes[cur][c];\n        }\n        nodes[cur].exist\
-    \ += 1;\n        while (cur != -1){\n            update(cur);\n            cur\
-    \ = nodes[cur].par;\n        }\n    }\n    void erase(const std::string &s){\n\
-    \        int cur = 0;\n        for (const char c : s){\n            if (nodes[cur][c]\
-    \ == -1){\n                // not found\n                return ;\n          \
-    \  }\n            cur = nodes[cur][c];\n        }\n        nodes[cur].exist -=\
-    \ 1;\n        while (cur != -1){\n            update(cur);\n            cur =\
-    \ nodes[cur].par;\n        }\n    }\n    int size(int nid) const {\n        if\
-    \ (nid == -1) return 0;\n        return nodes[nid].size;\n    }\n    node operator[](int\
-    \ nid){\n        // assert(0 <= nid && nid < (int)(nodes.size()));\n        return\
-    \ nodes[nid];\n    }\n    int find(const std::string &s){\n        int cur = 0;\n\
-    \        for (const char c : s){\n            if (nodes[cur][c] == -1){\n    \
-    \            // not found\n                return -1;\n            }\n       \
-    \     cur = nodes[cur][c];\n        }\n        return cur;\n    }\n    bool contains(const\
-    \ std::string &s){\n        return find(s) != -1;\n    }\n  private:\n    int\
-    \ add_leaf(int par){\n        int index = nodes.size();\n        nodes.push_back(node{par,leaf,0,0});\n\
+    \         }\n            cur = nodes[cur][c];\n        }\n        int ret = cur;\n\
+    \        nodes[cur].exist += 1;\n        while (cur != -1){\n            update(cur);\n\
+    \            cur = nodes[cur].par;\n        }\n        return ret;\n    }\n  \
+    \  void erase(const std::string &s){\n        int cur = 0;\n        for (const\
+    \ char c : s){\n            if (nodes[cur][c] == -1){\n                // not\
+    \ found\n                return ;\n            }\n            cur = nodes[cur][c];\n\
+    \        }\n        nodes[cur].exist -= 1;\n        while (cur != -1){\n     \
+    \       update(cur);\n            cur = nodes[cur].par;\n        }\n    }\n  \
+    \  int size(int nid) const {\n        if (nid == -1) return 0;\n        return\
+    \ nodes[nid].size;\n    }\n    node operator[](int nid){\n        // assert(0\
+    \ <= nid && nid < (int)(nodes.size()));\n        return nodes[nid];\n    }\n \
+    \   int find(const std::string &s){\n        int cur = 0;\n        for (const\
+    \ char c : s){\n            if (nodes[cur][c] == -1){\n                // not\
+    \ found\n                return -1;\n            }\n            cur = nodes[cur][c];\n\
+    \        }\n        return cur;\n    }\n    bool contains(const std::string &s){\n\
+    \        return find(s) != -1;\n    }\n  private:\n    int add_leaf(int par){\n\
+    \        int index = nodes.size();\n        nodes.push_back(node{par,leaf,0,0});\n\
     \        return index;\n    }\n    void update(int nid){\n        int res = nodes[nid].exist;\n\
     \        for (int cid : nodes[nid].ch){\n            res += size(cid);\n     \
     \   }\n        nodes[nid].size = res;\n    }\n};\n\n} // namespace noya2"
@@ -80,7 +82,7 @@ data:
   isVerificationFile: false
   path: string/trie.hpp
   requiredBy: []
-  timestamp: '2025-02-15 20:53:19+09:00'
+  timestamp: '2025-04-29 17:35:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: string/trie.hpp
