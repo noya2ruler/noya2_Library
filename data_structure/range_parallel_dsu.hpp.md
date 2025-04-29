@@ -16,28 +16,30 @@ data:
     links: []
   bundledCode: "#line 2 \"data_structure/range_parallel_dsu.hpp\"\n\n#line 2 \"data_structure/dsu.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n#include <algorithm>\n\nnamespace noya2{\n\
-    \nstruct dsu {\n  public:\n    dsu() : _n(0) {}\n    dsu(int n) : _n(n), parent_or_size(n,\
-    \ -1) {}\n\n    int merge(int a, int b) {\n        assert(0 <= a && a < _n);\n\
-    \        assert(0 <= b && b < _n);\n        int x = leader(a), y = leader(b);\n\
-    \        if (x == y) return x;\n        if (-parent_or_size[x] < -parent_or_size[y])\
-    \ std::swap(x, y);\n        parent_or_size[x] += parent_or_size[y];\n        parent_or_size[y]\
-    \ = x;\n        return x;\n    }\n\n    bool same(int a, int b) {\n        assert(0\
-    \ <= a && a < _n);\n        assert(0 <= b && b < _n);\n        return leader(a)\
-    \ == leader(b);\n    }\n\n    int leader(int a) {\n        assert(0 <= a && a\
-    \ < _n);\n        if (parent_or_size[a] < 0) return a;\n        return parent_or_size[a]\
-    \ = leader(parent_or_size[a]);\n    }\n\n    int size(int a) {\n        assert(0\
-    \ <= a && a < _n);\n        return -parent_or_size[leader(a)];\n    }\n\n    std::vector<std::vector<int>>\
-    \ groups() {\n        std::vector<int> leader_buf(_n), group_size(_n);\n     \
-    \   for (int i = 0; i < _n; i++) {\n            leader_buf[i] = leader(i);\n \
-    \           group_size[leader_buf[i]]++;\n        }\n        std::vector<std::vector<int>>\
-    \ result(_n);\n        for (int i = 0; i < _n; i++) {\n            result[i].reserve(group_size[i]);\n\
-    \        }\n        for (int i = 0; i < _n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
+    \nstruct dsu {\n  public:\n    dsu() : _n(0), _cc(0) {}\n    dsu(int n) : _n(n),\
+    \ _cc(n), parent_or_size(n, -1) {}\n\n    int merge(int a, int b) {\n        assert(0\
+    \ <= a && a < _n);\n        assert(0 <= b && b < _n);\n        int x = leader(a),\
+    \ y = leader(b);\n        if (x == y) return x;\n        if (-parent_or_size[x]\
+    \ < -parent_or_size[y]) std::swap(x, y);\n        parent_or_size[x] += parent_or_size[y];\n\
+    \        parent_or_size[y] = x;\n        _cc--;\n        return x;\n    }\n\n\
+    \    bool same(int a, int b) {\n        assert(0 <= a && a < _n);\n        assert(0\
+    \ <= b && b < _n);\n        return leader(a) == leader(b);\n    }\n\n    int leader(int\
+    \ a) {\n        assert(0 <= a && a < _n);\n        if (parent_or_size[a] < 0)\
+    \ return a;\n        return parent_or_size[a] = leader(parent_or_size[a]);\n \
+    \   }\n\n    int size(int a) {\n        assert(0 <= a && a < _n);\n        return\
+    \ -parent_or_size[leader(a)];\n    }\n\n    std::vector<std::vector<int>> groups()\
+    \ {\n        std::vector<int> leader_buf(_n), group_size(_n);\n        for (int\
+    \ i = 0; i < _n; i++) {\n            leader_buf[i] = leader(i);\n            group_size[leader_buf[i]]++;\n\
+    \        }\n        std::vector<std::vector<int>> result(_n);\n        for (int\
+    \ i = 0; i < _n; i++) {\n            result[i].reserve(group_size[i]);\n     \
+    \   }\n        for (int i = 0; i < _n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
     \        }\n        result.erase(\n            std::remove_if(result.begin(),\
     \ result.end(),\n                           [&](const std::vector<int>& v) { return\
     \ v.empty(); }),\n            result.end());\n        return result;\n    }\n\n\
-    \  private:\n    int _n;\n    // root node: -1 * component size\n    // otherwise:\
-    \ parent\n    std::vector<int> parent_or_size;\n};\n\n} // namespace noya2\n#line\
-    \ 4 \"data_structure/range_parallel_dsu.hpp\"\n\nnamespace noya2 {\n\nstruct range_parallel_dsu\
+    \    int group_count() const {\n        return _cc;\n    }\n\n  private:\n   \
+    \ int _n, _cc;\n    // root node: -1 * component size\n    // otherwise: parent\n\
+    \    std::vector<int> parent_or_size;\n};\n\n} // namespace noya2\n#line 4 \"\
+    data_structure/range_parallel_dsu.hpp\"\n\nnamespace noya2 {\n\nstruct range_parallel_dsu\
     \ : dsu {\n    using dsu::operator=;\n    int n;\n    std::vector<dsu> ds;\n \
     \   range_parallel_dsu (int _n0) : n(_n0) {\n        int msb = 31 - countl_zero((unsigned\
     \ int)(n));\n        ds.resize(msb, dsu(n));\n        (*this) = dsu(n);\n    }\n\
@@ -79,7 +81,7 @@ data:
   isVerificationFile: false
   path: data_structure/range_parallel_dsu.hpp
   requiredBy: []
-  timestamp: '2024-07-28 16:18:08+09:00'
+  timestamp: '2025-04-29 17:55:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/RangeParallelUnionfind.test.cpp
