@@ -8,15 +8,13 @@
 namespace noya2 {
 
 struct rollback_dsu {
-    rollback_dsu (int _n = 0) : n(_n), par_or_siz(_n,-1) {
-        cc = n;
-    }
-    int leader(int v){
+    rollback_dsu (int _n = 0) : n(_n), cc(_n), par_or_siz(_n,-1) {}
+    int leader(int v) const {
         assert(0 <= v && v < n);
         if (par_or_siz[v] < 0) return v;
         return leader(par_or_siz[v]);
     }
-    bool same(int u, int v){
+    bool same(int u, int v) const {
         return leader(u) == leader(v);
     }
     int merge(int u, int v){
@@ -32,10 +30,10 @@ struct rollback_dsu {
         cc--;
         return u;
     }
-    int size(int v){
+    int size(int v) const {
         return -par_or_siz[leader(v)];
     }
-    int num_of_cc() const {
+    int group_count() const {
         return cc;
     }
     void rollback(){
