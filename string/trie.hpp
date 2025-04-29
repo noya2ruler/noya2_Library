@@ -33,7 +33,7 @@ struct trie {
     static constexpr node nullnode{-2,leaf,0,0};
     std::vector<node> nodes;
     trie () : nodes(1,node{-1,leaf,0,0}) {}
-    void insert(const std::string &s){
+    int insert(const std::string &s){
         int cur = 0;
         for (const char c : s){
             if (nodes[cur][c] == -1){
@@ -41,11 +41,13 @@ struct trie {
             }
             cur = nodes[cur][c];
         }
+        int ret = cur;
         nodes[cur].exist += 1;
         while (cur != -1){
             update(cur);
             cur = nodes[cur].par;
         }
+        return ret;
     }
     void erase(const std::string &s){
         int cur = 0;
