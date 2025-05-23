@@ -17,6 +17,8 @@ struct Mo {
     Mo(int N = 1, int Q = 1): order(Q) {
         width = std::max<int>(1, 1.0 * N / std::max<double>(1.0, std::sqrt(Q * 2.0 / 3.0)));
         std::iota(begin(order), end(order), 0);
+        left.reserve(Q);
+        right.reserve(Q);
     }
 
     void insert(int l, int r) { /* [l, r) */
