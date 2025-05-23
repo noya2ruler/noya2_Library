@@ -131,25 +131,26 @@ data:
     \    int width;\n    std::vector<int> left, right, order;\n\n    Mo(int N = 1,\
     \ int Q = 1): order(Q) {\n        width = std::max<int>(1, 1.0 * N / std::max<double>(1.0,\
     \ std::sqrt(Q * 2.0 / 3.0)));\n        std::iota(begin(order), end(order), 0);\n\
-    \    }\n\n    void insert(int l, int r) { /* [l, r) */\n        left.emplace_back(l);\n\
-    \        right.emplace_back(r);\n    }\n\n    template <typename AL, typename\
-    \ AR, typename DL, typename DR, typename REM>\n    void run(const AL& add_left,\
-    \ const AR& add_right, const DL& delete_left,\n        const DR& delete_right,\
-    \ const REM& rem) {\n        assert(left.size() == order.size());\n        sort(begin(order),\
-    \ end(order), [&](int a, int b) {\n            int ablock = left[a] / width, bblock\
-    \ = left[b] / width;\n            if (ablock != bblock) return ablock < bblock;\n\
-    \            if (ablock & 1) return right[a] < right[b];\n            return right[a]\
-    \ > right[b];\n            });\n        int nl = 0, nr = 0;\n        for (auto\
-    \ idx : order) {\n            while (nl > left[idx]) add_left(--nl);\n       \
-    \     while (nr < right[idx]) add_right(nr++);\n            while (nl < left[idx])\
-    \ delete_left(nl++);\n            while (nr > right[idx]) delete_right(--nr);\n\
-    \            rem(idx);\n        }\n    }\n};\n\n}\n#line 2 \"misc/monoids.hpp\"\
-    \n\n#line 4 \"misc/monoids.hpp\"\n\nnamespace noya2{\n\ntemplate<typename T>\n\
-    struct max_monoid {\n    using value_type = T;\n    static constexpr T op(const\
-    \ T &a, const T &b){ return max(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::min();\
-    \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
-    \ T>\nstruct min_monoid {\n    using value_type = T;\n    static constexpr T op(const\
-    \ T &a, const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
+    \        left.reserve(Q);\n        right.reserve(Q);\n    }\n\n    void insert(int\
+    \ l, int r) { /* [l, r) */\n        left.emplace_back(l);\n        right.emplace_back(r);\n\
+    \    }\n\n    template <typename AL, typename AR, typename DL, typename DR, typename\
+    \ REM>\n    void run(const AL& add_left, const AR& add_right, const DL& delete_left,\n\
+    \        const DR& delete_right, const REM& rem) {\n        assert(left.size()\
+    \ == order.size());\n        sort(begin(order), end(order), [&](int a, int b)\
+    \ {\n            int ablock = left[a] / width, bblock = left[b] / width;\n   \
+    \         if (ablock != bblock) return ablock < bblock;\n            if (ablock\
+    \ & 1) return right[a] < right[b];\n            return right[a] > right[b];\n\
+    \            });\n        int nl = 0, nr = 0;\n        for (auto idx : order)\
+    \ {\n            while (nl > left[idx]) add_left(--nl);\n            while (nr\
+    \ < right[idx]) add_right(nr++);\n            while (nl < left[idx]) delete_left(nl++);\n\
+    \            while (nr > right[idx]) delete_right(--nr);\n            rem(idx);\n\
+    \        }\n    }\n};\n\n}\n#line 2 \"misc/monoids.hpp\"\n\n#line 4 \"misc/monoids.hpp\"\
+    \n\nnamespace noya2{\n\ntemplate<typename T>\nstruct max_monoid {\n    using value_type\
+    \ = T;\n    static constexpr T op(const T &a, const T &b){ return max(a,b); }\n\
+    \    static constexpr T e(){ return std::numeric_limits<T>::min(); }\n    static\
+    \ constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename T>\nstruct\
+    \ min_monoid {\n    using value_type = T;\n    static constexpr T op(const T &a,\
+    \ const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
     \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
     \ T>\nstruct plus_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a + b; }\n    static constexpr T e(){ return T(0);\
@@ -199,7 +200,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Static_Range_Inversions_Query.test.cpp
   requiredBy: []
-  timestamp: '2025-02-22 20:23:26+09:00'
+  timestamp: '2025-05-23 14:05:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Static_Range_Inversions_Query.test.cpp

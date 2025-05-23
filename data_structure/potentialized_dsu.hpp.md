@@ -90,8 +90,8 @@ data:
   timestamp: '2024-08-13 15:38:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
   - test/data_structure/aoj_dsl_1_b.test.cpp
+  - test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
 documentation_of: data_structure/potentialized_dsu.hpp
 layout: document
 redirect_from:

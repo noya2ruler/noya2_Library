@@ -457,9 +457,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/fps/convolution.test.cpp
-  - test/fps/Inv_of_Formal_Power_Series.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
   - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
+  - test/fps/Inv_of_Formal_Power_Series.test.cpp
 documentation_of: fps/fps_ntt.hpp
 layout: document
 redirect_from:

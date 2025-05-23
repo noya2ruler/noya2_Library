@@ -225,14 +225,14 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy:
-  - math/euler_circuit_counting.hpp
   - math/spanning_tree_counting.hpp
+  - math/euler_circuit_counting.hpp
   timestamp: '2024-08-13 15:38:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
-  - test/math/CountingEulerianCircuits.test.cpp
   - test/math/Determinant_of_Matrix.test.cpp
+  - test/math/CountingEulerianCircuits.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:
