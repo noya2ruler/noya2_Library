@@ -63,6 +63,15 @@ struct dual_segtree {
         return d[p];
     }
 
+    void set(int p, F f){
+        assert(0 <= p && p < n);
+        p += sz;
+        for (int i : std::views::iota(1, lg2 + 1) | std::views::reverse) {
+            push(p >> i);
+        }
+        d[p] = f;
+    }
+
   private:
     int n, sz, lg2;
     std::vector<F> d;
