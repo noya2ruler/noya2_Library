@@ -28,7 +28,10 @@ data:
     \     if (r & 1) all_apply(--r, f);\n            l >>= 1;\n            r >>= 1;\n\
     \        }\n    }\n\n    F get(int p) {\n        assert(0 <= p && p < n);\n  \
     \      p += sz;\n        for (int i : std::views::iota(1, lg2 + 1) | std::views::reverse)\
-    \ {\n            push(p >> i);\n        }\n        return d[p];\n    }\n\n  private:\n\
+    \ {\n            push(p >> i);\n        }\n        return d[p];\n    }\n\n   \
+    \ void set(int p, F f){\n        assert(0 <= p && p < n);\n        p += sz;\n\
+    \        for (int i : std::views::iota(1, lg2 + 1) | std::views::reverse) {\n\
+    \            push(p >> i);\n        }\n        d[p] = f;\n    }\n\n  private:\n\
     \    int n, sz, lg2;\n    std::vector<F> d;\n};\n\n}  // namespace noya2\n"
   code: "#pragma once\n\n// https://ebi-fly13.github.io/Library/data_structure/dual_segtree.hpp\n\
     \n#include <bit>\n#include <cassert>\n#include <ranges>\n#include <vector>\n\n\
@@ -49,13 +52,16 @@ data:
     \     if (r & 1) all_apply(--r, f);\n            l >>= 1;\n            r >>= 1;\n\
     \        }\n    }\n\n    F get(int p) {\n        assert(0 <= p && p < n);\n  \
     \      p += sz;\n        for (int i : std::views::iota(1, lg2 + 1) | std::views::reverse)\
-    \ {\n            push(p >> i);\n        }\n        return d[p];\n    }\n\n  private:\n\
+    \ {\n            push(p >> i);\n        }\n        return d[p];\n    }\n\n   \
+    \ void set(int p, F f){\n        assert(0 <= p && p < n);\n        p += sz;\n\
+    \        for (int i : std::views::iota(1, lg2 + 1) | std::views::reverse) {\n\
+    \            push(p >> i);\n        }\n        d[p] = f;\n    }\n\n  private:\n\
     \    int n, sz, lg2;\n    std::vector<F> d;\n};\n\n}  // namespace noya2"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/dual_segment_tree.hpp
   requiredBy: []
-  timestamp: '2025-02-15 20:53:13+09:00'
+  timestamp: '2025-06-07 00:45:25+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/dual_segment_tree.hpp

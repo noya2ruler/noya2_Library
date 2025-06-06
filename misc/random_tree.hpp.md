@@ -85,7 +85,7 @@ data:
     \ 1.0)\nld rnd() { return rng() * 5.42101086242752217004e-20; }\n// [l, r)\nld\
     \ rnd(ld l, ld r) {\n  assert(l < r);\n  return l + rnd() * (r - l);\n}\n\n} //\
     \ namespace noya2\n#line 6 \"misc/random_tree.hpp\"\n\nnamespace noya2 {\n\n//\
-    \ input: [c \\in [0, n)] * (n-2), n >= 3\nvector<vector<int>> pruefer_code(const\
+    \ input: [c \\in [0, n)] * (n-2), n >= 3\nvector<vector<int>> prufer_code(const\
     \ vector<int>& code) {\n    int n = code.size() + 2;\n    assert(n > 2);\n   \
     \ vector<vector<int>> g(n);\n    vector<int> deg(n, 1);\n    int e = 0;\n    for\
     \ (auto& x : code) deg[x]++;\n    set<int> ps;\n    for (int j = 0; j < n; j++)\
@@ -99,12 +99,12 @@ data:
     \  assert(e == n - 1);\n    return g;\n}\n\nvector<vector<int>> random_tree(int\
     \ n) {\n    if (n <= 2) {\n        vector<vector<int>> g(n);\n        if (n ==\
     \ 2) {\n            g[0].push_back(1);\n            g[1].push_back(0);\n     \
-    \   }\n        return g;\n    }\n    vector<int> pruefer(n - 2);\n    for (auto&\
-    \ x : pruefer) x = randint(0,n);\n    return pruefer_code(pruefer);\n}\n\n} //\
-    \ namespace noya2\n"
+    \   }\n        return g;\n    }\n    vector<int> prufer(n - 2);\n    for (auto&\
+    \ x : prufer) x = randint(0,n);\n    return prufer_code(prufer);\n}\n\n} // namespace\
+    \ noya2\n"
   code: "#pragma once\n\n#include\"../template/template.hpp\"\n\n#include\"../misc/rng.hpp\"\
     \n\nnamespace noya2 {\n\n// input: [c \\in [0, n)] * (n-2), n >= 3\nvector<vector<int>>\
-    \ pruefer_code(const vector<int>& code) {\n    int n = code.size() + 2;\n    assert(n\
+    \ prufer_code(const vector<int>& code) {\n    int n = code.size() + 2;\n    assert(n\
     \ > 2);\n    vector<vector<int>> g(n);\n    vector<int> deg(n, 1);\n    int e\
     \ = 0;\n    for (auto& x : code) deg[x]++;\n    set<int> ps;\n    for (int j =\
     \ 0; j < n; j++) {\n        if (deg[j] == 1) ps.insert(j);\n    }\n    for (auto&\
@@ -117,9 +117,9 @@ data:
     \    e++;\n    assert(e == n - 1);\n    return g;\n}\n\nvector<vector<int>> random_tree(int\
     \ n) {\n    if (n <= 2) {\n        vector<vector<int>> g(n);\n        if (n ==\
     \ 2) {\n            g[0].push_back(1);\n            g[1].push_back(0);\n     \
-    \   }\n        return g;\n    }\n    vector<int> pruefer(n - 2);\n    for (auto&\
-    \ x : pruefer) x = randint(0,n);\n    return pruefer_code(pruefer);\n}\n\n} //\
-    \ namespace noya2"
+    \   }\n        return g;\n    }\n    vector<int> prufer(n - 2);\n    for (auto&\
+    \ x : prufer) x = randint(0,n);\n    return prufer_code(prufer);\n}\n\n} // namespace\
+    \ noya2"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
@@ -129,7 +129,7 @@ data:
   isVerificationFile: false
   path: misc/random_tree.hpp
   requiredBy: []
-  timestamp: '2024-07-04 18:50:00+09:00'
+  timestamp: '2025-06-07 00:45:12+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: misc/random_tree.hpp
