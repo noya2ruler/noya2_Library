@@ -7,7 +7,7 @@
 namespace noya2 {
 
 // input: [c \in [0, n)] * (n-2), n >= 3
-vector<vector<int>> pruefer_code(const vector<int>& code) {
+vector<vector<int>> prufer_code(const vector<int>& code) {
     int n = code.size() + 2;
     assert(n > 2);
     vector<vector<int>> g(n);
@@ -50,9 +50,9 @@ vector<vector<int>> random_tree(int n) {
         }
         return g;
     }
-    vector<int> pruefer(n - 2);
-    for (auto& x : pruefer) x = randint(0,n);
-    return pruefer_code(pruefer);
+    vector<int> prufer(n - 2);
+    for (auto& x : prufer) x = randint(0,n);
+    return prufer_code(prufer);
 }
 
 } // namespace noya2
