@@ -21,9 +21,9 @@ data:
     \ int leader(int v) const {\n        assert(0 <= v && v < n);\n        if (par_or_siz[v]\
     \ < 0) return v;\n        return leader(par_or_siz[v]);\n    }\n    bool same(int\
     \ u, int v) const {\n        return leader(u) == leader(v);\n    }\n    int merge(int\
-    \ u, int v){\n        u = leader(u);\n        v = leader(v);\n        logs.push(make_pair(u,par_or_siz[u]));\n\
-    \        logs.push(make_pair(v,par_or_siz[v]));\n        logs.push(make_pair(cc,\
-    \ -1));\n        if (u == v) return u;\n        if (-par_or_siz[u] < -par_or_siz[v])\
+    \ u, int v){\n        u = leader(u);\n        v = leader(v);\n        logs.emplace(u,\
+    \ par_or_siz[u]);\n        logs.emplace(v, par_or_siz[v]);\n        logs.emplace(cc,\
+    \ 0);\n        if (u == v) return u;\n        if (-par_or_siz[u] < -par_or_siz[v])\
     \ std::swap(u,v);\n        par_or_siz[u] += par_or_siz[v];\n        par_or_siz[v]\
     \ = u;\n        cc--;\n        return u;\n    }\n    int size(int v) const {\n\
     \        return -par_or_siz[leader(v)];\n    }\n    int group_count() const {\n\
@@ -90,7 +90,7 @@ data:
   isVerificationFile: false
   path: data_structure/offline_dynamic_connectivity.hpp
   requiredBy: []
-  timestamp: '2025-04-29 17:55:53+09:00'
+  timestamp: '2025-06-07 18:37:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/aoj_2235.test.cpp
