@@ -20,9 +20,9 @@ struct rollback_dsu {
     int merge(int u, int v){
         u = leader(u);
         v = leader(v);
-        logs.push(make_pair(u,par_or_siz[u]));
-        logs.push(make_pair(v,par_or_siz[v]));
-        logs.push(make_pair(cc, -1));
+        logs.emplace(u, par_or_siz[u]);
+        logs.emplace(v, par_or_siz[v]);
+        logs.emplace(cc, 0);
         if (u == v) return u;
         if (-par_or_siz[u] < -par_or_siz[v]) std::swap(u,v);
         par_or_siz[u] += par_or_siz[v];
