@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -146,13 +146,13 @@ data:
   isVerificationFile: false
   path: math/sieve.hpp
   requiredBy:
-  - math/lcm_convolution.hpp
   - math/gcd_convolution.hpp
+  - math/lcm_convolution.hpp
   timestamp: '2024-07-01 23:39:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Lcm_Convolution.test.cpp
   - test/math/Gcd_Convolution.test.cpp
+  - test/math/Lcm_Convolution.test.cpp
 documentation_of: math/sieve.hpp
 layout: document
 redirect_from:

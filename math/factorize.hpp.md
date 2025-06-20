@@ -195,8 +195,8 @@ data:
   timestamp: '2025-04-09 05:05:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/PrimitiveRoot.test.cpp
   - test/math/PrimalityTest.test.cpp
+  - test/math/PrimitiveRoot.test.cpp
 documentation_of: math/factorize.hpp
 layout: document
 redirect_from:

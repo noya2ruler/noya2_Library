@@ -69,7 +69,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/slope_trick.hpp
       title: data_structure/slope_trick.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data_structure/sparse_table.hpp
       title: data_structure/sparse_table.hpp
     - icon: ':heavy_check_mark:'
@@ -294,19 +294,19 @@ data:
       title: string/z_algorithm.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/const.hpp
       title: template/const.hpp
     - icon: ':warning:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/inout_old.hpp
       title: template/inout_old.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
@@ -388,7 +388,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/data_structure/SetXorMin.test.cpp
       title: test/data_structure/SetXorMin.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/data_structure/Static_RMQ.test.cpp
       title: test/data_structure/Static_RMQ.test.cpp
     - icon: ':heavy_check_mark:'

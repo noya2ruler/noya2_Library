@@ -231,8 +231,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
-  - test/math/Determinant_of_Matrix.test.cpp
   - test/math/CountingEulerianCircuits.test.cpp
+  - test/math/Determinant_of_Matrix.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:

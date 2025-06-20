@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -138,7 +138,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/SetXorMin.test.cpp
     title: test/data_structure/SetXorMin.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/data_structure/Static_RMQ.test.cpp
     title: test/data_structure/Static_RMQ.test.cpp
   - icon: ':heavy_check_mark:'
@@ -309,9 +309,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
@@ -384,107 +384,107 @@ data:
   path: template/template.hpp
   requiredBy:
   - string/rolling_hash.hpp
-  - geometry/partition_by_circle.hpp
-  - geometry/base_ld.hpp
-  - fps/multipoint_evaluation.hpp
-  - fps/fps_atcoder.hpp
   - fps/relaxed_convolution.hpp
-  - fps/ntt.hpp
-  - fps/fps_modint.hpp
+  - fps/fps_atcoder.hpp
   - fps/sample_point_shift.hpp
   - fps/formal_power_series.hpp
+  - fps/multipoint_evaluation.hpp
   - fps/fps_arbitrary.hpp
+  - fps/fps_modint.hpp
   - fps/fps_ntt.hpp
-  - data_structure/binary_indexed_tree.hpp
-  - data_structure/fenwick_tree.hpp
-  - data_structure/lazy_segment_tree.hpp
-  - data_structure/range_tree.hpp
+  - fps/ntt.hpp
   - data_structure/li_chao_tree.hpp
-  - data_structure/offline_rectangle_sum.hpp
+  - data_structure/fenwick_tree.hpp
+  - data_structure/binary_indexed_tree.hpp
   - data_structure/dynamic_segment_tree.hpp
   - data_structure/binary_trie.hpp
-  - tree/Mo_on_Tree.hpp
-  - tree/tree_query_weighted.hpp
-  - math/lcm_convolution.hpp
-  - math/sieve.hpp
-  - math/gcd_convolution.hpp
-  - misc/mo_algorithm.hpp
-  - misc/rng.hpp
-  - misc/random_tree.hpp
+  - data_structure/offline_rectangle_sum.hpp
+  - data_structure/lazy_segment_tree.hpp
+  - data_structure/range_tree.hpp
   - misc/mex.hpp
   - misc/QMC.hpp
+  - misc/random_tree.hpp
+  - misc/rng.hpp
+  - misc/mo_algorithm.hpp
   - misc/inversion.hpp
+  - math/sieve.hpp
+  - math/gcd_convolution.hpp
+  - math/lcm_convolution.hpp
+  - geometry/partition_by_circle.hpp
+  - geometry/base_ld.hpp
+  - tree/tree_query_weighted.hpp
+  - tree/Mo_on_Tree.hpp
   timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/string/SuffixArray.test.cpp
-  - test/string/Eertree.test.cpp
   - test/string/Z_Algorithm.test.cpp
+  - test/string/Eertree.test.cpp
+  - test/string/SuffixArray.test.cpp
   - test/string/RunEnumerate.test.cpp
-  - test/geometry/aoj1198.test.cpp
-  - test/fps/Convolution1000000007.test.cpp
-  - test/fps/convolution_relaxed_convolution.test.cpp
-  - test/fps/convolution.test.cpp
-  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
-  - test/fps/Inv_of_Formal_Power_Series.test.cpp
-  - test/data_structure/Unionfind.test.cpp
-  - test/data_structure/SetXorMin.test.cpp
-  - test/data_structure/PointAddRangeSum.test.cpp
-  - test/data_structure/aoj1068_segtree2d.test.cpp
-  - test/data_structure/Rectangle_Sum.test.cpp
-  - test/data_structure/Range_Affine_Range_Sum.test.cpp
-  - test/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/data_structure/Segment_Add_Get_Min.test.cpp
-  - test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
-  - test/data_structure/yuki_1077.test.cpp
-  - test/data_structure/aoj_dsl_1_b.test.cpp
-  - test/data_structure/RangeParallelUnionfind.test.cpp
-  - test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
-  - test/data_structure/Static_RMQ.test.cpp
-  - test/data_structure/Line_Add_Get_Min.test.cpp
-  - test/data_structure/Static_Range_Inversions_Query.test.cpp
-  - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
-  - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - test/data_structure/aoj_2235.test.cpp
+  - test/graph/Strongly_Connected_Components.test.cpp
   - test/graph/CycleDetectionDirected.test.cpp
   - test/graph/Shortest_Path2.test.cpp
-  - test/graph/Strongly_Connected_Components.test.cpp
   - test/graph/Shortest_Path.test.cpp
-  - test/tree/Vertex_Add_Path_Sum.test.cpp
-  - test/tree/Rerooting_DP.test.cpp
-  - test/tree/aoj_0489.test.cpp
-  - test/tree/CartesianTree.test.cpp
-  - test/tree/Jump_on_Tree.test.cpp
-  - test/tree/Tree_Diameter_hld.test.cpp
-  - test/tree/Lowest_Common_Ancestor.test.cpp
-  - test/tree/Jump_on_Tree_hld.test.cpp
-  - test/tree/VertexSetPathComposite.test.cpp
-  - test/tree/FrequencyTableofTreeDistance.test.cpp
-  - test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+  - test/fps/convolution.test.cpp
+  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
+  - test/fps/Inv_of_Formal_Power_Series.test.cpp
+  - test/fps/Convolution1000000007.test.cpp
+  - test/fps/convolution_relaxed_convolution.test.cpp
+  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/data_structure/Point_Set_Range_Composite_dynamic_segment_tree.test.cpp
+  - test/data_structure/Rectangle_Sum.test.cpp
+  - test/data_structure/yuki_1077.test.cpp
+  - test/data_structure/Line_Add_Get_Min.test.cpp
+  - test/data_structure/PointAddRangeSum.test.cpp
+  - test/data_structure/Unionfind.test.cpp
+  - test/data_structure/RangeParallelUnionfind.test.cpp
+  - test/data_structure/Static_Range_Inversions_Query.test.cpp
+  - test/data_structure/aoj_dsl_1_b.test.cpp
+  - test/data_structure/SetXorMin.test.cpp
+  - test/data_structure/aoj_2235.test.cpp
+  - test/data_structure/aoj1068_segtree2d.test.cpp
+  - test/data_structure/Unionfind_with_Potential_NonCommutative_Group.test.cpp
+  - test/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
+  - test/data_structure/Cycle_Detection_Undirected_vector2d.test.cpp
+  - test/data_structure/Static_RMQ.test.cpp
+  - test/data_structure/Segment_Add_Get_Min.test.cpp
+  - test/misc/StaticRangeModeQuery.test.cpp
+  - test/misc/RootedTreeTopologicalOrderwithMinimumInversions.test.cpp
+  - test/misc/LongestIncreasingSubsequence.test.cpp
+  - test/math/CountingEulerianCircuits.test.cpp
+  - test/math/Gcd_Convolution.test.cpp
+  - test/math/PrimalityTest.test.cpp
+  - test/math/Lcm_Convolution.test.cpp
+  - test/math/SumofMultiplicativeFunction.test.cpp
+  - test/math/SubsetConvolution.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/math/BitwiseAndConvolution.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
+  - test/math/PrimitiveRoot.test.cpp
+  - test/math/Determinant_of_Matrix.test.cpp
+  - test/math/BitwiseXorConvolution.test.cpp
+  - test/math/CountingPrimes.test.cpp
+  - test/math/Sum_of_Floor_of_Linear.test.cpp
+  - test/geometry/aoj1198.test.cpp
+  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
   - test/fps998244353/convolution_998244353.test.cpp
   - test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
-  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
-  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
   - test/fps998244353/multipoint_evaluation_998244353.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - test/math/Lcm_Convolution.test.cpp
-  - test/math/Determinant_of_Matrix.test.cpp
-  - test/math/BitwiseAndConvolution.test.cpp
-  - test/math/CountingEulerianCircuits.test.cpp
-  - test/math/CountingPrimes.test.cpp
-  - test/math/SumofMultiplicativeFunction.test.cpp
-  - test/math/Sum_of_Floor_of_Linear.test.cpp
-  - test/math/PrimitiveRoot.test.cpp
-  - test/math/BitwiseXorConvolution.test.cpp
-  - test/math/PrimalityTest.test.cpp
-  - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  - test/math/SubsetConvolution.test.cpp
-  - test/math/Gcd_Convolution.test.cpp
-  - test/misc/LongestIncreasingSubsequence.test.cpp
-  - test/misc/RootedTreeTopologicalOrderwithMinimumInversions.test.cpp
-  - test/misc/StaticRangeModeQuery.test.cpp
+  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
+  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+  - test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/tree/CartesianTree.test.cpp
+  - test/tree/Jump_on_Tree_hld.test.cpp
+  - test/tree/Vertex_Add_Path_Sum.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/Rerooting_DP.test.cpp
+  - test/tree/aoj_0489.test.cpp
+  - test/tree/FrequencyTableofTreeDistance.test.cpp
+  - test/tree/VertexSetPathComposite.test.cpp
+  - test/tree/Lowest_Common_Ancestor.test.cpp
+  - test/tree/Tree_Diameter_hld.test.cpp
 documentation_of: template/template.hpp
 layout: document
 redirect_from:

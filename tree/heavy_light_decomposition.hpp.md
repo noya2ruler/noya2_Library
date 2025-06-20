@@ -372,10 +372,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Vertex_Add_Path_Sum.test.cpp
-  - test/tree/aoj_0489.test.cpp
   - test/tree/Jump_on_Tree.test.cpp
-  - test/tree/Lowest_Common_Ancestor.test.cpp
+  - test/tree/aoj_0489.test.cpp
   - test/tree/VertexSetPathComposite.test.cpp
+  - test/tree/Lowest_Common_Ancestor.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
 layout: document
 title: Heavy Light Decomposition
