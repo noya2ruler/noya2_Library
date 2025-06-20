@@ -82,10 +82,10 @@ data:
     \ ^= _x << 7, _x ^= _x >> 9;\n}\n\n// [l, r]\nll rng(ll l, ll r) {\n  assert(l\
     \ <= r);\n  return l + rng() % ull(r - l + 1);\n}\n\n// [l, r)\nll randint(ll\
     \ l, ll r) {\n  assert(l < r);\n  return l + rng() % ull(r - l);\n}\n\n// [0.0,\
-    \ 1.0)\nld rnd() { return rng() * 5.42101086242752217004e-20; }\n// [l, r)\nld\
-    \ rnd(ld l, ld r) {\n  assert(l < r);\n  return l + rnd() * (r - l);\n}\n\n} //\
-    \ namespace noya2\n#line 6 \"misc/random_tree.hpp\"\n\nnamespace noya2 {\n\n//\
-    \ input: [c \\in [0, n)] * (n-2), n >= 3\nvector<vector<int>> prufer_code(const\
+    \ 1.0)\nld randld() { return rng() * 5.42101086242752217004e-20; }\n// [l, r)\n\
+    ld randld(ld l, ld r) {\n  assert(l < r);\n  return l + randld() * (r - l);\n\
+    }\n\n} // namespace noya2\n#line 6 \"misc/random_tree.hpp\"\n\nnamespace noya2\
+    \ {\n\n// input: [c \\in [0, n)] * (n-2), n >= 3\nvector<vector<int>> prufer_code(const\
     \ vector<int>& code) {\n    int n = code.size() + 2;\n    assert(n > 2);\n   \
     \ vector<vector<int>> g(n);\n    vector<int> deg(n, 1);\n    int e = 0;\n    for\
     \ (auto& x : code) deg[x]++;\n    set<int> ps;\n    for (int j = 0; j < n; j++)\
@@ -129,7 +129,7 @@ data:
   isVerificationFile: false
   path: misc/random_tree.hpp
   requiredBy: []
-  timestamp: '2025-06-07 00:45:12+09:00'
+  timestamp: '2025-06-20 17:42:42+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: misc/random_tree.hpp
