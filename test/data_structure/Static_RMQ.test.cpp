@@ -14,6 +14,6 @@ int main(){
     sparse_table<int,op> spt(a);
     while (q--){
         int l, r; cin >> l >> r;
-        out(spt.get(l,r));
+        out(spt.prod(l,r));
     }
 }
