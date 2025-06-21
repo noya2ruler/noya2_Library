@@ -11,12 +11,13 @@ struct sparse_table {
     sparse_table () {}
     sparse_table (const std::vector<S> &vec){
         int n = vec.size(), n2 = 0;
-        while ((1<<n2) < n) n2++;
-        table.resize(n2+1);
+        while ((1<<n2) <= n) n2++;
+        table.resize(n2);
         table[0] = vec;
-        for (int i = 0; i < n2; i++){
-            table[i].resize(n - (1 << i));
-            for (int j = 0; j < n - (1 << i); j++){
+        for (int i = 0; i < n2-1; i++){
+            int nsz = table[i].size() - (1 << i);
+            table[i + 1].resize(nsz);
+            for (int j = 0; j < nsz; j++){
                 table[i + 1][j] = op(table[i][j], table[i][j + (1 << i)]);
             }
         }
