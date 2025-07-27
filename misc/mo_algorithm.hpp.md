@@ -132,8 +132,8 @@ data:
   timestamp: '2025-05-23 14:05:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Static_Range_Inversions_Query.test.cpp
   - test/tree/aoj_0489.test.cpp
+  - test/data_structure/Static_Range_Inversions_Query.test.cpp
 documentation_of: misc/mo_algorithm.hpp
 layout: document
 redirect_from:

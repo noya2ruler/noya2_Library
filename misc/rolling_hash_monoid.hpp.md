@@ -17,16 +17,16 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"misc/rolling_hash_monoid.hpp\"\n\n#line 2 \"utility/modint61.hpp\"\
-    \n\n#line 2 \"utility/modint.hpp\"\n\n#include <iostream>\n\n#line 2 \"math/prime.hpp\"\
-    \n\n#include<utility>\nnamespace noya2 {\n\nconstexpr long long safe_mod(long\
-    \ long x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n\
-    }\n\nconstexpr long long pow_mod_constexpr(long long x, long long n, int m) {\n\
-    \    if (m == 1) return 0;\n    unsigned int _m = (unsigned int)(m);\n    unsigned\
-    \ long long r = 1;\n    unsigned long long y = safe_mod(x, m);\n    while (n)\
-    \ {\n        if (n & 1) r = (r * y) % _m;\n        y = (y * y) % _m;\n       \
-    \ n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int n)\
-    \ {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
+  bundledCode: "#line 2 \"misc/rolling_hash_monoid.hpp\"\n\n#include<random>\n\n#line\
+    \ 2 \"utility/modint61.hpp\"\n\n#line 2 \"utility/modint.hpp\"\n\n#include <iostream>\n\
+    \n#line 2 \"math/prime.hpp\"\n\n#include<utility>\nnamespace noya2 {\n\nconstexpr\
+    \ long long safe_mod(long long x, long long m) {\n    x %= m;\n    if (x < 0)\
+    \ x += m;\n    return x;\n}\n\nconstexpr long long pow_mod_constexpr(long long\
+    \ x, long long n, int m) {\n    if (m == 1) return 0;\n    unsigned int _m = (unsigned\
+    \ int)(m);\n    unsigned long long r = 1;\n    unsigned long long y = safe_mod(x,\
+    \ m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n        y = (y *\
+    \ y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int\
+    \ n) {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
     \ true;\n    if (n % 2 == 0) return false;\n    long long d = n - 1;\n    while\
     \ (d % 2 == 0) d /= 2;\n    constexpr long long bases[3] = {2, 7, 61};\n    for\
     \ (long long a : bases) {\n        long long t = d;\n        long long y = pow_mod_constexpr(a,\
@@ -190,20 +190,31 @@ data:
     \ long MASK30 = (1ULL << 30) - 1;\n    static constexpr unsigned long long MASK31\
     \ = (1ULL << 31) - 1;\n    static constexpr unsigned long long MASK61 = (1ULL\
     \ << 61) - 1;\n};\nusing modint61 = static_modint<-61>;\n\n} // namespace noya2\n\
-    #line 4 \"misc/rolling_hash_monoid.hpp\"\n\nnamespace noya2 {\n\nstruct roriha_group\
-    \ {\n    struct value_type {\n        modint61 h, base_pow;\n    };\n    static\
-    \ constexpr value_type op(value_type a, value_type b){\n        return {a.h +\
-    \ a.base_pow * b.h, a.base_pow * b.base_pow};\n    }\n    static constexpr value_type\
-    \ e(){\n        return {0LL, 1LL};\n    }\n    static constexpr value_type inv(value_type\
-    \ a){\n        auto iv = a.base_pow.inv();\n        return {-a.h * iv, iv};\n\
-    \    }\n};\n\n} // namespace noya2\n"
-  code: "#pragma once\n\n#include\"utility/modint61.hpp\"\n\nnamespace noya2 {\n\n\
-    struct roriha_group {\n    struct value_type {\n        modint61 h, base_pow;\n\
-    \    };\n    static constexpr value_type op(value_type a, value_type b){\n   \
-    \     return {a.h + a.base_pow * b.h, a.base_pow * b.base_pow};\n    }\n    static\
-    \ constexpr value_type e(){\n        return {0LL, 1LL};\n    }\n    static constexpr\
-    \ value_type inv(value_type a){\n        auto iv = a.base_pow.inv();\n       \
-    \ return {-a.h * iv, iv};\n    }\n};\n\n} // namespace noya2"
+    #line 6 \"misc/rolling_hash_monoid.hpp\"\n\nnamespace noya2 {\n\nstruct roriha_group\
+    \ {\n    struct value_type {\n        modint61 h, base_pow, ibase_pow;\n    };\n\
+    \    static constexpr value_type op(value_type a, value_type b){\n        return\
+    \ {a.h + a.base_pow * b.h, a.base_pow * b.base_pow, a.ibase_pow * b.ibase_pow};\n\
+    \    }\n    static constexpr value_type e(){\n        return {0LL, 1LL, 1LL};\n\
+    \    }\n    static constexpr value_type inv(value_type a){\n        return {-a.h\
+    \ * a.ibase_pow, a.ibase_pow, a.base_pow};\n    }\n    template<typename T>\n\
+    \    static constexpr value_type val(T c){\n        return {modint61(c), base,\
+    \ ibase};\n    }\n    static modint61 base, ibase;\n    static void set_base(){\n\
+    \        std::random_device rd;\n        std::mt19937_64 mt(rd());\n        base\
+    \ = mt();\n        ibase = base.inv();\n    }\n};\nmodint61 roriha_group::base\
+    \ = 1;\nmodint61 roriha_group::ibase = 1;\n\n} // namespace noya2\n"
+  code: "#pragma once\n\n#include<random>\n\n#include\"utility/modint61.hpp\"\n\n\
+    namespace noya2 {\n\nstruct roriha_group {\n    struct value_type {\n        modint61\
+    \ h, base_pow, ibase_pow;\n    };\n    static constexpr value_type op(value_type\
+    \ a, value_type b){\n        return {a.h + a.base_pow * b.h, a.base_pow * b.base_pow,\
+    \ a.ibase_pow * b.ibase_pow};\n    }\n    static constexpr value_type e(){\n \
+    \       return {0LL, 1LL, 1LL};\n    }\n    static constexpr value_type inv(value_type\
+    \ a){\n        return {-a.h * a.ibase_pow, a.ibase_pow, a.base_pow};\n    }\n\
+    \    template<typename T>\n    static constexpr value_type val(T c){\n       \
+    \ return {modint61(c), base, ibase};\n    }\n    static modint61 base, ibase;\n\
+    \    static void set_base(){\n        std::random_device rd;\n        std::mt19937_64\
+    \ mt(rd());\n        base = mt();\n        ibase = base.inv();\n    }\n};\nmodint61\
+    \ roriha_group::base = 1;\nmodint61 roriha_group::ibase = 1;\n\n} // namespace\
+    \ noya2"
   dependsOn:
   - utility/modint61.hpp
   - utility/modint.hpp
@@ -211,7 +222,7 @@ data:
   isVerificationFile: false
   path: misc/rolling_hash_monoid.hpp
   requiredBy: []
-  timestamp: '2025-03-12 13:06:34+09:00'
+  timestamp: '2025-07-27 20:36:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: misc/rolling_hash_monoid.hpp
