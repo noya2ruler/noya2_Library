@@ -1,83 +1,105 @@
 #pragma once
 
-#include"../template/template.hpp"
+#include <vector>
+#include <cassert>
+#include <utility>
 
 namespace noya2{
 
-struct Sieve {
-    vector<int> primes, factor, mu;
-    Sieve (int N = 1024){
-        build(N);
+struct prime_sieve {
+    static std::vector<int> primes, factor, mu;
+    prime_sieve (int n = 1024){
+        build(n);
     }
-    void request(int N){
-        int len = n_max();
-        if (len >= N) return ;
-        while (len < N) len <<= 1;
-        build(len);
+    static void reserve(int n){
+        int sz = size();
+        if (sz == 0){
+            build(n);
+            return ;
+        }
+        if (n <= sz) return ;
+        while (sz < n) sz <<= 1;
+        build(sz);
     }
-    int n_max(){ return factor.size()-1; }
+    // n in [1, size()] is available
+    static int size(){
+        return (int)factor.size() - 1;
+    }
   private:
-    void build (int N){
+    static void build(int n){
         primes.clear();
-        factor.resize(N+1); fill(factor.begin(),factor.end(),0);
-        mu.resize(N+1); fill(mu.begin(),mu.end(),1);
-
-        for(int n = 2; n <= N; n++) {
-            if (factor[n] == 0){
-                primes.push_back(n);
-                factor[n] = n;
-                mu[n] = -1;
+        factor.assign(n + 1, 0);
+        mu.assign(n + 1, 1);
+        for (int x = 2; x <= n; x++){
+            if (factor[x] == 0){
+                primes.emplace_back(x);
+                factor[x] = x;
+                mu[x] = -1;
             }
             for (int p : primes){
-                if(n * p > N || p > factor[n]) break;
-                factor[n * p] = p;
-                mu[n * p] = p == factor[n] ? 0 : -mu[n];
+                if (x * p > n || p > factor[x]) break;
+                factor[x * p] = p;
+                mu[x * p] = (p == factor[x] ? 0 : -mu[x]);
             }
         }
     }
 } sieve;
+std::vector<int> prime_sieve::primes;
+std::vector<int> prime_sieve::factor;
+std::vector<int> prime_sieve::mu;
+
+void reserve_sieve(int n){
+    sieve.reserve(n);
+}
 
 int mobius_sieve(int n){
-    assert(1 <= n && n <= sieve.n_max());
+    assert(1 <= n && n <= sieve.size());
     return sieve.mu[n];
 }
+
 bool is_prime_sieve(int n){
     if (n <= 2) return n == 2;
-    assert(n <= sieve.n_max());
+    assert(n <= sieve.size());
     return sieve.factor[n] == n;
 }
 
-vector<pair<int,int>> prime_factorization_sieve(int n){
-    assert(1 <= n && n <= sieve.n_max());
-    vector<int> facts;
+// pair(prime, exponent)
+std::vector<std::pair<int, int>> factorize_sieve(int n){
+    assert(1 <= n && n <= sieve.size());
+    std::vector<std::pair<int, int>> ret;
+    int pre = 0;
     while (n > 1){
         int p = sieve.factor[n];
-        facts.push_back(p);
+        if (pre != p){
+            ret.emplace_back(p, 1);
+        }
+        else {
+            ret.back().second += 1;
+        }
+        pre = p;
         n /= p;
     }
-    vector<pair<int,int>> pes;
-    int siz = facts.size();
-    for (int l = 0, r = 0; l < siz; l = r){
-        while (r < siz && facts[r] == facts[l]) r++;
-        pes.emplace_back(facts[l],r-l);
-    }
-    return pes;
+    return ret;
 }
 
-vector<int> divisor_enumeration_sieve(int n){
-    auto pes = prime_factorization_sieve(n);
-    vector<int> divs = {1};
-    for (auto [p, e] : pes){
-        vector<int> nxt; nxt.reserve(divs.size() * (e+1));
-        for (auto x : divs){
-            for (int tt = 0; tt <= e; tt++){
-                nxt.push_back(x);
-                x *= p;
-            }
+std::vector<int> divisors_sieve(int n){
+    assert(1 <= n && n <= sieve.size());
+    std::vector<int> ret = {1};
+    int pre = 0, w = 1;
+    while (n > 1){
+        int p = sieve.factor[n];
+        int sz = ret.size();
+        if (pre != p){
+            w = ret.size();
         }
-        swap(divs,nxt);
+        ret.reserve(sz + w);
+        for (int i = 0; i < w; i++){
+            ret.emplace_back(ret[sz - w + i] * p);
+        }
+        pre = p;
+        n /= p;
     }
-    return divs;
+    return ret;
 }
 
 } // namespace noya2

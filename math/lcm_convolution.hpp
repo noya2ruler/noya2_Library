@@ -1,13 +1,16 @@
 #pragma once
 
+#include <vector>
+#include <cassert>
+
 #include"../math/sieve.hpp"
 
 namespace noya2 {
 
 template <typename T>
-vector<T> divisor_zeta_transform(const vector<T> &f){
+std::vector<T> divisor_zeta_transform(const std::vector<T> &f){
     int n = f.size() - 1;
-    sieve.request(n);
+    reserve_sieve(n);
     auto F = f;
     for (const auto &p : sieve.primes){
         if (n < p) break;
@@ -17,9 +20,9 @@ vector<T> divisor_zeta_transform(const vector<T> &f){
 }
 
 template <typename  T>
-vector<T> divisor_mobius_transform(const vector<T> &F){
+std::vector<T> divisor_mobius_transform(const std::vector<T> &F){
     int n = F.size() - 1;
-    sieve.request(n);
+    reserve_sieve(n);
     auto f = F;
     for (const auto &p : sieve.primes){
         if (n < p) break;
@@ -29,7 +32,7 @@ vector<T> divisor_mobius_transform(const vector<T> &F){
 }
 
 template <typename T>
-vector<T> lcm_convolution(const vector<T> &a, const vector<T> &b){
+std::vector<T> lcm_convolution(const std::vector<T> &a, const std::vector<T> &b){
     assert(a.size() == b.size());
     int n = a.size();
     auto ra = divisor_zeta_transform(a);
