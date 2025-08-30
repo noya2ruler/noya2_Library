@@ -90,41 +90,47 @@ data:
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
     */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"math/gcd_convolution.hpp\"\n\n\
-    #line 2 \"math/sieve.hpp\"\n\n#line 4 \"math/sieve.hpp\"\n\nnamespace noya2{\n\
-    \nstruct Sieve {\n    vector<int> primes, factor, mu;\n    Sieve (int N = 1024){\n\
-    \        build(N);\n    }\n    void request(int N){\n        int len = n_max();\n\
-    \        if (len >= N) return ;\n        while (len < N) len <<= 1;\n        build(len);\n\
-    \    }\n    int n_max(){ return factor.size()-1; }\n  private:\n    void build\
-    \ (int N){\n        primes.clear();\n        factor.resize(N+1); fill(factor.begin(),factor.end(),0);\n\
-    \        mu.resize(N+1); fill(mu.begin(),mu.end(),1);\n\n        for(int n = 2;\
-    \ n <= N; n++) {\n            if (factor[n] == 0){\n                primes.push_back(n);\n\
-    \                factor[n] = n;\n                mu[n] = -1;\n            }\n\
-    \            for (int p : primes){\n                if(n * p > N || p > factor[n])\
-    \ break;\n                factor[n * p] = p;\n                mu[n * p] = p ==\
-    \ factor[n] ? 0 : -mu[n];\n            }\n        }\n    }\n} sieve;\n\nint mobius_sieve(int\
-    \ n){\n    assert(1 <= n && n <= sieve.n_max());\n    return sieve.mu[n];\n}\n\
-    bool is_prime_sieve(int n){\n    if (n <= 2) return n == 2;\n    assert(n <= sieve.n_max());\n\
-    \    return sieve.factor[n] == n;\n}\n\nvector<pair<int,int>> prime_factorization_sieve(int\
-    \ n){\n    assert(1 <= n && n <= sieve.n_max());\n    vector<int> facts;\n   \
-    \ while (n > 1){\n        int p = sieve.factor[n];\n        facts.push_back(p);\n\
-    \        n /= p;\n    }\n    vector<pair<int,int>> pes;\n    int siz = facts.size();\n\
-    \    for (int l = 0, r = 0; l < siz; l = r){\n        while (r < siz && facts[r]\
-    \ == facts[l]) r++;\n        pes.emplace_back(facts[l],r-l);\n    }\n    return\
-    \ pes;\n}\n\nvector<int> divisor_enumeration_sieve(int n){\n    auto pes = prime_factorization_sieve(n);\n\
-    \    vector<int> divs = {1};\n    for (auto [p, e] : pes){\n        vector<int>\
-    \ nxt; nxt.reserve(divs.size() * (e+1));\n        for (auto x : divs){\n     \
-    \       for (int tt = 0; tt <= e; tt++){\n                nxt.push_back(x);\n\
-    \                x *= p;\n            }\n        }\n        swap(divs,nxt);\n\
-    \    }\n    return divs;\n}\n\n} // namespace noya2\n#line 4 \"math/gcd_convolution.hpp\"\
-    \n\nnamespace noya2 {\n\ntemplate<typename T>\nvector<T> multiple_zeta_transform(const\
-    \ vector<T> &f){\n    int n = f.size() - 1;\n    sieve.request(n);\n    auto F\
-    \ = f;\n    for (const auto &p : sieve.primes){\n        if (n < p) break;\n \
-    \       for (int i = n / p; i >= 1; i--) F[i] += F[i * p];\n    }\n    return\
-    \ F;\n}\n\ntemplate<typename T>\nvector<T> multiple_mobius_transform(const vector<T>\
-    \ &F){\n    int n = F.size() - 1;\n    sieve.request(n);\n    auto f = F;\n  \
-    \  for (const auto &p : sieve.primes){\n        if (n < p) break;\n        for\
-    \ (int i = 1; i * p <= n; i++) f[i] -= f[i * p];\n    }\n    return f;\n}\n\n\
-    template<typename T>\nvector<T> gcd_convolution(const vector<T> &a, const vector<T>\
+    #line 5 \"math/gcd_convolution.hpp\"\n\n#line 2 \"math/sieve.hpp\"\n\n#line 6\
+    \ \"math/sieve.hpp\"\n\nnamespace noya2{\n\nstruct prime_sieve {\n    static std::vector<int>\
+    \ primes, factor, mu;\n    prime_sieve (int n = 1024){\n        build(n);\n  \
+    \  }\n    static void reserve(int n){\n        int sz = size();\n        if (sz\
+    \ == 0){\n            build(n);\n            return ;\n        }\n        if (n\
+    \ <= sz) return ;\n        while (sz < n) sz <<= 1;\n        build(sz);\n    }\n\
+    \    // n in [1, size()] is available\n    static int size(){\n        return\
+    \ (int)factor.size() - 1;\n    }\n  private:\n    static void build(int n){\n\
+    \        primes.clear();\n        factor.assign(n + 1, 0);\n        mu.assign(n\
+    \ + 1, 1);\n        for (int x = 2; x <= n; x++){\n            if (factor[x] ==\
+    \ 0){\n                primes.emplace_back(x);\n                factor[x] = x;\n\
+    \                mu[x] = -1;\n            }\n            for (int p : primes){\n\
+    \                if (x * p > n || p > factor[x]) break;\n                factor[x\
+    \ * p] = p;\n                mu[x * p] = (p == factor[x] ? 0 : -mu[x]);\n    \
+    \        }\n        }\n    }\n} sieve;\nstd::vector<int> prime_sieve::primes;\n\
+    std::vector<int> prime_sieve::factor;\nstd::vector<int> prime_sieve::mu;\n\nvoid\
+    \ reserve_sieve(int n){\n    sieve.reserve(n);\n}\n\nint mobius_sieve(int n){\n\
+    \    assert(1 <= n && n <= sieve.size());\n    return sieve.mu[n];\n}\n\nbool\
+    \ is_prime_sieve(int n){\n    if (n <= 2) return n == 2;\n    assert(n <= sieve.size());\n\
+    \    return sieve.factor[n] == n;\n}\n\n// pair(prime, exponent)\nstd::vector<std::pair<int,\
+    \ int>> factorize_sieve(int n){\n    assert(1 <= n && n <= sieve.size());\n  \
+    \  std::vector<std::pair<int, int>> ret;\n    int pre = 0;\n    while (n > 1){\n\
+    \        int p = sieve.factor[n];\n        if (pre != p){\n            ret.emplace_back(p,\
+    \ 1);\n        }\n        else {\n            ret.back().second += 1;\n      \
+    \  }\n        pre = p;\n        n /= p;\n    }\n    return ret;\n}\n\nstd::vector<int>\
+    \ divisors_sieve(int n){\n    assert(1 <= n && n <= sieve.size());\n    std::vector<int>\
+    \ ret = {1};\n    int pre = 0, w = 1;\n    while (n > 1){\n        int p = sieve.factor[n];\n\
+    \        int sz = ret.size();\n        if (pre != p){\n            w = ret.size();\n\
+    \        }\n        ret.reserve(sz + w);\n        for (int i = 0; i < w; i++){\n\
+    \            ret.emplace_back(ret[sz - w + i] * p);\n        }\n        pre =\
+    \ p;\n        n /= p;\n    }\n    return ret;\n}\n\n} // namespace noya2\n#line\
+    \ 7 \"math/gcd_convolution.hpp\"\n\nnamespace noya2 {\n\ntemplate<typename T>\n\
+    std::vector<T> multiple_zeta_transform(const std::vector<T> &f){\n    int n =\
+    \ f.size() - 1;\n    reserve_sieve(n);\n    auto F = f;\n    for (const auto &p\
+    \ : sieve.primes){\n        if (n < p) break;\n        for (int i = n / p; i >=\
+    \ 1; i--) F[i] += F[i * p];\n    }\n    return F;\n}\n\ntemplate<typename T>\n\
+    std::vector<T> multiple_mobius_transform(const std::vector<T> &F){\n    int n\
+    \ = F.size() - 1;\n    reserve_sieve(n);\n    auto f = F;\n    for (const auto\
+    \ &p : sieve.primes){\n        if (n < p) break;\n        for (int i = 1; i *\
+    \ p <= n; i++) f[i] -= f[i * p];\n    }\n    return f;\n}\n\ntemplate<typename\
+    \ T>\nstd::vector<T> gcd_convolution(const std::vector<T> &a, const std::vector<T>\
     \ &b){\n    assert(a.size() == b.size());\n    int n = a.size();\n    auto ra\
     \ = multiple_zeta_transform(a);\n    auto rb = multiple_zeta_transform(b);\n \
     \   for (int i = 0; i < n; i++) ra[i] *= rb[i];\n    return multiple_mobius_transform(ra);\n\
@@ -280,7 +286,7 @@ data:
   isVerificationFile: true
   path: test/math/Gcd_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2025-02-26 00:46:12+09:00'
+  timestamp: '2025-08-30 19:37:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Gcd_Convolution.test.cpp

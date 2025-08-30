@@ -47,8 +47,8 @@ data:
   timestamp: '2024-07-01 23:28:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/graph/Shortest_Path2.test.cpp
   - test/graph/Shortest_Path.test.cpp
+  - test/graph/Shortest_Path2.test.cpp
 documentation_of: graph/unweighted_type.hpp
 layout: document
 redirect_from:

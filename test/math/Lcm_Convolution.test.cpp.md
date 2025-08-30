@@ -90,90 +90,95 @@ data:
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
     */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"math/lcm_convolution.hpp\"\n\n\
-    #line 2 \"math/sieve.hpp\"\n\n#line 4 \"math/sieve.hpp\"\n\nnamespace noya2{\n\
-    \nstruct Sieve {\n    vector<int> primes, factor, mu;\n    Sieve (int N = 1024){\n\
-    \        build(N);\n    }\n    void request(int N){\n        int len = n_max();\n\
-    \        if (len >= N) return ;\n        while (len < N) len <<= 1;\n        build(len);\n\
-    \    }\n    int n_max(){ return factor.size()-1; }\n  private:\n    void build\
-    \ (int N){\n        primes.clear();\n        factor.resize(N+1); fill(factor.begin(),factor.end(),0);\n\
-    \        mu.resize(N+1); fill(mu.begin(),mu.end(),1);\n\n        for(int n = 2;\
-    \ n <= N; n++) {\n            if (factor[n] == 0){\n                primes.push_back(n);\n\
-    \                factor[n] = n;\n                mu[n] = -1;\n            }\n\
-    \            for (int p : primes){\n                if(n * p > N || p > factor[n])\
-    \ break;\n                factor[n * p] = p;\n                mu[n * p] = p ==\
-    \ factor[n] ? 0 : -mu[n];\n            }\n        }\n    }\n} sieve;\n\nint mobius_sieve(int\
-    \ n){\n    assert(1 <= n && n <= sieve.n_max());\n    return sieve.mu[n];\n}\n\
-    bool is_prime_sieve(int n){\n    if (n <= 2) return n == 2;\n    assert(n <= sieve.n_max());\n\
-    \    return sieve.factor[n] == n;\n}\n\nvector<pair<int,int>> prime_factorization_sieve(int\
-    \ n){\n    assert(1 <= n && n <= sieve.n_max());\n    vector<int> facts;\n   \
-    \ while (n > 1){\n        int p = sieve.factor[n];\n        facts.push_back(p);\n\
-    \        n /= p;\n    }\n    vector<pair<int,int>> pes;\n    int siz = facts.size();\n\
-    \    for (int l = 0, r = 0; l < siz; l = r){\n        while (r < siz && facts[r]\
-    \ == facts[l]) r++;\n        pes.emplace_back(facts[l],r-l);\n    }\n    return\
-    \ pes;\n}\n\nvector<int> divisor_enumeration_sieve(int n){\n    auto pes = prime_factorization_sieve(n);\n\
-    \    vector<int> divs = {1};\n    for (auto [p, e] : pes){\n        vector<int>\
-    \ nxt; nxt.reserve(divs.size() * (e+1));\n        for (auto x : divs){\n     \
-    \       for (int tt = 0; tt <= e; tt++){\n                nxt.push_back(x);\n\
-    \                x *= p;\n            }\n        }\n        swap(divs,nxt);\n\
-    \    }\n    return divs;\n}\n\n} // namespace noya2\n#line 4 \"math/lcm_convolution.hpp\"\
-    \n\nnamespace noya2 {\n\ntemplate <typename T>\nvector<T> divisor_zeta_transform(const\
-    \ vector<T> &f){\n    int n = f.size() - 1;\n    sieve.request(n);\n    auto F\
-    \ = f;\n    for (const auto &p : sieve.primes){\n        if (n < p) break;\n \
-    \       for (int i = 1; i * p <= n; i++) F[i * p] += F[i];\n    }\n    return\
-    \ F;\n}\n\ntemplate <typename  T>\nvector<T> divisor_mobius_transform(const vector<T>\
-    \ &F){\n    int n = F.size() - 1;\n    sieve.request(n);\n    auto f = F;\n  \
-    \  for (const auto &p : sieve.primes){\n        if (n < p) break;\n        for\
-    \ (int i = n / p; i >= 1; i--) f[i * p] -= f[i];\n    }\n    return f;\n}\n\n\
-    template <typename T>\nvector<T> lcm_convolution(const vector<T> &a, const vector<T>\
-    \ &b){\n    assert(a.size() == b.size());\n    int n = a.size();\n    auto ra\
-    \ = divisor_zeta_transform(a);\n    auto rb = divisor_zeta_transform(b);\n   \
-    \ for (int i = 0; i < n; i++) ra[i] *= rb[i];\n    return divisor_mobius_transform(ra);\n\
-    }\n\n} // namespace noya2\n#line 2 \"utility/modint.hpp\"\n\n#line 4 \"utility/modint.hpp\"\
-    \n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\nnamespace noya2\
-    \ {\n\nconstexpr long long safe_mod(long long x, long long m) {\n    x %= m;\n\
-    \    if (x < 0) x += m;\n    return x;\n}\n\nconstexpr long long pow_mod_constexpr(long\
-    \ long x, long long n, int m) {\n    if (m == 1) return 0;\n    unsigned int _m\
-    \ = (unsigned int)(m);\n    unsigned long long r = 1;\n    unsigned long long\
-    \ y = safe_mod(x, m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n\
-    \        y = (y * y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr\
-    \ bool is_prime_constexpr(int n) {\n    if (n <= 1) return false;\n    if (n ==\
-    \ 2 || n == 7 || n == 61) return true;\n    if (n % 2 == 0) return false;\n  \
-    \  long long d = n - 1;\n    while (d % 2 == 0) d /= 2;\n    constexpr long long\
-    \ bases[3] = {2, 7, 61};\n    for (long long a : bases) {\n        long long t\
-    \ = d;\n        long long y = pow_mod_constexpr(a, t, n);\n        while (t !=\
-    \ n - 1 && y != 1 && y != n - 1) {\n            y = y * y % n;\n            t\
-    \ <<= 1;\n        }\n        if (y != n - 1 && t % 2 == 0) {\n            return\
-    \ false;\n        }\n    }\n    return true;\n}\ntemplate <int n> constexpr bool\
-    \ is_prime_flag = is_prime_constexpr(n);\n\nconstexpr std::pair<long long, long\
-    \ long> inv_gcd(long long a, long long b) {\n    a = safe_mod(a, b);\n    if (a\
-    \ == 0) return {b, 0};\n    long long s = b, t = a;\n    long long m0 = 0, m1\
-    \ = 1;\n    while (t) {\n        long long u = s / t;\n        s -= t * u;\n \
-    \       m0 -= m1 * u; \n        auto tmp = s;\n        s = t;\n        t = tmp;\n\
-    \        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n    }\n    if (m0 < 0)\
-    \ m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int primitive_root_constexpr(int\
-    \ m) {\n    if (m == 2) return 1;\n    if (m == 167772161) return 3;\n    if (m\
-    \ == 469762049) return 3;\n    if (m == 754974721) return 11;\n    if (m == 998244353)\
-    \ return 3;\n    int divs[20] = {};\n    divs[0] = 2;\n    int cnt = 1;\n    int\
-    \ x = (m - 1) / 2;\n    while (x % 2 == 0) x /= 2;\n    for (int i = 3; (long\
-    \ long)(i)*i <= x; i += 2) {\n        if (x % i == 0) {\n            divs[cnt++]\
-    \ = i;\n            while (x % i == 0) {\n                x /= i;\n          \
-    \  }\n        }\n    }\n    if (x > 1) {\n        divs[cnt++] = x;\n    }\n  \
-    \  for (int g = 2;; g++) {\n        bool ok = true;\n        for (int i = 0; i\
-    \ < cnt; i++) {\n            if (pow_mod_constexpr(g, (m - 1) / divs[i], m) ==\
-    \ 1) {\n                ok = false;\n                break;\n            }\n \
-    \       }\n        if (ok) return g;\n    }\n}\ntemplate <int m> constexpr int\
-    \ primitive_root_flag = primitive_root_constexpr(m);\n\n} // namespace noya2\n\
-    #line 6 \"utility/modint.hpp\"\n\nnamespace noya2{\n\nstruct barrett {\n    unsigned\
-    \ int _m;\n    unsigned long long im;\n    explicit barrett(unsigned int m) :\
-    \ _m(m), im((unsigned long long)(-1) / m + 1) {}\n    unsigned int umod() const\
-    \ { return _m; }\n    unsigned int mul(unsigned int a, unsigned int b) const {\n\
-    \        unsigned long long z = a;\n        z *= b;\n        unsigned long long\
-    \ x = (unsigned long long)((__uint128_t(z) * im) >> 64);\n        unsigned int\
-    \ v = (unsigned int)(z - x * _m);\n        if (_m <= v) v += _m;\n        return\
-    \ v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint {\n    using mint =\
-    \ static_modint;\n  public:\n    static constexpr int mod() { return m; }\n  \
-    \  static mint raw(int v) {\n        mint x;\n        x._v = v;\n        return\
-    \ x;\n    }\n    constexpr static_modint() : _v(0) {}\n    template<std::signed_integral\
+    #line 5 \"math/lcm_convolution.hpp\"\n\n#line 2 \"math/sieve.hpp\"\n\n#line 6\
+    \ \"math/sieve.hpp\"\n\nnamespace noya2{\n\nstruct prime_sieve {\n    static std::vector<int>\
+    \ primes, factor, mu;\n    prime_sieve (int n = 1024){\n        build(n);\n  \
+    \  }\n    static void reserve(int n){\n        int sz = size();\n        if (sz\
+    \ == 0){\n            build(n);\n            return ;\n        }\n        if (n\
+    \ <= sz) return ;\n        while (sz < n) sz <<= 1;\n        build(sz);\n    }\n\
+    \    // n in [1, size()] is available\n    static int size(){\n        return\
+    \ (int)factor.size() - 1;\n    }\n  private:\n    static void build(int n){\n\
+    \        primes.clear();\n        factor.assign(n + 1, 0);\n        mu.assign(n\
+    \ + 1, 1);\n        for (int x = 2; x <= n; x++){\n            if (factor[x] ==\
+    \ 0){\n                primes.emplace_back(x);\n                factor[x] = x;\n\
+    \                mu[x] = -1;\n            }\n            for (int p : primes){\n\
+    \                if (x * p > n || p > factor[x]) break;\n                factor[x\
+    \ * p] = p;\n                mu[x * p] = (p == factor[x] ? 0 : -mu[x]);\n    \
+    \        }\n        }\n    }\n} sieve;\nstd::vector<int> prime_sieve::primes;\n\
+    std::vector<int> prime_sieve::factor;\nstd::vector<int> prime_sieve::mu;\n\nvoid\
+    \ reserve_sieve(int n){\n    sieve.reserve(n);\n}\n\nint mobius_sieve(int n){\n\
+    \    assert(1 <= n && n <= sieve.size());\n    return sieve.mu[n];\n}\n\nbool\
+    \ is_prime_sieve(int n){\n    if (n <= 2) return n == 2;\n    assert(n <= sieve.size());\n\
+    \    return sieve.factor[n] == n;\n}\n\n// pair(prime, exponent)\nstd::vector<std::pair<int,\
+    \ int>> factorize_sieve(int n){\n    assert(1 <= n && n <= sieve.size());\n  \
+    \  std::vector<std::pair<int, int>> ret;\n    int pre = 0;\n    while (n > 1){\n\
+    \        int p = sieve.factor[n];\n        if (pre != p){\n            ret.emplace_back(p,\
+    \ 1);\n        }\n        else {\n            ret.back().second += 1;\n      \
+    \  }\n        pre = p;\n        n /= p;\n    }\n    return ret;\n}\n\nstd::vector<int>\
+    \ divisors_sieve(int n){\n    assert(1 <= n && n <= sieve.size());\n    std::vector<int>\
+    \ ret = {1};\n    int pre = 0, w = 1;\n    while (n > 1){\n        int p = sieve.factor[n];\n\
+    \        int sz = ret.size();\n        if (pre != p){\n            w = ret.size();\n\
+    \        }\n        ret.reserve(sz + w);\n        for (int i = 0; i < w; i++){\n\
+    \            ret.emplace_back(ret[sz - w + i] * p);\n        }\n        pre =\
+    \ p;\n        n /= p;\n    }\n    return ret;\n}\n\n} // namespace noya2\n#line\
+    \ 7 \"math/lcm_convolution.hpp\"\n\nnamespace noya2 {\n\ntemplate <typename T>\n\
+    std::vector<T> divisor_zeta_transform(const std::vector<T> &f){\n    int n = f.size()\
+    \ - 1;\n    reserve_sieve(n);\n    auto F = f;\n    for (const auto &p : sieve.primes){\n\
+    \        if (n < p) break;\n        for (int i = 1; i * p <= n; i++) F[i * p]\
+    \ += F[i];\n    }\n    return F;\n}\n\ntemplate <typename  T>\nstd::vector<T>\
+    \ divisor_mobius_transform(const std::vector<T> &F){\n    int n = F.size() - 1;\n\
+    \    reserve_sieve(n);\n    auto f = F;\n    for (const auto &p : sieve.primes){\n\
+    \        if (n < p) break;\n        for (int i = n / p; i >= 1; i--) f[i * p]\
+    \ -= f[i];\n    }\n    return f;\n}\n\ntemplate <typename T>\nstd::vector<T> lcm_convolution(const\
+    \ std::vector<T> &a, const std::vector<T> &b){\n    assert(a.size() == b.size());\n\
+    \    int n = a.size();\n    auto ra = divisor_zeta_transform(a);\n    auto rb\
+    \ = divisor_zeta_transform(b);\n    for (int i = 0; i < n; i++) ra[i] *= rb[i];\n\
+    \    return divisor_mobius_transform(ra);\n}\n\n} // namespace noya2\n#line 2\
+    \ \"utility/modint.hpp\"\n\n#line 4 \"utility/modint.hpp\"\n\n#line 2 \"math/prime.hpp\"\
+    \n\n#line 4 \"math/prime.hpp\"\nnamespace noya2 {\n\nconstexpr long long safe_mod(long\
+    \ long x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n\
+    }\n\nconstexpr long long pow_mod_constexpr(long long x, long long n, int m) {\n\
+    \    if (m == 1) return 0;\n    unsigned int _m = (unsigned int)(m);\n    unsigned\
+    \ long long r = 1;\n    unsigned long long y = safe_mod(x, m);\n    while (n)\
+    \ {\n        if (n & 1) r = (r * y) % _m;\n        y = (y * y) % _m;\n       \
+    \ n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int n)\
+    \ {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
+    \ true;\n    if (n % 2 == 0) return false;\n    long long d = n - 1;\n    while\
+    \ (d % 2 == 0) d /= 2;\n    constexpr long long bases[3] = {2, 7, 61};\n    for\
+    \ (long long a : bases) {\n        long long t = d;\n        long long y = pow_mod_constexpr(a,\
+    \ t, n);\n        while (t != n - 1 && y != 1 && y != n - 1) {\n            y\
+    \ = y * y % n;\n            t <<= 1;\n        }\n        if (y != n - 1 && t %\
+    \ 2 == 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\
+    template <int n> constexpr bool is_prime_flag = is_prime_constexpr(n);\n\nconstexpr\
+    \ std::pair<long long, long long> inv_gcd(long long a, long long b) {\n    a =\
+    \ safe_mod(a, b);\n    if (a == 0) return {b, 0};\n    long long s = b, t = a;\n\
+    \    long long m0 = 0, m1 = 1;\n    while (t) {\n        long long u = s / t;\n\
+    \        s -= t * u;\n        m0 -= m1 * u; \n        auto tmp = s;\n        s\
+    \ = t;\n        t = tmp;\n        tmp = m0;\n        m0 = m1;\n        m1 = tmp;\n\
+    \    }\n    if (m0 < 0) m0 += b / s;\n    return {s, m0};\n}\n\nconstexpr int\
+    \ primitive_root_constexpr(int m) {\n    if (m == 2) return 1;\n    if (m == 167772161)\
+    \ return 3;\n    if (m == 469762049) return 3;\n    if (m == 754974721) return\
+    \ 11;\n    if (m == 998244353) return 3;\n    int divs[20] = {};\n    divs[0]\
+    \ = 2;\n    int cnt = 1;\n    int x = (m - 1) / 2;\n    while (x % 2 == 0) x /=\
+    \ 2;\n    for (int i = 3; (long long)(i)*i <= x; i += 2) {\n        if (x % i\
+    \ == 0) {\n            divs[cnt++] = i;\n            while (x % i == 0) {\n  \
+    \              x /= i;\n            }\n        }\n    }\n    if (x > 1) {\n  \
+    \      divs[cnt++] = x;\n    }\n    for (int g = 2;; g++) {\n        bool ok =\
+    \ true;\n        for (int i = 0; i < cnt; i++) {\n            if (pow_mod_constexpr(g,\
+    \ (m - 1) / divs[i], m) == 1) {\n                ok = false;\n               \
+    \ break;\n            }\n        }\n        if (ok) return g;\n    }\n}\ntemplate\
+    \ <int m> constexpr int primitive_root_flag = primitive_root_constexpr(m);\n\n\
+    } // namespace noya2\n#line 6 \"utility/modint.hpp\"\n\nnamespace noya2{\n\nstruct\
+    \ barrett {\n    unsigned int _m;\n    unsigned long long im;\n    explicit barrett(unsigned\
+    \ int m) : _m(m), im((unsigned long long)(-1) / m + 1) {}\n    unsigned int umod()\
+    \ const { return _m; }\n    unsigned int mul(unsigned int a, unsigned int b) const\
+    \ {\n        unsigned long long z = a;\n        z *= b;\n        unsigned long\
+    \ long x = (unsigned long long)((__uint128_t(z) * im) >> 64);\n        unsigned\
+    \ int v = (unsigned int)(z - x * _m);\n        if (_m <= v) v += _m;\n       \
+    \ return v;\n    }\n};\n\ntemplate <int m>\nstruct static_modint {\n    using\
+    \ mint = static_modint;\n  public:\n    static constexpr int mod() { return m;\
+    \ }\n    static mint raw(int v) {\n        mint x;\n        x._v = v;\n      \
+    \  return x;\n    }\n    constexpr static_modint() : _v(0) {}\n    template<std::signed_integral\
     \ T>\n    constexpr static_modint(T v){\n        long long x = (long long)(v %\
     \ (long long)(umod()));\n        if (x < 0) x += umod();\n        _v = (unsigned\
     \ int)(x);\n    }\n    template<std::unsigned_integral T>\n    constexpr static_modint(T\
@@ -280,7 +285,7 @@ data:
   isVerificationFile: true
   path: test/math/Lcm_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2025-02-26 00:46:12+09:00'
+  timestamp: '2025-08-30 19:37:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/Lcm_Convolution.test.cpp

@@ -139,9 +139,9 @@ data:
   timestamp: '2025-04-26 02:07:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/BitwiseXorConvolution.test.cpp
-  - test/math/SubsetConvolution.test.cpp
   - test/math/BitwiseAndConvolution.test.cpp
+  - test/math/SubsetConvolution.test.cpp
+  - test/math/BitwiseXorConvolution.test.cpp
 documentation_of: math/bitwise_convolution.hpp
 layout: document
 redirect_from:
