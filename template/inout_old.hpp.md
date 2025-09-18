@@ -253,6 +253,9 @@ data:
     path: test/misc/StaticRangeModeQuery.test.cpp
     title: test/misc/StaticRangeModeQuery.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/string/AhoCorasick.test.cpp
+    title: test/string/AhoCorasick.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/string/Eertree.test.cpp
     title: test/string/Eertree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -421,6 +424,7 @@ data:
   - test/graph/CycleDetectionDirected.test.cpp
   - test/graph/Shortest_Path2.test.cpp
   - test/string/RunEnumerate.test.cpp
+  - test/string/AhoCorasick.test.cpp
   - test/string/Z_Algorithm.test.cpp
   - test/string/Eertree.test.cpp
   - test/string/SuffixArray.test.cpp

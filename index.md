@@ -268,7 +268,7 @@ data:
       title: misc/timer.hpp
   - name: string
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: string/aho_corasick.hpp
       title: string/aho_corasick.hpp
     - icon: ':warning:'
@@ -534,6 +534,9 @@ data:
       title: test/misc/StaticRangeModeQuery.test.cpp
   - name: test/string
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/string/AhoCorasick.test.cpp
+      title: test/string/AhoCorasick.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/string/Eertree.test.cpp
       title: test/string/Eertree.test.cpp

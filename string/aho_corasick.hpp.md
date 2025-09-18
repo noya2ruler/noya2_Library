@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/string/AhoCorasick.test.cpp
+    title: test/string/AhoCorasick.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/aho_corasick.hpp\"\n\n#include <vector>\n#include\
@@ -69,8 +72,9 @@ data:
   path: string/aho_corasick.hpp
   requiredBy: []
   timestamp: '2025-09-18 15:38:36+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/string/AhoCorasick.test.cpp
 documentation_of: string/aho_corasick.hpp
 layout: document
 redirect_from:
