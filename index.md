@@ -269,6 +269,9 @@ data:
   - name: string
     pages:
     - icon: ':warning:'
+      path: string/aho_corasick.hpp
+      title: string/aho_corasick.hpp
+    - icon: ':warning:'
       path: string/dynamic_rolling_hash.hpp
       title: string/dynamic_rolling_hash.hpp
     - icon: ':heavy_check_mark:'
