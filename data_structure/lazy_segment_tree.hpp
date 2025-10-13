@@ -1,6 +1,5 @@
 #pragma once
 
-#include"../template/template.hpp"
 
 namespace noya2{
 
