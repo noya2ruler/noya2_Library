@@ -86,8 +86,8 @@ data:
   timestamp: '2025-04-29 17:55:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Unionfind.test.cpp
   - test/data_structure/RangeParallelUnionfind.test.cpp
+  - test/data_structure/Unionfind.test.cpp
   - test/geometry/aoj1198.test.cpp
 documentation_of: data_structure/dsu.hpp
 layout: document

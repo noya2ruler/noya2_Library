@@ -87,40 +87,40 @@ data:
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
     using pli = pair<ll,int>;\n\nnamespace noya2{\n\n/*\u3000~ (. _________ . /)\u3000\
     */\n\n}\n\nusing namespace noya2;\n\n\n#line 2 \"data_structure/lazy_segment_tree.hpp\"\
-    \n\n#line 4 \"data_structure/lazy_segment_tree.hpp\"\n\nnamespace noya2{\n\ntemplate\
-    \ <class S, S (*op)(S, S), S (*e)(), class F, S (*mapping)(F, S), F (*composition)(F,\
-    \ F), F (*id)()>\nstruct lazy_segtree {\n  public:\n    lazy_segtree() : lazy_segtree(0)\
-    \ {}\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e())) {}\n    lazy_segtree(const\
-    \ std::vector<S>& v) : _n(int(v.size())) {\n        log = 0;\n        size = 1;\n\
-    \        while (size < _n) size <<= 1, log++;\n        d = std::vector<S>(2 *\
-    \ size, e());\n        lz = std::vector<F>(size, id());\n        for (int i =\
-    \ 0; i < _n; i++) d[size + i] = v[i];\n        for (int i = size - 1; i >= 1;\
-    \ i--) {\n            update(i);\n        }\n    }\n    void set(int p, S x) {\n\
-    \        assert(0 <= p && p < _n);\n        p += size;\n        for (int i = log;\
-    \ i >= 1; i--) push(p >> i);\n        d[p] = x;\n        for (int i = 1; i <=\
-    \ log; i++) update(p >> i);\n    }\n    S get(int p) {\n        assert(0 <= p\
-    \ && p < _n);\n        p += size;\n        for (int i = log; i >= 1; i--) push(p\
-    \ >> i);\n        return d[p];\n    }\n    S prod(int l, int r) {\n        assert(0\
-    \ <= l && l <= r && r <= _n);\n        if (l == r) return e();\n        l += size,\
-    \ r += size;\n\n        for (int i = log; i >= 1; i--) {\n            if (((l\
-    \ >> i) << i) != l) push(l >> i);\n            if (((r >> i) << i) != r) push(r\
-    \ >> i);\n        }\n\n        S sml = e(), smr = e();\n        while (l < r)\
-    \ {\n            if (l & 1) sml = op(sml, d[l++]);\n            if (r & 1) smr\
-    \ = op(d[--r], smr);\n            l >>= 1;\n            r >>= 1;\n        }\n\
-    \        return op(sml, smr);\n    }\n    S all_prod() { return d[1]; }\n    void\
-    \ apply(int p, F f) {\n        assert(0 <= p && p < _n);\n        p += size;\n\
-    \        for (int i = log; i >= 1; i--) push(p >> i);\n        d[p] = mapping(f,\
-    \ d[p]);\n        for (int i = 1; i <= log; i++) update(p >> i);\n    }\n    void\
-    \ apply(int l, int r, F f) {\n        assert(0 <= l && l <= r && r <= _n);\n \
-    \       if (l == r) return;\n        l += size, r += size;\n\n        for (int\
-    \ i = log; i >= 1; i--) {\n            if (((l >> i) << i) != l) push(l >> i);\n\
-    \            if (((r >> i) << i) != r) push((r - 1) >> i);\n        }\n      \
-    \  {\n            int l2 = l, r2 = r;\n            while (l < r) {\n         \
-    \       if (l & 1) all_apply(l++, f);\n                if (r & 1) all_apply(--r,\
-    \ f);\n                l >>= 1;\n                r >>= 1;\n            }\n   \
-    \         l = l2, r = r2;\n        }\n        for (int i = 1; i <= log; i++) {\n\
-    \            if (((l >> i) << i) != l) update(l >> i);\n            if (((r >>\
-    \ i) << i) != r) update((r - 1) >> i);\n        }\n    }\n    template <bool (*g)(S)>\
+    \n\n\nnamespace noya2{\n\ntemplate <class S, S (*op)(S, S), S (*e)(), class F,\
+    \ S (*mapping)(F, S), F (*composition)(F, F), F (*id)()>\nstruct lazy_segtree\
+    \ {\n  public:\n    lazy_segtree() : lazy_segtree(0) {}\n    lazy_segtree(int\
+    \ n) : lazy_segtree(std::vector<S>(n, e())) {}\n    lazy_segtree(const std::vector<S>&\
+    \ v) : _n(int(v.size())) {\n        log = 0;\n        size = 1;\n        while\
+    \ (size < _n) size <<= 1, log++;\n        d = std::vector<S>(2 * size, e());\n\
+    \        lz = std::vector<F>(size, id());\n        for (int i = 0; i < _n; i++)\
+    \ d[size + i] = v[i];\n        for (int i = size - 1; i >= 1; i--) {\n       \
+    \     update(i);\n        }\n    }\n    void set(int p, S x) {\n        assert(0\
+    \ <= p && p < _n);\n        p += size;\n        for (int i = log; i >= 1; i--)\
+    \ push(p >> i);\n        d[p] = x;\n        for (int i = 1; i <= log; i++) update(p\
+    \ >> i);\n    }\n    S get(int p) {\n        assert(0 <= p && p < _n);\n     \
+    \   p += size;\n        for (int i = log; i >= 1; i--) push(p >> i);\n       \
+    \ return d[p];\n    }\n    S prod(int l, int r) {\n        assert(0 <= l && l\
+    \ <= r && r <= _n);\n        if (l == r) return e();\n        l += size, r +=\
+    \ size;\n\n        for (int i = log; i >= 1; i--) {\n            if (((l >> i)\
+    \ << i) != l) push(l >> i);\n            if (((r >> i) << i) != r) push(r >> i);\n\
+    \        }\n\n        S sml = e(), smr = e();\n        while (l < r) {\n     \
+    \       if (l & 1) sml = op(sml, d[l++]);\n            if (r & 1) smr = op(d[--r],\
+    \ smr);\n            l >>= 1;\n            r >>= 1;\n        }\n        return\
+    \ op(sml, smr);\n    }\n    S all_prod() { return d[1]; }\n    void apply(int\
+    \ p, F f) {\n        assert(0 <= p && p < _n);\n        p += size;\n        for\
+    \ (int i = log; i >= 1; i--) push(p >> i);\n        d[p] = mapping(f, d[p]);\n\
+    \        for (int i = 1; i <= log; i++) update(p >> i);\n    }\n    void apply(int\
+    \ l, int r, F f) {\n        assert(0 <= l && l <= r && r <= _n);\n        if (l\
+    \ == r) return;\n        l += size, r += size;\n\n        for (int i = log; i\
+    \ >= 1; i--) {\n            if (((l >> i) << i) != l) push(l >> i);\n        \
+    \    if (((r >> i) << i) != r) push((r - 1) >> i);\n        }\n        {\n   \
+    \         int l2 = l, r2 = r;\n            while (l < r) {\n                if\
+    \ (l & 1) all_apply(l++, f);\n                if (r & 1) all_apply(--r, f);\n\
+    \                l >>= 1;\n                r >>= 1;\n            }\n         \
+    \   l = l2, r = r2;\n        }\n        for (int i = 1; i <= log; i++) {\n   \
+    \         if (((l >> i) << i) != l) update(l >> i);\n            if (((r >> i)\
+    \ << i) != r) update((r - 1) >> i);\n        }\n    }\n    template <bool (*g)(S)>\
     \ int max_right(int l) {\n        return max_right(l, [](S x) { return g(x); });\n\
     \    }\n    template <class G> int max_right(int l, G g) {\n        assert(0 <=\
     \ l && l <= _n);\n        assert(g(e()));\n        if (l == _n) return _n;\n \
@@ -314,7 +314,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2025-02-26 00:46:12+09:00'
+  timestamp: '2025-10-13 19:03:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Affine_Range_Sum.test.cpp

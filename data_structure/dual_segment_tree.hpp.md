@@ -15,8 +15,8 @@ data:
     \ {\n  private:\n    void all_apply(int i, F f) {\n        d[i] = composition(f,\
     \ d[i]);\n    }\n\n    void push(int i) {\n        assert(i < sz);\n        all_apply(2\
     \ * i, d[i]);\n        all_apply(2 * i + 1, d[i]);\n        d[i] = id();\n   \
-    \ }\n\n  public:\n    dual_segtree(int _n) : dual_segtree(std::vector<F>(_n, id()))\
-    \ {}\n\n    dual_segtree(const std::vector<F> &a) : n(a.size()), sz(std::bit_ceil(a.size()))\
+    \ }\n\n  public:\n    dual_segtree () {}\n    dual_segtree(int _n) : dual_segtree(std::vector<F>(_n,\
+    \ id())) {}\n\n    dual_segtree(const std::vector<F> &a) : n(a.size()), sz(std::bit_ceil(a.size()))\
     \ {\n        lg2 = std::countr_zero<unsigned int>(sz);\n        d.assign(2 * sz,\
     \ id());\n        for (int i : std::views::iota(sz, sz + n)) {\n            d[i]\
     \ = a[i - sz];\n        }\n    }\n\n    void apply(int l, int r, F f) {\n    \
@@ -39,8 +39,8 @@ data:
     \ {\n  private:\n    void all_apply(int i, F f) {\n        d[i] = composition(f,\
     \ d[i]);\n    }\n\n    void push(int i) {\n        assert(i < sz);\n        all_apply(2\
     \ * i, d[i]);\n        all_apply(2 * i + 1, d[i]);\n        d[i] = id();\n   \
-    \ }\n\n  public:\n    dual_segtree(int _n) : dual_segtree(std::vector<F>(_n, id()))\
-    \ {}\n\n    dual_segtree(const std::vector<F> &a) : n(a.size()), sz(std::bit_ceil(a.size()))\
+    \ }\n\n  public:\n    dual_segtree () {}\n    dual_segtree(int _n) : dual_segtree(std::vector<F>(_n,\
+    \ id())) {}\n\n    dual_segtree(const std::vector<F> &a) : n(a.size()), sz(std::bit_ceil(a.size()))\
     \ {\n        lg2 = std::countr_zero<unsigned int>(sz);\n        d.assign(2 * sz,\
     \ id());\n        for (int i : std::views::iota(sz, sz + n)) {\n            d[i]\
     \ = a[i - sz];\n        }\n    }\n\n    void apply(int l, int r, F f) {\n    \
@@ -61,7 +61,7 @@ data:
   isVerificationFile: false
   path: data_structure/dual_segment_tree.hpp
   requiredBy: []
-  timestamp: '2025-06-07 00:45:25+09:00'
+  timestamp: '2025-10-13 19:03:35+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/dual_segment_tree.hpp
