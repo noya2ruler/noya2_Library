@@ -24,6 +24,7 @@ struct dual_segtree {
     }
 
   public:
+    dual_segtree () {}
     dual_segtree(int _n) : dual_segtree(std::vector<F>(_n, id())) {}
 
     dual_segtree(const std::vector<F> &a) : n(a.size()), sz(std::bit_ceil(a.size())) {
