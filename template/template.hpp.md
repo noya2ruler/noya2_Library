@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -74,9 +74,6 @@ data:
   - icon: ':warning:'
     path: misc/mex.hpp
     title: misc/mex.hpp
-  - icon: ':heavy_check_mark:'
-    path: misc/mo_algorithm.hpp
-    title: misc/mo_algorithm.hpp
   - icon: ':warning:'
     path: misc/random_tree.hpp
     title: misc/random_tree.hpp
@@ -86,7 +83,7 @@ data:
   - icon: ':warning:'
     path: string/rolling_hash.hpp
     title: string/rolling_hash.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/Mo_on_Tree.hpp
     title: Mo on Tree
   - icon: ':heavy_check_mark:'
@@ -297,12 +294,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"template/template.hpp\"\nusing namespace std;\n\n#include<bits/stdc++.h>\n\
@@ -385,7 +382,6 @@ data:
   - misc/random_tree.hpp
   - misc/inversion.hpp
   - misc/mex.hpp
-  - misc/mo_algorithm.hpp
   - misc/rng.hpp
   - misc/QMC.hpp
   - fps/relaxed_convolution.hpp
@@ -402,7 +398,7 @@ data:
   - geometry/base_ld.hpp
   - geometry/partition_by_circle.hpp
   timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/string/Eertree.test.cpp
   - test/string/Z_Algorithm.test.cpp

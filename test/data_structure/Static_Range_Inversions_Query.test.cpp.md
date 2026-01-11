@@ -10,22 +10,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: misc/concepts.hpp
     title: misc/concepts.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
   - icon: ':heavy_check_mark:'
     path: misc/monoids.hpp
     title: misc/monoids.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
@@ -126,33 +126,32 @@ data:
     \ {\n        assert(0 <= i && i <= n);\n        T ret = G::e();\n        for (int\
     \ x = i; x > 0; x -= x & -x) {\n            ret = G::op(ret,d[x]);\n        }\n\
     \        return ret;\n    }\n};\n\n} // namespace noya2\n#line 2 \"misc/mo_algorithm.hpp\"\
-    \n\n/*\n\nusage : https://nyaannyaan.github.io/library/modulo/multipoint-binomial-sum.hpp\n\
-    \n*/\n\n#line 10 \"misc/mo_algorithm.hpp\"\n\nnamespace noya2{\n\nstruct Mo {\n\
-    \    int width;\n    std::vector<int> left, right, order;\n\n    Mo(int N = 1,\
-    \ int Q = 1): order(Q) {\n        width = std::max<int>(1, 1.0 * N / std::max<double>(1.0,\
-    \ std::sqrt(Q * 2.0 / 3.0)));\n        std::iota(begin(order), end(order), 0);\n\
-    \        left.reserve(Q);\n        right.reserve(Q);\n    }\n\n    void insert(int\
-    \ l, int r) { /* [l, r) */\n        left.emplace_back(l);\n        right.emplace_back(r);\n\
-    \    }\n\n    template <typename AL, typename AR, typename DL, typename DR, typename\
-    \ REM>\n    void run(const AL& add_left, const AR& add_right, const DL& delete_left,\n\
-    \        const DR& delete_right, const REM& rem) {\n        assert(left.size()\
-    \ == order.size());\n        sort(begin(order), end(order), [&](int a, int b)\
-    \ {\n            int ablock = left[a] / width, bblock = left[b] / width;\n   \
-    \         if (ablock != bblock) return ablock < bblock;\n            if (ablock\
-    \ & 1) return right[a] < right[b];\n            return right[a] > right[b];\n\
-    \            });\n        int nl = 0, nr = 0;\n        for (auto idx : order)\
-    \ {\n            while (nl > left[idx]) add_left(--nl);\n            while (nr\
-    \ < right[idx]) add_right(nr++);\n            while (nl < left[idx]) delete_left(nl++);\n\
-    \            while (nr > right[idx]) delete_right(--nr);\n            rem(idx);\n\
-    \        }\n    }\n};\n\n}\n#line 2 \"misc/monoids.hpp\"\n\n#line 4 \"misc/monoids.hpp\"\
-    \n\nnamespace noya2{\n\ntemplate<typename T>\nstruct max_monoid {\n    using value_type\
-    \ = T;\n    static constexpr T op(const T &a, const T &b){ return max(a,b); }\n\
-    \    static constexpr T e(){ return std::numeric_limits<T>::min(); }\n    static\
-    \ constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename T>\nstruct\
-    \ min_monoid {\n    using value_type = T;\n    static constexpr T op(const T &a,\
-    \ const T &b){ return min(a,b); }\n    static constexpr T e(){ return std::numeric_limits<T>::max();\
-    \ }\n    static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename\
-    \ T>\nstruct plus_group {\n    using value_type = T;\n    static constexpr T op(const\
+    \n\n#line 8 \"misc/mo_algorithm.hpp\"\n\n/*\n\nusage : https://nyaannyaan.github.io/library/modulo/multipoint-binomial-sum.hpp\n\
+    \n*/\n\nnamespace noya2{\n\nstruct mo_algorithm {\n    int width;\n    std::vector<int>\
+    \ left, right, order;\n\n    mo_algorithm (int n = 1, int q = 1): order(q) {\n\
+    \        width = std::max<int>(1, 1.0 * n / std::max<double>(1.0, std::sqrt(q\
+    \ * 2.0 / 3.0)));\n        std::iota(begin(order), end(order), 0);\n        left.reserve(q);\n\
+    \        right.reserve(q);\n    }\n\n    void insert(int l, int r) { /* [l, r)\
+    \ */\n        left.emplace_back(l);\n        right.emplace_back(r);\n    }\n\n\
+    \    void run(auto add_left, auto add_right, auto delete_left, auto delete_right,\
+    \ auto rem){\n        assert(left.size() == order.size());\n        std::sort(begin(order),\
+    \ end(order), [&](int a, int b) {\n            int ablock = left[a] / width, bblock\
+    \ = left[b] / width;\n            if (ablock != bblock) return ablock < bblock;\n\
+    \            if (ablock & 1) return right[a] < right[b];\n            return right[a]\
+    \ > right[b];\n            });\n        int nl = 0, nr = 0;\n        for (auto\
+    \ idx : order) {\n            while (nl > left[idx]) add_left(--nl);\n       \
+    \     while (nr < right[idx]) add_right(nr++);\n            while (nl < left[idx])\
+    \ delete_left(nl++);\n            while (nr > right[idx]) delete_right(--nr);\n\
+    \            rem(idx);\n        }\n    }\n};\n\n} // namespace noya2\n#line 2\
+    \ \"misc/monoids.hpp\"\n\n#line 4 \"misc/monoids.hpp\"\n\nnamespace noya2{\n\n\
+    template<typename T>\nstruct max_monoid {\n    using value_type = T;\n    static\
+    \ constexpr T op(const T &a, const T &b){ return max(a,b); }\n    static constexpr\
+    \ T e(){ return std::numeric_limits<T>::min(); }\n    static constexpr T inv(const\
+    \ T &a){ return e(); }\n};\ntemplate<typename T>\nstruct min_monoid {\n    using\
+    \ value_type = T;\n    static constexpr T op(const T &a, const T &b){ return min(a,b);\
+    \ }\n    static constexpr T e(){ return std::numeric_limits<T>::max(); }\n   \
+    \ static constexpr T inv(const T &a){ return e(); }\n};\ntemplate<typename T>\n\
+    struct plus_group {\n    using value_type = T;\n    static constexpr T op(const\
     \ T &a, const T &b){ return a + b; }\n    static constexpr T e(){ return T(0);\
     \ }\n    static constexpr T inv(const T &a){ return -a; }\n};\ntemplate<typename\
     \ T>\nstruct xor_group {\n    using value_type = T;\n    static constexpr T op(const\
@@ -163,8 +162,8 @@ data:
     \ b);\n    }\n    static constexpr value_type e(){\n        return _e();\n   \
     \ }\n};\n  \n} // namespace noya2\n#line 8 \"test/data_structure/Static_Range_Inversions_Query.test.cpp\"\
     \n\nint main(){\n    int n, q; in(n,q);\n    vector<int> a(n); in(a);\n    compress<int>\
-    \ cp(a);\n    rep(i,n) a[i] = cp.id(a[i]);\n    Mo mo(n,q);\n    rep(i,q){\n \
-    \       int l, r; in(l,r);\n        mo.insert(l,r);\n    }\n    binary_indexed_tree<plus_group<ll>>\
+    \ cp(a);\n    rep(i,n) a[i] = cp.id(a[i]);\n    mo_algorithm mo(n,q);\n    rep(i,q){\n\
+    \        int l, r; in(l,r);\n        mo.insert(l,r);\n    }\n    binary_indexed_tree<plus_group<ll>>\
     \ bit(n);\n    ll cur = 0;\n    auto addl = [&](int i){\n        cur += bit.prod(0,a[i]);\n\
     \        bit.add(a[i],1);\n    };\n    auto addr = [&](int i){\n        cur +=\
     \ bit.prod(a[i]+1,n);\n        bit.add(a[i],1);\n    };\n    auto dell = [&](int\
@@ -178,15 +177,16 @@ data:
     \n#include\"../../data_structure/binary_indexed_tree.hpp\"\n#include\"../../misc/mo_algorithm.hpp\"\
     \n#include\"../../misc/monoids.hpp\"\n\nint main(){\n    int n, q; in(n,q);\n\
     \    vector<int> a(n); in(a);\n    compress<int> cp(a);\n    rep(i,n) a[i] = cp.id(a[i]);\n\
-    \    Mo mo(n,q);\n    rep(i,q){\n        int l, r; in(l,r);\n        mo.insert(l,r);\n\
-    \    }\n    binary_indexed_tree<plus_group<ll>> bit(n);\n    ll cur = 0;\n   \
-    \ auto addl = [&](int i){\n        cur += bit.prod(0,a[i]);\n        bit.add(a[i],1);\n\
-    \    };\n    auto addr = [&](int i){\n        cur += bit.prod(a[i]+1,n);\n   \
-    \     bit.add(a[i],1);\n    };\n    auto dell = [&](int i){\n        cur -= bit.prod(0,a[i]);\n\
-    \        bit.add(a[i],-1);\n    };\n    auto delr = [&](int i){\n        cur -=\
-    \ bit.prod(a[i]+1,n);\n        bit.add(a[i],-1);\n    };\n    vector<ll> ans(q,0);\n\
-    \    auto ask = [&](int i){\n        ans[i] = cur;\n    };\n    mo.run(addl,addr,dell,delr,ask);\n\
-    \    rep(i,q) out(ans[i]);\n}"
+    \    mo_algorithm mo(n,q);\n    rep(i,q){\n        int l, r; in(l,r);\n      \
+    \  mo.insert(l,r);\n    }\n    binary_indexed_tree<plus_group<ll>> bit(n);\n \
+    \   ll cur = 0;\n    auto addl = [&](int i){\n        cur += bit.prod(0,a[i]);\n\
+    \        bit.add(a[i],1);\n    };\n    auto addr = [&](int i){\n        cur +=\
+    \ bit.prod(a[i]+1,n);\n        bit.add(a[i],1);\n    };\n    auto dell = [&](int\
+    \ i){\n        cur -= bit.prod(0,a[i]);\n        bit.add(a[i],-1);\n    };\n \
+    \   auto delr = [&](int i){\n        cur -= bit.prod(a[i]+1,n);\n        bit.add(a[i],-1);\n\
+    \    };\n    vector<ll> ans(q,0);\n    auto ask = [&](int i){\n        ans[i]\
+    \ = cur;\n    };\n    mo.run(addl,addr,dell,delr,ask);\n    rep(i,q) out(ans[i]);\n\
+    }"
   dependsOn:
   - template/template.hpp
   - template/inout_old.hpp
@@ -200,7 +200,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Static_Range_Inversions_Query.test.cpp
   requiredBy: []
-  timestamp: '2025-05-23 14:05:49+09:00'
+  timestamp: '2026-01-11 17:16:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Static_Range_Inversions_Query.test.cpp

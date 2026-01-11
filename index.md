@@ -57,7 +57,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data_structure/rollback_dsu.hpp
       title: data_structure/rollback_dsu.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data_structure/segment_tree.hpp
       title: data_structure/segment_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -242,7 +242,7 @@ data:
     - icon: ':warning:'
       path: misc/mex.hpp
       title: misc/mex.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: misc/mo_algorithm.hpp
       title: misc/mo_algorithm.hpp
     - icon: ':heavy_check_mark:'
@@ -300,24 +300,24 @@ data:
       title: string/z_algorithm.hpp
   - name: template
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/const.hpp
       title: template/const.hpp
     - icon: ':warning:'
       path: template/inout.hpp
       title: template/inout.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/inout_old.hpp
       title: template/inout_old.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/template.hpp
       title: template/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template/utils.hpp
       title: template/utils.hpp
   - name: tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/Mo_on_Tree.hpp
       title: Mo on Tree
     - icon: ':heavy_check_mark:'
@@ -326,7 +326,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tree/centroid_decomposition.hpp
       title: tree/centroid_decomposition.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: tree/heavy_light_decomposition.hpp
       title: Heavy Light Decomposition
     - icon: ':heavy_check_mark:'
@@ -581,7 +581,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/tree/Vertex_Add_Path_Sum.test.cpp
       title: test/tree/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/aoj_0489.test.cpp
       title: test/tree/aoj_0489.test.cpp
 layout: toppage
