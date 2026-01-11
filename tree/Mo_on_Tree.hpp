@@ -24,7 +24,7 @@ struct MoTree_edge {
     }
     vector<int> in;
     vector<pair<int,T>> vals;
-    Mo mo;
+    mo_algorithm mo;
     void build(int q){
         int tnow = 0;
         auto dfs = [&](auto dfs, int v, int f) -> void {
@@ -80,7 +80,7 @@ struct MoTree_vertex {
     vector<int> in;
     vector<pair<int,T>> vals;
     vector<int> lcas;
-    Mo mo;
+    mo_algorithm mo;
     void build(int q){
         vals.reserve(2*n-2);
         lcas.reserve(q);

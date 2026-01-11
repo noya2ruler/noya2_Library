@@ -1,24 +1,28 @@
 #pragma once
 
+#include <vector>
+#include <algorithm>
+#include <functional>
+#include <cmath>
+#include <numeric>
+
 /*
 
 usage : https://nyaannyaan.github.io/library/modulo/multipoint-binomial-sum.hpp
 
 */
 
-#include"../template/template.hpp"
-
 namespace noya2{
 
-struct Mo {
+struct mo_algorithm {
     int width;
     std::vector<int> left, right, order;
 
-    Mo(int N = 1, int Q = 1): order(Q) {
-        width = std::max<int>(1, 1.0 * N / std::max<double>(1.0, std::sqrt(Q * 2.0 / 3.0)));
+    mo_algorithm (int n = 1, int q = 1): order(q) {
+        width = std::max<int>(1, 1.0 * n / std::max<double>(1.0, std::sqrt(q * 2.0 / 3.0)));
         std::iota(begin(order), end(order), 0);
-        left.reserve(Q);
-        right.reserve(Q);
+        left.reserve(q);
+        right.reserve(q);
     }
 
     void insert(int l, int r) { /* [l, r) */
@@ -26,11 +30,9 @@ struct Mo {
         right.emplace_back(r);
     }
 
-    template <typename AL, typename AR, typename DL, typename DR, typename REM>
-    void run(const AL& add_left, const AR& add_right, const DL& delete_left,
-        const DR& delete_right, const REM& rem) {
+    void run(auto add_left, auto add_right, auto delete_left, auto delete_right, auto rem){
         assert(left.size() == order.size());
-        sort(begin(order), end(order), [&](int a, int b) {
+        std::sort(begin(order), end(order), [&](int a, int b) {
             int ablock = left[a] / width, bblock = left[b] / width;
             if (ablock != bblock) return ablock < bblock;
             if (ablock & 1) return right[a] < right[b];
@@ -47,4 +49,4 @@ struct Mo {
     }
 };
 
-}
+} // namespace noya2

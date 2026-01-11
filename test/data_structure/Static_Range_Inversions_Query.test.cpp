@@ -11,7 +11,7 @@ int main(){
     vector<int> a(n); in(a);
     compress<int> cp(a);
     rep(i,n) a[i] = cp.id(a[i]);
-    Mo mo(n,q);
+    mo_algorithm mo(n,q);
     rep(i,q){
         int l, r; in(l,r);
         mo.insert(l,r);
