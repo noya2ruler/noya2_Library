@@ -39,7 +39,7 @@ struct MoTree_edge {
         };
         in.resize(n);
         dfs(dfs,0,-1);
-        mo = Mo(2*n-2,q);
+        mo = mo_algorithm(2*n-2,q);
     }
     void insert(int u, int v){
         u = in[u], v = in[v];
@@ -97,7 +97,7 @@ struct MoTree_vertex {
         };
         in.resize(n);
         dfs(dfs,0,-1);
-        mo = Mo(2*n-2,q);
+        mo = mo_algorithm(2*n-2,q);
     }
     
     void insert(int u, int v, int lca){
