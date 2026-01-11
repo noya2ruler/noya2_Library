@@ -69,6 +69,7 @@ struct hld_tree {
     template<int indexed = 1>
     void input_edges(){
         // using std::cin;
+        if (n == 1) return ;
         for (int i = 1; i < n; i++){
             int u, v; cin >> u >> v;
             u -= indexed;
@@ -349,6 +350,13 @@ struct hld_tree {
   private:
     // nxt[v] : parent of v, nxt[0] == -1
     void build_from_parents(){
+        if (n == 1){
+            down[0] = 0;
+            nxt[0] = -1;
+            sub[0] = 1;
+            tour[0] = 0;
+            return ;
+        }
         for (int u = n - 1; u >= 1; u--){
             int v = nxt[u];
             sub[v] += sub[u];
