@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#include <vector>\n\
@@ -48,13 +48,13 @@ data:
     \            cin >> nxt[u];\n            nxt[u] -= indexed;\n            down[u]\
     \ = -1;\n        }\n        build_from_parents();\n    }\n\n    // input n - 1\
     \ edges from cin\n    template<int indexed = 1>\n    void input_edges(){\n   \
-    \     // using std::cin;\n        for (int i = 1; i < n; i++){\n            int\
-    \ u, v; cin >> u >> v;\n            u -= indexed;\n            v -= indexed;\n\
-    \            down[u]++;\n            down[v]++;\n            nxt[u] ^= v;\n  \
-    \          nxt[v] ^= u;\n        }\n        build_from_edges();\n    }\n\n   \
-    \ void add_edge(int u, int v){\n        down[u]++;\n        down[v]++;\n     \
-    \   nxt[u] ^= v;\n        nxt[v] ^= u;\n        // use tour[0] as counter\n  \
-    \      if (++tour[0] == n - 1){\n            build_from_edges();\n        }\n\
+    \     // using std::cin;\n        if (n == 1) return ;\n        for (int i = 1;\
+    \ i < n; i++){\n            int u, v; cin >> u >> v;\n            u -= indexed;\n\
+    \            v -= indexed;\n            down[u]++;\n            down[v]++;\n \
+    \           nxt[u] ^= v;\n            nxt[v] ^= u;\n        }\n        build_from_edges();\n\
+    \    }\n\n    void add_edge(int u, int v){\n        down[u]++;\n        down[v]++;\n\
+    \        nxt[u] ^= v;\n        nxt[v] ^= u;\n        // use tour[0] as counter\n\
+    \        if (++tour[0] == n - 1){\n            build_from_edges();\n        }\n\
     \    }\n\n    size_t size() const {\n        return n;\n    }\n\n    // top vertex\
     \ of heavy path which contains v\n    int leader(int v) const {\n        return\
     \ nxt[v] < 0 ? v : nxt[v];\n    }\n\n    // level ancestor\n    // ret is ancestor\
@@ -150,8 +150,10 @@ data:
     \ update dp[g.parent(v)] by dp[v] }`\n    auto begin() const {\n        return\
     \ tour.begin();\n    }\n    auto end() const {\n        return tour.end();\n \
     \   }\n\n  private:\n    // nxt[v] : parent of v, nxt[0] == -1\n    void build_from_parents(){\n\
-    \        for (int u = n - 1; u >= 1; u--){\n            int v = nxt[u];\n    \
-    \        sub[v] += sub[u];\n            down[v] = std::max(down[v], sub[u]);\n\
+    \        if (n == 1){\n            down[0] = 0;\n            nxt[0] = -1;\n  \
+    \          sub[0] = 1;\n            tour[0] = 0;\n            return ;\n     \
+    \   }\n        for (int u = n - 1; u >= 1; u--){\n            int v = nxt[u];\n\
+    \            sub[v] += sub[u];\n            down[v] = std::max(down[v], sub[u]);\n\
     \        }\n        for (int u = n - 1; u >= 1; u--){\n            int v = nxt[u];\n\
     \            if (down[v] == sub[u]){\n                sub[u] = ~sub[u];\n    \
     \            down[v] = ~down[v];\n            }\n        }\n\n        sub[0] =\
@@ -218,13 +220,13 @@ data:
     \            cin >> nxt[u];\n            nxt[u] -= indexed;\n            down[u]\
     \ = -1;\n        }\n        build_from_parents();\n    }\n\n    // input n - 1\
     \ edges from cin\n    template<int indexed = 1>\n    void input_edges(){\n   \
-    \     // using std::cin;\n        for (int i = 1; i < n; i++){\n            int\
-    \ u, v; cin >> u >> v;\n            u -= indexed;\n            v -= indexed;\n\
-    \            down[u]++;\n            down[v]++;\n            nxt[u] ^= v;\n  \
-    \          nxt[v] ^= u;\n        }\n        build_from_edges();\n    }\n\n   \
-    \ void add_edge(int u, int v){\n        down[u]++;\n        down[v]++;\n     \
-    \   nxt[u] ^= v;\n        nxt[v] ^= u;\n        // use tour[0] as counter\n  \
-    \      if (++tour[0] == n - 1){\n            build_from_edges();\n        }\n\
+    \     // using std::cin;\n        if (n == 1) return ;\n        for (int i = 1;\
+    \ i < n; i++){\n            int u, v; cin >> u >> v;\n            u -= indexed;\n\
+    \            v -= indexed;\n            down[u]++;\n            down[v]++;\n \
+    \           nxt[u] ^= v;\n            nxt[v] ^= u;\n        }\n        build_from_edges();\n\
+    \    }\n\n    void add_edge(int u, int v){\n        down[u]++;\n        down[v]++;\n\
+    \        nxt[u] ^= v;\n        nxt[v] ^= u;\n        // use tour[0] as counter\n\
+    \        if (++tour[0] == n - 1){\n            build_from_edges();\n        }\n\
     \    }\n\n    size_t size() const {\n        return n;\n    }\n\n    // top vertex\
     \ of heavy path which contains v\n    int leader(int v) const {\n        return\
     \ nxt[v] < 0 ? v : nxt[v];\n    }\n\n    // level ancestor\n    // ret is ancestor\
@@ -320,8 +322,10 @@ data:
     \ update dp[g.parent(v)] by dp[v] }`\n    auto begin() const {\n        return\
     \ tour.begin();\n    }\n    auto end() const {\n        return tour.end();\n \
     \   }\n\n  private:\n    // nxt[v] : parent of v, nxt[0] == -1\n    void build_from_parents(){\n\
-    \        for (int u = n - 1; u >= 1; u--){\n            int v = nxt[u];\n    \
-    \        sub[v] += sub[u];\n            down[v] = std::max(down[v], sub[u]);\n\
+    \        if (n == 1){\n            down[0] = 0;\n            nxt[0] = -1;\n  \
+    \          sub[0] = 1;\n            tour[0] = 0;\n            return ;\n     \
+    \   }\n        for (int u = n - 1; u >= 1; u--){\n            int v = nxt[u];\n\
+    \            sub[v] += sub[u];\n            down[v] = std::max(down[v], sub[u]);\n\
     \        }\n        for (int u = n - 1; u >= 1; u--){\n            int v = nxt[u];\n\
     \            if (down[v] == sub[u]){\n                sub[u] = ~sub[u];\n    \
     \            down[v] = ~down[v];\n            }\n        }\n\n        sub[0] =\
@@ -368,8 +372,8 @@ data:
   isVerificationFile: false
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
-  timestamp: '2025-03-27 20:47:10+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2026-01-11 17:21:17+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/aoj_0489.test.cpp
   - test/tree/Jump_on_Tree.test.cpp

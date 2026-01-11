@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/Mo_on_Tree.hpp
     title: Mo on Tree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Inversions_Query.test.cpp
     title: test/data_structure/Static_Range_Inversions_Query.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://nyaannyaan.github.io/library/modulo/multipoint-binomial-sum.hpp
@@ -60,7 +60,7 @@ data:
   requiredBy:
   - tree/Mo_on_Tree.hpp
   timestamp: '2026-01-11 17:16:20+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Static_Range_Inversions_Query.test.cpp
   - test/tree/aoj_0489.test.cpp

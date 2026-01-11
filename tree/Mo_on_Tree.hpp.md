@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links:
     - https://atcoder.jp/contests/pakencamp-2022-day1/submissions/43052952
@@ -109,15 +109,16 @@ data:
     \ continue;\n                vals.emplace_back(u,w);\n                dfs(dfs,u,v);\n\
     \                vals.emplace_back(u,w);\n                tnow++;\n          \
     \  }\n        };\n        in.resize(n);\n        dfs(dfs,0,-1);\n        mo =\
-    \ Mo(2*n-2,q);\n    }\n    void insert(int u, int v){\n        u = in[u], v =\
-    \ in[v];\n        if (u > v) swap(u,v);\n        mo.insert(u,v);\n    }\n    template<typename\
-    \ ADD, typename DEL, typename REM>\n    void run(const ADD &add, const DEL &del,\
-    \ const REM &rem){\n        vector<bool> contain(n,false);\n        auto change\
-    \ = [&](int i){\n            int id = vals[i].first;\n            if (contain[id]){\n\
-    \                del(vals[i].second);\n                contain[id] = false;\n\
-    \            }\n            else {\n                add(vals[i].second);\n   \
-    \             contain[id] = true;\n            }\n        };\n        mo.run(change,change,change,change,rem);\n\
-    \    }\n};\n\n\ntemplate<class T>\nstruct MoTree_vertex {\n    int n;\n    vector<vector<int>>\
+    \ mo_algorithm(2*n-2,q);\n    }\n    void insert(int u, int v){\n        u = in[u],\
+    \ v = in[v];\n        if (u > v) swap(u,v);\n        mo.insert(u,v);\n    }\n\
+    \    template<typename ADD, typename DEL, typename REM>\n    void run(const ADD\
+    \ &add, const DEL &del, const REM &rem){\n        vector<bool> contain(n,false);\n\
+    \        auto change = [&](int i){\n            int id = vals[i].first;\n    \
+    \        if (contain[id]){\n                del(vals[i].second);\n           \
+    \     contain[id] = false;\n            }\n            else {\n              \
+    \  add(vals[i].second);\n                contain[id] = true;\n            }\n\
+    \        };\n        mo.run(change,change,change,change,rem);\n    }\n};\n\n\n\
+    template<class T>\nstruct MoTree_vertex {\n    int n;\n    vector<vector<int>>\
     \ es;\n    vector<T> b;\n    MoTree_vertex (int _n, vector<T> _b) : n(_n), b(_b)\
     \ {\n        es.resize(n);\n    }\n    void add_edge(int u, int v){\n        es[u].emplace_back(v);\n\
     \        es[v].emplace_back(u);\n    }\n    vector<int> in;\n    vector<pair<int,T>>\
@@ -128,8 +129,8 @@ data:
     \                vals.emplace_back(u,b[u]);\n                dfs(dfs,u,v);\n \
     \               vals.emplace_back(u,b[u]);\n                tnow++;\n        \
     \    }\n        };\n        in.resize(n);\n        dfs(dfs,0,-1);\n        mo\
-    \ = Mo(2*n-2,q);\n    }\n    \n    void insert(int u, int v, int lca){\n     \
-    \   u = in[u], v = in[v];\n        if (u > v) swap(u,v);\n        mo.insert(u,v);\n\
+    \ = mo_algorithm(2*n-2,q);\n    }\n    \n    void insert(int u, int v, int lca){\n\
+    \        u = in[u], v = in[v];\n        if (u > v) swap(u,v);\n        mo.insert(u,v);\n\
     \        lcas.push_back(lca);\n    }\n    template<typename ADD, typename DEL,\
     \ typename REM>\n    void run(const ADD &add, const DEL &del, const REM &rem){\n\
     \        vector<bool> contain(n,false);\n        auto change = [&](int i){\n \
@@ -152,15 +153,16 @@ data:
     \ continue;\n                vals.emplace_back(u,w);\n                dfs(dfs,u,v);\n\
     \                vals.emplace_back(u,w);\n                tnow++;\n          \
     \  }\n        };\n        in.resize(n);\n        dfs(dfs,0,-1);\n        mo =\
-    \ Mo(2*n-2,q);\n    }\n    void insert(int u, int v){\n        u = in[u], v =\
-    \ in[v];\n        if (u > v) swap(u,v);\n        mo.insert(u,v);\n    }\n    template<typename\
-    \ ADD, typename DEL, typename REM>\n    void run(const ADD &add, const DEL &del,\
-    \ const REM &rem){\n        vector<bool> contain(n,false);\n        auto change\
-    \ = [&](int i){\n            int id = vals[i].first;\n            if (contain[id]){\n\
-    \                del(vals[i].second);\n                contain[id] = false;\n\
-    \            }\n            else {\n                add(vals[i].second);\n   \
-    \             contain[id] = true;\n            }\n        };\n        mo.run(change,change,change,change,rem);\n\
-    \    }\n};\n\n\ntemplate<class T>\nstruct MoTree_vertex {\n    int n;\n    vector<vector<int>>\
+    \ mo_algorithm(2*n-2,q);\n    }\n    void insert(int u, int v){\n        u = in[u],\
+    \ v = in[v];\n        if (u > v) swap(u,v);\n        mo.insert(u,v);\n    }\n\
+    \    template<typename ADD, typename DEL, typename REM>\n    void run(const ADD\
+    \ &add, const DEL &del, const REM &rem){\n        vector<bool> contain(n,false);\n\
+    \        auto change = [&](int i){\n            int id = vals[i].first;\n    \
+    \        if (contain[id]){\n                del(vals[i].second);\n           \
+    \     contain[id] = false;\n            }\n            else {\n              \
+    \  add(vals[i].second);\n                contain[id] = true;\n            }\n\
+    \        };\n        mo.run(change,change,change,change,rem);\n    }\n};\n\n\n\
+    template<class T>\nstruct MoTree_vertex {\n    int n;\n    vector<vector<int>>\
     \ es;\n    vector<T> b;\n    MoTree_vertex (int _n, vector<T> _b) : n(_n), b(_b)\
     \ {\n        es.resize(n);\n    }\n    void add_edge(int u, int v){\n        es[u].emplace_back(v);\n\
     \        es[v].emplace_back(u);\n    }\n    vector<int> in;\n    vector<pair<int,T>>\
@@ -171,8 +173,8 @@ data:
     \                vals.emplace_back(u,b[u]);\n                dfs(dfs,u,v);\n \
     \               vals.emplace_back(u,b[u]);\n                tnow++;\n        \
     \    }\n        };\n        in.resize(n);\n        dfs(dfs,0,-1);\n        mo\
-    \ = Mo(2*n-2,q);\n    }\n    \n    void insert(int u, int v, int lca){\n     \
-    \   u = in[u], v = in[v];\n        if (u > v) swap(u,v);\n        mo.insert(u,v);\n\
+    \ = mo_algorithm(2*n-2,q);\n    }\n    \n    void insert(int u, int v, int lca){\n\
+    \        u = in[u], v = in[v];\n        if (u > v) swap(u,v);\n        mo.insert(u,v);\n\
     \        lcas.push_back(lca);\n    }\n    template<typename ADD, typename DEL,\
     \ typename REM>\n    void run(const ADD &add, const DEL &del, const REM &rem){\n\
     \        vector<bool> contain(n,false);\n        auto change = [&](int i){\n \
@@ -192,8 +194,8 @@ data:
   isVerificationFile: false
   path: tree/Mo_on_Tree.hpp
   requiredBy: []
-  timestamp: '2026-01-11 17:16:20+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2026-01-11 17:23:07+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/aoj_0489.test.cpp
 documentation_of: tree/Mo_on_Tree.hpp

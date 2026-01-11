@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/unweighted_type.hpp
     title: graph/unweighted_type.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
