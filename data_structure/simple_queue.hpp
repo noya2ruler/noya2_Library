@@ -12,6 +12,7 @@ struct simple_queue {
     int size() const { return int(payload.size()) - pos; }
     bool empty() const { return pos == int(payload.size()); }
     void push(const T& t) { payload.push_back(t); }
+    void emplace(auto ...vs) { payload.emplace_back(vs...); }
     T& front() { return payload[pos]; }
     void clear() {
         payload.clear();
