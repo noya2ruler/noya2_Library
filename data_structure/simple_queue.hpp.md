@@ -13,20 +13,22 @@ data:
     \ std::vector<T> payload;\n    int pos = 0;\n    void reserve(int n) { payload.reserve(n);\
     \ }\n    int size() const { return int(payload.size()) - pos; }\n    bool empty()\
     \ const { return pos == int(payload.size()); }\n    void push(const T& t) { payload.push_back(t);\
-    \ }\n    T& front() { return payload[pos]; }\n    void clear() {\n        payload.clear();\n\
-    \        pos = 0;\n    }\n    void pop() { pos++; }\n};\n\n} // namespace noya2::internal\n"
+    \ }\n    void emplace(auto ...vs) { payload.emplace_back(vs...); }\n    T& front()\
+    \ { return payload[pos]; }\n    void clear() {\n        payload.clear();\n   \
+    \     pos = 0;\n    }\n    void pop() { pos++; }\n};\n\n} // namespace noya2::internal\n"
   code: "#pragma once\n\n#include<vector>\n\nnamespace noya2::internal {\n\ntemplate\
     \ <class T>\nstruct simple_queue {\n    std::vector<T> payload;\n    int pos =\
     \ 0;\n    void reserve(int n) { payload.reserve(n); }\n    int size() const {\
     \ return int(payload.size()) - pos; }\n    bool empty() const { return pos ==\
     \ int(payload.size()); }\n    void push(const T& t) { payload.push_back(t); }\n\
-    \    T& front() { return payload[pos]; }\n    void clear() {\n        payload.clear();\n\
-    \        pos = 0;\n    }\n    void pop() { pos++; }\n};\n\n} // namespace noya2::internal"
+    \    void emplace(auto ...vs) { payload.emplace_back(vs...); }\n    T& front()\
+    \ { return payload[pos]; }\n    void clear() {\n        payload.clear();\n   \
+    \     pos = 0;\n    }\n    void pop() { pos++; }\n};\n\n} // namespace noya2::internal"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/simple_queue.hpp
   requiredBy: []
-  timestamp: '2024-04-03 14:15:27+09:00'
+  timestamp: '2026-02-01 00:54:25+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: data_structure/simple_queue.hpp
