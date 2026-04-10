@@ -150,8 +150,8 @@ data:
   timestamp: '2024-07-01 23:39:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/data_structure/Line_Add_Get_Min.test.cpp
   - test/data_structure/Segment_Add_Get_Min.test.cpp
+  - test/data_structure/Line_Add_Get_Min.test.cpp
 documentation_of: data_structure/li_chao_tree.hpp
 layout: document
 redirect_from:

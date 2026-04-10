@@ -55,8 +55,8 @@ data:
   isVerificationFile: false
   path: data_structure/rollback_dsu.hpp
   requiredBy:
-  - data_structure/rollback_bipartite_dsu.hpp
   - data_structure/offline_dynamic_connectivity.hpp
+  - data_structure/rollback_bipartite_dsu.hpp
   timestamp: '2025-06-07 18:37:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

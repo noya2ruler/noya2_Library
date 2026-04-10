@@ -51,8 +51,8 @@ data:
   timestamp: '2024-07-16 15:04:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/string/Z_Algorithm.test.cpp
   - test/string/RunEnumerate.test.cpp
+  - test/string/Z_Algorithm.test.cpp
 documentation_of: string/z_algorithm.hpp
 layout: document
 redirect_from:

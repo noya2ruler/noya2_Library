@@ -86,13 +86,13 @@ data:
   isVerificationFile: false
   path: math/sieve.hpp
   requiredBy:
-  - math/gcd_convolution.hpp
   - math/lcm_convolution.hpp
+  - math/gcd_convolution.hpp
   timestamp: '2025-08-30 19:37:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/math/Lcm_Convolution.test.cpp
   - test/math/Gcd_Convolution.test.cpp
+  - test/math/Lcm_Convolution.test.cpp
 documentation_of: math/sieve.hpp
 layout: document
 redirect_from:
