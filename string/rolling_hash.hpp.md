@@ -46,11 +46,12 @@ data:
     \ for (int i = nlen; i <= len; i++){\n            pow_base[i] = cal_mod(mul_mod(pow_base[i\
     \ - 1],BASE));\n        }\n    }\n    std::vector<ull> inner_hash;\n    template<typename\
     \ T>\n    void build(const std::vector<T> &s){\n        set_hash();\n        int\
-    \ n = s.size();\n        inner_hash.resize(n + 1);\n        inner_hash[0] = 0;\n\
-    \        for (int i = 0; i < n; i++){\n            inner_hash[i + 1] = cal_mod(mul_mod(inner_hash[i],\
-    \ BASE) + s[i]);\n        }\n    }\n};\nunsigned long long rolling_hash::BASE\
-    \ = 0;\nstd::vector<unsigned long long> rolling_hash::pow_base = {1};\nusing roriha\
-    \ = rolling_hash;\n\n} // namespace noya2\n"
+    \ n = s.size();\n        extend_pow_base(n);\n        inner_hash.resize(n + 1);\n\
+    \        inner_hash[0] = 0;\n        for (int i = 0; i < n; i++){\n          \
+    \  inner_hash[i + 1] = cal_mod(mul_mod(inner_hash[i], BASE) + s[i]);\n       \
+    \ }\n    }\n};\nunsigned long long rolling_hash::BASE = 0;\nstd::vector<unsigned\
+    \ long long> rolling_hash::pow_base = {1};\nusing roriha = rolling_hash;\n\n}\
+    \ // namespace noya2\n"
   code: "#pragma once\n\n#include<vector>\n#include<string>\n#include<cassert>\n#include<ranges>\n\
     #include<random>\n\nnamespace noya2 {\nstruct rolling_hash {\n    using ull =\
     \ unsigned long long;\n    rolling_hash(){}\n    rolling_hash(const std::string\
@@ -88,16 +89,17 @@ data:
     \ for (int i = nlen; i <= len; i++){\n            pow_base[i] = cal_mod(mul_mod(pow_base[i\
     \ - 1],BASE));\n        }\n    }\n    std::vector<ull> inner_hash;\n    template<typename\
     \ T>\n    void build(const std::vector<T> &s){\n        set_hash();\n        int\
-    \ n = s.size();\n        inner_hash.resize(n + 1);\n        inner_hash[0] = 0;\n\
-    \        for (int i = 0; i < n; i++){\n            inner_hash[i + 1] = cal_mod(mul_mod(inner_hash[i],\
-    \ BASE) + s[i]);\n        }\n    }\n};\nunsigned long long rolling_hash::BASE\
-    \ = 0;\nstd::vector<unsigned long long> rolling_hash::pow_base = {1};\nusing roriha\
-    \ = rolling_hash;\n\n} // namespace noya2"
+    \ n = s.size();\n        extend_pow_base(n);\n        inner_hash.resize(n + 1);\n\
+    \        inner_hash[0] = 0;\n        for (int i = 0; i < n; i++){\n          \
+    \  inner_hash[i + 1] = cal_mod(mul_mod(inner_hash[i], BASE) + s[i]);\n       \
+    \ }\n    }\n};\nunsigned long long rolling_hash::BASE = 0;\nstd::vector<unsigned\
+    \ long long> rolling_hash::pow_base = {1};\nusing roriha = rolling_hash;\n\n}\
+    \ // namespace noya2"
   dependsOn: []
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2026-04-10 20:49:51+09:00'
+  timestamp: '2026-04-22 14:52:50+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: string/rolling_hash.hpp
