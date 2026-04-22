@@ -90,6 +90,7 @@ struct rolling_hash {
     void build(const std::vector<T> &s){
         set_hash();
         int n = s.size();
+        extend_pow_base(n);
         inner_hash.resize(n + 1);
         inner_hash[0] = 0;
         for (int i = 0; i < n; i++){
