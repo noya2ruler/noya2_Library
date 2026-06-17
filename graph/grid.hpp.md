@@ -22,8 +22,8 @@ data:
     \ | std::views::filter([this](std::pair<int,int> xy){\n            return operator()(xy.first,\
     \ xy.second);\n        });\n    }\n    auto adj4(int id) const {\n        return\
     \ adj4(id / w, id % w) | std::ranges::views::transform([this](std::pair<int,int>\
-    \ xy){\n            return idx(xy.first, xy.second);\n        });\n    }\n};\n\
-    \n} // namespace noya2\n"
+    \ xy){\n            return idx(xy.first, xy.second);\n        });\n    }\n   \
+    \ int size() const {\n        return h * w;\n    }\n};\n\n} // namespace noya2\n"
   code: "#pragma once\n\n#include <vector>\n#include <utility>\n#include <ranges>\n\
     \nnamespace noya2 {\n\nstruct grid {\n    int h, w;\n    grid (int _h = 0, int\
     \ _w = 0) : h(_h), w(_w) {}\n    int idx(int x, int y) const {\n        return\
@@ -37,13 +37,13 @@ data:
     \ std::pair<int,int>(dxy.first + x, dxy.second + y);\n        }) | std::views::filter([this](std::pair<int,int>\
     \ xy){\n            return operator()(xy.first, xy.second);\n        });\n   \
     \ }\n    auto adj4(int id) const {\n        return adj4(id / w, id % w) | std::ranges::views::transform([this](std::pair<int,int>\
-    \ xy){\n            return idx(xy.first, xy.second);\n        });\n    }\n};\n\
-    \n} // namespace noya2"
+    \ xy){\n            return idx(xy.first, xy.second);\n        });\n    }\n   \
+    \ int size() const {\n        return h * w;\n    }\n};\n\n} // namespace noya2"
   dependsOn: []
   isVerificationFile: false
   path: graph/grid.hpp
   requiredBy: []
-  timestamp: '2024-10-17 01:43:35+09:00'
+  timestamp: '2026-06-18 03:15:18+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/grid.hpp
