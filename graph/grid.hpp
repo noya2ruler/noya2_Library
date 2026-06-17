@@ -34,6 +34,9 @@ struct grid {
             return idx(xy.first, xy.second);
         });
     }
+    int size() const {
+        return h * w;
+    }
 };
 
 } // namespace noya2
