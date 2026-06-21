@@ -146,18 +146,19 @@ data:
     \        return 0;\n    }\n  private:\n    int _n, size, log;\n    std::vector<S>\
     \ d;\n    std::vector<F> lz;\n    void update(int k) { d[k] = op(d[2 * k], d[2\
     \ * k + 1]); }\n    void all_apply(int k, F f) {\n        d[k] = mapping(f, d[k]);\n\
-    \        if (k < size) lz[k] = composition(f, lz[k]);\n    }\n    void push(int\
-    \ k) {\n        all_apply(2 * k, lz[k]);\n        all_apply(2 * k + 1, lz[k]);\n\
-    \        lz[k] = id();\n    }\n};\n\n} // namespace noya2\n#line 2 \"utility/modint.hpp\"\
-    \n\n#line 4 \"utility/modint.hpp\"\n\n#line 2 \"math/prime.hpp\"\n\n#line 4 \"\
-    math/prime.hpp\"\nnamespace noya2 {\n\nconstexpr long long safe_mod(long long\
-    \ x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n}\n\n\
-    constexpr long long pow_mod_constexpr(long long x, long long n, int m) {\n   \
-    \ if (m == 1) return 0;\n    unsigned int _m = (unsigned int)(m);\n    unsigned\
-    \ long long r = 1;\n    unsigned long long y = safe_mod(x, m);\n    while (n)\
-    \ {\n        if (n & 1) r = (r * y) % _m;\n        y = (y * y) % _m;\n       \
-    \ n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int n)\
-    \ {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
+    \        if (k < size){\n            lz[k] = composition(f, lz[k]);\n        \
+    \    // if (d[k].fail) push(k), update(k); // for beats!\n        }\n    }\n \
+    \   void push(int k) {\n        all_apply(2 * k, lz[k]);\n        all_apply(2\
+    \ * k + 1, lz[k]);\n        lz[k] = id();\n    }\n};\n\n} // namespace noya2\n\
+    #line 2 \"utility/modint.hpp\"\n\n#line 4 \"utility/modint.hpp\"\n\n#line 2 \"\
+    math/prime.hpp\"\n\n#line 4 \"math/prime.hpp\"\nnamespace noya2 {\n\nconstexpr\
+    \ long long safe_mod(long long x, long long m) {\n    x %= m;\n    if (x < 0)\
+    \ x += m;\n    return x;\n}\n\nconstexpr long long pow_mod_constexpr(long long\
+    \ x, long long n, int m) {\n    if (m == 1) return 0;\n    unsigned int _m = (unsigned\
+    \ int)(m);\n    unsigned long long r = 1;\n    unsigned long long y = safe_mod(x,\
+    \ m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n        y = (y *\
+    \ y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\nconstexpr bool is_prime_constexpr(int\
+    \ n) {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
     \ true;\n    if (n % 2 == 0) return false;\n    long long d = n - 1;\n    while\
     \ (d % 2 == 0) d /= 2;\n    constexpr long long bases[3] = {2, 7, 61};\n    for\
     \ (long long a : bases) {\n        long long t = d;\n        long long y = pow_mod_constexpr(a,\
@@ -314,7 +315,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2025-10-13 19:03:45+09:00'
+  timestamp: '2026-06-22 00:52:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Range_Affine_Range_Sum.test.cpp

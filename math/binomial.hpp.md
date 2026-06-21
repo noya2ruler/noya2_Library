@@ -26,6 +26,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps998244353/sample_point_shift.hpp
     title: fps998244353/sample_point_shift.hpp
+  - icon: ':warning:'
+    path: math/binomial_prefix_sum.hpp
+    title: math/binomial_prefix_sum.hpp
   - icon: ':heavy_check_mark:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
@@ -147,6 +150,7 @@ data:
   path: math/binomial.hpp
   requiredBy:
   - math/lagrange_interpolation.hpp
+  - math/binomial_prefix_sum.hpp
   - math/euler_circuit_counting.hpp
   - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp

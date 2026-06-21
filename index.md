@@ -168,6 +168,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/binomial.hpp
       title: math/binomial.hpp
+    - icon: ':warning:'
+      path: math/binomial_prefix_sum.hpp
+      title: math/binomial_prefix_sum.hpp
     - icon: ':heavy_check_mark:'
       path: math/bitwise_convolution.hpp
       title: math/bitwise_convolution.hpp

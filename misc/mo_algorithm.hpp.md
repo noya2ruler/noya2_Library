@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: math/binomial_prefix_sum.hpp
+    title: math/binomial_prefix_sum.hpp
   - icon: ':heavy_check_mark:'
     path: tree/Mo_on_Tree.hpp
     title: Mo on Tree
@@ -59,6 +62,7 @@ data:
   path: misc/mo_algorithm.hpp
   requiredBy:
   - tree/Mo_on_Tree.hpp
+  - math/binomial_prefix_sum.hpp
   timestamp: '2026-01-11 17:16:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

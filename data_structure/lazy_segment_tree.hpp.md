@@ -70,9 +70,10 @@ data:
     \        return 0;\n    }\n  private:\n    int _n, size, log;\n    std::vector<S>\
     \ d;\n    std::vector<F> lz;\n    void update(int k) { d[k] = op(d[2 * k], d[2\
     \ * k + 1]); }\n    void all_apply(int k, F f) {\n        d[k] = mapping(f, d[k]);\n\
-    \        if (k < size) lz[k] = composition(f, lz[k]);\n    }\n    void push(int\
-    \ k) {\n        all_apply(2 * k, lz[k]);\n        all_apply(2 * k + 1, lz[k]);\n\
-    \        lz[k] = id();\n    }\n};\n\n} // namespace noya2\n"
+    \        if (k < size){\n            lz[k] = composition(f, lz[k]);\n        \
+    \    // if (d[k].fail) push(k), update(k); // for beats!\n        }\n    }\n \
+    \   void push(int k) {\n        all_apply(2 * k, lz[k]);\n        all_apply(2\
+    \ * k + 1, lz[k]);\n        lz[k] = id();\n    }\n};\n\n} // namespace noya2\n"
   code: "#pragma once\n\n\nnamespace noya2{\n\ntemplate <class S, S (*op)(S, S), S\
     \ (*e)(), class F, S (*mapping)(F, S), F (*composition)(F, F), F (*id)()>\nstruct\
     \ lazy_segtree {\n  public:\n    lazy_segtree() : lazy_segtree(0) {}\n    lazy_segtree(int\
@@ -132,14 +133,15 @@ data:
     \        return 0;\n    }\n  private:\n    int _n, size, log;\n    std::vector<S>\
     \ d;\n    std::vector<F> lz;\n    void update(int k) { d[k] = op(d[2 * k], d[2\
     \ * k + 1]); }\n    void all_apply(int k, F f) {\n        d[k] = mapping(f, d[k]);\n\
-    \        if (k < size) lz[k] = composition(f, lz[k]);\n    }\n    void push(int\
-    \ k) {\n        all_apply(2 * k, lz[k]);\n        all_apply(2 * k + 1, lz[k]);\n\
-    \        lz[k] = id();\n    }\n};\n\n} // namespace noya2"
+    \        if (k < size){\n            lz[k] = composition(f, lz[k]);\n        \
+    \    // if (d[k].fail) push(k), update(k); // for beats!\n        }\n    }\n \
+    \   void push(int k) {\n        all_apply(2 * k, lz[k]);\n        all_apply(2\
+    \ * k + 1, lz[k]);\n        lz[k] = id();\n    }\n};\n\n} // namespace noya2"
   dependsOn: []
   isVerificationFile: false
   path: data_structure/lazy_segment_tree.hpp
   requiredBy: []
-  timestamp: '2025-10-13 19:03:45+09:00'
+  timestamp: '2026-06-22 00:52:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/data_structure/Range_Affine_Range_Sum.test.cpp
