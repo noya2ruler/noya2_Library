@@ -146,7 +146,10 @@ struct lazy_segtree {
     void update(int k) { d[k] = op(d[2 * k], d[2 * k + 1]); }
     void all_apply(int k, F f) {
         d[k] = mapping(f, d[k]);
-        if (k < size) lz[k] = composition(f, lz[k]);
+        if (k < size){
+            lz[k] = composition(f, lz[k]);
+            // if (d[k].fail) push(k), update(k); // for beats!
+        }
     }
     void push(int k) {
         all_apply(2 * k, lz[k]);
