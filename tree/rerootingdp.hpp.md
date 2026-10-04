@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Rerooting_DP.test.cpp
     title: test/tree/Rerooting_DP.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/rerootingdp.hpp\"\n\n#include <vector>\n#include <utility>\n\
@@ -90,7 +90,7 @@ data:
   path: tree/rerootingdp.hpp
   requiredBy: []
   timestamp: '2024-10-02 20:21:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/tree/Rerooting_DP.test.cpp
 documentation_of: tree/rerootingdp.hpp

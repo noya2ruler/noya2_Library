@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/spanning_tree_counting.hpp
     title: math/spanning_tree_counting.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/CountingEulerianCircuits.test.cpp
     title: test/math/CountingEulerianCircuits.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://en.wikipedia.org/wiki/BEST_theorem
@@ -218,7 +218,7 @@ data:
   path: math/euler_circuit_counting.hpp
   requiredBy: []
   timestamp: '2025-04-07 03:15:38+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/math/CountingEulerianCircuits.test.cpp
 documentation_of: math/euler_circuit_counting.hpp

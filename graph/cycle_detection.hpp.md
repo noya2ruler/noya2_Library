@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data_structure/csr.hpp
     title: data_structure/csr.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/CycleDetectionDirected.test.cpp
     title: test/graph/CycleDetectionDirected.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"graph/cycle_detection.hpp\"\n\n#include <optional>\n#include\
@@ -81,7 +81,7 @@ data:
   path: graph/cycle_detection.hpp
   requiredBy: []
   timestamp: '2024-10-30 04:43:18+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/graph/CycleDetectionDirected.test.cpp
 documentation_of: graph/cycle_detection.hpp

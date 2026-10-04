@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/prime.hpp
     title: math/prime.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: utility/modint.hpp
     title: utility/modint.hpp
   _extendedRequiredBy:
@@ -101,7 +101,7 @@ data:
     \ y) ? (x = y, true) : false; }\n\ntemplate<typename T> inline bool range(T l,\
     \ T x, T r){ return l <= x && x < r; }\n\n} // namespace noya2\n#line 8 \"template/template.hpp\"\
     \n\n#define rep(i,n) for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for\
-    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1);\
+    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n)-1;\
     \ i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\nusing ll = long long;\n\
     using ld = long double;\nusing uint = unsigned int;\nusing ull = unsigned long\
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
@@ -401,18 +401,18 @@ data:
   isVerificationFile: false
   path: fps/ntt.hpp
   requiredBy:
-  - fps/relaxed_convolution.hpp
-  - fps/fps_modint.hpp
   - fps/fps_ntt.hpp
-  timestamp: '2025-02-26 00:46:12+09:00'
+  - fps/fps_modint.hpp
+  - fps/relaxed_convolution.hpp
+  timestamp: '2026-10-05 02:36:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
-  - test/fps/convolution_relaxed_convolution.test.cpp
-  - test/fps/Convolution1000000007.test.cpp
-  - test/fps/convolution.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/fps/convolution.test.cpp
+  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
+  - test/fps/Convolution1000000007.test.cpp
+  - test/fps/convolution_relaxed_convolution.test.cpp
 documentation_of: fps/ntt.hpp
 layout: document
 redirect_from:

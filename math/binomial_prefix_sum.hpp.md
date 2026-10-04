@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/binomial.hpp
     title: math/binomial.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/mo_algorithm.hpp
     title: misc/mo_algorithm.hpp
   _extendedRequiredBy: []

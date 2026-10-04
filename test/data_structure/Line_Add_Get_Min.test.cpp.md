@@ -4,16 +4,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/li_chao_tree.hpp
     title: data_structure/li_chao_tree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy: []
@@ -75,7 +75,7 @@ data:
     \ y) ? (x = y, true) : false; }\n\ntemplate<typename T> inline bool range(T l,\
     \ T x, T r){ return l <= x && x < r; }\n\n} // namespace noya2\n#line 8 \"template/template.hpp\"\
     \n\n#define rep(i,n) for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for\
-    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1);\
+    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n)-1;\
     \ i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\nusing ll = long long;\n\
     using ld = long double;\nusing uint = unsigned int;\nusing ull = unsigned long\
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
@@ -140,7 +140,7 @@ data:
   isVerificationFile: true
   path: test/data_structure/Line_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2024-07-01 23:39:10+09:00'
+  timestamp: '2026-10-05 02:36:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/data_structure/Line_Add_Get_Min.test.cpp

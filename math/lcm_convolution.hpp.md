@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/sieve.hpp
     title: math/sieve.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Lcm_Convolution.test.cpp
     title: test/math/Lcm_Convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/lcm_convolution.hpp\"\n\n#include <vector>\n#include\
@@ -79,7 +79,7 @@ data:
   path: math/lcm_convolution.hpp
   requiredBy: []
   timestamp: '2025-08-30 19:37:18+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/math/Lcm_Convolution.test.cpp
 documentation_of: math/lcm_convolution.hpp

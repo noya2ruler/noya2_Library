@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
@@ -48,12 +48,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps/convolution.test.cpp
     title: test/fps/convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"fps/formal_power_series.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -104,7 +104,7 @@ data:
     \ y) ? (x = y, true) : false; }\n\ntemplate<typename T> inline bool range(T l,\
     \ T x, T r){ return l <= x && x < r; }\n\n} // namespace noya2\n#line 8 \"template/template.hpp\"\
     \n\n#define rep(i,n) for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for\
-    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1);\
+    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n)-1;\
     \ i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\nusing ll = long long;\n\
     using ld = long double;\nusing uint = unsigned int;\nusing ull = unsigned long\
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
@@ -248,20 +248,20 @@ data:
   path: fps/formal_power_series.hpp
   requiredBy:
   - fps/fps_arbitrary.hpp
-  - fps/fps_atcoder.hpp
-  - fps/multipoint_evaluation.hpp
-  - fps/sample_point_shift.hpp
-  - fps/fps_modint.hpp
   - fps/fps_ntt.hpp
-  timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - fps/fps_modint.hpp
+  - fps/sample_point_shift.hpp
+  - fps/multipoint_evaluation.hpp
+  - fps/fps_atcoder.hpp
+  timestamp: '2026-10-05 02:36:29+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/tree/FrequencyTableofTreeDistance.test.cpp
-  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
   - test/fps/Inv_of_Formal_Power_Series.test.cpp
-  - test/fps/Convolution1000000007.test.cpp
-  - test/fps/convolution.test.cpp
   - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/fps/convolution.test.cpp
+  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
+  - test/fps/Convolution1000000007.test.cpp
+  - test/tree/FrequencyTableofTreeDistance.test.cpp
 documentation_of: fps/formal_power_series.hpp
 layout: document
 redirect_from:

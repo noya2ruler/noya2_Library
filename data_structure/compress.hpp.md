@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Inversions_Query.test.cpp
     title: test/data_structure/Static_Range_Inversions_Query.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/misc/StaticRangeModeQuery.test.cpp
     title: test/misc/StaticRangeModeQuery.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/compress.hpp\"\n\n#include <vector>\n#include\
@@ -58,12 +58,12 @@ data:
   requiredBy:
   - data_structure/range_tree.hpp
   timestamp: '2024-07-28 17:15:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/misc/StaticRangeModeQuery.test.cpp
   - test/data_structure/Static_Range_Inversions_Query.test.cpp
   - test/data_structure/Rectangle_Sum.test.cpp
   - test/data_structure/Point_Add_Rectangle_Sum.test.cpp
-  - test/misc/StaticRangeModeQuery.test.cpp
 documentation_of: data_structure/compress.hpp
 layout: document
 redirect_from:

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/factorize.hpp
     title: math/factorize.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/PrimitiveRoot.test.cpp
     title: test/math/PrimitiveRoot.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/prime_64bit.hpp\"\n\n#include <type_traits>\n#include\
@@ -147,7 +147,7 @@ data:
   path: math/prime_64bit.hpp
   requiredBy: []
   timestamp: '2025-04-09 05:05:46+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/math/PrimitiveRoot.test.cpp
 documentation_of: math/prime_64bit.hpp

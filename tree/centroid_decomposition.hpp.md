@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/centroid_decomposition.hpp\"\n\n#include <vector>\n\
@@ -96,7 +96,7 @@ data:
   path: tree/centroid_decomposition.hpp
   requiredBy: []
   timestamp: '2024-07-06 19:03:24+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/tree/FrequencyTableofTreeDistance.test.cpp
 documentation_of: tree/centroid_decomposition.hpp

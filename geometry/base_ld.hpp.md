@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/const.hpp
     title: template/const.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/inout_old.hpp
     title: template/inout_old.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/template.hpp
     title: template/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template/utils.hpp
     title: template/utils.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/partition_by_circle.hpp
     title: geometry/partition_by_circle.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/base_ld.hpp\"\n\n#line 2 \"template/template.hpp\"\
@@ -74,7 +74,7 @@ data:
     \ y) ? (x = y, true) : false; }\n\ntemplate<typename T> inline bool range(T l,\
     \ T x, T r){ return l <= x && x < r; }\n\n} // namespace noya2\n#line 8 \"template/template.hpp\"\
     \n\n#define rep(i,n) for (int i = 0; i < (int)(n); i++)\n#define repp(i,m,n) for\
-    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n-1);\
+    \ (int i = (m); i < (int)(n); i++)\n#define reb(i,n) for (int i = (int)(n)-1;\
     \ i >= 0; i--)\n#define all(v) (v).begin(),(v).end()\n\nusing ll = long long;\n\
     using ld = long double;\nusing uint = unsigned int;\nusing ull = unsigned long\
     \ long;\nusing pii = pair<int,int>;\nusing pll = pair<ll,ll>;\nusing pil = pair<int,ll>;\n\
@@ -112,8 +112,8 @@ data:
   path: geometry/base_ld.hpp
   requiredBy:
   - geometry/partition_by_circle.hpp
-  timestamp: '2024-07-01 23:39:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-10-05 02:36:29+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/geometry/aoj1198.test.cpp
 documentation_of: geometry/base_ld.hpp

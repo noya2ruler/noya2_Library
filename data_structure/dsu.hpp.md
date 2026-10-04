@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/range_parallel_dsu.hpp
     title: data_structure/range_parallel_dsu.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/partition_by_circle.hpp
     title: geometry/partition_by_circle.hpp
   _extendedVerifiedWith:
@@ -18,12 +18,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Unionfind.test.cpp
     title: test/data_structure/Unionfind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/geometry/aoj1198.test.cpp
     title: test/geometry/aoj1198.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/dsu.hpp\"\n\n#include <vector>\n#include\
@@ -80,15 +80,15 @@ data:
   isVerificationFile: false
   path: data_structure/dsu.hpp
   requiredBy:
-  - geometry/partition_by_circle.hpp
-  - data_structure/bipartite_dsu.hpp
   - data_structure/range_parallel_dsu.hpp
+  - data_structure/bipartite_dsu.hpp
+  - geometry/partition_by_circle.hpp
   timestamp: '2025-04-29 17:55:46+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/geometry/aoj1198.test.cpp
   - test/data_structure/Unionfind.test.cpp
   - test/data_structure/RangeParallelUnionfind.test.cpp
+  - test/geometry/aoj1198.test.cpp
 documentation_of: data_structure/dsu.hpp
 layout: document
 redirect_from:

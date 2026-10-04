@@ -8,28 +8,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: fps/sample_point_shift.hpp
     title: fps/sample_point_shift.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps998244353/bostan_mori.hpp
     title: fps998244353/bostan_mori.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: fps998244353/fps998244353.hpp
     title: fps998244353/fps998244353.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps998244353/multipoint_evaluation.hpp
     title: fps998244353/multipoint_evaluation.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps998244353/polynomial_taylor_shift.hpp
     title: fps998244353/polynomial_taylor_shift.hpp
   - icon: ':warning:'
     path: fps998244353/product_1_minus_x_pow_a.hpp
     title: fps998244353/product_1_minus_x_pow_a.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: fps998244353/sample_point_shift.hpp
     title: fps998244353/sample_point_shift.hpp
   - icon: ':warning:'
     path: math/binomial_prefix_sum.hpp
     title: math/binomial_prefix_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/euler_circuit_counting.hpp
     title: math/euler_circuit_counting.hpp
   - icon: ':warning:'
@@ -51,36 +51,36 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
     title: test/fps998244353/Division_of_Polynomials_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     title: test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/convolution_998244353.test.cpp
     title: test/fps998244353/convolution_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/multipoint_evaluation_998244353.test.cpp
     title: test/fps998244353/multipoint_evaluation_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
     title: test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
     title: test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
     title: test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
     title: test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/CountingEulerianCircuits.test.cpp
     title: test/math/CountingEulerianCircuits.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/binomial.hpp\"\n\n#include<vector>\nnamespace noya2\
@@ -149,34 +149,34 @@ data:
   isVerificationFile: false
   path: math/binomial.hpp
   requiredBy:
-  - math/lagrange_interpolation.hpp
-  - math/binomial_prefix_sum.hpp
-  - math/euler_circuit_counting.hpp
-  - fps/sample_point_shift.hpp
   - fps/fps_ntt.hpp
-  - fps998244353/fps998244353.hpp
+  - fps/sample_point_shift.hpp
   - fps998244353/product_1_minus_x_pow_a.hpp
-  - fps998244353/multipoint_evaluation.hpp
+  - fps998244353/fps998244353.hpp
   - fps998244353/sample_point_shift.hpp
   - fps998244353/bostan_mori.hpp
+  - fps998244353/multipoint_evaluation.hpp
   - fps998244353/polynomial_taylor_shift.hpp
+  - math/binomial_prefix_sum.hpp
+  - math/lagrange_interpolation.hpp
+  - math/euler_circuit_counting.hpp
   timestamp: '2025-04-07 03:15:38+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
+  - test/fps/Inv_of_Formal_Power_Series.test.cpp
+  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
+  - test/fps/convolution.test.cpp
+  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
+  - test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
+  - test/fps998244353/multipoint_evaluation_998244353.test.cpp
+  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
+  - test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
+  - test/fps998244353/convolution_998244353.test.cpp
   - test/math/CountingEulerianCircuits.test.cpp
   - test/math/Binomial_Coefficient_Prime_Mod_modintnew.test.cpp
-  - test/fps/Multipoint_Evaluation_Geometric_Sequence.test.cpp
-  - test/fps/Inv_of_Formal_Power_Series.test.cpp
-  - test/fps/convolution.test.cpp
-  - test/fps/Shift_of_Sampling_Points_of_Polynomial.test.cpp
-  - test/fps998244353/multipoint_evaluation_geo_998244353.test.cpp
-  - test/fps998244353/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/fps998244353/convolution_998244353.test.cpp
-  - test/fps998244353/multipoint_evaluation_998244353.test.cpp
-  - test/fps998244353/polynomial_taylor_shift_998244353.test.cpp
-  - test/fps998244353/shift_of_sampling_points_of_polynomial_998244353.test.cpp
-  - test/fps998244353/Division_of_Polynomials_998244353.test.cpp
+  - test/math/Binomial_Coefficient_Prime_Mod.test.cpp
 documentation_of: math/binomial.hpp
 layout: document
 redirect_from:

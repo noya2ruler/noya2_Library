@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/misc/LongestIncreasingSubsequence.test.cpp
     title: test/misc/LongestIncreasingSubsequence.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/longest_increasing_subsequence.hpp\"\n\n#include <vector>\n\
@@ -38,7 +38,7 @@ data:
   path: misc/longest_increasing_subsequence.hpp
   requiredBy: []
   timestamp: '2024-07-23 14:29:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/misc/LongestIncreasingSubsequence.test.cpp
 documentation_of: misc/longest_increasing_subsequence.hpp

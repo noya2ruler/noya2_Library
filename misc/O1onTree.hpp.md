@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/misc/RootedTreeTopologicalOrderwithMinimumInversions.test.cpp
     title: test/misc/RootedTreeTopologicalOrderwithMinimumInversions.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"misc/O1onTree.hpp\"\n\n#include <vector>\n#include <queue>\n\
@@ -148,7 +148,7 @@ data:
   path: misc/O1onTree.hpp
   requiredBy: []
   timestamp: '2025-03-12 22:52:08+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/misc/RootedTreeTopologicalOrderwithMinimumInversions.test.cpp
 documentation_of: misc/O1onTree.hpp

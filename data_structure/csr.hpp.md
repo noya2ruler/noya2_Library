@@ -5,37 +5,37 @@ data:
   - icon: ':heavy_check_mark:'
     path: data_structure/offline_rectangle_sum.hpp
     title: data_structure/offline_rectangle_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/cycle_detection.hpp
     title: graph/cycle_detection.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/graph_query.hpp
     title: graph/graph_query.hpp
   - icon: ':warning:'
     path: misc/segment_divide_conquer.hpp
     title: misc/segment_divide_conquer.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/simple_tree.hpp
     title: tree/simple_tree.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Rectangle_Sum.test.cpp
     title: test/data_structure/Rectangle_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/CycleDetectionDirected.test.cpp
     title: test/graph/CycleDetectionDirected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Shortest_Path.test.cpp
     title: test/graph/Shortest_Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/graph/Shortest_Path2.test.cpp
     title: test/graph/Shortest_Path2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/FrequencyTableofTreeDistance.test.cpp
     title: test/tree/FrequencyTableofTreeDistance.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"data_structure/csr.hpp\"\n\n#include<vector>\n#include<ranges>\n\
@@ -95,19 +95,19 @@ data:
   isVerificationFile: false
   path: data_structure/csr.hpp
   requiredBy:
-  - tree/simple_tree.hpp
-  - data_structure/offline_rectangle_sum.hpp
   - graph/graph_query.hpp
   - graph/cycle_detection.hpp
   - misc/segment_divide_conquer.hpp
+  - data_structure/offline_rectangle_sum.hpp
+  - tree/simple_tree.hpp
   timestamp: '2024-10-30 04:43:18+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/tree/FrequencyTableofTreeDistance.test.cpp
-  - test/data_structure/Rectangle_Sum.test.cpp
-  - test/graph/Shortest_Path2.test.cpp
   - test/graph/CycleDetectionDirected.test.cpp
+  - test/graph/Shortest_Path2.test.cpp
   - test/graph/Shortest_Path.test.cpp
+  - test/data_structure/Rectangle_Sum.test.cpp
+  - test/tree/FrequencyTableofTreeDistance.test.cpp
 documentation_of: data_structure/csr.hpp
 layout: document
 redirect_from:

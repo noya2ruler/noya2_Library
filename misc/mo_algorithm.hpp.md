@@ -5,19 +5,19 @@ data:
   - icon: ':warning:'
     path: math/binomial_prefix_sum.hpp
     title: math/binomial_prefix_sum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tree/Mo_on_Tree.hpp
     title: Mo on Tree
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/data_structure/Static_Range_Inversions_Query.test.cpp
     title: test/data_structure/Static_Range_Inversions_Query.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://nyaannyaan.github.io/library/modulo/multipoint-binomial-sum.hpp
@@ -61,13 +61,13 @@ data:
   isVerificationFile: false
   path: misc/mo_algorithm.hpp
   requiredBy:
-  - tree/Mo_on_Tree.hpp
   - math/binomial_prefix_sum.hpp
+  - tree/Mo_on_Tree.hpp
   timestamp: '2026-01-11 17:16:20+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/tree/aoj_0489.test.cpp
   - test/data_structure/Static_Range_Inversions_Query.test.cpp
+  - test/tree/aoj_0489.test.cpp
 documentation_of: misc/mo_algorithm.hpp
 layout: document
 redirect_from:

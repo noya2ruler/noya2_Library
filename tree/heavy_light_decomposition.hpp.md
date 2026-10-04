@@ -3,24 +3,24 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Jump_on_Tree.test.cpp
     title: test/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Lowest_Common_Ancestor.test.cpp
     title: test/tree/Lowest_Common_Ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/VertexSetPathComposite.test.cpp
     title: test/tree/VertexSetPathComposite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Vertex_Add_Path_Sum.test.cpp
     title: test/tree/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/aoj_0489.test.cpp
     title: test/tree/aoj_0489.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"tree/heavy_light_decomposition.hpp\"\n\n#include <vector>\n\
@@ -373,13 +373,13 @@ data:
   path: tree/heavy_light_decomposition.hpp
   requiredBy: []
   timestamp: '2026-01-11 17:21:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
+  - test/tree/Lowest_Common_Ancestor.test.cpp
+  - test/tree/Jump_on_Tree.test.cpp
+  - test/tree/VertexSetPathComposite.test.cpp
   - test/tree/Vertex_Add_Path_Sum.test.cpp
   - test/tree/aoj_0489.test.cpp
-  - test/tree/Jump_on_Tree.test.cpp
-  - test/tree/Lowest_Common_Ancestor.test.cpp
-  - test/tree/VertexSetPathComposite.test.cpp
 documentation_of: tree/heavy_light_decomposition.hpp
 layout: document
 title: Heavy Light Decomposition

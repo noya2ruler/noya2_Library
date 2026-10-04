@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/prime_64bit.hpp
     title: math/prime_64bit.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/PrimalityTest.test.cpp
     title: test/math/PrimalityTest.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/math/PrimitiveRoot.test.cpp
     title: test/math/PrimitiveRoot.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://judge.yosupo.jp/submission/189742
@@ -193,7 +193,7 @@ data:
   requiredBy:
   - math/prime_64bit.hpp
   timestamp: '2025-04-09 05:05:46+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/math/PrimitiveRoot.test.cpp
   - test/math/PrimalityTest.test.cpp

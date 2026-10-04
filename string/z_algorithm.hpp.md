@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: string/run_enumerate.hpp
     title: string/run_enumerate.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/string/RunEnumerate.test.cpp
     title: test/string/RunEnumerate.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/string/Z_Algorithm.test.cpp
     title: test/string/Z_Algorithm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"string/z_algorithm.hpp\"\n\n#include <algorithm>\n#include\
@@ -49,10 +49,10 @@ data:
   requiredBy:
   - string/run_enumerate.hpp
   timestamp: '2024-07-16 15:04:41+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/string/Z_Algorithm.test.cpp
   - test/string/RunEnumerate.test.cpp
+  - test/string/Z_Algorithm.test.cpp
 documentation_of: string/z_algorithm.hpp
 layout: document
 redirect_from:
