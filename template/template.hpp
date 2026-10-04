@@ -8,7 +8,7 @@ using namespace std;
 
 #define rep(i,n) for (int i = 0; i < (int)(n); i++)
 #define repp(i,m,n) for (int i = (m); i < (int)(n); i++)
-#define reb(i,n) for (int i = (int)(n-1); i >= 0; i--)
+#define reb(i,n) for (int i = (int)(n)-1; i >= 0; i--)
 #define all(v) (v).begin(),(v).end()
 
 using ll = long long;
