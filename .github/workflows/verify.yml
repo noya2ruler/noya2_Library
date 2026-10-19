@@ -24,4 +24,25 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
         GH_PAT: ${{ secrets.GH_PAT }}
-      run: oj-verify all
+      run: oj-verify all --timeout 3000
+
+    - name: Ensure all tests were verified
+      run: |
+        python3 - <<'PY'
+        import json
+        import os
+        import subprocess
+
+        branch = os.environ['GITHUB_REF'].removeprefix('refs/heads/')
+        files = subprocess.check_output(
+            ['git', 'ls-tree', '-r', '--name-only', branch, '--', 'test'], text=True
+        ).splitlines()
+        tests = {path for path in files if path.endswith('.test.cpp')}
+        timestamps = subprocess.check_output(
+            ['git', 'show', f'{branch}:.verify-helper/timestamps.remote.json'], text=True
+        )
+        verified = set(json.loads(timestamps))
+        missing = sorted(tests - verified)
+        if missing:
+            raise SystemExit(f'{len(missing)} tests were not verified:\n' + '\n'.join(missing))
+        PY
