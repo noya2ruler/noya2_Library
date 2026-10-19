@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/SumofMultiplicativeFunction.test.cpp
     title: test/math/SumofMultiplicativeFunction.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/multiplicative_function.hpp\"\n\n#include <vector>\n\
@@ -121,7 +121,7 @@ data:
   path: math/multiplicative_function.hpp
   requiredBy: []
   timestamp: '2025-02-18 22:43:01+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/SumofMultiplicativeFunction.test.cpp
 documentation_of: math/multiplicative_function.hpp

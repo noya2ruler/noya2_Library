@@ -2,22 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/gcd_convolution.hpp
     title: math/gcd_convolution.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/lcm_convolution.hpp
     title: math/lcm_convolution.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Gcd_Convolution.test.cpp
     title: test/math/Gcd_Convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/Lcm_Convolution.test.cpp
     title: test/math/Lcm_Convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/sieve.hpp\"\n\n#include <vector>\n#include <cassert>\n\
@@ -89,7 +89,7 @@ data:
   - math/lcm_convolution.hpp
   - math/gcd_convolution.hpp
   timestamp: '2025-08-30 19:37:18+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/Lcm_Convolution.test.cpp
   - test/math/Gcd_Convolution.test.cpp
